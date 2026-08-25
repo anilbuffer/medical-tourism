@@ -12,6 +12,7 @@ import {
   PhoneCall,
   CheckCircle2,
   ArrowRight,
+  Star,
 } from "lucide-react";
 
 export const HeroSection = () => {
@@ -81,10 +82,42 @@ export const HeroSection = () => {
               </button>
             </div>
 
-            {/* Sub-CTA Trust Note */}
-            <div className="pt-2 flex items-center justify-center lg:justify-start gap-2 text-xs text-slate-400">
-              <ShieldCheck className="w-4 h-4 text-[#2ECDC5]" />
-              <span>{t.hero.trustLine}</span>
+            {/* Social Proof / Patient Reviews Rating */}
+            <div className="pt-2 flex items-center justify-center lg:justify-start gap-4">
+              {/* Stacked Initial Badges */}
+              <div className="flex -space-x-2.5 rtl:space-x-reverse items-center">
+                {[
+                  { initials: "SW", bg: "bg-[#06433e]" },
+                  { initials: "AF", bg: "bg-[#074e48]" },
+                  { initials: "MD", bg: "bg-[#053d37]" },
+                  { initials: "FO", bg: "bg-[#084b44]" },
+                  { initials: "JL", bg: "bg-[#03342e]" },
+                ].map((item, idx) => (
+                  <div
+                    key={idx}
+                    className={`w-9 h-9 rounded-full ${item.bg} border-2 border-white flex items-center justify-center text-[11px] font-bold text-white tracking-wider shrink-0 select-none shadow-md`}
+                  >
+                    {item.initials}
+                  </div>
+                ))}
+              </div>
+
+              {/* Stars and Rating Text */}
+              <div className="flex flex-col items-start rtl:items-end text-left rtl:text-right">
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-4 h-4 fill-[#F58220] text-[#F58220] shrink-0"
+                    />
+                  ))}
+                </div>
+                <div className="text-xs sm:text-sm text-slate-300 font-medium mt-1">
+                  {language === "ar"
+                    ? "تقييم 4.9/5 من أكثر من 1200+ مريض دولي"
+                    : "Rated 4.9/5 by 1200+ international patients"}
+                </div>
+              </div>
             </div>
           </div>
 
@@ -92,15 +125,15 @@ export const HeroSection = () => {
           <div className="lg:col-span-6 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               {/* Main Visual Image Card */}
-              <div className="relative h-[420px] sm:h-[500px] w-full rounded-3xl overflow-hidden shadow-2xl shadow-slate-950/50 border border-slate-700/60 ring-1 ring-white/10">
+              <div className="relative h-[480px] sm:h-[560px] lg:h-[600px] w-full rounded-3xl overflow-hidden shadow-2xl shadow-slate-950/50 border border-slate-700/60 ring-1 ring-white/10">
                 <Image
-                  src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80"
-                  alt="Modern Hospital and Medical Technology"
+                  src="/hero-doctor-patient.jpg"
+                  alt="Doctor and Patient Consultation in Hospital"
                   fill
                   priority
-                  className="object-cover"
+                  className="object-cover object-[center_35%]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-black/10"></div>
 
                 {/* Floating Badge 1: 24/7 Concierge Support (Top-Left) */}
                 <div className="absolute top-4 left-4 bg-slate-900/90 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-slate-700/80 flex items-center gap-2.5 z-20 shadow-lg">
