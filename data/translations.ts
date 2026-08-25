@@ -1,5 +1,6 @@
 export type Language = "en" | "ar";
-export type Currency = "USD" | "AED" | "GBP" | "EUR" | "INR";
+export type Currency = "USD" | "GBP" | "CAD" | "AUD" | "AED" | "SAR" | "QAR" | "OMR" | "EUR" | "INR";
+export type CountryCode = "GB" | "CA" | "AU" | "AE" | "SA" | "QA" | "OM";
 
 export interface Translations {
   nav: {
@@ -40,6 +41,15 @@ export interface Translations {
     specialistMatch: string;
     nextStep: string;
     videoConsult: string;
+    transparentPricing: string;
+    dedicatedCoordinator: string;
+    noHiddenCosts: string;
+    verifiedHospitals: string;
+    visaAssistance: string;
+    saveUpTo70: string;
+    onTreatment: string;
+    jciNabhAccredited: string;
+    freeConsultation: string;
   };
   quickEntry: {
     heading: string;
@@ -274,7 +284,7 @@ export const DICTIONARY: Record<Language, Translations> = {
       aboutIndia: "Why India",
       costGuide: "Cost Calculator",
       support247: "24/7 Care Support",
-      startJourney: "Start Care Journey →",
+      startJourney: "Get Free Quote",
       talkCoordinator: "Talk to Coordinator",
       explore: "Explore",
       doctorsHospitals: "Doctors & Hospitals",
@@ -283,11 +293,11 @@ export const DICTIONARY: Record<Language, Translations> = {
       onlineBadge: "Online",
     },
     hero: {
-      eyebrow: "INTERNATIONAL PATIENT CARE · INDIA",
+      eyebrow: "JCI & NABH accredited network",
       headline: "World-Class Care. Personally Coordinated.",
       subheadline:
         "From your first medical enquiry to specialist consultation, hospital coordination, travel assistance and follow-up care — one dedicated team helps you navigate your journey to India.",
-      primaryCta: "Start Your Care Journey →",
+      primaryCta: "Get Free Quote",
       secondaryCta: "Talk to a Care Coordinator",
       trust1: "15+ Years",
       trust1Label: "Healthcare Network",
@@ -301,6 +311,15 @@ export const DICTIONARY: Record<Language, Translations> = {
       specialistMatch: "Specialist Match Found",
       nextStep: "Next Step: Tele-Consultation",
       videoConsult: "Confirmed with Dr. Arjun Mehta · Tomorrow",
+      transparentPricing: "Transparent Pricing",
+      dedicatedCoordinator: "Dedicated Care Coordinator",
+      noHiddenCosts: "No Hidden Costs",
+      verifiedHospitals: "50+ Verified Hospitals",
+      visaAssistance: "Medical Visa Assistance",
+      saveUpTo70: "Save up to 70%",
+      onTreatment: "On Treatment",
+      jciNabhAccredited: "JCI & NABH Accredited",
+      freeConsultation: "Free Consultation",
     },
     quickEntry: {
       heading: "How Can We Help You Today?",
@@ -538,7 +557,7 @@ export const DICTIONARY: Record<Language, Translations> = {
       aboutIndia: "لماذا الهند",
       costGuide: "حاسبة التكاليف",
       support247: "دعم الرعاية 24/7",
-      startJourney: "ابدأ رحلة علاجك →",
+      startJourney: "احصل على عرض سعر مجاني",
       talkCoordinator: "تحدث مع المنسق",
       explore: "استكشف المزيد",
       doctorsHospitals: "الأطباء والمستشفيات",
@@ -551,7 +570,7 @@ export const DICTIONARY: Record<Language, Translations> = {
       headline: "رعاية طبية عالمية المستوى. منسقة خصيصاً لك.",
       subheadline:
         "من استفسارك الطبي الأول إلى استشارة كبار الاستشاريين، وتنسيق المستشفى، وتسهيل السفر والتأشيرة، والمتابعة بعد العودة — فريق متخصص يرافقك خطوة بخطوة في رحلتك إلى الهند.",
-      primaryCta: "ابدأ رحلة علاجك الآن →",
+      primaryCta: "احصل على عرض سعر مجاني",
       secondaryCta: "تحدث مع منسق الرعاية",
       trust1: "+15 عاماً",
       trust1Label: "شبكة الرعاية الموثوقة",
@@ -565,6 +584,15 @@ export const DICTIONARY: Record<Language, Translations> = {
       specialistMatch: "تم مطابقة الطبيب الاستشاري",
       nextStep: "الخطوة التالية: استشارة مرئية",
       videoConsult: "مؤكدة مع د. أرجون ميهتا · غداً",
+      transparentPricing: "تسعير شفاف ومباشر",
+      dedicatedCoordinator: "منسق رعاية مخصص",
+      noHiddenCosts: "بدون أي تكاليف خفية",
+      verifiedHospitals: "+50 مستشفى معتمد",
+      visaAssistance: "المساعدة في التأشيرة الطبية",
+      saveUpTo70: "وفّر حتى 70%",
+      onTreatment: "على العلاج",
+      jciNabhAccredited: "معتمد من JCI و NABH",
+      freeConsultation: "استشارة مجانية",
     },
     quickEntry: {
       heading: "كيف يمكننا مساعدتك اليوم؟",

@@ -5,15 +5,12 @@ import Image from "next/image";
 import { useCare } from "@/context/CareContext";
 import { SPECIALTIES, Specialty } from "@/data/mockData";
 import {
-  Heart,
-  Brain,
-  Ribbon,
+  Smile,
+  Sparkles,
+  Eye,
   Activity,
-  Dna,
   Baby,
   ArrowRight,
-  Sparkles,
-  CheckCircle2,
   Clock,
   ShieldCheck,
   ChevronRight,
@@ -21,20 +18,19 @@ import {
 
 export const SpecialtiesSection = () => {
   const { t, language, openIntake } = useCare();
-  const [selectedSpecialty, setSelectedSpecialty] = useState<Specialty | null>(null);
 
   const getSpecialtyIcon = (id: string) => {
     switch (id) {
-      case "cardiac":
-        return Heart;
-      case "neuro":
-        return Brain;
-      case "oncology":
-        return Ribbon;
+      case "dental":
+        return Smile;
+      case "cosmetic":
+        return Sparkles;
+      case "eye-care":
+        return Eye;
+      case "orthopedic":
       case "ortho":
         return Activity;
-      case "transplant":
-        return Dna;
+      case "fertility":
       case "women-children":
         return Baby;
       default:
@@ -68,7 +64,7 @@ export const SpecialtiesSection = () => {
           </button>
         </div>
 
-        {/* 6 Specialties Grid */}
+        {/* 5 Core Specialties Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {SPECIALTIES.map((spec) => {
             const Icon = getSpecialtyIcon(spec.id);

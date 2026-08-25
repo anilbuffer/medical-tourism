@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { Language, Currency, DICTIONARY, Translations } from "@/data/translations";
+import { Language, Currency, CountryCode, DICTIONARY, Translations } from "@/data/translations";
 import { Doctor, Hospital, CARE_COORDINATOR } from "@/data/mockData";
 
 export interface ChatMessage {
@@ -17,6 +17,8 @@ interface CareContextType {
   toggleLanguage: () => void;
   isRtl: boolean;
   t: Translations;
+  country: CountryCode;
+  setCountry: (code: CountryCode) => void;
   currency: Currency;
   setCurrency: (currency: Currency) => void;
   formatPrice: (usdAmount: number) => string;
@@ -50,17 +52,67 @@ interface CareContextType {
 
 const CareContext = createContext<CareContextType | undefined>(undefined);
 
+export const COUNTRY_CURRENCY_MAP: Record<CountryCode, Currency> = {
+  GB: "GBP",
+  CA: "CAD",
+  AU: "AUD",
+  AE: "AED",
+  SA: "SAR",
+  QA: "QAR",
+  OM: "OMR",
+};
+
 const CURRENCY_RATES: Record<Currency, { symbol: string; rate: number; prefix: boolean }> = {
   USD: { symbol: "$", rate: 1.0, prefix: true },
-  AED: { symbol: " AED", rate: 3.67, prefix: false },
   GBP: { symbol: "£", rate: 0.79, prefix: true },
+  CAD: { symbol: "CA$", rate: 1.36, prefix: true },
+  AUD: { symbol: "A$", rate: 1.52, prefix: true },
+  AED: { symbol: " AED", rate: 3.67, prefix: false },
+  SAR: { symbol: " SAR", rate: 3.75, prefix: false },
+  QAR: { symbol: " QAR", rate: 3.64, prefix: false },
+  OMR: { symbol: " OMR", rate: 0.385, prefix: false },
   EUR: { symbol: "€", rate: 0.92, prefix: true },
   INR: { symbol: "₹", rate: 83.5, prefix: true },
 };
 
 export const CareProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>("en");
-  const [currency, setCurrency] = useState<Currency>("USD");
+  const [language, setLanguageState] = useState<Language>("en");
+  const [country, setCountryState] = useState<CountryCode>("GB");
+  const [currency, setCurrency] = useState<Currency>("GBP");
+
+  // Load preferences from localStorage safely
+  useEffect(() => {
+    try {
+      const savedLang = localStorage.getItem("vedara_lang") as Language;
+      if (savedLang === "en" || savedLang === "ar") {
+        setLanguageState(savedLang);
+      }
+      const savedCountry = localStorage.getItem("vedara_country") as CountryCode;
+      if (savedCountry && COUNTRY_CURRENCY_MAP[savedCountry]) {
+        setCountryState(savedCountry);
+        setCurrency(COUNTRY_CURRENCY_MAP[savedCountry]);
+      }
+    } catch {
+      // ignore
+    }
+  }, []);
+
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+    try {
+      localStorage.setItem("vedara_lang", lang);
+    } catch {}
+  };
+
+  const setCountry = (code: CountryCode) => {
+    setCountryState(code);
+    if (COUNTRY_CURRENCY_MAP[code]) {
+      setCurrency(COUNTRY_CURRENCY_MAP[code]);
+    }
+    try {
+      localStorage.setItem("vedara_country", code);
+    } catch {}
+  };
 
   const [isIntakeOpen, setIsIntakeOpen] = useState(false);
   const [intakeSpecialty, setIntakeSpecialty] = useState("");
@@ -202,6 +254,8 @@ export const CareProvider = ({ children }: { children: ReactNode }) => {
         toggleLanguage,
         isRtl,
         t,
+        country,
+        setCountry,
         currency,
         setCurrency,
         formatPrice,

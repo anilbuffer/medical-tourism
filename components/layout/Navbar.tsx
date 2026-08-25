@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useCare } from "@/context/CareContext";
+import { LanguageCountryPicker } from "@/components/ui/LanguageCountryPicker";
 import {
   Globe,
   Sparkles,
@@ -19,7 +20,7 @@ import {
 } from "lucide-react";
 
 export const Navbar = () => {
-  const { language, toggleLanguage, t, openIntake } = useCare();
+  const { language, t, openIntake } = useCare();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
@@ -199,36 +200,24 @@ export const Navbar = () => {
             </div>
           </nav>
 
-          {/* 03. Right Action Utilities (Language + Primary CTA) */}
+          {/* 03. Right Action Utilities (Language + Country + Primary CTA) */}
           <div className="hidden lg:flex items-center gap-3 shrink-0">
-            {/* Language Switcher */}
-            <button
-              onClick={toggleLanguage}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all border bg-white/10 text-white border-white/15 hover:bg-white/20 whitespace-nowrap"
-              title="Switch Language"
-            >
-              <Globe className="w-3.5 h-3.5 text-teal-400" />
-              <span>{language === "en" ? "العربية" : "English"}</span>
-            </button>
+            {/* Language & Country Picker */}
+            <LanguageCountryPicker />
 
-            {/* Primary Care Journey CTA */}
-            <button
-              onClick={() => openIntake()}
+            {/* Primary Get Free Quote CTA */}
+            <a
+              href="/#assessment"
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-teal-500 via-teal-600 to-emerald-600 hover:from-teal-400 hover:via-teal-500 hover:to-emerald-500 shadow-md shadow-teal-900/40 hover:shadow-lg hover:shadow-teal-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap"
             >
               <Sparkles className="w-3.5 h-3.5 text-amber-300" />
               <span>{t.nav.startJourney}</span>
-            </button>
+            </a>
           </div>
 
           {/* 04. Mobile Navigation Toggle */}
           <div className="flex items-center gap-2 lg:hidden">
-            <button
-              onClick={toggleLanguage}
-              className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-white/10 text-white border border-white/15"
-            >
-              {language === "en" ? "العربية" : "EN"}
-            </button>
+            <LanguageCountryPicker compact={true} />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-xl bg-white/10 text-white hover:bg-white/20 transition-colors border border-white/10"
@@ -248,13 +237,7 @@ export const Navbar = () => {
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               <span>24/7 International Desk</span>
             </div>
-            <button
-              onClick={toggleLanguage}
-              className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-white/10 text-white border border-white/15 flex items-center gap-1"
-            >
-              <Globe className="w-3 h-3 text-teal-400" />
-              <span>{language === "en" ? "العربية" : "English"}</span>
-            </button>
+            <LanguageCountryPicker />
           </div>
 
           {/* Primary Quick Links */}
@@ -306,16 +289,14 @@ export const Navbar = () => {
 
           {/* Mobile Action CTA */}
           <div className="pt-2">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                openIntake();
-              }}
+            <a
+              href="/#assessment"
+              onClick={() => setMobileMenuOpen(false)}
               className="w-full py-3 rounded-xl bg-gradient-to-r from-teal-500 via-teal-600 to-emerald-600 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-teal-950/50"
             >
               <Sparkles className="w-4 h-4 text-amber-300" />
               <span>{t.nav.startJourney}</span>
-            </button>
+            </a>
           </div>
         </div>
       )}

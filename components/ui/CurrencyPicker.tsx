@@ -6,9 +6,14 @@ import { Currency } from "@/data/translations";
 import { DollarSign, ChevronDown, Check } from "lucide-react";
 
 const CURRENCIES: { code: Currency; label: string; flag: string }[] = [
-  { code: "USD", label: "USD ($)", flag: "🇺🇸" },
-  { code: "AED", label: "AED (د.إ)", flag: "🇦🇪" },
   { code: "GBP", label: "GBP (£)", flag: "🇬🇧" },
+  { code: "CAD", label: "CAD ($)", flag: "🇨🇦" },
+  { code: "AUD", label: "AUD ($)", flag: "🇦🇺" },
+  { code: "AED", label: "AED (د.إ)", flag: "🇦🇪" },
+  { code: "SAR", label: "SAR (ر.س)", flag: "🇸🇦" },
+  { code: "QAR", label: "QAR (ر.ق)", flag: "🇶🇦" },
+  { code: "OMR", label: "OMR (ر.ع)", flag: "🇴🇲" },
+  { code: "USD", label: "USD ($)", flag: "🇺🇸" },
   { code: "EUR", label: "EUR (€)", flag: "🇪🇺" },
   { code: "INR", label: "INR (₹)", flag: "🇮🇳" },
 ];

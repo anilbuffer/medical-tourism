@@ -21,7 +21,14 @@ export const DoctorsSection = () => {
   const { t, language, openDoctorModal, openIntake } = useCare();
   const [activeSpecialty, setActiveSpecialty] = useState("All");
 
-  const specialtiesList = ["All", "Cardiac Sciences", "Cancer Care (Oncology)", "Orthopedics & Joint Replacement", "Transplant Medicine"];
+  const specialtiesList = [
+    "All",
+    "Dental Implants",
+    "Cosmetic & Aesthetic",
+    "Ophthalmology / Eye Care",
+    "Orthopedic Procedures",
+    "Fertility / IVF",
+  ];
 
   const filteredDoctors = activeSpecialty === "All"
     ? DOCTORS
@@ -49,11 +56,10 @@ export const DoctorsSection = () => {
             <button
               key={spec}
               onClick={() => setActiveSpecialty(spec)}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                activeSpecialty === spec
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${activeSpecialty === spec
                   ? "bg-[#0D3B3F] text-white shadow-md shadow-teal-950/20"
                   : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
-              }`}
+                }`}
             >
               {spec}
             </button>
@@ -61,7 +67,7 @@ export const DoctorsSection = () => {
         </div>
 
         {/* Doctor Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-3 gap-5">
           {filteredDoctors.map((doc) => (
             <div
               key={doc.id}

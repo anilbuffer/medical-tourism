@@ -17,7 +17,8 @@ export const IntakePreview = () => {
   const { language } = useCare();
 
   return (
-    <section id="assessment" className="py-20 bg-slate-900 relative overflow-hidden text-white">
+    <section id="assessment" className="py-20 bg-slate-900 relative overflow-hidden text-white scroll-mt-16">
+      <div id="confidential-assessment" className="-mt-16 pt-16 pointer-events-none"></div>
       {/* Ambient background lights */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-0 left-10 w-80 h-80 bg-red-500/5 rounded-full blur-3xl pointer-events-none"></div>

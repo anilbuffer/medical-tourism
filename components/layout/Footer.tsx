@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { useCare } from "@/context/CareContext";
-import { CurrencyPicker } from "@/components/ui/CurrencyPicker";
+import { LanguageCountryPicker } from "@/components/ui/LanguageCountryPicker";
 import {
   Globe,
   Phone,
@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 export const Footer = () => {
-  const { t, language, toggleLanguage, openIntake, openChat } = useCare();
+  const { t, language, openIntake, openChat } = useCare();
 
   return (
     <footer className="bg-[#040A10] text-white pt-20 pb-12 border-t border-slate-800">
@@ -43,14 +43,7 @@ export const Footer = () => {
             </p>
 
             <div className="pt-2 flex items-center gap-3">
-              <CurrencyPicker lightMode={true} />
-              <button
-                onClick={toggleLanguage}
-                className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1.5 border border-white/20 transition-colors"
-              >
-                <Globe className="w-3.5 h-3.5 text-teal-400" />
-                <span>{language === "en" ? "العربية" : "English"}</span>
-              </button>
+              <LanguageCountryPicker />
             </div>
           </div>
 
@@ -144,12 +137,12 @@ export const Footer = () => {
               </div>
 
               <div className="pt-2">
-                <button
-                  onClick={() => openIntake()}
-                  className="w-full py-2.5 px-3 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs shadow-md transition-all text-center"
+                <a
+                  href="/#assessment"
+                  className="block w-full py-2.5 px-3 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs shadow-md transition-all text-center"
                 >
                   {t.nav.startJourney}
-                </button>
+                </a>
               </div>
             </div>
           </div>

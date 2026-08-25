@@ -24,7 +24,14 @@ export default function TreatmentsPage() {
   const [selectedSpecialty, setSelectedSpecialty] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const categories = ["All", "Cardiac Sciences", "Cancer Care (Oncology)", "Orthopedics & Joint Replacement", "Transplant Medicine", "Neurosciences & Spine", "Women's & Children's Health"];
+  const categories = [
+    "All",
+    "Dental Implants",
+    "Cosmetic & Aesthetic",
+    "Ophthalmology / Eye Care",
+    "Orthopedic Procedures",
+    "Fertility / IVF",
+  ];
 
   const filtered = TREATMENT_COSTS.filter((tItem) => {
     const matchesCategory = selectedSpecialty === "All" || tItem.specialty === selectedSpecialty;

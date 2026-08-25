@@ -26,7 +26,14 @@ export default function DoctorsPage() {
   const [selectedHospital, setSelectedHospital] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const specialties = ["All", "Cardiac Sciences", "Cancer Care (Oncology)", "Orthopedics & Joint Replacement", "Transplant Medicine"];
+  const specialties = [
+    "All",
+    "Dental Implants",
+    "Cosmetic & Aesthetic",
+    "Ophthalmology / Eye Care",
+    "Orthopedic Procedures",
+    "Fertility / IVF",
+  ];
   const hospitals = ["All", "Fortis Hospital", "Max Super Speciality", "Paras Health"];
 
   const filteredDoctors = DOCTORS.filter((doc) => {
