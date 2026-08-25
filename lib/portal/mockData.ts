@@ -1,4 +1,12 @@
-import { PatientCase, PortalUser } from "@/types/portal";
+import {
+  PatientCase,
+  PortalUser,
+  AccreditationProfile,
+  ConsentTextVersion,
+  VisaChecklistRule,
+  RefundCancellationRule,
+  SlaThreshold,
+} from "@/types/portal";
 
 export const MOCK_PORTAL_USERS: PortalUser[] = [
   {
@@ -10,6 +18,8 @@ export const MOCK_PORTAL_USERS: PortalUser[] = [
     country: "United States",
     phone: "+1 (555) 234-8921",
     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
+    mfaEnforced: false,
+    isActive: true,
   },
   {
     id: "user_patient_elena",
@@ -20,6 +30,8 @@ export const MOCK_PORTAL_USERS: PortalUser[] = [
     country: "United Kingdom",
     phone: "+44 7700 900142",
     avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80",
+    mfaEnforced: false,
+    isActive: true,
   },
   {
     id: "user_patient_tariq",
@@ -30,6 +42,8 @@ export const MOCK_PORTAL_USERS: PortalUser[] = [
     country: "United Arab Emirates",
     phone: "+971 50 123 4567",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    mfaEnforced: false,
+    isActive: true,
   },
   {
     id: "user_cs_aisha",
@@ -38,6 +52,8 @@ export const MOCK_PORTAL_USERS: PortalUser[] = [
     role: "customer_support",
     assignedQueues: ["Cardiology_Tier1", "Oncology_EMEA", "Orthopedics_MENA", "General_Global"],
     avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
+    mfaEnforced: true,
+    isActive: true,
   },
   {
     id: "user_doctor_trehan",
@@ -47,6 +63,8 @@ export const MOCK_PORTAL_USERS: PortalUser[] = [
     hospitalId: "hosp_medanta",
     doctorId: "doc_trehan",
     avatar: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=150&auto=format&fit=crop&q=80",
+    mfaEnforced: true,
+    isActive: true,
   },
   {
     id: "user_finance_david",
@@ -54,6 +72,8 @@ export const MOCK_PORTAL_USERS: PortalUser[] = [
     email: "finance@vedaracare.com",
     role: "finance_accounts",
     avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80",
+    mfaEnforced: true,
+    isActive: true,
   },
   {
     id: "user_admin_rajesh",
@@ -61,24 +81,200 @@ export const MOCK_PORTAL_USERS: PortalUser[] = [
     email: "admin@vedaracare.com",
     role: "super_admin",
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+    mfaEnforced: true,
+    isActive: true,
   },
 ];
 
+// ─── Accreditation Profiles ───────────────────────────────────────────────────
+export const MOCK_ACCREDITATION_PROFILES: AccreditationProfile[] = [
+  {
+    hospitalId: "hosp_medanta",
+    hospitalName: "Medanta – The Medicity",
+    jciStatus: "active",
+    jciExpiry: "2027-03-15",
+    jciDocumentUrl: "#",
+    nabhStatus: "active",
+    nabhExpiry: "2026-11-30",
+    nabhDocumentUrl: "#",
+    lastAuditedAt: "2025-10-12",
+    country: "India",
+    city: "Gurugram",
+    specialties: ["Cardiac Surgery", "Oncology", "Neurology", "Transplant"],
+  },
+  {
+    hospitalId: "hosp_apollo",
+    hospitalName: "Apollo Hospitals",
+    jciStatus: "active",
+    jciExpiry: "2026-08-20",
+    jciDocumentUrl: "#",
+    nabhStatus: "active",
+    nabhExpiry: "2027-01-10",
+    nabhDocumentUrl: "#",
+    lastAuditedAt: "2025-07-04",
+    country: "India",
+    city: "Chennai",
+    specialties: ["Orthopedics", "Oncology", "Cardiology", "Transplant"],
+  },
+  {
+    hospitalId: "hosp_fortis",
+    hospitalName: "Fortis Memorial Research Institute",
+    jciStatus: "pending_renewal",
+    jciExpiry: "2026-09-30",
+    jciDocumentUrl: "#",
+    nabhStatus: "active",
+    nabhExpiry: "2027-05-22",
+    nabhDocumentUrl: "#",
+    lastAuditedAt: "2025-08-01",
+    country: "India",
+    city: "Gurugram",
+    specialties: ["Radiosurgery", "Oncology", "Neurosurgery"],
+  },
+];
+
+// ─── Consent Text Versions ────────────────────────────────────────────────────
+export const MOCK_CONSENT_TEXT_VERSIONS: ConsentTextVersion[] = [
+  {
+    id: "ctv_01",
+    consentType: "privacy_data_processing",
+    country: "United Kingdom",
+    version: "v2.4",
+    text: "Full GDPR-compliant data processing consent text for UK patients...",
+    uploadedAt: "2026-01-15T10:00:00Z",
+    uploadedByName: "Rajesh Verma",
+    isActive: true,
+  },
+  {
+    id: "ctv_02",
+    consentType: "privacy_data_processing",
+    country: "United Arab Emirates",
+    version: "v2.3",
+    text: "GCC-compliant data processing consent for UAE patients...",
+    uploadedAt: "2026-02-01T10:00:00Z",
+    uploadedByName: "Rajesh Verma",
+    isActive: true,
+  },
+  {
+    id: "ctv_03",
+    consentType: "hospital_document_sharing",
+    country: "Global",
+    version: "v1.8",
+    text: "Hospital document sharing consent text — global default...",
+    uploadedAt: "2026-01-20T10:00:00Z",
+    uploadedByName: "Rajesh Verma",
+    isActive: true,
+  },
+  {
+    id: "ctv_04",
+    consentType: "tele_consultation_terms",
+    country: "Global",
+    version: "v2.0",
+    text: "Tele-consultation terms and scope limitations...",
+    uploadedAt: "2026-03-10T10:00:00Z",
+    uploadedByName: "Rajesh Verma",
+    isActive: true,
+  },
+  {
+    id: "ctv_05",
+    consentType: "payment_staged_terms",
+    country: "Global",
+    version: "v1.2",
+    text: "Staged payment and escrow terms and conditions...",
+    uploadedAt: "2026-01-15T10:00:00Z",
+    uploadedByName: "Rajesh Verma",
+    isActive: true,
+  },
+];
+
+// ─── Visa Checklist Rules ─────────────────────────────────────────────────────
+export const MOCK_VISA_CHECKLIST_RULES: VisaChecklistRule[] = [
+  {
+    id: "vr_uk",
+    patientHomeCountry: "United Kingdom",
+    requiredDocuments: [
+      { name: "Passport (min 6 months validity)", mandatory: true },
+      { name: "Hospital invitation letter (M-Visa)", mandatory: true },
+      { name: "Bank statement (last 3 months)", mandatory: true },
+      { name: "Travel insurance proof", mandatory: false, note: "Recommended" },
+    ],
+    lastUpdatedAt: "2026-06-01T00:00:00Z",
+  },
+  {
+    id: "vr_uae",
+    patientHomeCountry: "United Arab Emirates",
+    requiredDocuments: [
+      { name: "Passport (min 6 months validity)", mandatory: true },
+      { name: "Hospital invitation letter (M-Visa)", mandatory: true },
+      { name: "Emirates ID copy", mandatory: true },
+    ],
+    lastUpdatedAt: "2026-06-01T00:00:00Z",
+  },
+  {
+    id: "vr_ke",
+    patientHomeCountry: "Kenya",
+    requiredDocuments: [
+      { name: "Passport (min 6 months validity)", mandatory: true },
+      { name: "Hospital invitation letter (M-Visa)", mandatory: true },
+      { name: "Medical diagnosis letter from home doctor", mandatory: true },
+      { name: "Bank statement (last 6 months)", mandatory: true },
+    ],
+    lastUpdatedAt: "2026-06-01T00:00:00Z",
+  },
+];
+
+// ─── Refund / Cancellation Rules ──────────────────────────────────────────────
+export const MOCK_REFUND_RULES: RefundCancellationRule[] = [
+  {
+    id: "rr_deposit_default",
+    paymentStage: "deposit",
+    description: "Deposit refund — default",
+    refundPercentage: 100,
+    conditions: "Fully refundable minus $150 processing fee if visa is denied (official embassy proof required). Non-refundable once visa submitted.",
+    lastUpdatedAt: "2026-01-15T00:00:00Z",
+  },
+  {
+    id: "rr_advance_default",
+    paymentStage: "advance",
+    description: "Advance refund — default",
+    refundPercentage: 90,
+    conditions: "90% refundable if cancelled more than 72 hours before planned departure. 50% refundable within 72 hours. Non-refundable after hospital admission.",
+    lastUpdatedAt: "2026-01-15T00:00:00Z",
+  },
+  {
+    id: "rr_final_default",
+    paymentStage: "final",
+    description: "Final payment refund — default",
+    refundPercentage: 0,
+    conditions: "Non-refundable once procedure commenced. Disputed amounts subject to reconciliation review.",
+    lastUpdatedAt: "2026-01-15T00:00:00Z",
+  },
+];
+
+// ─── SLA Thresholds ───────────────────────────────────────────────────────────
+export const MOCK_SLA_THRESHOLDS: SlaThreshold[] = [
+  { market: "UK / EU", tier1Minutes: 45, tier2Minutes: 120, escalationMinutes: 240 },
+  { market: "GCC / MENA", tier1Minutes: 30, tier2Minutes: 90, escalationMinutes: 180 },
+  { market: "Africa / APAC", tier1Minutes: 60, tier2Minutes: 150, escalationMinutes: 300 },
+  { market: "North America", tier1Minutes: 45, tier2Minutes: 120, escalationMinutes: 240 },
+];
+
+// ─── Patient Cases ────────────────────────────────────────────────────────────
 export const INITIAL_PATIENT_CASES: PatientCase[] = [
   {
     id: "PT-2026-008492",
-    patientName: "Robert Vance",
-    patientEmail: "robert.vance@gmail.com",
-    patientPhone: "+1 (555) 234-8921",
-    patientCountry: "United States",
+    patientName: "Elena Rostova",
+    patientEmail: "elena.rostova@gmail.com",
+    patientPhone: "+44 7700 900142",
+    patientCountry: "United Kingdom",
     preferredLanguage: "English",
     treatmentCategory: "Cardiology & Cardiac Surgery",
-    preferredContactTime: "09:00 - 13:00 EST",
+    preferredContactTime: "09:00 - 13:00 GMT",
     entryPath: "general_enquiry",
     assignedHospitalId: "hosp_medanta",
     assignedDoctorId: "doc_trehan",
     assignedQueue: "Cardiology_Tier1",
-    assignedCoordinatorName: "Sarah Jenkins",
+    assignedCoordinatorName: "Aisha Khan",
+    lastContactAt: new Date(Date.now() - 1 * 24 * 3600 * 1000).toISOString(),
 
     leadCreatedAt: new Date(Date.now() - 4 * 24 * 3600 * 1000).toISOString(),
     slaTargetMinutes: 45,
@@ -90,6 +286,11 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
     utmCampaign: "tavr_valve_replacement_uk",
 
     stage: "booking",
+    caseDecisionStatus: "accepted",
+    acceptedAt: new Date(Date.now() - 3 * 24 * 3600 * 1000).toISOString(),
+    acceptedByDoctorId: "doc_trehan",
+    acceptedByDoctorName: "Dr. Naresh Trehan",
+
     hasBillingDispute: false,
 
     clinicalSummary: {
@@ -100,15 +301,112 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
       allergies: ["Penicillin"],
     },
 
+    clinicalWorkspace: {
+      treatmentPlan:
+        "Patient is an optimal TAVR candidate via right transfemoral approach. Edwards SAPIEN 3 Ultra 26mm valve indicated per CT annular sizing (24.5mm). Pre-procedure: dual antiplatelet, dental clearance, pacing wire standby. Post-procedure: 24hr ICU monitoring, step-down ward day 2-4.",
+      expectedStayDays: 4,
+      costEstimateUsd: 9800,
+      suitabilityDetermination: "suitable",
+      submittedAt: new Date(Date.now() - 2.5 * 24 * 3600 * 1000).toISOString(),
+      submittedByDoctorId: "doc_trehan",
+      submittedByDoctorName: "Dr. Naresh Trehan",
+      lastUpdatedAt: new Date(Date.now() - 2.5 * 24 * 3600 * 1000).toISOString(),
+    },
+
+    stageHistory: [
+      {
+        id: "sh_01",
+        fromStage: null,
+        toStage: "lead",
+        changedAt: new Date(Date.now() - 4 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Public Intake Form",
+        changedByRole: "public",
+      },
+      {
+        id: "sh_02",
+        fromStage: "lead",
+        toStage: "contacted",
+        changedAt: new Date(Date.now() - 3.8 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Aisha Khan",
+        changedByRole: "customer_support",
+      },
+      {
+        id: "sh_03",
+        fromStage: "contacted",
+        toStage: "documents_collected",
+        changedAt: new Date(Date.now() - 3.5 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Aisha Khan",
+        changedByRole: "customer_support",
+      },
+      {
+        id: "sh_04",
+        fromStage: "documents_collected",
+        toStage: "hospital_handover",
+        changedAt: new Date(Date.now() - 3 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Aisha Khan",
+        changedByRole: "customer_support",
+      },
+      {
+        id: "sh_05",
+        fromStage: "hospital_handover",
+        toStage: "consultation",
+        changedAt: new Date(Date.now() - 2.5 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Dr. Naresh Trehan",
+        changedByRole: "hospital_doctor",
+      },
+      {
+        id: "sh_06",
+        fromStage: "consultation",
+        toStage: "quote",
+        changedAt: new Date(Date.now() - 2.2 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Aisha Khan",
+        changedByRole: "customer_support",
+      },
+      {
+        id: "sh_07",
+        fromStage: "quote",
+        toStage: "payment",
+        changedAt: new Date(Date.now() - 2 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Aisha Khan",
+        changedByRole: "customer_support",
+      },
+      {
+        id: "sh_08",
+        fromStage: "payment",
+        toStage: "booking",
+        changedAt: new Date(Date.now() - 1 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Aisha Khan",
+        changedByRole: "customer_support",
+      },
+    ],
+
+    csNotes: [
+      {
+        id: "note_01",
+        text: "Patient confirmed travel companion (daughter Anna Rostova). Arranged companion visa and hotel companion bed. Patient is anxious — called her for reassurance.",
+        createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000).toISOString(),
+        authorName: "Aisha Khan",
+        authorRole: "customer_support",
+      },
+      {
+        id: "note_02",
+        text: "Visa invitation letter dispatched to patient email. Embassy appointment set for Aug 28. Checked Medanta hospital slot still confirmed for Sep 2.",
+        createdAt: new Date(Date.now() - 1 * 24 * 3600 * 1000).toISOString(),
+        authorName: "Aisha Khan",
+        authorRole: "customer_support",
+      },
+    ],
+
     documents: [
       {
         id: "doc_echo_01",
         title: "2D Echocardiogram & Doppler Report",
         category: "scan_imaging",
         status: "reviewed",
-        csFeedback: "Reviewed by Dr. Trehan’s clinical team. Valve area 0.7 cm² confirmed. Patient is suitable candidate.",
+        csFeedback: "Reviewed by Dr. Trehan's clinical team. Valve area 0.7 cm² confirmed. Patient is suitable candidate.",
         currentVersion: 2,
         isRequired: true,
+        isCaseScoped: true,
         requiredForStage: "documents_collected",
         versions: [
           {
@@ -139,6 +437,7 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         csFeedback: "Annular dimension measured: 24.5mm. Compatible with 26mm Edwards SAPIEN 3 Ultra valve.",
         currentVersion: 1,
         isRequired: true,
+        isCaseScoped: true,
         requiredForStage: "documents_collected",
         versions: [
           {
@@ -160,6 +459,7 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         csFeedback: "Passport valid till Nov 2029. Used for Indian Medical Visa (M-Visa) invitation dispatch.",
         currentVersion: 1,
         isRequired: true,
+        isCaseScoped: true,
         requiredForStage: "booking",
         versions: [
           {
@@ -180,6 +480,7 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         status: "reviewed",
         currentVersion: 1,
         isRequired: false,
+        isCaseScoped: true,
         versions: [
           {
             version: 1,
@@ -209,7 +510,7 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         id: "cst_sharing_01",
         consentType: "hospital_document_sharing",
         title: "Document Sharing with Medanta The Medicity & Clinical Review Board",
-        description: "Explicit permission to transmit encrypted diagnostic scans and medical reports to Dr. Naresh Trehan’s surgical evaluation board.",
+        description: "Explicit permission to transmit encrypted diagnostic scans and medical reports to Dr. Naresh Trehan's surgical evaluation board.",
         agreed: true,
         timestamp: new Date(Date.now() - 3.8 * 24 * 3600 * 1000).toISOString(),
         ipAddress: "86.14.120.45 (London, UK)",
@@ -264,13 +565,18 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
       meetingLink: "https://vedaracare.health/teleconsult/ved-live-8492",
       status: "completed",
       outcome: "suitable",
-      outcomeNotes: "Patient thoroughly reviewed. Candidate is well-suited for high-precision TAVR via right transfemoral approach. Estimated 3-4 days in hospital including 1 day in Step-Down ICU. Recovery prognosis is excellent.",
-      prescriptionSummary: "Pre-procedure: Maintain Amlodipine 5mg; Aspirin 75mg daily. Pre-admission echo to be repeated in Delhi for calibration.",
+      outcomeNotes:
+        "Patient thoroughly reviewed. Candidate is well-suited for high-precision TAVR via right transfemoral approach. Estimated 3-4 days in hospital including 1 day in Step-Down ICU. Recovery prognosis is excellent.",
+      prescriptionSummary:
+        "Pre-procedure: Maintain Amlodipine 5mg; Aspirin 75mg daily. Pre-admission echo to be repeated in Delhi for calibration.",
       diagnosticPreChecklist: [
         { item: "Recent Renal Function (Serum Creatinine < 1.3 mg/dL)", completed: true },
         { item: "Aortic CT Contrast Sizing protocol completed", completed: true },
         { item: "Dental clearance for occult infection", completed: true },
       ],
+      recordingEnabled: false,
+      recordingConsentObtained: false,
+      recordingJurisdictionChecked: false,
     },
 
     quote: {
@@ -281,6 +587,7 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
       doctorName: "Dr. Naresh Trehan",
       city: "Gurugram, Delhi NCR",
       totalCostUsd: 9800,
+      tier: "premium",
       status: "accepted",
       createdAt: new Date(Date.now() - 2.2 * 24 * 3600 * 1000).toISOString(),
       validUntil: new Date(Date.now() + 28 * 24 * 3600 * 1000).toISOString(),
@@ -291,6 +598,9 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         stayAndIcuUsd: 900,
         vipConciergeAndLogisticsUsd: 500,
         companionStayUsd: 400,
+        coordinationFeeUsd: 0,
+        travelAssistanceUsd: 0,
+        supportLayerUsd: 0,
       },
       inclusions: [
         "Edwards SAPIEN 3 Ultra / Evolut PRO+ Bioprosthetic Heart Valve",
@@ -314,41 +624,52 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         name: "Stage 1: Commitment Deposit (15%)",
         percentage: 15,
         amountUsd: 1470,
+        currency: "USD",
         dueDate: "Completed",
         status: "completed",
-        cancellationTerms: "Guarantees hospital surgeon scheduling, slot reservation, and official M-Visa invitation letter dispatch. Fully refundable minus $150 processing fee if visa is denied.",
+        cancellationTerms:
+          "Guarantees hospital surgeon scheduling, slot reservation, and official M-Visa invitation letter dispatch. Fully refundable minus $150 processing fee if visa is denied.",
         refundPolicy: "100% refund upon official embassy refusal receipt.",
         termsAcceptedAt: new Date(Date.now() - 2 * 24 * 3600 * 1000).toISOString(),
         paidAt: new Date(Date.now() - 2 * 24 * 3600 * 1000).toISOString(),
         transactionId: "TXN_STRIPE_984129480",
+        gatewayReference: "GW_REF_84129480",
         receiptNumber: "REC-2026-08492-01",
         paymentMethod: "card",
+        reconciled: true,
       },
       {
         id: "advance",
         name: "Stage 2: Pre-Admission Escrow Advance (60%)",
         percentage: 60,
         amountUsd: 5880,
+        currency: "USD",
         dueDate: "Completed",
         status: "completed",
-        cancellationTerms: "Secures valve implant procurement, sterilization protocol, and hospital suite reservation. Held in escrow until physical admission.",
+        cancellationTerms:
+          "Secures valve implant procurement, sterilization protocol, and hospital suite reservation. Held in escrow until physical admission.",
         refundPolicy: "90% refundable up to 72 hours before planned flight departure.",
         termsAcceptedAt: new Date(Date.now() - 1 * 24 * 3600 * 1000).toISOString(),
         paidAt: new Date(Date.now() - 1 * 24 * 3600 * 1000).toISOString(),
         transactionId: "TXN_STRIPE_984138112",
+        gatewayReference: "GW_REF_84138112",
         receiptNumber: "REC-2026-08492-02",
         paymentMethod: "card",
+        reconciled: true,
       },
       {
         id: "final",
         name: "Stage 3: Final Hospital Clearance (25%)",
         percentage: 25,
         amountUsd: 2450,
+        currency: "USD",
         dueDate: "Upon Admission (Day 1)",
         status: "pending",
-        cancellationTerms: "Final settlement after clinical admission clearance, bed allocation, and pre-op confirmation.",
+        cancellationTerms:
+          "Final settlement after clinical admission clearance, bed allocation, and pre-op confirmation.",
         refundPolicy: "Subject to discharge reconciliation against actual consumables.",
-        termsAcceptedAt: undefined,
+        gatewayReference: "",
+        reconciled: false,
       },
     ],
 
@@ -425,8 +746,8 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         senderId: "coord_aisha",
         senderName: "Aisha Khan (Lead Coordinator)",
         senderRole: "cs_coordinator",
-        text: "Good morning Elena! I have verified your high-resolution echocardiogram and forwarded it to Dr. Naresh Trehan’s desk at Medanta.",
-        timestamp: "3 days ago",
+        text: "Good morning Elena! I have verified your high-resolution echocardiogram and forwarded it to Dr. Naresh Trehan's desk at Medanta.",
+        timestamp: new Date(Date.now() - 3 * 24 * 3600 * 1000).toISOString(),
         isRead: true,
       },
       {
@@ -435,7 +756,7 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         senderName: "Elena Rostova",
         senderRole: "patient",
         text: "Thank you so much Aisha. My daughter Anna will be accompanying me. Does the package include her accommodation at the hospital?",
-        timestamp: "3 days ago",
+        timestamp: new Date(Date.now() - 3 * 24 * 3600 * 1000).toISOString(),
         isRead: true,
       },
       {
@@ -444,7 +765,7 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         senderName: "Aisha Khan (Lead Coordinator)",
         senderRole: "cs_coordinator",
         text: "Yes, absolutely! The Deluxe Private room includes a comfortable sofa-bed, daily meal plan, and lounge access for Anna at no extra charge.",
-        timestamp: "2 days ago",
+        timestamp: new Date(Date.now() - 2 * 24 * 3600 * 1000).toISOString(),
         isRead: true,
       },
       {
@@ -453,7 +774,7 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         senderName: "Aisha Khan (Lead Coordinator)",
         senderRole: "cs_coordinator",
         text: "Your M-Visa invitation letter is signed and attached to your itinerary tab. You can download it directly for your Indian e-Visa application!",
-        timestamp: "Yesterday",
+        timestamp: new Date(Date.now() - 1 * 24 * 3600 * 1000).toISOString(),
         isRead: false,
       },
     ],
@@ -488,23 +809,32 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
       {
         id: "aud_02",
         caseId: "PT-2026-008492",
-        action: "DOCUMENTS_REVIEWED",
-        actorName: "Aisha Khan",
-        actorRole: "customer_support",
+        action: "CASE_ACCEPTED_BY_HOSPITAL",
+        actorName: "Dr. Naresh Trehan",
+        actorRole: "hospital_doctor",
         timestamp: new Date(Date.now() - 3 * 24 * 3600 * 1000).toISOString(),
-        details: "Echocardiogram v2 approved and handed to Medanta Cardiac board.",
+        details: "Case accepted by Medanta. Clinical workspace unlocked.",
       },
       {
         id: "aud_03",
+        caseId: "PT-2026-008492",
+        action: "CLINICAL_WORKSPACE_SAVED",
+        actorName: "Dr. Naresh Trehan",
+        actorRole: "hospital_doctor",
+        timestamp: new Date(Date.now() - 2.5 * 24 * 3600 * 1000).toISOString(),
+        details: "Treatment plan, LOS (4 days), cost estimate ($9,800), suitability: SUITABLE. Timestamped to doctor's account.",
+      },
+      {
+        id: "aud_04",
         caseId: "PT-2026-008492",
         action: "CONSULTATION_COMPLETED",
         actorName: "Dr. Naresh Trehan",
         actorRole: "hospital_doctor",
         timestamp: new Date(Date.now() - 2.5 * 24 * 3600 * 1000).toISOString(),
-        details: "Outcome set to SUITABLE for TAVR.",
+        details: "Tele-consultation outcome: SUITABLE. Recording: OFF.",
       },
       {
-        id: "aud_04",
+        id: "aud_05",
         caseId: "PT-2026-008492",
         action: "QUOTE_ACCEPTED",
         actorName: "Elena Rostova",
@@ -513,16 +843,19 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         details: "All-inclusive TAVR quote $9,800 accepted.",
       },
       {
-        id: "aud_05",
+        id: "aud_06",
         caseId: "PT-2026-008492",
         action: "PAYMENT_PROCESSED_ADVANCE",
         actorName: "Payment Gateway",
         actorRole: "finance_accounts",
         timestamp: new Date(Date.now() - 1 * 24 * 3600 * 1000).toISOString(),
-        details: "Staged advance of $5,880 captured. Terms accepted.",
+        details: "Staged advance of $5,880 captured. Gateway Ref: GW_REF_84138112. Terms accepted.",
       },
     ],
+
+    refundRequests: [],
   },
+
   {
     id: "PT-2026-004128",
     patientName: "Tariq Al-Mansoor",
@@ -538,6 +871,7 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
     assignedDoctorId: "doc_ashok_rajgopal",
     assignedQueue: "Orthopedics_MENA",
     assignedCoordinatorName: "Aisha Khan",
+    lastContactAt: new Date(Date.now() - 5 * 3600 * 1000).toISOString(),
 
     leadCreatedAt: new Date(Date.now() - 1.5 * 24 * 3600 * 1000).toISOString(),
     slaTargetMinutes: 30,
@@ -548,6 +882,11 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
     utmMedium: "hospital_direct",
 
     stage: "quote",
+    caseDecisionStatus: "accepted",
+    acceptedAt: new Date(Date.now() - 1 * 24 * 3600 * 1000).toISOString(),
+    acceptedByDoctorId: "doc_ashok_rajgopal",
+    acceptedByDoctorName: "Dr. Ashok Rajgopal",
+
     hasBillingDispute: false,
 
     clinicalSummary: {
@@ -558,6 +897,79 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
       allergies: ["None known"],
     },
 
+    clinicalWorkspace: {
+      treatmentPlan:
+        "Bilateral Mako robotic TKR under spinal anesthesia. Pre-op HbA1c must be ≤7.5. Cefazolin prophylaxis. Fast-track rehabilitation starting day 1 post-op.",
+      expectedStayDays: 5,
+      costEstimateUsd: 7200,
+      suitabilityDetermination: "suitable",
+      submittedAt: new Date(Date.now() - 0.5 * 24 * 3600 * 1000).toISOString(),
+      submittedByDoctorId: "doc_ashok_rajgopal",
+      submittedByDoctorName: "Dr. Ashok Rajgopal",
+      lastUpdatedAt: new Date(Date.now() - 0.5 * 24 * 3600 * 1000).toISOString(),
+    },
+
+    stageHistory: [
+      {
+        id: "sh_t01",
+        fromStage: null,
+        toStage: "lead",
+        changedAt: new Date(Date.now() - 1.5 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Apollo Referral Form",
+        changedByRole: "public",
+      },
+      {
+        id: "sh_t02",
+        fromStage: "lead",
+        toStage: "contacted",
+        changedAt: new Date(Date.now() - 1.4 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Aisha Khan",
+        changedByRole: "customer_support",
+      },
+      {
+        id: "sh_t03",
+        fromStage: "contacted",
+        toStage: "documents_collected",
+        changedAt: new Date(Date.now() - 1.3 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Aisha Khan",
+        changedByRole: "customer_support",
+      },
+      {
+        id: "sh_t04",
+        fromStage: "documents_collected",
+        toStage: "hospital_handover",
+        changedAt: new Date(Date.now() - 1 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Aisha Khan",
+        changedByRole: "customer_support",
+      },
+      {
+        id: "sh_t05",
+        fromStage: "hospital_handover",
+        toStage: "consultation",
+        changedAt: new Date(Date.now() - 0.5 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Dr. Ashok Rajgopal",
+        changedByRole: "hospital_doctor",
+      },
+      {
+        id: "sh_t06",
+        fromStage: "consultation",
+        toStage: "quote",
+        changedAt: new Date(Date.now() - 0.2 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Aisha Khan",
+        changedByRole: "customer_support",
+      },
+    ],
+
+    csNotes: [
+      {
+        id: "note_t01",
+        text: "Patient prefers Arabic communication. Arranged Arabic interpreter for tele-consult. HbA1c confirmed within range for surgery.",
+        createdAt: new Date(Date.now() - 1 * 24 * 3600 * 1000).toISOString(),
+        authorName: "Aisha Khan",
+        authorRole: "customer_support",
+      },
+    ],
+
     documents: [
       {
         id: "doc_knee_xray",
@@ -567,6 +979,7 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         csFeedback: "X-Rays clear. Medial compartment collapse noted.",
         currentVersion: 1,
         isRequired: true,
+        isCaseScoped: true,
         requiredForStage: "documents_collected",
         versions: [
           {
@@ -597,7 +1010,7 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         id: "cst_sharing_02",
         consentType: "hospital_document_sharing",
         title: "Medical Report Sharing with Apollo Joint Institute",
-        description: "Shared with Dr. Ashok Rajgopal’s clinical team.",
+        description: "Shared with Dr. Ashok Rajgopal's clinical team.",
         agreed: true,
         timestamp: new Date(Date.now() - 1.4 * 24 * 3600 * 1000).toISOString(),
         ipAddress: "94.200.12.88 (Dubai, UAE)",
@@ -617,6 +1030,7 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
       status: "completed",
       outcome: "suitable",
       outcomeNotes: "Robotic Stryker Mako bilateral knee replacement recommended. Fast-track recovery protocol planned.",
+      recordingEnabled: false,
     },
 
     quote: {
@@ -627,6 +1041,7 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
       doctorName: "Dr. Ashok Rajgopal",
       city: "Chennai, India",
       totalCostUsd: 7200,
+      tier: "standard",
       status: "sent",
       createdAt: new Date(Date.now() - 0.2 * 24 * 3600 * 1000).toISOString(),
       validUntil: new Date(Date.now() + 30 * 24 * 3600 * 1000).toISOString(),
@@ -637,6 +1052,9 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         stayAndIcuUsd: 500,
         vipConciergeAndLogisticsUsd: 300,
         companionStayUsd: 200,
+        coordinationFeeUsd: 0,
+        travelAssistanceUsd: 0,
+        supportLayerUsd: 0,
       },
       inclusions: [
         "Stryker Triathlon Titanium Implants (FDA-Approved)",
@@ -654,30 +1072,39 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         name: "Stage 1: Commitment Deposit (15%)",
         percentage: 15,
         amountUsd: 1080,
+        currency: "USD",
         dueDate: "Immediate",
         status: "pending",
         cancellationTerms: "Secures surgical date and M-Visa invitation dispatch.",
         refundPolicy: "100% refundable on visa refusal.",
+        gatewayReference: "",
+        reconciled: false,
       },
       {
         id: "advance",
         name: "Stage 2: Advance (60%)",
         percentage: 60,
         amountUsd: 4320,
+        currency: "USD",
         dueDate: "7 Days Before Travel",
         status: "pending",
         cancellationTerms: "Implant procurement and operating theater reservation.",
         refundPolicy: "90% refundable up to 72 hrs prior.",
+        gatewayReference: "",
+        reconciled: false,
       },
       {
         id: "final",
         name: "Stage 3: Final Clearance (25%)",
         percentage: 25,
         amountUsd: 1800,
+        currency: "USD",
         dueDate: "On Admission",
         status: "pending",
         cancellationTerms: "Final settlement on hospital check-in.",
         refundPolicy: "Reconciliation against discharge bill.",
+        gatewayReference: "",
+        reconciled: false,
       },
     ],
 
@@ -688,13 +1115,25 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         senderName: "Aisha Khan (Lead Coordinator)",
         senderRole: "cs_coordinator",
         text: "مرحباً سيد طارق! لقد راجع الدكتور أشوك صور الأشعة وأكد ملائمة الجراحة الروبوتية. أرسلت لك عرض السعر الشامل في تبويب العروض.",
-        timestamp: "5 hours ago",
+        timestamp: new Date(Date.now() - 5 * 3600 * 1000).toISOString(),
         isRead: false,
       },
     ],
     recoveryCheckIns: [],
-    auditLogs: [],
+    auditLogs: [
+      {
+        id: "aud_t01",
+        caseId: "PT-2026-004128",
+        action: "CASE_ACCEPTED_BY_HOSPITAL",
+        actorName: "Dr. Ashok Rajgopal",
+        actorRole: "hospital_doctor",
+        timestamp: new Date(Date.now() - 1 * 24 * 3600 * 1000).toISOString(),
+        details: "Case accepted by Apollo Hospitals. Clinical workspace unlocked.",
+      },
+    ],
+    refundRequests: [],
   },
+
   {
     id: "PT-2026-009514",
     patientName: "Grace Mwangi",
@@ -709,13 +1148,20 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
     assignedDoctorId: "doc_vinod_raina",
     assignedQueue: "Oncology_EMEA",
     assignedCoordinatorName: "Aisha Khan",
+    lastContactAt: new Date(Date.now() - 3 * 3600 * 1000).toISOString(),
 
     leadCreatedAt: new Date(Date.now() - 0.8 * 24 * 3600 * 1000).toISOString(),
     slaTargetMinutes: 60,
-    slaExpiresAt: new Date(Date.now() + 15 * 60 * 1000).toISOString(), // 15 min left
+    slaExpiresAt: new Date(Date.now() + 15 * 60 * 1000).toISOString(),
     slaBreached: false,
 
+    utmSource: "google_organic",
+    utmMedium: "seo",
+    utmCampaign: "cyberknife_africa",
+
     stage: "documents_collected",
+    caseDecisionStatus: "pending_review",
+
     hasBillingDispute: false,
 
     clinicalSummary: {
@@ -723,6 +1169,43 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
       diagnosis: "Early-stage non-small cell lung carcinoma (T1bN0M0).",
       recommendedProcedure: "CyberKnife SBRT / Robotic Stereotactic Radiosurgery",
     },
+
+    stageHistory: [
+      {
+        id: "sh_g01",
+        fromStage: null,
+        toStage: "lead",
+        changedAt: new Date(Date.now() - 0.8 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Public Intake Form",
+        changedByRole: "public",
+      },
+      {
+        id: "sh_g02",
+        fromStage: "lead",
+        toStage: "contacted",
+        changedAt: new Date(Date.now() - 0.7 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Aisha Khan",
+        changedByRole: "customer_support",
+      },
+      {
+        id: "sh_g03",
+        fromStage: "contacted",
+        toStage: "documents_collected",
+        changedAt: new Date(Date.now() - 0.3 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Aisha Khan",
+        changedByRole: "customer_support",
+      },
+    ],
+
+    csNotes: [
+      {
+        id: "note_g01",
+        text: "PET-CT uploaded but incomplete — missing DICOM slices. Requested patient re-upload coronal series. SLA critical — escalating to oncology team.",
+        createdAt: new Date(Date.now() - 3 * 3600 * 1000).toISOString(),
+        authorName: "Aisha Khan",
+        authorRole: "customer_support",
+      },
+    ],
 
     documents: [
       {
@@ -733,6 +1216,7 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         csFeedback: "We received the summary PDF, but Dr. Raina needs the full DICOM disk slice images or high-resolution coronal series to calculate target volume.",
         currentVersion: 1,
         isRequired: true,
+        isCaseScoped: true,
         requiredForStage: "documents_collected",
         versions: [
           {
@@ -770,11 +1254,139 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         senderName: "Aisha Khan (Lead Coordinator)",
         senderRole: "cs_coordinator",
         text: "Hello Grace! Our oncology tumor board is reviewing your PET-CT. Please re-upload the DICOM slice images so we can schedule Dr. Raina's consultation tomorrow.",
-        timestamp: "3 hours ago",
+        timestamp: new Date(Date.now() - 3 * 3600 * 1000).toISOString(),
         isRead: true,
       },
     ],
     recoveryCheckIns: [],
-    auditLogs: [],
+    auditLogs: [
+      {
+        id: "aud_g01",
+        caseId: "PT-2026-009514",
+        action: "LEAD_CREATED",
+        actorName: "Public Intake Form",
+        actorRole: "public",
+        timestamp: new Date(Date.now() - 0.8 * 24 * 3600 * 1000).toISOString(),
+        details: "Lead created from Kenya. SLA: 60 min.",
+        ipAddress: "197.248.112.5",
+      },
+    ],
+    refundRequests: [],
+  },
+
+  // Nurture case — declined by hospital, paused
+  {
+    id: "PT-2026-007711",
+    patientName: "Mei Lin",
+    patientEmail: "mei.lin@outlook.cn",
+    patientPhone: "+86 138 0013 8000",
+    patientCountry: "China",
+    preferredLanguage: "Mandarin",
+    treatmentCategory: "Neurology & Spine Surgery",
+    entryPath: "general_enquiry",
+    assignedHospitalId: "hosp_medanta",
+    assignedDoctorId: "doc_trehan",
+    assignedQueue: "General_Global",
+    assignedCoordinatorName: "Aisha Khan",
+    lastContactAt: new Date(Date.now() - 7 * 24 * 3600 * 1000).toISOString(),
+
+    leadCreatedAt: new Date(Date.now() - 10 * 24 * 3600 * 1000).toISOString(),
+    slaTargetMinutes: 45,
+    slaExpiresAt: new Date(Date.now() - 9.8 * 24 * 3600 * 1000).toISOString(),
+    slaBreached: true,
+
+    utmSource: "baidu_ads",
+    utmMedium: "cpc_china",
+    utmCampaign: "spine_decompression_cn",
+
+    stage: "nurture",
+    caseDecisionStatus: "declined",
+    declineReason: "Patient MRI shows multi-level cervical myelopathy requiring anterior cervical corpectomy — outside our TAVR-focused team's scope at this time. Recommending referral to spine specialist at Artemis Hospital.",
+    declinedAt: new Date(Date.now() - 8 * 24 * 3600 * 1000).toISOString(),
+
+    hasBillingDispute: false,
+
+    clinicalSummary: {
+      chiefComplaint: "Progressive cervical myelopathy with bilateral arm weakness.",
+      diagnosis: "Multi-level cervical disc herniation C4-C7 with cord compression.",
+      recommendedProcedure: "Anterior Cervical Discectomy & Fusion (ACDF) or Corpectomy",
+    },
+
+    nurtureEntry: {
+      reason: "declined_by_hospital",
+      notes: "Hospital declined — outside specialty scope. Patient interested in pursuing with a spine-focused center. Scheduled follow-up to re-engage.",
+      scheduledFollowUpAt: new Date(Date.now() + 7 * 24 * 3600 * 1000).toISOString(),
+      addedAt: new Date(Date.now() - 8 * 24 * 3600 * 1000).toISOString(),
+      addedByName: "Aisha Khan",
+    },
+
+    stageHistory: [
+      {
+        id: "sh_m01",
+        fromStage: null,
+        toStage: "lead",
+        changedAt: new Date(Date.now() - 10 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Public Intake Form",
+        changedByRole: "public",
+      },
+      {
+        id: "sh_m02",
+        fromStage: "lead",
+        toStage: "hospital_handover",
+        changedAt: new Date(Date.now() - 9 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Aisha Khan",
+        changedByRole: "customer_support",
+        reason: "Skipped contacted/docs stage — urgent referral from partner clinic",
+      },
+      {
+        id: "sh_m03",
+        fromStage: "hospital_handover",
+        toStage: "nurture",
+        changedAt: new Date(Date.now() - 8 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Aisha Khan",
+        changedByRole: "customer_support",
+        reason: "Hospital declined case. Moving to nurture for re-engagement with spine specialist.",
+      },
+    ],
+
+    csNotes: [
+      {
+        id: "note_m01",
+        text: "Hospital (Medanta) declined this case — outside cardiac team scope. Need to find spine specialist. Artemis and Kokilaben shortlisted.",
+        createdAt: new Date(Date.now() - 8 * 24 * 3600 * 1000).toISOString(),
+        authorName: "Aisha Khan",
+        authorRole: "customer_support",
+      },
+    ],
+
+    documents: [],
+    consents: [
+      {
+        id: "cst_privacy_m01",
+        consentType: "privacy_data_processing",
+        title: "Privacy & Data Processing Consent",
+        description: "Basic intake consent.",
+        agreed: true,
+        timestamp: new Date(Date.now() - 10 * 24 * 3600 * 1000).toISOString(),
+        ipAddress: "183.60.0.1 (Beijing, China)",
+        version: "v2.4",
+        digitalSignature: "Mei Lin",
+      },
+    ],
+    payments: [],
+    messages: [],
+    recoveryCheckIns: [],
+    auditLogs: [
+      {
+        id: "aud_m01",
+        caseId: "PT-2026-007711",
+        action: "CASE_DECLINED_BY_HOSPITAL",
+        actorName: "Dr. Naresh Trehan",
+        actorRole: "hospital_doctor",
+        timestamp: new Date(Date.now() - 8 * 24 * 3600 * 1000).toISOString(),
+        details: "Declined: Outside specialty scope. Reason logged. Case moved to Nurture queue.",
+      },
+    ],
+    refundRequests: [],
   },
 ];

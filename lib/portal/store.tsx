@@ -14,6 +14,12 @@ import {
   InPortalMessage,
   AuditLog,
   ConsultationOutcome,
+  ClinicalWorkspace,
+  StageHistoryEvent,
+  CsNote,
+  NurtureEntry,
+  BillingDisputeAccessGrant,
+  RefundRequest,
 } from "../../types/portal";
 import { INITIAL_PATIENT_CASES, MOCK_PORTAL_USERS } from "./mockData";
 import { applyRowLevelSecurity } from "./rbac";
@@ -101,6 +107,22 @@ export interface PortalContextType {
   ) => void;
 
   updateCaseStage: (caseId: string, stage: PatientJourneyStage) => void;
+
+  // Hospital Portal actions
+  acceptCase: (caseId: string) => void;
+  declineCase: (caseId: string, reason: string) => void;
+  saveClinicalWorkspace: (caseId: string, workspace: Omit<ClinicalWorkspace, 'submittedAt' | 'submittedByDoctorId' | 'submittedByDoctorName' | 'lastUpdatedAt'>) => void;
+  toggleConsultationRecording: (caseId: string, enabled: boolean, consentObtained?: boolean) => void;
+
+  // CS Portal actions
+  addCsNote: (caseId: string, text: string) => void;
+  updateStageWithReason: (caseId: string, stage: PatientJourneyStage, reason?: string) => void;
+  moveToNurture: (caseId: string, entry: Omit<NurtureEntry, 'addedAt' | 'addedByName'>) => void;
+
+  // Finance actions
+  initiateRefund: (caseId: string, paymentStageId: PaymentStageId, amountUsd: number, reason: string) => void;
+  grantBillingDisputeAccess: (caseId: string, reason: string) => void;
+
   resetToDefaultData: () => void;
 }
 
@@ -303,6 +325,7 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
       utmCampaign: utmCampaign || "international_patient_inquiry",
 
       stage: "lead",
+      caseDecisionStatus: "pending_review",
       hasBillingDispute: false,
 
       clinicalSummary: {
@@ -310,6 +333,18 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
         diagnosis: "Pending specialist clinical file review.",
         recommendedProcedure: treatmentCategory,
       },
+
+      stageHistory: [
+        {
+          id: `sh_${Date.now()}`,
+          fromStage: null,
+          toStage: "lead",
+          changedAt: now.toISOString(),
+          changedByName: fullName,
+          changedByRole: "public",
+        },
+      ],
+      csNotes: [],
 
       documents: [],
       consents: [
@@ -332,30 +367,39 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
           name: "Stage 1: Commitment Deposit (15%)",
           percentage: 15,
           amountUsd: 1200,
+          currency: "USD",
           dueDate: "Upon Quote Acceptance",
           status: "pending",
           cancellationTerms: "Secures hospital appointment and M-Visa invitation dispatch.",
           refundPolicy: "100% refundable with official visa rejection letter.",
+          gatewayReference: "",
+          reconciled: false,
         },
         {
           id: "advance",
           name: "Stage 2: Pre-Admission Escrow (60%)",
           percentage: 60,
           amountUsd: 4800,
+          currency: "USD",
           dueDate: "7 Days Prior to Departure",
           status: "pending",
           cancellationTerms: "Implant procurement and operating theatre reservation.",
           refundPolicy: "90% refundable up to 72 hrs before travel.",
+          gatewayReference: "",
+          reconciled: false,
         },
         {
           id: "final",
           name: "Stage 3: Final Hospital Clearance (25%)",
           percentage: 25,
           amountUsd: 2000,
+          currency: "USD",
           dueDate: "On Physical Admission",
           status: "pending",
           cancellationTerms: "Final settlement upon arrival & admission desk check-in.",
           refundPolicy: "Reconciled against final discharge bill.",
+          gatewayReference: "",
+          reconciled: false,
         },
       ],
 
@@ -372,6 +416,7 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
       ],
 
       recoveryCheckIns: [],
+      refundRequests: [],
       auditLogs: [
         {
           id: `aud_${Date.now()}`,
@@ -785,6 +830,301 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
+  // ─── Hospital Portal Actions ─────────────────────────────────────────────────
+
+  const acceptCase = (caseId: string) => {
+    const now = new Date().toISOString();
+    const doctorName = currentUser?.name || "Doctor";
+    const doctorId = currentUser?.doctorId || currentUser?.id || "";
+    setAllCases((prev) =>
+      prev.map((c) => {
+        if (c.id !== caseId) return c;
+        const audit: AuditLog = {
+          id: `aud_${Date.now()}`,
+          caseId,
+          action: "CASE_ACCEPTED_BY_HOSPITAL",
+          actorName: doctorName,
+          actorRole: "hospital_doctor",
+          timestamp: now,
+          details: `Case accepted. Clinical workspace unlocked. Timestamped to ${doctorName}.`,
+        };
+        return {
+          ...c,
+          caseDecisionStatus: "accepted" as const,
+          acceptedAt: now,
+          acceptedByDoctorId: doctorId,
+          acceptedByDoctorName: doctorName,
+          stage: c.stage === "hospital_handover" ? "consultation" : c.stage,
+          auditLogs: [audit, ...c.auditLogs],
+        };
+      })
+    );
+  };
+
+  const declineCase = (caseId: string, reason: string) => {
+    const now = new Date().toISOString();
+    const doctorName = currentUser?.name || "Doctor";
+    setAllCases((prev) =>
+      prev.map((c) => {
+        if (c.id !== caseId) return c;
+        const audit: AuditLog = {
+          id: `aud_${Date.now()}`,
+          caseId,
+          action: "CASE_DECLINED_BY_HOSPITAL",
+          actorName: doctorName,
+          actorRole: "hospital_doctor",
+          timestamp: now,
+          details: `Declined. Reason: ${reason}. Case moved to Nurture queue for CS follow-up.`,
+        };
+        const stageEvent: StageHistoryEvent = {
+          id: `sh_${Date.now()}`,
+          fromStage: c.stage,
+          toStage: "nurture",
+          changedAt: now,
+          changedByName: doctorName,
+          changedByRole: "hospital_doctor",
+          reason,
+        };
+        return {
+          ...c,
+          caseDecisionStatus: "declined" as const,
+          declineReason: reason,
+          declinedAt: now,
+          stage: "nurture",
+          stageHistory: [...c.stageHistory, stageEvent],
+          auditLogs: [audit, ...c.auditLogs],
+        };
+      })
+    );
+  };
+
+  const saveClinicalWorkspace = (
+    caseId: string,
+    workspace: Omit<ClinicalWorkspace, 'submittedAt' | 'submittedByDoctorId' | 'submittedByDoctorName' | 'lastUpdatedAt'>
+  ) => {
+    const now = new Date().toISOString();
+    const doctorName = currentUser?.name || "Doctor";
+    const doctorId = currentUser?.doctorId || currentUser?.id || "";
+    setAllCases((prev) =>
+      prev.map((c) => {
+        if (c.id !== caseId) return c;
+        const fullWorkspace: ClinicalWorkspace = {
+          ...workspace,
+          submittedAt: c.clinicalWorkspace?.submittedAt || now,
+          submittedByDoctorId: c.clinicalWorkspace?.submittedByDoctorId || doctorId,
+          submittedByDoctorName: c.clinicalWorkspace?.submittedByDoctorName || doctorName,
+          lastUpdatedAt: now,
+        };
+        const audit: AuditLog = {
+          id: `aud_${Date.now()}`,
+          caseId,
+          action: "CLINICAL_WORKSPACE_SAVED",
+          actorName: doctorName,
+          actorRole: "hospital_doctor",
+          timestamp: now,
+          details: `Treatment plan updated. LOS: ${workspace.expectedStayDays}d, Cost: $${workspace.costEstimateUsd}, Suitability: ${workspace.suitabilityDetermination.toUpperCase()}. Record timestamped to ${doctorName} account — system of record for clinical liability.`,
+        };
+        return {
+          ...c,
+          clinicalWorkspace: fullWorkspace,
+          auditLogs: [audit, ...c.auditLogs],
+        };
+      })
+    );
+  };
+
+  const toggleConsultationRecording = (caseId: string, enabled: boolean, consentObtained?: boolean) => {
+    const now = new Date().toISOString();
+    const doctorName = currentUser?.name || "Doctor";
+    setAllCases((prev) =>
+      prev.map((c) => {
+        if (c.id !== caseId || !c.consultation) return c;
+        const audit: AuditLog = {
+          id: `aud_${Date.now()}`,
+          caseId,
+          action: enabled ? "RECORDING_ENABLED" : "RECORDING_DISABLED",
+          actorName: doctorName,
+          actorRole: "hospital_doctor",
+          timestamp: now,
+          details: enabled
+            ? `Recording ENABLED. Consent obtained: ${consentObtained ? 'YES' : 'NO'}. Jurisdiction check required.`
+            : `Recording DISABLED by ${doctorName}.`,
+        };
+        return {
+          ...c,
+          consultation: {
+            ...c.consultation,
+            recordingEnabled: enabled,
+            recordingConsentObtained: consentObtained ?? c.consultation.recordingConsentObtained,
+          },
+          auditLogs: [audit, ...c.auditLogs],
+        };
+      })
+    );
+  };
+
+  // ─── CS Portal Actions ───────────────────────────────────────────────────────
+
+  const addCsNote = (caseId: string, text: string) => {
+    const now = new Date().toISOString();
+    const authorName = currentUser?.name || "CS Agent";
+    const authorRole = currentUser?.role || "customer_support";
+    setAllCases((prev) =>
+      prev.map((c) => {
+        if (c.id !== caseId) return c;
+        const newNote: CsNote = {
+          id: `note_${Date.now()}`,
+          text,
+          createdAt: now,
+          authorName,
+          authorRole,
+        };
+        return { ...c, csNotes: [newNote, ...c.csNotes] };
+      })
+    );
+  };
+
+  const updateStageWithReason = (caseId: string, stage: PatientJourneyStage, reason?: string) => {
+    const now = new Date().toISOString();
+    const changedByName = currentUser?.name || "CS Agent";
+    const changedByRole = currentUser?.role || "customer_support";
+    setAllCases((prev) =>
+      prev.map((c) => {
+        if (c.id !== caseId) return c;
+        const stageEvent: StageHistoryEvent = {
+          id: `sh_${Date.now()}`,
+          fromStage: c.stage,
+          toStage: stage,
+          changedAt: now,
+          changedByName,
+          changedByRole,
+          reason,
+        };
+        const audit: AuditLog = {
+          id: `aud_${Date.now()}`,
+          caseId,
+          action: "STAGE_OVERRIDE",
+          actorName: changedByName,
+          actorRole: changedByRole,
+          timestamp: now,
+          details: `Stage changed from ${c.stage} to ${stage}. Reason: ${reason || 'Normal progression'}.`,
+        };
+        return {
+          ...c,
+          stage,
+          stageHistory: [...c.stageHistory, stageEvent],
+          auditLogs: [audit, ...c.auditLogs],
+        };
+      })
+    );
+  };
+
+  const moveToNurture = (caseId: string, entry: Omit<NurtureEntry, 'addedAt' | 'addedByName'>) => {
+    const now = new Date().toISOString();
+    const agentName = currentUser?.name || "CS Agent";
+    setAllCases((prev) =>
+      prev.map((c) => {
+        if (c.id !== caseId) return c;
+        const nurtureEntry: NurtureEntry = { ...entry, addedAt: now, addedByName: agentName };
+        const stageEvent: StageHistoryEvent = {
+          id: `sh_${Date.now()}`,
+          fromStage: c.stage,
+          toStage: "nurture",
+          changedAt: now,
+          changedByName: agentName,
+          changedByRole: "customer_support",
+          reason: entry.notes,
+        };
+        const audit: AuditLog = {
+          id: `aud_${Date.now()}`,
+          caseId,
+          action: "MOVED_TO_NURTURE",
+          actorName: agentName,
+          actorRole: "customer_support",
+          timestamp: now,
+          details: `Case moved to Nurture queue. Reason: ${entry.reason}. Follow-up: ${entry.scheduledFollowUpAt || 'TBD'}.`,
+        };
+        return {
+          ...c,
+          stage: "nurture",
+          nurtureEntry,
+          stageHistory: [...c.stageHistory, stageEvent],
+          auditLogs: [audit, ...c.auditLogs],
+        };
+      })
+    );
+  };
+
+  // ─── Finance Actions ─────────────────────────────────────────────────────────
+
+  const initiateRefund = (caseId: string, paymentStageId: PaymentStageId, amountUsd: number, reason: string) => {
+    const now = new Date().toISOString();
+    const requesterName = currentUser?.name || "Finance";
+    const newRefund: RefundRequest = {
+      id: `refund_${Date.now()}`,
+      caseId,
+      paymentStageId,
+      amountUsd,
+      reason,
+      requestedAt: now,
+      requestedByName: requesterName,
+      // Amounts above $2000 require approval — set pending_approval; below auto-approve
+      status: amountUsd > 2000 ? "pending_approval" : "approved",
+    };
+    const audit: AuditLog = {
+      id: `aud_${Date.now()}`,
+      caseId,
+      action: "REFUND_INITIATED",
+      actorName: requesterName,
+      actorRole: "finance_accounts",
+      timestamp: now,
+      details: `Refund of $${amountUsd} initiated for stage ${paymentStageId}. Reason: ${reason}. Status: ${newRefund.status}.`,
+    };
+    setAllCases((prev) =>
+      prev.map((c) => {
+        if (c.id !== caseId) return c;
+        return {
+          ...c,
+          refundRequests: [...(c.refundRequests || []), newRefund],
+          auditLogs: [audit, ...c.auditLogs],
+        };
+      })
+    );
+  };
+
+  const grantBillingDisputeAccess = (caseId: string, reason: string) => {
+    const now = new Date().toISOString();
+    const granterName = currentUser?.name || "Finance";
+    const grant: BillingDisputeAccessGrant = {
+      caseId,
+      grantedAt: now,
+      grantedByName: granterName,
+      reason,
+      expiresAt: new Date(Date.now() + 48 * 3600 * 1000).toISOString(),
+    };
+    const audit: AuditLog = {
+      id: `aud_${Date.now()}`,
+      caseId,
+      action: "BILLING_DISPUTE_ACCESS_GRANTED",
+      actorName: granterName,
+      actorRole: "finance_accounts",
+      timestamp: now,
+      details: `Clinical record access GRANTED for billing dispute review. Reason: ${reason}. Expires: 48h. This action is logged and not default visibility.`,
+    };
+    setAllCases((prev) =>
+      prev.map((c) => {
+        if (c.id !== caseId) return c;
+        return {
+          ...c,
+          hasBillingDispute: true,
+          billingDisputeNotes: reason,
+          billingDisputeAccessGrants: [...(c.billingDisputeAccessGrants || []), grant],
+          auditLogs: [audit, ...c.auditLogs],
+        };
+      })
+    );
+  };
+
   return (
     <PortalContext.Provider
       value={{
@@ -807,6 +1147,18 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
         sendPortalMessage,
         updateDocumentReviewStatus,
         updateCaseStage,
+        // Hospital
+        acceptCase,
+        declineCase,
+        saveClinicalWorkspace,
+        toggleConsultationRecording,
+        // CS
+        addCsNote,
+        updateStageWithReason,
+        moveToNurture,
+        // Finance
+        initiateRefund,
+        grantBillingDisputeAccess,
         resetToDefaultData,
       }}
     >

@@ -41,11 +41,11 @@ export const PersonaSwitcher: React.FC = () => {
       case "patient":
         return "Patient Portal";
       case "hospital_doctor":
-        return "Hospital / Specialist";
+        return "Chief Surgeon";
       case "customer_support":
-        return "Customer Support (CS)";
+        return "Care Coordinator";
       case "finance_accounts":
-        return "Finance & Accounts";
+        return "Finance & Escrow";
       case "super_admin":
         return "Super Admin";
       default:

@@ -189,7 +189,7 @@ const LoginPageContent: React.FC = () => {
   // RBAC role definitions (maps to demoRoles by index)
   const rbacRoles = [
     {
-      rbacNum: 2,
+      rbacNum: 1,
       title: "Patient Portal",
       accessScope: "Own case, own records only",
       color: "#2ECDC5",
@@ -199,9 +199,9 @@ const LoginPageContent: React.FC = () => {
       demoIndex: 0,
     },
     {
-      rbacNum: 5,
-      title: "Customer Support (CS)",
-      accessScope: "All cases within assigned queue(s); can view but not edit clinical fields",
+      rbacNum: 2,
+      title: "Care Coordinator",
+      accessScope: "All cases within assigned triage & CS queue; SLA coordination",
       color: "#60a5fa",
       bg: "rgba(96,165,250,0.10)",
       border: "rgba(96,165,250,0.35)",
@@ -210,8 +210,8 @@ const LoginPageContent: React.FC = () => {
     },
     {
       rbacNum: 3,
-      title: "Hospital Portal",
-      accessScope: "Only cases explicitly assigned to that hospital/doctor",
+      title: "Chief Surgeon",
+      accessScope: "Specialist clinical evaluations, DICOM imaging, surgical candidacy",
       color: "#a78bfa",
       bg: "rgba(167,139,250,0.10)",
       border: "rgba(167,139,250,0.35)",
@@ -219,9 +219,9 @@ const LoginPageContent: React.FC = () => {
       demoIndex: 2,
     },
     {
-      rbacNum: 6,
-      title: "Finance & Accounts",
-      accessScope: "All payment/financial records across all cases; no access to clinical notes unless linked to a billing dispute",
+      rbacNum: 4,
+      title: "Finance & Escrow",
+      accessScope: "Escrow deposits, swift wires, hospital payouts & milestone releases",
       color: "#34d399",
       bg: "rgba(52,211,153,0.10)",
       border: "rgba(52,211,153,0.35)",
@@ -229,9 +229,9 @@ const LoginPageContent: React.FC = () => {
       demoIndex: 3,
     },
     {
-      rbacNum: 4,
+      rbacNum: 5,
       title: "Super Admin",
-      accessScope: "Full system access, configuration, user management",
+      accessScope: "Full system access, configuration, user management & audit logs",
       color: "#f59e0b",
       bg: "rgba(245,158,11,0.10)",
       border: "rgba(245,158,11,0.35)",

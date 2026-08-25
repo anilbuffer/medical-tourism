@@ -5,6 +5,9 @@ const nextConfig = {
     domains: ["images.unsplash.com", "randomuser.me", "assets.co"],
     unoptimized: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;

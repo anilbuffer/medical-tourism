@@ -18,6 +18,8 @@ export interface PortalUser {
   assignedQueues?: string[]; // If role === 'customer_support'
   phone?: string;
   country?: string;
+  mfaEnforced?: boolean;
+  isActive?: boolean;
 }
 
 export type PatientJourneyStage =
@@ -30,8 +32,91 @@ export type PatientJourneyStage =
   | "payment"
   | "booking"
   | "treatment"
-  | "followup";
+  | "followup"
+  | "nurture";
 
+// ─── Case Decision (Accept / Decline by Hospital) ───────────────────────────
+export type CaseDecisionStatus = "pending_review" | "accepted" | "declined";
+
+// ─── Clinical Workspace (Hospital/Doctor — post-accept) ─────────────────────
+export interface ClinicalWorkspace {
+  treatmentPlan: string;
+  expectedStayDays: number;
+  costEstimateUsd: number;
+  suitabilityDetermination: "suitable" | "not_suitable" | "needs_more_info" | "pending";
+  submittedAt?: string;
+  submittedByDoctorId?: string;
+  submittedByDoctorName?: string;
+  lastUpdatedAt?: string;
+}
+
+// ─── Stage History Event (CS Timeline) ──────────────────────────────────────
+export interface StageHistoryEvent {
+  id: string;
+  fromStage: PatientJourneyStage | null;
+  toStage: PatientJourneyStage;
+  changedAt: string;
+  changedByName: string;
+  changedByRole: UserRole;
+  reason?: string; // Required if skipping stages
+}
+
+// ─── CS Notes ────────────────────────────────────────────────────────────────
+export interface CsNote {
+  id: string;
+  text: string;
+  createdAt: string;
+  authorName: string;
+  authorRole: UserRole;
+}
+
+// ─── Accreditation Profile ───────────────────────────────────────────────────
+export type AccreditationStatus = "active" | "expired" | "pending_renewal" | "not_accredited";
+
+export interface AccreditationProfile {
+  hospitalId: string;
+  hospitalName: string;
+  jciStatus: AccreditationStatus;
+  jciExpiry?: string;
+  jciDocumentUrl?: string;
+  nabhStatus: AccreditationStatus;
+  nabhExpiry?: string;
+  nabhDocumentUrl?: string;
+  lastAuditedAt?: string;
+  country: string;
+  city: string;
+  specialties: string[];
+}
+
+// ─── Nurture ────────────────────────────────────────────────────────────────
+export type NurtureReason = "declined_by_hospital" | "paused_by_patient" | "budget_mismatch" | "not_ready" | "other";
+
+export interface NurtureEntry {
+  reason: NurtureReason;
+  notes?: string;
+  scheduledFollowUpAt?: string;
+  addedAt: string;
+  addedByName: string;
+}
+
+// ─── Refund Request ──────────────────────────────────────────────────────────
+export type RefundStatus = "pending_approval" | "approved" | "rejected" | "processed";
+
+export interface RefundRequest {
+  id: string;
+  caseId: string;
+  paymentStageId: PaymentStageId;
+  amountUsd: number;
+  reason: string;
+  requestedAt: string;
+  requestedByName: string;
+  status: RefundStatus;
+  approvedByName?: string;
+  approvedAt?: string;
+  notes?: string;
+}
+
+// ─── Document Types ───────────────────────────────────────────────────────────
 export interface DocumentVersion {
   version: number;
   fileName: string;
@@ -55,8 +140,10 @@ export interface PatientDocument {
   versions: DocumentVersion[];
   requiredForStage?: PatientJourneyStage;
   isRequired?: boolean;
+  isCaseScoped?: boolean; // true = belongs to this case only; false = prior history (hospital cannot see if false)
 }
 
+// ─── Consent ──────────────────────────────────────────────────────────────────
 export type ConsentType =
   | "privacy_data_processing"
   | "hospital_document_sharing"
@@ -76,6 +163,7 @@ export interface ConsentRecord {
   paymentStageId?: string; // If consentType === 'payment_staged_terms'
 }
 
+// ─── Tele-Consultation ────────────────────────────────────────────────────────
 export type ConsultationOutcome = "suitable" | "needs_more_info" | "not_suitable" | "pending";
 
 export interface TeleConsultation {
@@ -93,7 +181,13 @@ export interface TeleConsultation {
   redirectHospitalOrSpecialty?: string;
   prescriptionSummary?: string;
   diagnosticPreChecklist?: { item: string; completed: boolean }[];
+  recordingEnabled: boolean; // OFF by default
+  recordingConsentObtained?: boolean;
+  recordingJurisdictionChecked?: boolean;
 }
+
+// ─── Quote Package ────────────────────────────────────────────────────────────
+export type QuoteTier = "basic" | "standard" | "premium";
 
 export interface QuotePackage {
   id: string;
@@ -103,6 +197,7 @@ export interface QuotePackage {
   doctorName: string;
   city: string;
   totalCostUsd: number;
+  tier?: QuoteTier;
   status: "draft" | "sent" | "accepted" | "declined" | "change_requested";
   createdAt: string;
   validUntil: string;
@@ -113,6 +208,9 @@ export interface QuotePackage {
     stayAndIcuUsd: number;
     vipConciergeAndLogisticsUsd: number;
     companionStayUsd: number;
+    coordinationFeeUsd?: number;
+    travelAssistanceUsd?: number;
+    supportLayerUsd?: number;
   };
   inclusions: string[];
   exclusions: string[];
@@ -121,25 +219,31 @@ export interface QuotePackage {
   patientChangeRequestNotes?: string;
 }
 
+// ─── Payment ──────────────────────────────────────────────────────────────────
 export type PaymentStageId = "deposit" | "advance" | "final";
-export type PaymentStatus = "pending" | "processing" | "completed" | "failed" | "refunded";
+export type PaymentStatus = "pending" | "processing" | "completed" | "failed" | "refunded" | "disputed";
 
 export interface PaymentStage {
   id: PaymentStageId;
   name: string;
   percentage: number;
   amountUsd: number;
+  currency?: string;
   dueDate: string;
   status: PaymentStatus;
   cancellationTerms: string;
   refundPolicy: string;
   termsAcceptedAt?: string;
   paidAt?: string;
-  transactionId?: string;
+  transactionId?: string; // Gateway reference only — no raw card data (PCI-DSS)
   receiptNumber?: string;
   paymentMethod?: "card" | "wire" | "swift" | "crypto";
+  gatewayReference?: string; // Gateway transaction ID for reconciliation
+  reconciled?: boolean;
+  reconciliationMismatch?: boolean;
 }
 
+// ─── Logistics ────────────────────────────────────────────────────────────────
 export interface LogisticsItinerary {
   doctorAppointmentDate: string;
   doctorAppointmentTime: string;
@@ -182,6 +286,7 @@ export interface LogisticsItinerary {
   };
 }
 
+// ─── Messages ─────────────────────────────────────────────────────────────────
 export interface InPortalMessage {
   id: string;
   senderId: string;
@@ -194,6 +299,7 @@ export interface InPortalMessage {
   isRead: boolean;
 }
 
+// ─── Recovery ─────────────────────────────────────────────────────────────────
 export interface RecoveryCheckIn {
   id: string;
   submittedAt: string;
@@ -208,6 +314,7 @@ export interface RecoveryCheckIn {
   coordinatorReply?: string;
 }
 
+// ─── Audit Log ────────────────────────────────────────────────────────────────
 export interface AuditLog {
   id: string;
   caseId: string;
@@ -219,6 +326,16 @@ export interface AuditLog {
   ipAddress?: string;
 }
 
+// ─── Billing Dispute Access Grant ────────────────────────────────────────────
+export interface BillingDisputeAccessGrant {
+  caseId: string;
+  grantedAt: string;
+  grantedByName: string;
+  reason: string;
+  expiresAt?: string;
+}
+
+// ─── Core Patient Case ────────────────────────────────────────────────────────
 export interface PatientCase {
   id: string; // PT-YYYY-NNNNNN
   patientName: string;
@@ -235,7 +352,8 @@ export interface PatientCase {
   assignedDoctorId?: string;
   assignedQueue: string; // e.g. "Cardiology_Tier1", "Oncology_EMEA"
   assignedCoordinatorName: string;
-  
+  lastContactAt?: string;
+
   // SLA tracking
   leadCreatedAt: string;
   slaTargetMinutes: number;
@@ -249,8 +367,14 @@ export interface PatientCase {
 
   // Journey & Clinical Status
   stage: PatientJourneyStage;
-  hasBillingDispute?: boolean;
-  billingDisputeNotes?: string;
+
+  // Hospital Accept / Decline
+  caseDecisionStatus: CaseDecisionStatus;
+  declineReason?: string;
+  acceptedAt?: string;
+  declinedAt?: string;
+  acceptedByDoctorId?: string;
+  acceptedByDoctorName?: string;
 
   // Clinical Summary
   clinicalSummary: {
@@ -260,6 +384,23 @@ export interface PatientCase {
     pastMedicalHistory?: string;
     allergies?: string[];
   };
+
+  // Clinical Workspace (hospital, post-accept) — separate from CS communication
+  clinicalWorkspace?: ClinicalWorkspace;
+
+  // Stage history (full timeline)
+  stageHistory: StageHistoryEvent[];
+
+  // CS Notes (free-text, append-only)
+  csNotes: CsNote[];
+
+  // Nurture
+  nurtureEntry?: NurtureEntry;
+
+  // Billing Dispute
+  hasBillingDispute?: boolean;
+  billingDisputeNotes?: string;
+  billingDisputeAccessGrants?: BillingDisputeAccessGrant[];
 
   // Sub-modules
   documents: PatientDocument[];
@@ -271,4 +412,41 @@ export interface PatientCase {
   messages: InPortalMessage[];
   recoveryCheckIns: RecoveryCheckIn[];
   auditLogs: AuditLog[];
+  refundRequests?: RefundRequest[];
+}
+
+// ─── System Config Types ──────────────────────────────────────────────────────
+export interface ConsentTextVersion {
+  id: string;
+  consentType: ConsentType;
+  country: string;
+  version: string;
+  text: string;
+  uploadedAt: string;
+  uploadedByName: string;
+  isActive: boolean;
+}
+
+export interface VisaChecklistRule {
+  id: string;
+  patientHomeCountry: string;
+  requiredDocuments: { name: string; mandatory: boolean; note?: string }[];
+  lastUpdatedAt: string;
+}
+
+export interface RefundCancellationRule {
+  id: string;
+  paymentStage: PaymentStageId;
+  hospitalId?: string; // null = default rule
+  description: string;
+  refundPercentage: number;
+  conditions: string;
+  lastUpdatedAt: string;
+}
+
+export interface SlaThreshold {
+  market: string;
+  tier1Minutes: number;
+  tier2Minutes: number;
+  escalationMinutes: number;
 }
