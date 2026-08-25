@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { usePortal } from "@/lib/portal/store";
 import { PersonaSwitcher } from "./PersonaSwitcher";
 import { PublicIntakeModal } from "./PublicIntakeModal";
@@ -14,10 +15,10 @@ import { MyPaymentsTab } from "./tabs/MyPaymentsTab";
 import { MyBookingTab } from "./tabs/MyBookingTab";
 import { MyMessagesTab } from "./tabs/MyMessagesTab";
 import { PostTreatmentTab } from "./tabs/PostTreatmentTab";
-import { CSQueueView } from "./roles/CSQueueView";
-import { HospitalDoctorView } from "./roles/HospitalDoctorView";
-import { FinanceView } from "./roles/FinanceView";
-import { SuperAdminView } from "./roles/SuperAdminView";
+import { CSQueueView, CSTab } from "./roles/CSQueueView";
+import { HospitalDoctorView, HospitalTab } from "./roles/HospitalDoctorView";
+import { FinanceView, FinanceTab } from "./roles/FinanceView";
+import { SuperAdminView, AdminTab } from "./roles/SuperAdminView";
 import {
   LayoutDashboard,
   FileText,
@@ -35,9 +36,27 @@ import {
   LogOut,
   X,
   Sparkles,
+  Activity,
+  ShieldCheck,
+  StickyNote,
+  Building2,
+  Stethoscope,
+  BadgeCheck,
+  CheckCircle2,
+  Receipt,
+  Wallet,
+  RefreshCcw,
+  BarChart2,
+  ShieldAlert,
+  UserCog,
+  Shield,
+  ClipboardList,
+  Settings,
+  Users,
 } from "lucide-react";
 
 export const PatientDashboard: React.FC = () => {
+  const router = useRouter();
   const {
     currentUser,
     activeCase,
@@ -52,64 +71,290 @@ export const PatientDashboard: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
 
-  // If role is CS, Doctor, Finance, or Super Admin -> Render dedicated Role View
+  // Role checks
   const isCS = currentUser?.role === "customer_support";
   const isDoctor = currentUser?.role === "hospital_doctor";
   const isFinance = currentUser?.role === "finance_accounts";
   const isAdmin = currentUser?.role === "super_admin";
 
-  // The exact 8 side menus requested by user
-  const sideMenus = [
-    {
-      id: "overview",
-      label: "Overview",
-      icon: LayoutDashboard,
-    },
-    {
-      id: "documents",
-      label: "My Documents",
-      icon: FileText,
-      badge: activeCase?.documents.filter((d) => d.status === "pending_review").length,
-    },
-    {
-      id: "consents",
-      label: "My Consents",
-      icon: Lock,
-    },
-    {
-      id: "consultation",
-      label: "My Consultation",
-      icon: Video,
-    },
-    {
-      id: "quote",
-      label: "My Quote",
-      icon: CreditCard,
-    },
-    {
-      id: "payments",
-      label: "My Payments",
-      icon: DollarSign,
-    },
-    {
-      id: "booking",
-      label: "My Booking & Visa",
-      icon: Plane,
-    },
-    {
-      id: "messages",
-      label: "Messages",
-      icon: MessageSquare,
-      badge: activeCase?.messages.filter((m) => !m.isRead && m.senderRole !== "patient").length || undefined,
-    },
-    {
-      id: "recovery",
-      label: "Post-Treatment & Recovery",
-      icon: HeartHandshake,
-    },
-  ];
+  // Dedicated role configuration for Sidebar & Header
+  const portalConfig = useMemo(() => {
+    switch (currentUser?.role) {
+      case "customer_support": {
+        const pendingDocsTotal = visibleCases.reduce(
+          (acc, c) => acc + c.documents.filter((d) => d.status === "pending_review").length,
+          0
+        );
+        const unreadMsgsTotal = visibleCases.reduce(
+          (acc, c) => acc + c.messages.filter((m) => !m.isRead && m.senderRole === "patient").length,
+          0
+        );
+        const newLeadsTotal = visibleCases.filter((c) => c.stage === "lead" || c.stage === "contacted").length;
 
-  const currentTabObj = sideMenus.find((m) => m.id === activeTab) || sideMenus[0];
+        return {
+          portalBadge: "Coordinator Workspace",
+          headerTitle: "Care Coordinator Desk",
+          portalSubtitle: "International Triage & SLA Monitor",
+          roleTag: "Care Coordinator Lead",
+          userName: currentUser?.name || "Aisha Khan",
+          userSubtitle: "Triage & CS Queue Lead",
+          avatar: currentUser?.avatar,
+          defaultTab: "overview",
+          menus: [
+            {
+              id: "overview",
+              label: "Triage & SLA Queue",
+              icon: Activity,
+              badge: newLeadsTotal > 0 ? newLeadsTotal : undefined,
+            },
+            {
+              id: "documents",
+              label: "Document Verification",
+              icon: FileText,
+              badge: pendingDocsTotal > 0 ? pendingDocsTotal : undefined,
+            },
+            {
+              id: "consent",
+              label: "Consent Tracking",
+              icon: ShieldCheck,
+            },
+            {
+              id: "notes",
+              label: "Coordinator Notes",
+              icon: StickyNote,
+            },
+            {
+              id: "handoff",
+              label: "Hospital Handoff",
+              icon: Building2,
+            },
+            {
+              id: "quote_builder",
+              label: "Quotation Desk",
+              icon: DollarSign,
+            },
+            {
+              id: "messages",
+              label: "Patient Messages",
+              icon: MessageSquare,
+              badge: unreadMsgsTotal > 0 ? unreadMsgsTotal : undefined,
+            },
+          ],
+        };
+      }
+
+      case "hospital_doctor": {
+        const activeDoctorCases = visibleCases.length;
+        return {
+          portalBadge: "Doctor & Hospital Portal",
+          headerTitle: "Chief Surgeon Clinical Desk",
+          portalSubtitle: "Diagnostic Evaluation & Surgical Candidacy",
+          roleTag: "Chief Surgeon",
+          userName: currentUser?.name || "Dr. Naresh Trehan",
+          userSubtitle: "Specialist • Medanta Hospital",
+          avatar: currentUser?.avatar,
+          defaultTab: "case_info",
+          menus: [
+            {
+              id: "case_info",
+              label: "Assigned Cases",
+              icon: FileText,
+              badge: activeDoctorCases > 0 ? activeDoctorCases : undefined,
+            },
+            {
+              id: "accept_decline",
+              label: "Surgical Candidacy",
+              icon: CheckCircle2,
+            },
+            {
+              id: "clinical_workspace",
+              label: "Clinical Workspace",
+              icon: Stethoscope,
+            },
+            {
+              id: "tele_consult",
+              label: "Tele-Consultation",
+              icon: Video,
+            },
+            {
+              id: "accreditation",
+              label: "Hospital Accreditation",
+              icon: BadgeCheck,
+            },
+          ],
+        };
+      }
+
+      case "finance_accounts": {
+        return {
+          portalBadge: "Finance & Escrow Desk",
+          headerTitle: "Finance & Escrow Gateway",
+          portalSubtitle: "Multi-Currency Escrow & Wire Reconciliation",
+          roleTag: "Finance & Escrow Director",
+          userName: currentUser?.name || "David Miller",
+          userSubtitle: "International Escrow & Billing",
+          avatar: currentUser?.avatar,
+          defaultTab: "payment_ledger",
+          menus: [
+            {
+              id: "payment_ledger",
+              label: "Payment Ledger",
+              icon: Receipt,
+            },
+            {
+              id: "escrow",
+              label: "Milestone Escrow Desk",
+              icon: Wallet,
+            },
+            {
+              id: "refunds",
+              label: "Refunds & Cancellations",
+              icon: RefreshCcw,
+            },
+            {
+              id: "reconciliation",
+              label: "Hospital Reconciliation",
+              icon: BarChart2,
+            },
+            {
+              id: "dispute",
+              label: "Disputes & Bill Audits",
+              icon: ShieldAlert,
+            },
+          ],
+        };
+      }
+
+      case "super_admin": {
+        return {
+          portalBadge: "Executive Governance",
+          headerTitle: "Super Admin Governance Console",
+          portalSubtitle: "System RBAC, HIPAA Audit Logs & Network",
+          roleTag: "Super Admin",
+          userName: currentUser?.name || "Rajesh Verma",
+          userSubtitle: "Chief Compliance Officer",
+          avatar: currentUser?.avatar,
+          defaultTab: "user_mgmt",
+          menus: [
+            {
+              id: "user_mgmt",
+              label: "User Management & RBAC",
+              icon: UserCog,
+            },
+            {
+              id: "compliance_config",
+              label: "Compliance & Consent Rules",
+              icon: Shield,
+            },
+            {
+              id: "accreditation",
+              label: "Hospital Accreditation",
+              icon: Building2,
+            },
+            {
+              id: "audit_reporting",
+              label: "HIPAA & GDPR Audit Logs",
+              icon: ClipboardList,
+            },
+            {
+              id: "system_config",
+              label: "SLA & Travel Config",
+              icon: Settings,
+            },
+          ],
+        };
+      }
+
+      default: {
+        // Patient Portal (Default)
+        return {
+          portalBadge: "Patient Medical Portal",
+          headerTitle: "Secure Patient Portal",
+          portalSubtitle: "Unified Patient Care Gateway",
+          roleTag: "International Patient",
+          userName: activeCase?.patientName || currentUser?.name || "Robert Vance",
+          userSubtitle: `${activeCase?.id || "PT-2026"} • ${activeCase?.patientCountry || "United States"}`,
+          avatar: currentUser?.avatar,
+          defaultTab: "overview",
+          menus: [
+            {
+              id: "overview",
+              label: "Overview",
+              icon: LayoutDashboard,
+            },
+            {
+              id: "documents",
+              label: "My Documents",
+              icon: FileText,
+              badge: activeCase?.documents.filter((d) => d.status === "pending_review").length,
+            },
+            {
+              id: "consents",
+              label: "My Consents",
+              icon: Lock,
+            },
+            {
+              id: "consultation",
+              label: "My Consultation",
+              icon: Video,
+            },
+            {
+              id: "quote",
+              label: "My Quote",
+              icon: CreditCard,
+            },
+            {
+              id: "payments",
+              label: "My Payments",
+              icon: DollarSign,
+            },
+            {
+              id: "booking",
+              label: "My Booking & Visa",
+              icon: Plane,
+            },
+            {
+              id: "messages",
+              label: "Messages",
+              icon: MessageSquare,
+              badge: activeCase?.messages.filter((m) => !m.isRead && m.senderRole !== "patient").length || undefined,
+            },
+            {
+              id: "recovery",
+              label: "Post-Treatment & Recovery",
+              icon: HeartHandshake,
+            },
+          ],
+        };
+      }
+    }
+  }, [currentUser, activeCase, visibleCases]);
+
+  // Synchronize activeTab when role changes if current tab is not part of role's menus
+  useEffect(() => {
+    const validIds = portalConfig.menus.map((m) => m.id);
+    if (!validIds.includes(activeTab)) {
+      setActiveTab(portalConfig.defaultTab);
+    }
+  }, [portalConfig, activeTab]);
+
+  // Logout action with smooth redirect to /login
+  const handleLogout = () => {
+    setProfileDropdownOpen(false);
+    setMobileMenuOpen(false);
+    logout();
+    router.push("/login");
+  };
+
+  // Main Website action with smooth redirect to /
+  const handleGoToMainSite = () => {
+    setProfileDropdownOpen(false);
+    setMobileMenuOpen(false);
+    router.push("/");
+  };
+
+  const currentTabObj =
+    portalConfig.menus.find((m) => m.id === activeTab) || portalConfig.menus[0];
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 flex">
@@ -156,8 +401,8 @@ export const PatientDashboard: React.FC = () => {
                   </span>
                   <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#2ECDC5] animate-pulse"></span>
                 </div>
-                <span className="text-[9px] uppercase font-semibold tracking-wider text-[#2ECDC5] leading-tight block mt-0.5">
-                  Patient Portal
+                <span className="text-[9px] uppercase font-semibold tracking-wider text-[#2ECDC5] leading-tight block mt-0.5 truncate max-w-[150px]">
+                  {portalConfig.portalBadge}
                 </span>
               </div>
             )}
@@ -166,7 +411,7 @@ export const PatientDashboard: React.FC = () => {
 
         {/* Navigation Menus */}
         <div className="flex-1 overflow-y-auto px-3 py-6 space-y-1.5 scrollbar-none relative z-10">
-          {sideMenus.map((menu) => {
+          {portalConfig.menus.map((menu) => {
             const Icon = menu.icon;
             const isActive = activeTab === menu.id;
 
@@ -210,17 +455,48 @@ export const PatientDashboard: React.FC = () => {
           })}
         </div>
 
-        {/* Bottom Profile Pill */}
-        <div className={`p-3 border-t border-slate-800/80 relative z-30 ${!sidebarOpen ? "flex justify-center" : ""}`}>
+        {/* Bottom Actions & Profile Pill */}
+        <div className="p-3 border-t border-slate-800/80 relative z-30 space-y-2">
+          {/* Quick Exit Action Buttons (Visible when sidebar is expanded) */}
+          {sidebarOpen && (
+            <div className="grid grid-cols-2 gap-1.5 pb-1 animate-in fade-in duration-200">
+              <button
+                onClick={handleGoToMainSite}
+                className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white text-[11px] font-bold border border-white/10 transition-all cursor-pointer"
+                title="Return to Main Website"
+              >
+                <ArrowLeft className="w-3.5 h-3.5 text-[#2ECDC5]" />
+                <span className="truncate">Main Site</span>
+              </button>
+              <button
+                onClick={handleLogout}
+                className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-rose-950/30 hover:bg-rose-900/50 text-rose-300 hover:text-rose-100 text-[11px] font-bold border border-rose-900/40 transition-all cursor-pointer"
+                title="Log Out of Portal"
+              >
+                <LogOut className="w-3.5 h-3.5 text-rose-400" />
+                <span className="truncate">Sign Out</span>
+              </button>
+            </div>
+          )}
+
+          {/* User Profile Pill */}
           <button
             onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
             className={`w-full flex items-center rounded-2xl hover:bg-white/10 transition-all text-left cursor-pointer ${
               sidebarOpen ? "gap-3 p-2" : "justify-center p-2"
             }`}
-            title={!sidebarOpen ? (activeCase?.patientName || "Patient Profile") : undefined}
+            title={!sidebarOpen ? portalConfig.userName : undefined}
           >
-            <div className="relative w-9 h-9 rounded-full bg-gradient-to-br from-[#2ECDC5] via-[#3F4EB4] to-[#283593] text-white font-bold flex items-center justify-center shrink-0 ring-2 ring-[#2ECDC5]/50 shadow-md">
-              <span>{activeCase?.patientName ? activeCase.patientName.charAt(0) : "S"}</span>
+            <div className="relative w-9 h-9 rounded-full bg-gradient-to-br from-[#2ECDC5] via-[#3F4EB4] to-[#283593] text-white font-bold flex items-center justify-center shrink-0 ring-2 ring-[#2ECDC5]/50 shadow-md overflow-hidden">
+              {portalConfig.avatar ? (
+                <img
+                  src={portalConfig.avatar}
+                  alt={portalConfig.userName}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <span>{portalConfig.userName.charAt(0)}</span>
+              )}
               <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-[#2ECDC5] ring-2 ring-[#071321]" />
             </div>
 
@@ -228,9 +504,11 @@ export const PatientDashboard: React.FC = () => {
               <>
                 <div className="min-w-0 flex-1 animate-in fade-in duration-200">
                   <div className="text-xs font-black text-white truncate">
-                    {activeCase?.patientName || "Robert Vance"}
+                    {portalConfig.userName}
                   </div>
-                  <div className="text-[11px] text-[#2ECDC5] font-bold truncate">Patient View</div>
+                  <div className="text-[11px] text-[#2ECDC5] font-bold truncate">
+                    {portalConfig.userSubtitle}
+                  </div>
                 </div>
                 <ChevronDown className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 ${profileDropdownOpen ? "rotate-180" : ""}`} />
               </>
@@ -252,39 +530,43 @@ export const PatientDashboard: React.FC = () => {
                   sidebarOpen ? "left-3 right-3" : "left-3 w-60"
                 }`}
               >
-                {/* Header with Patient Name */}
+                {/* Header with User Info */}
                 <div className="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center gap-2.5 mb-1.5">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#2ECDC5] via-[#3F4EB4] to-[#283593] text-white font-bold text-xs flex items-center justify-center shrink-0 ring-1 ring-[#2ECDC5]/60">
-                    {activeCase?.patientName ? activeCase.patientName.charAt(0) : "P"}
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#2ECDC5] via-[#3F4EB4] to-[#283593] text-white font-bold text-xs flex items-center justify-center shrink-0 ring-1 ring-[#2ECDC5]/60 overflow-hidden">
+                    {portalConfig.avatar ? (
+                      <img
+                        src={portalConfig.avatar}
+                        alt={portalConfig.userName}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span>{portalConfig.userName.charAt(0)}</span>
+                    )}
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="font-extrabold text-white text-xs truncate">
-                      {activeCase?.patientName || "Patient Profile"}
+                      {portalConfig.userName}
                     </div>
                     <div className="text-[10px] text-[#2ECDC5] font-bold truncate">
-                      {activeCase?.id || "VED-2026"} • {activeCase?.patientCountry || "Active Case"}
+                      {portalConfig.roleTag}
                     </div>
                   </div>
                 </div>
 
-                <Link
-                  href="/"
-                  className="flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 text-white font-bold transition-colors border border-slate-700/40"
-                  onClick={() => setProfileDropdownOpen(false)}
+                <button
+                  onClick={handleGoToMainSite}
+                  className="w-full flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 text-white font-bold text-left transition-colors border border-slate-700/40 cursor-pointer"
                 >
                   <ArrowLeft className="w-4 h-4 text-[#2ECDC5] shrink-0" />
                   <span className="text-white font-bold text-xs">Return to Main Site</span>
-                </Link>
+                </button>
 
                 <button
-                  onClick={() => {
-                    setProfileDropdownOpen(false);
-                    logout();
-                  }}
+                  onClick={handleLogout}
                   className="w-full flex items-center gap-2.5 p-2.5 rounded-xl bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 hover:text-rose-100 font-bold text-left transition-colors border border-rose-900/40 cursor-pointer"
                 >
                   <LogOut className="w-4 h-4 text-rose-400 shrink-0" />
-                  <span className="text-xs">Sign Out</span>
+                  <span className="text-xs">Sign Out / Log Out</span>
                 </button>
               </div>
             </>
@@ -303,7 +585,9 @@ export const PatientDashboard: React.FC = () => {
                 </div>
                 <div className="flex flex-col">
                   <span className="font-extrabold text-sm text-white tracking-wider">VEDARA</span>
-                  <span className="text-[9px] text-[#2ECDC5] uppercase font-semibold">Patient Portal</span>
+                  <span className="text-[9px] text-[#2ECDC5] uppercase font-semibold truncate max-w-[140px]">
+                    {portalConfig.portalBadge}
+                  </span>
                 </div>
               </div>
               <button
@@ -315,7 +599,7 @@ export const PatientDashboard: React.FC = () => {
             </div>
 
             <div className="flex-1 overflow-y-auto space-y-1.5">
-              {sideMenus.map((menu) => {
+              {portalConfig.menus.map((menu) => {
                 const Icon = menu.icon;
                 const isActive = activeTab === menu.id;
 
@@ -343,6 +627,24 @@ export const PatientDashboard: React.FC = () => {
                 );
               })}
             </div>
+
+            {/* Mobile Drawer Bottom Actions */}
+            <div className="pt-3 border-t border-slate-800 space-y-2">
+              <button
+                onClick={handleGoToMainSite}
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-bold transition-all cursor-pointer"
+              >
+                <ArrowLeft className="w-4 h-4 text-[#2ECDC5]" />
+                <span>Return to Main Website</span>
+              </button>
+              <button
+                onClick={handleLogout}
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 text-xs font-bold transition-all cursor-pointer"
+              >
+                <LogOut className="w-4 h-4 text-rose-400" />
+                <span>Sign Out</span>
+              </button>
+            </div>
           </div>
           <div className="flex-1" onClick={() => setMobileMenuOpen(false)} />
         </div>
@@ -354,7 +656,7 @@ export const PatientDashboard: React.FC = () => {
         <header className="sticky top-0 z-20 bg-white/95 backdrop-blur-md border-b border-slate-200/90 px-4 sm:px-8 h-20 flex items-center justify-between gap-4 text-slate-900 shadow-xs transition-all">
           {/* Left Title & Collapse Button */}
           <div className="flex items-center gap-3 sm:gap-4 relative z-10">
-            {/* Mobile Menu Toggle Button (Desktop uses the unified edge toggle button) */}
+            {/* Mobile Menu Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(true)}
               className="md:hidden p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200/80 text-slate-700 hover:text-slate-900 border border-slate-200/80 shadow-xs transition-colors cursor-pointer"
@@ -365,37 +667,52 @@ export const PatientDashboard: React.FC = () => {
 
             <div>
               <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                {currentTabObj.label}
+                {currentTabObj?.label || portalConfig.headerTitle}
               </h2>
               <span className="text-[10px] font-bold text-[#3F4EB4] uppercase tracking-widest hidden sm:flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#2ECDC5] inline-block animate-pulse" />
-                Secure Patient Portal
+                {portalConfig.portalSubtitle}
               </span>
             </div>
           </div>
 
           {/* Right Header Action Utilities */}
-          <div className="flex items-center gap-2.5 sm:gap-3 relative z-10">
-            {/* Back to Website (Desktop) */}
-            <Link
-              href="/"
-              className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200/80 border border-slate-200/80 shadow-xs transition-all group"
+          <div className="flex items-center gap-2 sm:gap-2.5 relative z-10">
+            {/* Back to Website (Desktop & Tablet) */}
+            <button
+              onClick={handleGoToMainSite}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200/80 border border-slate-200/80 shadow-xs transition-all group cursor-pointer"
+              title="Return to Main Website"
             >
               <ArrowLeft className="w-3.5 h-3.5 text-[#3F4EB4] group-hover:-translate-x-0.5 transition-transform" />
-              <span>Main Website</span>
-            </Link>
+              <span className="hidden sm:inline">Main Website</span>
+              <span className="sm:hidden">Home</span>
+            </button>
 
             {/* Persona Switcher (RBAC Tester) */}
             <PersonaSwitcher />
 
             {/* Notification Bell Button */}
             <button
-              onClick={() => setActiveTab("messages")}
-              className="relative w-10 h-10 rounded-2xl bg-slate-100 hover:bg-slate-200/80 border border-slate-200/80 flex items-center justify-center text-slate-700 shadow-xs transition-all cursor-pointer"
+              onClick={() => {
+                if (portalConfig.menus.some((m) => m.id === "messages")) {
+                  setActiveTab("messages");
+                }
+              }}
+              className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-slate-100 hover:bg-slate-200/80 border border-slate-200/80 flex items-center justify-center text-slate-700 shadow-xs transition-all cursor-pointer"
               title="Notifications"
             >
               <Bell className="w-4 h-4 text-slate-600" />
               <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-[#2ECDC5] ring-2 ring-white" />
+            </button>
+
+            {/* Sign Out Action Button in Header */}
+            <button
+              onClick={handleLogout}
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-rose-50 hover:bg-rose-100 text-rose-600 hover:text-rose-700 border border-rose-200 flex items-center justify-center shadow-xs transition-all cursor-pointer"
+              title="Sign Out / Log Out"
+            >
+              <LogOut className="w-4 h-4" />
             </button>
           </div>
         </header>
@@ -408,6 +725,8 @@ export const PatientDashboard: React.FC = () => {
               cases={visibleCases}
               activeCaseId={activeCase?.id || ""}
               onSelectCase={setActiveCaseId}
+              activeTab={activeTab as CSTab}
+              onSelectTab={(tab) => setActiveTab(tab)}
             />
           )}
 
@@ -417,14 +736,28 @@ export const PatientDashboard: React.FC = () => {
               cases={visibleCases}
               activeCaseId={activeCase?.id || ""}
               onSelectCase={setActiveCaseId}
+              activeTab={activeTab as HospitalTab}
+              onSelectTab={(tab) => setActiveTab(tab)}
             />
           )}
 
           {/* If Finance Role -> Finance View */}
-          {isFinance && <FinanceView cases={visibleCases} />}
+          {isFinance && (
+            <FinanceView
+              cases={visibleCases}
+              activeTab={activeTab as FinanceTab}
+              onSelectTab={(tab) => setActiveTab(tab)}
+            />
+          )}
 
           {/* If Super Admin Role -> Super Admin View */}
-          {isAdmin && <SuperAdminView cases={visibleCases} />}
+          {isAdmin && (
+            <SuperAdminView
+              cases={visibleCases}
+              activeTab={activeTab as AdminTab}
+              onSelectTab={(tab) => setActiveTab(tab)}
+            />
+          )}
 
           {/* Patient View (Default) */}
           {!isCS && !isDoctor && !isFinance && !isAdmin && activeCase && (

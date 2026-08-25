@@ -26,25 +26,37 @@ import {
   ChevronRight,
 } from "lucide-react";
 
+export type HospitalTab = "case_info" | "accept_decline" | "clinical_workspace" | "tele_consult" | "accreditation";
+
 interface HospitalDoctorViewProps {
   cases: PatientCase[];
   onSelectCase: (caseId: string) => void;
   activeCaseId: string;
+  activeTab?: HospitalTab;
+  onSelectTab?: (tab: HospitalTab) => void;
 }
-
-type HospitalTab = "case_info" | "accept_decline" | "clinical_workspace" | "tele_consult" | "accreditation";
 
 export const HospitalDoctorView: React.FC<HospitalDoctorViewProps> = ({
   cases,
   onSelectCase,
   activeCaseId,
+  activeTab: controlledTab,
+  onSelectTab: controlledOnSelectTab,
 }) => {
   const { acceptCase, declineCase, saveClinicalWorkspace, updateConsultationOutcome, toggleConsultationRecording, currentUser } = usePortal();
   const activeCase = cases.find((c) => c.id === activeCaseId) || cases[0];
   const hospitalId = currentUser?.hospitalId || "hosp_medanta";
   const accreditation = MOCK_ACCREDITATION_PROFILES.find((a) => a.hospitalId === hospitalId);
 
-  const [activeTab, setActiveTab] = useState<HospitalTab>("case_info");
+  const [internalTab, setInternalTab] = useState<HospitalTab>("case_info");
+  const activeTab = controlledTab ?? internalTab;
+  const setActiveTab = (tab: HospitalTab) => {
+    if (controlledOnSelectTab) {
+      controlledOnSelectTab(tab);
+    } else {
+      setInternalTab(tab);
+    }
+  };
 
   // Accept/Decline state
   const [declineReason, setDeclineReason] = useState("");

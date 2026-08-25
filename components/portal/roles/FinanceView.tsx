@@ -25,15 +25,29 @@ import {
   EyeOff,
 } from "lucide-react";
 
+export type FinanceTab = "payment_ledger" | "escrow" | "refunds" | "reconciliation" | "dispute";
+
 interface FinanceViewProps {
   cases: PatientCase[];
+  activeTab?: FinanceTab;
+  onSelectTab?: (tab: FinanceTab) => void;
 }
 
-type FinanceTab = "payment_ledger" | "escrow" | "refunds" | "reconciliation" | "dispute";
-
-export const FinanceView: React.FC<FinanceViewProps> = ({ cases }) => {
+export const FinanceView: React.FC<FinanceViewProps> = ({
+  cases,
+  activeTab: controlledTab,
+  onSelectTab: controlledOnSelectTab,
+}) => {
   const { initiateRefund, grantBillingDisputeAccess, currentUser } = usePortal();
-  const [activeTab, setActiveTab] = useState<FinanceTab>("payment_ledger");
+  const [internalTab, setInternalTab] = useState<FinanceTab>("payment_ledger");
+  const activeTab = controlledTab ?? internalTab;
+  const setActiveTab = (tab: FinanceTab) => {
+    if (controlledOnSelectTab) {
+      controlledOnSelectTab(tab);
+    } else {
+      setInternalTab(tab);
+    }
+  };
   const [searchQuery, setSearchQuery] = useState("");
   const [reconcileFilter, setReconcileFilter] = useState<"all" | "unreconciled" | "reconciled">("all");
 

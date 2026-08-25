@@ -26,14 +26,16 @@ import {
   RotateCcw,
 } from "lucide-react";
 
+export type CSTab = "overview" | "documents" | "consent" | "notes" | "handoff" | "quote_builder" | "messages";
+export type QueueFilter = "all" | PatientJourneyStage;
+
 interface CSQueueViewProps {
   cases: PatientCase[];
   onSelectCase: (caseId: string) => void;
   activeCaseId: string;
+  activeTab?: CSTab;
+  onSelectTab?: (tab: CSTab) => void;
 }
-
-type QueueFilter = "all" | "lead" | "contacted" | "documents_collected" | "hospital_handover" | "quote" | "booking" | "completed" | "nurture";
-type CSTab = "overview" | "documents" | "consent" | "notes" | "handoff" | "quote_builder" | "messages";
 
 const STAGE_LABEL_MAP: Record<string, string> = {
   lead: "New Leads",
@@ -83,6 +85,8 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
   cases,
   onSelectCase,
   activeCaseId,
+  activeTab: controlledTab,
+  onSelectTab: controlledOnSelectTab,
 }) => {
   const {
     updateDocumentReviewStatus,
@@ -95,7 +99,15 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
 
   const [queueFilter, setQueueFilter] = useState<QueueFilter>("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeTab, setActiveTab] = useState<CSTab>("overview");
+  const [internalTab, setInternalTab] = useState<CSTab>("overview");
+  const activeTab = controlledTab ?? internalTab;
+  const setActiveTab = (tab: CSTab) => {
+    if (controlledOnSelectTab) {
+      controlledOnSelectTab(tab);
+    } else {
+      setInternalTab(tab);
+    }
+  };
 
   // Document review modal
   const [reviewModalDoc, setReviewModalDoc] = useState<{ caseId: string; doc: PatientDocument } | null>(null);
@@ -484,21 +496,21 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                       Full Status-Change Timeline
                     </h5>
                     <div className="space-y-2 max-h-64 overflow-y-auto">
-                      {[...activeCase.stageHistory].reverse().map((event, idx) => (
-                        <div key={event.id} className="flex items-start gap-3 text-xs">
+                      {[...(activeCase.stageHistory || [])].reverse().map((event, idx) => (
+                        <div key={event.id || idx} className="flex items-start gap-3 text-xs">
                           <div className="w-2 h-2 rounded-full bg-[#2ECDC5] mt-1.5 shrink-0" />
                           <div className="flex-1">
                             <div className="font-bold text-slate-900">
                               {event.fromStage ? STAGE_LABEL_MAP[event.fromStage] : "Created"} → {STAGE_LABEL_MAP[event.toStage] || event.toStage}
                             </div>
                             <div className="text-slate-500 mt-0.5">
-                              {new Date(event.changedAt).toLocaleString()} · <span className="font-semibold text-slate-700">{event.changedByName}</span> ({event.changedByRole.replace("_", " ")})
+                              {new Date(event.changedAt).toLocaleString()} · <span className="font-semibold text-slate-700">{event.changedByName}</span> ({event.changedByRole?.replace("_", " ") || "system"})
                               {event.reason && <span className="text-amber-600 ml-1">· Reason: {event.reason}</span>}
                             </div>
                           </div>
                         </div>
                       ))}
-                      {activeCase.stageHistory.length === 0 && (
+                      {(!activeCase.stageHistory || activeCase.stageHistory.length === 0) && (
                         <div className="text-xs text-slate-400">No stage history available.</div>
                       )}
                     </div>

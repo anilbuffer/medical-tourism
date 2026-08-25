@@ -36,15 +36,29 @@ import {
   Clock,
 } from "lucide-react";
 
+export type AdminTab = "user_mgmt" | "compliance_config" | "accreditation" | "audit_reporting" | "system_config";
+
 interface SuperAdminViewProps {
   cases: PatientCase[];
+  activeTab?: AdminTab;
+  onSelectTab?: (tab: AdminTab) => void;
 }
 
-type AdminTab = "user_mgmt" | "compliance_config" | "accreditation" | "audit_reporting" | "system_config";
-
-export const SuperAdminView: React.FC<SuperAdminViewProps> = ({ cases }) => {
+export const SuperAdminView: React.FC<SuperAdminViewProps> = ({
+  cases,
+  activeTab: controlledTab,
+  onSelectTab: controlledOnSelectTab,
+}) => {
   const { currentUser, resetToDefaultData } = usePortal();
-  const [activeTab, setActiveTab] = useState<AdminTab>("user_mgmt");
+  const [internalTab, setInternalTab] = useState<AdminTab>("user_mgmt");
+  const activeTab = controlledTab ?? internalTab;
+  const setActiveTab = (tab: AdminTab) => {
+    if (controlledOnSelectTab) {
+      controlledOnSelectTab(tab);
+    } else {
+      setInternalTab(tab);
+    }
+  };
 
   // User mgmt
   const [userSearch, setUserSearch] = useState("");
