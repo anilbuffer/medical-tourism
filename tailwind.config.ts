@@ -45,8 +45,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-plus-jakarta)", "Inter", "sans-serif"],
-        serif: ["var(--font-cormorant)", "Georgia", "serif"],
+        sans: ["var(--font-plus-jakarta)", "system-ui", "sans-serif"],
+        serif: ["var(--font-playfair)", "Georgia", "serif"],
       },
       boxShadow: {
         "luxury":       "0 20px 40px -15px rgba(63, 78, 180, 0.12), 0 0 25px -5px rgba(40, 53, 147, 0.08)",

@@ -13,6 +13,7 @@ import { MyQuoteTab } from "./tabs/MyQuoteTab";
 import { MyPaymentsTab } from "./tabs/MyPaymentsTab";
 import { MyBookingTab } from "./tabs/MyBookingTab";
 import { MyMessagesTab } from "./tabs/MyMessagesTab";
+import { PostTreatmentTab } from "./tabs/PostTreatmentTab";
 import { CSQueueView } from "./roles/CSQueueView";
 import { HospitalDoctorView } from "./roles/HospitalDoctorView";
 import { FinanceView } from "./roles/FinanceView";
@@ -26,6 +27,7 @@ import {
   DollarSign,
   Plane,
   MessageSquare,
+  HeartHandshake,
   Bell,
   PanelLeft,
   ChevronDown,
@@ -98,7 +100,12 @@ export const PatientDashboard: React.FC = () => {
       id: "messages",
       label: "Messages",
       icon: MessageSquare,
-      badge: activeCase?.messages.filter((m) => !m.isRead && m.senderRole !== "patient").length || 2,
+      badge: activeCase?.messages.filter((m) => !m.isRead && m.senderRole !== "patient").length || undefined,
+    },
+    {
+      id: "recovery",
+      label: "Post-Treatment & Recovery",
+      icon: HeartHandshake,
     },
   ];
 
@@ -440,6 +447,9 @@ export const PatientDashboard: React.FC = () => {
               {activeTab === "payments" && <MyPaymentsTab patientCase={activeCase} />}
               {activeTab === "booking" && <MyBookingTab patientCase={activeCase} />}
               {activeTab === "messages" && <MyMessagesTab patientCase={activeCase} />}
+              {(activeTab === "recovery" || activeTab === "post_treatment") && (
+                <PostTreatmentTab patientCase={activeCase} />
+              )}
             </>
           )}
         </main>

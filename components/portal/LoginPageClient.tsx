@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect, Suspense, useRef } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { usePortal } from "@/lib/portal/store";
@@ -25,6 +25,11 @@ import {
   Activity,
   FileText,
   Globe,
+  X,
+  ChevronDown,
+  ChevronUp,
+  Briefcase,
+  HeartPulse,
 } from "lucide-react";
 
 const LoginPageContent: React.FC = () => {
@@ -181,12 +186,74 @@ const LoginPageContent: React.FC = () => {
     },
   ];
 
+  // RBAC role definitions (maps to demoRoles by index)
+  const rbacRoles = [
+    {
+      rbacNum: 2,
+      title: "Patient Portal",
+      accessScope: "Own case, own records only",
+      color: "#2ECDC5",
+      bg: "rgba(46,205,197,0.10)",
+      border: "rgba(46,205,197,0.35)",
+      icon: User,
+      demoIndex: 0,
+    },
+    {
+      rbacNum: 5,
+      title: "Customer Support (CS)",
+      accessScope: "All cases within assigned queue(s); can view but not edit clinical fields",
+      color: "#60a5fa",
+      bg: "rgba(96,165,250,0.10)",
+      border: "rgba(96,165,250,0.35)",
+      icon: UserCheck,
+      demoIndex: 1,
+    },
+    {
+      rbacNum: 3,
+      title: "Hospital Portal",
+      accessScope: "Only cases explicitly assigned to that hospital/doctor",
+      color: "#a78bfa",
+      bg: "rgba(167,139,250,0.10)",
+      border: "rgba(167,139,250,0.35)",
+      icon: Stethoscope,
+      demoIndex: 2,
+    },
+    {
+      rbacNum: 6,
+      title: "Finance & Accounts",
+      accessScope: "All payment/financial records across all cases; no access to clinical notes unless linked to a billing dispute",
+      color: "#34d399",
+      bg: "rgba(52,211,153,0.10)",
+      border: "rgba(52,211,153,0.35)",
+      icon: DollarSign,
+      demoIndex: 3,
+    },
+    {
+      rbacNum: 4,
+      title: "Super Admin",
+      accessScope: "Full system access, configuration, user management",
+      color: "#f59e0b",
+      bg: "rgba(245,158,11,0.10)",
+      border: "rgba(245,158,11,0.35)",
+      icon: Key,
+      demoIndex: 4,
+    },
+  ];
+
   // State
   const [selectedRoleIndex, setSelectedRoleIndex] = useState<number>(0);
+  const [roleDropdownOpen, setRoleDropdownOpen] = useState<boolean>(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Derive selected rbacRole from selectedRoleIndex
+  const selectedRbacRole = rbacRoles.find((r) => r.demoIndex === selectedRoleIndex) || rbacRoles[0];
   const [email, setEmail] = useState<string>("robert.vance@gmail.com");
   const [password, setPassword] = useState<string>("••••••••••••");
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [rememberMe, setRememberMe] = useState<boolean>(true);
+  const [enableMfa, setEnableMfa] = useState<boolean>(true);
+  const [mfaModalOpen, setMfaModalOpen] = useState<boolean>(false);
+  const [otpCode, setOtpCode] = useState<string>("489210");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   // Check query params to pre-select appropriate portal (e.g. ?portal=doctor or ?portal=coordinator)
@@ -240,19 +307,38 @@ const LoginPageContent: React.FC = () => {
 
   const handleLoginSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    if (enableMfa) {
+      setMfaModalOpen(true);
+      return;
+    }
+    executeFinalLogin();
+  };
 
+  const executeFinalLogin = () => {
+    setIsSubmitting(true);
     const targetUser =
       demoRoles[selectedRoleIndex]?.user || MOCK_PORTAL_USERS[0];
     loginAs(targetUser);
 
     const redirectUrl = searchParams.get("redirect") || "/patient";
     setTimeout(() => {
+      setMfaModalOpen(false);
       router.push(redirectUrl);
-    }, 600);
+    }, 500);
   };
 
   const currentRole = demoRoles[selectedRoleIndex] || demoRoles[0];
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setRoleDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row bg-[#071321] text-white">
@@ -453,6 +539,134 @@ const LoginPageContent: React.FC = () => {
             </p>
           </div>
 
+          {/* ── Workspace Role Selector ── */}
+          <div ref={dropdownRef} className="relative">
+            <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
+              <Briefcase className="inline w-3 h-3 mr-1 -mt-0.5" />
+              Workspace Role
+            </label>
+
+            {/* Selected Role Display / Toggle Button */}
+            <button
+              type="button"
+              id="workspace-role-dropdown"
+              onClick={() => setRoleDropdownOpen((o) => !o)}
+              className="w-full flex items-center justify-between gap-3 px-4 py-3 rounded-2xl border-2 text-left transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#2ECDC5]"
+              style={{
+                background: selectedRbacRole.bg,
+                borderColor: selectedRbacRole.border,
+              }}
+            >
+              <div className="flex items-center gap-3 min-w-0">
+                <div
+                  className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 shadow-sm"
+                  style={{ background: selectedRbacRole.color + "22" }}
+                >
+                  {React.createElement(selectedRbacRole.icon, {
+                    className: "w-4 h-4",
+                    style: { color: selectedRbacRole.color },
+                  })}
+                </div>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="inline-flex items-center px-1.5 py-0.5 rounded-md text-[10px] font-black tabular-nums"
+                      style={{
+                        background: selectedRbacRole.color + "22",
+                        color: selectedRbacRole.color,
+                      }}
+                    >
+                      #{selectedRbacRole.rbacNum}
+                    </span>
+                    <span className="text-sm font-bold text-slate-900 truncate">
+                      {selectedRbacRole.title}
+                    </span>
+                  </div>
+                  <p className="text-[10px] text-slate-500 truncate mt-0.5 leading-tight">
+                    {selectedRbacRole.accessScope}
+                  </p>
+                </div>
+              </div>
+              <div className="shrink-0 text-slate-400">
+                {roleDropdownOpen ? (
+                  <ChevronUp className="w-4 h-4" />
+                ) : (
+                  <ChevronDown className="w-4 h-4" />
+                )}
+              </div>
+            </button>
+
+            {/* Dropdown Panel */}
+            {roleDropdownOpen && (
+              <div
+                className="absolute left-0 right-0 top-full mt-2 z-50 bg-white rounded-2xl border border-slate-200 shadow-2xl shadow-slate-200/80 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150"
+              >
+                <div className="p-2 space-y-1">
+                  <div className="px-3 py-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 mb-1">
+                    Select Workspace Role (RBAC)
+                  </div>
+                  {rbacRoles.map((role) => {
+                    const RoleIcon = role.icon;
+                    const isActive = role.demoIndex === selectedRoleIndex;
+                    return (
+                      <button
+                        key={role.rbacNum}
+                        type="button"
+                        onClick={() => {
+                          handleSelectRole(role.demoIndex);
+                          setRoleDropdownOpen(false);
+                        }}
+                        className={`w-full flex items-start gap-3 px-3 py-2.5 rounded-xl text-left transition-all duration-150 group ${
+                          isActive
+                            ? "bg-slate-50 ring-1"
+                            : "hover:bg-slate-50"
+                        }`}
+                        style={{
+                          ringColor: isActive ? role.color : "transparent",
+                        } as React.CSSProperties}
+                      >
+                        <div
+                          className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 mt-0.5"
+                          style={{ background: role.color + "18" }}
+                        >
+                          <RoleIcon
+                            className="w-3.5 h-3.5"
+                            style={{ color: role.color }}
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2">
+                            <span
+                              className="inline-flex items-center px-1.5 py-0.5 rounded-md text-[9px] font-black tabular-nums"
+                              style={{
+                                background: role.color + "18",
+                                color: role.color,
+                              }}
+                            >
+                              #{role.rbacNum}
+                            </span>
+                            <span className="text-xs font-bold text-slate-800">
+                              {role.title}
+                            </span>
+                            {isActive && (
+                              <Check
+                                className="w-3 h-3 ml-auto shrink-0"
+                                style={{ color: role.color }}
+                              />
+                            )}
+                          </div>
+                          <p className="text-[10px] text-slate-500 mt-0.5 leading-snug">
+                            {role.accessScope}
+                          </p>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+
           <form onSubmit={handleLoginSubmit} className="space-y-4">
             {/* Email Address */}
             <div className="space-y-1.5">
@@ -497,8 +711,8 @@ const LoginPageContent: React.FC = () => {
               </div>
             </div>
 
-            {/* Remember Me & Forgot Password */}
-            <div className="flex items-center justify-between text-xs pt-1">
+            {/* Remember Me & MFA Toggle */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs pt-1 gap-2">
               <label className="flex items-center gap-2 cursor-pointer select-none">
                 <input
                   type="checkbox"
@@ -509,13 +723,16 @@ const LoginPageContent: React.FC = () => {
                 <span className="text-slate-600 font-medium">Remember me</span>
               </label>
 
-              <button
-                type="button"
-                onClick={() => alert("Password reset link has been dispatched to your email.")}
-                className="font-bold text-[#00897B] hover:text-[#283593] transition-colors underline underline-offset-2"
-              >
-                Forgot your password?
-              </button>
+              <label className="flex items-center gap-2 cursor-pointer select-none text-emerald-800 font-bold bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <input
+                  type="checkbox"
+                  checked={enableMfa}
+                  onChange={(e) => setEnableMfa(e.target.checked)}
+                  className="w-3.5 h-3.5 rounded border-emerald-300 text-emerald-600 focus:ring-emerald-500 accent-emerald-600"
+                />
+                <span>2FA / MFA (Recommended)</span>
+              </label>
             </div>
 
             {/* Submit CTA Button */}
@@ -556,6 +773,81 @@ const LoginPageContent: React.FC = () => {
           Copyright © 2026 Vedara Care International LLC. All rights reserved.
         </div>
       </div>
+
+      {/* 2-Factor Authentication (MFA) OTP Modal */}
+      {mfaModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-100 text-slate-900 space-y-5 animate-in zoom-in-95">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-black text-slate-900 leading-tight">Two-Factor Authentication</h3>
+                  <p className="text-[11px] text-slate-500">HIPAA & GDPR Security Verification</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setMfaModalOpen(false)}
+                className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 text-xs text-slate-600 space-y-1">
+              <p>
+                A 6-digit one-time passcode (OTP) has been dispatched to <strong>{email}</strong> and your verified mobile phone.
+              </p>
+              <div className="text-[11px] text-emerald-700 font-semibold pt-1">
+                Demo Auto-Fill Code: <span className="font-mono font-bold bg-white px-2 py-0.5 rounded border border-emerald-200">489210</span>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="block text-xs font-bold text-slate-700">Enter 6-Digit Passcode</label>
+              <input
+                type="text"
+                maxLength={6}
+                value={otpCode}
+                onChange={(e) => setOtpCode(e.target.value)}
+                placeholder="489210"
+                className="w-full text-center font-mono text-2xl tracking-[0.3em] font-black p-3.5 rounded-2xl border border-slate-300 focus:ring-2 focus:ring-[#2ECDC5] focus:outline-none bg-slate-50 text-slate-900"
+                autoFocus
+              />
+            </div>
+
+            <div className="flex gap-3 pt-2">
+              <button
+                type="button"
+                onClick={() => setMfaModalOpen(false)}
+                className="flex-1 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={executeFinalLogin}
+                disabled={isSubmitting || otpCode.length < 6}
+                className="flex-1 py-3 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <span>Verifying...</span>
+                  </>
+                ) : (
+                  <>
+                    <Check className="w-4 h-4" />
+                    <span>Verify & Sign In</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
