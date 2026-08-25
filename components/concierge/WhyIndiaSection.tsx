@@ -23,7 +23,7 @@ export const WhyIndiaSection = () => {
       description: t.whyIndia.pillar1Desc,
       stat: "100,000+",
       statLabel: "US/UK Trained Clinicians",
-      accent: "from-teal-500 to-emerald-600",
+      accent: "from-teal-600 to-emerald-700",
     },
     {
       icon: Cpu,
@@ -31,7 +31,7 @@ export const WhyIndiaSection = () => {
       description: t.whyIndia.pillar2Desc,
       stat: "Da Vinci Xi & Proton",
       statLabel: "Advanced Robotic Suites",
-      accent: "from-blue-600 to-indigo-600",
+      accent: "from-[#0D3B3F] to-teal-900",
     },
     {
       icon: Zap,
@@ -47,7 +47,7 @@ export const WhyIndiaSection = () => {
       description: t.whyIndia.pillar4Desc,
       stat: "65% – 85%",
       statLabel: "Cost Advantage",
-      accent: "from-emerald-500 to-teal-700",
+      accent: "from-emerald-600 to-teal-700",
     },
     {
       icon: HeartHandshake,
@@ -55,7 +55,7 @@ export const WhyIndiaSection = () => {
       description: t.whyIndia.pillar5Desc,
       stat: "1:1 Dedication",
       statLabel: "Personalized Concierge",
-      accent: "from-purple-600 to-pink-600",
+      accent: "from-orange-600 to-amber-600",
     },
   ];
 
@@ -64,14 +64,13 @@ export const WhyIndiaSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100/80 text-teal-800 text-xs font-extrabold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-teal-600" />
-            <span>{t.whyIndia.eyebrow}</span>
+          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-orange-500 mb-2">
+            {t.whyIndia.eyebrow}
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0D3B3F] tracking-tight leading-tight">
             {t.whyIndia.heading}
           </h2>
-          <p className="mt-3 text-base text-slate-600">
+          <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto">
             {t.whyIndia.subheading}
           </p>
         </div>

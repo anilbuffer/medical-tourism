@@ -46,16 +46,15 @@ export const SpecialtiesSection = () => {
     <section id="specialties" className="py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100/80 text-teal-800 text-xs font-bold uppercase tracking-wider mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-teal-600" />
-              <span>{t.specialties.eyebrow}</span>
+            <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-orange-500 mb-2">
+              {t.specialties.eyebrow}
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0D3B3F] tracking-tight leading-tight">
               {t.specialties.heading}
             </h2>
-            <p className="mt-3 text-base text-slate-600">
+            <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed">
               {t.specialties.subheading}
             </p>
           </div>

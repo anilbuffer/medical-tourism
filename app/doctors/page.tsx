@@ -23,20 +23,20 @@ import {
 export default function DoctorsPage() {
   const { t, language, openDoctorModal, openIntake } = useCare();
   const [selectedSpecialty, setSelectedSpecialty] = useState("All");
-  const [selectedCity, setSelectedCity] = useState("All");
+  const [selectedHospital, setSelectedHospital] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
   const specialties = ["All", "Cardiac Sciences", "Cancer Care (Oncology)", "Orthopedics & Joint Replacement", "Transplant Medicine"];
-  const cities = ["All", "New Delhi", "Mumbai", "Gurugram / Delhi NCR", "Chennai", "Bengaluru"];
+  const hospitals = ["All", "Fortis Hospital", "Max Super Speciality", "Paras Health"];
 
   const filteredDoctors = DOCTORS.filter((doc) => {
     const matchesSpecialty = selectedSpecialty === "All" || doc.specialty === selectedSpecialty;
-    const matchesCity = selectedCity === "All" || doc.city.includes(selectedCity);
+    const matchesHospital = selectedHospital === "All" || doc.hospital.includes(selectedHospital);
     const matchesSearch =
       doc.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       doc.hospital.toLowerCase().includes(searchQuery.toLowerCase()) ||
       doc.specialty.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesSpecialty && matchesCity && matchesSearch;
+    return matchesSpecialty && matchesHospital && matchesSearch;
   });
 
   return (
@@ -58,13 +58,13 @@ export default function DoctorsPage() {
           <div className="max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-bold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-              <span>Verified Senior Clinicians</span>
+              <span>Chandigarh City · Verified Senior Clinicians</span>
             </div>
             <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
-              Indian Specialist Consultants & Surgeons
+              Top Specialist Consultants & Surgeons in Chandigarh
             </h1>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Connect with globally acclaimed medical directors, chief surgeons, and department heads across India's premier quaternary institutes.
+              Connect with globally acclaimed medical directors, chief surgeons, and department heads across Chandigarh City's premier multi-class quaternary institutes.
             </p>
           </div>
         </div>
@@ -99,15 +99,15 @@ export default function DoctorsPage() {
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-slate-500">City:</span>
+              <span className="text-xs font-bold text-slate-500">Hospital:</span>
               <select
-                value={selectedCity}
-                onChange={(e) => setSelectedCity(e.target.value)}
+                value={selectedHospital}
+                onChange={(e) => setSelectedHospital(e.target.value)}
                 className="px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-teal-500"
               >
-                {cities.map((c) => (
-                  <option key={c} value={c}>
-                    {c}
+                {hospitals.map((h) => (
+                  <option key={h} value={h}>
+                    {h}
                   </option>
                 ))}
               </select>

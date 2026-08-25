@@ -1,196 +1,223 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { useCare } from "@/context/CareContext";
-import { TREATMENT_COSTS, TreatmentCost } from "@/data/mockData";
-import { CurrencyPicker } from "@/components/ui/CurrencyPicker";
 import {
-  Calculator,
   ShieldCheck,
-  CheckCircle2,
-  Clock,
-  Calendar,
+  Wallet,
+  HeartHandshake,
+  Plane,
   Sparkles,
   ArrowRight,
-  TrendingDown,
-  Info,
 } from "lucide-react";
 
 export const CostTransparency = () => {
-  const { t, language, formatPrice, formatPriceRange, openIntake } = useCare();
-  const [selectedTreatment, setSelectedTreatment] = useState<TreatmentCost>(TREATMENT_COSTS[0]);
+  const { t, language, openIntake } = useCare();
+
+  const comparisonData = [
+    {
+      treatment: "Dental Implants (per tooth)",
+      treatmentAr: "زراعة الأسنان (لكل سن)",
+      uk: "$2,100",
+      canada: "$2,400",
+      australia: "$2,700",
+      india: "$450",
+      savings: "79%",
+    },
+    {
+      treatment: "Rhinoplasty (Cosmetic)",
+      treatmentAr: "تجميل الأنف (الترميمي)",
+      uk: "$7,800",
+      canada: "$8,500",
+      australia: "$9,200",
+      india: "$2,300",
+      savings: "72%",
+    },
+    {
+      treatment: "Cataract Surgery (per eye)",
+      treatmentAr: "جراحة المياه البيضاء (لكل عين)",
+      uk: "$3,400",
+      canada: "$3,100",
+      australia: "$3,600",
+      india: "$900",
+      savings: "73%",
+    },
+    {
+      treatment: "Hip Replacement",
+      treatmentAr: "استبدال مفصل الورك",
+      uk: "$18,500",
+      canada: "$21,000",
+      australia: "$24,000",
+      india: "$5,200",
+      savings: "75%",
+    },
+    {
+      treatment: "IVF Cycle",
+      treatmentAr: "دورة علاج أطفال الأنابيب",
+      uk: "$9,200",
+      canada: "$11,000",
+      australia: "$10,400",
+      india: "$3,900",
+      savings: "62%",
+    },
+  ];
+
+  const features = [
+    {
+      icon: ShieldCheck,
+      title: language === "ar" ? "مستشفيات معتمدة دولياً" : "Only Accredited Hospitals",
+      desc:
+        language === "ar"
+          ? "جميع المستشفيات الشريكة حاصلة على اعتمادات JCI أو NABH أو ISO ويعاد تقييمها سنوياً."
+          : "Every partner hospital is JCI, NABH or ISO certified and re-verified annually.",
+    },
+    {
+      icon: Wallet,
+      title: language === "ar" ? "أسعار وباقات ثابتة وشفافة" : "Transparent Fixed Quotes",
+      desc:
+        language === "ar"
+          ? "تقدير مالي مكتوب ومفصل قبل سفرك. لا رسوم مخفية أو تكاليف غير معلنة عند الوصول."
+          : "Written cost estimates before you fly. No hidden surcharges on arrival.",
+    },
+    {
+      icon: HeartHandshake,
+      title: language === "ar" ? "منسق رعاية طبي خاص" : "One Dedicated Coordinator",
+      desc:
+        language === "ar"
+          ? "نقطة اتصال شخصية واحدة ترافقك وتتواصل معك عبر مختلف المناطق الزمنية."
+          : "A single point of contact across time zones for your whole journey.",
+    },
+    {
+      icon: Plane,
+      title: language === "ar" ? "إجراءات التأشيرة والسفر" : "Visa & Travel Handled",
+      desc:
+        language === "ar"
+          ? "تسهيل خطابات التأشيرة العلاجية، وحجوزات الطيران، والإقامة الفندقية والمواصلات."
+          : "Medical visa letters, flights, stay and local transfers arranged for you.",
+    },
+  ];
 
   return (
-    <section id="costs" className="py-24 bg-slate-50 relative overflow-hidden">
+    <section id="costs" className="py-20 sm:py-24 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100/80 text-teal-800 text-xs font-bold uppercase tracking-wider mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-teal-600" />
-              <span>{t.cost.eyebrow}</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              {t.cost.heading}
-            </h2>
-            <p className="mt-3 text-base text-slate-600">
-              {t.cost.subheading}
-            </p>
+        <div className="max-w-3xl mb-12 sm:mb-16">
+          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-orange-500 mb-2">
+            {t.cost.eyebrow}
           </div>
-
-          <div className="flex items-center gap-3">
-            <span className="text-xs font-bold text-slate-500">Currency:</span>
-            <CurrencyPicker />
-          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0D3B3F] tracking-tight leading-tight">
+            {t.cost.heading}
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl">
+            {t.cost.subheading}
+          </p>
         </div>
 
-        {/* Treatment Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {TREATMENT_COSTS.slice(0, 3).map((item) => {
-            const isSelected = selectedTreatment.id === item.id;
-            return (
-              <div
-                key={item.id}
-                onClick={() => setSelectedTreatment(item)}
-                className={`rounded-3xl p-6 transition-all duration-300 cursor-pointer border flex flex-col justify-between ${
-                  isSelected
-                    ? "bg-white border-teal-500 shadow-xl shadow-teal-900/10 ring-2 ring-teal-500/20"
-                    : "bg-white border-slate-200/80 hover:border-slate-300 shadow-sm"
-                }`}
-              >
-                <div>
-                  {/* Specialty Tag */}
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[11px] font-bold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full">
-                      {language === "ar" ? item.specialtyAr : item.specialty}
-                    </span>
-                    {item.popular && (
-                      <span className="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full">
-                        Most Requested
+        {/* 2-Column Grid: 4 Feature Cards (Left) + Comparison Table (Right) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Left Column: 4 Feature Cards (2x2 Grid) */}
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+            {features.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white rounded-3xl p-6 border border-slate-100 shadow-md shadow-slate-200/40 hover:shadow-xl hover:border-teal-300 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    {/* Peach/Orange Rounded Icon Container */}
+                    <div className="w-11 h-11 rounded-2xl bg-[#FFF3EB] text-[#E65100] flex items-center justify-center mb-5">
+                      <Icon className="w-5 h-5" />
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-base font-bold text-slate-900 mb-2 leading-snug">
+                      {item.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Right Column: Treatment Cost Comparison Table (USD) */}
+          <div className="lg:col-span-7">
+            <div className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xl shadow-slate-200/60">
+              {/* Dark Forest Green Header Strip */}
+              <div className="bg-[#0D3B3F] text-white px-6 py-4 font-bold text-sm sm:text-base tracking-tight">
+                {t.cost.compareTitle}
+              </div>
+
+              {/* Sub-Header Column Labels */}
+              <div className="bg-[#EAF2F2] px-6 py-3 text-[11px] font-extrabold uppercase tracking-wider text-slate-700 grid grid-cols-12 gap-2 border-b border-slate-200">
+                <div className="col-span-4">TREATMENT</div>
+                <div className="col-span-1 text-center">UK</div>
+                <div className="col-span-2 text-center">CANADA</div>
+                <div className="col-span-2 text-center">AUSTRALIA</div>
+                <div className="col-span-2 text-center text-teal-900 font-black">INDIA</div>
+                <div className="col-span-1 text-center">SAVINGS</div>
+              </div>
+
+              {/* Data Rows */}
+              <div className="divide-y divide-slate-100">
+                {comparisonData.map((row, index) => (
+                  <div
+                    key={index}
+                    onClick={() => openIntake(row.treatment)}
+                    className="px-6 py-4 text-xs grid grid-cols-12 gap-2 items-center hover:bg-slate-50/80 transition-colors cursor-pointer group"
+                  >
+                    {/* Treatment Name */}
+                    <div className="col-span-4 font-bold text-slate-900 group-hover:text-teal-700 transition-colors leading-snug">
+                      {language === "ar" ? row.treatmentAr : row.treatment}
+                    </div>
+
+                    {/* UK */}
+                    <div className="col-span-1 text-center text-slate-500 font-medium">
+                      {row.uk}
+                    </div>
+
+                    {/* Canada */}
+                    <div className="col-span-2 text-center text-slate-500 font-medium">
+                      {row.canada}
+                    </div>
+
+                    {/* Australia */}
+                    <div className="col-span-2 text-center text-slate-500 font-medium">
+                      {row.australia}
+                    </div>
+
+                    {/* India (Highlighted) */}
+                    <div className="col-span-2 text-center font-black text-slate-900 text-sm">
+                      {row.india}
+                    </div>
+
+                    {/* Savings Badge */}
+                    <div className="col-span-1 flex justify-center">
+                      <span className="px-2 py-0.5 rounded-full bg-[#E6F4EA] text-[#137333] font-bold text-[11px]">
+                        {row.savings}
                       </span>
-                    )}
-                  </div>
-
-                  <h3 className="text-lg font-extrabold text-slate-900 mb-2">
-                    {language === "ar" ? item.nameAr : item.name}
-                  </h3>
-
-                  {/* Price Range */}
-                  <div className="py-3 px-4 rounded-2xl bg-slate-50 border border-slate-100 my-3">
-                    <div className="text-[11px] font-semibold text-slate-500">
-                      {t.cost.estimatedCost}
-                    </div>
-                    <div className="text-xl font-extrabold text-slate-900 tracking-tight text-teal-800 font-sans mt-0.5">
-                      {formatPriceRange(item.indiaCostUsd.min, item.indiaCostUsd.max)}
                     </div>
                   </div>
-
-                  {/* Typical Stay & Recovery */}
-                  <div className="space-y-1.5 text-xs text-slate-600">
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-500">{t.cost.typicalStay}</span>
-                      <span className="font-bold text-slate-800">{item.typicalStayDays}</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-500">{t.cost.recoveryTime}</span>
-                      <span className="font-bold text-slate-800">{item.recoveryWeeks}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-teal-700">
-                  <span>View Package Inclusions</span>
-                  <ArrowRight className="w-4 h-4 rtl:rotate-180" />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Deep Dive & Global Comparison for Selected Treatment */}
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-card">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Left Inclusions list */}
-            <div className="lg:col-span-6 space-y-4">
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700">
-                <CheckCircle2 className="w-4 h-4 text-teal-600" />
-                <span>Indicative Package Inclusions · {selectedTreatment.name}</span>
-              </div>
-              <h3 className="text-2xl font-extrabold text-slate-900">
-                What's Covered in Your Coordinated Care Package
-              </h3>
-              <ul className="space-y-2.5">
-                {(language === "ar"
-                  ? selectedTreatment.inclusionsAr
-                  : selectedTreatment.inclusions
-                ).map((inc, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                    <span>{inc}</span>
-                  </li>
                 ))}
-              </ul>
-            </div>
-
-            {/* Right Comparison Table */}
-            <div className="lg:col-span-6 bg-slate-900 text-white rounded-2xl p-6 border border-slate-800 space-y-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="text-xs uppercase font-bold text-teal-400">Global Cost Comparison</div>
-                  <div className="text-sm font-extrabold text-white mt-0.5">
-                    {selectedTreatment.name}
-                  </div>
-                </div>
-                <div className="px-3 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full text-xs font-bold flex items-center gap-1">
-                  <TrendingDown className="w-3.5 h-3.5" />
-                  <span>Up to 80% Savings</span>
-                </div>
               </div>
 
-              {/* Comparison rows */}
-              <div className="space-y-2.5 text-xs">
-                {/* India Row */}
-                <div className="bg-teal-950/80 border border-teal-500/40 rounded-xl p-3 flex items-center justify-between">
-                  <div className="flex items-center gap-2 font-bold text-teal-200">
-                    <span>🇮🇳 India (Vedara Partner Hospital)</span>
-                  </div>
-                  <div className="text-sm font-black text-emerald-400">
-                    {formatPriceRange(selectedTreatment.indiaCostUsd.min, selectedTreatment.indiaCostUsd.max)}
-                  </div>
-                </div>
-
-                {/* UAE Row */}
-                <div className="bg-white/5 border border-white/10 rounded-xl p-3 flex items-center justify-between text-slate-300">
-                  <span>🇦🇪 UAE (Private Hospital)</span>
-                  <span className="font-semibold">{formatPriceRange(selectedTreatment.uaeCostUsd.min, selectedTreatment.uaeCostUsd.max)}</span>
-                </div>
-
-                {/* UK Row */}
-                <div className="bg-white/5 border border-white/10 rounded-xl p-3 flex items-center justify-between text-slate-300">
-                  <span>🇬🇧 United Kingdom (Private)</span>
-                  <span className="font-semibold">{formatPriceRange(selectedTreatment.ukCostUsd.min, selectedTreatment.ukCostUsd.max)}</span>
-                </div>
-
-                {/* US Row */}
-                <div className="bg-white/5 border border-white/10 rounded-xl p-3 flex items-center justify-between text-slate-300">
-                  <span>🇺🇸 United States (Self-Pay)</span>
-                  <span className="font-semibold">{formatPriceRange(selectedTreatment.usCostUsd.min, selectedTreatment.usCostUsd.max)}</span>
-                </div>
+              {/* Table Footer Note */}
+              <div className="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+                <span>{t.cost.disclaimer}</span>
+                <button
+                  onClick={() => openIntake()}
+                  className="font-bold text-teal-700 hover:text-teal-800 flex items-center gap-1 shrink-0 ml-2"
+                >
+                  <span>{language === "ar" ? "طلب عرض سعر" : "Get Custom Quote"}</span>
+                  <ArrowRight className="w-3 h-3 rtl:rotate-180" />
+                </button>
               </div>
-
-              <button
-                onClick={() => openIntake(selectedTreatment.name)}
-                className="w-full py-3 bg-gradient-to-r from-teal-400 to-emerald-400 hover:from-teal-300 hover:to-emerald-300 text-slate-950 font-bold text-xs rounded-xl shadow-lg transition-all"
-              >
-                Request Exact Quotation for {selectedTreatment.name}
-              </button>
             </div>
-          </div>
-
-          {/* Legal Disclaimer Note */}
-          <div className="mt-8 pt-6 border-t border-slate-100 flex items-start gap-2 text-xs text-slate-400">
-            <Info className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
-            <p>{t.cost.disclaimer}</p>
           </div>
         </div>
       </div>

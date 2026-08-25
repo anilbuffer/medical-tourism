@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useCare } from "@/context/CareContext";
-import { CARE_COORDINATOR, DOCTORS } from "@/data/mockData";
+import { CARE_COORDINATOR, DOCTORS, TRUSTED_COUNTRIES } from "@/data/mockData";
 import {
   Sparkles,
   MessageSquare,
@@ -20,14 +20,14 @@ import {
 
 export const HeroSection = () => {
   const { t, language, openIntake, openChat, openDoctorModal } = useCare();
-  const [activeCityNode, setActiveCityNode] = useState<string>("Delhi");
+  const [activeCityNode, setActiveCityNode] = useState<string>("Sector 62 Hub");
 
   const cityHubs = [
-    { name: "Delhi NCR", count: "12 Hospitals", x: "32%", y: "28%" },
-    { name: "Mumbai", count: "8 Hospitals", x: "24%", y: "58%" },
-    { name: "Bengaluru", count: "7 Hospitals", x: "36%", y: "78%" },
-    { name: "Chennai", count: "9 Hospitals", x: "44%", y: "82%" },
-    { name: "Hyderabad", count: "6 Hospitals", x: "38%", y: "65%" },
+    { name: "Sector 62 Hub", count: "Fortis Quaternary Hospital", x: "32%", y: "28%" },
+    { name: "Phase 6 Hub", count: "Max Super Speciality", x: "24%", y: "58%" },
+    { name: "Sector 34 Hub", count: "Healing Multi-Specialty", x: "36%", y: "78%" },
+    { name: "Tricity Corridor", count: "Paras Quaternary Center", x: "44%", y: "82%" },
+    { name: "Phase 1 Hub", count: "Eden Critical Care", x: "38%", y: "65%" },
   ];
 
   return (
@@ -95,7 +95,7 @@ export const HeroSection = () => {
             </div>
 
             {/* Quick Guarantees Strip */}
-            <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-300 font-medium">
+            <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-300 font-medium">
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-teal-400 shrink-0" />
                 <span>Zero Agency Markups</span>
@@ -107,6 +107,29 @@ export const HeroSection = () => {
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-teal-400 shrink-0" />
                 <span>Priority M-Visa Stamping</span>
+              </div>
+            </div>
+
+            {/* Trusted By Patients From */}
+            <div className="pt-4 border-t border-white/10 space-y-2.5">
+              <div className="text-[11px] font-extrabold uppercase tracking-widest text-teal-300/90 flex items-center justify-center lg:justify-start gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse"></span>
+                <span>{language === "ar" ? "موثوق من مرضى" : "TRUSTED BY PATIENTS FROM"}</span>
+              </div>
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-2.5">
+                {TRUSTED_COUNTRIES.map((c) => (
+                  <div
+                    key={c.code}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 backdrop-blur-md transition-all shadow-sm group"
+                  >
+                    <span className="px-1.5 py-0.5 rounded bg-teal-500/25 text-teal-300 font-mono text-[10px] font-bold border border-teal-400/30">
+                      {c.code}
+                    </span>
+                    <span className="text-xs font-semibold text-slate-100 group-hover:text-white transition-colors">
+                      {language === "ar" ? c.nameAr : c.name}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -140,7 +163,7 @@ export const HeroSection = () => {
                   <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-slate-200">
                     <div className="flex items-center gap-1.5">
                       <MapPin className="w-3.5 h-3.5 text-teal-400" />
-                      <span>Premier Institutes in New Delhi, Mumbai, Bengaluru</span>
+                      <span>Premier Multi-Class Institutes in Chandigarh City</span>
                     </div>
                   </div>
                 </div>
@@ -148,8 +171,8 @@ export const HeroSection = () => {
                 {/* Healthcare Network Interactive Node Hubs */}
                 <div className="space-y-3">
                   <div className="flex items-center justify-between text-xs font-semibold text-slate-300">
-                    <span>Key Medical Hubs in India</span>
-                    <span className="text-teal-400">Direct Flight Access</span>
+                    <span>Key Medical Hubs in Chandigarh</span>
+                    <span className="text-teal-400">Direct Flight Access (IXC)</span>
                   </div>
                   <div className="grid grid-cols-3 gap-2">
                     {cityHubs.slice(0, 3).map((city) => (

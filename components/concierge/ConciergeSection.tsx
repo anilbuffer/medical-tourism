@@ -59,14 +59,13 @@ export const ConciergeSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-950/80 border border-teal-500/30 text-teal-300 text-xs font-bold uppercase tracking-wider mb-4 backdrop-blur-md">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>{t.concierge.eyebrow}</span>
+          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-orange-500 mb-2">
+            {t.concierge.eyebrow}
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white font-sans">
             {t.concierge.heading}
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-300">
+          <p className="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto">
             {t.concierge.subheading}
           </p>
         </div>

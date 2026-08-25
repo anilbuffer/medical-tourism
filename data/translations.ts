@@ -16,6 +16,11 @@ export interface Translations {
     support247: string;
     startJourney: string;
     talkCoordinator: string;
+    explore: string;
+    doctorsHospitals: string;
+    saveBadge: string;
+    faqNav: string;
+    onlineBadge: string;
   };
   hero: {
     eyebrow: string;
@@ -83,6 +88,17 @@ export interface Translations {
     step6Title: string;
     step6Desc: string;
   };
+  popularTreatments: {
+    eyebrow: string;
+    heading: string;
+    subheading: string;
+    startingFrom: string;
+    dental: string;
+    cosmetic: string;
+    eye: string;
+    ortho: string;
+    fertility: string;
+  };
   specialties: {
     eyebrow: string;
     heading: string;
@@ -121,6 +137,13 @@ export interface Translations {
     compareTitle: string;
     disclaimer: string;
     exploreBtn: string;
+  };
+  blog: {
+    eyebrow: string;
+    heading: string;
+    subheading: string;
+    viewAll: string;
+    readTime: string;
   };
   whyIndia: {
     eyebrow: string;
@@ -251,8 +274,13 @@ export const DICTIONARY: Record<Language, Translations> = {
       aboutIndia: "Why India",
       costGuide: "Cost Calculator",
       support247: "24/7 Care Support",
-      startJourney: "Start Your Care Journey →",
-      talkCoordinator: "Talk to a Coordinator",
+      startJourney: "Start Care Journey →",
+      talkCoordinator: "Talk to Coordinator",
+      explore: "Explore",
+      doctorsHospitals: "Doctors & Hospitals",
+      saveBadge: "Save ~70%",
+      faqNav: "FAQs & Guide",
+      onlineBadge: "Online",
     },
     hero: {
       eyebrow: "INTERNATIONAL PATIENT CARE · INDIA",
@@ -306,26 +334,37 @@ export const DICTIONARY: Record<Language, Translations> = {
       trustNote: "🔒 Your health records are encrypted and shared only with authorized clinical teams.",
     },
     journey: {
-      eyebrow: "END-TO-END PATIENT PATHWAY",
-      heading: "One Journey. One Care Team.",
-      subheading: "A seamless, transparent pathway designed to keep you informed, supported, and confident at every step.",
-      step1Title: "01 — Share Your Case",
-      step1Desc: "Tell us about your symptoms and securely upload your previous diagnostic reports.",
-      step2Title: "02 — Meet the Right Specialist",
-      step2Desc: "Our medical review board pairs you with vetted senior consultants and top hospital departments.",
-      step3Title: "03 — Understand Your Options",
-      step3Desc: "Receive transparent treatment plans, hospital choices, indicative costs, and video consultations.",
-      step4Title: "04 — Prepare Your Journey",
-      step4Desc: "Priority Medical Visa (M-Visa) facilitation, flight assistance, and curated recovery accommodation.",
-      step5Title: "05 — Receive Care in India",
-      step5Desc: "Airport welcome, private transport, and your dedicated care coordinator by your side in the hospital.",
-      step6Title: "06 — Continue Care at Home",
-      step6Desc: "Organized digital health records, post-procedure telemedicine, and continuity of care with your hometown doctor.",
+      eyebrow: "OUR PROCESS",
+      heading: "How Vedara India Care Works",
+      subheading: "Six guided steps from your first message to your recovery at home — with one coordinator accountable throughout.",
+      step1Title: "Submit Inquiry",
+      step1Desc: "Share your reports and treatment needs through a short secure form.",
+      step2Title: "Consultation & Documents",
+      step2Desc: "Your coordinator collects medical records and verifies eligibility.",
+      step3Title: "Tele-Consultation with Doctor",
+      step3Desc: "Speak directly with shortlisted specialists before you commit.",
+      step4Title: "Treatment Plan & Visa/Travel Planning",
+      step4Desc: "Fixed-cost plan, medical visa invitation and travel scheduling.",
+      step5Title: "Travel & Treatment",
+      step5Desc: "Airport pickup, accommodation, interpreter and in-hospital support.",
+      step6Title: "Recovery & Follow-up",
+      step6Desc: "Post-op reviews, discharge summary and follow-up from home.",
+    },
+    popularTreatments: {
+      eyebrow: "OUR SPECIALTIES",
+      heading: "Popular Treatments",
+      subheading: "Five priority services delivered by accredited Indian hospitals at transparent, fixed package prices.",
+      startingFrom: "Starting from",
+      dental: "Dental Implants",
+      cosmetic: "Cosmetic & Aesthetic",
+      eye: "Ophthalmology / Eye Care",
+      ortho: "Orthopedic Procedures",
+      fertility: "Fertility / IVF",
     },
     specialties: {
       eyebrow: "MEDICAL EXPERTISE",
-      heading: "Specialized Care Across India",
-      subheading: "Access internationally trained specialists across India's most advanced tertiary medical disciplines.",
+      heading: "Specialized Care in Chandigarh",
+      subheading: "Access internationally trained specialists across Chandigarh's premier tertiary medical disciplines and hospital centers.",
       viewAll: "Explore All Specialties →",
       avgStay: "Avg Stay:",
       successRate: "Success Rate:",
@@ -335,7 +374,7 @@ export const DICTIONARY: Record<Language, Translations> = {
       eyebrow: "DISTINGUISHED CLINICIANS",
       heading: "The Right Specialist Changes Everything.",
       subheading:
-        "Find experienced Indian specialists matched to your medical condition, preferred location, and language requirements.",
+        "Find experienced Chandigarh specialists matched to your medical condition, preferred location, and language requirements.",
       experience: "Years Experience",
       languages: "Languages:",
       videoAvailable: "🟢 Video Consultation Available",
@@ -343,26 +382,33 @@ export const DICTIONARY: Record<Language, Translations> = {
       requestConsult: "Request Consultation",
     },
     hospitals: {
-      eyebrow: "CENTERS OF EXCELLENCE",
-      heading: "Trusted Hospitals. Coordinated Around Your Care.",
+      eyebrow: "CHANDIGARH TRICITY NETWORK",
+      heading: "Premier Chandigarh Hospitals. Coordinated Around You.",
       subheading:
-        "We partner exclusively with accredited quaternary care institutes equipped with the world's most advanced medical technology.",
-      exploreNetwork: "Explore Our Hospital Network →",
+        "We partner exclusively with accredited quaternary care institutes in Chandigarh and Mohali equipped with advanced robotic and surgical suites.",
+      exploreNetwork: "Explore Chandigarh Hospitals →",
       beds: "Beds Capacity",
       surgeons: "Surgeons",
       viewDetails: "View Hospital Amenities →",
     },
     cost: {
-      eyebrow: "FINANCIAL CLARITY",
-      heading: "Know What to Expect Before You Travel",
+      eyebrow: "FINANCIAL CLARITY & TRUST",
+      heading: "Care you can verify, costs you can plan",
       subheading:
-        "Treatment costs vary by condition and hospital. We provide transparent indicative packages so you can plan with certainty.",
+        "Accredited hospitals, fixed quotes and human support — plus honest cost comparisons against your home country.",
       typicalStay: "Typical Hospital Stay:",
       recoveryTime: "Est. Recovery Timeline:",
       estimatedCost: "Indicative Package Range:",
-      compareTitle: "Global Cost Comparison (Estimated)",
-      disclaimer: "Note: Indicative estimates based on standard clinical pathways. Final quotes determined by treating hospital.",
+      compareTitle: "Average treatment cost comparison (USD)",
+      disclaimer: "Indicative package prices. Final quotes are issued by the treating hospital.",
       exploreBtn: "Calculate Custom Package Estimate →",
+    },
+    blog: {
+      eyebrow: "RESOURCES",
+      heading: "Plan your treatment with confidence",
+      subheading: "Guides on visas, costs, recovery and choosing the right hospital.",
+      viewAll: "View All Guides & Resources →",
+      readTime: "min read",
     },
     whyIndia: {
       eyebrow: "GLOBAL HEALTHCARE DESTINATION",
@@ -407,7 +453,7 @@ export const DICTIONARY: Record<Language, Translations> = {
     },
     caseStudy: {
       eyebrow: "PATIENT JOURNEY STORY",
-      heading: "From Dubai to Delhi. One Coordinated Journey.",
+      heading: "From Dubai to Chandigarh. One Coordinated Journey.",
       subheading: "How Ahmed R. navigated complex cardiac surgery with zero stress through Vedara's dedicated concierge.",
       readMore: "Read More Patient Journeys →",
     },
@@ -493,7 +539,12 @@ export const DICTIONARY: Record<Language, Translations> = {
       costGuide: "حاسبة التكاليف",
       support247: "دعم الرعاية 24/7",
       startJourney: "ابدأ رحلة علاجك →",
-      talkCoordinator: "تحدث مع منسق الرعاية",
+      talkCoordinator: "تحدث مع المنسق",
+      explore: "استكشف المزيد",
+      doctorsHospitals: "الأطباء والمستشفيات",
+      saveBadge: "وفر ~70%",
+      faqNav: "الأسئلة الشائعة",
+      onlineBadge: "متاح الآن",
     },
     hero: {
       eyebrow: "رعاية المرضى الدوليين · الهند",
@@ -547,26 +598,37 @@ export const DICTIONARY: Record<Language, Translations> = {
       trustNote: "🔒 يتم تشفير بياناتك الطبية ومشاركتها فقط مع الاستشاريين المعتمدين لحالتك.",
     },
     journey: {
-      eyebrow: "مسار المريض المتكامل",
-      heading: "رحلة واحدة. فريق رعاية متكامل.",
-      subheading: "مسار واضح ومريح مصمم ليمنحك ولعائلتك الطمأنينة الكاملة والدعم في كل لحظة.",
-      step1Title: "01 — مشاركة الحالة والتقارير",
-      step1Desc: "أرسل تفاصيل حالتك الصحية وتقاريرك الطبية السابقة بأمان عبر المنصة.",
-      step2Title: "02 — مطابقة الطبيب المناسب",
-      step2Desc: "تقوم لجنتنا الطبية بمطابقة حالتك مع أفضل الاستشاريين والمستشفيات المتخصصة.",
-      step3Title: "03 — فهم الخيارات والتكاليف",
-      step3Desc: "احصل على خطة علاجية مفصلة، وتقدير شفاف للتكاليف، واستشارة مرئية مع الطبيب.",
-      step4Title: "04 — تجهيز السفر والتأشيرة",
-      step4Desc: "استخراج خطاب التأشيرة الطبية المعتمد، وحجز الإقامة الفندقية المناسبة للتعافي.",
-      step5Title: "05 — تلقي العلاج في الهند",
-      step5Desc: "استقبال VIP في المطار، ووجود منسق الرعاية الشخصي بجانبك في المستشفى.",
-      step6Title: "06 — استمرار المتابعة في بلدك",
-      step6Desc: "مزامنة سجلك الطبي الرقمي، وجلسات متابعة مرئية دورية مع طبيبك الجراح بعد العودة.",
+      eyebrow: "منهجية الرعاية",
+      heading: "كيف تعمل رعاية فيدارا في الهند",
+      subheading: "ست خطوات ميسرة ومدروسة من رسالتك الأولى حتى تمام تعافيك في بلدك — مع منسق طبي خاص يرافقك طوال الرحلة.",
+      step1Title: "إرسال الاستفسار",
+      step1Desc: "شارك تقاريرك الطبية واحتياجاتك العلاجية عبر استمارة آمنة وسريعة.",
+      step2Title: "الاستشارة وتدقيق الوثائق",
+      step2Desc: "يجمع منسقك الطبي السجلات الطبية ويتحقق من ملائمة الخيارات العلاجية.",
+      step3Title: "استشارة مرئية مع الطبيب",
+      step3Desc: "تحدث مباشرة مع كبار الاستشاريين المرشحين قبل اتخاذ قرار السفر.",
+      step4Title: "الخطة العلاجية وتجهيز السفر",
+      step4Desc: "خطة علاجية بأسعار محددة، وتأشيرة علاجية معتمدة، وجدولة المواعيد والسفر.",
+      step5Title: "السفر والرعاية بالمستشفى",
+      step5Desc: "استقبال بالمطار، إقامة فندقية مهيأة، مترجم خاص ومرافقة يومية بالمستشفى.",
+      step6Title: "التعافي والمتابعة",
+      step6Desc: "مراجعات دورية، تقارير الخروج الرقمية، ومتابعة طبية مستمرة بعد عودتك لمنزلك.",
+    },
+    popularTreatments: {
+      eyebrow: "تخصصاتنا الرائدة",
+      heading: "العلاجات الأكثر طلباً",
+      subheading: "خمس خدمات طبية ذات أولوية تقدمها مستشفيات هندية معتمدة دولياً بأسعار باقات شفافة ومحددة.",
+      startingFrom: "تبدأ من",
+      dental: "زراعة الأسنان",
+      cosmetic: "التجميل والترميم",
+      eye: "طب وجراحة العيون",
+      ortho: "جراحة العظام والمفاصل",
+      fertility: "علاج العقم وأطفال الأنابيب",
     },
     specialties: {
       eyebrow: "الخبرات الطبية التخصصية",
-      heading: "رعاية تخصصية فائقة في الهند",
-      subheading: "أحدث المراكز الطبية التخصصية التي تستقبل المرضى من مختلف دول العالم.",
+      heading: "رعاية تخصصية رائدة في شانديغار",
+      subheading: "نخبة من كبار الأطباء والاستشاريين ومستشفيات مدينة شانديغار الحاصلة على أعلى الاعتمادات العالمية.",
       viewAll: "عرض كافة التخصصات ←",
       avgStay: "متوسط الإقامة:",
       successRate: "نسبة النجاح:",
@@ -575,7 +637,7 @@ export const DICTIONARY: Record<Language, Translations> = {
     doctors: {
       eyebrow: "نخبة الأطباء الاستشاريين",
       heading: "الطبيب المناسب يصنع كل الفارق.",
-      subheading: "اختر من بين أمهر الجراحين والاستشاريين في الهند المتوافقين مع احتياجاتك ولغتك.",
+      subheading: "اختر من بين أمهر الجراحين والاستشاريين في شانديغار المتوافقين مع احتياجاتك ولغتك.",
       experience: "سنوات خبرة",
       languages: "اللغات:",
       videoAvailable: "🟢 استشارة مرئية متاحة عن بعد",
@@ -583,24 +645,31 @@ export const DICTIONARY: Record<Language, Translations> = {
       requestConsult: "طلب استشارة طبية",
     },
     hospitals: {
-      eyebrow: "مراكز التميز الطبي",
-      heading: "مستشفيات موثوقة. مهيأة لراحتك.",
-      subheading: "شراكات حصرية مع كبرى المستشفيات الحاصلة على أعلى الاعتمادات الدولية وتجهيزات غرف العمليات الذكية.",
-      exploreNetwork: "استكشف شبكة مستشفياتنا ←",
+      eyebrow: "شبكة مستشفيات شانديغار الكبرى",
+      heading: "أرقى مستشفيات شانديغار. مهيأة لراحتك.",
+      subheading: "شراكات حصرية مع كبرى المستشفيات في شانديغار وموهالي الحاصلة على الاعتمادات الدولية وتجهيزات الروبوت الجراحي.",
+      exploreNetwork: "استكشف مستشفيات شانديغار ←",
       beds: "سعة الأسرة",
       surgeons: "جراح متخصص",
       viewDetails: "تفاصيل وخدمات المستشفى ←",
     },
     cost: {
-      eyebrow: "شفافية التكاليف",
-      heading: "اعرف التكاليف بوضوح قبل السفر",
-      subheading: "نقدم باقات تقديرية واضحة ومفصلة لتمكينك من التخطيط المالي بكل ثقة وراحة بال.",
+      eyebrow: "شفافية التكاليف والثقة",
+      heading: "رعاية موثوقة، وتكاليف واضحة ومدروسة",
+      subheading: "مستشفيات معتمدة، باقات أسعار محددة، ومرافقة شخصية — مع مقارنة شفافة للتكاليف مع بلدك.",
       typicalStay: "مدة الإقامة بالمستشفى:",
       recoveryTime: "فترة التعافي المتوقعة:",
       estimatedCost: "نطاق التكلفة التقديري:",
-      compareTitle: "مقارنة التكاليف العالمية (تقديرية)",
-      disclaimer: "ملاحظة: هذه الأسعار استرشادية، ويتم تأكيد التكلفة النهائية بناءً على التقرير الطبي وخطة المستشفى.",
+      compareTitle: "مقارنة متوسط تكلفة العلاج (بالدولار الأمريكي)",
+      disclaimer: "ملاحظة: أسعار باقات استرشادية. يتم إصدار العروض المالية النهائية من المستشفى المعالج.",
       exploreBtn: "احسب تكلفة باقتك المخصصة ←",
+    },
+    blog: {
+      eyebrow: "دليل وإرشادات السفر الطبي",
+      heading: "خطط لرحلتك العلاجية بكل ثقة",
+      subheading: "أدلة شاملة حول التأشيرة العلاجية، التكاليف، فترة النقاهة واختيار المستشفى المناسب.",
+      viewAll: "عرض كافة المقالات والأدلة ←",
+      readTime: "دقائق للقراءة",
     },
     whyIndia: {
       eyebrow: "وجهة الرعاية الصحية العالمية",
@@ -645,7 +714,7 @@ export const DICTIONARY: Record<Language, Translations> = {
     },
     caseStudy: {
       eyebrow: "قصة نجاح واقعية",
-      heading: "من دبي إلى دلهي. رحلة رعاية منسقة بالكامل.",
+      heading: "من دبي إلى شانديغار. رحلة رعاية منسقة بالكامل.",
       subheading: "كيف أجرى أحمد ر. جراحة القلب المعقدة بنجاح تام وبأعلى درجات الراحة عبر منسقي فيدارا.",
       readMore: "قراءة المزيد من تجارب المرضى ←",
     },

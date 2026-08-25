@@ -61,13 +61,13 @@ export const QuickEntryCards = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-bold uppercase tracking-wider mb-3">
+          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-orange-500 mb-2">
             Quick Patient Entry
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0D3B3F] tracking-tight leading-tight">
             {t.quickEntry.heading}
           </h2>
-          <p className="mt-3 text-base text-slate-600">
+          <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto">
             {t.quickEntry.subheading}
           </p>
         </div>

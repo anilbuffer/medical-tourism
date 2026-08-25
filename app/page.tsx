@@ -6,17 +6,17 @@ import { TrustStrip } from "@/components/hero/TrustStrip";
 import { QuickEntryCards } from "@/components/intake/QuickEntryCards";
 import { IntakePreview } from "@/components/intake/IntakePreview";
 import { PatientJourney } from "@/components/journey/PatientJourney";
+import { PopularTreatments } from "@/components/medical/PopularTreatments";
 import { SpecialtiesSection } from "@/components/medical/SpecialtiesSection";
 import { DoctorsSection } from "@/components/medical/DoctorsSection";
 import { HospitalsSection } from "@/components/medical/HospitalsSection";
 import { CostTransparency } from "@/components/pricing/CostTransparency";
+import { BlogSection } from "@/components/resources/BlogSection";
 import { WhyIndiaSection } from "@/components/concierge/WhyIndiaSection";
 import { ConciergeSection } from "@/components/concierge/ConciergeSection";
 import { CoordinatorSpotlight } from "@/components/concierge/CoordinatorSpotlight";
 import { CaseStudySection } from "@/components/journey/CaseStudySection";
-import { MedicalOpinion } from "@/components/medical/MedicalOpinion";
 import { GlobalSupport } from "@/components/trust/GlobalSupport";
-import { WhatHappensNext } from "@/components/trust/WhatHappensNext";
 import { TrustSafety } from "@/components/trust/TrustSafety";
 import { FaqSection } from "@/components/trust/FaqSection";
 import { FinalCtaSection } from "@/components/trust/FinalCtaSection";
@@ -39,7 +39,10 @@ export default function HomePage() {
       {/* 05. The Patient Journey */}
       <PatientJourney />
 
-      {/* 06. Featured Specialties */}
+      {/* 06. Popular Treatments (Priority Services) */}
+      <PopularTreatments />
+
+      {/* 07. Featured Specialties */}
       <SpecialtiesSection />
 
       {/* 07. Featured Doctors */}
@@ -51,7 +54,10 @@ export default function HomePage() {
       {/* 09. Treatment Cost Transparency */}
       <CostTransparency />
 
-      {/* 10. Why India? Evidence-Driven Decision */}
+      {/* 10. Guides & Resources (Blog) */}
+      <BlogSection />
+
+      {/* 11. Why India? Evidence-Driven Decision */}
       <WhyIndiaSection />
 
       {/* 11. Premium Medical Concierge (Dark Luxury) */}
@@ -63,22 +69,16 @@ export default function HomePage() {
       {/* 13. Realistic Patient Journey Story (Case Study Proof) */}
       <CaseStudySection />
 
-      {/* 14. Medical Opinion Section */}
-      <MedicalOpinion />
-
-      {/* 15. International Patient Support */}
+      {/* 14. International Patient Support */}
       <GlobalSupport />
 
-      {/* 16. “What Happens After I Enquire?” */}
-      <WhatHappensNext />
-
-      {/* 17. Trust, Safety & Data Privacy */}
+      {/* 15. Trust, Safety & Data Privacy */}
       <TrustSafety />
 
-      {/* 18. FAQ Accordion */}
+      {/* 16. FAQ Accordion */}
       <FaqSection />
 
-      {/* 19. Final Conversion Section */}
+      {/* 17. Final Conversion Section */}
       <FinalCtaSection />
     </div>
   );

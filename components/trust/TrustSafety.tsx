@@ -33,11 +33,10 @@ export const TrustSafety = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/80 shadow-card">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-extrabold uppercase tracking-wider mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-teal-600" />
-              <span>{t.trust.eyebrow}</span>
+            <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-orange-500 mb-2">
+              {t.trust.eyebrow}
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0D3B3F] tracking-tight leading-tight">
               {t.trust.heading}
             </h2>
           </div>

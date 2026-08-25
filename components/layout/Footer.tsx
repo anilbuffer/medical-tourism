@@ -76,11 +76,6 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#opinion" className="hover:text-white transition-colors">
-                  Medical Second Opinion
-                </a>
-              </li>
-              <li>
                 <a href="#journey" className="hover:text-white transition-colors">
                   Concierge & Recovery
                 </a>

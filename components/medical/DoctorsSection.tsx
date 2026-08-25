@@ -32,14 +32,13 @@ export const DoctorsSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100/80 text-teal-800 text-xs font-extrabold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-teal-600" />
-            <span>{t.doctors.eyebrow}</span>
+          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-orange-500 mb-2">
+            {t.doctors.eyebrow}
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0D3B3F] tracking-tight leading-tight">
             {t.doctors.heading}
           </h2>
-          <p className="mt-3 text-base text-slate-600">
+          <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto">
             {t.doctors.subheading}
           </p>
         </div>
@@ -52,7 +51,7 @@ export const DoctorsSection = () => {
               onClick={() => setActiveSpecialty(spec)}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                 activeSpecialty === spec
-                  ? "bg-teal-600 text-white shadow-md shadow-teal-600/20"
+                  ? "bg-[#0D3B3F] text-white shadow-md shadow-teal-950/20"
                   : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
               }`}
             >
@@ -138,7 +137,7 @@ export const DoctorsSection = () => {
                     </button>
                     <button
                       onClick={() => openDoctorModal(doc)}
-                      className="py-2.5 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold transition-all text-center shadow-md shadow-teal-600/20"
+                      className="py-2.5 px-3 rounded-xl bg-[#0D3B3F] hover:bg-[#072428] text-white text-xs font-bold transition-all text-center shadow-md shadow-teal-950/20"
                     >
                       {t.doctors.requestConsult}
                     </button>
