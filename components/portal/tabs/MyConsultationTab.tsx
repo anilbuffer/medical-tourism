@@ -93,10 +93,10 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Header Banner */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold tracking-wider uppercase mb-2 border border-indigo-100">
-            <Video className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2ECDC5]/10 text-[#3F4EB4] text-xs font-bold tracking-wider uppercase mb-2 border border-[#2ECDC5]/20">
+            <Video className="w-3.5 h-3.5 text-[#2ECDC5]" />
             HD Telemedicine Consultation Desk
           </div>
           <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
@@ -109,7 +109,7 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
 
         <button
           onClick={() => setIsVideoRoomOpen(true)}
-          className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-[#0A8982] hover:from-indigo-500 hover:to-[#0C9F97] text-white font-black text-sm shadow-lg hover:shadow-xl transition-all flex items-center gap-2.5 shrink-0 animate-pulse"
+          className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-sm shadow-xl shadow-[#283593]/25 hover:scale-105 transition-all duration-300 flex items-center gap-2.5 shrink-0 cursor-pointer"
         >
           <Video className="w-5 h-5" />
           <span>Launch Telehealth Video Room</span>
@@ -119,9 +119,9 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
       {/* Main Consultation Details Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left 2 Cols: Doctor & Consultation Meta */}
-        <div className="lg:col-span-2 bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 space-y-6">
+        <div className="lg:col-span-2 bg-white/95 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 space-y-6">
           {/* Doctor Profile Card */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 p-5 bg-gradient-to-r from-slate-50 via-indigo-50/30 to-teal-50/20 rounded-3xl border border-slate-200">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 p-5 bg-gradient-to-r from-slate-50 via-indigo-50/20 to-teal-50/20 rounded-2xl border border-slate-200 shadow-xs">
             <div className="w-20 h-20 rounded-2xl overflow-hidden ring-4 ring-white shadow-md shrink-0">
               <img
                 src={
@@ -133,7 +133,7 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
               />
             </div>
             <div className="space-y-1">
-              <div className="text-xs font-extrabold text-indigo-600 uppercase tracking-wider">
+              <div className="text-xs font-extrabold text-[#3F4EB4] uppercase tracking-wider">
                 Assigned Specialist & Hospital Chair
               </div>
               <h3 className="text-xl font-black text-slate-900">
@@ -143,7 +143,7 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
                 {consult?.doctorSpecialty || "Chief Cardiac Surgeon & Chairman"}
               </p>
               <p className="text-xs text-slate-500 flex items-center gap-1.5 pt-0.5">
-                <Building2 className="w-3.5 h-3.5 text-teal-600" />
+                <Building2 className="w-3.5 h-3.5 text-[#2ECDC5]" />
                 <span>{consult?.doctorHospital || "Medanta - The Medicity, Gurugram"}</span>
               </p>
             </div>
@@ -151,9 +151,9 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
 
           {/* Appointment Schedule Time */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="p-4 bg-slate-50 rounded-2xl">
+            <div className="p-4 bg-slate-50/80 rounded-2xl border border-slate-100 hover:bg-slate-50 transition-colors">
               <div className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5 text-indigo-600" />
+                <Calendar className="w-3.5 h-3.5 text-[#3F4EB4]" />
                 <span>Scheduled Date</span>
               </div>
               <div className="text-sm font-extrabold text-slate-900 mt-1">
@@ -161,9 +161,9 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
               </div>
             </div>
 
-            <div className="p-4 bg-slate-50 rounded-2xl">
+            <div className="p-4 bg-slate-50/80 rounded-2xl border border-slate-100 hover:bg-slate-50 transition-colors">
               <div className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-teal-600" />
+                <Clock className="w-3.5 h-3.5 text-[#2ECDC5]" />
                 <span>Time & Duration</span>
               </div>
               <div className="text-sm font-extrabold text-slate-900 mt-1">
@@ -171,12 +171,12 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
               </div>
             </div>
 
-            <div className="p-4 bg-slate-50 rounded-2xl">
+            <div className="p-4 bg-slate-50/80 rounded-2xl border border-slate-100 hover:bg-slate-50 transition-colors">
               <div className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#2ECDC5]" />
                 <span>Security Protocol</span>
               </div>
-              <div className="text-sm font-extrabold text-emerald-700 mt-1">
+              <div className="text-sm font-extrabold text-[#3F4EB4] mt-1">
                 End-to-End Encrypted
               </div>
             </div>
@@ -190,13 +190,13 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
             {getOutcomeBadge(consult?.outcome || "suitable")}
 
             {consult?.outcomeNotes && (
-              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-xs text-slate-700 space-y-1.5">
+              <div className="p-4 bg-slate-50/80 rounded-2xl border border-slate-200 text-xs text-slate-700 space-y-1.5">
                 <strong className="block font-extrabold text-slate-900">
                   Doctor&apos;s Clinical Assessment Notes:
                 </strong>
                 <p className="leading-relaxed">{consult.outcomeNotes}</p>
                 {consult.prescriptionSummary && (
-                  <div className="mt-2 pt-2 border-t border-slate-200 text-teal-800 font-semibold">
+                  <div className="mt-2 pt-2 border-t border-slate-200 text-[#3F4EB4] font-semibold">
                     Advice / Pre-Op Instructions: {consult.prescriptionSummary}
                   </div>
                 )}
@@ -206,9 +206,9 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
         </div>
 
         {/* Right Col: Pre-Consultation Diagnostic Checklist */}
-        <div className="bg-white rounded-3xl p-6 sm:p-7 shadow-sm border border-slate-100 space-y-5">
+        <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-6 sm:p-7 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 space-y-5">
           <div className="flex items-center gap-2 pb-3 border-b border-slate-100">
-            <Sparkles className="w-4 h-4 text-teal-600" />
+            <Sparkles className="w-4 h-4 text-[#2ECDC5]" />
             <h3 className="font-extrabold text-slate-900 text-base">Pre-Consultation Checklist</h3>
           </div>
           <p className="text-xs text-slate-500">
@@ -224,7 +224,7 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
               { label: "High-speed camera & microphone connection verified", done: true },
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-2.5 text-xs text-slate-700">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-[#2ECDC5] shrink-0 mt-0.5" />
                 <span className="font-medium">{item.label}</span>
               </div>
             ))}
@@ -233,7 +233,7 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
           <div className="pt-4 border-t border-slate-100">
             <button
               onClick={() => setIsVideoRoomOpen(true)}
-              className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2"
+              className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
             >
               <Video className="w-4 h-4" />
               <span>Enter Video Meeting Room</span>

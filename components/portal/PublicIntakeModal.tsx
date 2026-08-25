@@ -289,7 +289,7 @@ export const PublicIntakeModal: React.FC<PublicIntakeModalProps> = ({
                   <select
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm text-slate-900 focus:bg-white focus:ring-2 focus:ring-teal-500 focus:outline-none transition-all"
+                    className="w-full bg-white border border-slate-300 rounded-2xl p-3.5 text-sm text-slate-900 font-bold shadow-xs focus:bg-white focus:ring-2 focus:ring-[#2ECDC5] focus:outline-none transition-all cursor-pointer"
                   >
                     <option value="United Kingdom">United Kingdom</option>
                     <option value="United States">United States</option>
@@ -318,7 +318,7 @@ export const PublicIntakeModal: React.FC<PublicIntakeModalProps> = ({
                   <select
                     value={treatmentCategory}
                     onChange={(e) => setTreatmentCategory(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm text-slate-900 font-medium focus:bg-white focus:ring-2 focus:ring-teal-500 focus:outline-none transition-all"
+                    className="w-full bg-white border border-slate-300 rounded-2xl p-3.5 text-sm text-slate-900 font-bold shadow-xs focus:bg-white focus:ring-2 focus:ring-[#2ECDC5] focus:outline-none transition-all cursor-pointer"
                   >
                     <option value="Cardiology & Cardiac Surgery">Cardiology & Cardiac Surgery</option>
                     <option value="Orthopedics & Robotic Joint Replacement">Orthopedics & Joint Replacement</option>
@@ -338,7 +338,7 @@ export const PublicIntakeModal: React.FC<PublicIntakeModalProps> = ({
                   <select
                     value={preferredContactTime}
                     onChange={(e) => setPreferredContactTime(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm text-slate-900 focus:bg-white focus:ring-2 focus:ring-teal-500 focus:outline-none transition-all"
+                    className="w-full bg-white border border-slate-300 rounded-2xl p-3.5 text-sm text-slate-900 font-bold shadow-xs focus:bg-white focus:ring-2 focus:ring-[#2ECDC5] focus:outline-none transition-all cursor-pointer"
                   >
                     <option value="Immediate / As soon as possible">Immediate / As soon as possible</option>
                     <option value="Morning (09:00 - 12:00)">Morning (09:00 - 12:00 local time)</option>

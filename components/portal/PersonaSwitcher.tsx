@@ -22,15 +22,15 @@ export const PersonaSwitcher: React.FC = () => {
   const getRoleIcon = (role: string) => {
     switch (role) {
       case "patient":
-        return <Users className="w-3.5 h-3.5 text-teal-600" />;
+        return <Users className="w-3.5 h-3.5 text-[#2ECDC5]" />;
       case "hospital_doctor":
-        return <Stethoscope className="w-3.5 h-3.5 text-indigo-600" />;
+        return <Stethoscope className="w-3.5 h-3.5 text-[#3F4EB4]" />;
       case "customer_support":
-        return <UserCheck className="w-3.5 h-3.5 text-blue-600" />;
+        return <UserCheck className="w-3.5 h-3.5 text-[#283593]" />;
       case "finance_accounts":
-        return <DollarSign className="w-3.5 h-3.5 text-emerald-600" />;
+        return <DollarSign className="w-3.5 h-3.5 text-[#2ECDC5]" />;
       case "super_admin":
-        return <Key className="w-3.5 h-3.5 text-purple-600" />;
+        return <Key className="w-3.5 h-3.5 text-[#3F4EB4]" />;
       default:
         return <Lock className="w-3.5 h-3.5 text-slate-500" />;
     }
@@ -57,10 +57,10 @@ export const PersonaSwitcher: React.FC = () => {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2.5 px-3.5 py-2 rounded-2xl bg-slate-100 hover:bg-slate-200/80 border border-slate-200/80 text-slate-900 text-xs font-bold shadow-xs transition-all cursor-pointer"
+        className="flex items-center gap-2.5 px-3.5 py-2 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-900 text-xs font-bold shadow-xs transition-all cursor-pointer"
         title="Switch Demonstration Persona & Test RBAC Row-Level Security"
       >
-        <div className="w-6 h-6 rounded-full overflow-hidden ring-1 ring-[#00897B]/40 shrink-0">
+        <div className="w-6 h-6 rounded-full overflow-hidden ring-1 ring-[#2ECDC5]/60 shrink-0">
           <img
             src={
               currentUser?.avatar ||
@@ -71,66 +71,80 @@ export const PersonaSwitcher: React.FC = () => {
           />
         </div>
         <div className="text-left hidden sm:block">
-          <div className="text-[10px] text-[#00897B] uppercase font-black tracking-wider leading-none">
+          <div className="text-[10px] text-[#3F4EB4] uppercase font-black tracking-wider leading-none">
             {getRoleLabel(currentUser?.role || "patient")}
           </div>
           <div className="text-xs font-extrabold text-slate-900 leading-tight">
             {currentUser?.name || "Select Persona"}
           </div>
         </div>
-        <ChevronDown className="w-3.5 h-3.5 text-slate-400 ml-1" />
+        <ChevronDown className={`w-3.5 h-3.5 text-slate-400 ml-1 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-72 bg-white/98 backdrop-blur-2xl rounded-3xl shadow-2xl border border-slate-200 p-2 z-50 animate-in fade-in zoom-in-95 duration-150 text-slate-900">
-          <div className="p-3 pb-2 text-[10px] uppercase tracking-wider font-extrabold text-slate-400 border-b border-slate-100">
-            Switch RBAC Persona
-          </div>
+        <>
+          {/* Click-outside backdrop */}
+          <div
+            className="fixed inset-0 z-40"
+            onClick={() => setIsOpen(false)}
+          />
 
-          <div className="space-y-1 pt-1">
-            {availableUsers.map((user) => {
-              const isSelected = currentUser?.id === user.id;
+          {/* 100% Solid Opaque Dropdown Card */}
+          <div className="absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.22)] border border-slate-200 p-2.5 z-50 animate-in fade-in zoom-in-95 duration-150 text-slate-900">
+            <div className="px-3 py-2.5 mb-1.5 text-[11px] uppercase tracking-wider font-extrabold text-slate-500 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-between">
+              <span>Switch RBAC Persona</span>
+              <span className="text-[10px] font-bold text-[#3F4EB4] bg-[#3F4EB4]/10 px-2 py-0.5 rounded-md">
+                Demo Mode
+              </span>
+            </div>
 
-              return (
-                <button
-                  key={user.id}
-                  onClick={() => {
-                    loginAs(user);
-                    setIsOpen(false);
-                  }}
-                  className={`w-full text-left p-2.5 rounded-2xl flex items-center justify-between transition-all cursor-pointer ${
-                    isSelected
-                      ? "bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] text-white font-bold shadow-md"
-                      : "hover:bg-slate-100 text-slate-700 hover:text-slate-900"
-                  }`}
-                >
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-full overflow-hidden ring-1 ring-slate-200 shrink-0">
-                      <img
-                        src={user.avatar}
-                        alt={user.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div>
-                      <div className="text-xs font-black leading-tight">{user.name}</div>
-                      <div
-                        className={`text-[10px] flex items-center gap-1 ${
-                          isSelected ? "text-cyan-100" : "text-[#00897B]"
-                        }`}
-                      >
-                        {getRoleIcon(user.role)}
-                        <span>{getRoleLabel(user.role)}</span>
+            <div className="space-y-1.5 max-h-[70vh] overflow-y-auto">
+              {availableUsers.map((user) => {
+                const isSelected = currentUser?.id === user.id;
+
+                return (
+                  <button
+                    key={user.id}
+                    onClick={() => {
+                      loginAs(user);
+                      setIsOpen(false);
+                    }}
+                    className={`w-full text-left p-2.5 rounded-xl flex items-center justify-between transition-all cursor-pointer border ${
+                      isSelected
+                        ? "bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] text-white font-bold shadow-md border-transparent"
+                        : "bg-slate-50/70 hover:bg-slate-100 text-slate-800 hover:text-slate-900 border-slate-100 hover:border-slate-200"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-full overflow-hidden ring-1 ring-slate-200 shrink-0">
+                        <img
+                          src={user.avatar}
+                          alt={user.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div>
+                        <div className={`text-xs font-black leading-tight ${isSelected ? "text-white" : "text-slate-900"}`}>
+                          {user.name}
+                        </div>
+                        <div
+                          className={`text-[10px] flex items-center gap-1 font-bold ${
+                            isSelected ? "text-cyan-100" : "text-[#3F4EB4]"
+                          }`}
+                        >
+                          {getRoleIcon(user.role)}
+                          <span>{getRoleLabel(user.role)}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {isSelected && <Check className="w-4 h-4 text-white" />}
-                </button>
-              );
-            })}
+                    {isSelected && <Check className="w-4 h-4 text-white shrink-0" />}
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </div>
   );

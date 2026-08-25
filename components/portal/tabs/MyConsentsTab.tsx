@@ -59,10 +59,10 @@ export const MyConsentsTab: React.FC<MyConsentsTabProps> = ({ patientCase }) => 
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Header Banner */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold tracking-wider uppercase mb-2 border border-emerald-100">
-            <Lock className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2ECDC5]/10 text-[#3F4EB4] text-xs font-bold tracking-wider uppercase mb-2 border border-[#2ECDC5]/20">
+            <Lock className="w-3.5 h-3.5 text-[#2ECDC5]" />
             Append-Only Audit Ledger
           </div>
           <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
@@ -73,8 +73,8 @@ export const MyConsentsTab: React.FC<MyConsentsTabProps> = ({ patientCase }) => 
           </p>
         </div>
 
-        <div className="flex items-center gap-3 bg-slate-50 px-4 py-2.5 rounded-2xl border border-slate-200 text-xs font-bold text-slate-700">
-          <ShieldCheck className="w-4 h-4 text-emerald-600" />
+        <div className="flex items-center gap-3 bg-slate-50/80 px-4 py-2.5 rounded-2xl border border-slate-200 text-xs font-bold text-slate-700">
+          <ShieldCheck className="w-4 h-4 text-[#2ECDC5]" />
           <span>{patientCase.consents.length} Consents Verified</span>
         </div>
       </div>
@@ -96,9 +96,9 @@ export const MyConsentsTab: React.FC<MyConsentsTabProps> = ({ patientCase }) => 
           return (
             <div
               key={type}
-              className={`p-5 rounded-3xl border transition-all ${
+              className={`p-5 rounded-2xl border transition-all duration-300 ${
                 isSigned
-                  ? "bg-white border-slate-200 shadow-sm"
+                  ? "bg-white/95 backdrop-blur-xl border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] hover:border-[#2ECDC5]/40"
                   : "bg-slate-50/70 border-dashed border-slate-300"
               }`}
             >
@@ -109,7 +109,7 @@ export const MyConsentsTab: React.FC<MyConsentsTabProps> = ({ patientCase }) => 
                   {meta.label}
                 </span>
                 {isSigned ? (
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <CheckCircle2 className="w-4 h-4 text-[#2ECDC5]" />
                 ) : (
                   <Clock className="w-4 h-4 text-slate-400" />
                 )}
@@ -118,7 +118,7 @@ export const MyConsentsTab: React.FC<MyConsentsTabProps> = ({ patientCase }) => 
               <p className="text-xs text-slate-500 mt-1 line-clamp-2">{meta.description}</p>
               <div className="mt-3 pt-3 border-t border-slate-100 text-[11px] font-semibold text-slate-600 flex items-center justify-between">
                 <span>Status:</span>
-                <span className={isSigned ? "text-emerald-700" : "text-amber-700"}>
+                <span className={isSigned ? "text-[#3F4EB4] font-bold" : "text-amber-700 font-medium"}>
                   {isSigned ? `${count} Active Record${count > 1 ? "s" : ""}` : "Captured at Stage"}
                 </span>
               </div>
@@ -128,9 +128,9 @@ export const MyConsentsTab: React.FC<MyConsentsTabProps> = ({ patientCase }) => 
       </div>
 
       {/* Consent Ledger Timeline */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 space-y-4">
+      <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 space-y-4">
         <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
-          <FileCheck2 className="w-5 h-5 text-teal-600" />
+          <FileCheck2 className="w-5 h-5 text-[#3F4EB4]" />
           <span>Immutable Consent History & Electronic Signatures</span>
         </h3>
 
@@ -144,7 +144,7 @@ export const MyConsentsTab: React.FC<MyConsentsTabProps> = ({ patientCase }) => 
             return (
               <div
                 key={consent.id}
-                className="p-5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-teal-200 transition-all flex flex-col md:flex-row md:items-center justify-between gap-4"
+                className="p-5 rounded-2xl bg-white/90 border border-slate-200 shadow-xs hover:-translate-y-0.5 hover:shadow-md hover:border-[#2ECDC5]/40 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4"
               >
                 <div className="space-y-2 max-w-2xl">
                   <div className="flex items-center gap-2 flex-wrap">

@@ -28,13 +28,14 @@ export const SuperAdminView: React.FC<SuperAdminViewProps> = ({ cases }) => {
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-slate-900 via-[#1F1D36] to-[#0E1F40] rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-400/20 text-purple-300 text-xs font-bold tracking-wider uppercase mb-2 border border-purple-400/30">
-            <Key className="w-3.5 h-3.5" />
+      <div className="bg-gradient-to-r from-[#071321] via-[#0B1E33] to-[#0D2642] rounded-2xl p-6 sm:p-8 text-white shadow-xl border border-slate-800/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-48 h-48 bg-[#3F4EB4]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative z-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3F4EB4]/20 text-[#2ECDC5] text-xs font-bold tracking-wider uppercase mb-2 border border-[#3F4EB4]/30">
+            <Key className="w-3.5 h-3.5 text-[#2ECDC5]" />
             Super Admin Control Center
           </div>
-          <h2 className="text-2xl font-black tracking-tight">
+          <h2 className="text-2xl font-black tracking-tight text-white">
             Enterprise RBAC Matrix & Audit Intelligence
           </h2>
           <p className="text-slate-300 text-xs sm:text-sm mt-1 max-w-2xl">
@@ -44,7 +45,7 @@ export const SuperAdminView: React.FC<SuperAdminViewProps> = ({ cases }) => {
 
         <button
           onClick={resetToDefaultData}
-          className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold flex items-center gap-2 border border-white/20 transition-all shrink-0"
+          className="relative z-10 px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white text-xs font-extrabold flex items-center gap-2 border border-white/20 shadow-md hover:shadow-lg transition-all duration-300 shrink-0 cursor-pointer"
         >
           <RotateCcw className="w-3.5 h-3.5 text-amber-300" />
           <span>Reset Demo Store to Factory Defaults</span>
@@ -52,9 +53,9 @@ export const SuperAdminView: React.FC<SuperAdminViewProps> = ({ cases }) => {
       </div>
 
       {/* RBAC Enforcement Summary Table */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 space-y-4">
+      <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 space-y-4">
         <h3 className="font-black text-slate-900 text-lg flex items-center gap-2">
-          <Lock className="w-5 h-5 text-purple-600" />
+          <Lock className="w-5 h-5 text-[#3F4EB4]" />
           <span>Role-Based Access Control (RBAC) Matrix Policy</span>
         </h3>
 
@@ -70,47 +71,47 @@ export const SuperAdminView: React.FC<SuperAdminViewProps> = ({ cases }) => {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 font-medium text-slate-700">
-              <tr>
-                <td className="py-3 font-bold text-slate-900">Public / Unauthenticated</td>
-                <td className="py-3">Intake form only, no login</td>
-                <td className="py-3 text-slate-400">None</td>
-                <td className="py-3 text-slate-400">None</td>
-                <td className="py-3 text-purple-700 font-bold">Client & API Route</td>
+              <tr className="hover:bg-slate-50/80 transition-colors">
+                <td className="py-3.5 font-bold text-slate-900">Public / Unauthenticated</td>
+                <td className="py-3.5">Intake form only, no login</td>
+                <td className="py-3.5 text-slate-400">None</td>
+                <td className="py-3.5 text-slate-400">None</td>
+                <td className="py-3.5 text-[#3F4EB4] font-bold">Client & API Route</td>
               </tr>
-              <tr>
-                <td className="py-3 font-bold text-slate-900">Patient Portal</td>
-                <td className="py-3">Own case, own records only</td>
-                <td className="py-3 text-emerald-700">Own records</td>
-                <td className="py-3 text-emerald-700">Own staged payments</td>
-                <td className="py-3 text-purple-700 font-bold">Database RLS Policy</td>
+              <tr className="hover:bg-slate-50/80 transition-colors">
+                <td className="py-3.5 font-bold text-slate-900">Patient Portal</td>
+                <td className="py-3.5">Own case, own records only</td>
+                <td className="py-3.5 text-emerald-700">Own records</td>
+                <td className="py-3.5 text-emerald-700">Own staged payments</td>
+                <td className="py-3.5 text-[#3F4EB4] font-bold">Database RLS Policy</td>
               </tr>
-              <tr>
-                <td className="py-3 font-bold text-slate-900">Hospital / Doctor</td>
-                <td className="py-3">Only cases assigned to hospital/doctor</td>
-                <td className="py-3 text-emerald-700 font-bold">Full Read / Write</td>
-                <td className="py-3 text-slate-400">Restricted</td>
-                <td className="py-3 text-purple-700 font-bold">Database RLS Policy</td>
+              <tr className="hover:bg-slate-50/80 transition-colors">
+                <td className="py-3.5 font-bold text-slate-900">Hospital / Doctor</td>
+                <td className="py-3.5">Only cases assigned to hospital/doctor</td>
+                <td className="py-3.5 text-emerald-700 font-bold">Full Read / Write</td>
+                <td className="py-3.5 text-slate-400">Restricted</td>
+                <td className="py-3.5 text-[#3F4EB4] font-bold">Database RLS Policy</td>
               </tr>
-              <tr>
-                <td className="py-3 font-bold text-slate-900">Customer Support (CS)</td>
-                <td className="py-3">All cases in assigned queue(s)</td>
-                <td className="py-3 text-amber-700">View-only (No Edit)</td>
-                <td className="py-3 text-slate-700">View Quote status</td>
-                <td className="py-3 text-purple-700 font-bold">Field Redaction Filter</td>
+              <tr className="hover:bg-slate-50/80 transition-colors">
+                <td className="py-3.5 font-bold text-slate-900">Customer Support (CS)</td>
+                <td className="py-3.5">All cases in assigned queue(s)</td>
+                <td className="py-3.5 text-amber-700">View-only (No Edit)</td>
+                <td className="py-3.5 text-slate-700">View Quote status</td>
+                <td className="py-3.5 text-[#3F4EB4] font-bold">Field Redaction Filter</td>
               </tr>
-              <tr>
-                <td className="py-3 font-bold text-slate-900">Finance & Accounts</td>
-                <td className="py-3">All payment records across cases</td>
-                <td className="py-3 text-rose-700">Redacted (Unless dispute)</td>
-                <td className="py-3 text-emerald-700 font-bold">Full Escrow Access</td>
-                <td className="py-3 text-purple-700 font-bold">Query Sanitizer</td>
+              <tr className="hover:bg-slate-50/80 transition-colors">
+                <td className="py-3.5 font-bold text-slate-900">Finance & Accounts</td>
+                <td className="py-3.5">All payment records across cases</td>
+                <td className="py-3.5 text-rose-700">Redacted (Unless dispute)</td>
+                <td className="py-3.5 text-emerald-700 font-bold">Full Escrow Access</td>
+                <td className="py-3.5 text-[#3F4EB4] font-bold">Query Sanitizer</td>
               </tr>
-              <tr>
-                <td className="py-3 font-bold text-slate-900">Super Admin</td>
-                <td className="py-3">Full system configuration & audit</td>
-                <td className="py-3 text-emerald-700 font-bold">Full Access</td>
-                <td className="py-3 text-emerald-700 font-bold">Full Access</td>
-                <td className="py-3 text-purple-700 font-bold">Unrestricted Master</td>
+              <tr className="hover:bg-slate-50/80 transition-colors">
+                <td className="py-3.5 font-bold text-slate-900">Super Admin</td>
+                <td className="py-3.5">Full system configuration & audit</td>
+                <td className="py-3.5 text-emerald-700 font-bold">Full Access</td>
+                <td className="py-3.5 text-emerald-700 font-bold">Full Access</td>
+                <td className="py-3.5 text-[#3F4EB4] font-bold">Unrestricted Master</td>
               </tr>
             </tbody>
           </table>
@@ -118,9 +119,9 @@ export const SuperAdminView: React.FC<SuperAdminViewProps> = ({ cases }) => {
       </div>
 
       {/* Audit Log Stream */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 space-y-4">
+      <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 space-y-4">
         <h3 className="font-black text-slate-900 text-lg flex items-center gap-2">
-          <Activity className="w-5 h-5 text-teal-600" />
+          <Activity className="w-5 h-5 text-[#2ECDC5]" />
           <span>System Security & Action Audit Trail</span>
         </h3>
 
@@ -128,10 +129,10 @@ export const SuperAdminView: React.FC<SuperAdminViewProps> = ({ cases }) => {
           {allAuditLogs.map((log) => (
             <div
               key={log.id}
-              className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs flex items-center justify-between gap-4 font-mono"
+              className="p-3 bg-slate-50/80 rounded-2xl border border-slate-200 text-xs flex items-center justify-between gap-4 font-mono hover:bg-slate-50 transition-colors"
             >
               <div>
-                <span className="font-bold text-purple-700">[{log.action}]</span>{" "}
+                <span className="font-bold text-[#3F4EB4]">[{log.action}]</span>{" "}
                 <span className="text-slate-800 font-sans">{log.details}</span>
               </div>
               <div className="text-slate-400 text-[10px] text-right shrink-0">

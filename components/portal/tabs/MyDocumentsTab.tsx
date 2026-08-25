@@ -115,10 +115,10 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Top Header Card */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold tracking-wider uppercase mb-2 border border-teal-100">
-            <ShieldCheck className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2ECDC5]/10 text-[#3F4EB4] text-xs font-bold tracking-wider uppercase mb-2 border border-[#2ECDC5]/20">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#2ECDC5]" />
             HIPAA & DPDP Compliant Vault
           </div>
           <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
@@ -131,7 +131,7 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
 
         <button
           onClick={openNewUpload}
-          className="px-5 py-3 rounded-2xl bg-gradient-to-r from-[#0E1F40] to-[#0A8982] hover:from-[#132A56] hover:to-[#0C9F97] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center gap-2 shrink-0"
+          className="px-5 py-3 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-bold text-sm shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-2 shrink-0 cursor-pointer"
         >
           <Upload className="w-4 h-4" />
           <span>Upload New Record</span>
@@ -150,10 +150,10 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
           <button
             key={f.id}
             onClick={() => setFilterCategory(f.id)}
-            className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
+            className={`px-4 py-2.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
               filterCategory === f.id
-                ? "bg-[#0E1F40] text-white shadow-sm"
-                : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50"
+                ? "bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] text-white shadow-md font-extrabold"
+                : "bg-white/95 backdrop-blur-xl text-slate-600 border border-slate-200 shadow-xs hover:border-[#2ECDC5]/40 hover:bg-slate-50"
             }`}
           >
             {f.label}
@@ -163,9 +163,9 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
 
       {/* Documents List */}
       {filteredDocs.length === 0 ? (
-        <div className="bg-white rounded-3xl p-12 text-center border border-dashed border-slate-200 space-y-4">
-          <div className="w-16 h-16 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center mx-auto">
-            <FileText className="w-8 h-8" />
+        <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-12 text-center border border-dashed border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] space-y-4">
+          <div className="w-16 h-16 rounded-full bg-[#2ECDC5]/10 text-[#3F4EB4] flex items-center justify-center mx-auto">
+            <FileText className="w-8 h-8 text-[#2ECDC5]" />
           </div>
           <div>
             <h3 className="text-lg font-bold text-slate-800">No documents found in this category</h3>
@@ -175,7 +175,7 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
           </div>
           <button
             onClick={openNewUpload}
-            className="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs inline-flex items-center gap-2"
+            className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-bold text-xs inline-flex items-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer"
           >
             <Upload className="w-4 h-4" />
             Upload Document Now
@@ -194,12 +194,12 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
             return (
               <div
                 key={doc.id}
-                className="bg-white rounded-3xl p-5 sm:p-6 shadow-sm border border-slate-100 hover:border-teal-200 transition-all space-y-4"
+                className="bg-white/95 backdrop-blur-xl rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] hover:border-[#2ECDC5]/40 transition-all duration-300 space-y-4"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div className="flex items-start gap-3.5">
-                    <div className="w-12 h-12 rounded-2xl bg-slate-100 text-slate-700 flex items-center justify-center shrink-0 font-bold">
-                      <FileText className="w-6 h-6 text-teal-700" />
+                    <div className="w-12 h-12 rounded-2xl bg-[#2ECDC5]/10 text-[#3F4EB4] flex items-center justify-center shrink-0 font-bold border border-[#2ECDC5]/20">
+                      <FileText className="w-6 h-6 text-[#3F4EB4]" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2 flex-wrap">
@@ -222,7 +222,7 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
                     {doc.versions.length > 1 && (
                       <button
                         onClick={() => setSelectedDocForHistory(doc)}
-                        className="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center gap-1.5 transition-all"
+                        className="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer"
                         title="View Version History"
                       >
                         <History className="w-3.5 h-3.5 text-slate-500" />
@@ -232,9 +232,9 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
 
                     <button
                       onClick={() => openReuploadVersion(doc)}
-                      className="px-3.5 py-2 rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-800 font-bold text-xs flex items-center gap-1.5 border border-teal-200 transition-all"
+                      className="px-3.5 py-2 rounded-xl bg-[#2ECDC5]/10 hover:bg-[#2ECDC5]/20 text-[#3F4EB4] font-bold text-xs flex items-center gap-1.5 border border-[#2ECDC5]/30 transition-all cursor-pointer"
                     >
-                      <Upload className="w-3.5 h-3.5 text-teal-600" />
+                      <Upload className="w-3.5 h-3.5 text-[#2ECDC5]" />
                       <span>Re-upload New Ver</span>
                     </button>
                   </div>
@@ -314,14 +314,14 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value as any)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm text-slate-900 focus:bg-white focus:ring-2 focus:ring-teal-500 focus:outline-none font-medium"
+                    className="w-full bg-white border border-slate-300 rounded-2xl p-3.5 text-sm text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#2ECDC5] focus:outline-none font-bold shadow-xs cursor-pointer"
                   >
-                    <option value="scan_imaging">Diagnostic Imaging (MRI, CT, DICOM, X-Ray)</option>
-                    <option value="medical_report">Clinical & Pathology Lab Reports</option>
-                    <option value="prescription">Prior Prescriptions & Physician Notes</option>
-                    <option value="passport_id">Passport Bio Page / Visa Documents</option>
-                    <option value="prior_history">Previous Discharge Summaries</option>
-                    <option value="other">Other Supporting Documents</option>
+                    <option value="scan_imaging" className="bg-white text-slate-900 font-medium">Diagnostic Imaging (MRI, CT, DICOM, X-Ray)</option>
+                    <option value="medical_report" className="bg-white text-slate-900 font-medium">Clinical & Pathology Lab Reports</option>
+                    <option value="prescription" className="bg-white text-slate-900 font-medium">Prior Prescriptions & Physician Notes</option>
+                    <option value="passport_id" className="bg-white text-slate-900 font-medium">Passport Bio Page / Visa Documents</option>
+                    <option value="prior_history" className="bg-white text-slate-900 font-medium">Previous Discharge Summaries</option>
+                    <option value="other" className="bg-white text-slate-900 font-medium">Other Supporting Documents</option>
                   </select>
                 </div>
               )}

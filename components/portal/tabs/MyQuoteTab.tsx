@@ -90,10 +90,10 @@ export const MyQuoteTab: React.FC<MyQuoteTabProps> = ({ patientCase, onNavigateT
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Header Card */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold tracking-wider uppercase mb-2 border border-emerald-100">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2ECDC5]/10 text-[#3F4EB4] text-xs font-bold tracking-wider uppercase mb-2 border border-[#2ECDC5]/20">
+            <Sparkles className="w-3.5 h-3.5 text-[#2ECDC5]" />
             Official Itemized Package Quote
           </div>
           <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
@@ -107,19 +107,19 @@ export const MyQuoteTab: React.FC<MyQuoteTabProps> = ({ patientCase, onNavigateT
 
         {/* Status Badge */}
         {isAccepted && (
-          <div className="px-4 py-2 rounded-2xl bg-emerald-100 text-emerald-800 font-extrabold text-xs flex items-center gap-2 border border-emerald-300">
-            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+          <div className="px-4 py-2.5 rounded-2xl bg-[#2ECDC5]/15 text-[#3F4EB4] font-extrabold text-xs flex items-center gap-2 border border-[#2ECDC5]/30">
+            <CheckCircle2 className="w-4 h-4 text-[#2ECDC5]" />
             <span>Quote Accepted & Payment Stage Active</span>
           </div>
         )}
         {isDeclined && (
-          <div className="px-4 py-2 rounded-2xl bg-amber-100 text-amber-800 font-extrabold text-xs flex items-center gap-2 border border-amber-300">
+          <div className="px-4 py-2.5 rounded-2xl bg-amber-100 text-amber-800 font-extrabold text-xs flex items-center gap-2 border border-amber-300">
             <Clock className="w-4 h-4 text-amber-600" />
             <span>Routed to Care Nurture Queue</span>
           </div>
         )}
         {isChangeRequested && (
-          <div className="px-4 py-2 rounded-2xl bg-blue-100 text-blue-800 font-extrabold text-xs flex items-center gap-2 border border-blue-300">
+          <div className="px-4 py-2.5 rounded-2xl bg-blue-100 text-blue-800 font-extrabold text-xs flex items-center gap-2 border border-blue-300">
             <HelpCircle className="w-4 h-4 text-blue-600" />
             <span>Revision Under Review by CS</span>
           </div>
@@ -129,49 +129,49 @@ export const MyQuoteTab: React.FC<MyQuoteTabProps> = ({ patientCase, onNavigateT
       {/* Main Breakdown Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left 2 Cols: Itemized Line Items & Inclusions */}
-        <div className="lg:col-span-2 bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 space-y-6">
+        <div className="lg:col-span-2 bg-white/95 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 space-y-6">
           <div className="flex items-center justify-between pb-4 border-b border-slate-100">
             <h3 className="font-extrabold text-slate-900 text-lg">Itemized Cost Structure (USD)</h3>
-            <span className="text-xs text-slate-500">Transparent Fixed-Price Guarantee</span>
+            <span className="text-xs text-slate-500 font-medium">Transparent Fixed-Price Guarantee</span>
           </div>
 
           <div className="space-y-3">
-            <div className="flex items-center justify-between p-3.5 bg-slate-50 rounded-2xl text-xs sm:text-sm">
+            <div className="flex items-center justify-between p-3.5 bg-slate-50/80 rounded-2xl border border-slate-100 text-xs sm:text-sm hover:bg-slate-50 transition-colors">
               <span className="font-semibold text-slate-700">Hospital Charges & Operating Theatre Fees</span>
               <span className="font-extrabold text-slate-900">
                 ${quote.costBreakdown.hospitalChargesUsd.toLocaleString()}
               </span>
             </div>
 
-            <div className="flex items-center justify-between p-3.5 bg-slate-50 rounded-2xl text-xs sm:text-sm">
+            <div className="flex items-center justify-between p-3.5 bg-slate-50/80 rounded-2xl border border-slate-100 text-xs sm:text-sm hover:bg-slate-50 transition-colors">
               <span className="font-semibold text-slate-700">Lead Surgeon Fee & Anesthesiology Team</span>
               <span className="font-extrabold text-slate-900">
                 ${quote.costBreakdown.surgeonAndAnesthesiaUsd.toLocaleString()}
               </span>
             </div>
 
-            <div className="flex items-center justify-between p-3.5 bg-slate-50 rounded-2xl text-xs sm:text-sm">
+            <div className="flex items-center justify-between p-3.5 bg-slate-50/80 rounded-2xl border border-slate-100 text-xs sm:text-sm hover:bg-slate-50 transition-colors">
               <span className="font-semibold text-slate-700">Implants, Consumables & High-End Bioprosthetic Valve</span>
               <span className="font-extrabold text-slate-900">
                 ${quote.costBreakdown.implantsAndMedicationUsd.toLocaleString()}
               </span>
             </div>
 
-            <div className="flex items-center justify-between p-3.5 bg-slate-50 rounded-2xl text-xs sm:text-sm">
+            <div className="flex items-center justify-between p-3.5 bg-slate-50/80 rounded-2xl border border-slate-100 text-xs sm:text-sm hover:bg-slate-50 transition-colors">
               <span className="font-semibold text-slate-700">Hospital Stay (1 Night Cardiac ICU + 3 Nights Deluxe Room)</span>
               <span className="font-extrabold text-slate-900">
                 ${quote.costBreakdown.stayAndIcuUsd.toLocaleString()}
               </span>
             </div>
 
-            <div className="flex items-center justify-between p-3.5 bg-slate-50 rounded-2xl text-xs sm:text-sm">
+            <div className="flex items-center justify-between p-3.5 bg-slate-50/80 rounded-2xl border border-slate-100 text-xs sm:text-sm hover:bg-slate-50 transition-colors">
               <span className="font-semibold text-slate-700">VIP Concierge, Airport Transfers & Medical Interpreter</span>
               <span className="font-extrabold text-slate-900">
                 ${quote.costBreakdown.vipConciergeAndLogisticsUsd.toLocaleString()}
               </span>
             </div>
 
-            <div className="flex items-center justify-between p-3.5 bg-slate-50 rounded-2xl text-xs sm:text-sm">
+            <div className="flex items-center justify-between p-3.5 bg-slate-50/80 rounded-2xl border border-slate-100 text-xs sm:text-sm hover:bg-slate-50 transition-colors">
               <span className="font-semibold text-slate-700">Companion In-Room Stay & Meal Plan</span>
               <span className="font-extrabold text-slate-900">
                 ${quote.costBreakdown.companionStayUsd.toLocaleString()}
@@ -179,14 +179,15 @@ export const MyQuoteTab: React.FC<MyQuoteTabProps> = ({ patientCase, onNavigateT
             </div>
           </div>
 
-          {/* Total Cost Highlight */}
-          <div className="p-5 bg-gradient-to-r from-[#0E1F40] to-[#0A8982] rounded-3xl text-white flex items-center justify-between shadow-lg">
-            <div>
-              <div className="text-xs uppercase tracking-wider text-teal-200 font-bold">Total All-Inclusive Package</div>
+          {/* Total Cost Highlight Banner */}
+          <div className="p-6 bg-gradient-to-r from-[#071321] via-[#0B1E33] to-[#0D2642] rounded-2xl text-white flex items-center justify-between shadow-xl border border-slate-800/80 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-[#2ECDC5]/15 rounded-full blur-2xl pointer-events-none" />
+            <div className="relative z-10">
+              <div className="text-xs uppercase tracking-wider text-[#2ECDC5] font-bold">Total All-Inclusive Package</div>
               <div className="text-xs text-slate-300 mt-0.5">No hidden emergency surcharges or extra bed fees</div>
             </div>
-            <div className="text-3xl font-black text-white">
-              ${quote.totalCostUsd.toLocaleString()} <span className="text-xs font-bold text-teal-300">USD</span>
+            <div className="relative z-10 text-3xl font-black text-white">
+              ${quote.totalCostUsd.toLocaleString()} <span className="text-xs font-bold text-[#2ECDC5]">USD</span>
             </div>
           </div>
 
@@ -225,16 +226,16 @@ export const MyQuoteTab: React.FC<MyQuoteTabProps> = ({ patientCase, onNavigateT
         </div>
 
         {/* Right Col: Decision Actions & Policy */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 flex flex-col justify-between space-y-6">
+        <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 flex flex-col justify-between space-y-6">
           <div className="space-y-4">
             <h3 className="font-black text-slate-900 text-lg">Patient Package Decision</h3>
             <p className="text-xs text-slate-500 leading-relaxed">
               Once you accept this quote, your case moves to Staged Payments (15% Deposit) to confirm hospital reservation and generate your official Indian Medical Visa invitation letter.
             </p>
 
-            <div className="p-4 bg-teal-50/70 rounded-2xl border border-teal-100 text-xs text-teal-900 space-y-2">
+            <div className="p-4 bg-[#2ECDC5]/10 rounded-2xl border border-[#2ECDC5]/20 text-xs text-[#3F4EB4] space-y-2">
               <div className="font-bold flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-teal-700" />
+                <ShieldCheck className="w-4 h-4 text-[#2ECDC5]" />
                 <span>Escrow Refund Guarantee</span>
               </div>
               <p className="text-slate-700 leading-relaxed">
@@ -248,7 +249,7 @@ export const MyQuoteTab: React.FC<MyQuoteTabProps> = ({ patientCase, onNavigateT
             {!isAccepted && (
               <button
                 onClick={handleAccept}
-                className="w-full py-4 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white font-extrabold text-sm shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
+                className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-sm shadow-xl shadow-[#283593]/25 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Check className="w-5 h-5" />
                 <span>Accept Quote & Proceed to Staged Payment</span>
@@ -258,7 +259,7 @@ export const MyQuoteTab: React.FC<MyQuoteTabProps> = ({ patientCase, onNavigateT
             {isAccepted && (
               <button
                 onClick={onNavigateToPayments}
-                className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#0E1F40] to-[#0A8982] text-white font-extrabold text-sm shadow-lg transition-all flex items-center justify-center gap-2"
+                className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-sm shadow-xl shadow-[#283593]/25 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <CreditCard className="w-5 h-5" />
                 <span>Go to Staged Payments Dashboard</span>
@@ -268,13 +269,13 @@ export const MyQuoteTab: React.FC<MyQuoteTabProps> = ({ patientCase, onNavigateT
             <div className="grid grid-cols-2 gap-2">
               <button
                 onClick={() => setChangeRequestModalOpen(true)}
-                className="py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs transition-all"
+                className="py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs transition-all cursor-pointer"
               >
                 Request Changes
               </button>
               <button
                 onClick={() => setDeclineModalOpen(true)}
-                className="py-2.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs border border-rose-200 transition-all"
+                className="py-2.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs border border-rose-200 transition-all cursor-pointer"
               >
                 Decline Quote
               </button>

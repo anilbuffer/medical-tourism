@@ -57,13 +57,14 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-[#0E1F40] via-[#1A365D] to-teal-800 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-400/20 text-teal-300 text-xs font-bold tracking-wider uppercase mb-2 border border-teal-400/30">
+      <div className="bg-gradient-to-r from-[#071321] via-[#0B1E33] to-[#0D2642] rounded-2xl p-6 sm:p-8 text-white shadow-xl border border-slate-800/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-48 h-48 bg-[#2ECDC5]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative z-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2ECDC5]/15 text-[#2ECDC5] text-xs font-bold tracking-wider uppercase mb-2 border border-[#2ECDC5]/30">
             <Users className="w-3.5 h-3.5" />
             Customer Support (CS) Queue Desk
           </div>
-          <h2 className="text-2xl font-black tracking-tight">
+          <h2 className="text-2xl font-black tracking-tight text-white">
             International Patient Triage & SLA Monitor
           </h2>
           <p className="text-slate-300 text-xs sm:text-sm mt-1 max-w-2xl">
@@ -72,8 +73,8 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
           </p>
         </div>
 
-        <div className="flex items-center gap-3 bg-white/10 px-4 py-2.5 rounded-2xl backdrop-blur-sm border border-white/10 text-xs">
-          <Clock className="w-4 h-4 text-amber-300" />
+        <div className="relative z-10 flex items-center gap-3 bg-white/10 px-4 py-2.5 rounded-2xl backdrop-blur-md border border-white/15 text-xs font-bold text-slate-200">
+          <Clock className="w-4 h-4 text-[#2ECDC5]" />
           <span>Tier-1 SLA Target: &lt; 45m</span>
         </div>
       </div>
@@ -81,12 +82,12 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
       {/* Grid: Cases Queue & Case Inspector */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Col: Cases List */}
-        <div className="bg-white rounded-3xl p-5 shadow-sm border border-slate-100 space-y-3">
+        <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-5 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 space-y-3">
           <div className="flex items-center justify-between pb-3 border-b border-slate-100">
             <h3 className="font-extrabold text-slate-900 text-sm">
               Assigned Queue ({cases.length} Cases)
             </h3>
-            <span className="text-[11px] text-teal-700 font-bold bg-teal-50 px-2 py-0.5 rounded-full">
+            <span className="text-[11px] text-[#3F4EB4] font-bold bg-[#2ECDC5]/15 px-2.5 py-0.5 rounded-full border border-[#2ECDC5]/20">
               Live Feed
             </span>
           </div>
@@ -100,17 +101,17 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                 <button
                   key={c.id}
                   onClick={() => onSelectCase(c.id)}
-                  className={`w-full text-left p-4 rounded-2xl border transition-all ${
+                  className={`w-full text-left p-4 rounded-2xl border transition-all duration-300 cursor-pointer ${
                     isSelected
-                      ? "bg-slate-900 text-white border-slate-900 shadow-md"
-                      : "bg-slate-50 hover:bg-slate-100 text-slate-800 border-slate-200"
+                      ? "bg-gradient-to-r from-[#071321] via-[#0B1E33] to-[#0D2642] text-white border-slate-800 shadow-lg"
+                      : "bg-white hover:bg-slate-50 text-slate-800 border-slate-200 shadow-2xs hover:-translate-y-0.5"
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-bold text-teal-400">{c.id}</span>
+                    <span className="font-mono text-xs font-bold text-[#2ECDC5]">{c.id}</span>
                     <span
-                      className={`text-[10px] font-extrabold uppercase px-2 py-0.5 rounded ${
-                        isSelected ? "bg-white/20 text-white" : "bg-teal-100 text-teal-800"
+                      className={`text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full ${
+                        isSelected ? "bg-white/20 text-white" : "bg-[#2ECDC5]/15 text-[#3F4EB4]"
                       }`}
                     >
                       {c.stage.replace("_", " ")}
@@ -123,12 +124,12 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                   </div>
 
                   <div className="mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[11px]">
-                    <span className="flex items-center gap-1 text-amber-400">
+                    <span className="flex items-center gap-1 text-amber-400 font-semibold">
                       <Clock className="w-3 h-3" />
                       <span>SLA: 45m</span>
                     </span>
                     {pendingDocs > 0 && (
-                      <span className="font-bold text-teal-300">
+                      <span className="font-bold text-[#2ECDC5]">
                         {pendingDocs} doc{pendingDocs > 1 ? "s" : ""} pending review
                       </span>
                     )}
@@ -141,10 +142,10 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
 
         {/* Right 2 Cols: Selected Case Action & Document Review Desk */}
         {activeCase && (
-          <div className="lg:col-span-2 bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 space-y-6">
+          <div className="lg:col-span-2 bg-white/95 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
               <div>
-                <span className="text-xs font-mono font-bold text-teal-700">{activeCase.id}</span>
+                <span className="text-xs font-mono font-bold text-[#3F4EB4]">{activeCase.id}</span>
                 <h3 className="text-xl font-black text-slate-900">{activeCase.patientName}</h3>
                 <div className="text-xs text-slate-500 flex items-center gap-3 mt-0.5">
                   <span>Country: <strong>{activeCase.patientCountry}</strong></span>
@@ -159,18 +160,18 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                 <select
                   value={activeCase.stage}
                   onChange={(e) => updateCaseStage(activeCase.id, e.target.value as any)}
-                  className="bg-slate-50 border border-slate-200 text-xs font-bold text-slate-900 rounded-xl p-2 focus:bg-white"
+                  className="bg-white border border-slate-300 text-xs font-extrabold text-slate-900 rounded-2xl p-2.5 shadow-xs focus:ring-2 focus:ring-[#2ECDC5] focus:outline-none transition-all cursor-pointer"
                 >
-                  <option value="lead">Lead</option>
-                  <option value="contacted">Contacted</option>
-                  <option value="documents_collected">Documents Collected</option>
-                  <option value="hospital_handover">Hospital Handover</option>
-                  <option value="consultation">Consultation</option>
-                  <option value="quote">Quote Sent</option>
-                  <option value="payment">Payment Stage</option>
-                  <option value="booking">Booking / Visa</option>
-                  <option value="treatment">Treatment In-Hospital</option>
-                  <option value="followup">Follow-up</option>
+                  <option value="lead" className="bg-white text-slate-900 font-bold">Lead</option>
+                  <option value="contacted" className="bg-white text-slate-900 font-bold">Contacted</option>
+                  <option value="documents_collected" className="bg-white text-slate-900 font-bold">Documents Collected</option>
+                  <option value="hospital_handover" className="bg-white text-slate-900 font-bold">Hospital Handover</option>
+                  <option value="consultation" className="bg-white text-slate-900 font-bold">Consultation</option>
+                  <option value="quote" className="bg-white text-slate-900 font-bold">Quote Sent</option>
+                  <option value="payment" className="bg-white text-slate-900 font-bold">Payment Stage</option>
+                  <option value="booking" className="bg-white text-slate-900 font-bold">Booking / Visa</option>
+                  <option value="treatment" className="bg-white text-slate-900 font-bold">Treatment In-Hospital</option>
+                  <option value="followup" className="bg-white text-slate-900 font-bold">Follow-up</option>
                 </select>
               </div>
             </div>
@@ -178,12 +179,12 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
             {/* Document Review Section */}
             <div className="space-y-4">
               <h4 className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
-                <FileText className="w-4 h-4 text-teal-600" />
+                <FileText className="w-4 h-4 text-[#3F4EB4]" />
                 <span>Patient Document Triage & Quality Review</span>
               </h4>
 
               {activeCase.documents.length === 0 ? (
-                <div className="p-6 bg-slate-50 rounded-2xl text-center text-xs text-slate-500 border border-dashed border-slate-200">
+                <div className="p-6 bg-slate-50/80 rounded-2xl text-center text-xs text-slate-500 border border-dashed border-slate-200">
                   No documents uploaded yet by this patient.
                 </div>
               ) : (
@@ -191,16 +192,16 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                   {activeCase.documents.map((doc) => (
                     <div
                       key={doc.id}
-                      className="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                      className="p-4 bg-slate-50/80 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-slate-50 transition-colors"
                     >
                       <div>
                         <div className="flex items-center gap-2">
                           <span className="font-extrabold text-xs text-slate-900">{doc.title}</span>
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-200 text-slate-700">
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-200 text-slate-700">
                             v{doc.currentVersion}
                           </span>
                           <span
-                            className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                            className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
                               doc.status === "reviewed"
                                 ? "bg-emerald-100 text-emerald-800"
                                 : doc.status === "incomplete"
@@ -215,7 +216,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                           Latest: {doc.versions[0]?.fileName} ({doc.versions[0]?.fileSize})
                         </div>
                         {doc.csFeedback && (
-                          <div className="text-[11px] text-slate-700 italic mt-1 bg-white p-2 rounded-lg border border-slate-200">
+                          <div className="text-[11px] text-slate-700 italic mt-1 bg-white p-2.5 rounded-xl border border-slate-200">
                             Note: {doc.csFeedback}
                           </div>
                         )}
@@ -225,7 +226,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                         onClick={() =>
                           setReviewModalDoc({ caseId: activeCase.id, doc })
                         }
-                        className="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shrink-0 shadow-sm"
+                        className="px-4 py-2.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shrink-0 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
                       >
                         Review / Give Feedback
                       </button>
@@ -237,7 +238,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
 
             {/* Read-Only Clinical View Warning */}
             <div className="p-4 bg-blue-50/70 rounded-2xl border border-blue-200 text-xs text-blue-900 flex items-start gap-2.5">
-              <ShieldCheck className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
+              <ShieldCheck className="w-4 h-4 text-[#3F4EB4] shrink-0 mt-0.5" />
               <div>
                 <strong className="block font-bold">RBAC Access Boundary Enforcement:</strong>
                 <span>

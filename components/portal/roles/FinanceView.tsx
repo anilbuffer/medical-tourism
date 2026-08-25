@@ -39,13 +39,14 @@ export const FinanceView: React.FC<FinanceViewProps> = ({ cases }) => {
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-[#0E1F40] via-[#112D4E] to-emerald-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-400/20 text-emerald-300 text-xs font-bold tracking-wider uppercase mb-2 border border-emerald-400/30">
+      <div className="bg-gradient-to-r from-[#071321] via-[#0B1E33] to-[#0D2642] rounded-2xl p-6 sm:p-8 text-white shadow-xl border border-slate-800/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-48 h-48 bg-[#2ECDC5]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative z-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2ECDC5]/15 text-[#2ECDC5] text-xs font-bold tracking-wider uppercase mb-2 border border-[#2ECDC5]/30">
             <DollarSign className="w-3.5 h-3.5" />
             Finance & Accounts Ledger Desk
           </div>
-          <h2 className="text-2xl font-black tracking-tight">
+          <h2 className="text-2xl font-black tracking-tight text-white">
             Healthcare Escrow & Staged Billing Reconciliation
           </h2>
           <p className="text-slate-300 text-xs sm:text-sm mt-1 max-w-2xl">
@@ -53,16 +54,16 @@ export const FinanceView: React.FC<FinanceViewProps> = ({ cases }) => {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
-          <div className="p-3 bg-white/10 rounded-2xl text-right">
+        <div className="relative z-10 flex items-center gap-3">
+          <div className="p-3.5 bg-white/10 backdrop-blur-md rounded-2xl border border-white/15 text-right">
             <div className="text-[10px] text-slate-300 uppercase font-bold">Total Escrow Collected</div>
-            <div className="text-xl font-black text-emerald-300">${totalCollectedUsd.toLocaleString()} USD</div>
+            <div className="text-xl font-black text-[#2ECDC5]">${totalCollectedUsd.toLocaleString()} USD</div>
           </div>
         </div>
       </div>
 
       {/* RLS Redaction Notice */}
-      <div className="p-4 bg-amber-50 rounded-2xl border border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
+      <div className="p-4 bg-amber-50/80 rounded-2xl border border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
         <Lock className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
         <div>
           <strong className="font-extrabold">Data Governance Policy Active (HIPAA / DPDP):</strong>
@@ -72,10 +73,10 @@ export const FinanceView: React.FC<FinanceViewProps> = ({ cases }) => {
         </div>
       </div>
 
-      {/* Payments Ledger Table */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 space-y-4">
+      {/* Payments Ledger Table Card */}
+      <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 space-y-4">
         <h3 className="font-black text-slate-900 text-lg flex items-center gap-2">
-          <Receipt className="w-5 h-5 text-teal-600" />
+          <Receipt className="w-5 h-5 text-[#3F4EB4]" />
           <span>Cross-Border Staged Payment Transactions</span>
         </h3>
 
@@ -93,10 +94,10 @@ export const FinanceView: React.FC<FinanceViewProps> = ({ cases }) => {
             </thead>
             <tbody className="divide-y divide-slate-100">
               {allPayments.map((p, idx) => (
-                <tr key={idx} className="hover:bg-slate-50 transition-colors">
+                <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
                   <td className="py-3.5 font-bold text-slate-900">
                     <div>{p.patientName}</div>
-                    <div className="text-[11px] font-mono text-teal-700">{p.caseId}</div>
+                    <div className="text-[11px] font-mono text-[#3F4EB4]">{p.caseId}</div>
                   </td>
                   <td className="py-3.5 font-semibold text-slate-700">{p.name}</td>
                   <td className="py-3.5 font-black text-slate-900">${p.amountUsd.toLocaleString()}</td>
@@ -117,7 +118,7 @@ export const FinanceView: React.FC<FinanceViewProps> = ({ cases }) => {
                   <td className="py-3.5 text-slate-500">
                     {p.termsAcceptedAt ? (
                       <span className="text-emerald-700 font-bold flex items-center gap-1">
-                        <CheckCircle2 className="w-3.5 h-3.5" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#2ECDC5]" />
                         Signed
                       </span>
                     ) : (

@@ -76,10 +76,10 @@ export const MyPaymentsTab: React.FC<MyPaymentsTabProps> = ({ patientCase }) => 
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Header Banner */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold tracking-wider uppercase mb-2 border border-emerald-100">
-            <Lock className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2ECDC5]/10 text-[#3F4EB4] text-xs font-bold tracking-wider uppercase mb-2 border border-[#2ECDC5]/20">
+            <Lock className="w-3.5 h-3.5 text-[#2ECDC5]" />
             Healthcare Escrow & Staged Settlement
           </div>
           <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
@@ -91,10 +91,10 @@ export const MyPaymentsTab: React.FC<MyPaymentsTabProps> = ({ patientCase }) => 
         </div>
 
         {/* Balance Metrics */}
-        <div className="flex items-center gap-3 bg-slate-50 p-3 rounded-2xl border border-slate-200">
+        <div className="flex items-center gap-3 bg-slate-50/80 p-3 rounded-2xl border border-slate-200 shadow-xs">
           <div className="px-3 py-1 text-right">
             <div className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Total Paid</div>
-            <div className="text-base font-extrabold text-emerald-700">
+            <div className="text-base font-extrabold text-[#3F4EB4]">
               ${totalPaid.toLocaleString()} USD
             </div>
           </div>
@@ -119,11 +119,11 @@ export const MyPaymentsTab: React.FC<MyPaymentsTabProps> = ({ patientCase }) => 
           return (
             <div
               key={stage.id}
-              className={`rounded-3xl p-6 border flex flex-col justify-between transition-all ${
+              className={`rounded-2xl p-6 border flex flex-col justify-between transition-all duration-300 ${
                 isCompleted
-                  ? "bg-white border-emerald-200 shadow-sm"
+                  ? "bg-white/95 backdrop-blur-xl border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)]"
                   : isCurrentActive
-                  ? "bg-white border-teal-500 shadow-xl ring-2 ring-teal-500/20"
+                  ? "bg-white/95 backdrop-blur-xl border-[#2ECDC5] shadow-[0_10px_40px_rgba(46,205,197,0.15)] ring-2 ring-[#2ECDC5]/30 hover:-translate-y-1"
                   : "bg-slate-50/70 border-slate-200 opacity-75"
               }`}
             >
@@ -134,14 +134,14 @@ export const MyPaymentsTab: React.FC<MyPaymentsTabProps> = ({ patientCase }) => 
                       isCompleted
                         ? "bg-emerald-100 text-emerald-800"
                         : isCurrentActive
-                        ? "bg-teal-100 text-teal-800"
+                        ? "bg-[#2ECDC5]/20 text-[#3F4EB4]"
                         : "bg-slate-200 text-slate-700"
                     }`}
                   >
                     Stage {idx + 1} • {stage.percentage}%
                   </span>
                   {isCompleted ? (
-                    <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                    <CheckCircle2 className="w-5 h-5 text-[#2ECDC5]" />
                   ) : (
                     <Clock className="w-5 h-5 text-slate-400" />
                   )}
@@ -159,15 +159,15 @@ export const MyPaymentsTab: React.FC<MyPaymentsTabProps> = ({ patientCase }) => 
                 </div>
 
                 {/* Terms Box */}
-                <div className="p-3.5 bg-slate-50 rounded-2xl text-xs space-y-2 border border-slate-200">
+                <div className="p-3.5 bg-slate-50/80 rounded-2xl text-xs space-y-2 border border-slate-200">
                   <div className="font-bold text-slate-800 flex items-center gap-1.5">
-                    <ShieldCheck className="w-3.5 h-3.5 text-teal-600" />
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#2ECDC5]" />
                     <span>Refund & Cancellation Terms:</span>
                   </div>
                   <p className="text-slate-600 text-[11px] leading-relaxed">
                     {stage.cancellationTerms}
                   </p>
-                  <div className="text-[11px] font-semibold text-emerald-700 pt-1 border-t border-slate-200/60">
+                  <div className="text-[11px] font-semibold text-[#3F4EB4] pt-1 border-t border-slate-200/60">
                     Policy: {stage.refundPolicy}
                   </div>
                 </div>
@@ -178,15 +178,15 @@ export const MyPaymentsTab: React.FC<MyPaymentsTabProps> = ({ patientCase }) => 
                 {isCompleted ? (
                   <button
                     onClick={() => setActiveReceiptStage(stage)}
-                    className="w-full py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs flex items-center justify-center gap-2 transition-all"
+                    className="w-full py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer"
                   >
-                    <Receipt className="w-4 h-4 text-emerald-600" />
+                    <Receipt className="w-4 h-4 text-[#2ECDC5]" />
                     <span>View Official Receipt</span>
                   </button>
                 ) : isCurrentActive ? (
                   <button
                     onClick={() => handleOpenPayment(stage)}
-                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#0E1F40] to-[#0A8982] hover:from-[#132A56] hover:to-[#0C9F97] text-white font-extrabold text-xs shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+                    className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-xl shadow-[#283593]/25 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Lock className="w-4 h-4" />
                     <span>Accept Terms & Pay Stage</span>

@@ -125,10 +125,10 @@ export const PatientDashboard: React.FC = () => {
           />
         </div>
 
-        {/* Edge Toggle Button (Floating cleanly on sidebar border, always 100% visible) */}
+        {/* Edge Toggle Button (Floating cleanly on sidebar border, tri-color symmetric palette) */}
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="hidden md:flex absolute -right-4 top-6 z-50 w-8 h-8 rounded-full bg-[#00897B] hover:bg-[#00796B] active:scale-95 text-white items-center justify-center shadow-xl ring-2 ring-white transition-all duration-200 hover:scale-110 cursor-pointer"
+          className="hidden md:flex absolute -right-4 top-6 z-50 w-8 h-8 rounded-full bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] active:scale-95 text-white items-center justify-center shadow-xl ring-2 ring-white transition-all duration-200 hover:scale-110 cursor-pointer"
           title={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
           aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
         >
@@ -138,7 +138,7 @@ export const PatientDashboard: React.FC = () => {
         {/* Top Logo / Brand Header */}
         <div className={`h-20 flex items-center border-b border-slate-800/80 relative z-10 transition-all ${sidebarOpen ? "px-5 gap-3" : "justify-center px-2"}`}>
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3F4EB4] via-[#283593] to-slate-900 flex items-center justify-center shadow-lg shadow-[#283593]/30 ring-1 ring-[#2ECDC5]/40 group-hover:scale-105 transition-transform shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2ECDC5] via-[#3F4EB4] to-[#283593] flex items-center justify-center shadow-lg shadow-[#283593]/30 ring-1 ring-[#2ECDC5]/50 group-hover:scale-105 transition-transform shrink-0">
               <span className="text-white font-black text-lg font-serif">V</span>
             </div>
             {sidebarOpen && (
@@ -149,7 +149,7 @@ export const PatientDashboard: React.FC = () => {
                   </span>
                   <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#2ECDC5] animate-pulse"></span>
                 </div>
-                <span className="text-[9px] uppercase font-semibold tracking-wider text-[#2ECDC5]/90 leading-tight block mt-0.5">
+                <span className="text-[9px] uppercase font-semibold tracking-wider text-[#2ECDC5] leading-tight block mt-0.5">
                   Patient Portal
                 </span>
               </div>
@@ -174,7 +174,7 @@ export const PatientDashboard: React.FC = () => {
                   sidebarOpen ? "gap-3.5 px-4 py-3" : "justify-center px-0 py-3.5"
                 } ${
                   isActive
-                    ? "bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] text-white shadow-lg shadow-[#283593]/35"
+                    ? "bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] text-white shadow-lg shadow-[#283593]/35 font-extrabold"
                     : "text-slate-300 hover:text-white hover:bg-white/5"
                 }`}
               >
@@ -204,15 +204,15 @@ export const PatientDashboard: React.FC = () => {
         </div>
 
         {/* Bottom Profile Pill */}
-        <div className={`p-3 border-t border-slate-800/80 relative z-10 ${!sidebarOpen ? "flex justify-center" : ""}`}>
+        <div className={`p-3 border-t border-slate-800/80 relative z-30 ${!sidebarOpen ? "flex justify-center" : ""}`}>
           <button
             onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
-            className={`w-full flex items-center rounded-2xl hover:bg-white/5 transition-all text-left cursor-pointer ${
+            className={`w-full flex items-center rounded-2xl hover:bg-white/10 transition-all text-left cursor-pointer ${
               sidebarOpen ? "gap-3 p-2" : "justify-center p-2"
             }`}
             title={!sidebarOpen ? (activeCase?.patientName || "Patient Profile") : undefined}
           >
-            <div className="relative w-9 h-9 rounded-full bg-gradient-to-br from-[#3F4EB4] to-[#283593] text-white font-bold flex items-center justify-center shrink-0 ring-1 ring-[#2ECDC5]/40 shadow-sm">
+            <div className="relative w-9 h-9 rounded-full bg-gradient-to-br from-[#2ECDC5] via-[#3F4EB4] to-[#283593] text-white font-bold flex items-center justify-center shrink-0 ring-2 ring-[#2ECDC5]/50 shadow-md">
               <span>{activeCase?.patientName ? activeCase.patientName.charAt(0) : "S"}</span>
               <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-[#2ECDC5] ring-2 ring-[#071321]" />
             </div>
@@ -223,35 +223,64 @@ export const PatientDashboard: React.FC = () => {
                   <div className="text-xs font-black text-white truncate">
                     {activeCase?.patientName || "Robert Vance"}
                   </div>
-                  <div className="text-[11px] text-[#2ECDC5]/80 truncate">Patient</div>
+                  <div className="text-[11px] text-[#2ECDC5] font-bold truncate">Patient View</div>
                 </div>
-                <ChevronDown className="w-4 h-4 text-slate-400 shrink-0" />
+                <ChevronDown className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 ${profileDropdownOpen ? "rotate-180" : ""}`} />
               </>
             )}
           </button>
 
-          {/* Profile Dropdown Popup */}
+          {/* Profile Dropdown Backdrop & Popup */}
           {profileDropdownOpen && (
-            <div className={`absolute bottom-full mb-2 bg-[#071321]/98 backdrop-blur-2xl rounded-2xl p-2 shadow-2xl border border-slate-700/80 text-xs space-y-1 animate-in fade-in zoom-in-95 text-white ${sidebarOpen ? "left-3 right-3" : "left-3 w-56"}`}>
-              <Link
-                href="/"
-                className="flex items-center gap-2 p-2.5 rounded-xl hover:bg-white/10 text-slate-200"
+            <>
+              {/* Click-outside backdrop */}
+              <div
+                className="fixed inset-0 z-40"
                 onClick={() => setProfileDropdownOpen(false)}
+              />
+
+              {/* 100% Solid Opaque Dropdown Card */}
+              <div
+                className={`absolute bottom-full mb-3 bg-[#0B1E33] rounded-2xl p-2.5 shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-slate-700/90 text-xs space-y-1.5 z-50 animate-in fade-in zoom-in-95 duration-150 text-white ${
+                  sidebarOpen ? "left-3 right-3" : "left-3 w-60"
+                }`}
               >
-                <ArrowLeft className="w-3.5 h-3.5 text-[#2ECDC5]" />
-                <span>Return to Main Site</span>
-              </Link>
-              <button
-                onClick={() => {
-                  setProfileDropdownOpen(false);
-                  logout();
-                }}
-                className="w-full flex items-center gap-2 p-2.5 rounded-xl hover:bg-rose-500/20 text-rose-300 text-left cursor-pointer"
-              >
-                <LogOut className="w-3.5 h-3.5" />
-                <span>Sign Out</span>
-              </button>
-            </div>
+                {/* Header with Patient Name */}
+                <div className="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center gap-2.5 mb-1.5">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#2ECDC5] via-[#3F4EB4] to-[#283593] text-white font-bold text-xs flex items-center justify-center shrink-0 ring-1 ring-[#2ECDC5]/60">
+                    {activeCase?.patientName ? activeCase.patientName.charAt(0) : "P"}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="font-extrabold text-white text-xs truncate">
+                      {activeCase?.patientName || "Patient Profile"}
+                    </div>
+                    <div className="text-[10px] text-[#2ECDC5] font-bold truncate">
+                      {activeCase?.id || "VED-2026"} • {activeCase?.patientCountry || "Active Case"}
+                    </div>
+                  </div>
+                </div>
+
+                <Link
+                  href="/"
+                  className="flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 text-white font-bold transition-colors border border-slate-700/40"
+                  onClick={() => setProfileDropdownOpen(false)}
+                >
+                  <ArrowLeft className="w-4 h-4 text-[#2ECDC5] shrink-0" />
+                  <span className="text-white font-bold text-xs">Return to Main Site</span>
+                </Link>
+
+                <button
+                  onClick={() => {
+                    setProfileDropdownOpen(false);
+                    logout();
+                  }}
+                  className="w-full flex items-center gap-2.5 p-2.5 rounded-xl bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 hover:text-rose-100 font-bold text-left transition-colors border border-rose-900/40 cursor-pointer"
+                >
+                  <LogOut className="w-4 h-4 text-rose-400 shrink-0" />
+                  <span className="text-xs">Sign Out</span>
+                </button>
+              </div>
+            </>
           )}
         </div>
       </aside>
@@ -262,7 +291,7 @@ export const PatientDashboard: React.FC = () => {
           <div className="w-72 bg-gradient-to-b from-[#071321] via-[#0B1E33] to-[#0D2642] text-white flex flex-col h-full p-4 space-y-4 animate-in slide-in-from-left duration-200 border-r border-slate-800">
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#3F4EB4] to-[#283593] flex items-center justify-center font-bold text-white ring-1 ring-[#2ECDC5]/40">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#2ECDC5] via-[#3F4EB4] to-[#283593] flex items-center justify-center font-bold text-white ring-1 ring-[#2ECDC5]/40">
                   V
                 </div>
                 <div className="flex flex-col">
@@ -292,7 +321,7 @@ export const PatientDashboard: React.FC = () => {
                     }}
                     className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-2xl text-xs font-bold transition-all ${
                       isActive
-                        ? "bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] text-white"
+                        ? "bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] text-white font-extrabold shadow-md"
                         : "text-slate-300 hover:text-white hover:bg-white/5"
                     }`}
                   >
@@ -314,30 +343,25 @@ export const PatientDashboard: React.FC = () => {
 
       {/* 03. Main Viewport Area */}
       <div className="flex-1 flex flex-col min-w-0 min-h-screen">
-        {/* Top Header Bar - White Background & Sticky */}
+        {/* Top Header Bar - Clean Frosted Background & Sticky */}
         <header className="sticky top-0 z-20 bg-white/95 backdrop-blur-md border-b border-slate-200/90 px-4 sm:px-8 h-20 flex items-center justify-between gap-4 text-slate-900 shadow-xs transition-all">
           {/* Left Title & Collapse Button */}
           <div className="flex items-center gap-3 sm:gap-4 relative z-10">
-            {/* Sidebar toggle button */}
+            {/* Mobile Menu Toggle Button (Desktop uses the unified edge toggle button) */}
             <button
-              onClick={() => {
-                if (window.innerWidth < 768) {
-                  setMobileMenuOpen(true);
-                } else {
-                  setSidebarOpen(!sidebarOpen);
-                }
-              }}
-              className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200/80 text-slate-700 hover:text-slate-900 border border-slate-200/80 shadow-xs transition-colors cursor-pointer"
-              title="Toggle Navigation Menu"
+              onClick={() => setMobileMenuOpen(true)}
+              className="md:hidden p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200/80 text-slate-700 hover:text-slate-900 border border-slate-200/80 shadow-xs transition-colors cursor-pointer"
+              title="Open Navigation Menu"
             >
-              <PanelLeft className="w-4 h-4 text-[#00897B]" />
+              <PanelLeft className="w-4 h-4 text-[#3F4EB4]" />
             </button>
 
             <div>
               <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight leading-tight">
                 {currentTabObj.label}
               </h2>
-              <span className="text-[10px] font-bold text-[#00897B] uppercase tracking-widest hidden sm:block">
+              <span className="text-[10px] font-bold text-[#3F4EB4] uppercase tracking-widest hidden sm:flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2ECDC5] inline-block animate-pulse" />
                 Secure Patient Portal
               </span>
             </div>
@@ -348,9 +372,9 @@ export const PatientDashboard: React.FC = () => {
             {/* Back to Website (Desktop) */}
             <Link
               href="/"
-              className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200/80 border border-slate-200/80 shadow-xs transition-all"
+              className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200/80 border border-slate-200/80 shadow-xs transition-all group"
             >
-              <ArrowLeft className="w-3.5 h-3.5 text-[#00897B]" />
+              <ArrowLeft className="w-3.5 h-3.5 text-[#3F4EB4] group-hover:-translate-x-0.5 transition-transform" />
               <span>Main Website</span>
             </Link>
 
