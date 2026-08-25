@@ -236,9 +236,9 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
       {/* Top 2-Step Progress Indicator */}
       <div className="grid grid-cols-2 gap-2 mb-8">
         {/* Step 1 Bar */}
-        <div className={`h-1.5 rounded-full transition-all duration-300 ${step >= 1 ? "bg-[#B91C1C]" : "bg-slate-200"}`}></div>
+        <div className={`h-1.5 rounded-full transition-all duration-300 ${step >= 1 ? "bg-gradient-to-r from-[#2ECDC5] to-[#3F4EB4]" : "bg-slate-200"}`}></div>
         {/* Step 2 Bar */}
-        <div className={`h-1.5 rounded-full transition-all duration-300 ${step >= 2 ? "bg-[#B91C1C]" : "bg-slate-200"}`}></div>
+        <div className={`h-1.5 rounded-full transition-all duration-300 ${step >= 2 ? "bg-gradient-to-r from-[#3F4EB4] to-[#283593]" : "bg-slate-200"}`}></div>
       </div>
 
       {/* ================= STEP 1: INITIAL ENQUIRY ================= */}
@@ -403,7 +403,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
                   setAgreedToPrivacy(e.target.checked);
                   if (errors.agreedToPrivacy) setErrors({ ...errors, agreedToPrivacy: "" });
                 }}
-                className="mt-0.5 w-4 h-4 rounded text-[#B91C1C] focus:ring-[#B91C1C] border-slate-300"
+                className="mt-0.5 w-4 h-4 rounded text-[#3F4EB4] focus:ring-[#3F4EB4] border-slate-300"
               />
               <span className="text-xs text-slate-600 leading-normal">
                 I agree to the privacy policy and consent to being contacted about my enquiry.
@@ -417,7 +417,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-4 px-6 rounded-xl bg-[#B91C1C] hover:bg-[#991B1B] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-red-900/20 hover:shadow-xl hover:shadow-red-800/30 hover:scale-[1.01] active:scale-[0.99] transition-all"
+            className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#283593]/20 hover:shadow-xl hover:shadow-[#283593]/30 hover:scale-[1.01] active:scale-[0.99] transition-all"
           >
             CONTINUE
           </button>
@@ -436,7 +436,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
           {/* Patient's age or date of birth */}
           <div className="space-y-1.5">
             <label className="block text-xs sm:text-sm font-semibold text-slate-800">
-              Patient&apos;s age or date of birth <span className="text-[#B91C1C]">*</span>
+              Patient&apos;s age or date of birth <span className="text-[#3F4EB4]">*</span>
             </label>
             <input
               type="text"
@@ -446,10 +446,11 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
                 setPatientAgeOrDob(e.target.value);
                 if (errors.patientAgeOrDob) setErrors({ ...errors, patientAgeOrDob: "" });
               }}
-              className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all ${errors.patientAgeOrDob
+              className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all ${
+                errors.patientAgeOrDob
                   ? "border-red-400 focus:ring-red-300 bg-red-50/20"
-                  : "border-slate-300 focus:ring-teal-500 focus:border-teal-500"
-                }`}
+                  : "border-slate-300 focus:ring-[#3F4EB4] focus:border-[#3F4EB4]"
+              }`}
             />
             {errors.patientAgeOrDob && (
               <p className="text-xs text-red-600 font-medium">{errors.patientAgeOrDob}</p>
@@ -459,7 +460,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
           {/* Question 1: Doctor recommendation preference */}
           <div className="space-y-2.5 pt-2">
             <label className="block text-xs sm:text-sm font-semibold text-slate-800">
-              1. What kind of doctors shall we recommend you? <span className="text-[#B91C1C]">*</span>
+              1. What kind of doctors shall we recommend you? <span className="text-[#3F4EB4]">*</span>
             </label>
             <div className="space-y-2">
               {[
@@ -482,10 +483,11 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
               ].map((opt) => (
                 <label
                   key={opt.id}
-                  className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${doctorPreference === opt.label
-                      ? "border-[#B91C1C] bg-red-50/30 text-slate-900 font-medium"
+                  className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
+                    doctorPreference === opt.label
+                      ? "border-[#3F4EB4] bg-[#3F4EB4]/5 text-slate-900 font-medium ring-1 ring-[#3F4EB4]/20"
                       : "border-slate-200 hover:bg-slate-50 text-slate-700"
-                    }`}
+                  }`}
                 >
                   <input
                     type="radio"
@@ -496,7 +498,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
                       setDoctorPreference(opt.label);
                       if (errors.doctorPreference) setErrors({ ...errors, doctorPreference: "" });
                     }}
-                    className="mt-1 w-4 h-4 text-[#B91C1C] focus:ring-[#B91C1C]"
+                    className="mt-1 w-4 h-4 text-[#3F4EB4] focus:ring-[#3F4EB4]"
                   />
                   <span className="text-xs sm:text-sm leading-relaxed">{opt.label}</span>
                 </label>
@@ -510,7 +512,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
           {/* Question 2: Treatment Timeline */}
           <div className="space-y-2.5 pt-2">
             <label className="block text-xs sm:text-sm font-semibold text-slate-800">
-              2. How soon do you plan for this treatment? <span className="text-[#B91C1C]">*</span>
+              2. How soon do you plan for this treatment? <span className="text-[#3F4EB4]">*</span>
             </label>
             <div className="space-y-2">
               {[
@@ -533,10 +535,11 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
               ].map((opt) => (
                 <label
                   key={opt.id}
-                  className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${treatmentTimeline === opt.label
-                      ? "border-[#B91C1C] bg-red-50/30 text-slate-900 font-medium"
+                  className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
+                    treatmentTimeline === opt.label
+                      ? "border-[#3F4EB4] bg-[#3F4EB4]/5 text-slate-900 font-medium ring-1 ring-[#3F4EB4]/20"
                       : "border-slate-200 hover:bg-slate-50 text-slate-700"
-                    }`}
+                  }`}
                 >
                   <input
                     type="radio"
@@ -547,7 +550,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
                       setTreatmentTimeline(opt.label);
                       if (errors.treatmentTimeline) setErrors({ ...errors, treatmentTimeline: "" });
                     }}
-                    className="mt-1 w-4 h-4 text-[#B91C1C] focus:ring-[#B91C1C]"
+                    className="mt-1 w-4 h-4 text-[#3F4EB4] focus:ring-[#3F4EB4]"
                   />
                   <span className="text-xs sm:text-sm leading-relaxed">{opt.label}</span>
                 </label>
@@ -568,7 +571,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
               placeholder="Any preference for hospital or city?"
               value={preferredHospitalCity}
               onChange={(e) => setPreferredHospitalCity(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all"
+              className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#3F4EB4] focus:border-[#3F4EB4] transition-all"
             />
           </div>
 
@@ -588,7 +591,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 px-6 rounded-xl bg-[#B91C1C] hover:bg-[#991B1B] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-red-900/20 hover:shadow-xl hover:shadow-red-800/30 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-60 flex items-center justify-center gap-2"
+              className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#283593]/20 hover:shadow-xl hover:shadow-[#283593]/30 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-60 flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>
