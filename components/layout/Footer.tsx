@@ -1,0 +1,185 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import { useCare } from "@/context/CareContext";
+import { CurrencyPicker } from "@/components/ui/CurrencyPicker";
+import {
+  Globe,
+  Phone,
+  Mail,
+  MessageSquare,
+  ShieldCheck,
+  Heart,
+  ArrowRight,
+} from "lucide-react";
+
+export const Footer = () => {
+  const { t, language, toggleLanguage, openIntake, openChat } = useCare();
+
+  return (
+    <footer className="bg-[#040A10] text-white pt-20 pb-12 border-t border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Top 4-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-slate-800/80">
+          {/* Brand Column */}
+          <div className="lg:col-span-2 space-y-5">
+            <Link href="/" className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-600 to-slate-900 flex items-center justify-center shadow-lg border border-teal-500/30">
+                <span className="text-white font-bold text-lg font-serif">V</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-extrabold tracking-widest text-lg text-white">
+                  {t.nav.brandName}
+                </span>
+                <span className="text-[10px] uppercase font-bold tracking-wider text-teal-400">
+                  {t.nav.brandSub}
+                </span>
+              </div>
+            </Link>
+
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">
+              {t.footer.tagline}
+            </p>
+
+            <div className="pt-2 flex items-center gap-3">
+              <CurrencyPicker lightMode={true} />
+              <button
+                onClick={toggleLanguage}
+                className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1.5 border border-white/20 transition-colors"
+              >
+                <Globe className="w-3.5 h-3.5 text-teal-400" />
+                <span>{language === "en" ? "العربية" : "English"}</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Col 1: Care Pathway */}
+          <div className="space-y-4">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-teal-400">
+              {t.footer.careHeader}
+            </h4>
+            <ul className="space-y-2.5 text-xs text-slate-400 font-medium">
+              <li>
+                <a href="#specialties" className="hover:text-white transition-colors">
+                  {t.nav.specialties}
+                </a>
+              </li>
+              <li>
+                <a href="#doctors" className="hover:text-white transition-colors">
+                  {t.nav.doctors}
+                </a>
+              </li>
+              <li>
+                <a href="#hospitals" className="hover:text-white transition-colors">
+                  {t.nav.hospitals}
+                </a>
+              </li>
+              <li>
+                <a href="#opinion" className="hover:text-white transition-colors">
+                  Medical Second Opinion
+                </a>
+              </li>
+              <li>
+                <a href="#journey" className="hover:text-white transition-colors">
+                  Concierge & Recovery
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 2: Patient Resources */}
+          <div className="space-y-4">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-teal-400">
+              {t.footer.resourcesHeader}
+            </h4>
+            <ul className="space-y-2.5 text-xs text-slate-400 font-medium">
+              <li>
+                <a href="#journey" className="hover:text-white transition-colors">
+                  {t.nav.howItWorks}
+                </a>
+              </li>
+              <li>
+                <a href="#costs" className="hover:text-white transition-colors">
+                  {t.nav.costGuide}
+                </a>
+              </li>
+              <li>
+                <a href="#stories" className="hover:text-white transition-colors">
+                  {t.nav.patientStories}
+                </a>
+              </li>
+              <li>
+                <a href="#why-india" className="hover:text-white transition-colors">
+                  {t.nav.aboutIndia}
+                </a>
+              </li>
+              <li>
+                <a href="#faqs" className="hover:text-white transition-colors">
+                  FAQs & Travel Info
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 3: 24/7 International Desk */}
+          <div className="space-y-4">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-teal-400">
+              {t.footer.supportHeader}
+            </h4>
+            <div className="space-y-3 text-xs text-slate-400">
+              <a
+                href="https://wa.me/971501234567"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-emerald-400 hover:underline font-semibold"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>WhatsApp: +971 50 123 4567</span>
+              </a>
+
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-teal-400 shrink-0" />
+                <span>Desk: +971 4 800 VEDARA</span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-teal-400 shrink-0" />
+                <span>care@vedara.health</span>
+              </div>
+
+              <div className="pt-2">
+                <button
+                  onClick={() => openIntake()}
+                  className="w-full py-2.5 px-3 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs shadow-md transition-all text-center"
+                >
+                  {t.nav.startJourney}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Medical & Legal Disclaimer */}
+        <div className="py-8 text-[11px] text-slate-500 leading-relaxed space-y-2 border-b border-slate-800/80">
+          <p className="font-semibold text-slate-400">Clinical & Coordination Notice:</p>
+          <p>{t.footer.medicalDisclaimer}</p>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <div>{t.footer.rights}</div>
+          <div className="flex items-center gap-4">
+            <span className="hover:text-slate-400 cursor-pointer">Privacy Policy</span>
+            <span>·</span>
+            <span className="hover:text-slate-400 cursor-pointer">Patient Rights</span>
+            <span>·</span>
+            <span className="hover:text-slate-400 cursor-pointer">Terms of Service</span>
+            <span>·</span>
+            <span className="hover:text-slate-400 cursor-pointer">HIPAA Protocol</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
