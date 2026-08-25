@@ -170,7 +170,9 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
       setErrors({});
 
       setTimeout(() => {
-        const generatedId = `VED-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+        const year = new Date().getFullYear();
+        const randomSeq = String(Math.floor(1000 + Math.random() * 9000)).padStart(6, "0");
+        const generatedId = `PT-${year}-${randomSeq}`;
         setCaseId(generatedId);
 
         // Save submitted assessment to persistent storage
@@ -658,21 +660,31 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
           </div>
 
           {/* Actions */}
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
-            {onClose && (
-              <button
-                onClick={handleReset}
-                className="w-full py-3 px-5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider transition-colors"
-              >
-                Close & Continue Browsing
-              </button>
-            )}
-            <button
-              onClick={() => openChat(`Hello, I just submitted assessment ${caseId} for ${treatment}. Can I speak with a coordinator?`)}
-              className="w-full py-3 px-5 rounded-xl bg-[#3F4EB4]/10 border border-[#3F4EB4]/30 hover:bg-[#3F4EB4]/20 text-[#283593] font-bold text-xs uppercase tracking-wider transition-colors"
+          <div className="pt-2 flex flex-col gap-2.5 max-w-md mx-auto">
+            <a
+              href="/patient"
+              className="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2"
             >
-              Open Live Chat Desk
-            </button>
+              <Sparkles className="w-4 h-4 text-amber-300" />
+              <span>Open My Patient Portal Dashboard</span>
+            </a>
+
+            <div className="flex gap-2">
+              <button
+                onClick={() => openChat(`Hello, I just submitted assessment ${caseId} for ${treatment}. Can I speak with coordinator Aisha?`)}
+                className="flex-1 py-2.5 px-3 rounded-xl bg-[#3F4EB4]/10 border border-[#3F4EB4]/30 hover:bg-[#3F4EB4]/20 text-[#283593] font-bold text-xs uppercase tracking-wider transition-colors"
+              >
+                Live Chat Desk
+              </button>
+              {onClose && (
+                <button
+                  onClick={handleReset}
+                  className="flex-1 py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs uppercase tracking-wider transition-colors"
+                >
+                  Close
+                </button>
+              )}
+            </div>
           </div>
         </div>
       )}

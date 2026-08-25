@@ -76,16 +76,32 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Col 2: Patient Resources */}
+          {/* Col 2: Portals & Resources */}
           <div className="space-y-4">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#2ECDC5]">
-              {t.footer.resourcesHeader}
+              Portals & Resources
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-400 font-medium">
               <li>
-                <a href="#journey" className="hover:text-white transition-colors">
-                  {t.nav.howItWorks}
-                </a>
+                <Link href="/login?portal=patient" className="text-[#2ECDC5] hover:text-white transition-colors flex items-center gap-1 font-bold">
+                  <span>Patient Portal Login</span>
+                  <span className="text-[10px]">→</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/login?portal=doctor" className="hover:text-white transition-colors">
+                  Doctor & Hospital Login
+                </Link>
+              </li>
+              <li>
+                <Link href="/login?portal=coordinator" className="hover:text-white transition-colors">
+                  Care Coordinator Desk
+                </Link>
+              </li>
+              <li>
+                <Link href="/login?portal=finance" className="hover:text-white transition-colors">
+                  Finance & Escrow Login
+                </Link>
               </li>
               <li>
                 <a href="#costs" className="hover:text-white transition-colors">
@@ -95,16 +111,6 @@ export const Footer = () => {
               <li>
                 <a href="#stories" className="hover:text-white transition-colors">
                   {t.nav.patientStories}
-                </a>
-              </li>
-              <li>
-                <a href="#why-india" className="hover:text-white transition-colors">
-                  {t.nav.aboutIndia}
-                </a>
-              </li>
-              <li>
-                <a href="#faqs" className="hover:text-white transition-colors">
-                  FAQs & Travel Info
                 </a>
               </li>
             </ul>

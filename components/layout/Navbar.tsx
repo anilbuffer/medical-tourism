@@ -144,18 +144,16 @@ export const Navbar = () => {
             >
               <button
                 onClick={() => setExploreOpen(!exploreOpen)}
-                className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
-                  exploreOpen
-                    ? "text-white bg-white/15"
-                    : "text-slate-200 hover:text-white hover:bg-white/10"
-                }`}
+                className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${exploreOpen
+                  ? "text-white bg-white/15"
+                  : "text-slate-200 hover:text-white hover:bg-white/10"
+                  }`}
                 aria-expanded={exploreOpen}
               >
                 <span>{t.nav.explore}</span>
                 <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    exploreOpen ? "rotate-180 text-[#2ECDC5]" : "text-slate-400"
-                  }`}
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${exploreOpen ? "rotate-180 text-[#2ECDC5]" : "text-slate-400"
+                    }`}
                 />
               </button>
 
@@ -199,8 +197,8 @@ export const Navbar = () => {
             </div>
           </nav>
 
-          {/* 03. Right Action Utilities (Language + Country + Primary CTA) */}
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
+          {/* 03. Right Action Utilities (Language + Primary CTA + Login at right end) */}
+          <div className="hidden lg:flex items-center gap-2.5 shrink-0">
             {/* Language & Country Picker */}
             <LanguageCountryPicker />
 
@@ -209,9 +207,17 @@ export const Navbar = () => {
               href="/#assessment"
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] shadow-md shadow-[#283593]/30 hover:shadow-lg hover:shadow-[#283593]/40 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap"
             >
-              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
               <span>{t.nav.startJourney}</span>
             </a>
+
+            {/* Patient Portal / Login Direct Link (Right End) */}
+            <Link
+              href="/login"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-white/10 hover:bg-white/20 hover:text-white border border-white/15 shadow-xs transition-all whitespace-nowrap"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-[#2ECDC5]" />
+              <span>Login</span>
+            </Link>
           </div>
 
           {/* 04. Mobile Navigation Toggle */}
@@ -241,6 +247,14 @@ export const Navbar = () => {
 
           {/* Primary Quick Links */}
           <div className="grid grid-cols-2 gap-2">
+            <Link
+              href="/login"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-bold col-span-2"
+            >
+              <ShieldCheck className="w-4 h-4 text-[#2ECDC5]" />
+              <span>Login / Patient Portal</span>
+            </Link>
             <a
               href="#treatments"
               onClick={() => setMobileMenuOpen(false)}
@@ -293,7 +307,7 @@ export const Navbar = () => {
               onClick={() => setMobileMenuOpen(false)}
               className="w-full py-3 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#283593]/40"
             >
-              <Sparkles className="w-4 h-4 text-amber-300" />
+              {/* <Sparkles className="w-4 h-4 text-amber-300" /> */}
               <span>{t.nav.startJourney}</span>
             </a>
           </div>

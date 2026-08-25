@@ -1,0 +1,35 @@
+"use client";
+
+import React from "react";
+import { usePathname } from "next/navigation";
+import { Navbar } from "./Navbar";
+import { Footer } from "./Footer";
+import { IntakeModal } from "@/components/intake/IntakeModal";
+import { DoctorModal } from "@/components/medical/DoctorModal";
+import { LiveChatDrawer } from "@/components/concierge/LiveChatDrawer";
+
+interface AppShellProps {
+  children: React.ReactNode;
+}
+
+export const AppShell: React.FC<AppShellProps> = ({ children }) => {
+  const pathname = usePathname();
+  const isPortal = pathname?.startsWith("/patient") || pathname?.startsWith("/login");
+
+  if (isPortal) {
+    return <main className="min-h-screen">{children}</main>;
+  }
+
+  return (
+    <>
+      <Navbar />
+      <main className="flex-1">{children}</main>
+      <Footer />
+
+      {/* Interactive Global Modals & Drawers */}
+      <IntakeModal />
+      <DoctorModal />
+      <LiveChatDrawer />
+    </>
+  );
+};

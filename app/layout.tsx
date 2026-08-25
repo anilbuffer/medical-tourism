@@ -1,11 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { CareProvider } from "@/context/CareContext";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-import { IntakeModal } from "@/components/intake/IntakeModal";
-import { DoctorModal } from "@/components/medical/DoctorModal";
-import { LiveChatDrawer } from "@/components/concierge/LiveChatDrawer";
+import { AppShell } from "@/components/layout/AppShell";
 
 export const metadata: Metadata = {
   title: "VEDARA | International Care — India's International Care Concierge",
@@ -42,14 +38,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col justify-between">
         <CareProvider>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-
-          {/* Interactive Global Modals & Drawers */}
-          <IntakeModal />
-          <DoctorModal />
-          <LiveChatDrawer />
+          <AppShell>{children}</AppShell>
         </CareProvider>
       </body>
     </html>
