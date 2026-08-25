@@ -12,7 +12,6 @@ import { DoctorsSection } from "@/components/medical/DoctorsSection";
 import { HospitalsSection } from "@/components/medical/HospitalsSection";
 import { CostTransparency } from "@/components/pricing/CostTransparency";
 import { BlogSection } from "@/components/resources/BlogSection";
-import { WhyIndiaSection } from "@/components/concierge/WhyIndiaSection";
 import { ConciergeSection } from "@/components/concierge/ConciergeSection";
 import { CoordinatorSpotlight } from "@/components/concierge/CoordinatorSpotlight";
 import { CaseStudySection } from "@/components/journey/CaseStudySection";
@@ -56,9 +55,6 @@ export default function HomePage() {
 
       {/* 10. Guides & Resources (Blog) */}
       <BlogSection />
-
-      {/* 11. Why India? Evidence-Driven Decision */}
-      <WhyIndiaSection />
 
       {/* 11. Premium Medical Concierge (Dark Luxury) */}
       <ConciergeSection />

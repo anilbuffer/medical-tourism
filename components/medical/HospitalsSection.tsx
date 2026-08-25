@@ -18,7 +18,7 @@ export const HospitalsSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
-          <div className="max-w-2xl">
+          <div className="max-w-3xl">
             <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-orange-500 mb-2">
               {t.hospitals.eyebrow}
             </div>
@@ -40,7 +40,7 @@ export const HospitalsSection = () => {
         </div>
 
         {/* 4 Hospital Cards Grid (Matching Provided Screenshot) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {chandigarhHospitals.map((hosp) => (
             <div
               key={hosp.id}

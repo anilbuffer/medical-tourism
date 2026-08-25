@@ -158,6 +158,17 @@ export const CaseStudySection = () => {
             </div>
           </div>
         </div>
+
+        {/* See More CTA */}
+        <div className="mt-12 text-center">
+          <button
+            onClick={() => openIntake("Patient Stories")}
+            className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl border-2 border-teal-600 text-teal-700 text-sm font-bold hover:bg-teal-600 hover:text-white transition-all duration-200 group shadow-sm"
+          >
+            <span>{t.caseStudy.readMore}</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
+          </button>
+        </div>
       </div>
     </section>
   );
