@@ -141,13 +141,13 @@ export const DoctorsSection = () => {
           </div>
         </div>
 
-        {/* Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2 mb-8">
+        {/* Filter Pills with Horizontal Touch Scrolling on Mobile */}
+        <div className="flex overflow-x-auto no-scrollbar sm:flex-wrap items-center gap-2 mb-8 pb-1 sm:pb-0 scroll-smooth">
           {specialtiesList.map((spec) => (
             <button
               key={spec}
               onClick={() => setActiveSpecialty(spec)}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${activeSpecialty === spec
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap shrink-0 ${activeSpecialty === spec
                 ? "bg-[#3851A2] text-white shadow-md shadow-teal-950/20 scale-[1.02]"
                 : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
                 }`}
