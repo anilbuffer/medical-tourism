@@ -42,7 +42,7 @@ export const DoctorModal = () => {
       <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden my-8">
         {/* Top Header */}
         <div className="bg-slate-900 px-6 py-4 text-white flex items-center justify-between">
-          <div className="flex items-center gap-2 text-xs text-teal-300 font-semibold uppercase tracking-wider">
+          <div className="flex items-center gap-2 text-xs text-[#2ECDC5] font-semibold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5 text-amber-300" />
             <span>Senior Specialist Profile & Video Consultation</span>
           </div>
@@ -57,7 +57,7 @@ export const DoctorModal = () => {
         <div className="p-6 sm:p-8 space-y-6">
           {isBooked ? (
             <div className="text-center py-8 space-y-4 animate-in zoom-in-95 duration-200">
-              <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full mx-auto flex items-center justify-center">
+              <div className="w-16 h-16 bg-[#2ECDC5]/15 text-[#2ECDC5] rounded-full mx-auto flex items-center justify-center">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
               <h3 className="text-2xl font-extrabold text-slate-900">
@@ -95,10 +95,10 @@ export const DoctorModal = () => {
 
                 <div className="space-y-1.5 text-center sm:text-left rtl:sm:text-right flex-1">
                   <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 text-[11px] font-bold">
+                    <span className="px-2.5 py-0.5 rounded-full bg-[#3F4EB4]/10 text-[#3F4EB4] text-[11px] font-bold">
                       {language === "ar" ? selectedDoctor.specialtyAr : selectedDoctor.specialty}
                     </span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 text-[11px] font-bold flex items-center gap-1">
+                    <span className="px-2.5 py-0.5 rounded-full bg-[#3F4EB4]/10 text-[#283593] text-[11px] font-bold flex items-center gap-1">
                       <Star className="w-3 h-3 fill-amber-500 text-amber-500" />
                       <span>{selectedDoctor.rating} ({selectedDoctor.reviewsCount} reviews)</span>
                     </span>
@@ -108,7 +108,7 @@ export const DoctorModal = () => {
                     {language === "ar" ? selectedDoctor.nameAr : selectedDoctor.name}
                   </h3>
 
-                  <p className="text-xs text-teal-800 font-semibold">
+                  <p className="text-xs text-[#3F4EB4] font-semibold">
                     {language === "ar" ? selectedDoctor.titleAr : selectedDoctor.title}
                   </p>
 
@@ -142,7 +142,7 @@ export const DoctorModal = () => {
                 </div>
                 <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px]">
                   <span className="font-bold text-slate-900">Languages:</span>
-                  <span className="text-teal-700 font-semibold">{selectedDoctor.languages.join(" · ")}</span>
+                  <span className="text-[#3F4EB4] font-semibold">{selectedDoctor.languages.join(" · ")}</span>
                 </div>
               </div>
 
@@ -150,7 +150,7 @@ export const DoctorModal = () => {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-teal-100 text-teal-800 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-lg bg-[#3F4EB4]/10 text-[#3F4EB4] flex items-center justify-center">
                       <Video className="w-4 h-4" />
                     </div>
                     <div>
@@ -160,7 +160,7 @@ export const DoctorModal = () => {
                   </div>
                   <div className="text-right">
                     <div className="text-xs text-slate-400">Consultation Fee</div>
-                    <div className="text-sm font-extrabold text-teal-800">
+                    <div className="text-sm font-extrabold text-[#283593]">
                       {formatPrice(selectedDoctor.consultationFeeUsd)}
                     </div>
                   </div>
@@ -175,7 +175,7 @@ export const DoctorModal = () => {
                       onClick={() => setSelectedDate(day)}
                       className={`py-2 px-3 rounded-xl border text-center transition-all ${
                         selectedDate === day
-                          ? "bg-teal-50 border-teal-500 text-teal-900 font-bold"
+                          ? "bg-[#3F4EB4]/10 border-[#3F4EB4] text-[#283593] font-bold"
                           : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100"
                       }`}
                     >
@@ -193,11 +193,11 @@ export const DoctorModal = () => {
                       onClick={() => setSelectedTimeSlot(slot)}
                       className={`p-2.5 rounded-xl border text-left rtl:text-right transition-all flex items-center gap-2 ${
                         selectedTimeSlot === slot
-                          ? "bg-teal-50 border-teal-500 text-teal-900 font-bold"
+                          ? "bg-[#3F4EB4]/10 border-[#3F4EB4] text-[#283593] font-bold"
                           : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50"
                       }`}
                     >
-                      <Clock className="w-3.5 h-3.5 text-teal-600 shrink-0" />
+                      <Clock className="w-3.5 h-3.5 text-[#3F4EB4] shrink-0" />
                       <span className="truncate">{slot}</span>
                     </button>
                   ))}
@@ -207,7 +207,7 @@ export const DoctorModal = () => {
                 <div className="pt-2">
                   <button
                     onClick={handleConfirm}
-                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 text-white font-extrabold text-sm shadow-xl shadow-teal-700/20 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-sm shadow-xl shadow-[#283593]/20 transition-all flex items-center justify-center gap-2"
                   >
                     <Calendar className="w-4 h-4" />
                     <span>Confirm Video Consultation Slot</span>

@@ -14,8 +14,8 @@ export const QuickEntryCards = () => {
       description: t.quickEntry.card1Desc,
       cta: t.quickEntry.card1Cta,
       badge: "50+ Procedures",
-      accent: "from-teal-500 to-teal-700",
-      borderHover: "group-hover:border-teal-500/50",
+      accent: "from-[#283593] to-[#3F4EB4]",
+      borderHover: "group-hover:border-[#2ECDC5]/50",
       action: () => {
         const el = document.getElementById("specialties");
         if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -27,8 +27,8 @@ export const QuickEntryCards = () => {
       description: t.quickEntry.card2Desc,
       cta: t.quickEntry.card2Cta,
       badge: "120+ Consultants",
-      accent: "from-blue-600 to-indigo-700",
-      borderHover: "group-hover:border-blue-500/50",
+      accent: "from-[#3F4EB4] to-[#283593]",
+      borderHover: "group-hover:border-[#3F4EB4]/50",
       action: () => {
         const el = document.getElementById("doctors");
         if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -40,8 +40,8 @@ export const QuickEntryCards = () => {
       description: t.quickEntry.card3Desc,
       cta: t.quickEntry.card3Cta,
       badge: "24h Response",
-      accent: "from-amber-500 to-amber-700",
-      borderHover: "group-hover:border-amber-500/50",
+      accent: "from-[#2ECDC5] to-[#3F4EB4]",
+      borderHover: "group-hover:border-[#2ECDC5]/50",
       action: () => openIntake("Medical Opinion"),
     },
     {
@@ -50,8 +50,8 @@ export const QuickEntryCards = () => {
       description: t.quickEntry.card4Desc,
       cta: t.quickEntry.card4Cta,
       badge: "End-to-End VIP",
-      accent: "from-emerald-500 to-teal-700",
-      borderHover: "group-hover:border-emerald-500/50",
+      accent: "from-[#283593] to-[#2ECDC5]",
+      borderHover: "group-hover:border-[#2ECDC5]/50",
       action: () => openChat("I'd like to plan my medical trip to India."),
     },
   ];
@@ -61,10 +61,10 @@ export const QuickEntryCards = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-orange-500 mb-2">
+          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2ECDC5] mb-2">
             Quick Patient Entry
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0D3B3F] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3851A2] tracking-tight leading-tight">
             {t.quickEntry.heading}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto">
@@ -90,13 +90,13 @@ export const QuickEntryCards = () => {
                     >
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 group-hover:bg-teal-50 group-hover:text-teal-700 transition-colors">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 group-hover:bg-[#3F4EB4]/10 group-hover:text-[#3F4EB4] transition-colors">
                       {card.badge}
                     </span>
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-teal-700 transition-colors mb-2">
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#3F4EB4] transition-colors mb-2">
                     {card.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -105,9 +105,9 @@ export const QuickEntryCards = () => {
                 </div>
 
                 {/* Bottom CTA Link */}
-                <div className="pt-6 mt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-teal-700 group-hover:text-teal-800">
+                <div className="pt-6 mt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#3F4EB4] group-hover:text-[#283593]">
                   <span>{card.cta}</span>
-                  <div className="w-7 h-7 rounded-full bg-teal-50 group-hover:bg-teal-600 group-hover:text-white flex items-center justify-center transition-colors">
+                  <div className="w-7 h-7 rounded-full bg-[#3F4EB4]/10 group-hover:bg-[#283593] group-hover:text-white text-[#3F4EB4] flex items-center justify-center transition-colors">
                     <ArrowRight className="w-3.5 h-3.5 rtl:rotate-180" />
                   </div>
                 </div>

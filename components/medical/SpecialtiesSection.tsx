@@ -103,10 +103,10 @@ export const SpecialtiesSection = () => {
         {/* Section Header with Title & Nav Buttons */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-6">
           <div className="max-w-2xl">
-            <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-orange-500 mb-2">
+            <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2ECDC5] mb-2">
               {t.specialties.eyebrow}
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0D3B3F] tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3851A2] tracking-tight leading-tight">
               {t.specialties.heading}
             </h2>
             <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -118,7 +118,7 @@ export const SpecialtiesSection = () => {
           <div className="flex items-center gap-4 shrink-0">
             <button
               onClick={() => openIntake()}
-              className="inline-flex items-center gap-2 text-xs font-bold text-teal-700 hover:text-teal-800 tracking-wider uppercase group mr-2"
+              className="inline-flex items-center gap-2 text-xs font-bold text-blue-700 hover:text-teal-800 tracking-wider uppercase group mr-2"
             >
               <span>{t.specialties.viewAll}</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
@@ -128,14 +128,14 @@ export const SpecialtiesSection = () => {
               <button
                 onClick={handlePrev}
                 aria-label="Previous Specialty"
-                className="w-10 h-10 rounded-xl bg-white hover:bg-teal-600 text-slate-700 hover:text-white border border-slate-200/70 hover:border-teal-600 shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95 group"
+                className="w-10 h-10 rounded-xl bg-white hover:bg-[#3F4EB4] text-slate-700 hover:text-white border border-slate-200/70 hover:border-[#3F4EB4] shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95 group"
               >
                 <ChevronLeft className="w-5 h-5 rtl:rotate-180 group-hover:-translate-x-0.5 rtl:group-hover:translate-x-0.5 transition-transform" />
               </button>
               <button
                 onClick={handleNext}
                 aria-label="Next Specialty"
-                className="w-10 h-10 rounded-xl bg-white hover:bg-teal-600 text-slate-700 hover:text-white border border-slate-200/70 hover:border-teal-600 shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95 group"
+                className="w-10 h-10 rounded-xl bg-white hover:bg-[#3F4EB4] text-slate-700 hover:text-white border border-slate-200/70 hover:border-[#3F4EB4] shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95 group"
               >
                 <ChevronRight className="w-5 h-5 rtl:rotate-180 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform" />
               </button>
@@ -164,9 +164,8 @@ export const SpecialtiesSection = () => {
               return (
                 <div
                   key={spec.id}
-                  className={`w-[85vw] sm:w-[78vw] md:w-[calc(33.333%-16px)] lg:w-[389px] shrink-0 snap-start group relative bg-white rounded-3xl overflow-hidden border ${
-                    isCurrent ? "border-teal-400 shadow-luxury-hover" : "border-slate-200/80 shadow-card"
-                  } hover:border-teal-400 hover:shadow-luxury-hover transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5`}
+                  className={`w-[85vw] sm:w-[78vw] md:w-[calc(33.333%-16px)] lg:w-[389px] shrink-0 snap-start group relative bg-white rounded-3xl overflow-hidden border ${isCurrent ? "border-teal-400 shadow-luxury-hover" : "border-slate-200/80 shadow-card"
+                    } hover:border-teal-400 hover:shadow-luxury-hover transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5`}
                 >
                   {/* Visual Header */}
                   <div className="relative h-48 w-full overflow-hidden">
@@ -179,13 +178,13 @@ export const SpecialtiesSection = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
 
                     {/* Icon badge floating */}
-                    <div className="absolute top-4 left-4 w-11 h-11 rounded-2xl bg-white/90 backdrop-blur-md text-teal-700 flex items-center justify-center shadow-lg">
+                    <div className="absolute top-4 left-4 w-11 h-11 rounded-2xl bg-white/90 backdrop-blur-md text-blue-700 flex items-center justify-center shadow-lg">
                       <Icon className="w-5 h-5" />
                     </div>
 
                     {/* Success Rate Pill */}
                     <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold flex items-center gap-1.5">
-                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                      <ShieldCheck className="w-3.5 h-3.5 text-[#2ECDC5]" />
                       <span>{spec.successRate} Success</span>
                     </div>
                   </div>
@@ -193,10 +192,10 @@ export const SpecialtiesSection = () => {
                   {/* Content */}
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                     <div>
-                      <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-teal-700 transition-colors mb-1.5">
+                      <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-blue-700 transition-colors mb-1.5">
                         {language === "ar" ? spec.nameAr : spec.name}
                       </h3>
-                      <p className="text-xs text-teal-700 font-semibold mb-2.5">
+                      <p className="text-xs text-blue-700 font-semibold mb-2.5">
                         {language === "ar" ? spec.taglineAr : spec.tagline}
                       </p>
                       <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
@@ -230,7 +229,7 @@ export const SpecialtiesSection = () => {
 
                       <button
                         onClick={() => openIntake(spec.name)}
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-700 group-hover:text-teal-800"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 group-hover:text-teal-800"
                       >
                         <span>{t.specialties.explore}</span>
                         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
@@ -246,14 +245,14 @@ export const SpecialtiesSection = () => {
           <button
             onClick={handlePrev}
             aria-label="Previous Specialty"
-            className="hidden md:flex absolute top-1/2 -left-4 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-800 shadow-xl items-center justify-center opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-teal-600 hover:text-white hover:scale-105 active:scale-95"
+            className="hidden md:flex absolute top-1/2 -left-4 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-800 shadow-xl items-center justify-center opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-[#3F4EB4] hover:text-white hover:scale-105 active:scale-95"
           >
             <ChevronLeft className="w-6 h-6 rtl:rotate-180" />
           </button>
           <button
             onClick={handleNext}
             aria-label="Next Specialty"
-            className="hidden md:flex absolute top-1/2 -right-4 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-800 shadow-xl items-center justify-center opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-teal-600 hover:text-white hover:scale-105 active:scale-95"
+            className="hidden md:flex absolute top-1/2 -right-4 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-800 shadow-xl items-center justify-center opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-[#3F4EB4] hover:text-white hover:scale-105 active:scale-95"
           >
             <ChevronRight className="w-6 h-6 rtl:rotate-180" />
           </button>
@@ -269,7 +268,7 @@ export const SpecialtiesSection = () => {
                 aria-label={`Go to ${spec.name}`}
                 className={`h-2.5 rounded-full transition-all duration-300 ${
                   activeIndex === i
-                    ? "w-8 bg-teal-600 shadow-sm shadow-teal-600/30"
+                    ? "w-8 bg-[#3F4EB4] shadow-sm shadow-[#3F4EB4]/30"
                     : "w-2.5 bg-slate-200 hover:bg-slate-300"
                 }`}
               />
@@ -283,11 +282,11 @@ export const SpecialtiesSection = () => {
             <span className="w-1 h-1 rounded-full bg-slate-300" />
             <button
               onClick={() => setIsPaused(!isPaused)}
-              className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-teal-700 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#3F4EB4] transition-colors"
             >
               {isPaused ? (
                 <>
-                  <Play className="w-3.5 h-3.5 text-teal-600 fill-teal-600" />
+                  <Play className="w-3.5 h-3.5 text-[#3F4EB4] fill-[#3F4EB4]" />
                   <span>Resume Auto-play</span>
                 </>
               ) : (

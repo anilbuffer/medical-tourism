@@ -20,14 +20,14 @@ export const IntakePreview = () => {
     <section id="assessment" className="py-20 bg-slate-900 relative overflow-hidden text-white scroll-mt-16">
       <div id="confidential-assessment" className="-mt-16 pt-16 pointer-events-none"></div>
       {/* Ambient background lights */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-0 left-10 w-80 h-80 bg-red-500/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#2ECDC5]/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-0 left-10 w-80 h-80 bg-[#3F4EB4]/8 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left Column: Context & Guarantees */}
           <div className="lg:col-span-5 space-y-6 text-left rtl:text-right">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-950/80 border border-teal-500/30 text-teal-300 text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#2ECDC5]/10 border border-[#2ECDC5]/30 text-[#2ECDC5] text-xs font-bold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5 text-amber-400" />
               <span>{language === "ar" ? "تقييم طبي مجاني وسري" : "Confidential Medical Assessment"}</span>
             </div>
@@ -36,14 +36,14 @@ export const IntakePreview = () => {
               {language === "ar" ? (
                 <>
                   ابدأ استشارتك <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-amber-200">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2ECDC5] to-[#5ADBD5]">
                     مع كبار الاستشاريين
                   </span>
                 </>
               ) : (
                 <>
                   Get a Free, <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-amber-200">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2ECDC5] to-[#5ADBD5]">
                     Clinical Assessment
                   </span>
                 </>
@@ -59,19 +59,19 @@ export const IntakePreview = () => {
             {/* Key Clinical Guarantees */}
             <div className="pt-2 space-y-3.5 text-xs text-slate-300">
               <div className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center shrink-0">
+                <div className="w-6 h-6 rounded-lg bg-[#2ECDC5]/10 text-[#2ECDC5] flex items-center justify-center shrink-0">
                   <CheckCircle2 className="w-4 h-4" />
                 </div>
                 <span>Direct review by Senior Consultants & Chief Surgeons</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center shrink-0">
+                <div className="w-6 h-6 rounded-lg bg-[#2ECDC5]/10 text-[#2ECDC5] flex items-center justify-center shrink-0">
                   <Clock className="w-4 h-4" />
                 </div>
                 <span>Fast 12–24 hour response with fixed package price options</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center shrink-0">
+                <div className="w-6 h-6 rounded-lg bg-[#2ECDC5]/10 text-[#2ECDC5] flex items-center justify-center shrink-0">
                   <Lock className="w-4 h-4" />
                 </div>
                 <span>100% Medical Privacy & HIPAA-compliant confidentiality</span>

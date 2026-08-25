@@ -41,15 +41,15 @@ export const PatientJourney = () => {
   ];
 
   return (
-    <section id="journey" className="py-20 sm:py-24 bg-[#051C1F] relative overflow-hidden text-white">
+    <section id="journey" className="py-20 sm:py-24 bg-[#0D1B4B] relative overflow-hidden text-white">
       {/* Subtle radial ambient backdrop */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-0 left-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#3F4EB4]/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-0 left-10 w-96 h-96 bg-[#2ECDC5]/5 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-orange-500 mb-3">
+          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2ECDC5] mb-3">
             {t.journey.eyebrow}
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
@@ -66,16 +66,16 @@ export const PatientJourney = () => {
             <div
               key={idx}
               onClick={() => openIntake()}
-              className="group relative bg-[#09282C] hover:bg-[#0D3439] rounded-3xl p-7 sm:p-8 border border-[#144248] hover:border-teal-400/50 shadow-xl shadow-black/20 hover:shadow-2xl hover:shadow-teal-950/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-pointer"
+              className="group relative bg-[#1a2468]/80 hover:bg-[#1a2468] rounded-3xl p-7 sm:p-8 border border-[#3F4EB4]/30 hover:border-[#2ECDC5]/50 shadow-xl shadow-black/20 hover:shadow-2xl hover:shadow-[#2ECDC5]/10 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-pointer"
             >
               <div>
                 {/* Number */}
-                <div className="text-2xl sm:text-3xl font-black text-orange-500 mb-4 group-hover:scale-105 transition-transform inline-block">
+                <div className="text-2xl sm:text-3xl font-black text-[#2ECDC5] mb-4 group-hover:scale-105 transition-transform inline-block">
                   {step.num}
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-teal-300 transition-colors mb-2.5 leading-snug">
+                <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-[#2ECDC5] transition-colors mb-2.5 leading-snug">
                   {step.title}
                 </h3>
 
@@ -86,7 +86,7 @@ export const PatientJourney = () => {
               </div>
 
               {/* Hover CTA Indicator */}
-              <div className="mt-6 pt-4 border-t border-[#133E43] flex items-center justify-between text-xs font-semibold text-teal-400 opacity-80 group-hover:opacity-100 transition-opacity">
+              <div className="mt-6 pt-4 border-t border-[#3F4EB4]/30 flex items-center justify-between text-xs font-semibold text-[#2ECDC5] opacity-80 group-hover:opacity-100 transition-opacity">
                 <span>{language === "ar" ? "ابدأ هذه الخطوة" : "Start this step"}</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
               </div>

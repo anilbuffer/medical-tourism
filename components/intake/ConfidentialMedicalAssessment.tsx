@@ -266,11 +266,10 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
                 setFullName(e.target.value);
                 if (errors.fullName) setErrors({ ...errors, fullName: "" });
               }}
-              className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all ${
-                errors.fullName
+              className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all ${errors.fullName
                   ? "border-red-400 focus:ring-red-300 bg-red-50/20"
                   : "border-slate-300 focus:ring-teal-500 focus:border-teal-500"
-              }`}
+                }`}
             />
             {errors.fullName && <p className="text-xs text-red-600 font-medium">{errors.fullName}</p>}
           </div>
@@ -288,11 +287,10 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
                   setCountry(e.target.value);
                   if (errors.country) setErrors({ ...errors, country: "" });
                 }}
-                className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 transition-all ${
-                  errors.country
+                className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 transition-all ${errors.country
                     ? "border-red-400 focus:ring-red-300 bg-red-50/20"
                     : "border-slate-300 focus:ring-teal-500 focus:border-teal-500"
-                }`}
+                  }`}
               >
                 <option value="">Select</option>
                 <option value="United Kingdom">GB UK</option>
@@ -320,11 +318,10 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
                   setPhone(e.target.value);
                   if (errors.phone) setErrors({ ...errors, phone: "" });
                 }}
-                className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all ${
-                  errors.phone
+                className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all ${errors.phone
                     ? "border-red-400 focus:ring-red-300 bg-red-50/20"
                     : "border-slate-300 focus:ring-teal-500 focus:border-teal-500"
-                }`}
+                  }`}
               />
               {errors.phone && <p className="text-xs text-red-600 font-medium">{errors.phone}</p>}
             </div>
@@ -343,11 +340,10 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
                 setEmail(e.target.value);
                 if (errors.email) setErrors({ ...errors, email: "" });
               }}
-              className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all ${
-                errors.email
+              className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all ${errors.email
                   ? "border-red-400 focus:ring-red-300 bg-red-50/20"
                   : "border-slate-300 focus:ring-teal-500 focus:border-teal-500"
-              }`}
+                }`}
             />
             {errors.email && <p className="text-xs text-red-600 font-medium">{errors.email}</p>}
           </div>
@@ -363,11 +359,10 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
                 setTreatment(e.target.value);
                 if (errors.treatment) setErrors({ ...errors, treatment: "" });
               }}
-              className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 transition-all ${
-                errors.treatment
+              className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 transition-all ${errors.treatment
                   ? "border-red-400 focus:ring-red-300 bg-red-50/20"
                   : "border-slate-300 focus:ring-teal-500 focus:border-teal-500"
-              }`}
+                }`}
             >
               <option value="">Select</option>
               <option value="Dental Implants">Dental Implants</option>
@@ -451,11 +446,10 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
                 setPatientAgeOrDob(e.target.value);
                 if (errors.patientAgeOrDob) setErrors({ ...errors, patientAgeOrDob: "" });
               }}
-              className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all ${
-                errors.patientAgeOrDob
+              className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all ${errors.patientAgeOrDob
                   ? "border-red-400 focus:ring-red-300 bg-red-50/20"
                   : "border-slate-300 focus:ring-teal-500 focus:border-teal-500"
-              }`}
+                }`}
             />
             {errors.patientAgeOrDob && (
               <p className="text-xs text-red-600 font-medium">{errors.patientAgeOrDob}</p>
@@ -488,11 +482,10 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
               ].map((opt) => (
                 <label
                   key={opt.id}
-                  className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
-                    doctorPreference === opt.label
+                  className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${doctorPreference === opt.label
                       ? "border-[#B91C1C] bg-red-50/30 text-slate-900 font-medium"
                       : "border-slate-200 hover:bg-slate-50 text-slate-700"
-                  }`}
+                    }`}
                 >
                   <input
                     type="radio"
@@ -540,11 +533,10 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
               ].map((opt) => (
                 <label
                   key={opt.id}
-                  className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
-                    treatmentTimeline === opt.label
+                  className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${treatmentTimeline === opt.label
                       ? "border-[#B91C1C] bg-red-50/30 text-slate-900 font-medium"
                       : "border-slate-200 hover:bg-slate-50 text-slate-700"
-                  }`}
+                    }`}
                 >
                   <input
                     type="radio"
@@ -615,7 +607,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
       {step === 3 && (
         <div className="py-8 text-center space-y-6 animate-in zoom-in-95 duration-300">
           {/* Green Checkmark Circle */}
-          <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-inner">
+          <div className="w-16 h-16 rounded-full bg-[#2ECDC5]/15 text-[#2ECDC5] flex items-center justify-center mx-auto shadow-inner">
             <svg
               className="w-8 h-8 stroke-current stroke-[3] fill-none"
               viewBox="0 0 24 24"
@@ -637,7 +629,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
           <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 max-w-md mx-auto text-left rtl:text-right space-y-3">
             <div className="flex items-center justify-between pb-2 border-b border-slate-200 text-xs">
               <span className="font-bold text-slate-500 uppercase tracking-wider">Assessment Ref</span>
-              <span className="font-mono font-bold text-teal-800 bg-teal-100/70 px-2 py-0.5 rounded">
+              <span className="font-mono font-bold text-[#283593] bg-[#3F4EB4]/10 px-2 py-0.5 rounded">
                 {caseId || "VED-2026-9021"}
               </span>
             </div>
@@ -649,7 +641,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
               </div>
               <div>
                 <span className="text-slate-400 block">Treatment</span>
-                <span className="font-semibold text-teal-700">{treatment || "Specialized Care"}</span>
+                <span className="font-semibold text-blue-700">{treatment || "Specialized Care"}</span>
               </div>
               <div>
                 <span className="text-slate-400 block">Country</span>
@@ -674,7 +666,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
             )}
             <button
               onClick={() => openChat(`Hello, I just submitted assessment ${caseId} for ${treatment}. Can I speak with a coordinator?`)}
-              className="w-full py-3 px-5 rounded-xl bg-teal-50 border border-teal-200 hover:bg-teal-100 text-teal-800 font-bold text-xs uppercase tracking-wider transition-colors"
+              className="w-full py-3 px-5 rounded-xl bg-[#3F4EB4]/10 border border-[#3F4EB4]/30 hover:bg-[#3F4EB4]/20 text-[#283593] font-bold text-xs uppercase tracking-wider transition-colors"
             >
               Open Live Chat Desk
             </button>

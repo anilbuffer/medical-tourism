@@ -13,25 +13,25 @@ export const TrustStrip = () => {
       icon: Award,
       value: t.hero.trust1,
       label: t.hero.trust1Label,
-      accent: "from-teal-500 to-emerald-500",
+      accent: "from-[#3F4EB4] to-[#283593]",
     },
     {
       icon: ShieldCheck,
       value: t.hero.trust2,
       label: t.hero.trust2Label,
-      accent: "from-amber-500 to-amber-600",
+      accent: "from-[#2ECDC5] to-[#1DA89F]",
     },
     {
       icon: Building2,
       value: t.hero.trust3,
       label: t.hero.trust3Label,
-      accent: "from-teal-400 to-cyan-500",
+      accent: "from-[#283593] to-[#3F4EB4]",
     },
     {
       icon: Globe2,
       value: t.hero.trust4,
       label: t.hero.trust4Label,
-      accent: "from-emerald-400 to-teal-600",
+      accent: "from-[#2ECDC5] to-[#3F4EB4]",
     },
   ];
 
@@ -70,16 +70,16 @@ export const TrustStrip = () => {
         {/* Bottom Trusted Countries Strip */}
         <div className="pt-4 border-t border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
           <div className="font-bold text-slate-700 uppercase tracking-wider text-[11px] flex items-center gap-2 shrink-0">
-            <span className="w-2 h-2 rounded-full bg-teal-500"></span>
+            <span className="w-2 h-2 rounded-full bg-[#2ECDC5]"></span>
             <span>{language === "ar" ? "موثوق من مرضى" : "TRUSTED BY PATIENTS FROM"}</span>
           </div>
           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             {TRUSTED_COUNTRIES.map((c) => (
               <span
                 key={c.code}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200/90 text-slate-800 font-medium text-[11px] hover:bg-teal-50 hover:text-teal-900 hover:border-teal-300 transition-colors shadow-2xs"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200/90 text-slate-800 font-medium text-[11px] hover:bg-[#3F4EB4]/10 hover:text-[#283593] hover:border-[#2ECDC5]/50 transition-colors shadow-2xs"
               >
-                <span className="px-1 py-0.2 rounded bg-teal-100 text-teal-800 font-mono text-[9px] font-bold">
+                <span className="px-1 py-0.2 rounded bg-[#2ECDC5]/20 text-[#283593] font-mono text-[9px] font-bold">
                   {c.code}
                 </span>
                 <span className="font-semibold text-slate-700">{language === "ar" ? c.nameAr : c.name}</span>

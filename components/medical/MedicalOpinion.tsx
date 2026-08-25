@@ -34,7 +34,7 @@ export const MedicalOpinion = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left Header info */}
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/20 border border-teal-500/30 text-teal-300 text-xs font-bold uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#2ECDC5]/10 border border-[#2ECDC5]/30 text-[#2ECDC5] text-xs font-bold uppercase tracking-wider">
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                 <span>{t.opinion.eyebrow}</span>
               </div>
@@ -50,19 +50,19 @@ export const MedicalOpinion = () => {
               {/* Guarantees */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 <div className="flex items-center gap-2 text-xs text-slate-200">
-                  <Clock className="w-4 h-4 text-teal-400 shrink-0" />
+                  <Clock className="w-4 h-4 text-[#2ECDC5] shrink-0" />
                   <span>24–48 Hour Review Turnaround</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-200">
-                  <ShieldCheck className="w-4 h-4 text-teal-400 shrink-0" />
+                  <ShieldCheck className="w-4 h-4 text-[#2ECDC5] shrink-0" />
                   <span>Senior Director Clinical Panel</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-200">
-                  <Lock className="w-4 h-4 text-teal-400 shrink-0" />
+                  <Lock className="w-4 h-4 text-[#2ECDC5] shrink-0" />
                   <span>100% Encrypted & Private</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-200">
-                  <CheckCircle2 className="w-4 h-4 text-teal-400 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#2ECDC5] shrink-0" />
                   <span>Zero Financial Obligation</span>
                 </div>
               </div>
@@ -71,7 +71,7 @@ export const MedicalOpinion = () => {
             {/* Right Interactive Upload Selector */}
             <div className="lg:col-span-6">
               <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 space-y-5">
-                <div className="text-xs font-bold uppercase tracking-wider text-teal-300">
+                <div className="text-xs font-bold uppercase tracking-wider text-[#2ECDC5]">
                   Select Document Category to Begin:
                 </div>
 
@@ -83,7 +83,7 @@ export const MedicalOpinion = () => {
                       onClick={() => setSelectedReportType(cat.name)}
                       className={`w-full text-left rtl:text-right p-3.5 rounded-xl transition-all border flex items-center justify-between ${
                         selectedReportType === cat.name
-                          ? "bg-teal-500/20 border-teal-400/60 text-white"
+                          ? "bg-[#2ECDC5]/15 border-[#2ECDC5]/60 text-white"
                           : "bg-white/5 border-white/10 text-slate-300 hover:bg-white/10"
                       }`}
                     >
@@ -91,7 +91,7 @@ export const MedicalOpinion = () => {
                         <div
                           className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold ${
                             selectedReportType === cat.name
-                              ? "bg-teal-400 text-slate-950"
+                              ? "bg-[#2ECDC5] text-slate-950"
                               : "bg-white/10 text-slate-400"
                           }`}
                         >
@@ -103,7 +103,7 @@ export const MedicalOpinion = () => {
                         </div>
                       </div>
                       {selectedReportType === cat.name && (
-                        <CheckCircle2 className="w-4 h-4 text-teal-400" />
+                        <CheckCircle2 className="w-4 h-4 text-[#2ECDC5]" />
                       )}
                     </button>
                   ))}
@@ -112,7 +112,7 @@ export const MedicalOpinion = () => {
                 {/* Upload Action */}
                 <button
                   onClick={() => openIntake(selectedReportType)}
-                  className="w-full py-4 rounded-xl text-sm font-bold text-slate-950 bg-gradient-to-r from-teal-300 via-teal-200 to-emerald-300 hover:from-teal-200 hover:to-emerald-200 shadow-xl shadow-teal-500/20 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2"
+                  className="w-full py-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] shadow-xl shadow-[#283593]/20 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2"
                 >
                   <Upload className="w-4 h-4" />
                   <span>{t.opinion.cta}</span>

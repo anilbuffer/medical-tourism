@@ -23,7 +23,7 @@ export const WhyIndiaSection = () => {
       description: t.whyIndia.pillar1Desc,
       stat: "100,000+",
       statLabel: "US/UK Trained Clinicians",
-      accent: "from-teal-600 to-emerald-700",
+      accent: "from-[#283593] to-[#3F4EB4]",
     },
     {
       icon: Cpu,
@@ -31,7 +31,7 @@ export const WhyIndiaSection = () => {
       description: t.whyIndia.pillar2Desc,
       stat: "Da Vinci Xi & Proton",
       statLabel: "Advanced Robotic Suites",
-      accent: "from-[#0D3B3F] to-teal-900",
+      accent: "from-[#3F4EB4] to-[#283593]",
     },
     {
       icon: Zap,
@@ -39,7 +39,7 @@ export const WhyIndiaSection = () => {
       description: t.whyIndia.pillar3Desc,
       stat: "< 48 Hours",
       statLabel: "Zero Waiting Lists",
-      accent: "from-amber-500 to-orange-600",
+      accent: "from-[#2ECDC5] to-[#3F4EB4]",
     },
     {
       icon: TrendingDownIcon,
@@ -47,7 +47,7 @@ export const WhyIndiaSection = () => {
       description: t.whyIndia.pillar4Desc,
       stat: "65% – 85%",
       statLabel: "Cost Advantage",
-      accent: "from-emerald-600 to-teal-700",
+      accent: "from-[#2ECDC5] to-[#283593]",
     },
     {
       icon: HeartHandshake,
@@ -55,7 +55,7 @@ export const WhyIndiaSection = () => {
       description: t.whyIndia.pillar5Desc,
       stat: "1:1 Dedication",
       statLabel: "Personalized Concierge",
-      accent: "from-orange-600 to-amber-600",
+      accent: "from-[#283593] to-[#2ECDC5]",
     },
   ];
 
@@ -64,10 +64,10 @@ export const WhyIndiaSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-orange-500 mb-2">
+          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2ECDC5] mb-2">
             {t.whyIndia.eyebrow}
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0D3B3F] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3851A2] tracking-tight leading-tight">
             {t.whyIndia.heading}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto">
@@ -82,9 +82,8 @@ export const WhyIndiaSection = () => {
             return (
               <div
                 key={idx}
-                className={`bg-slate-50 rounded-3xl p-7 border border-slate-200/80 hover:border-teal-400 hover:bg-white hover:shadow-luxury-hover transition-all duration-300 flex flex-col justify-between group ${
-                  idx === 0 ? "lg:col-span-2 lg:flex-row lg:items-center lg:gap-8" : ""
-                }`}
+                className={`bg-slate-50 rounded-3xl p-7 border border-slate-200/80 hover:border-[#2ECDC5]/60 hover:bg-white hover:shadow-luxury-hover transition-all duration-300 flex flex-col justify-between group ${idx === 0 ? "lg:col-span-2 lg:flex-row lg:items-center lg:gap-8" : ""
+                  }`}
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
@@ -111,7 +110,7 @@ export const WhyIndiaSection = () => {
                     <div className="text-xl font-extrabold text-slate-900 font-sans tracking-tight">
                       {item.stat}
                     </div>
-                    <div className="text-[10px] font-bold uppercase tracking-wider text-teal-700 mt-0.5">
+                    <div className="text-[10px] font-bold uppercase tracking-wider text-blue-700 mt-0.5">
                       {item.statLabel}
                     </div>
                   </div>

@@ -122,10 +122,10 @@ export const BlogSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-orange-500 mb-2">
+          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2ECDC5] mb-2">
             {t.blog.eyebrow}
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0D3B3F] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3851A2] tracking-tight leading-tight">
             {t.blog.heading}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl">
@@ -139,7 +139,7 @@ export const BlogSection = () => {
             <div
               key={post.id}
               onClick={() => setActiveArticle(post)}
-              className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-md shadow-slate-200/50 hover:shadow-2xl hover:border-teal-300 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-pointer group"
+              className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-md shadow-slate-200/50 hover:shadow-2xl hover:border-[#2ECDC5]/60 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-pointer group"
             >
               {/* Top Article Image */}
               <div className="relative h-48 w-full overflow-hidden bg-slate-100">
@@ -155,12 +155,12 @@ export const BlogSection = () => {
               <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                 <div className="space-y-2.5">
                   {/* Category Pill Tag */}
-                  <span className="inline-block px-3 py-1 rounded-full bg-teal-50/90 text-teal-700 text-[11px] font-semibold border border-teal-100/60">
+                  <span className="inline-block px-3 py-1 rounded-full bg-[#3F4EB4]/10 text-[#3F4EB4] text-[11px] font-semibold border border-[#3F4EB4]/20">
                     {language === "ar" ? post.categoryAr : post.category}
                   </span>
 
                   {/* Article Title */}
-                  <h3 className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-teal-700 transition-colors leading-snug line-clamp-2">
+                  <h3 className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-[#3F4EB4] transition-colors leading-snug line-clamp-2">
                     {language === "ar" ? post.titleAr : post.title}
                   </h3>
                 </div>
@@ -200,7 +200,7 @@ export const BlogSection = () => {
 
               {/* Badges on Banner */}
               <div className="absolute bottom-4 left-6 right-6 flex items-center justify-between text-white text-xs">
-                <span className="px-3 py-1 rounded-full bg-teal-500/90 backdrop-blur-md font-bold">
+                <span className="px-3 py-1 rounded-full bg-[#2ECDC5] text-slate-950 backdrop-blur-md font-bold">
                   {language === "ar" ? activeArticle.categoryAr : activeArticle.category}
                 </span>
                 <span className="flex items-center gap-1.5 text-slate-200 font-medium">
@@ -216,7 +216,7 @@ export const BlogSection = () => {
                 {language === "ar" ? activeArticle.titleAr : activeArticle.title}
               </h2>
 
-              <p className="text-sm font-semibold text-teal-800 bg-teal-50/70 p-4 rounded-2xl border border-teal-100">
+              <p className="text-sm font-semibold text-[#283593] bg-[#3F4EB4]/10 p-4 rounded-2xl border border-[#3F4EB4]/20">
                 {language === "ar" ? activeArticle.excerptAr : activeArticle.excerpt}
               </p>
 
@@ -241,7 +241,7 @@ export const BlogSection = () => {
                     setActiveArticle(null);
                     openIntake(`Inquiry from Guide: ${treatmentName}`);
                   }}
-                  className="w-full sm:w-auto py-3 px-6 rounded-xl bg-[#0D3B3F] hover:bg-[#072428] text-white font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto py-3 px-6 rounded-xl bg-[#3F4EB4] hover:bg-[#283593] text-white font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
                 >
                   <span>{language === "ar" ? "استشر منسق الرعاية" : "Speak to a Care Coordinator"}</span>
                   <ArrowRight className="w-4 h-4 rtl:rotate-180" />

@@ -107,10 +107,10 @@ export const DoctorsSection = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-6">
           <div className="max-w-2xl">
-            <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-orange-500 mb-2">
+            <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2ECDC5] mb-2">
               {t.doctors.eyebrow}
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0D3B3F] tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3851A2] tracking-tight leading-tight">
               {t.doctors.heading}
             </h2>
             <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -125,7 +125,7 @@ export const DoctorsSection = () => {
                 onClick={handlePrev}
                 disabled={totalItems <= 1}
                 aria-label="Previous Doctor"
-                className="w-10 h-10 rounded-xl bg-slate-50 hover:bg-[#0D3B3F] text-slate-700 hover:text-white border border-slate-200/80 hover:border-[#0D3B3F] shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed group"
+                className="w-10 h-10 rounded-xl bg-slate-50 hover:bg-[#3851A2] text-slate-700 hover:text-white border border-slate-200/80 hover:border-[#3851A2] shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed group"
               >
                 <ChevronLeft className="w-5 h-5 rtl:rotate-180 group-hover:-translate-x-0.5 rtl:group-hover:translate-x-0.5 transition-transform" />
               </button>
@@ -133,7 +133,7 @@ export const DoctorsSection = () => {
                 onClick={handleNext}
                 disabled={totalItems <= 1}
                 aria-label="Next Doctor"
-                className="w-10 h-10 rounded-xl bg-slate-50 hover:bg-[#0D3B3F] text-slate-700 hover:text-white border border-slate-200/80 hover:border-[#0D3B3F] shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed group"
+                className="w-10 h-10 rounded-xl bg-slate-50 hover:bg-[#3851A2] text-slate-700 hover:text-white border border-slate-200/80 hover:border-[#3851A2] shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed group"
               >
                 <ChevronRight className="w-5 h-5 rtl:rotate-180 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform" />
               </button>
@@ -147,11 +147,10 @@ export const DoctorsSection = () => {
             <button
               key={spec}
               onClick={() => setActiveSpecialty(spec)}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                activeSpecialty === spec
-                  ? "bg-[#0D3B3F] text-white shadow-md shadow-teal-950/20 scale-[1.02]"
-                  : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
-              }`}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${activeSpecialty === spec
+                ? "bg-[#3851A2] text-white shadow-md shadow-teal-950/20 scale-[1.02]"
+                : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
+                }`}
             >
               {spec}
             </button>
@@ -178,9 +177,8 @@ export const DoctorsSection = () => {
               return (
                 <div
                   key={doc.id}
-                  className={`w-[85vw] sm:w-[78vw] md:w-[calc(33.333%-14px)] lg:w-[385px] shrink-0 snap-start bg-white rounded-3xl overflow-hidden border ${
-                    isCurrent ? "border-teal-400 shadow-luxury-hover" : "border-slate-200/80 shadow-card"
-                  } hover:shadow-luxury-hover transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5`}
+                  className={`w-[85vw] sm:w-[78vw] md:w-[calc(33.333%-14px)] lg:w-[385px] shrink-0 snap-start bg-white rounded-3xl overflow-hidden border ${isCurrent ? "border-teal-400 shadow-luxury-hover" : "border-slate-200/80 shadow-card"
+                    } hover:shadow-luxury-hover transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5`}
                 >
                   {/* Doctor Avatar Header */}
                   <div className="relative h-60 w-full overflow-hidden bg-slate-100">
@@ -199,7 +197,7 @@ export const DoctorsSection = () => {
                     </div>
 
                     {/* Experience Badge */}
-                    <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-teal-950/80 backdrop-blur-md border border-teal-500/30 text-teal-300 text-[11px] font-bold">
+                    <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-[#283593]/90 backdrop-blur-md border border-[#3F4EB4]/40 text-[#2ECDC5] text-[11px] font-bold">
                       {doc.experienceYears}+ {t.doctors.experience}
                     </div>
                   </div>
@@ -208,10 +206,10 @@ export const DoctorsSection = () => {
                   <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                     <div className="space-y-2">
                       <div>
-                        <h3 className="text-lg font-extrabold text-slate-900 group-hover:text-teal-700 transition-colors">
+                        <h3 className="text-lg font-extrabold text-slate-900 group-hover:text-blue-700 transition-colors">
                           {language === "ar" ? doc.nameAr : doc.name}
                         </h3>
-                        <p className="text-xs font-semibold text-teal-700">
+                        <p className="text-xs font-semibold text-blue-700">
                           {language === "ar" ? doc.titleAr : doc.title}
                         </p>
                       </div>
@@ -237,8 +235,8 @@ export const DoctorsSection = () => {
 
                     {/* Video Availability Strip */}
                     <div className="pt-2 border-t border-slate-100">
-                      <div className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg flex items-center gap-1.5 mb-3">
-                        <Video className="w-3 h-3 text-emerald-600 shrink-0" />
+                      <div className="text-[11px] font-bold text-[#2ECDC5] bg-[#2ECDC5]/10 px-2.5 py-1 rounded-lg flex items-center gap-1.5 mb-3">
+                        <Video className="w-3 h-3 text-[#2ECDC5] shrink-0" />
                         <span>{t.doctors.videoAvailable}</span>
                       </div>
 
@@ -252,7 +250,7 @@ export const DoctorsSection = () => {
                         </button>
                         <button
                           onClick={() => openDoctorModal(doc)}
-                          className="py-2.5 px-3 rounded-xl bg-[#0D3B3F] hover:bg-[#072428] text-white text-xs font-bold transition-all text-center shadow-md shadow-teal-950/20"
+                          className="py-2.5 px-3 rounded-xl bg-[#3F4EB4] hover:bg-[#283593] text-white text-xs font-bold transition-all text-center shadow-md shadow-[#283593]/20"
                         >
                           {t.doctors.requestConsult}
                         </button>
@@ -270,14 +268,14 @@ export const DoctorsSection = () => {
               <button
                 onClick={handlePrev}
                 aria-label="Previous Doctor"
-                className="hidden md:flex absolute top-1/2 -left-4 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-800 shadow-xl items-center justify-center opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-[#0D3B3F] hover:text-white hover:scale-105 active:scale-95"
+                className="hidden md:flex absolute top-1/2 -left-4 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-800 shadow-xl items-center justify-center opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-[#3851A2] hover:text-white hover:scale-105 active:scale-95"
               >
                 <ChevronLeft className="w-6 h-6 rtl:rotate-180" />
               </button>
               <button
                 onClick={handleNext}
                 aria-label="Next Doctor"
-                className="hidden md:flex absolute top-1/2 -right-4 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-800 shadow-xl items-center justify-center opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-[#0D3B3F] hover:text-white hover:scale-105 active:scale-95"
+                className="hidden md:flex absolute top-1/2 -right-4 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-slate-800 shadow-xl items-center justify-center opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-[#3851A2] hover:text-white hover:scale-105 active:scale-95"
               >
                 <ChevronRight className="w-6 h-6 rtl:rotate-180" />
               </button>
@@ -294,11 +292,10 @@ export const DoctorsSection = () => {
                   key={doc.id}
                   onClick={() => scrollToIndex(i)}
                   aria-label={`Go to ${doc.name}`}
-                  className={`h-2.5 rounded-full transition-all duration-300 ${
-                    activeIndex === i
-                      ? "w-8 bg-[#0D3B3F] shadow-sm shadow-teal-950/30"
-                      : "w-2.5 bg-slate-200 hover:bg-slate-300"
-                  }`}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${activeIndex === i
+                    ? "w-8 bg-[#3851A2] shadow-sm shadow-teal-950/30"
+                    : "w-2.5 bg-slate-200 hover:bg-slate-300"
+                    }`}
                 />
               ))}
             </div>
@@ -310,11 +307,11 @@ export const DoctorsSection = () => {
               <span className="w-1 h-1 rounded-full bg-slate-300" />
               <button
                 onClick={() => setIsPaused(!isPaused)}
-                className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#0D3B3F] transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#3851A2] transition-colors"
               >
                 {isPaused ? (
                   <>
-                    <Play className="w-3.5 h-3.5 text-[#0D3B3F] fill-[#0D3B3F]" />
+                    <Play className="w-3.5 h-3.5 text-[#3851A2] fill-[#3851A2]" />
                     <span>Resume Auto-play</span>
                   </>
                 ) : (

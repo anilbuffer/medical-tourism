@@ -25,14 +25,14 @@ export const Footer = () => {
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-5">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-600 to-slate-900 flex items-center justify-center shadow-lg border border-teal-500/30">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#283593] to-[#3F4EB4] flex items-center justify-center shadow-lg border border-[#2ECDC5]/30">
                 <span className="text-white font-bold text-lg font-serif">V</span>
               </div>
               <div className="flex flex-col">
                 <span className="font-extrabold tracking-widest text-lg text-white">
                   {t.nav.brandName}
                 </span>
-                <span className="text-[10px] uppercase font-bold tracking-wider text-teal-400">
+                <span className="text-[10px] uppercase font-bold tracking-wider text-[#2ECDC5]">
                   {t.nav.brandSub}
                 </span>
               </div>
@@ -49,7 +49,7 @@ export const Footer = () => {
 
           {/* Col 1: Care Pathway */}
           <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-teal-400">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#2ECDC5]">
               {t.footer.careHeader}
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-400 font-medium">
@@ -78,7 +78,7 @@ export const Footer = () => {
 
           {/* Col 2: Patient Resources */}
           <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-teal-400">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#2ECDC5]">
               {t.footer.resourcesHeader}
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-400 font-medium">
@@ -112,7 +112,7 @@ export const Footer = () => {
 
           {/* Col 3: 24/7 International Desk */}
           <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-teal-400">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#2ECDC5]">
               {t.footer.supportHeader}
             </h4>
             <div className="space-y-3 text-xs text-slate-400">
@@ -120,26 +120,26 @@ export const Footer = () => {
                 href="https://wa.me/971501234567"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-emerald-400 hover:underline font-semibold"
+                className="flex items-center gap-2 text-[#2ECDC5] hover:underline font-semibold"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>WhatsApp: +971 50 123 4567</span>
               </a>
 
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-teal-400 shrink-0" />
+                <Phone className="w-4 h-4 text-[#2ECDC5] shrink-0" />
                 <span>Desk: +971 4 800 VEDARA</span>
               </div>
 
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-teal-400 shrink-0" />
+                <Mail className="w-4 h-4 text-[#2ECDC5] shrink-0" />
                 <span>care@vedara.health</span>
               </div>
 
               <div className="pt-2">
                 <a
                   href="/#assessment"
-                  className="block w-full py-2.5 px-3 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs shadow-md transition-all text-center"
+                  className="block w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-bold text-xs shadow-md shadow-[#283593]/30 transition-all text-center"
                 >
                   {t.nav.startJourney}
                 </a>

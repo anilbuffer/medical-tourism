@@ -102,10 +102,10 @@ export const CostTransparency = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-orange-500 mb-2">
+          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2ECDC5] mb-2">
             {t.cost.eyebrow}
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0D3B3F] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3851A2] tracking-tight leading-tight">
             {t.cost.heading}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl">
@@ -126,7 +126,7 @@ export const CostTransparency = () => {
                 >
                   <div>
                     {/* Peach/Orange Rounded Icon Container */}
-                    <div className="w-11 h-11 rounded-2xl bg-[#FFF3EB] text-[#E65100] flex items-center justify-center mb-5">
+                    <div className="w-11 h-11 rounded-2xl bg-[#2ECDC5]/15 text-[#2ECDC5] flex items-center justify-center mb-5">
                       <Icon className="w-5 h-5" />
                     </div>
 
@@ -148,18 +148,18 @@ export const CostTransparency = () => {
           {/* Right Column: Treatment Cost Comparison Table (USD) */}
           <div className="lg:col-span-7">
             <div className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xl shadow-slate-200/60">
-              {/* Dark Forest Green Header Strip */}
-              <div className="bg-[#0D3B3F] text-white px-6 py-4 font-bold text-sm sm:text-base tracking-tight">
+              {/* Dark Header Strip */}
+              <div className="bg-gradient-to-r from-[#283593] via-[#3F4EB4] to-[#283593] text-white px-6 py-4 font-bold text-sm sm:text-base tracking-tight">
                 {t.cost.compareTitle}
               </div>
 
               {/* Sub-Header Column Labels */}
-              <div className="bg-[#EAF2F2] px-6 py-3 text-[11px] font-extrabold uppercase tracking-wider text-slate-700 grid grid-cols-12 gap-2 border-b border-slate-200">
+              <div className="bg-[#3F4EB4]/10 px-6 py-3 text-[11px] font-extrabold uppercase tracking-wider text-[#283593] grid grid-cols-12 gap-2 border-b border-slate-200">
                 <div className="col-span-4">TREATMENT</div>
                 <div className="col-span-1 text-center">UK</div>
                 <div className="col-span-2 text-center">CANADA</div>
                 <div className="col-span-2 text-center">AUSTRALIA</div>
-                <div className="col-span-2 text-center text-teal-900 font-black">INDIA</div>
+                <div className="col-span-2 text-center text-[#283593] font-black">INDIA</div>
                 <div className="col-span-1 text-center">SAVINGS</div>
               </div>
 
@@ -169,10 +169,10 @@ export const CostTransparency = () => {
                   <div
                     key={index}
                     onClick={() => openIntake(row.treatment)}
-                    className="px-6 py-4 text-xs grid grid-cols-12 gap-2 items-center hover:bg-slate-50/80 transition-colors cursor-pointer group"
+                    className="px-6 py-4 text-xs grid grid-cols-12 gap-2 items-center hover:bg-[#3F4EB4]/5 transition-colors cursor-pointer group"
                   >
                     {/* Treatment Name */}
-                    <div className="col-span-4 font-bold text-slate-900 group-hover:text-teal-700 transition-colors leading-snug">
+                    <div className="col-span-4 font-bold text-slate-900 group-hover:text-[#3F4EB4] transition-colors leading-snug">
                       {language === "ar" ? row.treatmentAr : row.treatment}
                     </div>
 
@@ -192,13 +192,13 @@ export const CostTransparency = () => {
                     </div>
 
                     {/* India (Highlighted) */}
-                    <div className="col-span-2 text-center font-black text-slate-900 text-sm">
+                    <div className="col-span-2 text-center font-black text-[#283593] text-sm">
                       {row.india}
                     </div>
 
                     {/* Savings Badge */}
                     <div className="col-span-1 flex justify-center">
-                      <span className="px-2 py-0.5 rounded-full bg-[#E6F4EA] text-[#137333] font-bold text-[11px]">
+                      <span className="px-2 py-0.5 rounded-full bg-[#2ECDC5]/15 text-[#1DA89F] font-bold text-[11px]">
                         {row.savings}
                       </span>
                     </div>
@@ -211,7 +211,7 @@ export const CostTransparency = () => {
                 <span>{t.cost.disclaimer}</span>
                 <button
                   onClick={() => openIntake()}
-                  className="font-bold text-teal-700 hover:text-teal-800 flex items-center gap-1 shrink-0 ml-2"
+                  className="font-bold text-[#3F4EB4] hover:text-[#283593] flex items-center gap-1 shrink-0 ml-2"
                 >
                   <span>{language === "ar" ? "طلب عرض سعر" : "Get Custom Quote"}</span>
                   <ArrowRight className="w-3 h-3 rtl:rotate-180" />

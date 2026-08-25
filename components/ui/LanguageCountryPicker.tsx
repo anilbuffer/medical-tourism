@@ -126,16 +126,16 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
         className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all border shadow-sm ${
           lightMode
             ? "bg-slate-100/90 text-slate-800 border-slate-200/90 hover:bg-slate-200/80"
-            : "bg-white/10 text-white border-white/20 hover:bg-white/20 hover:border-teal-400/40"
-        } ${isOpen ? "ring-2 ring-teal-400/40 border-teal-400" : ""}`}
+            : "bg-white/10 text-white border-white/20 hover:bg-white/20 hover:border-[#2ECDC5]/40"
+        } ${isOpen ? "ring-2 ring-[#2ECDC5]/40 border-[#2ECDC5]" : ""}`}
         aria-label="Language and Country Selector"
         aria-expanded={isOpen}
       >
-        <Globe className="w-3.5 h-3.5 text-teal-400 shrink-0" />
+        <Globe className="w-3.5 h-3.5 text-[#2ECDC5] shrink-0" />
         <span className="font-bold tracking-wider">{language === "ar" ? "AR" : "EN"}</span>
         <ChevronDown
           className={`w-3 h-3 text-slate-400 transition-transform duration-200 ${
-            isOpen ? "rotate-180 text-teal-400" : ""
+            isOpen ? "rotate-180 text-[#2ECDC5]" : ""
           }`}
         />
       </button>
@@ -146,7 +146,7 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
           className={`absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-80 origin-top-right rounded-2xl shadow-2xl z-50 overflow-hidden border backdrop-blur-2xl animate-in fade-in zoom-in-95 duration-150 ${
             lightMode
               ? "bg-white/98 text-slate-900 border-slate-200 shadow-slate-900/15"
-              : "bg-[#081729]/98 text-white border-slate-700/80 shadow-slate-950/70"
+              : "bg-[#0B192C]/98 text-white border-slate-700/80 shadow-slate-950/70"
           }`}
         >
           {/* Header Tab Switcher */}
@@ -159,7 +159,7 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
               onClick={() => setActiveTab("language")}
               className={`py-1.5 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 ${
                 activeTab === "language"
-                  ? "bg-teal-500 text-slate-950 shadow-sm"
+                  ? "bg-[#2ECDC5] text-slate-950 shadow-sm"
                   : lightMode
                   ? "text-slate-600 hover:bg-slate-200/60"
                   : "text-slate-300 hover:bg-white/10"
@@ -172,7 +172,7 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
               onClick={() => setActiveTab("country")}
               className={`py-1.5 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 ${
                 activeTab === "country"
-                  ? "bg-teal-500 text-slate-950 shadow-sm"
+                  ? "bg-[#2ECDC5] text-slate-950 shadow-sm"
                   : lightMode
                   ? "text-slate-600 hover:bg-slate-200/60"
                   : "text-slate-300 hover:bg-white/10"
@@ -186,7 +186,7 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
           {/* Tab 1: Language Options */}
           {activeTab === "language" && (
             <div className="p-2 space-y-1.5">
-              <div className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-teal-400">
+              <div className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#2ECDC5]">
                 {language === "ar" ? "اختر لغة العرض" : "Select Display Language"}
               </div>
 
@@ -199,8 +199,8 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
                 className={`w-full text-left rtl:text-right px-3 py-2.5 rounded-xl text-xs flex items-center justify-between transition-all group ${
                   language === "en"
                     ? lightMode
-                      ? "bg-teal-50 text-teal-900 font-bold border border-teal-200"
-                      : "bg-teal-500/15 text-teal-300 font-bold border border-teal-500/30"
+                      ? "bg-[#3F4EB4]/10 text-[#283593] font-bold border border-[#3F4EB4]/20"
+                      : "bg-[#2ECDC5]/15 text-[#2ECDC5] font-bold border border-[#2ECDC5]/30"
                     : lightMode
                     ? "text-slate-700 hover:bg-slate-100"
                     : "text-slate-200 hover:bg-white/10"
@@ -218,7 +218,7 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
                     <span className="text-[11px] text-slate-400 block">International (EN)</span>
                   </div>
                 </div>
-                {language === "en" && <Check className="w-4 h-4 text-teal-400" />}
+                {language === "en" && <Check className="w-4 h-4 text-[#2ECDC5]" />}
               </button>
 
               {/* Arabic */}
@@ -230,8 +230,8 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
                 className={`w-full text-left rtl:text-right px-3 py-2.5 rounded-xl text-xs flex items-center justify-between transition-all group ${
                   language === "ar"
                     ? lightMode
-                      ? "bg-teal-50 text-teal-900 font-bold border border-teal-200"
-                      : "bg-teal-500/15 text-teal-300 font-bold border border-teal-500/30"
+                      ? "bg-[#3F4EB4]/10 text-[#283593] font-bold border border-[#3F4EB4]/20"
+                      : "bg-[#2ECDC5]/15 text-[#2ECDC5] font-bold border border-[#2ECDC5]/30"
                     : lightMode
                     ? "text-slate-700 hover:bg-slate-100"
                     : "text-slate-200 hover:bg-white/10"
@@ -246,7 +246,7 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
                     </span>
                   </div>
                 </div>
-                {language === "ar" && <Check className="w-4 h-4 text-teal-400" />}
+                {language === "ar" && <Check className="w-4 h-4 text-[#2ECDC5]" />}
               </button>
             </div>
           )}
@@ -254,7 +254,7 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
           {/* Tab 2: Country Selection (The 7 target countries) */}
           {activeTab === "country" && (
             <div className="p-2 max-h-72 overflow-y-auto space-y-1">
-              <div className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-teal-400">
+              <div className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#2ECDC5]">
                 {language === "ar" ? "الدول المعتمدة ومكاتب الدعم" : "Supported Patient Desks"}
               </div>
 
@@ -270,8 +270,8 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
                     className={`w-full text-left rtl:text-right px-3 py-2 rounded-xl text-xs flex items-center justify-between transition-all ${
                       isSelected
                         ? lightMode
-                          ? "bg-teal-50 text-teal-900 font-bold border border-teal-200"
-                          : "bg-teal-500/15 text-teal-300 font-bold border border-teal-500/30"
+                          ? "bg-[#3F4EB4]/10 text-[#283593] font-bold border border-[#3F4EB4]/20"
+                          : "bg-[#2ECDC5]/15 text-[#2ECDC5] font-bold border border-[#2ECDC5]/30"
                         : lightMode
                         ? "text-slate-700 hover:bg-slate-100"
                         : "text-slate-200 hover:bg-white/10"
@@ -285,11 +285,11 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
                           <span className="text-[10px] text-slate-400">({c.shortName})</span>
                         </div>
                         <span className="text-[10px] text-slate-400 block">
-                          Currency: <span className="text-teal-400 font-mono font-bold">{c.currencyCode} ({c.currencySymbol})</span> · {c.dialCode}
+                          Currency: <span className="text-[#2ECDC5] font-mono font-bold">{c.currencyCode} ({c.currencySymbol})</span> · {c.dialCode}
                         </span>
                       </div>
                     </div>
-                    {isSelected && <Check className="w-4 h-4 text-teal-400 shrink-0" />}
+                    {isSelected && <Check className="w-4 h-4 text-[#2ECDC5] shrink-0" />}
                   </button>
                 );
               })}
@@ -303,10 +303,10 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
             }`}
           >
             <span className="flex items-center gap-1">
-              <Sparkles className="w-3 h-3 text-teal-400" />
+              <Sparkles className="w-3 h-3 text-[#2ECDC5]" />
               <span>7 International Hubs</span>
             </span>
-            <span className="font-mono text-teal-400 font-bold">24/7 Concierge</span>
+            <span className="font-mono text-[#2ECDC5] font-bold">24/7 Concierge</span>
           </div>
         </div>
       )}

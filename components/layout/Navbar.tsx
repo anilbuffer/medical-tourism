@@ -84,27 +84,26 @@ export const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#071321]/95 backdrop-blur-xl shadow-xl shadow-slate-950/30 py-2.5 border-b border-slate-800/80 text-white"
-          : "bg-gradient-to-b from-slate-950/85 via-slate-950/40 to-transparent py-4 text-white"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled
+        ? "bg-[#071321]/95 backdrop-blur-xl shadow-xl shadow-slate-950/30 py-2.5 border-b border-slate-800/80 text-white"
+        : "bg-gradient-to-b from-slate-950/85 via-slate-950/40 to-transparent py-4 text-white"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-6">
           {/* 01. Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-teal-500 via-teal-600 to-slate-900 flex items-center justify-center shadow-lg shadow-teal-900/30 ring-1 ring-teal-400/40 group-hover:scale-105 transition-transform">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-[#3F4EB4] via-[#283593] to-slate-900 flex items-center justify-center shadow-lg shadow-[#283593]/30 ring-1 ring-[#2ECDC5]/40 group-hover:scale-105 transition-transform">
               <span className="text-white font-black text-lg font-serif">V</span>
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-1.5 leading-tight">
-                <span className="font-extrabold tracking-widest text-base sm:text-lg text-white group-hover:text-teal-300 transition-colors">
+                <span className="font-extrabold tracking-widest text-base sm:text-lg text-white group-hover:text-[#2ECDC5] transition-colors">
                   {t.nav.brandName}
                 </span>
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse"></span>
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#2ECDC5] animate-pulse"></span>
               </div>
-              <span className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-wider text-teal-300/80 leading-none">
+              <span className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-wider text-[#2ECDC5]/80 leading-none">
                 {t.nav.brandSub}
               </span>
             </div>
@@ -155,14 +154,14 @@ export const Navbar = () => {
                 <span>{t.nav.explore}</span>
                 <ChevronDown
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    exploreOpen ? "rotate-180 text-teal-400" : "text-slate-400"
+                    exploreOpen ? "rotate-180 text-[#2ECDC5]" : "text-slate-400"
                   }`}
                 />
               </button>
 
               {/* Dropdown Panel */}
               {exploreOpen && (
-                <div className="absolute top-full left-0 rtl:left-auto rtl:right-0 mt-2 w-72 rounded-2xl bg-[#081729]/95 backdrop-blur-2xl border border-slate-700/70 shadow-2xl shadow-slate-950/60 p-2 z-50 animate-in fade-in zoom-in-95 duration-150">
+                <div className="absolute top-full left-0 rtl:left-auto rtl:right-0 mt-2 w-72 rounded-2xl bg-[#0B192C]/95 backdrop-blur-2xl border border-slate-700/70 shadow-2xl shadow-slate-950/60 p-2 z-50 animate-in fade-in zoom-in-95 duration-150">
                   <div className="space-y-1">
                     {exploreLinks.map((item) => {
                       const IconComponent = item.icon;
@@ -173,16 +172,16 @@ export const Navbar = () => {
                           onClick={() => setExploreOpen(false)}
                           className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/10 transition-colors group text-left rtl:text-right"
                         >
-                          <div className="p-2 rounded-lg bg-teal-500/10 text-teal-400 border border-teal-500/20 group-hover:bg-teal-500 group-hover:text-slate-950 transition-colors shrink-0">
+                          <div className="p-2 rounded-lg bg-[#2ECDC5]/10 text-[#2ECDC5] border border-[#2ECDC5]/20 group-hover:bg-[#2ECDC5] group-hover:text-slate-950 transition-colors shrink-0">
                             <IconComponent className="w-4 h-4" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between gap-1">
-                              <span className="text-xs font-semibold text-slate-100 group-hover:text-teal-300 transition-colors">
+                              <span className="text-xs font-semibold text-slate-100 group-hover:text-[#2ECDC5] transition-colors">
                                 {item.title}
                               </span>
                               {item.badge && (
-                                <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-slate-800 text-teal-300 border border-teal-500/20 whitespace-nowrap">
+                                <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-slate-800 text-[#2ECDC5] border border-[#2ECDC5]/20 whitespace-nowrap">
                                   {item.badge}
                                 </span>
                               )}
@@ -208,7 +207,7 @@ export const Navbar = () => {
             {/* Primary Get Free Quote CTA */}
             <a
               href="/#assessment"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-teal-500 via-teal-600 to-emerald-600 hover:from-teal-400 hover:via-teal-500 hover:to-emerald-500 shadow-md shadow-teal-900/40 hover:shadow-lg hover:shadow-teal-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] shadow-md shadow-[#283593]/30 hover:shadow-lg hover:shadow-[#283593]/40 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap"
             >
               <Sparkles className="w-3.5 h-3.5 text-amber-300" />
               <span>{t.nav.startJourney}</span>
@@ -234,7 +233,7 @@ export const Navbar = () => {
         <div className="lg:hidden bg-[#071321]/98 backdrop-blur-2xl border-b border-slate-800 px-4 pt-3 pb-6 text-white space-y-4 animate-in slide-in-from-top-2 duration-200">
           <div className="flex items-center justify-between pb-2 border-b border-slate-800/80">
             <div className="flex items-center gap-2 text-xs text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-[#2ECDC5] animate-pulse"></span>
               <span>24/7 International Desk</span>
             </div>
             <LanguageCountryPicker />
@@ -245,25 +244,25 @@ export const Navbar = () => {
             <a
               href="#treatments"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-teal-500/40"
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#3F4EB4]/40"
             >
-              <Stethoscope className="w-4 h-4 text-teal-400" />
+              <Stethoscope className="w-4 h-4 text-[#2ECDC5]" />
               <span>{t.nav.treatments}</span>
             </a>
             <a
               href="#doctors"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-teal-500/40"
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#3F4EB4]/40"
             >
-              <UserCheck className="w-4 h-4 text-teal-400" />
+              <UserCheck className="w-4 h-4 text-[#2ECDC5]" />
               <span>{t.nav.doctorsHospitals}</span>
             </a>
             <a
               href="#journey"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-teal-500/40 col-span-2"
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#3F4EB4]/40 col-span-2"
             >
-              <Compass className="w-4 h-4 text-teal-400" />
+              <Compass className="w-4 h-4 text-[#2ECDC5]" />
               <span>{t.nav.howItWorks}</span>
             </a>
           </div>
@@ -279,7 +278,7 @@ export const Navbar = () => {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-2.5 py-2 rounded-lg text-xs text-slate-300 hover:bg-white/5 hover:text-teal-300 transition-colors"
+                  className="px-2.5 py-2 rounded-lg text-xs text-slate-300 hover:bg-white/5 hover:text-[#2ECDC5] transition-colors"
                 >
                   {item.title}
                 </a>
@@ -292,7 +291,7 @@ export const Navbar = () => {
             <a
               href="/#assessment"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-teal-500 via-teal-600 to-emerald-600 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-teal-950/50"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#283593]/40"
             >
               <Sparkles className="w-4 h-4 text-amber-300" />
               <span>{t.nav.startJourney}</span>

@@ -19,10 +19,10 @@ export const HospitalsSection = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div className="max-w-3xl">
-            <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-orange-500 mb-2">
+            <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2ECDC5] mb-2">
               {t.hospitals.eyebrow}
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0D3B3F] tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3851A2] tracking-tight leading-tight">
               {t.hospitals.heading}
             </h2>
             <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -32,7 +32,7 @@ export const HospitalsSection = () => {
 
           <button
             onClick={() => openIntake("Chandigarh Hospital Selection")}
-            className="inline-flex items-center gap-2 text-xs font-bold text-teal-700 hover:text-teal-800 tracking-wider uppercase group shrink-0"
+            className="inline-flex items-center gap-2 text-xs font-bold text-blue-700 hover:text-teal-800 tracking-wider uppercase group shrink-0"
           >
             <span>{t.hospitals.exploreNetwork}</span>
             <ChevronRight className="w-4 h-4 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
@@ -44,7 +44,7 @@ export const HospitalsSection = () => {
           {chandigarhHospitals.map((hosp) => (
             <div
               key={hosp.id}
-              className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-md shadow-slate-200/50 hover:shadow-2xl hover:border-teal-300 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+              className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-md shadow-slate-200/50 hover:shadow-2xl hover:border-[#2ECDC5]/60 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
               onClick={() => openIntake(`Hospital: ${hosp.name}`)}
             >
               {/* Top Hospital Photo */}
@@ -61,7 +61,7 @@ export const HospitalsSection = () => {
               <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                 <div>
                   {/* Hospital Title */}
-                  <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-teal-700 transition-colors leading-snug">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-700 transition-colors leading-snug">
                     {language === "ar" ? hosp.nameAr : hosp.name}
                   </h3>
 
@@ -91,7 +91,7 @@ export const HospitalsSection = () => {
                     {hosp.specialties.slice(0, 3).map((spec, i) => (
                       <span
                         key={i}
-                        className="px-2.5 py-1 rounded-full bg-teal-50/80 text-teal-700 text-[11px] font-semibold border border-teal-100/60"
+                        className="px-2.5 py-1 rounded-full bg-[#3F4EB4]/10 text-[#3F4EB4] text-[11px] font-semibold border border-[#3F4EB4]/20"
                       >
                         {spec}
                       </span>
@@ -106,7 +106,7 @@ export const HospitalsSection = () => {
                       e.stopPropagation();
                       openIntake(`Hospital Profile: ${hosp.name}`);
                     }}
-                    className="flex-1 py-2.5 px-3 rounded-xl bg-[#0D3B3F] hover:bg-[#072428] text-white font-bold text-xs text-center transition-colors shadow-sm"
+                    className="flex-1 py-2.5 px-3 rounded-xl bg-[#3F4EB4] hover:bg-[#283593] text-white font-bold text-xs text-center transition-colors shadow-sm"
                   >
                     View Profile
                   </button>

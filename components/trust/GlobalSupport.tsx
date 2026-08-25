@@ -24,10 +24,10 @@ export const GlobalSupport = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-orange-500 mb-2">
+          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2ECDC5] mb-2">
             {t.support.eyebrow}
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0D3B3F] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3851A2] tracking-tight leading-tight">
             {t.support.heading}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto">
@@ -41,13 +41,13 @@ export const GlobalSupport = () => {
             href="https://wa.me/971501234567"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-emerald-500 hover:shadow-lg transition-all flex items-center gap-3 group"
+            className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-[#2ECDC5] hover:shadow-lg transition-all flex items-center gap-3 group"
           >
-            <div className="w-11 h-11 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            <div className="w-11 h-11 rounded-xl bg-[#2ECDC5]/15 text-[#1DA89F] flex items-center justify-center group-hover:bg-[#2ECDC5] group-hover:text-white transition-colors">
               <MessageSquare className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700">
+              <div className="text-xs font-bold text-slate-900 group-hover:text-[#2ECDC5]">
                 {t.support.whatsappChat}
               </div>
               <div className="text-[11px] text-slate-500">Immediate coordinator reply</div>
@@ -56,13 +56,13 @@ export const GlobalSupport = () => {
 
           <button
             onClick={() => openChat("I'd like to schedule a phone call with the care desk.")}
-            className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-teal-500 hover:shadow-lg transition-all flex items-center gap-3 group text-left rtl:text-right"
+            className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-[#3F4EB4] hover:shadow-lg transition-all flex items-center gap-3 group text-left rtl:text-right"
           >
-            <div className="w-11 h-11 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center group-hover:bg-teal-600 group-hover:text-white transition-colors">
+            <div className="w-11 h-11 rounded-xl bg-[#3F4EB4]/10 text-[#3F4EB4] flex items-center justify-center group-hover:bg-[#3F4EB4] group-hover:text-white transition-colors">
               <Phone className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xs font-bold text-slate-900 group-hover:text-teal-700">
+              <div className="text-xs font-bold text-slate-900 group-hover:text-blue-700">
                 {t.support.callDesk}
               </div>
               <div className="text-[11px] text-slate-500">24/7 International helpline</div>
@@ -71,13 +71,13 @@ export const GlobalSupport = () => {
 
           <button
             onClick={() => openChat("I want to book an exploratory video consultation.")}
-            className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-indigo-500 hover:shadow-lg transition-all flex items-center gap-3 group text-left rtl:text-right"
+            className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-[#283593] hover:shadow-lg transition-all flex items-center gap-3 group text-left rtl:text-right"
           >
-            <div className="w-11 h-11 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+            <div className="w-11 h-11 rounded-xl bg-[#283593]/10 text-[#283593] flex items-center justify-center group-hover:bg-[#283593] group-hover:text-white transition-colors">
               <Video className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-700">
+              <div className="text-xs font-bold text-slate-900 group-hover:text-[#3F4EB4]">
                 {t.support.videoDesk}
               </div>
               <div className="text-[11px] text-slate-500">HD Virtual Consultation</div>
@@ -86,13 +86,13 @@ export const GlobalSupport = () => {
 
           <button
             onClick={() => openChat("I want to send my medical enquiry via email.")}
-            className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-amber-500 hover:shadow-lg transition-all flex items-center gap-3 group text-left rtl:text-right"
+            className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-[#2ECDC5] hover:shadow-lg transition-all flex items-center gap-3 group text-left rtl:text-right"
           >
-            <div className="w-11 h-11 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center group-hover:bg-amber-600 group-hover:text-white transition-colors">
+            <div className="w-11 h-11 rounded-xl bg-[#2ECDC5]/10 text-[#1DA89F] flex items-center justify-center group-hover:bg-[#2ECDC5] group-hover:text-white transition-colors">
               <Mail className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xs font-bold text-slate-900 group-hover:text-amber-700">
+              <div className="text-xs font-bold text-slate-900 group-hover:text-[#2ECDC5]">
                 {t.support.emailDesk}
               </div>
               <div className="text-[11px] text-slate-500">care@vedara.health</div>
@@ -118,7 +118,7 @@ export const GlobalSupport = () => {
                 onClick={() => setSelectedDesk(desk)}
                 className={`p-4 rounded-2xl border text-left rtl:text-right transition-all flex flex-col justify-between ${
                   selectedDesk.code === desk.code
-                    ? "bg-teal-50 border-teal-500 ring-2 ring-teal-500/20"
+                    ? "bg-[#3F4EB4]/10 border-[#3F4EB4] ring-2 ring-[#3F4EB4]/20"
                     : "bg-slate-50/70 border-slate-200/80 hover:bg-slate-100"
                 }`}
               >
@@ -130,7 +130,7 @@ export const GlobalSupport = () => {
                   <div className="text-[10px] text-slate-500">{desk.city}</div>
                 </div>
 
-                <div className="pt-3 mt-2 border-t border-slate-200/80 text-[10px] font-bold text-teal-700">
+                <div className="pt-3 mt-2 border-t border-slate-200/80 text-[10px] font-bold text-[#3F4EB4]">
                   {desk.phone}
                 </div>
               </button>
@@ -142,7 +142,7 @@ export const GlobalSupport = () => {
             <div className="flex items-center gap-3">
               <span className="text-2xl">{selectedDesk.flag}</span>
               <div>
-                <span className="font-bold text-teal-300">
+                <span className="font-bold text-[#2ECDC5]">
                   {selectedDesk.country} Coordination Officer: {selectedDesk.coordinator}
                 </span>
                 <span className="block text-[11px] text-slate-300">
@@ -153,7 +153,7 @@ export const GlobalSupport = () => {
 
             <button
               onClick={() => openChat(`Connecting with ${selectedDesk.country} desk (${selectedDesk.coordinator})`)}
-              className="px-5 py-2.5 bg-teal-500 hover:bg-teal-400 text-slate-950 font-extrabold rounded-xl shrink-0 transition-colors"
+              className="px-5 py-2.5 bg-[#2ECDC5] hover:bg-[#283593] hover:text-white text-slate-950 font-extrabold rounded-xl shrink-0 transition-colors shadow-md"
             >
               Connect to {selectedDesk.code} Desk
             </button>

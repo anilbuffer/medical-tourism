@@ -53,8 +53,8 @@ export const WhatHappensNext = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-100/80 text-teal-800 text-xs font-extrabold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-teal-600" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#3F4EB4]/10 text-[#283593] text-xs font-extrabold uppercase tracking-wider mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-[#2ECDC5]" />
             <span>{t.whatNext.eyebrow}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
@@ -72,14 +72,14 @@ export const WhatHappensNext = () => {
             return (
               <div
                 key={idx}
-                className="bg-slate-50 rounded-3xl p-6 border border-slate-200/80 hover:border-teal-400 hover:bg-white hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
+                className="bg-slate-50 rounded-3xl p-6 border border-slate-200/80 hover:border-[#2ECDC5]/60 hover:bg-white hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="w-8 h-8 rounded-full bg-teal-600 text-white font-extrabold text-xs flex items-center justify-center">
+                    <span className="w-8 h-8 rounded-full bg-[#3F4EB4] text-white font-extrabold text-xs flex items-center justify-center">
                       {step.num}
                     </span>
-                    <Icon className="w-5 h-5 text-teal-600 group-hover:scale-110 transition-transform" />
+                    <Icon className="w-5 h-5 text-[#3F4EB4] group-hover:scale-110 transition-transform" />
                   </div>
 
                   <h3 className="text-sm font-bold text-slate-900 mb-2">
@@ -90,7 +90,7 @@ export const WhatHappensNext = () => {
                   </p>
                 </div>
 
-                <div className="pt-4 mt-3 border-t border-slate-200/80 text-[10px] font-bold text-teal-700">
+                <div className="pt-4 mt-3 border-t border-slate-200/80 text-[10px] font-bold text-[#3F4EB4]">
                   {language === "ar" ? `الخطوة ${idx + 1} من 5` : `Step ${idx + 1} of 5`}
                 </div>
               </div>
