@@ -118,7 +118,7 @@ export const BlogSection = () => {
   const [activeArticle, setActiveArticle] = useState<BlogPost | null>(null);
 
   return (
-    <section id="resources" className="py-20 sm:py-24 bg-white relative overflow-hidden">
+    <section id="resources" className="py-20 sm:py-24 bg-[#F8FAFC] border-y border-slate-200/60 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
