@@ -113,110 +113,111 @@ export const CostTransparency = () => {
           </p>
         </div>
 
-        {/* 2-Column Grid: 4 Feature Cards (Left) + Comparison Table (Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: 4 Feature Cards (2x2 Grid) */}
-          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-            {features.map((item, idx) => {
-              const Icon = item.icon;
-              return (
+        {/* Row 1: 4 Feature Cards in a Single Row (1 col on mobile, 2 on tablet, 4 on desktop) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-12">
+          {features.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={idx}
+                className="bg-white rounded-3xl p-6 border border-slate-100 shadow-md shadow-slate-200/40 hover:shadow-xl hover:border-[#2ECDC5] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  {/* Icon Container */}
+                  <div className="w-12 h-12 rounded-2xl bg-[#2ECDC5]/15 text-[#2ECDC5] flex items-center justify-center mb-5">
+                    <Icon className="w-6 h-6" />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-base font-bold text-slate-900 mb-2 leading-snug">
+                    {item.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Row 2: Full Width Treatment Cost Comparison Table */}
+        <div className="w-full">
+          <div className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xl shadow-slate-200/60">
+            {/* Header Strip */}
+            <div className="bg-gradient-to-r from-[#283593] via-[#3F4EB4] to-[#283593] text-white px-6 sm:px-8 py-4 sm:py-5 font-bold text-sm sm:text-base tracking-tight flex items-center justify-between">
+              <span>{t.cost.compareTitle}</span>
+              <span className="text-xs text-[#2ECDC5] font-semibold hidden sm:inline-flex items-center gap-1.5 bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm">
+                <Sparkles className="w-3.5 h-3.5" />
+                Verified Hospital Network Estimates
+              </span>
+            </div>
+
+            {/* Sub-Header Column Labels */}
+            <div className="bg-[#3F4EB4]/10 px-6 sm:px-8 py-3.5 text-[11px] font-extrabold uppercase tracking-wider text-[#283593] grid grid-cols-12 gap-2 border-b border-slate-200">
+              <div className="col-span-4 sm:col-span-4">TREATMENT</div>
+              <div className="col-span-2 sm:col-span-1 text-center">UK</div>
+              <div className="col-span-2 sm:col-span-2 text-center">CANADA</div>
+              <div className="col-span-2 sm:col-span-2 text-center">AUSTRALIA</div>
+              <div className="col-span-1 sm:col-span-2 text-center text-[#283593] font-black">INDIA</div>
+              <div className="col-span-1 sm:col-span-1 text-center">SAVINGS</div>
+            </div>
+
+            {/* Data Rows */}
+            <div className="divide-y divide-slate-100">
+              {comparisonData.map((row, index) => (
                 <div
-                  key={idx}
-                  className="bg-white rounded-3xl p-6 border border-slate-100 shadow-md shadow-slate-200/40 hover:shadow-xl hover:border-teal-300 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                  key={index}
+                  onClick={() => openIntake(row.treatment)}
+                  className="px-6 sm:px-8 py-4 sm:py-4.5 text-xs sm:text-sm grid grid-cols-12 gap-2 items-center hover:bg-[#3F4EB4]/5 transition-colors cursor-pointer group"
                 >
-                  <div>
-                    {/* Peach/Orange Rounded Icon Container */}
-                    <div className="w-11 h-11 rounded-2xl bg-[#2ECDC5]/15 text-[#2ECDC5] flex items-center justify-center mb-5">
-                      <Icon className="w-5 h-5" />
-                    </div>
+                  {/* Treatment Name */}
+                  <div className="col-span-4 sm:col-span-4 font-bold text-slate-900 group-hover:text-[#3F4EB4] transition-colors leading-snug">
+                    {language === "ar" ? row.treatmentAr : row.treatment}
+                  </div>
 
-                    {/* Title */}
-                    <h3 className="text-base font-bold text-slate-900 mb-2 leading-snug">
-                      {item.title}
-                    </h3>
+                  {/* UK */}
+                  <div className="col-span-2 sm:col-span-1 text-center text-slate-600 font-medium">
+                    {row.uk}
+                  </div>
 
-                    {/* Description */}
-                    <p className="text-xs text-slate-500 leading-relaxed">
-                      {item.desc}
-                    </p>
+                  {/* Canada */}
+                  <div className="col-span-2 sm:col-span-2 text-center text-slate-600 font-medium">
+                    {row.canada}
+                  </div>
+
+                  {/* Australia */}
+                  <div className="col-span-2 sm:col-span-2 text-center text-slate-600 font-medium">
+                    {row.australia}
+                  </div>
+
+                  {/* India (Highlighted) */}
+                  <div className="col-span-1 sm:col-span-2 text-center font-black text-[#283593] text-sm sm:text-base">
+                    {row.india}
+                  </div>
+
+                  {/* Savings Badge */}
+                  <div className="col-span-1 sm:col-span-1 flex justify-center">
+                    <span className="px-2.5 py-1 rounded-full bg-[#2ECDC5]/15 text-[#1DA89F] font-bold text-xs">
+                      {row.savings}
+                    </span>
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              ))}
+            </div>
 
-          {/* Right Column: Treatment Cost Comparison Table (USD) */}
-          <div className="lg:col-span-7">
-            <div className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xl shadow-slate-200/60">
-              {/* Dark Header Strip */}
-              <div className="bg-gradient-to-r from-[#283593] via-[#3F4EB4] to-[#283593] text-white px-6 py-4 font-bold text-sm sm:text-base tracking-tight">
-                {t.cost.compareTitle}
-              </div>
-
-              {/* Sub-Header Column Labels */}
-              <div className="bg-[#3F4EB4]/10 px-6 py-3 text-[11px] font-extrabold uppercase tracking-wider text-[#283593] grid grid-cols-12 gap-2 border-b border-slate-200">
-                <div className="col-span-4">TREATMENT</div>
-                <div className="col-span-1 text-center">UK</div>
-                <div className="col-span-2 text-center">CANADA</div>
-                <div className="col-span-2 text-center">AUSTRALIA</div>
-                <div className="col-span-2 text-center text-[#283593] font-black">INDIA</div>
-                <div className="col-span-1 text-center">SAVINGS</div>
-              </div>
-
-              {/* Data Rows */}
-              <div className="divide-y divide-slate-100">
-                {comparisonData.map((row, index) => (
-                  <div
-                    key={index}
-                    onClick={() => openIntake(row.treatment)}
-                    className="px-6 py-4 text-xs grid grid-cols-12 gap-2 items-center hover:bg-[#3F4EB4]/5 transition-colors cursor-pointer group"
-                  >
-                    {/* Treatment Name */}
-                    <div className="col-span-4 font-bold text-slate-900 group-hover:text-[#3F4EB4] transition-colors leading-snug">
-                      {language === "ar" ? row.treatmentAr : row.treatment}
-                    </div>
-
-                    {/* UK */}
-                    <div className="col-span-1 text-center text-slate-500 font-medium">
-                      {row.uk}
-                    </div>
-
-                    {/* Canada */}
-                    <div className="col-span-2 text-center text-slate-500 font-medium">
-                      {row.canada}
-                    </div>
-
-                    {/* Australia */}
-                    <div className="col-span-2 text-center text-slate-500 font-medium">
-                      {row.australia}
-                    </div>
-
-                    {/* India (Highlighted) */}
-                    <div className="col-span-2 text-center font-black text-[#283593] text-sm">
-                      {row.india}
-                    </div>
-
-                    {/* Savings Badge */}
-                    <div className="col-span-1 flex justify-center">
-                      <span className="px-2 py-0.5 rounded-full bg-[#2ECDC5]/15 text-[#1DA89F] font-bold text-[11px]">
-                        {row.savings}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Table Footer Note */}
-              <div className="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-                <span>{t.cost.disclaimer}</span>
-                <button
-                  onClick={() => openIntake()}
-                  className="font-bold text-[#3F4EB4] hover:text-[#283593] flex items-center gap-1 shrink-0 ml-2"
-                >
-                  <span>{language === "ar" ? "طلب عرض سعر" : "Get Custom Quote"}</span>
-                  <ArrowRight className="w-3 h-3 rtl:rotate-180" />
-                </button>
-              </div>
+            {/* Table Footer Note */}
+            <div className="px-6 sm:px-8 py-4 bg-slate-50 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+              <span>{t.cost.disclaimer}</span>
+              <button
+                onClick={() => openIntake()}
+                className="font-bold text-[#3F4EB4] hover:text-[#283593] flex items-center gap-1.5 shrink-0"
+              >
+                <span>{language === "ar" ? "طلب عرض سعر" : "Get Custom Quote"}</span>
+                <ArrowRight className="w-3.5 h-3.5 rtl:rotate-180" />
+              </button>
             </div>
           </div>
         </div>
