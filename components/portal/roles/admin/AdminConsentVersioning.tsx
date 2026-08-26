@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ConsentTextVersion, ConsentType } from "@/types/portal";
+import { ConsentTextVersion, ConsentType, AdminTab } from "@/types/portal";
 import { MOCK_CONSENT_TEXT_VERSIONS } from "@/lib/portal/mockData";
 import {
   FileText,
@@ -14,9 +14,15 @@ import {
   X,
   UploadCloud,
   FileCheck2,
+  Plane,
+  BadgeCheck,
 } from "lucide-react";
 
-export const AdminConsentVersioning: React.FC = () => {
+interface AdminConsentVersioningProps {
+  onNavigateTab?: (tab: AdminTab) => void;
+}
+
+export const AdminConsentVersioning: React.FC<AdminConsentVersioningProps> = ({ onNavigateTab }) => {
   const [versions, setVersions] = useState<ConsentTextVersion[]>(MOCK_CONSENT_TEXT_VERSIONS);
   const [selectedCountry, setSelectedCountry] = useState<string>("all");
   const [selectedType, setSelectedType] = useState<string>("all");
@@ -78,13 +84,33 @@ export const AdminConsentVersioning: React.FC = () => {
           </p>
         </div>
 
-        <button
-          onClick={() => setIsUploadModalOpen(true)}
-          className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-xs flex items-center gap-2 cursor-pointer shadow-md hover:scale-105 transition-all shrink-0"
-        >
-          <Plus className="w-4 h-4" />
-          Publish New Version
-        </button>
+        <div className="flex items-center gap-2 shrink-0 flex-wrap">
+          {onNavigateTab && (
+            <>
+              <button
+                onClick={() => onNavigateTab("visa_rules")}
+                className="px-3.5 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#3F4EB4] text-xs font-bold border border-blue-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+              >
+                <Plane className="w-3.5 h-3.5" />
+                <span>Visa Rules</span>
+              </button>
+              <button
+                onClick={() => onNavigateTab("accreditation_registry")}
+                className="px-3.5 py-2.5 rounded-xl bg-teal-50 hover:bg-teal-100 text-[#1baba4] text-xs font-bold border border-teal-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+              >
+                <BadgeCheck className="w-3.5 h-3.5" />
+                <span>Accreditation Registry</span>
+              </button>
+            </>
+          )}
+          <button
+            onClick={() => setIsUploadModalOpen(true)}
+            className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-xs flex items-center gap-2 cursor-pointer shadow-md hover:scale-105 transition-all"
+          >
+            <Plus className="w-4 h-4" />
+            Publish New Version
+          </button>
+        </div>
       </div>
 
       {/* Filter Controls */}

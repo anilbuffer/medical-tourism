@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { QueueRoutingRule } from "@/types/portal";
+import { QueueRoutingRule, AdminTab } from "@/types/portal";
 import { MOCK_ROUTING_RULES } from "@/lib/portal/mockData";
 import {
   Sliders,
@@ -16,9 +16,14 @@ import {
   Layers,
   Clock,
   UserCheck,
+  Globe,
 } from "lucide-react";
 
-export const AdminRoutingAutomation: React.FC = () => {
+interface AdminRoutingAutomationProps {
+  onNavigateTab?: (tab: AdminTab) => void;
+}
+
+export const AdminRoutingAutomation: React.FC<AdminRoutingAutomationProps> = ({ onNavigateTab }) => {
   const [rules, setRules] = useState<QueueRoutingRule[]>(MOCK_ROUTING_RULES);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [name, setName] = useState("");
@@ -76,13 +81,33 @@ export const AdminRoutingAutomation: React.FC = () => {
           </p>
         </div>
 
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-xs flex items-center gap-2 cursor-pointer shadow-md hover:scale-105 transition-all shrink-0"
-        >
-          <Plus className="w-4 h-4" />
-          Create Automation Rule
-        </button>
+        <div className="flex items-center gap-2 shrink-0 flex-wrap">
+          {onNavigateTab && (
+            <>
+              <button
+                onClick={() => onNavigateTab("geo_sla_timers")}
+                className="px-3.5 py-2.5 rounded-xl bg-teal-50 hover:bg-teal-100 text-[#1baba4] text-xs font-bold border border-teal-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+              >
+                <Globe className="w-3.5 h-3.5" />
+                <span>Regional SLA Timers</span>
+              </button>
+              <button
+                onClick={() => onNavigateTab("case_master_directory")}
+                className="px-3.5 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#3F4EB4] text-xs font-bold border border-blue-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+              >
+                <Layers className="w-3.5 h-3.5" />
+                <span>Global Case Directory</span>
+              </button>
+            </>
+          )}
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-xs flex items-center gap-2 cursor-pointer shadow-md hover:scale-105 transition-all"
+          >
+            <Plus className="w-4 h-4" />
+            Create Automation Rule
+          </button>
+        </div>
       </div>
 
       {/* Rules Engine Cards */}

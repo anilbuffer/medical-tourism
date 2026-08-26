@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { PatientCase, PatientJourneyStage } from "@/types/portal";
+import { PatientCase, PatientJourneyStage, AdminTab } from "@/types/portal";
 import {
   Layers,
   Search,
@@ -19,13 +19,19 @@ import {
   DollarSign,
   Shield,
   Activity,
+  Wallet,
+  Sparkles,
 } from "lucide-react";
 
 interface AdminCaseMasterDirectoryProps {
   cases: PatientCase[];
+  onNavigateTab?: (tab: AdminTab) => void;
 }
 
-export const AdminCaseMasterDirectory: React.FC<AdminCaseMasterDirectoryProps> = ({ cases }) => {
+export const AdminCaseMasterDirectory: React.FC<AdminCaseMasterDirectoryProps> = ({
+  cases,
+  onNavigateTab,
+}) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [stageFilter, setStageFilter] = useState<string>("all");
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
@@ -323,13 +329,38 @@ export const AdminCaseMasterDirectory: React.FC<AdminCaseMasterDirectoryProps> =
             </div>
 
             {/* Bottom Actions */}
-            <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <div className="pt-4 border-t border-slate-100 flex items-center justify-between flex-wrap gap-2">
               <button
                 onClick={() => setSelectedCase(null)}
-                className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs cursor-pointer"
+                className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs cursor-pointer transition-colors"
               >
                 Close Dossier
               </button>
+
+              {onNavigateTab && (
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => {
+                      setSelectedCase(null);
+                      onNavigateTab("gateway_escrow");
+                    }}
+                    className="px-3 py-2 rounded-xl bg-teal-50 hover:bg-teal-100 text-[#1baba4] font-bold text-xs flex items-center gap-1.5 cursor-pointer border border-teal-200 transition-colors"
+                  >
+                    <Wallet className="w-3.5 h-3.5" />
+                    <span>View in Escrow Vault</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSelectedCase(null);
+                      onNavigateTab("sla_escalation_engine");
+                    }}
+                    className="px-3 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#3F4EB4] font-bold text-xs flex items-center gap-1.5 cursor-pointer border border-blue-200 transition-colors"
+                  >
+                    <Clock className="w-3.5 h-3.5" />
+                    <span>SLA Ladder</span>
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>

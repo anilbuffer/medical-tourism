@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { SlaThreshold } from "@/types/portal";
+import { SlaThreshold, AdminTab } from "@/types/portal";
 import { MOCK_SLA_THRESHOLDS } from "@/lib/portal/mockData";
 import {
   Clock,
@@ -12,9 +12,14 @@ import {
   AlertTriangle,
   Zap,
   X,
+  Sliders,
 } from "lucide-react";
 
-export const AdminGeoSlaTimers: React.FC = () => {
+interface AdminGeoSlaTimersProps {
+  onNavigateTab?: (tab: AdminTab) => void;
+}
+
+export const AdminGeoSlaTimers: React.FC<AdminGeoSlaTimersProps> = ({ onNavigateTab }) => {
   const [thresholds, setThresholds] = useState<SlaThreshold[]>(MOCK_SLA_THRESHOLDS);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingMarket, setEditingMarket] = useState<SlaThreshold | null>(null);
@@ -71,20 +76,40 @@ export const AdminGeoSlaTimers: React.FC = () => {
           </p>
         </div>
 
-        <button
-          onClick={() => {
-            setEditingMarket(null);
-            setMarket("");
-            setTier1(30);
-            setTier2(60);
-            setEscalation(90);
-            setIsModalOpen(true);
-          }}
-          className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-xs flex items-center gap-2 cursor-pointer shadow-md hover:scale-105 transition-all shrink-0"
-        >
-          <Plus className="w-4 h-4" />
-          Add Market Region
-        </button>
+        <div className="flex items-center gap-2 shrink-0 flex-wrap">
+          {onNavigateTab && (
+            <>
+              <button
+                onClick={() => onNavigateTab("sla_escalation_engine")}
+                className="px-3.5 py-2.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-800 text-xs font-bold border border-rose-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+              >
+                <AlertTriangle className="w-3.5 h-3.5 text-rose-600" />
+                <span>Active Breaches</span>
+              </button>
+              <button
+                onClick={() => onNavigateTab("routing_automation")}
+                className="px-3.5 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#3F4EB4] text-xs font-bold border border-blue-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+              >
+                <Sliders className="w-3.5 h-3.5" />
+                <span>Routing Automation</span>
+              </button>
+            </>
+          )}
+          <button
+            onClick={() => {
+              setEditingMarket(null);
+              setMarket("");
+              setTier1(30);
+              setTier2(60);
+              setEscalation(90);
+              setIsModalOpen(true);
+            }}
+            className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-xs flex items-center gap-2 cursor-pointer shadow-md hover:scale-105 transition-all"
+          >
+            <Plus className="w-4 h-4" />
+            Add Market Region
+          </button>
+        </div>
       </div>
 
       {/* Market Cards Grid */}

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { PatientCase, RefundRequest } from "@/types/portal";
+import { PatientCase, RefundRequest, AdminTab } from "@/types/portal";
 import {
   RefreshCw,
   CheckCircle2,
@@ -11,13 +11,16 @@ import {
   DollarSign,
   ShieldCheck,
   User,
+  Wallet,
+  ShieldAlert,
 } from "lucide-react";
 
 interface AdminRefundApprovalsProps {
   cases: PatientCase[];
+  onNavigateTab?: (tab: AdminTab) => void;
 }
 
-export const AdminRefundApprovals: React.FC<AdminRefundApprovalsProps> = ({ cases }) => {
+export const AdminRefundApprovals: React.FC<AdminRefundApprovalsProps> = ({ cases, onNavigateTab }) => {
   // Extract all refund requests
   const [refunds, setRefunds] = useState<RefundRequest[]>([
     {
@@ -78,18 +81,39 @@ export const AdminRefundApprovals: React.FC<AdminRefundApprovalsProps> = ({ case
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Header Bar */}
-      <div>
-        <div className="flex items-center gap-2">
-          <span className="text-[10px] font-black uppercase tracking-widest text-[#3F4EB4] bg-blue-50 px-2.5 py-0.5 rounded-full">
-            Financial Ledger • Domain 4
-          </span>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-black uppercase tracking-widest text-[#3F4EB4] bg-blue-50 px-2.5 py-0.5 rounded-full">
+              Financial Ledger • Domain 4
+            </span>
+          </div>
+          <h2 className="text-xl font-black text-slate-900 tracking-tight mt-1">
+            Refund Approval Center & Escrow Reversals
+          </h2>
+          <p className="text-xs text-slate-500 mt-0.5">
+            Dual-authorization sign-off for patient refund claims, stage-wise deduction audits, and automated Stripe/SWIFT reversals.
+          </p>
         </div>
-        <h2 className="text-xl font-black text-slate-900 tracking-tight mt-1">
-          Refund Approval Center & Escrow Reversals
-        </h2>
-        <p className="text-xs text-slate-500 mt-0.5">
-          Dual-authorization sign-off for patient refund claims, stage-wise deduction audits, and automated Stripe/SWIFT reversals.
-        </p>
+
+        {onNavigateTab && (
+          <div className="flex items-center gap-2 shrink-0 flex-wrap">
+            <button
+              onClick={() => onNavigateTab("refund_escrow_rules")}
+              className="px-3.5 py-2 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-800 text-xs font-bold border border-purple-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+            >
+              <ShieldAlert className="w-3.5 h-3.5 text-purple-600" />
+              <span>Refund Stage Rules</span>
+            </button>
+            <button
+              onClick={() => onNavigateTab("gateway_escrow")}
+              className="px-3.5 py-2 rounded-xl bg-teal-50 hover:bg-teal-100 text-[#1baba4] text-xs font-bold border border-teal-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+            >
+              <Wallet className="w-3.5 h-3.5" />
+              <span>Escrow Vault</span>
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Pending Requests Queue */}

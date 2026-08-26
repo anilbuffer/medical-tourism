@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { PatientCase } from "@/types/portal";
+import { PatientCase, AdminTab } from "@/types/portal";
 import {
   Clock,
   AlertTriangle,
@@ -11,13 +11,19 @@ import {
   RotateCcw,
   ArrowRight,
   ShieldAlert,
+  Sliders,
+  Globe,
 } from "lucide-react";
 
 interface AdminSlaEscalationEngineProps {
   cases: PatientCase[];
+  onNavigateTab?: (tab: AdminTab) => void;
 }
 
-export const AdminSlaEscalationEngine: React.FC<AdminSlaEscalationEngineProps> = ({ cases }) => {
+export const AdminSlaEscalationEngine: React.FC<AdminSlaEscalationEngineProps> = ({
+  cases,
+  onNavigateTab,
+}) => {
   const [activeCases, setActiveCases] = useState<PatientCase[]>(cases);
 
   const breachedCases = activeCases.filter((c) => c.slaBreached);
@@ -41,18 +47,39 @@ export const AdminSlaEscalationEngine: React.FC<AdminSlaEscalationEngineProps> =
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Header Bar */}
-      <div>
-        <div className="flex items-center gap-2">
-          <span className="text-[10px] font-black uppercase tracking-widest text-[#3F4EB4] bg-blue-50 px-2.5 py-0.5 rounded-full">
-            Journey Engine • Domain 3
-          </span>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-black uppercase tracking-widest text-[#3F4EB4] bg-blue-50 px-2.5 py-0.5 rounded-full">
+              Journey Engine • Domain 3
+            </span>
+          </div>
+          <h2 className="text-xl font-black text-slate-900 tracking-tight mt-1">
+            SLA & Escalation Rules Engine
+          </h2>
+          <p className="text-xs text-slate-500 mt-0.5">
+            Real-time triage response telemetry, automated escalation ladders, and emergency queue reassignment controllers.
+          </p>
         </div>
-        <h2 className="text-xl font-black text-slate-900 tracking-tight mt-1">
-          SLA & Escalation Rules Engine
-        </h2>
-        <p className="text-xs text-slate-500 mt-0.5">
-          Real-time triage response telemetry, automated escalation ladders, and emergency queue reassignment controllers.
-        </p>
+
+        {onNavigateTab && (
+          <div className="flex items-center gap-2 shrink-0 flex-wrap">
+            <button
+              onClick={() => onNavigateTab("geo_sla_timers")}
+              className="px-3.5 py-2 rounded-xl bg-teal-50 hover:bg-teal-100 text-[#1baba4] text-xs font-bold border border-teal-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+            >
+              <Globe className="w-3.5 h-3.5" />
+              <span>Geo Timers</span>
+            </button>
+            <button
+              onClick={() => onNavigateTab("routing_automation")}
+              className="px-3.5 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#3F4EB4] text-xs font-bold border border-blue-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+            >
+              <Sliders className="w-3.5 h-3.5" />
+              <span>Routing Rules</span>
+            </button>
+          </div>
+        )}
       </div>
 
       {/* KPI Cards */}

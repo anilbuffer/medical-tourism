@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { RefundCancellationRule, PaymentStageId } from "@/types/portal";
+import { RefundCancellationRule, PaymentStageId, AdminTab } from "@/types/portal";
 import { MOCK_REFUND_RULES } from "@/lib/portal/mockData";
 import {
   ShieldAlert,
@@ -14,9 +14,14 @@ import {
   Edit2,
   X,
   Lock,
+  RefreshCw,
 } from "lucide-react";
 
-export const AdminRefundEscrowRules: React.FC = () => {
+interface AdminRefundEscrowRulesProps {
+  onNavigateTab?: (tab: AdminTab) => void;
+}
+
+export const AdminRefundEscrowRules: React.FC<AdminRefundEscrowRulesProps> = ({ onNavigateTab }) => {
   const [rules, setRules] = useState<RefundCancellationRule[]>(MOCK_REFUND_RULES);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingRule, setEditingRule] = useState<RefundCancellationRule | null>(null);
@@ -85,20 +90,40 @@ export const AdminRefundEscrowRules: React.FC = () => {
           </p>
         </div>
 
-        <button
-          onClick={() => {
-            setEditingRule(null);
-            setStage("intake_deposit");
-            setPercentage(100);
-            setDescription("");
-            setConditions("");
-            setIsModalOpen(true);
-          }}
-          className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-xs flex items-center gap-2 cursor-pointer shadow-md hover:scale-105 transition-all shrink-0"
-        >
-          <Plus className="w-4 h-4" />
-          Add Stage Rule
-        </button>
+        <div className="flex items-center gap-2 shrink-0 flex-wrap">
+          {onNavigateTab && (
+            <>
+              <button
+                onClick={() => onNavigateTab("refund_approvals")}
+                className="px-3.5 py-2.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-800 text-xs font-bold border border-rose-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+              >
+                <RefreshCw className="w-3.5 h-3.5 text-rose-600" />
+                <span>Refund Approvals</span>
+              </button>
+              <button
+                onClick={() => onNavigateTab("gateway_escrow")}
+                className="px-3.5 py-2.5 rounded-xl bg-teal-50 hover:bg-teal-100 text-[#1baba4] text-xs font-bold border border-teal-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+              >
+                <Wallet className="w-3.5 h-3.5" />
+                <span>Escrow Vault</span>
+              </button>
+            </>
+          )}
+          <button
+            onClick={() => {
+              setEditingRule(null);
+              setStage("intake_deposit");
+              setPercentage(100);
+              setDescription("");
+              setConditions("");
+              setIsModalOpen(true);
+            }}
+            className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-xs flex items-center gap-2 cursor-pointer shadow-md hover:scale-105 transition-all"
+          >
+            <Plus className="w-4 h-4" />
+            Add Stage Rule
+          </button>
+        </div>
       </div>
 
       {/* Refund Policy Cards */}

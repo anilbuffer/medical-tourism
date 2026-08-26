@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { PatientCase } from "@/types/portal";
+import { PatientCase, AdminTab } from "@/types/portal";
 import {
   Wallet,
   Receipt,
@@ -14,13 +14,16 @@ import {
   Filter,
   DollarSign,
   Building2,
+  RefreshCw,
+  ArrowRight,
 } from "lucide-react";
 
 interface AdminGatewayEscrowProps {
   cases: PatientCase[];
+  onNavigateTab?: (tab: AdminTab) => void;
 }
 
-export const AdminGatewayEscrow: React.FC<AdminGatewayEscrowProps> = ({ cases }) => {
+export const AdminGatewayEscrow: React.FC<AdminGatewayEscrowProps> = ({ cases, onNavigateTab }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [providerFilter, setProviderFilter] = useState<string>("all");
 
@@ -61,18 +64,39 @@ export const AdminGatewayEscrow: React.FC<AdminGatewayEscrowProps> = ({ cases })
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Header Bar */}
-      <div>
-        <div className="flex items-center gap-2">
-          <span className="text-[10px] font-black uppercase tracking-widest text-[#3F4EB4] bg-blue-50 px-2.5 py-0.5 rounded-full">
-            Financial Ledger • Domain 4
-          </span>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-black uppercase tracking-widest text-[#3F4EB4] bg-blue-50 px-2.5 py-0.5 rounded-full">
+              Financial Ledger • Domain 4
+            </span>
+          </div>
+          <h2 className="text-xl font-black text-slate-900 tracking-tight mt-1">
+            Gateway Transactions & Multi-Currency Escrow Vault
+          </h2>
+          <p className="text-xs text-slate-500 mt-0.5">
+            Real-time payment gateway transactions (Stripe / International SWIFT Wire), milestone locks, and multi-sig escrow disbursement ledger.
+          </p>
         </div>
-        <h2 className="text-xl font-black text-slate-900 tracking-tight mt-1">
-          Gateway Transactions & Multi-Currency Escrow Vault
-        </h2>
-        <p className="text-xs text-slate-500 mt-0.5">
-          Real-time payment gateway transactions (Stripe / International SWIFT Wire), milestone locks, and multi-sig escrow disbursement ledger.
-        </p>
+
+        {onNavigateTab && (
+          <div className="flex items-center gap-2 shrink-0 flex-wrap">
+            <button
+              onClick={() => onNavigateTab("refund_approvals")}
+              className="px-3.5 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-800 text-xs font-bold border border-rose-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+            >
+              <RefreshCw className="w-3.5 h-3.5 text-rose-600" />
+              <span>Refund Approvals</span>
+            </button>
+            <button
+              onClick={() => onNavigateTab("commission_payouts")}
+              className="px-3.5 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold border border-emerald-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+            >
+              <DollarSign className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Hospital Payouts</span>
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Escrow Vault Totals */}

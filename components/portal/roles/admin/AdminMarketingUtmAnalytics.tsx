@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo } from "react";
-import { PatientCase } from "@/types/portal";
+import { PatientCase, AdminTab } from "@/types/portal";
 import {
   BarChart2,
   TrendingUp,
@@ -11,13 +11,19 @@ import {
   DollarSign,
   Users,
   CheckCircle2,
+  Layers,
+  ClipboardList,
 } from "lucide-react";
 
 interface AdminMarketingUtmAnalyticsProps {
   cases: PatientCase[];
+  onNavigateTab?: (tab: AdminTab) => void;
 }
 
-export const AdminMarketingUtmAnalytics: React.FC<AdminMarketingUtmAnalyticsProps> = ({ cases }) => {
+export const AdminMarketingUtmAnalytics: React.FC<AdminMarketingUtmAnalyticsProps> = ({
+  cases,
+  onNavigateTab,
+}) => {
   // Compute UTM breakdown
   const utmData = useMemo(() => {
     const bySource: Record<
@@ -71,18 +77,39 @@ export const AdminMarketingUtmAnalytics: React.FC<AdminMarketingUtmAnalyticsProp
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Header Bar */}
-      <div>
-        <div className="flex items-center gap-2">
-          <span className="text-[10px] font-black uppercase tracking-widest text-[#3F4EB4] bg-blue-50 px-2.5 py-0.5 rounded-full">
-            Audit & Telemetry • Domain 5
-          </span>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-black uppercase tracking-widest text-[#3F4EB4] bg-blue-50 px-2.5 py-0.5 rounded-full">
+              Audit & Telemetry • Domain 5
+            </span>
+          </div>
+          <h2 className="text-xl font-black text-slate-900 tracking-tight mt-1">
+            Marketing Attribution & UTM Campaign Analytics
+          </h2>
+          <p className="text-xs text-slate-500 mt-0.5">
+            Track international campaign conversion metrics, Customer Acquisition Cost (CAC), revenue attribution, and funnel progression.
+          </p>
         </div>
-        <h2 className="text-xl font-black text-slate-900 tracking-tight mt-1">
-          Marketing Attribution & UTM Campaign Analytics
-        </h2>
-        <p className="text-xs text-slate-500 mt-0.5">
-          Track international campaign conversion metrics, Customer Acquisition Cost (CAC), revenue attribution, and funnel progression.
-        </p>
+
+        {onNavigateTab && (
+          <div className="flex items-center gap-2 shrink-0 flex-wrap">
+            <button
+              onClick={() => onNavigateTab("case_master_directory")}
+              className="px-3.5 py-2.5 rounded-xl bg-teal-50 hover:bg-teal-100 text-[#1baba4] text-xs font-bold border border-teal-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+            >
+              <Layers className="w-3.5 h-3.5" />
+              <span>Case Directory</span>
+            </button>
+            <button
+              onClick={() => onNavigateTab("system_audit_trail")}
+              className="px-3.5 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#3F4EB4] text-xs font-bold border border-blue-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+            >
+              <ClipboardList className="w-3.5 h-3.5" />
+              <span>System Audit Trail</span>
+            </button>
+          </div>
+        )}
       </div>
 
       {/* KPI Cards */}

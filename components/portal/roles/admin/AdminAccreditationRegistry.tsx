@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { AccreditationProfile } from "@/types/portal";
+import { AccreditationProfile, AdminTab } from "@/types/portal";
 import { MOCK_ACCREDITATION_PROFILES } from "@/lib/portal/mockData";
 import {
   BadgeCheck,
@@ -16,9 +16,17 @@ import {
   Shield,
   X,
   ExternalLink,
+  Users,
+  FileText,
 } from "lucide-react";
 
-export const AdminAccreditationRegistry: React.FC = () => {
+interface AdminAccreditationRegistryProps {
+  onNavigateTab?: (tab: AdminTab) => void;
+}
+
+export const AdminAccreditationRegistry: React.FC<AdminAccreditationRegistryProps> = ({
+  onNavigateTab,
+}) => {
   const [profiles, setProfiles] = useState<AccreditationProfile[]>(MOCK_ACCREDITATION_PROFILES);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [hospitalName, setHospitalName] = useState("");
@@ -74,13 +82,33 @@ export const AdminAccreditationRegistry: React.FC = () => {
           </p>
         </div>
 
-        <button
-          onClick={() => setIsAddModalOpen(true)}
-          className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-xs flex items-center gap-2 cursor-pointer shadow-md hover:scale-105 transition-all shrink-0"
-        >
-          <Plus className="w-4 h-4" />
-          Register Partner Hospital
-        </button>
+        <div className="flex items-center gap-2 shrink-0 flex-wrap">
+          {onNavigateTab && (
+            <>
+              <button
+                onClick={() => onNavigateTab("hospital_doctors")}
+                className="px-3.5 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#3F4EB4] text-xs font-bold border border-blue-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+              >
+                <Users className="w-3.5 h-3.5" />
+                <span>Doctor Accounts</span>
+              </button>
+              <button
+                onClick={() => onNavigateTab("consent_versioning")}
+                className="px-3.5 py-2.5 rounded-xl bg-teal-50 hover:bg-teal-100 text-[#1baba4] text-xs font-bold border border-teal-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+              >
+                <FileText className="w-3.5 h-3.5" />
+                <span>Consent Agreements</span>
+              </button>
+            </>
+          )}
+          <button
+            onClick={() => setIsAddModalOpen(true)}
+            className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-xs flex items-center gap-2 cursor-pointer shadow-md hover:scale-105 transition-all"
+          >
+            <Plus className="w-4 h-4" />
+            Register Partner Hospital
+          </button>
+        </div>
       </div>
 
       {/* Expiry Overview Banners */}

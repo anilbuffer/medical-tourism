@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { SecurityMfaLog } from "@/types/portal";
+import { SecurityMfaLog, AdminTab } from "@/types/portal";
 import { MOCK_SECURITY_MFA_LOGS } from "@/lib/portal/mockData";
 import {
   ShieldAlert,
@@ -14,9 +14,15 @@ import {
   RotateCcw,
   Zap,
   Server,
+  ClipboardList,
+  ShieldCheck,
 } from "lucide-react";
 
-export const AdminSecurityMfaLogs: React.FC = () => {
+interface AdminSecurityMfaLogsProps {
+  onNavigateTab?: (tab: AdminTab) => void;
+}
+
+export const AdminSecurityMfaLogs: React.FC<AdminSecurityMfaLogsProps> = ({ onNavigateTab }) => {
   const [logs, setLogs] = useState<SecurityMfaLog[]>(MOCK_SECURITY_MFA_LOGS);
   const [globalMfaEnforced, setGlobalMfaEnforced] = useState(true);
   const [threatFilter, setThreatFilter] = useState<string>("all");
@@ -41,18 +47,39 @@ export const AdminSecurityMfaLogs: React.FC = () => {
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Header Bar */}
-      <div>
-        <div className="flex items-center gap-2">
-          <span className="text-[10px] font-black uppercase tracking-widest text-[#3F4EB4] bg-blue-50 px-2.5 py-0.5 rounded-full">
-            Audit & Telemetry • Domain 5
-          </span>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-black uppercase tracking-widest text-[#3F4EB4] bg-blue-50 px-2.5 py-0.5 rounded-full">
+              Audit & Telemetry • Domain 5
+            </span>
+          </div>
+          <h2 className="text-xl font-black text-slate-900 tracking-tight mt-1">
+            Security & MFA Enforcement Logs
+          </h2>
+          <p className="text-xs text-slate-500 mt-0.5">
+            Real-time authentication telemetry, hardware FIDO2 / TOTP challenge verification, IP rate-limiting, and unauthorized access mitigations.
+          </p>
         </div>
-        <h2 className="text-xl font-black text-slate-900 tracking-tight mt-1">
-          Security & MFA Enforcement Logs
-        </h2>
-        <p className="text-xs text-slate-500 mt-0.5">
-          Real-time authentication telemetry, hardware FIDO2 / TOTP challenge verification, IP rate-limiting, and unauthorized access mitigations.
-        </p>
+
+        {onNavigateTab && (
+          <div className="flex items-center gap-2 shrink-0 flex-wrap">
+            <button
+              onClick={() => onNavigateTab("system_audit_trail")}
+              className="px-3.5 py-2.5 rounded-xl bg-teal-50 hover:bg-teal-100 text-[#1baba4] text-xs font-bold border border-teal-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+            >
+              <ClipboardList className="w-3.5 h-3.5" />
+              <span>Full Audit Trail</span>
+            </button>
+            <button
+              onClick={() => onNavigateTab("role_permission_matrix")}
+              className="px-3.5 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#3F4EB4] text-xs font-bold border border-blue-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+            >
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>Role Permissions</span>
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Security Telemetry Posture Grid */}

@@ -202,35 +202,65 @@ export const SuperAdminView: React.FC<SuperAdminViewProps> = ({
         <AdminPermissionMatrix cases={cases} onNavigateTab={setActiveTab} />
       )}
 
-      {activeTab === "consent_versioning" && <AdminConsentVersioning />}
+      {activeTab === "consent_versioning" && (
+        <AdminConsentVersioning onNavigateTab={setActiveTab} />
+      )}
 
-      {activeTab === "visa_rules" && <AdminVisaRules />}
+      {activeTab === "visa_rules" && (
+        <AdminVisaRules onNavigateTab={setActiveTab} />
+      )}
 
-      {activeTab === "refund_escrow_rules" && <AdminRefundEscrowRules />}
+      {activeTab === "refund_escrow_rules" && (
+        <AdminRefundEscrowRules onNavigateTab={setActiveTab} />
+      )}
 
-      {activeTab === "accreditation_registry" && <AdminAccreditationRegistry />}
+      {activeTab === "accreditation_registry" && (
+        <AdminAccreditationRegistry onNavigateTab={setActiveTab} />
+      )}
 
-      {activeTab === "case_master_directory" && <AdminCaseMasterDirectory cases={cases} />}
+      {activeTab === "case_master_directory" && (
+        <AdminCaseMasterDirectory cases={cases} onNavigateTab={setActiveTab} />
+      )}
 
-      {activeTab === "sla_escalation_engine" && <AdminSlaEscalationEngine cases={cases} />}
+      {activeTab === "sla_escalation_engine" && (
+        <AdminSlaEscalationEngine cases={cases} onNavigateTab={setActiveTab} />
+      )}
 
-      {activeTab === "nurture_queue" && <AdminNurtureQueue cases={cases} />}
+      {activeTab === "nurture_queue" && (
+        <AdminNurtureQueue cases={cases} onNavigateTab={setActiveTab} />
+      )}
 
-      {activeTab === "gateway_escrow" && <AdminGatewayEscrow cases={cases} />}
+      {activeTab === "gateway_escrow" && (
+        <AdminGatewayEscrow cases={cases} onNavigateTab={setActiveTab} />
+      )}
 
-      {activeTab === "commission_payouts" && <AdminCommissionPayouts />}
+      {activeTab === "commission_payouts" && (
+        <AdminCommissionPayouts onNavigateTab={setActiveTab} />
+      )}
 
-      {activeTab === "refund_approvals" && <AdminRefundApprovals cases={cases} />}
+      {activeTab === "refund_approvals" && (
+        <AdminRefundApprovals cases={cases} onNavigateTab={setActiveTab} />
+      )}
 
-      {activeTab === "system_audit_trail" && <AdminSystemAuditTrail cases={cases} />}
+      {activeTab === "system_audit_trail" && (
+        <AdminSystemAuditTrail cases={cases} onNavigateTab={setActiveTab} />
+      )}
 
-      {activeTab === "security_mfa_logs" && <AdminSecurityMfaLogs />}
+      {activeTab === "security_mfa_logs" && (
+        <AdminSecurityMfaLogs onNavigateTab={setActiveTab} />
+      )}
 
-      {activeTab === "marketing_utm_analytics" && <AdminMarketingUtmAnalytics cases={cases} />}
+      {activeTab === "marketing_utm_analytics" && (
+        <AdminMarketingUtmAnalytics cases={cases} onNavigateTab={setActiveTab} />
+      )}
 
-      {activeTab === "geo_sla_timers" && <AdminGeoSlaTimers />}
+      {activeTab === "geo_sla_timers" && (
+        <AdminGeoSlaTimers onNavigateTab={setActiveTab} />
+      )}
 
-      {activeTab === "routing_automation" && <AdminRoutingAutomation />}
+      {activeTab === "routing_automation" && (
+        <AdminRoutingAutomation onNavigateTab={setActiveTab} />
+      )}
     </div>
   );
 };

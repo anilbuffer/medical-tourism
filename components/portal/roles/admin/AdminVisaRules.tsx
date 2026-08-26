@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { VisaChecklistRule } from "@/types/portal";
+import { VisaChecklistRule, AdminTab } from "@/types/portal";
 import { MOCK_VISA_CHECKLIST_RULES } from "@/lib/portal/mockData";
 import {
   Globe,
@@ -14,9 +14,14 @@ import {
   X,
   FileText,
   Clock,
+  ShieldAlert,
 } from "lucide-react";
 
-export const AdminVisaRules: React.FC = () => {
+interface AdminVisaRulesProps {
+  onNavigateTab?: (tab: AdminTab) => void;
+}
+
+export const AdminVisaRules: React.FC<AdminVisaRulesProps> = ({ onNavigateTab }) => {
   const [rules, setRules] = useState<VisaChecklistRule[]>(MOCK_VISA_CHECKLIST_RULES);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [newCountry, setNewCountry] = useState("");
@@ -81,13 +86,33 @@ export const AdminVisaRules: React.FC = () => {
           </p>
         </div>
 
-        <button
-          onClick={() => setIsAddModalOpen(true)}
-          className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-xs flex items-center gap-2 cursor-pointer shadow-md hover:scale-105 transition-all shrink-0"
-        >
-          <Plus className="w-4 h-4" />
-          Add Country Requirement
-        </button>
+        <div className="flex items-center gap-2 shrink-0 flex-wrap">
+          {onNavigateTab && (
+            <>
+              <button
+                onClick={() => onNavigateTab("consent_versioning")}
+                className="px-3.5 py-2.5 rounded-xl bg-teal-50 hover:bg-teal-100 text-[#1baba4] text-xs font-bold border border-teal-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+              >
+                <FileText className="w-3.5 h-3.5" />
+                <span>Consent Engine</span>
+              </button>
+              <button
+                onClick={() => onNavigateTab("refund_escrow_rules")}
+                className="px-3.5 py-2.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-800 text-xs font-bold border border-purple-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+              >
+                <ShieldAlert className="w-3.5 h-3.5" />
+                <span>Refund Rules</span>
+              </button>
+            </>
+          )}
+          <button
+            onClick={() => setIsAddModalOpen(true)}
+            className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-xs flex items-center gap-2 cursor-pointer shadow-md hover:scale-105 transition-all"
+          >
+            <Plus className="w-4 h-4" />
+            Add Country Requirement
+          </button>
+        </div>
       </div>
 
       {/* Rules Grid */}

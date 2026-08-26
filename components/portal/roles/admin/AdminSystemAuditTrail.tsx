@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { PatientCase, AuditLog } from "@/types/portal";
+import { PatientCase, AuditLog, AdminTab } from "@/types/portal";
 import {
   ClipboardList,
   Activity,
@@ -13,13 +13,19 @@ import {
   X,
   Lock,
   CheckCircle2,
+  ShieldAlert,
+  ShieldCheck,
 } from "lucide-react";
 
 interface AdminSystemAuditTrailProps {
   cases: PatientCase[];
+  onNavigateTab?: (tab: AdminTab) => void;
 }
 
-export const AdminSystemAuditTrail: React.FC<AdminSystemAuditTrailProps> = ({ cases }) => {
+export const AdminSystemAuditTrail: React.FC<AdminSystemAuditTrailProps> = ({
+  cases,
+  onNavigateTab,
+}) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [roleFilter, setRoleFilter] = useState<string>("all");
   const [inspectLog, setInspectLog] = useState<AuditLog | null>(null);
@@ -96,13 +102,33 @@ export const AdminSystemAuditTrail: React.FC<AdminSystemAuditTrailProps> = ({ ca
           </p>
         </div>
 
-        <button
-          onClick={handleExportCsv}
-          className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs flex items-center gap-2 cursor-pointer shadow-md transition-all shrink-0"
-        >
-          <Download className="w-4 h-4" />
-          Export Audit CSV
-        </button>
+        <div className="flex items-center gap-2 shrink-0 flex-wrap">
+          {onNavigateTab && (
+            <>
+              <button
+                onClick={() => onNavigateTab("security_mfa_logs")}
+                className="px-3.5 py-2.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-800 text-xs font-bold border border-purple-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+              >
+                <ShieldAlert className="w-3.5 h-3.5 text-purple-600" />
+                <span>Security & MFA Logs</span>
+              </button>
+              <button
+                onClick={() => onNavigateTab("role_permission_matrix")}
+                className="px-3.5 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#3F4EB4] text-xs font-bold border border-blue-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+              >
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Role Matrix (RLS)</span>
+              </button>
+            </>
+          )}
+          <button
+            onClick={handleExportCsv}
+            className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs flex items-center gap-2 cursor-pointer shadow-md transition-all"
+          >
+            <Download className="w-4 h-4" />
+            Export Audit CSV
+          </button>
+        </div>
       </div>
 
       {/* Filter and Search Bar */}

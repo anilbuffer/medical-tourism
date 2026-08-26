@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { HospitalPayoutBatch } from "@/types/portal";
+import { HospitalPayoutBatch, AdminTab } from "@/types/portal";
 import { MOCK_HOSPITAL_PAYOUTS } from "@/lib/portal/mockData";
 import {
   DollarSign,
@@ -13,9 +13,15 @@ import {
   AlertTriangle,
   Receipt,
   FileCheck,
+  Wallet,
+  RefreshCw,
 } from "lucide-react";
 
-export const AdminCommissionPayouts: React.FC = () => {
+interface AdminCommissionPayoutsProps {
+  onNavigateTab?: (tab: AdminTab) => void;
+}
+
+export const AdminCommissionPayouts: React.FC<AdminCommissionPayoutsProps> = ({ onNavigateTab }) => {
   const [payouts, setPayouts] = useState<HospitalPayoutBatch[]>(MOCK_HOSPITAL_PAYOUTS);
 
   const handleApproveBatch = (batchId: string) => {
@@ -36,18 +42,39 @@ export const AdminCommissionPayouts: React.FC = () => {
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Header Bar */}
-      <div>
-        <div className="flex items-center gap-2">
-          <span className="text-[10px] font-black uppercase tracking-widest text-[#3F4EB4] bg-blue-50 px-2.5 py-0.5 rounded-full">
-            Financial Ledger • Domain 4
-          </span>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-black uppercase tracking-widest text-[#3F4EB4] bg-blue-50 px-2.5 py-0.5 rounded-full">
+              Financial Ledger • Domain 4
+            </span>
+          </div>
+          <h2 className="text-xl font-black text-slate-900 tracking-tight mt-1">
+            Hospital Commission Splits & Payout Batches
+          </h2>
+          <p className="text-xs text-slate-500 mt-0.5">
+            Settlement accounting, Vedara platform revenue share deductions, and SWIFT/IBAN wire dispatches to partner hospitals.
+          </p>
         </div>
-        <h2 className="text-xl font-black text-slate-900 tracking-tight mt-1">
-          Hospital Commission Splits & Payout Batches
-        </h2>
-        <p className="text-xs text-slate-500 mt-0.5">
-          Settlement accounting, Vedara platform revenue share deductions, and SWIFT/IBAN wire dispatches to partner hospitals.
-        </p>
+
+        {onNavigateTab && (
+          <div className="flex items-center gap-2 shrink-0 flex-wrap">
+            <button
+              onClick={() => onNavigateTab("gateway_escrow")}
+              className="px-3.5 py-2.5 rounded-xl bg-teal-50 hover:bg-teal-100 text-[#1baba4] text-xs font-bold border border-teal-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+            >
+              <Wallet className="w-3.5 h-3.5" />
+              <span>Escrow Vault</span>
+            </button>
+            <button
+              onClick={() => onNavigateTab("refund_approvals")}
+              className="px-3.5 py-2.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-800 text-xs font-bold border border-rose-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+            >
+              <RefreshCw className="w-3.5 h-3.5 text-rose-600" />
+              <span>Refund Approvals</span>
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Payout Batches Table */}

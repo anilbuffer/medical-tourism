@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { PatientCase } from "@/types/portal";
+import { PatientCase, AdminTab } from "@/types/portal";
 import {
   Sparkles,
   RefreshCcw,
@@ -13,13 +13,16 @@ import {
   ArrowRight,
   UserPlus,
   HeartHandshake,
+  Layers,
+  Sliders,
 } from "lucide-react";
 
 interface AdminNurtureQueueProps {
   cases: PatientCase[];
+  onNavigateTab?: (tab: AdminTab) => void;
 }
 
-export const AdminNurtureQueue: React.FC<AdminNurtureQueueProps> = ({ cases }) => {
+export const AdminNurtureQueue: React.FC<AdminNurtureQueueProps> = ({ cases, onNavigateTab }) => {
   const [caseList, setCaseList] = useState<PatientCase[]>(cases);
   const [filterReason, setFilterReason] = useState<string>("all");
 
@@ -76,16 +79,36 @@ export const AdminNurtureQueue: React.FC<AdminNurtureQueueProps> = ({ cases }) =
           </p>
         </div>
 
-        <select
-          value={filterReason}
-          onChange={(e) => setFilterReason(e.target.value)}
-          className="bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 font-bold focus:ring-2 focus:ring-[#2ECDC5] focus:outline-none cursor-pointer shrink-0 shadow-xs"
-        >
-          <option value="all">All Nurture Categories ({nurtureCases.length})</option>
-          <option value="declined_by_hospital">Hospital Declined (Scope Mismatch)</option>
-          <option value="paused_by_patient">Patient Paused / Travel Delayed</option>
-          <option value="budget_mismatch">Budget / Pricing Adjustment</option>
-        </select>
+        <div className="flex items-center gap-2 shrink-0 flex-wrap">
+          {onNavigateTab && (
+            <>
+              <button
+                onClick={() => onNavigateTab("case_master_directory")}
+                className="px-3.5 py-2.5 rounded-xl bg-teal-50 hover:bg-teal-100 text-[#1baba4] text-xs font-bold border border-teal-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+              >
+                <Layers className="w-3.5 h-3.5" />
+                <span>Case Directory</span>
+              </button>
+              <button
+                onClick={() => onNavigateTab("routing_automation")}
+                className="px-3.5 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#3F4EB4] text-xs font-bold border border-blue-200 flex items-center gap-1.5 cursor-pointer transition-colors shadow-xs"
+              >
+                <Sliders className="w-3.5 h-3.5" />
+                <span>Routing Automation</span>
+              </button>
+            </>
+          )}
+          <select
+            value={filterReason}
+            onChange={(e) => setFilterReason(e.target.value)}
+            className="bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 font-bold focus:ring-2 focus:ring-[#2ECDC5] focus:outline-none cursor-pointer shadow-xs"
+          >
+            <option value="all">All Nurture Categories ({nurtureCases.length})</option>
+            <option value="declined_by_hospital">Hospital Declined (Scope Mismatch)</option>
+            <option value="paused_by_patient">Patient Paused / Travel Delayed</option>
+            <option value="budget_mismatch">Budget / Pricing Adjustment</option>
+          </select>
+        </div>
       </div>
 
       {/* Automated Campaign Overview Cards */}
