@@ -63,16 +63,36 @@ import {
   Layers,
   Zap,
 } from "lucide-react";
+import { UserRole } from "@/types/portal";
 
-export const PatientDashboard: React.FC = () => {
+export interface PatientDashboardProps {
+  portalRole?: UserRole;
+}
+
+export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }) => {
   const router = useRouter();
   const {
     currentUser,
+    availableUsers,
+    loginAs,
     activeCase,
     visibleCases,
     setActiveCaseId,
     logout,
   } = usePortal();
+
+  // If a specific portalRole is provided and currentUser is not of that role, switch to the default user for that role
+  useEffect(() => {
+    if (portalRole && (!currentUser || currentUser.role !== portalRole)) {
+      const matchingUser = availableUsers.find((u) => u.role === portalRole);
+      if (matchingUser) {
+        loginAs(matchingUser);
+      }
+    }
+  }, [portalRole, currentUser?.role, availableUsers, loginAs]);
+
+  // Determine effective role
+  const effectiveRole: UserRole = portalRole || currentUser?.role || "patient";
 
   const [activeTab, setActiveTab] = useState<string>("overview");
   const [isIntakeModalOpen, setIsIntakeModalOpen] = useState(false);
@@ -80,15 +100,15 @@ export const PatientDashboard: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
 
-  // Role checks
-  const isCS = currentUser?.role === "customer_support";
-  const isDoctor = currentUser?.role === "hospital_doctor";
-  const isFinance = currentUser?.role === "finance_accounts";
-  const isAdmin = currentUser?.role === "super_admin";
+  // Role checks based on effectiveRole
+  const isCS = effectiveRole === "customer_support";
+  const isDoctor = effectiveRole === "hospital_doctor";
+  const isFinance = effectiveRole === "finance_accounts";
+  const isAdmin = effectiveRole === "super_admin";
 
   // Dedicated role configuration for Sidebar & Header
   const portalConfig = useMemo(() => {
-    switch (currentUser?.role) {
+    switch (effectiveRole) {
       case "customer_support": {
         const pendingDocsTotal = visibleCases.reduce(
           (acc, c) => acc + c.documents.filter((d) => d.status === "pending_review").length,

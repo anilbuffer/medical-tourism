@@ -296,6 +296,22 @@ const LoginPageContent: React.FC = () => {
     }
   }, [searchParams]);
 
+const getPortalPathForRole = (role?: string) => {
+  switch (role) {
+    case "customer_support":
+      return "/customer";
+    case "hospital_doctor":
+      return "/hospital";
+    case "finance_accounts":
+      return "/finance";
+    case "super_admin":
+      return "/superadmin";
+    case "patient":
+    default:
+      return "/patient";
+  }
+};
+
   const handleSelectRole = (index: number) => {
     setSelectedRoleIndex(index);
     const targetUser = demoRoles[index].user;
@@ -320,7 +336,8 @@ const LoginPageContent: React.FC = () => {
       demoRoles[selectedRoleIndex]?.user || MOCK_PORTAL_USERS[0];
     loginAs(targetUser);
 
-    const redirectUrl = searchParams.get("redirect") || "/patient";
+    const defaultRedirect = getPortalPathForRole(targetUser.role);
+    const redirectUrl = searchParams.get("redirect") || defaultRedirect;
     setTimeout(() => {
       setMfaModalOpen(false);
       router.push(redirectUrl);

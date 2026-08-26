@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { PortalUser } from "@/types/portal";
 import { usePortal } from "@/lib/portal/store";
 import {
@@ -15,7 +16,26 @@ import {
   Lock,
 } from "lucide-react";
 
+export const getPortalPathForRole = (role: string) => {
+  switch (role) {
+    case "patient":
+      return "/patient";
+    case "customer_support":
+      return "/customer";
+    case "hospital_doctor":
+      return "/hospital";
+    case "finance_accounts":
+      return "/finance";
+    case "super_admin":
+      return "/superadmin";
+    default:
+      return "/patient";
+  }
+};
+
 export const PersonaSwitcher: React.FC = () => {
+  const router = useRouter();
+  const pathname = usePathname();
   const { currentUser, availableUsers, loginAs } = usePortal();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -50,6 +70,15 @@ export const PersonaSwitcher: React.FC = () => {
         return "Super Admin";
       default:
         return "Portal User";
+    }
+  };
+
+  const handleSelectPersona = (user: PortalUser) => {
+    loginAs(user);
+    setIsOpen(false);
+    const targetPath = getPortalPathForRole(user.role);
+    if (pathname !== targetPath) {
+      router.push(targetPath);
     }
   };
 
@@ -105,10 +134,7 @@ export const PersonaSwitcher: React.FC = () => {
                 return (
                   <button
                     key={user.id}
-                    onClick={() => {
-                      loginAs(user);
-                      setIsOpen(false);
-                    }}
+                    onClick={() => handleSelectPersona(user)}
                     className={`w-full text-left p-2.5 rounded-xl flex items-center justify-between transition-all cursor-pointer border ${isSelected
                       ? " bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983]text-white font-bold shadow-md border-transparent"
                       : "bg-slate-50/70 hover:bg-slate-100 text-slate-800 hover:text-slate-900 border-slate-100 hover:border-slate-200"

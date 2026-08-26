@@ -104,6 +104,11 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link href="/login?portal=admin" className="hover:text-white transition-colors">
+                  Super Admin Governance
+                </Link>
+              </li>
+              <li>
                 <a href="#costs" className="hover:text-white transition-colors">
                   {t.nav.costGuide}
                 </a>

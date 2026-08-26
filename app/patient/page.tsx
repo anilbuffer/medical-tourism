@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function PatientPortalPage() {
   return (
     <PortalProvider>
-      <PatientDashboard />
+      <PatientDashboard portalRole="patient" />
     </PortalProvider>
   );
 }
