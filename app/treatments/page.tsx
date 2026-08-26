@@ -191,7 +191,7 @@ export default function TreatmentsPage() {
 
                   <button
                     onClick={() => openIntake(item.name)}
-                    className="w-full py-3.5 bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs rounded-xl shadow-lg shadow-[#283593]/20 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-3.5 bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-xs rounded-xl shadow-lg shadow-[#283593]/20 transition-all flex items-center justify-center gap-2"
                   >
                     <span>Request Exact Hospital Quotation</span>
                     <ArrowRight className="w-4 h-4 rtl:rotate-180" />

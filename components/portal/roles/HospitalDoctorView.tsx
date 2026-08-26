@@ -160,7 +160,7 @@ export const HospitalDoctorView: React.FC<HospitalDoctorViewProps> = ({
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-[#071321] via-[#0B1E33] to-[#0D2642] rounded-2xl p-6 sm:p-8 text-white shadow-xl border border-slate-800/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 relative overflow-hidden">
+      <div className="bg-gradient-to-r from-[#141d60] via-[#1b2360] to-[#101e76] rounded-2xl p-6 sm:p-8 text-white shadow-xl border border-slate-800/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-48 h-48 bg-[#3F4EB4]/15 rounded-full blur-3xl pointer-events-none" />
         <div className="relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3F4EB4]/20 text-[#2ECDC5] text-xs font-bold tracking-wider uppercase mb-2 border border-[#3F4EB4]/30">
@@ -214,7 +214,7 @@ export const HospitalDoctorView: React.FC<HospitalDoctorViewProps> = ({
                   key={c.id}
                   onClick={() => onSelectCase(c.id)}
                   className={`w-full text-left p-4 rounded-2xl border transition-all duration-300 cursor-pointer ${isSelected
-                    ? "bg-gradient-to-r from-[#071321] via-[#0B1E33] to-[#0D2642] text-white border-slate-800 shadow-lg"
+                    ? "bg-gradient-to-r from-[#141d60] via-[#1b2360] to-[#101e76] text-white border-slate-800 shadow-lg"
                     : "bg-white hover:bg-slate-50 text-slate-800 border-slate-200 shadow-2xs hover:-translate-y-0.5"
                     }`}
                 >
@@ -544,7 +544,7 @@ export const HospitalDoctorView: React.FC<HospitalDoctorViewProps> = ({
                     <button
                       type="submit"
                       disabled={workspaceSaving}
-                      className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-2 cursor-pointer"
+                      className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-2 cursor-pointer"
                     >
                       <Send className="w-3.5 h-3.5" />
                       {workspaceSaving ? "Saving..." : "Save to Clinical Record"}
@@ -674,7 +674,7 @@ export const HospitalDoctorView: React.FC<HospitalDoctorViewProps> = ({
                   <div className="flex justify-end">
                     <button
                       type="submit"
-                      className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-2 cursor-pointer"
+                      className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-2 cursor-pointer"
                     >
                       <Send className="w-3.5 h-3.5" />
                       Save Consultation Outcome

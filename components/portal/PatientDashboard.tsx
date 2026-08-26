@@ -360,7 +360,7 @@ export const PatientDashboard: React.FC = () => {
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 flex">
       {/* 01. Left Sidebar Navigation (Desktop) - Styled Exactly Like Home Banner */}
       <aside
-        className={`hidden md:flex flex-col bg-gradient-to-b from-[#071321] via-[#0B1E33] to-[#0D2642] text-white transition-all duration-300 z-40 shrink-0 select-none ${sidebarOpen ? "w-64" : "w-20"
+        className={`hidden md:flex flex-col bg-gradient-to-b from-[#141d60] via-[#1b2360] to-[#101e76] text-white transition-all duration-300 z-40 shrink-0 select-none ${sidebarOpen ? "w-64" : "w-20"
           } min-h-screen border-r border-slate-800/80 sticky top-0 h-screen relative`}
       >
         {/* Ambient Banner Glows inside Sidebar */}
@@ -379,7 +379,7 @@ export const PatientDashboard: React.FC = () => {
         {/* Edge Toggle Button (Floating cleanly on sidebar border, tri-color symmetric palette) */}
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="hidden md:flex absolute -right-4 top-6 z-50 w-8 h-8 rounded-full bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] active:scale-95 text-white items-center justify-center shadow-xl ring-2 ring-white transition-all duration-200 hover:scale-110 cursor-pointer"
+          className="hidden md:flex absolute -right-4 top-6 z-50 w-8 h-8 rounded-full bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  active:scale-95 text-white items-center justify-center shadow-xl ring-2 ring-white transition-all duration-200 hover:scale-110 cursor-pointer"
           title={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
           aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
         >
@@ -570,7 +570,7 @@ export const PatientDashboard: React.FC = () => {
       {/* 02. Mobile Drawer Navigation */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-[100] md:hidden bg-slate-950/80 backdrop-blur-xs flex">
-          <div className="w-72 bg-gradient-to-b from-[#071321] via-[#0B1E33] to-[#0D2642] text-white flex flex-col h-full p-4 space-y-4 animate-in slide-in-from-left duration-200 border-r border-slate-800">
+          <div className="w-72 bg-gradient-to-b from-[#141d60] via-[#1b2360] to-[#101e76] text-white flex flex-col h-full p-4 space-y-4 animate-in slide-in-from-left duration-200 border-r border-slate-800">
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] flex items-center justify-center font-bold text-white ring-1 ring-[#2ECDC5]/40">
@@ -604,8 +604,8 @@ export const PatientDashboard: React.FC = () => {
                       setMobileMenuOpen(false);
                     }}
                     className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-2xl text-xs font-bold transition-all ${isActive
-                        ? "bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] text-white font-extrabold shadow-md"
-                        : "text-slate-300 hover:text-white hover:bg-white/5"
+                      ? "bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] text-white font-extrabold shadow-md"
+                      : "text-slate-300 hover:text-white hover:bg-white/5"
                       }`}
                   >
                     <Icon className="w-4 h-4" />

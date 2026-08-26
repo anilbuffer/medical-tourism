@@ -30,7 +30,7 @@ export const FinalCtaSection = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <button
             onClick={() => openIntake()}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 py-4 rounded-xl text-base font-bold text-white bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] shadow-2xl shadow-[#283593]/30 hover:scale-[1.02] active:scale-[0.98] transition-all group"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 py-4 rounded-xl text-base font-bold text-white bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  shadow-2xl shadow-[#283593]/30 hover:scale-[1.02] active:scale-[0.98] transition-all group"
           >
             <span>{t.finalCta.primaryBtn}</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />

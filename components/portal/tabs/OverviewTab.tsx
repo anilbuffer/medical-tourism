@@ -140,7 +140,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({ patientCase, onNavigat
   return (
     <div className="space-y-6 animate-in fade-in duration-300 pb-12">
       {/* 01. Greeting & Prominent Permanent Patient ID Ribbon */}
-      <div className="bg-gradient-to-r from-[#071321] via-[#0B1E33] to-[#0D2642] rounded-3xl p-6 sm:p-7 text-white shadow-xl border border-slate-800/80 relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="bg-gradient-to-r from-[#141d60] via-[#1b2360] to-[#101e76] rounded-3xl p-6 sm:p-7 text-white shadow-xl border border-slate-800/80 relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         {/* Glow accents */}
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#2ECDC5]/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-10 w-64 h-64 bg-[#3F4EB4]/20 rounded-full blur-3xl pointer-events-none" />
@@ -374,7 +374,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({ patientCase, onNavigat
         {/* Right Column (~35%): Care Team & Quick Next Steps */}
         <div className="space-y-6">
           {/* Next Key Action Card */}
-          <div className="bg-gradient-to-br from-[#071321] via-[#0B1E33] to-[#0D2642] rounded-3xl p-6 text-white shadow-xl border border-slate-800/80 space-y-4">
+          <div className="bg-gradient-to-br from-[#141d60] via-[#1b2360] to-[#101e76] rounded-3xl p-6 text-white shadow-xl border border-slate-800/80 space-y-4">
             <div className="flex items-center gap-2 text-xs font-bold text-[#2ECDC5] uppercase tracking-wider">
               <Sparkles className="w-4 h-4" />
               <span>Next Immediate Milestone</span>
@@ -410,7 +410,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({ patientCase, onNavigat
                 else if (patientCase.stage === "consultation") onNavigateTab("consultation");
                 else onNavigateTab("documents");
               }}
-              className="w-full py-3 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-3 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-xs shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>View Milestone Details</span>
               <ChevronRight className="w-4 h-4" />
@@ -480,7 +480,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({ patientCase, onNavigat
       <div className="fixed bottom-6 right-6 z-40">
         <button
           onClick={() => setIsFeedbackOpen(true)}
-          className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-bold text-xs shadow-xl shadow-[#283593]/35 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+          className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-bold text-xs shadow-xl shadow-[#283593]/35 hover:scale-105 active:scale-95 transition-all cursor-pointer"
         >
           <MessageSquare className="w-4 h-4 text-amber-300" />
           <span>Care Feedback</span>
@@ -593,7 +593,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({ patientCase, onNavigat
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white text-xs font-bold shadow-md shadow-[#283593]/30 flex items-center gap-1.5"
+                    className="px-5 py-2 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white text-xs font-bold shadow-md shadow-[#283593]/30 flex items-center gap-1.5"
                   >
                     <Send className="w-3.5 h-3.5" />
                     <span>Submit Feedback</span>

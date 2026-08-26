@@ -19,7 +19,7 @@ export const HeroSection = () => {
   const { t, language, openIntake, openChat } = useCare();
 
   return (
-    <section className="relative min-h-[92vh] pt-28 pb-20 bg-gradient-to-b from-[#071321] via-[#0B1E33] to-[#0D2642] text-white overflow-hidden flex flex-col justify-center">
+    <section className="relative min-h-[92vh] pt-28 pb-20 bg-gradient-to-b from-[#141d60] via-[#1b2360] to-[#101e76] text-white overflow-hidden flex flex-col justify-center">
       {/* Background Decorative Ambient Lights */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#3F4EB4]/15 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
       <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-[#2ECDC5]/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -67,7 +67,7 @@ export const HeroSection = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
               <button
                 onClick={() => openIntake()}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-base font-bold text-white bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] shadow-xl shadow-[#283593]/25 hover:scale-[1.02] active:scale-[0.98] transition-all group"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-base font-bold text-white bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  shadow-xl shadow-[#283593]/25 hover:scale-[1.02] active:scale-[0.98] transition-all group"
               >
                 <span>{t.hero.primaryCta}</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />

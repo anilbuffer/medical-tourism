@@ -343,7 +343,7 @@ const LoginPageContent: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col lg:flex-row bg-[#071321] text-white">
       {/* 01. Left Column: Feature Narrative & Role Selector Strip (Home Banner Style) */}
-      <div className="lg:w-3/5 xl:w-[62%] relative flex flex-col justify-between p-6 sm:p-10 lg:p-14 bg-gradient-to-b from-[#071321] via-[#0B1E33] to-[#0D2642] overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-800/80">
+      <div className="lg:w-3/5 xl:w-[62%] relative flex flex-col justify-between p-6 sm:p-10 lg:p-14 bg-gradient-to-b from-[#141d60] via-[#1b2360] to-[#101e76] overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-800/80">
         {/* Ambient Lights & Texture */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#3F4EB4]/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-[#2ECDC5]/10 rounded-full blur-3xl pointer-events-none" />
@@ -388,15 +388,15 @@ const LoginPageContent: React.FC = () => {
                   type="button"
                   onClick={() => handleSelectRole(idx)}
                   className={`p-3 rounded-2xl text-left border transition-all duration-300 relative group ${isSelected
-                      ? "bg-white/15 border-[#2ECDC5] text-white shadow-lg shadow-[#2ECDC5]/20 ring-1 ring-[#2ECDC5] scale-[1.02]"
-                      : "bg-white/5 border-white/10 hover:bg-white/10 text-slate-300 hover:text-white hover:scale-[1.01]"
+                    ? "bg-white/15 border-[#2ECDC5] text-white shadow-lg shadow-[#2ECDC5]/20 ring-1 ring-[#2ECDC5] scale-[1.02]"
+                    : "bg-white/5 border-white/10 hover:bg-white/10 text-slate-300 hover:text-white hover:scale-[1.01]"
                     }`}
                 >
                   <div className="flex items-center justify-between mb-1.5">
                     <div
                       className={`w-7 h-7 rounded-xl flex items-center justify-center transition-colors ${isSelected
-                          ? "bg-[#2ECDC5] text-slate-950 font-black"
-                          : "bg-white/10 text-[#2ECDC5] group-hover:bg-[#2ECDC5]/20"
+                        ? "bg-[#2ECDC5] text-slate-950 font-black"
+                        : "bg-white/10 text-[#2ECDC5] group-hover:bg-[#2ECDC5]/20"
                         }`}
                     >
                       <IconComponent className="w-3.5 h-3.5" />
@@ -615,8 +615,8 @@ const LoginPageContent: React.FC = () => {
                           setRoleDropdownOpen(false);
                         }}
                         className={`w-full flex items-start gap-3 px-3 py-2.5 rounded-xl text-left transition-all duration-150 group ${isActive
-                            ? "bg-slate-50 ring-1"
-                            : "hover:bg-slate-50"
+                          ? "bg-slate-50 ring-1"
+                          : "hover:bg-slate-50"
                           }`}
                         style={{
                           ringColor: isActive ? role.color : "transparent",
@@ -827,7 +827,7 @@ const LoginPageContent: React.FC = () => {
                 type="button"
                 onClick={executeFinalLogin}
                 disabled={isSubmitting || otpCode.length < 6}
-                className="flex-1 py-3 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                className="flex-1 py-3 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <>

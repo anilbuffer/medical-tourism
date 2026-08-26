@@ -104,7 +104,7 @@ export const ConciergeSection = () => {
         <div className="text-center">
           <button
             onClick={() => openChat("I'd like to understand more about your concierge services.")}
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] shadow-xl shadow-[#283593]/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  shadow-xl shadow-[#283593]/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
           >
             <span>{t.concierge.cta}</span>
             <ArrowRight className="w-4 h-4 rtl:rotate-180" />

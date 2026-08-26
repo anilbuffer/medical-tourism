@@ -131,7 +131,7 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
 
         <button
           onClick={openNewUpload}
-          className="px-5 py-3 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-bold text-sm shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-2 shrink-0 cursor-pointer"
+          className="px-5 py-3 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-bold text-sm shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-2 shrink-0 cursor-pointer"
         >
           <Upload className="w-4 h-4" />
           <span>Upload New Record</span>
@@ -151,8 +151,8 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
             key={f.id}
             onClick={() => setFilterCategory(f.id)}
             className={`px-4 py-2.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${filterCategory === f.id
-                ? "bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] text-white shadow-md font-extrabold"
-                : "bg-white/95 backdrop-blur-xl text-slate-600 border border-slate-200 shadow-xs hover:border-[#2ECDC5]/40 hover:bg-slate-50"
+              ? "bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] text-white shadow-md font-extrabold"
+              : "bg-white/95 backdrop-blur-xl text-slate-600 border border-slate-200 shadow-xs hover:border-[#2ECDC5]/40 hover:bg-slate-50"
               }`}
           >
             {f.label}
@@ -174,7 +174,7 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
           </div>
           <button
             onClick={openNewUpload}
-            className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-bold text-xs inline-flex items-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer"
+            className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-bold text-xs inline-flex items-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer"
           >
             <Upload className="w-4 h-4" />
             Upload Document Now
@@ -243,8 +243,8 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
                 {doc.csFeedback && (
                   <div
                     className={`p-3.5 rounded-2xl text-xs flex items-start gap-2.5 ${doc.status === "incomplete"
-                        ? "bg-rose-50 border border-rose-200 text-rose-800 font-medium"
-                        : "bg-emerald-50 border border-emerald-200 text-emerald-800 font-medium"
+                      ? "bg-rose-50 border border-rose-200 text-rose-800 font-medium"
+                      : "bg-emerald-50 border border-emerald-200 text-emerald-800 font-medium"
                       }`}
                   >
                     <AlertCircle
@@ -399,8 +399,8 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
                 <div
                   key={ver.version}
                   className={`p-4 rounded-2xl border ${idx === 0
-                      ? "bg-teal-50/70 border-teal-200"
-                      : "bg-slate-50 border-slate-200 opacity-80"
+                    ? "bg-teal-50/70 border-teal-200"
+                    : "bg-slate-50 border-slate-200 opacity-80"
                     }`}
                 >
                   <div className="flex items-center justify-between">

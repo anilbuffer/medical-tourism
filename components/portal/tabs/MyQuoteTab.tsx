@@ -180,7 +180,7 @@ export const MyQuoteTab: React.FC<MyQuoteTabProps> = ({ patientCase, onNavigateT
           </div>
 
           {/* Total Cost Highlight Banner */}
-          <div className="p-6 bg-gradient-to-r from-[#071321] via-[#0B1E33] to-[#0D2642] rounded-2xl text-white flex items-center justify-between shadow-xl border border-slate-800/80 relative overflow-hidden">
+          <div className="p-6 bg-gradient-to-r from-[#141d60] via-[#1b2360] to-[#101e76] rounded-2xl text-white flex items-center justify-between shadow-xl border border-slate-800/80 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-48 h-48 bg-[#2ECDC5]/15 rounded-full blur-2xl pointer-events-none" />
             <div className="relative z-10">
               <div className="text-xs uppercase tracking-wider text-[#2ECDC5] font-bold">Total All-Inclusive Package</div>
@@ -249,7 +249,7 @@ export const MyQuoteTab: React.FC<MyQuoteTabProps> = ({ patientCase, onNavigateT
             {!isAccepted && (
               <button
                 onClick={handleAccept}
-                className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-sm shadow-xl shadow-[#283593]/25 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-sm shadow-xl shadow-[#283593]/25 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Check className="w-5 h-5" />
                 <span>Accept Quote & Proceed to Staged Payment</span>
@@ -259,7 +259,7 @@ export const MyQuoteTab: React.FC<MyQuoteTabProps> = ({ patientCase, onNavigateT
             {isAccepted && (
               <button
                 onClick={onNavigateToPayments}
-                className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-sm shadow-xl shadow-[#283593]/25 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-sm shadow-xl shadow-[#283593]/25 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <CreditCard className="w-5 h-5" />
                 <span>Go to Staged Payments Dashboard</span>

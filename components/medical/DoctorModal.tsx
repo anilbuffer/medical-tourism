@@ -174,8 +174,8 @@ export const DoctorModal = () => {
                       key={day}
                       onClick={() => setSelectedDate(day)}
                       className={`py-2 px-3 rounded-xl border text-center transition-all ${selectedDate === day
-                          ? "bg-[#3F4EB4]/10 border-[#3F4EB4] text-[#283593] font-bold"
-                          : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100"
+                        ? "bg-[#3F4EB4]/10 border-[#3F4EB4] text-[#283593] font-bold"
+                        : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100"
                         }`}
                     >
                       {day}
@@ -191,8 +191,8 @@ export const DoctorModal = () => {
                       key={slot}
                       onClick={() => setSelectedTimeSlot(slot)}
                       className={`p-2.5 rounded-xl border text-left rtl:text-right transition-all flex items-center gap-2 ${selectedTimeSlot === slot
-                          ? "bg-[#3F4EB4]/10 border-[#3F4EB4] text-[#283593] font-bold"
-                          : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50"
+                        ? "bg-[#3F4EB4]/10 border-[#3F4EB4] text-[#283593] font-bold"
+                        : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50"
                         }`}
                     >
                       <Clock className="w-3.5 h-3.5 text-[#3F4EB4] shrink-0" />
@@ -205,7 +205,7 @@ export const DoctorModal = () => {
                 <div className="pt-2">
                   <button
                     onClick={handleConfirm}
-                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-sm shadow-xl shadow-[#283593]/20 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-sm shadow-xl shadow-[#283593]/20 transition-all flex items-center justify-center gap-2"
                   >
                     <Calendar className="w-4 h-4" />
                     <span>Confirm Video Consultation Slot</span>

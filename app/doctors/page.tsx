@@ -199,7 +199,7 @@ export default function DoctorsPage() {
                   </button>
                   <button
                     onClick={() => openDoctorModal(doc)}
-                    className="py-2.5 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white text-xs font-bold text-center shadow-md shadow-[#283593]/20 transition-all"
+                    className="py-2.5 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white text-xs font-bold text-center shadow-md shadow-[#283593]/20 transition-all"
                   >
                     Book Video Call
                   </button>

@@ -108,8 +108,8 @@ export const LiveChatDrawer = () => {
                   )}
                   <div
                     className={`max-w-[82%] rounded-2xl px-4 py-2.5 text-xs sm:text-sm leading-relaxed shadow-sm ${isUser
-                        ? "bg-[#3F4EB4] text-white rounded-br-none"
-                        : "bg-white text-slate-800 border border-slate-200/80 rounded-bl-none"
+                      ? "bg-[#3F4EB4] text-white rounded-br-none"
+                      : "bg-white text-slate-800 border border-slate-200/80 rounded-bl-none"
                       }`}
                   >
                     <p>{msg.text}</p>
@@ -161,7 +161,7 @@ export const LiveChatDrawer = () => {
             <button
               type="submit"
               disabled={!inputText.trim()}
-              className="p-2.5 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] disabled:opacity-40 text-white shadow-md transition-all shrink-0"
+              className="p-2.5 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  disabled:opacity-40 text-white shadow-md transition-all shrink-0"
             >
               <Send className="w-4 h-4 rtl:rotate-180" />
             </button>

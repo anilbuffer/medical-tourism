@@ -109,7 +109,7 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
 
         <button
           onClick={() => setIsVideoRoomOpen(true)}
-          className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-sm shadow-xl shadow-[#283593]/25 hover:scale-105 transition-all duration-300 flex items-center gap-2.5 shrink-0 cursor-pointer"
+          className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-sm shadow-xl shadow-[#283593]/25 hover:scale-105 transition-all duration-300 flex items-center gap-2.5 shrink-0 cursor-pointer"
         >
           <Video className="w-5 h-5" />
           <span>Launch Telehealth Video Room</span>
@@ -233,7 +233,7 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
           <div className="pt-4 border-t border-slate-100">
             <button
               onClick={() => setIsVideoRoomOpen(true)}
-              className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
             >
               <Video className="w-4 h-4" />
               <span>Enter Video Meeting Room</span>
