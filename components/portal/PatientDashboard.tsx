@@ -32,6 +32,7 @@ import {
   Bell,
   PanelLeft,
   ChevronDown,
+  ChevronRight,
   ArrowLeft,
   LogOut,
   X,
@@ -46,6 +47,7 @@ import {
   Receipt,
   Wallet,
   RefreshCcw,
+  RefreshCw,
   BarChart2,
   ShieldAlert,
   UserCog,
@@ -53,6 +55,13 @@ import {
   ClipboardList,
   Settings,
   Users,
+  UserCheck,
+  Globe,
+  KeyRound,
+  Sliders,
+  Clock,
+  Layers,
+  Zap,
 } from "lucide-react";
 
 export const PatientDashboard: React.FC = () => {
@@ -226,40 +235,224 @@ export const PatientDashboard: React.FC = () => {
       }
 
       case "super_admin": {
+        const pendingRefundsTotal = visibleCases
+          .flatMap((c) => c.refundRequests || [])
+          .filter((r) => r.status === "pending_approval").length;
+        const breachedSlaTotal = visibleCases.filter((c) => c.slaBreached).length;
+        const nurtureTotal = visibleCases.filter((c) => c.stage === "nurture").length;
+
         return {
-          portalBadge: "Executive Governance",
+          portalBadge: "Super Admin Governance",
           headerTitle: "Super Admin Governance Console",
-          portalSubtitle: "System RBAC, HIPAA Audit Logs & Network",
-          roleTag: "Super Admin",
+          portalSubtitle: "System RBAC, Legal Engine, Escrow Vault & System Telemetry",
+          roleTag: "Super Admin (Root Scope)",
           userName: currentUser?.name || "Rajesh Verma",
           userSubtitle: "Chief Compliance Officer",
           avatar: currentUser?.avatar,
-          defaultTab: "user_mgmt",
+          defaultTab: "dashboard_overview",
           menus: [
             {
-              id: "user_mgmt",
-              label: "User Management & RBAC",
-              icon: UserCog,
+              id: "dashboard_overview",
+              label: "Overview",
+              icon: LayoutDashboard,
+              group: "dashboard_group",
+              subTabs: ["dashboard_overview"],
             },
             {
-              id: "compliance_config",
-              label: "Compliance & Consent Rules",
+              id: "internal_staff",
+              label: "User and Access Management",
+              icon: Users,
+              group: "user_rbac_group",
+              subTabs: ["internal_staff", "hospital_doctors", "role_permission_matrix"],
+            },
+            {
+              id: "consent_versioning",
+              label: "Compliance and Legal Engine",
               icon: Shield,
+              group: "compliance_legal_group",
+              subTabs: ["consent_versioning", "visa_rules", "refund_escrow_rules", "accreditation_registry"],
+              badge: 1,
             },
             {
-              id: "accreditation",
-              label: "Hospital Accreditation",
-              icon: Building2,
+              id: "case_master_directory",
+              label: "CaseJourney & Queues",
+              icon: Layers,
+              group: "case_queues_group",
+              subTabs: ["case_master_directory", "sla_escalation_engine", "nurture_queue"],
+              badge: breachedSlaTotal > 0 ? breachedSlaTotal : (nurtureTotal > 0 ? nurtureTotal : undefined),
             },
             {
-              id: "audit_reporting",
-              label: "HIPAA & GDPR Audit Logs",
+              id: "gateway_escrow",
+              label: "Financial and PaymentsLedger",
+              icon: Wallet,
+              group: "financial_ledger_group",
+              subTabs: ["gateway_escrow", "commission_payouts", "refund_approvals"],
+              badge: pendingRefundsTotal > 0 ? pendingRefundsTotal : undefined,
+            },
+            {
+              id: "system_audit_trail",
+              label: "System Audit and Logs",
               icon: ClipboardList,
+              group: "system_audit_group",
+              subTabs: ["system_audit_trail", "security_mfa_logs", "marketing_utm_analytics"],
             },
             {
-              id: "system_config",
-              label: "SLA & Travel Config",
+              id: "geo_sla_timers",
+              label: "System Configuration",
               icon: Settings,
+              group: "system_config_group",
+              subTabs: ["geo_sla_timers", "routing_automation"],
+            },
+          ],
+          adminNavGroups: [
+            {
+              id: "dashboard_group",
+              label: "Overview",
+              icon: LayoutDashboard,
+              items: [
+                {
+                  id: "dashboard_overview",
+                  label: "Overview",
+                  icon: LayoutDashboard,
+                },
+              ],
+            },
+            {
+              id: "user_rbac_group",
+              label: "User and Access Management",
+              icon: Users,
+              items: [
+                {
+                  id: "internal_staff",
+                  label: "Internal Staff & CS Agents",
+                  icon: UserCheck,
+                },
+                {
+                  id: "hospital_doctors",
+                  label: "Hospital Accounts & Doctors",
+                  icon: Building2,
+                },
+                {
+                  id: "role_permission_matrix",
+                  label: "Role Permission Matrix (RLS)",
+                  icon: Lock,
+                },
+              ],
+            },
+            {
+              id: "compliance_legal_group",
+              label: "Compliance and Legal Engine",
+              icon: Shield,
+              items: [
+                {
+                  id: "consent_versioning",
+                  label: "Dynamic Consent Versioning",
+                  icon: FileText,
+                },
+                {
+                  id: "visa_rules",
+                  label: "Visa Checklist Rules Table",
+                  icon: Globe,
+                },
+                {
+                  id: "refund_escrow_rules",
+                  label: "Stage-Wise Refund & Escrow Rules",
+                  icon: ShieldAlert,
+                },
+                {
+                  id: "accreditation_registry",
+                  label: "Accreditation Registry (JCI/NABH)",
+                  icon: BadgeCheck,
+                  badge: 1,
+                },
+              ],
+            },
+            {
+              id: "case_queues_group",
+              label: "CaseJourney & Queues",
+              icon: Layers,
+              items: [
+                {
+                  id: "case_master_directory",
+                  label: "Global Case Master Directory",
+                  icon: Layers,
+                  badge: visibleCases.length > 0 ? visibleCases.length : undefined,
+                },
+                {
+                  id: "sla_escalation_engine",
+                  label: "SLA & Escalation Rules Engine",
+                  icon: Clock,
+                  badge: breachedSlaTotal > 0 ? breachedSlaTotal : undefined,
+                },
+                {
+                  id: "nurture_queue",
+                  label: "Nurture & Re-engagement Queue",
+                  icon: Sparkles,
+                  badge: nurtureTotal > 0 ? nurtureTotal : undefined,
+                },
+              ],
+            },
+            {
+              id: "financial_ledger_group",
+              label: "Financial and PaymentsLedger",
+              icon: Wallet,
+              items: [
+                {
+                  id: "gateway_escrow",
+                  label: "Gateway Transactions & Escrow",
+                  icon: Receipt,
+                },
+                {
+                  id: "commission_payouts",
+                  label: "Hospital Commission & Payouts",
+                  icon: DollarSign,
+                },
+                {
+                  id: "refund_approvals",
+                  label: "Refund Approval Center",
+                  icon: RefreshCw,
+                  badge: pendingRefundsTotal > 0 ? pendingRefundsTotal : undefined,
+                },
+              ],
+            },
+            {
+              id: "system_audit_group",
+              label: "System Audit and Logs",
+              icon: ClipboardList,
+              items: [
+                {
+                  id: "system_audit_trail",
+                  label: "Full System Audit Trail (Read-Only)",
+                  icon: Activity,
+                },
+                {
+                  id: "security_mfa_logs",
+                  label: "Security & MFA Enforcement Logs",
+                  icon: KeyRound,
+                },
+                {
+                  id: "marketing_utm_analytics",
+                  label: "Marketing Attribution & UTM Analytics",
+                  icon: BarChart2,
+                },
+              ],
+            },
+            {
+              id: "system_config_group",
+              label: "System Configuration",
+              icon: Settings,
+              items: [
+                {
+                  id: "geo_sla_timers",
+                  label: "SLA Timers per Geographic Market",
+                  icon: Clock,
+                },
+                {
+                  id: "routing_automation",
+                  label: "Routing & Queue Automation Logic",
+                  icon: Sliders,
+                },
+              ],
             },
           ],
         };
@@ -330,9 +523,9 @@ export const PatientDashboard: React.FC = () => {
     }
   }, [currentUser, activeCase, visibleCases]);
 
-  // Synchronize activeTab when role changes if current tab is not part of role's menus
+  // Synchronize activeTab when role changes if current tab is not part of role's menus or subTabs
   useEffect(() => {
-    const validIds = portalConfig.menus.map((m) => m.id);
+    const validIds = portalConfig.menus.flatMap((m: any) => [m.id, ...(m.subTabs || [])]);
     if (!validIds.includes(activeTab)) {
       setActiveTab(portalConfig.defaultTab);
     }
@@ -354,7 +547,9 @@ export const PatientDashboard: React.FC = () => {
   };
 
   const currentTabObj =
-    portalConfig.menus.find((m) => m.id === activeTab) || portalConfig.menus[0];
+    portalConfig.menus.find(
+      (m: any) => m.id === activeTab || (m.subTabs && m.subTabs.includes(activeTab))
+    ) || portalConfig.menus[0];
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 flex">
@@ -409,10 +604,12 @@ export const PatientDashboard: React.FC = () => {
         </div>
 
         {/* Navigation Menus */}
-        <div className="flex-1 overflow-y-auto px-3 py-6 space-y-1.5 scrollbar-none relative z-10">
-          {portalConfig.menus.map((menu) => {
+        <div className="flex-1 overflow-y-auto px-3 py-4 space-y-1.5 scrollbar-none relative z-10">
+          {portalConfig.menus.map((menu: any) => {
             const Icon = menu.icon;
-            const isActive = activeTab === menu.id;
+            const isActive =
+              activeTab === menu.id ||
+              (menu.subTabs && menu.subTabs.includes(activeTab));
 
             return (
               <button
@@ -421,23 +618,27 @@ export const PatientDashboard: React.FC = () => {
                   setActiveTab(menu.id);
                 }}
                 title={!sidebarOpen ? menu.label : undefined}
-                className={`w-full flex items-center rounded-2xl text-xs font-bold transition-all relative group cursor-pointer ${sidebarOpen ? "gap-3.5 px-4 py-3" : "justify-center px-0 py-3.5"
-                  } ${isActive
-                    ? " bg-gradient-to-r from-[#23b3ab] via-[#1baba4] to-[#1d8983]text-white shadow-lg shadow-[#283593]/35 font-extrabold"
+                className={`w-full flex items-center rounded-2xl text-xs font-bold transition-all relative group cursor-pointer ${
+                  sidebarOpen ? "gap-3.5 px-4 py-3" : "justify-center px-0 py-3.5"
+                } ${
+                  isActive
+                    ? "bg-gradient-to-r from-[#23b3ab] via-[#1baba4] to-[#1d8983] text-white shadow-lg shadow-[#283593]/35 font-extrabold"
                     : "text-slate-300 hover:text-white hover:bg-white/5"
-                  }`}
+                }`}
               >
                 <Icon
-                  className={`w-4 h-4 shrink-0 transition-colors ${isActive ? "text-white" : "text-slate-400 group-hover:text-[#2ECDC5]"
-                    }`}
+                  className={`w-4 h-4 shrink-0 transition-colors ${
+                    isActive ? "text-white" : "text-slate-400 group-hover:text-[#2ECDC5]"
+                  }`}
                 />
                 {sidebarOpen && <span className="truncate">{menu.label}</span>}
 
                 {/* Badge Indicator */}
                 {typeof menu.badge === "number" && menu.badge > 0 && sidebarOpen && (
                   <span
-                    className={`ml-auto px-2 py-0.5 rounded-full text-[10px] font-black ${isActive ? "bg-white text-[#283593]" : "bg-[#2ECDC5] text-slate-950"
-                      }`}
+                    className={`ml-auto px-2 py-0.5 rounded-full text-[10px] font-black ${
+                      isActive ? "bg-white text-[#283593]" : "bg-[#2ECDC5] text-slate-950"
+                    }`}
                   >
                     {menu.badge}
                   </span>
@@ -591,10 +792,12 @@ export const PatientDashboard: React.FC = () => {
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto space-y-1.5">
-              {portalConfig.menus.map((menu) => {
+            <div className="flex-1 overflow-y-auto space-y-2">
+              {portalConfig.menus.map((menu: any) => {
                 const Icon = menu.icon;
-                const isActive = activeTab === menu.id;
+                const isActive =
+                  activeTab === menu.id ||
+                  (menu.subTabs && menu.subTabs.includes(activeTab));
 
                 return (
                   <button
@@ -603,10 +806,11 @@ export const PatientDashboard: React.FC = () => {
                       setActiveTab(menu.id);
                       setMobileMenuOpen(false);
                     }}
-                    className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-2xl text-xs font-bold transition-all ${isActive
-                      ? " bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983]text-white font-extrabold shadow-md"
-                      : "text-slate-300 hover:text-white hover:bg-white/5"
-                      }`}
+                    className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-2xl text-xs font-bold transition-all cursor-pointer ${
+                      isActive
+                        ? "bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold shadow-md"
+                        : "text-slate-300 hover:text-white hover:bg-white/5"
+                    }`}
                   >
                     <Icon className="w-4 h-4" />
                     <span>{menu.label}</span>
@@ -668,9 +872,33 @@ export const PatientDashboard: React.FC = () => {
             </button>
 
             <div>
-              <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                {currentTabObj?.label || portalConfig.headerTitle}
-              </h2>
+              {isAdmin && (portalConfig as any).adminNavGroups ? (
+                (() => {
+                  const activeGroup = (portalConfig as any).adminNavGroups?.find((g: any) =>
+                    g.items.some((i: any) => i.id === activeTab)
+                  );
+                  const activeItem = activeGroup?.items.find((i: any) => i.id === activeTab);
+
+                  return (
+                    <div>
+                      {activeGroup && activeGroup.id !== "dashboard_group" && (
+                        <div className="flex items-center gap-1.5 text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-0.5">
+                          <span>Governance</span>
+                          <ChevronRight className="w-2.5 h-2.5 text-slate-400" />
+                          <span className="text-slate-600">{activeGroup.label}</span>
+                        </div>
+                      )}
+                      <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                        {activeItem?.label || portalConfig.headerTitle}
+                      </h2>
+                    </div>
+                  );
+                })()
+              ) : (
+                <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                  {currentTabObj?.label || portalConfig.headerTitle}
+                </h2>
+              )}
               <span className="text-[10px] font-bold text-[#3F4EB4] uppercase tracking-widest hidden sm:flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#2ECDC5] inline-block animate-pulse" />
                 {portalConfig.portalSubtitle}

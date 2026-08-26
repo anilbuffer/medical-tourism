@@ -220,7 +220,7 @@ export interface QuotePackage {
 }
 
 // ─── Payment ──────────────────────────────────────────────────────────────────
-export type PaymentStageId = "deposit" | "advance" | "final";
+export type PaymentStageId = "deposit" | "advance" | "final" | "intake_deposit" | "booking_deposit";
 export type PaymentStatus = "pending" | "processing" | "completed" | "failed" | "refunded" | "disputed";
 
 export interface PaymentStage {
@@ -449,4 +449,95 @@ export interface SlaThreshold {
   tier1Minutes: number;
   tier2Minutes: number;
   escalationMinutes: number;
+}
+
+// ─── Super Admin Revised Architecture Types ──────────────────────────────────
+export type AdminTab =
+  | "dashboard_overview"
+  // User & Access Management (RBAC)
+  | "internal_staff"
+  | "hospital_doctors"
+  | "role_permission_matrix"
+  // Compliance & Legal Engine
+  | "consent_versioning"
+  | "visa_rules"
+  | "refund_escrow_rules"
+  | "accreditation_registry"
+  // Case Journey & Queues
+  | "case_master_directory"
+  | "sla_escalation_engine"
+  | "nurture_queue"
+  // Financial & Payments Ledger
+  | "gateway_escrow"
+  | "commission_payouts"
+  | "refund_approvals"
+  // System Audit & Logs
+  | "system_audit_trail"
+  | "security_mfa_logs"
+  | "marketing_utm_analytics"
+  // System Configuration
+  | "geo_sla_timers"
+  | "routing_automation";
+
+export type AdminNavGroup =
+  | "dashboard_group"
+  | "user_rbac_group"
+  | "compliance_legal_group"
+  | "case_queues_group"
+  | "financial_ledger_group"
+  | "system_audit_group"
+  | "system_config_group";
+
+export interface SecurityMfaLog {
+  id: string;
+  timestamp: string;
+  eventType:
+    | "mfa_challenge_success"
+    | "mfa_challenge_failed"
+    | "mfa_enforced"
+    | "login_success"
+    | "login_failed"
+    | "privilege_escalation_attempt"
+    | "session_revoked"
+    | "password_reset";
+  userId: string;
+  userName: string;
+  userRole: UserRole;
+  ipAddress: string;
+  geoCountry: string;
+  deviceInfo: string;
+  threatLevel: "normal" | "medium" | "high" | "critical";
+  status: "success" | "blocked" | "flagged";
+  details: string;
+}
+
+export interface HospitalPayoutBatch {
+  id: string;
+  hospitalId: string;
+  hospitalName: string;
+  caseCount: number;
+  grossAmountUsd: number;
+  platformFeePercentage: number;
+  platformFeeUsd: number;
+  netPayoutUsd: number;
+  bankSwiftCode: string;
+  bankIban: string;
+  status: "pending_approval" | "processing" | "disbursed" | "on_hold";
+  periodStart: string;
+  periodEnd: string;
+  initiatedAt: string;
+  approvedByName?: string;
+  approvedAt?: string;
+}
+
+export interface QueueRoutingRule {
+  id: string;
+  name: string;
+  keywords: string[];
+  specialty: string;
+  targetQueue: string;
+  priorityLevel: "Critical" | "High" | "Medium" | "Standard";
+  targetCoordinatorLead: string;
+  autoEscalateMinutes: number;
+  active: boolean;
 }
