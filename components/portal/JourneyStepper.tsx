@@ -4,17 +4,9 @@ import React from "react";
 import { PatientJourneyStage } from "@/types/portal";
 import {
   FileText,
-  UserCheck,
-  FolderOpen,
-  Building2,
-  Video,
-  CreditCard,
-  Lock,
   Plane,
-  HeartPulse,
   HeartHandshake,
   CheckCircle2,
-  Clock,
   Sparkles,
 } from "lucide-react";
 
@@ -25,32 +17,58 @@ interface JourneyStepperProps {
 }
 
 interface StepMeta {
-  id: PatientJourneyStage;
+  id: string;
   label: string;
   shortLabel: string;
   icon: React.ElementType;
   tabTarget: string;
+  includesStages: PatientJourneyStage[];
 }
 
 const JOURNEY_STEPS: StepMeta[] = [
-  { id: "lead", label: "1. Intake", shortLabel: "1. Intake", icon: FileText, tabTarget: "overview" },
-  { id: "contacted", label: "2. Contacted", shortLabel: "2. Contacted", icon: UserCheck, tabTarget: "overview" },
-  { id: "documents_collected", label: "3. Docs Uploaded", shortLabel: "3. Docs Uploaded", icon: FolderOpen, tabTarget: "docs_vault" },
-  { id: "hospital_handover", label: "4. Hospital Review", shortLabel: "4. Review", icon: Building2, tabTarget: "doctor_opinions" },
-  { id: "consultation", label: "5. Tele-Consultation", shortLabel: "5. Tele-Consult", icon: Video, tabTarget: "upcoming_video" },
-  { id: "quote", label: "6. Quote", shortLabel: "6. Quote", icon: CreditCard, tabTarget: "package_quote" },
-  { id: "payment", label: "7. Payment", shortLabel: "7. Payment", icon: Lock, tabTarget: "payment_escrow" },
-  { id: "booking", label: "8. Logistics", shortLabel: "8. Logistics", icon: Plane, tabTarget: "visa_checklist" },
-  { id: "treatment", label: "9. Treatment", shortLabel: "9. Treatment", icon: HeartPulse, tabTarget: "overview" },
-  { id: "followup", label: "10. Follow-up", shortLabel: "10. Follow-up", icon: HeartHandshake, tabTarget: "discharge_summary" },
+  {
+    id: "getting_ready",
+    label: "Getting Ready",
+    shortLabel: "Getting Ready",
+    icon: FileText,
+    tabTarget: "overview",
+    includesStages: [
+      "lead",
+      "contacted",
+      "documents_collected",
+      "hospital_handover",
+      "consultation",
+      "quote",
+      "payment",
+    ],
+  },
+  {
+    id: "your_trip",
+    label: "Your Trip",
+    shortLabel: "Your Trip",
+    icon: Plane,
+    tabTarget: "visa_checklist",
+    includesStages: ["booking", "treatment"],
+  },
+  {
+    id: "recovery",
+    label: "Recovery",
+    shortLabel: "Recovery",
+    icon: HeartHandshake,
+    tabTarget: "discharge_summary",
+    includesStages: ["followup"],
+  },
 ];
 
 export const JourneyStepper: React.FC<JourneyStepperProps> = ({
   currentStage,
   onNavigateTab,
 }) => {
-  const currentIndex = JOURNEY_STEPS.findIndex((s) => s.id === currentStage);
-  const safeIndex = currentIndex >= 0 ? currentIndex : 4; // Default to step 5 (tele-consultation)
+  // Determine which of the 3 phases we are currently in
+  const activePhaseIndex = JOURNEY_STEPS.findIndex((phase) =>
+    phase.includesStages.includes(currentStage)
+  );
+  const safeIndex = activePhaseIndex >= 0 ? activePhaseIndex : 0; // Default to phase 1
 
   return (
     <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-5 sm:p-6 shadow-[0_6px_32px_rgba(0,0,0,0.06)] border border-slate-200/90 space-y-4">
@@ -60,13 +78,15 @@ export const JourneyStepper: React.FC<JourneyStepperProps> = ({
             <Sparkles className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="text-xs sm:text-sm font-black uppercase tracking-wider text-slate-900 flex items-center gap-2">
-              Visual Case-Status Stepper
+            <h3 className="text-sm font-black uppercase tracking-wider text-slate-900 flex items-center gap-2">
+              Your Journey
               <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-                Phase {safeIndex + 1} of 10 Active
+                Phase {safeIndex + 1} of 3
               </span>
             </h3>
-            <p className="text-[11px] text-slate-500">Live progress tracking of international clinical treatment lifecycle</p>
+            <p className="text-[11px] text-slate-500">
+              Track your progress toward a successful recovery
+            </p>
           </div>
         </div>
 
@@ -78,11 +98,11 @@ export const JourneyStepper: React.FC<JourneyStepperProps> = ({
 
       {/* Responsive Horizontal Stepper Strip */}
       <div className="overflow-x-auto pb-3 pt-2 scrollbar-none">
-        <div className="flex items-center min-w-[960px] justify-between relative px-2">
+        <div className="flex items-center min-w-[600px] justify-between relative px-8">
           {/* Background Connecting Line */}
-          <div className="absolute top-[20px] left-8 right-8 h-1 bg-slate-200/80 z-0 rounded-full" />
+          <div className="absolute top-[20px] left-16 right-16 h-1 bg-slate-200/80 z-0 rounded-full" />
           <div
-            className="absolute top-[20px] left-8 h-1 bg-gradient-to-r from-emerald-500 via-[#2ECDC5] to-[#3F4EB4] transition-all duration-500 z-0 rounded-full shadow-sm"
+            className="absolute top-[20px] left-16 h-1 bg-gradient-to-r from-emerald-500 via-[#2ECDC5] to-[#3F4EB4] transition-all duration-500 z-0 rounded-full shadow-sm"
             style={{
               width: `calc(${(safeIndex / (JOURNEY_STEPS.length - 1)) * 100}% - 32px)`,
             }}
@@ -124,9 +144,9 @@ export const JourneyStepper: React.FC<JourneyStepperProps> = ({
                 </div>
 
                 {/* Step Label */}
-                <div className="text-center max-w-[85px]">
+                <div className="text-center">
                   <div
-                    className={`text-[11px] font-black leading-tight transition-colors ${
+                    className={`text-sm font-black leading-tight transition-colors ${
                       isCurrent
                         ? "text-[#141d60] font-extrabold underline decoration-[#2ECDC5] decoration-2 underline-offset-4"
                         : isCompleted
@@ -136,7 +156,7 @@ export const JourneyStepper: React.FC<JourneyStepperProps> = ({
                   >
                     {step.shortLabel}
                   </div>
-                  <div className="text-[9px] font-semibold text-slate-400 capitalize truncate mt-0.5">
+                  <div className="text-[10px] font-semibold text-slate-400 capitalize truncate mt-0.5">
                     {isCompleted ? "Verified" : isCurrent ? "In Progress" : "Upcoming"}
                   </div>
                 </div>
@@ -148,3 +168,4 @@ export const JourneyStepper: React.FC<JourneyStepperProps> = ({
     </div>
   );
 };
+
