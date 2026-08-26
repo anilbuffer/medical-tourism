@@ -24,12 +24,22 @@ import {
 import { INITIAL_PATIENT_CASES, MOCK_PORTAL_USERS } from "./mockData";
 import { applyRowLevelSecurity } from "./rbac";
 
+export type PortalCurrency = "USD" | "GBP" | "AED";
+export type PortalLanguage = "en" | "ar" | "fr";
+
 export interface PortalContextType {
   currentUser: PortalUser | null;
   setCurrentUser: (user: PortalUser | null) => void;
   availableUsers: PortalUser[];
   loginAs: (user: PortalUser) => void;
   logout: () => void;
+
+  // Personalization
+  currency: PortalCurrency;
+  setCurrency: (c: PortalCurrency) => void;
+  formatCurrency: (amountUsd: number, overrideCurrency?: PortalCurrency) => string;
+  language: PortalLanguage;
+  setLanguage: (l: PortalLanguage) => void;
 
   // All Cases (Filtered by RBAC)
   allCases: PatientCase[];
@@ -128,15 +138,35 @@ export interface PortalContextType {
 
 const PortalContext = createContext<PortalContextType | undefined>(undefined);
 
-const LOCAL_STORAGE_KEY_CASES = "vedara_portal_cases_v1";
-const LOCAL_STORAGE_KEY_USER = "vedara_portal_active_user_v1";
-const LOCAL_STORAGE_KEY_COUNTER = "vedara_portal_pt_counter_v1";
+const LOCAL_STORAGE_KEY_CASES = "vedara_portal_cases_v2";
+const LOCAL_STORAGE_KEY_USER = "vedara_portal_active_user_v2";
+const LOCAL_STORAGE_KEY_COUNTER = "vedara_portal_pt_counter_v2";
 
 export const PortalProvider = ({ children }: { children: ReactNode }) => {
   const [allCases, setAllCases] = useState<PatientCase[]>(INITIAL_PATIENT_CASES);
   const [currentUser, setCurrentUserState] = useState<PortalUser | null>(MOCK_PORTAL_USERS[0]);
-  const [activeCaseId, setActiveCaseId] = useState<string>("PT-2026-008492");
+  const [activeCaseId, setActiveCaseId] = useState<string>("PT-2026-089412");
+  const [currency, setCurrency] = useState<PortalCurrency>("USD");
+  const [language, setLanguage] = useState<PortalLanguage>("en");
   const [isHydrated, setIsHydrated] = useState(false);
+
+  // Currency Converter helper
+  const formatCurrency = (amountUsd: number, overrideCurrency?: PortalCurrency): string => {
+    const activeCurr = overrideCurrency || currency;
+    switch (activeCurr) {
+      case "GBP": {
+        const converted = Math.round(amountUsd * 0.79);
+        return `£${converted.toLocaleString()}`;
+      }
+      case "AED": {
+        const converted = Math.round(amountUsd * 3.67);
+        return `AED ${converted.toLocaleString()}`;
+      }
+      default: {
+        return `$${amountUsd.toLocaleString()} USD`;
+      }
+    }
+  };
 
   useEffect(() => {
     try {
@@ -210,12 +240,12 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
   const resetToDefaultData = () => {
     setAllCases(INITIAL_PATIENT_CASES);
     setCurrentUser(MOCK_PORTAL_USERS[0]);
-    setActiveCaseId("PT-2026-008492");
+    setActiveCaseId("PT-2026-089412");
     if (typeof window !== "undefined") {
       try {
         localStorage.setItem(LOCAL_STORAGE_KEY_CASES, JSON.stringify(INITIAL_PATIENT_CASES));
         localStorage.setItem(LOCAL_STORAGE_KEY_USER, JSON.stringify(MOCK_PORTAL_USERS[0]));
-        localStorage.setItem(LOCAL_STORAGE_KEY_COUNTER, "8493");
+        localStorage.setItem(LOCAL_STORAGE_KEY_COUNTER, "89413");
       } catch { }
     }
   };
@@ -1137,6 +1167,11 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
         visibleCases,
         activeCase,
         setActiveCaseId,
+        currency,
+        setCurrency,
+        formatCurrency,
+        language,
+        setLanguage,
         createNewLead,
         uploadDocument,
         recordConsent,
