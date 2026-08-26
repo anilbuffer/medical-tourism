@@ -276,17 +276,15 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
           <button
             key={tab.id}
             onClick={() => setQueueFilter(tab.id)}
-            className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
-              queueFilter === tab.id
-                ? "bg-gradient-to-r from-[#3F4EB4] to-[#2ECDC5] text-white shadow-sm"
-                : "text-slate-600 hover:bg-slate-100"
-            }`}
+            className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${queueFilter === tab.id
+              ? "bg-gradient-to-r from-[#3abdb6] to-[#3fc1ba] text-white shadow-sm"
+              : "text-slate-600 hover:bg-slate-100"
+              }`}
           >
             {tab.label}
             {filterCounts[tab.id === "all" ? "all" : tab.id] > 0 && (
-              <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
-                queueFilter === tab.id ? "bg-white/20 text-white" : "bg-slate-100 text-slate-600"
-              }`}>
+              <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${queueFilter === tab.id ? "bg-white/20 text-white" : "bg-slate-100 text-slate-600"
+                }`}>
                 {filterCounts[tab.id === "all" ? "all" : tab.id] || 0}
               </span>
             )}
@@ -331,11 +329,10 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                   <button
                     key={c.id}
                     onClick={() => onSelectCase(c.id)}
-                    className={`w-full text-left p-4 transition-all duration-200 cursor-pointer ${
-                      isSelected
-                        ? "bg-gradient-to-r from-[#071321] to-[#0D2642] text-white"
-                        : "hover:bg-slate-50 text-slate-800"
-                    }`}
+                    className={`w-full text-left p-4 transition-all duration-200 cursor-pointer ${isSelected
+                      ? "bg-gradient-to-r from-[#071321] to-[#0D2642] text-white"
+                      : "hover:bg-slate-50 text-slate-800"
+                      }`}
                   >
                     {/* Row: Patient ID + SLA */}
                     <div className="flex items-center justify-between gap-2">
@@ -352,12 +349,11 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                     </div>
                     {/* Stage + Last contact */}
                     <div className="flex items-center justify-between mt-2">
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                        isSelected
-                          ? "bg-white/20 text-white"
-                          : c.stage === "nurture" ? "bg-purple-100 text-purple-800"
+                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${isSelected
+                        ? "bg-white/20 text-white"
+                        : c.stage === "nurture" ? "bg-purple-100 text-purple-800"
                           : "bg-[#2ECDC5]/15 text-[#3F4EB4]"
-                      }`}>
+                        }`}>
                         {STAGE_LABEL_MAP[c.stage] || c.stage}
                       </span>
                       {pendingDocs > 0 && (
@@ -455,11 +451,10 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
-                    activeTab === tab.id
-                      ? "bg-gradient-to-r from-[#3F4EB4] to-[#2ECDC5] text-white shadow-sm"
-                      : "text-slate-600 hover:bg-slate-100"
-                  }`}
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${activeTab === tab.id
+                    ? "bg-gradient-to-r from-[#3abdb6] to-[#3fc1ba] text-white shadow-sm"
+                    : "text-slate-600 hover:bg-slate-100"
+                    }`}
                 >
                   <tab.icon className="w-3.5 h-3.5" />
                   {tab.label}
@@ -537,11 +532,10 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                             <div className="flex items-center gap-2 flex-wrap">
                               <span className="font-bold text-xs text-slate-900">{doc.title}</span>
                               <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-200 text-slate-700">v{doc.currentVersion}</span>
-                              <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
-                                doc.status === "reviewed" ? "bg-emerald-100 text-emerald-800" :
+                              <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${doc.status === "reviewed" ? "bg-emerald-100 text-emerald-800" :
                                 doc.status === "incomplete" ? "bg-rose-100 text-rose-800" :
-                                "bg-amber-100 text-amber-800"
-                              }`}>{doc.status}</span>
+                                  "bg-amber-100 text-amber-800"
+                                }`}>{doc.status}</span>
                             </div>
                             <div className="text-[11px] text-slate-500 mt-0.5">
                               {doc.versions[0]?.fileName} ({doc.versions[0]?.fileSize})
@@ -587,9 +581,8 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                         <div key={ctype} className={`p-4 rounded-2xl border ${obtained.length > 0 ? "bg-emerald-50 border-emerald-200" : "bg-slate-50 border-slate-200"}`}>
                           <div className="flex items-center justify-between gap-2 flex-wrap">
                             <div className="font-bold text-xs text-slate-900">{CONSENT_TYPE_LABELS[ctype]}</div>
-                            <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
-                              obtained.length > 0 ? "bg-emerald-100 text-emerald-800 border border-emerald-200" : "bg-slate-200 text-slate-500"
-                            }`}>
+                            <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${obtained.length > 0 ? "bg-emerald-100 text-emerald-800 border border-emerald-200" : "bg-slate-200 text-slate-500"
+                              }`}>
                               {obtained.length > 0 ? `✓ ${obtained.length} record${obtained.length > 1 ? "s" : ""}` : "Not yet obtained"}
                             </span>
                           </div>
@@ -678,23 +671,22 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                       <div className="font-bold text-slate-900">{activeCase.assignedDoctorId || "—"}</div>
                     </div>
                   </div>
-                  <div className={`p-4 rounded-2xl border ${
-                    activeCase.caseDecisionStatus === "accepted"
-                      ? "bg-emerald-50 border-emerald-200"
-                      : activeCase.caseDecisionStatus === "declined"
+                  <div className={`p-4 rounded-2xl border ${activeCase.caseDecisionStatus === "accepted"
+                    ? "bg-emerald-50 border-emerald-200"
+                    : activeCase.caseDecisionStatus === "declined"
                       ? "bg-rose-50 border-rose-200"
                       : "bg-amber-50 border-amber-200"
-                  }`}>
+                    }`}>
                     <div className="font-bold text-sm text-slate-900">
                       Hospital Decision:{" "}
                       <span className={
                         activeCase.caseDecisionStatus === "accepted" ? "text-emerald-700" :
-                        activeCase.caseDecisionStatus === "declined" ? "text-rose-700" :
-                        "text-amber-700"
+                          activeCase.caseDecisionStatus === "declined" ? "text-rose-700" :
+                            "text-amber-700"
                       }>
                         {activeCase.caseDecisionStatus === "accepted" ? "✓ Accepted" :
-                         activeCase.caseDecisionStatus === "declined" ? "✗ Declined" :
-                         "⏳ Pending Review"}
+                          activeCase.caseDecisionStatus === "declined" ? "✗ Declined" :
+                            "⏳ Pending Review"}
                       </span>
                     </div>
                     {activeCase.acceptedAt && (
@@ -737,11 +729,10 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                             <button
                               key={tier}
                               onClick={() => setQuoteTier(tier)}
-                              className={`p-3 rounded-xl text-xs font-bold border transition-all cursor-pointer capitalize ${
-                                quoteTier === tier
-                                  ? "bg-gradient-to-r from-[#3F4EB4] to-[#2ECDC5] text-white border-transparent"
-                                  : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
-                              }`}
+                              className={`p-3 rounded-xl text-xs font-bold border transition-all cursor-pointer capitalize ${quoteTier === tier
+                                ? "bg-gradient-to-r from-[#3abdb6] to-[#3fc1ba] text-white border-transparent"
+                                : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
+                                }`}
                             >
                               {tier}
                             </button>
@@ -807,11 +798,10 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                         const isCS = msg.senderRole === "cs_coordinator";
                         return (
                           <div key={msg.id} className={`flex ${isCS ? "justify-end" : "justify-start"}`}>
-                            <div className={`max-w-[80%] p-3.5 rounded-2xl text-xs ${
-                              isCS
-                                ? "bg-gradient-to-r from-[#3F4EB4] to-[#2ECDC5] text-white"
-                                : "bg-slate-100 text-slate-900"
-                            }`}>
+                            <div className={`max-w-[80%] p-3.5 rounded-2xl text-xs ${isCS
+                              ? "bg-gradient-to-r from-[#3abdb6] to-[#3fc1ba] text-white"
+                              : "bg-slate-100 text-slate-900"
+                              }`}>
                               <div className="font-bold mb-1">{msg.senderName}</div>
                               <div className="leading-relaxed">{msg.text}</div>
                               <div className={`text-[10px] mt-1.5 ${isCS ? "text-white/70" : "text-slate-400"}`}>
@@ -905,11 +895,10 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                       key={opt.val}
                       type="button"
                       onClick={() => setReviewStatus(opt.val as "reviewed" | "incomplete")}
-                      className={`py-2.5 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
-                        reviewStatus === opt.val
-                          ? opt.val === "reviewed" ? "bg-emerald-600 text-white border-emerald-600" : "bg-rose-600 text-white border-rose-600"
-                          : "bg-slate-50 text-slate-700 border-slate-200"
-                      }`}
+                      className={`py-2.5 rounded-xl text-xs font-bold border transition-all cursor-pointer ${reviewStatus === opt.val
+                        ? opt.val === "reviewed" ? "bg-emerald-600 text-white border-emerald-600" : "bg-rose-600 text-white border-rose-600"
+                        : "bg-slate-50 text-slate-700 border-slate-200"
+                        }`}
                     >{opt.label}</button>
                   ))}
                 </div>

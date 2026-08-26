@@ -189,11 +189,10 @@ export const HospitalDoctorView: React.FC<HospitalDoctorViewProps> = ({
 
       {/* Global Feedback Banner */}
       {actionFeedback && (
-        <div className={`px-5 py-3.5 rounded-2xl text-sm font-bold flex items-center gap-2.5 animate-in fade-in ${
-          actionFeedback.type === "success"
-            ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
-            : "bg-rose-50 text-rose-800 border border-rose-200"
-        }`}>
+        <div className={`px-5 py-3.5 rounded-2xl text-sm font-bold flex items-center gap-2.5 animate-in fade-in ${actionFeedback.type === "success"
+          ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
+          : "bg-rose-50 text-rose-800 border border-rose-200"
+          }`}>
           {actionFeedback.type === "success" ? <CheckCircle2 className="w-4 h-4" /> : <AlertTriangle className="w-4 h-4" />}
           {actionFeedback.msg}
         </div>
@@ -214,21 +213,19 @@ export const HospitalDoctorView: React.FC<HospitalDoctorViewProps> = ({
                 <button
                   key={c.id}
                   onClick={() => onSelectCase(c.id)}
-                  className={`w-full text-left p-4 rounded-2xl border transition-all duration-300 cursor-pointer ${
-                    isSelected
-                      ? "bg-gradient-to-r from-[#071321] via-[#0B1E33] to-[#0D2642] text-white border-slate-800 shadow-lg"
-                      : "bg-white hover:bg-slate-50 text-slate-800 border-slate-200 shadow-2xs hover:-translate-y-0.5"
-                  }`}
+                  className={`w-full text-left p-4 rounded-2xl border transition-all duration-300 cursor-pointer ${isSelected
+                    ? "bg-gradient-to-r from-[#071321] via-[#0B1E33] to-[#0D2642] text-white border-slate-800 shadow-lg"
+                    : "bg-white hover:bg-slate-50 text-slate-800 border-slate-200 shadow-2xs hover:-translate-y-0.5"
+                    }`}
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs font-bold text-[#2ECDC5]">{c.id}</span>
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                      c.caseDecisionStatus === "accepted"
-                        ? "bg-emerald-100 text-emerald-800"
-                        : c.caseDecisionStatus === "declined"
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${c.caseDecisionStatus === "accepted"
+                      ? "bg-emerald-100 text-emerald-800"
+                      : c.caseDecisionStatus === "declined"
                         ? "bg-rose-100 text-rose-800"
                         : "bg-amber-100 text-amber-800"
-                    }`}>
+                      }`}>
                       {c.caseDecisionStatus === "accepted" ? "Accepted" : c.caseDecisionStatus === "declined" ? "Declined" : "Pending"}
                     </span>
                   </div>
@@ -275,13 +272,12 @@ export const HospitalDoctorView: React.FC<HospitalDoctorViewProps> = ({
                   key={tab.id}
                   onClick={() => !tab.locked && setActiveTab(tab.id)}
                   disabled={tab.locked}
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
-                    activeTab === tab.id
-                      ? "bg-gradient-to-r from-[#3F4EB4] to-[#2ECDC5] text-white shadow-sm"
-                      : tab.locked
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${activeTab === tab.id
+                    ? "bg-gradient-to-r from-[#3abdb6] to-[#3fc1ba] text-white shadow-sm"
+                    : tab.locked
                       ? "text-slate-300 cursor-not-allowed"
                       : "text-slate-600 hover:bg-slate-100 cursor-pointer"
-                  }`}
+                    }`}
                 >
                   {tab.locked ? <Lock className="w-3.5 h-3.5" /> : <tab.icon className="w-3.5 h-3.5" />}
                   {tab.label}
@@ -336,11 +332,10 @@ export const HospitalDoctorView: React.FC<HospitalDoctorViewProps> = ({
                               v{d.currentVersion} • {d.versions[0]?.fileSize}
                             </div>
                           </div>
-                          <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
-                            d.status === "reviewed" ? "bg-emerald-100 text-emerald-800" :
+                          <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${d.status === "reviewed" ? "bg-emerald-100 text-emerald-800" :
                             d.status === "incomplete" ? "bg-rose-100 text-rose-800" :
-                            "bg-amber-100 text-amber-800"
-                          }`}>{d.status}</span>
+                              "bg-amber-100 text-amber-800"
+                            }`}>{d.status}</span>
                         </div>
                       ))}
                       {activeCase.documents.length === 0 && (
@@ -524,13 +519,12 @@ export const HospitalDoctorView: React.FC<HospitalDoctorViewProps> = ({
                           key={opt.value}
                           type="button"
                           onClick={() => setSuitabilityDetermination(opt.value as ClinicalWorkspace["suitabilityDetermination"])}
-                          className={`p-3 rounded-2xl text-xs font-bold border transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
-                            suitabilityDetermination === opt.value
-                              ? opt.color === "emerald" ? "bg-emerald-500 text-white border-emerald-500"
-                                : opt.color === "amber" ? "bg-amber-500 text-white border-amber-500"
+                          className={`p-3 rounded-2xl text-xs font-bold border transition-all cursor-pointer flex items-center justify-center gap-1.5 ${suitabilityDetermination === opt.value
+                            ? opt.color === "emerald" ? "bg-emerald-500 text-white border-emerald-500"
+                              : opt.color === "amber" ? "bg-amber-500 text-white border-amber-500"
                                 : "bg-rose-600 text-white border-rose-600"
-                              : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
-                          }`}
+                            : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
+                            }`}
                         >
                           <opt.icon className="w-3.5 h-3.5" />
                           {opt.label}
@@ -550,7 +544,7 @@ export const HospitalDoctorView: React.FC<HospitalDoctorViewProps> = ({
                     <button
                       type="submit"
                       disabled={workspaceSaving}
-                      className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-2 cursor-pointer"
+                      className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-2 cursor-pointer"
                     >
                       <Send className="w-3.5 h-3.5" />
                       {workspaceSaving ? "Saving..." : "Save to Clinical Record"}
@@ -651,13 +645,12 @@ export const HospitalDoctorView: React.FC<HospitalDoctorViewProps> = ({
                           key={opt.value}
                           type="button"
                           onClick={() => setTeleconsultOutcome(opt.value as ConsultationOutcome)}
-                          className={`p-3 rounded-2xl text-xs font-bold border transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
-                            teleconsultOutcome === opt.value
-                              ? opt.value === "suitable" ? "bg-emerald-500 text-white border-emerald-500"
-                                : opt.value === "needs_more_info" ? "bg-amber-500 text-white border-amber-500"
+                          className={`p-3 rounded-2xl text-xs font-bold border transition-all cursor-pointer flex items-center justify-center gap-1.5 ${teleconsultOutcome === opt.value
+                            ? opt.value === "suitable" ? "bg-emerald-500 text-white border-emerald-500"
+                              : opt.value === "needs_more_info" ? "bg-amber-500 text-white border-amber-500"
                                 : "bg-rose-600 text-white border-rose-600"
-                              : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
-                          }`}
+                            : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
+                            }`}
                         >
                           <opt.icon className="w-3.5 h-3.5" />
                           <span>{opt.label}</span>
@@ -681,7 +674,7 @@ export const HospitalDoctorView: React.FC<HospitalDoctorViewProps> = ({
                   <div className="flex justify-end">
                     <button
                       type="submit"
-                      className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-2 cursor-pointer"
+                      className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-2 cursor-pointer"
                     >
                       <Send className="w-3.5 h-3.5" />
                       Save Consultation Outcome

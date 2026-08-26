@@ -387,19 +387,17 @@ const LoginPageContent: React.FC = () => {
                   key={role.id}
                   type="button"
                   onClick={() => handleSelectRole(idx)}
-                  className={`p-3 rounded-2xl text-left border transition-all duration-300 relative group ${
-                    isSelected
+                  className={`p-3 rounded-2xl text-left border transition-all duration-300 relative group ${isSelected
                       ? "bg-white/15 border-[#2ECDC5] text-white shadow-lg shadow-[#2ECDC5]/20 ring-1 ring-[#2ECDC5] scale-[1.02]"
                       : "bg-white/5 border-white/10 hover:bg-white/10 text-slate-300 hover:text-white hover:scale-[1.01]"
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center justify-between mb-1.5">
                     <div
-                      className={`w-7 h-7 rounded-xl flex items-center justify-center transition-colors ${
-                        isSelected
+                      className={`w-7 h-7 rounded-xl flex items-center justify-center transition-colors ${isSelected
                           ? "bg-[#2ECDC5] text-slate-950 font-black"
                           : "bg-white/10 text-[#2ECDC5] group-hover:bg-[#2ECDC5]/20"
-                      }`}
+                        }`}
                     >
                       <IconComponent className="w-3.5 h-3.5" />
                     </div>
@@ -616,11 +614,10 @@ const LoginPageContent: React.FC = () => {
                           handleSelectRole(role.demoIndex);
                           setRoleDropdownOpen(false);
                         }}
-                        className={`w-full flex items-start gap-3 px-3 py-2.5 rounded-xl text-left transition-all duration-150 group ${
-                          isActive
+                        className={`w-full flex items-start gap-3 px-3 py-2.5 rounded-xl text-left transition-all duration-150 group ${isActive
                             ? "bg-slate-50 ring-1"
                             : "hover:bg-slate-50"
-                        }`}
+                          }`}
                         style={{
                           ringColor: isActive ? role.color : "transparent",
                         } as React.CSSProperties}
@@ -830,7 +827,7 @@ const LoginPageContent: React.FC = () => {
                 type="button"
                 onClick={executeFinalLogin}
                 disabled={isSubmitting || otpCode.length < 6}
-                className="flex-1 py-3 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                className="flex-1 py-3 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <>

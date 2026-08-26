@@ -197,11 +197,10 @@ export const SuperAdminView: React.FC<SuperAdminViewProps> = ({
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
-              activeTab === tab.id
-                ? "bg-gradient-to-r from-[#3F4EB4] to-[#2ECDC5] text-white shadow-sm"
-                : "text-slate-600 hover:bg-slate-100"
-            }`}
+            className={`flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${activeTab === tab.id
+              ? "bg-gradient-to-r from-[#3abdb6] to-[#3fc1ba] text-white shadow-sm"
+              : "text-slate-600 hover:bg-slate-100"
+              }`}
           >
             <tab.icon className="w-3.5 h-3.5" />
             {tab.label}
@@ -218,7 +217,7 @@ export const SuperAdminView: React.FC<SuperAdminViewProps> = ({
               <h3 className="font-black text-slate-900 text-lg">User & Role Management</h3>
               <p className="text-xs text-slate-500 mt-0.5">Create, deactivate, assign queues, and enforce MFA policy across all roles.</p>
             </div>
-            <button className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#3F4EB4] to-[#2ECDC5] text-white font-extrabold text-xs flex items-center gap-2 cursor-pointer shadow-md">
+            <button className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#3abdb6] to-[#3fc1ba] text-white font-extrabold text-xs flex items-center gap-2 cursor-pointer shadow-md">
               + Create Account
             </button>
           </div>
@@ -476,7 +475,7 @@ export const SuperAdminView: React.FC<SuperAdminViewProps> = ({
               <h3 className="font-black text-slate-900 text-lg">Accreditation Management</h3>
               <p className="text-xs text-slate-500 mt-0.5">Maintain JCI/NABH records, expiry dates, and documents for all partner hospitals.</p>
             </div>
-            <button className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#3F4EB4] to-[#2ECDC5] text-white font-extrabold text-xs cursor-pointer shadow-md">
+            <button className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#3abdb6] to-[#3fc1ba] text-white font-extrabold text-xs cursor-pointer shadow-md">
               + Add Hospital
             </button>
           </div>
@@ -503,18 +502,16 @@ export const SuperAdminView: React.FC<SuperAdminViewProps> = ({
                     { label: "JCI Accreditation", status: acc.jciStatus, expiry: acc.jciExpiry },
                     { label: "NABH Accreditation", status: acc.nabhStatus, expiry: acc.nabhExpiry },
                   ].map((item) => (
-                    <div key={item.label} className={`p-4 rounded-xl border ${
-                      item.status === "active" ? "bg-emerald-50 border-emerald-200" :
+                    <div key={item.label} className={`p-4 rounded-xl border ${item.status === "active" ? "bg-emerald-50 border-emerald-200" :
                       item.status === "expired" ? "bg-rose-50 border-rose-200" :
-                      "bg-amber-50 border-amber-200"
-                    }`}>
+                        "bg-amber-50 border-amber-200"
+                      }`}>
                       <div className="flex items-center justify-between">
                         <div className="font-bold text-slate-900">{item.label}</div>
-                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
-                          item.status === "active" ? "bg-emerald-100 text-emerald-800 border-emerald-200" :
+                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${item.status === "active" ? "bg-emerald-100 text-emerald-800 border-emerald-200" :
                           item.status === "expired" ? "bg-rose-100 text-rose-800 border-rose-200" :
-                          "bg-amber-100 text-amber-800 border-amber-200"
-                        }`}>
+                            "bg-amber-100 text-amber-800 border-amber-200"
+                          }`}>
                           {item.status === "active" ? "✓ Active" : item.status === "expired" ? "Expired" : "Pending Renewal"}
                         </span>
                       </div>
@@ -647,7 +644,7 @@ export const SuperAdminView: React.FC<SuperAdminViewProps> = ({
                   <div className="text-[10px] font-bold text-slate-500 uppercase w-28 shrink-0">{STAGE_LABELS[d.stage] || d.stage}</div>
                   <div className="flex-1 bg-slate-100 rounded-full h-4 overflow-hidden">
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-[#3F4EB4] to-[#2ECDC5] transition-all duration-500"
+                      className="h-full rounded-full bg-gradient-to-r from-[#3abdb6] to-[#3fc1ba] transition-all duration-500"
                       style={{ width: `${Math.max((d.count / maxFunnelCount) * 100, d.count > 0 ? 5 : 0)}%` }}
                     />
                   </div>

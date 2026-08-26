@@ -67,7 +67,7 @@ export const HeroSection = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
               <button
                 onClick={() => openIntake()}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-base font-bold text-white bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] shadow-xl shadow-[#283593]/25 hover:scale-[1.02] active:scale-[0.98] transition-all group"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-base font-bold text-white bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] shadow-xl shadow-[#283593]/25 hover:scale-[1.02] active:scale-[0.98] transition-all group"
               >
                 <span>{t.hero.primaryCta}</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />

@@ -119,24 +119,22 @@ export const MyPaymentsTab: React.FC<MyPaymentsTabProps> = ({ patientCase }) => 
           return (
             <div
               key={stage.id}
-              className={`rounded-2xl p-6 border flex flex-col justify-between transition-all duration-300 ${
-                isCompleted
+              className={`rounded-2xl p-6 border flex flex-col justify-between transition-all duration-300 ${isCompleted
                   ? "bg-white/95 backdrop-blur-xl border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)]"
                   : isCurrentActive
-                  ? "bg-white/95 backdrop-blur-xl border-[#2ECDC5] shadow-[0_10px_40px_rgba(46,205,197,0.15)] ring-2 ring-[#2ECDC5]/30 hover:-translate-y-1"
-                  : "bg-slate-50/70 border-slate-200 opacity-75"
-              }`}
+                    ? "bg-white/95 backdrop-blur-xl border-[#2ECDC5] shadow-[0_10px_40px_rgba(46,205,197,0.15)] ring-2 ring-[#2ECDC5]/30 hover:-translate-y-1"
+                    : "bg-slate-50/70 border-slate-200 opacity-75"
+                }`}
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span
-                    className={`text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider ${
-                      isCompleted
+                    className={`text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider ${isCompleted
                         ? "bg-emerald-100 text-emerald-800"
                         : isCurrentActive
-                        ? "bg-[#2ECDC5]/20 text-[#3F4EB4]"
-                        : "bg-slate-200 text-slate-700"
-                    }`}
+                          ? "bg-[#2ECDC5]/20 text-[#3F4EB4]"
+                          : "bg-slate-200 text-slate-700"
+                      }`}
                   >
                     Stage {idx + 1} • {stage.percentage}%
                   </span>
@@ -186,7 +184,7 @@ export const MyPaymentsTab: React.FC<MyPaymentsTabProps> = ({ patientCase }) => 
                 ) : isCurrentActive ? (
                   <button
                     onClick={() => handleOpenPayment(stage)}
-                    className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-xl shadow-[#283593]/25 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-xl shadow-[#283593]/25 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Lock className="w-4 h-4" />
                     <span>Accept Terms & Pay Stage</span>
@@ -246,11 +244,10 @@ export const MyPaymentsTab: React.FC<MyPaymentsTabProps> = ({ patientCase }) => 
                   <button
                     type="button"
                     onClick={() => setPaymentMethod("card")}
-                    className={`p-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-2 transition-all ${
-                      paymentMethod === "card"
+                    className={`p-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-2 transition-all ${paymentMethod === "card"
                         ? "bg-[#0E1F40] text-white border-[#0E1F40]"
                         : "bg-slate-50 text-slate-700 border-slate-200"
-                    }`}
+                      }`}
                   >
                     <CreditCard className="w-4 h-4" />
                     <span>Credit / Debit Card</span>
@@ -258,11 +255,10 @@ export const MyPaymentsTab: React.FC<MyPaymentsTabProps> = ({ patientCase }) => 
                   <button
                     type="button"
                     onClick={() => setPaymentMethod("swift")}
-                    className={`p-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-2 transition-all ${
-                      paymentMethod === "swift"
+                    className={`p-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-2 transition-all ${paymentMethod === "swift"
                         ? "bg-[#0E1F40] text-white border-[#0E1F40]"
                         : "bg-slate-50 text-slate-700 border-slate-200"
-                    }`}
+                      }`}
                   >
                     <Building className="w-4 h-4" />
                     <span>International SWIFT Wire</span>

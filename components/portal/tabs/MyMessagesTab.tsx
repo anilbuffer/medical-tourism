@@ -87,18 +87,16 @@ export const MyMessagesTab: React.FC<MyMessagesTabProps> = ({ patientCase }) => 
               </div>
 
               <div
-                className={`max-w-md p-4 rounded-2xl text-xs sm:text-sm leading-relaxed shadow-sm transition-all duration-200 ${
-                  isPatient
+                className={`max-w-md p-4 rounded-2xl text-xs sm:text-sm leading-relaxed shadow-sm transition-all duration-200 ${isPatient
                     ? "bg-gradient-to-r from-[#071321] via-[#0B1E33] to-[#0D2642] text-white rounded-br-none shadow-md border border-slate-800"
                     : "bg-white/95 text-slate-800 border border-slate-200 rounded-bl-none shadow-xs"
-                }`}
+                  }`}
               >
                 <p>{msg.text}</p>
                 {msg.attachmentName && (
                   <div
-                    className={`mt-2 pt-2 border-t flex items-center gap-1.5 text-xs font-semibold ${
-                      isPatient ? "border-white/20 text-[#2ECDC5]" : "border-slate-100 text-[#3F4EB4]"
-                    }`}
+                    className={`mt-2 pt-2 border-t flex items-center gap-1.5 text-xs font-semibold ${isPatient ? "border-white/20 text-[#2ECDC5]" : "border-slate-100 text-[#3F4EB4]"
+                      }`}
                   >
                     <Paperclip className="w-3.5 h-3.5" />
                     <span>{msg.attachmentName}</span>
@@ -139,11 +137,10 @@ export const MyMessagesTab: React.FC<MyMessagesTabProps> = ({ patientCase }) => 
         <button
           type="button"
           onClick={() => setAttachedFile("Updated_Echo_Report_2026.pdf")}
-          className={`p-3 rounded-2xl border transition-all cursor-pointer ${
-            attachedFile
+          className={`p-3 rounded-2xl border transition-all cursor-pointer ${attachedFile
               ? "bg-[#2ECDC5]/15 text-[#3F4EB4] border-[#2ECDC5]/40 font-bold"
               : "bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-100"
-          }`}
+            }`}
           title="Attach Document"
         >
           <Paperclip className="w-4 h-4" />
@@ -164,7 +161,7 @@ export const MyMessagesTab: React.FC<MyMessagesTabProps> = ({ patientCase }) => 
         <button
           type="submit"
           disabled={!inputText.trim()}
-          className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+          className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
         >
           <span>Send</span>
           <Send className="w-3.5 h-3.5" />

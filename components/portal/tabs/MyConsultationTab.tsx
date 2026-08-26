@@ -109,7 +109,7 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
 
         <button
           onClick={() => setIsVideoRoomOpen(true)}
-          className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-sm shadow-xl shadow-[#283593]/25 hover:scale-105 transition-all duration-300 flex items-center gap-2.5 shrink-0 cursor-pointer"
+          className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-sm shadow-xl shadow-[#283593]/25 hover:scale-105 transition-all duration-300 flex items-center gap-2.5 shrink-0 cursor-pointer"
         >
           <Video className="w-5 h-5" />
           <span>Launch Telehealth Video Room</span>
@@ -233,7 +233,7 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
           <div className="pt-4 border-t border-slate-100">
             <button
               onClick={() => setIsVideoRoomOpen(true)}
-              className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
             >
               <Video className="w-4 h-4" />
               <span>Enter Video Meeting Room</span>
@@ -333,9 +333,8 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
             <div className="p-4 bg-slate-950 border-t border-slate-800 flex items-center justify-center gap-4">
               <button
                 onClick={() => setIsMicMuted(!isMicMuted)}
-                className={`p-3.5 rounded-2xl transition-all ${
-                  isMicMuted ? "bg-rose-600 text-white" : "bg-slate-800 hover:bg-slate-700 text-white"
-                }`}
+                className={`p-3.5 rounded-2xl transition-all ${isMicMuted ? "bg-rose-600 text-white" : "bg-slate-800 hover:bg-slate-700 text-white"
+                  }`}
                 title="Toggle Mic"
               >
                 {isMicMuted ? <MicOff className="w-5 h-5" /> : <Mic className="w-5 h-5" />}
@@ -343,9 +342,8 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
 
               <button
                 onClick={() => setIsCamOff(!isCamOff)}
-                className={`p-3.5 rounded-2xl transition-all ${
-                  isCamOff ? "bg-rose-600 text-white" : "bg-slate-800 hover:bg-slate-700 text-white"
-                }`}
+                className={`p-3.5 rounded-2xl transition-all ${isCamOff ? "bg-rose-600 text-white" : "bg-slate-800 hover:bg-slate-700 text-white"
+                  }`}
                 title="Toggle Video"
               >
                 {isCamOff ? <VideoOff className="w-5 h-5" /> : <Video className="w-5 h-5" />}
@@ -353,9 +351,8 @@ export const MyConsultationTab: React.FC<MyConsultationTabProps> = ({ patientCas
 
               <button
                 onClick={() => setIsScreenSharing(!isScreenSharing)}
-                className={`p-3.5 rounded-2xl transition-all ${
-                  isScreenSharing ? "bg-teal-600 text-white" : "bg-slate-800 hover:bg-slate-700 text-white"
-                }`}
+                className={`p-3.5 rounded-2xl transition-all ${isScreenSharing ? "bg-teal-600 text-white" : "bg-slate-800 hover:bg-slate-700 text-white"
+                  }`}
                 title="Share Medical Scans"
               >
                 <Share2 className="w-5 h-5" />

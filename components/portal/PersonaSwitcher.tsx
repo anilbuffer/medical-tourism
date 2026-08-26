@@ -109,11 +109,10 @@ export const PersonaSwitcher: React.FC = () => {
                       loginAs(user);
                       setIsOpen(false);
                     }}
-                    className={`w-full text-left p-2.5 rounded-xl flex items-center justify-between transition-all cursor-pointer border ${
-                      isSelected
-                        ? "bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] text-white font-bold shadow-md border-transparent"
+                    className={`w-full text-left p-2.5 rounded-xl flex items-center justify-between transition-all cursor-pointer border ${isSelected
+                        ? "bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] text-white font-bold shadow-md border-transparent"
                         : "bg-slate-50/70 hover:bg-slate-100 text-slate-800 hover:text-slate-900 border-slate-100 hover:border-slate-200"
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-2.5">
                       <div className="w-8 h-8 rounded-full overflow-hidden ring-1 ring-slate-200 shrink-0">
@@ -128,9 +127,8 @@ export const PersonaSwitcher: React.FC = () => {
                           {user.name}
                         </div>
                         <div
-                          className={`text-[10px] flex items-center gap-1 font-bold ${
-                            isSelected ? "text-cyan-100" : "text-[#3F4EB4]"
-                          }`}
+                          className={`text-[10px] flex items-center gap-1 font-bold ${isSelected ? "text-cyan-100" : "text-[#3F4EB4]"
+                            }`}
                         >
                           {getRoleIcon(user.role)}
                           <span>{getRoleLabel(user.role)}</span>

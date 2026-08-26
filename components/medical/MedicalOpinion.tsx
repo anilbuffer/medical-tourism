@@ -81,19 +81,17 @@ export const MedicalOpinion = () => {
                     <button
                       key={cat.name}
                       onClick={() => setSelectedReportType(cat.name)}
-                      className={`w-full text-left rtl:text-right p-3.5 rounded-xl transition-all border flex items-center justify-between ${
-                        selectedReportType === cat.name
+                      className={`w-full text-left rtl:text-right p-3.5 rounded-xl transition-all border flex items-center justify-between ${selectedReportType === cat.name
                           ? "bg-[#2ECDC5]/15 border-[#2ECDC5]/60 text-white"
                           : "bg-white/5 border-white/10 text-slate-300 hover:bg-white/10"
-                      }`}
+                        }`}
                     >
                       <div className="flex items-center gap-3">
                         <div
-                          className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold ${
-                            selectedReportType === cat.name
+                          className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold ${selectedReportType === cat.name
                               ? "bg-[#2ECDC5] text-slate-950"
                               : "bg-white/10 text-slate-400"
-                          }`}
+                            }`}
                         >
                           <FileText className="w-4 h-4" />
                         </div>
@@ -112,7 +110,7 @@ export const MedicalOpinion = () => {
                 {/* Upload Action */}
                 <button
                   onClick={() => openIntake(selectedReportType)}
-                  className="w-full py-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#2ECDC5] via-[#3F4EB4] to-[#283593] hover:from-[#283593] hover:to-[#2ECDC5] shadow-xl shadow-[#283593]/20 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2"
+                  className="w-full py-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] hover:from-[#283593] hover:to-[#2ECDC5] shadow-xl shadow-[#283593]/20 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2"
                 >
                   <Upload className="w-4 h-4" />
                   <span>{t.opinion.cta}</span>

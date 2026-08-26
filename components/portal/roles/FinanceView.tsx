@@ -215,18 +215,16 @@ export const FinanceView: React.FC<FinanceViewProps> = ({
           { label: "Cases in Escrow", value: escrowCases.length.toString(), icon: PiggyBank, color: "blue" },
         ].map((kpi) => (
           <div key={kpi.label} className="bg-white/95 rounded-2xl p-5 border border-slate-200 shadow-sm flex items-start gap-3">
-            <div className={`p-2.5 rounded-xl ${
-              kpi.color === "emerald" ? "bg-emerald-100" :
+            <div className={`p-2.5 rounded-xl ${kpi.color === "emerald" ? "bg-emerald-100" :
               kpi.color === "amber" ? "bg-amber-100" :
-              kpi.color === "rose" ? "bg-rose-100" :
-              "bg-blue-100"
-            }`}>
-              <kpi.icon className={`w-5 h-5 ${
-                kpi.color === "emerald" ? "text-emerald-700" :
+                kpi.color === "rose" ? "bg-rose-100" :
+                  "bg-blue-100"
+              }`}>
+              <kpi.icon className={`w-5 h-5 ${kpi.color === "emerald" ? "text-emerald-700" :
                 kpi.color === "amber" ? "text-amber-700" :
-                kpi.color === "rose" ? "text-rose-700" :
-                "text-blue-700"
-              }`} />
+                  kpi.color === "rose" ? "text-rose-700" :
+                    "text-blue-700"
+                }`} />
             </div>
             <div>
               <div className="text-xl font-black text-slate-900">{kpi.value}</div>
@@ -242,11 +240,10 @@ export const FinanceView: React.FC<FinanceViewProps> = ({
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
-              activeTab === tab.id
-                ? "bg-gradient-to-r from-[#3F4EB4] to-[#2ECDC5] text-white shadow-sm"
-                : "text-slate-600 hover:bg-slate-100"
-            }`}
+            className={`flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${activeTab === tab.id
+              ? "bg-gradient-to-r from-[#3abdb6] to-[#3fc1ba] text-white shadow-sm"
+              : "text-slate-600 hover:bg-slate-100"
+              }`}
           >
             <tab.icon className="w-3.5 h-3.5" />
             {tab.label}
