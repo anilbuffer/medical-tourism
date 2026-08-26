@@ -268,6 +268,39 @@ export interface Translations {
     rights: string;
     medicalDisclaimer: string;
   };
+  floatingBar: {
+    whatsapp: string;
+    reportReview: string;
+    callDesk: string;
+  };
+  estimatorWidget: {
+    eyebrow: string;
+    heading: string;
+    step1: string;
+    step2: string;
+    step3: string;
+    treatmentLabel: string;
+    countryLabel: string;
+    flightTime: string;
+    visaDuration: string;
+    costInIndia: string;
+    costAtHome: string;
+    savings: string;
+    emailLabel: string;
+    emailPlaceholder: string;
+    submitBtn: string;
+    successMessage: string;
+  };
+  exitIntent: {
+    heading: string;
+    subheading: string;
+    nameLabel: string;
+    namePlaceholder: string;
+    contactLabel: string;
+    contactPlaceholder: string;
+    downloadBtn: string;
+    successMessage: string;
+  };
 }
 
 export const DICTIONARY: Record<Language, Translations> = {
@@ -535,13 +568,46 @@ export const DICTIONARY: Record<Language, Translations> = {
       channels: "Instant assistance available via WhatsApp · Direct Phone · HD Video Consultation",
     },
     footer: {
-      tagline: "India's premier international patient care coordination platform. Connecting global families with India's finest medical minds.",
+      tagline: "India's premier international care coordination platform. Connecting global families to India's finest medical minds.",
       careHeader: "Specialized Care",
       resourcesHeader: "Patient Resources",
       companyHeader: "About Vedara",
       supportHeader: "24/7 International Desk",
       rights: "© 2026 Vedara International Care. All rights reserved.",
-      medicalDisclaimer: "Vedara is a medical care facilitation and coordination platform. We do not provide direct medical advice, diagnosis, or treatment. Medical opinions and care are delivered by licensed partner hospitals and practitioners.",
+      medicalDisclaimer: "Vedara is a medical travel facilitation and care coordination platform. We do not provide direct medical diagnosis. Care and treatments are provided by licensed partner hospitals and clinicians.",
+    },
+    floatingBar: {
+      whatsapp: "WhatsApp Us",
+      reportReview: "Free Report Review",
+      callDesk: "Call Desk",
+    },
+    estimatorWidget: {
+      eyebrow: "INSTANT ESTIMATE",
+      heading: "Medical Cost & Flight Estimator",
+      step1: "1. Select Treatment & Country",
+      step2: "2. View Savings & Logistics",
+      step3: "3. Get Detailed Estimate",
+      treatmentLabel: "Select Treatment / Procedure",
+      countryLabel: "Your Home Country",
+      flightTime: "Est. Flight Time",
+      visaDuration: "Medical Visa (M-Visa) Processing",
+      costInIndia: "Cost in India",
+      costAtHome: "Cost at Home",
+      savings: "Est. Savings",
+      emailLabel: "Email Address",
+      emailPlaceholder: "Enter your email",
+      submitBtn: "Email Me This Estimate",
+      successMessage: "Estimate sent successfully! Check your inbox.",
+    },
+    exitIntent: {
+      heading: "Not ready to travel yet?",
+      subheading: "Download our Free 2026 Medical Travel Guide for India (Includes Hospital Cost Comparisons & Visa Checklist).",
+      nameLabel: "Your Name",
+      namePlaceholder: "Enter your name",
+      contactLabel: "Email or WhatsApp",
+      contactPlaceholder: "Where should we send it?",
+      downloadBtn: "Download Guide Now",
+      successMessage: "Thank you! Your guide is on its way.",
     },
   },
   ar: {
@@ -812,6 +878,39 @@ export const DICTIONARY: Record<Language, Translations> = {
       supportHeader: "المكتب الدولي 24/7",
       rights: "© 2026 فيدارا للرعاية الدولية. جميع الحقوق محفوظة.",
       medicalDisclaimer: "فيدارا هي منصة لتنسيق وتسهيل الرعاية الطبية والسفر العلاجي. نحن لا نقدم تشخيصاً طبياً مباشراً، وإنما تقدم الرعاية والعلاجات من قبل المستشفيات والأطباء المرخصين.",
+    },
+    floatingBar: {
+      whatsapp: "راسلنا واتساب",
+      reportReview: "مراجعة التقارير مجاناً",
+      callDesk: "اتصل بالمكتب",
+    },
+    estimatorWidget: {
+      eyebrow: "تقدير فوري",
+      heading: "حاسبة التكلفة الطبية ورحلة الطيران",
+      step1: "1. اختر العلاج وبلد الإقامة",
+      step2: "2. عرض التوفير والتفاصيل",
+      step3: "3. احصل على التقدير المفصل",
+      treatmentLabel: "اختر العلاج / الإجراء الطيبي",
+      countryLabel: "بلد الإقامة",
+      flightTime: "مدة الرحلة التقديرية",
+      visaDuration: "استخراج التأشيرة الطبية",
+      costInIndia: "التكلفة في الهند",
+      costAtHome: "التكلفة في بلدك",
+      savings: "التوفير التقديري",
+      emailLabel: "البريد الإلكتروني",
+      emailPlaceholder: "أدخل بريدك الإلكتروني",
+      submitBtn: "أرسل لي هذا التقدير",
+      successMessage: "تم إرسال التقدير بنجاح! راجع صندوق الوارد.",
+    },
+    exitIntent: {
+      heading: "لست مستعداً للسفر بعد؟",
+      subheading: "حمل دليل السفر الطبي المجاني لعام 2026 إلى الهند (يحتوي على مقارنات تكلفة المستشفيات وقائمة التأشيرة).",
+      nameLabel: "الاسم الكريم",
+      namePlaceholder: "أدخل اسمك",
+      contactLabel: "البريد أو رقم الواتساب",
+      contactPlaceholder: "أين نرسل الدليل؟",
+      downloadBtn: "حمل الدليل الآن",
+      successMessage: "شكراً لك! سيتم إرسال الدليل فوراً.",
     },
   },
 };

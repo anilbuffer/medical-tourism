@@ -7,6 +7,8 @@ import { Footer } from "./Footer";
 import { IntakeModal } from "@/components/intake/IntakeModal";
 import { DoctorModal } from "@/components/medical/DoctorModal";
 import { LiveChatDrawer } from "@/components/concierge/LiveChatDrawer";
+import { FloatingQuickBar } from "@/components/ui/FloatingQuickBar";
+import { ExitIntentModal } from "@/components/trust/ExitIntentModal";
 
 interface AppShellProps {
   children: React.ReactNode;
@@ -30,6 +32,8 @@ export const AppShell: React.FC<AppShellProps> = ({ children }) => {
       <IntakeModal />
       <DoctorModal />
       <LiveChatDrawer />
+      <FloatingQuickBar />
+      <ExitIntentModal />
     </>
   );
 };

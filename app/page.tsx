@@ -12,6 +12,7 @@ import { SpecialtiesSection } from "@/components/medical/SpecialtiesSection";
 import { DoctorsSection } from "@/components/medical/DoctorsSection";
 import { HospitalsSection } from "@/components/medical/HospitalsSection";
 import { CostTransparency } from "@/components/pricing/CostTransparency";
+import { CostFlightEstimator } from "@/components/pricing/CostFlightEstimator";
 import { BlogSection } from "@/components/resources/BlogSection";
 import { ConciergeSection } from "@/components/concierge/ConciergeSection";
 import { CoordinatorSpotlight } from "@/components/concierge/CoordinatorSpotlight";
@@ -54,7 +55,10 @@ export default function HomePage() {
       {/* 08. Hospital Network */}
       <HospitalsSection />
 
-      {/* 09. Treatment Cost Transparency */}
+      {/* 09. Interactive Estimator Widget */}
+      <CostFlightEstimator />
+
+      {/* 10. Treatment Cost Transparency */}
       <CostTransparency />
 
       {/* 10. Guides & Resources (Blog) */}

@@ -575,7 +575,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
           </div>
 
           {/* Action Buttons: Back + SUBMIT */}
-          <div className="pt-3 space-y-3">
+          <div className="pt-3 space-y-3 md:flex justify-between items-center md:space-y-0 gap-3">
             <button
               type="button"
               onClick={() => {

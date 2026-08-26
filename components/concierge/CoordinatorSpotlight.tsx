@@ -115,7 +115,7 @@ export const CoordinatorSpotlight = () => {
                   className="inline-flex items-center gap-3 px-8 py-4 rounded-xl text-sm sm:text-base font-bold text-slate-950 bg-gradient-to-r from-[#2ECDC5] via-[#5EEAD4] to-[#2ECDC5] shadow-xl shadow-[#2ECDC5]/20 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
                 >
                   <MessageSquare className="w-5 h-5" />
-                  <span>{t.coordinator.cta}</span>
+                  <span>{t.coordinator.messageBtn}</span>
                   <ArrowRight className="w-4 h-4 rtl:rotate-180" />
                 </button>
               </div>
