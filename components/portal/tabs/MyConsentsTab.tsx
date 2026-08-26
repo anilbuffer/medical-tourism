@@ -156,7 +156,7 @@ export const MyConsentsTab: React.FC<MyConsentsTabProps> = ({ patientCase }) => 
                     </span>
                     <span className="text-xs text-slate-400">•</span>
                     <span className="text-xs text-slate-500">
-                      Timestamp: {new Date(consent.timestamp).toLocaleString()}
+                      Timestamp: {new Date(consent.timestamp).toLocaleString("en-US")}
                     </span>
                   </div>
 

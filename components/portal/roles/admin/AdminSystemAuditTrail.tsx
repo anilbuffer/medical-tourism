@@ -175,7 +175,7 @@ export const AdminSystemAuditTrail: React.FC<AdminSystemAuditTrailProps> = ({
             {filteredLogs.map((log) => (
               <tr key={log.id} className="hover:bg-slate-50/80 transition-colors">
                 <td className="py-4 pl-5 text-slate-600 font-mono text-[11px] whitespace-nowrap">
-                  {new Date(log.timestamp).toLocaleString()}
+                  {new Date(log.timestamp).toLocaleString("en-US")}
                 </td>
 
                 <td className="py-4">

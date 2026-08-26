@@ -130,7 +130,7 @@ export const AdminVisaRules: React.FC<AdminVisaRulesProps> = ({ onNavigateTab })
                 <div>
                   <h3 className="font-black text-slate-900 text-sm">{rule.patientHomeCountry}</h3>
                   <span className="text-[10px] text-slate-400">
-                    Updated: {new Date(rule.lastUpdatedAt).toLocaleDateString()}
+                    Updated: {new Date(rule.lastUpdatedAt).toLocaleDateString("en-US")}
                   </span>
                 </div>
               </div>

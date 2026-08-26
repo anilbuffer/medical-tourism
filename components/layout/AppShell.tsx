@@ -16,7 +16,8 @@ interface AppShellProps {
 
 export const AppShell: React.FC<AppShellProps> = ({ children }) => {
   const pathname = usePathname();
-  const isPortal = pathname?.startsWith("/patient") || pathname?.startsWith("/login");
+  const portalPaths = ["/patient", "/login", "/customer", "/hospital", "/finance"];
+  const isPortal = pathname ? portalPaths.some(p => pathname.startsWith(p)) : false;
 
   if (isPortal) {
     return <main className="min-h-screen">{children}</main>;

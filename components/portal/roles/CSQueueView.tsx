@@ -499,7 +499,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                               {event.fromStage ? STAGE_LABEL_MAP[event.fromStage] : "Created"} → {STAGE_LABEL_MAP[event.toStage] || event.toStage}
                             </div>
                             <div className="text-slate-500 mt-0.5">
-                              {new Date(event.changedAt).toLocaleString()} · <span className="font-semibold text-slate-700">{event.changedByName}</span> ({event.changedByRole?.replace("_", " ") || "system"})
+                              {new Date(event.changedAt).toLocaleString("en-US")} · <span className="font-semibold text-slate-700">{event.changedByName}</span> ({event.changedByRole?.replace("_", " ") || "system"})
                               {event.reason && <span className="text-amber-600 ml-1">· Reason: {event.reason}</span>}
                             </div>
                           </div>
@@ -588,7 +588,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                           </div>
                           {obtained.map((rec) => (
                             <div key={rec.id} className="mt-2 text-[11px] text-slate-600 space-y-0.5">
-                              <div><strong>Signed:</strong> {new Date(rec.timestamp).toLocaleString()}</div>
+                              <div><strong>Signed:</strong> {new Date(rec.timestamp).toLocaleString("en-US")}</div>
                               <div><strong>IP:</strong> {rec.ipAddress}</div>
                               <div><strong>Version:</strong> {rec.version}</div>
                               {rec.digitalSignature && <div><strong>Signature:</strong> {rec.digitalSignature}</div>}
@@ -645,7 +645,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                         <div key={note.id} className="p-4 bg-slate-50 rounded-2xl border border-slate-200">
                           <div className="text-xs text-slate-800 leading-relaxed">{note.text}</div>
                           <div className="text-[11px] text-slate-500 mt-2">
-                            {new Date(note.createdAt).toLocaleString()} · <strong>{note.authorName}</strong>
+                            {new Date(note.createdAt).toLocaleString("en-US")} · <strong>{note.authorName}</strong>
                           </div>
                         </div>
                       ))
@@ -691,7 +691,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                     </div>
                     {activeCase.acceptedAt && (
                       <div className="text-xs text-slate-600 mt-1">
-                        Accepted by <strong>{activeCase.acceptedByDoctorName}</strong> on {new Date(activeCase.acceptedAt).toLocaleString()}
+                        Accepted by <strong>{activeCase.acceptedByDoctorName}</strong> on {new Date(activeCase.acceptedAt).toLocaleString("en-US")}
                       </div>
                     )}
                     {activeCase.declineReason && (
@@ -718,7 +718,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                     <>
                       <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-700">
                         <div className="font-bold mb-1">Based on Clinical Workspace by {activeCase.clinicalWorkspace.submittedByDoctorName}:</div>
-                        <div>Cost Estimate: <strong>${activeCase.clinicalWorkspace.costEstimateUsd.toLocaleString()}</strong> · LOS: <strong>{activeCase.clinicalWorkspace.expectedStayDays} days</strong></div>
+                        <div>Cost Estimate: <strong>${activeCase.clinicalWorkspace.costEstimateUsd.toLocaleString("en-US")}</strong> · LOS: <strong>{activeCase.clinicalWorkspace.expectedStayDays} days</strong></div>
                       </div>
 
                       {/* Tier Selection */}
@@ -763,7 +763,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                       <div className="p-4 bg-gradient-to-r from-[#071321] to-[#0D2642] rounded-2xl text-white">
                         <div className="text-xs text-slate-400">Total Package ({quoteTier})</div>
                         <div className="text-2xl font-black text-[#2ECDC5] mt-1">
-                          ${(activeCase.clinicalWorkspace.costEstimateUsd + coordFee + travelFee + supportFee).toLocaleString()} USD
+                          ${(activeCase.clinicalWorkspace.costEstimateUsd + coordFee + travelFee + supportFee).toLocaleString("en-US")} USD
                         </div>
                       </div>
 
@@ -806,7 +806,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                               <div className="leading-relaxed">{msg.text}</div>
                               <div className={`text-[10px] mt-1.5 ${isCS ? "text-white/70" : "text-slate-400"}`}>
                                 {typeof msg.timestamp === "string" && msg.timestamp.includes("T")
-                                  ? new Date(msg.timestamp).toLocaleString()
+                                  ? new Date(msg.timestamp).toLocaleString("en-US")
                                   : msg.timestamp}
                               </div>
                             </div>
@@ -858,7 +858,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                     <div className="text-xs text-slate-600 mt-0.5">
                       Reason: <strong>{c.nurtureEntry.reason.replace(/_/g, " ")}</strong>
                       {c.nurtureEntry.scheduledFollowUpAt && (
-                        <> · Follow-up: <strong>{new Date(c.nurtureEntry.scheduledFollowUpAt).toLocaleDateString()}</strong></>
+                        <> · Follow-up: <strong>{new Date(c.nurtureEntry.scheduledFollowUpAt).toLocaleDateString("en-US")}</strong></>
                       )}
                     </div>
                   )}

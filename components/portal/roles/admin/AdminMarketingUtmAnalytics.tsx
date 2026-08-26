@@ -177,7 +177,7 @@ export const AdminMarketingUtmAnalytics: React.FC<AdminMarketingUtmAnalyticsProp
                   </td>
                   <td className="py-3.5 font-mono text-slate-600">${row.cac}</td>
                   <td className="py-3.5 pr-4 text-right font-mono font-black text-sm text-slate-900">
-                    ${row.revenue.toLocaleString()}
+                    ${row.revenue.toLocaleString("en-US")}
                   </td>
                 </tr>
               ))}

@@ -167,7 +167,7 @@ export const AdminRefundEscrowRules: React.FC<AdminRefundEscrowRulesProps> = ({ 
 
               <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
                 <span className="text-slate-400">
-                  Updated: {new Date(rule.lastUpdatedAt).toLocaleDateString()}
+                  Updated: {new Date(rule.lastUpdatedAt).toLocaleDateString("en-US")}
                 </span>
                 <button
                   onClick={() => handleOpenEdit(rule)}

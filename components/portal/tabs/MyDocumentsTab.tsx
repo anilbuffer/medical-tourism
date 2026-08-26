@@ -211,7 +211,7 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
                       <div className="text-xs text-slate-500 mt-1 flex items-center gap-3 flex-wrap">
                         <span>File: <strong className="text-slate-700">{latestVersion.fileName}</strong></span>
                         <span>Size: {latestVersion.fileSize}</span>
-                        <span>Uploaded: {new Date(latestVersion.uploadedAt).toLocaleDateString()}</span>
+                        <span>Uploaded: {new Date(latestVersion.uploadedAt).toLocaleDateString("en-US")}</span>
                       </div>
                     </div>
                   </div>
@@ -408,7 +408,7 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
                       Version {ver.version} {idx === 0 && "(Active Current)"}
                     </span>
                     <span className="text-[11px] text-slate-500">
-                      {new Date(ver.uploadedAt).toLocaleString()}
+                      {new Date(ver.uploadedAt).toLocaleString("en-US")}
                     </span>
                   </div>
                   <div className="text-xs font-semibold text-slate-700 mt-1">

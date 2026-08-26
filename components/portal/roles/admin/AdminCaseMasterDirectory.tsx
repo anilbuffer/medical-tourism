@@ -202,7 +202,7 @@ export const AdminCaseMasterDirectory: React.FC<AdminCaseMasterDirectoryProps> =
 
                   <td className="py-4">
                     <span className="font-mono font-bold text-emerald-700">
-                      ${paidSum.toLocaleString()}
+                      ${paidSum.toLocaleString("en-US")}
                     </span>
                   </td>
 
@@ -277,7 +277,7 @@ export const AdminCaseMasterDirectory: React.FC<AdminCaseMasterDirectoryProps> =
                 </div>
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-150">
                   <span className="text-[10px] text-slate-400 block uppercase font-bold">Quote Value</span>
-                  <strong className="text-emerald-700">${selectedCase.quote?.totalCostUsd?.toLocaleString() || "18,500"}</strong>
+                  <strong className="text-emerald-700">${selectedCase.quote?.totalCostUsd?.toLocaleString("en-US") || "18,500"}</strong>
                 </div>
               </div>
 
@@ -320,7 +320,7 @@ export const AdminCaseMasterDirectory: React.FC<AdminCaseMasterDirectoryProps> =
                       </div>
                       <div className="text-right text-slate-400 shrink-0">
                         <div>{hist.changedByName}</div>
-                        <div>{new Date(hist.changedAt).toLocaleDateString()}</div>
+                        <div>{new Date(hist.changedAt).toLocaleDateString("en-US")}</div>
                       </div>
                     </div>
                   ))}

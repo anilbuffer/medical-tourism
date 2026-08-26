@@ -156,14 +156,14 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
     switch (activeCurr) {
       case "GBP": {
         const converted = Math.round(amountUsd * 0.79);
-        return `£${converted.toLocaleString()}`;
+        return `£${converted.toLocaleString("en-US")}`;
       }
       case "AED": {
         const converted = Math.round(amountUsd * 3.67);
-        return `AED ${converted.toLocaleString()}`;
+        return `AED ${converted.toLocaleString("en-US")}`;
       }
       default: {
-        return `$${amountUsd.toLocaleString()} USD`;
+        return `$${amountUsd.toLocaleString("en-US")} USD`;
       }
     }
   };

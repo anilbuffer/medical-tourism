@@ -101,7 +101,7 @@ export const MyQuoteTab: React.FC<MyQuoteTabProps> = ({ patientCase, onNavigateT
           </h2>
           <p className="text-slate-500 text-sm mt-1">
             Quote Reference: <span className="font-mono font-bold text-slate-800">{quote.quoteNumber}</span> • Valid until{" "}
-            <span className="font-semibold text-slate-800">{new Date(quote.validUntil).toLocaleDateString()}</span>
+            <span className="font-semibold text-slate-800">{new Date(quote.validUntil).toLocaleDateString("en-US")}</span>
           </p>
         </div>
 
@@ -139,42 +139,42 @@ export const MyQuoteTab: React.FC<MyQuoteTabProps> = ({ patientCase, onNavigateT
             <div className="flex items-center justify-between p-3.5 bg-slate-50/80 rounded-2xl border border-slate-100 text-xs sm:text-sm hover:bg-slate-50 transition-colors">
               <span className="font-semibold text-slate-700">Hospital Charges & Operating Theatre Fees</span>
               <span className="font-extrabold text-slate-900">
-                ${quote.costBreakdown.hospitalChargesUsd.toLocaleString()}
+                ${quote.costBreakdown.hospitalChargesUsd.toLocaleString("en-US")}
               </span>
             </div>
 
             <div className="flex items-center justify-between p-3.5 bg-slate-50/80 rounded-2xl border border-slate-100 text-xs sm:text-sm hover:bg-slate-50 transition-colors">
               <span className="font-semibold text-slate-700">Lead Surgeon Fee & Anesthesiology Team</span>
               <span className="font-extrabold text-slate-900">
-                ${quote.costBreakdown.surgeonAndAnesthesiaUsd.toLocaleString()}
+                ${quote.costBreakdown.surgeonAndAnesthesiaUsd.toLocaleString("en-US")}
               </span>
             </div>
 
             <div className="flex items-center justify-between p-3.5 bg-slate-50/80 rounded-2xl border border-slate-100 text-xs sm:text-sm hover:bg-slate-50 transition-colors">
               <span className="font-semibold text-slate-700">Implants, Consumables & High-End Bioprosthetic Valve</span>
               <span className="font-extrabold text-slate-900">
-                ${quote.costBreakdown.implantsAndMedicationUsd.toLocaleString()}
+                ${quote.costBreakdown.implantsAndMedicationUsd.toLocaleString("en-US")}
               </span>
             </div>
 
             <div className="flex items-center justify-between p-3.5 bg-slate-50/80 rounded-2xl border border-slate-100 text-xs sm:text-sm hover:bg-slate-50 transition-colors">
               <span className="font-semibold text-slate-700">Hospital Stay (1 Night Cardiac ICU + 3 Nights Deluxe Room)</span>
               <span className="font-extrabold text-slate-900">
-                ${quote.costBreakdown.stayAndIcuUsd.toLocaleString()}
+                ${quote.costBreakdown.stayAndIcuUsd.toLocaleString("en-US")}
               </span>
             </div>
 
             <div className="flex items-center justify-between p-3.5 bg-slate-50/80 rounded-2xl border border-slate-100 text-xs sm:text-sm hover:bg-slate-50 transition-colors">
               <span className="font-semibold text-slate-700">VIP Concierge, Airport Transfers & Medical Interpreter</span>
               <span className="font-extrabold text-slate-900">
-                ${quote.costBreakdown.vipConciergeAndLogisticsUsd.toLocaleString()}
+                ${quote.costBreakdown.vipConciergeAndLogisticsUsd.toLocaleString("en-US")}
               </span>
             </div>
 
             <div className="flex items-center justify-between p-3.5 bg-slate-50/80 rounded-2xl border border-slate-100 text-xs sm:text-sm hover:bg-slate-50 transition-colors">
               <span className="font-semibold text-slate-700">Companion In-Room Stay & Meal Plan</span>
               <span className="font-extrabold text-slate-900">
-                ${quote.costBreakdown.companionStayUsd.toLocaleString()}
+                ${quote.costBreakdown.companionStayUsd.toLocaleString("en-US")}
               </span>
             </div>
           </div>
@@ -187,7 +187,7 @@ export const MyQuoteTab: React.FC<MyQuoteTabProps> = ({ patientCase, onNavigateT
               <div className="text-xs text-slate-300 mt-0.5">No hidden emergency surcharges or extra bed fees</div>
             </div>
             <div className="relative z-10 text-3xl font-black text-white">
-              ${quote.totalCostUsd.toLocaleString()} <span className="text-xs font-bold text-[#2ECDC5]">USD</span>
+              ${quote.totalCostUsd.toLocaleString("en-US")} <span className="text-xs font-bold text-[#2ECDC5]">USD</span>
             </div>
           </div>
 

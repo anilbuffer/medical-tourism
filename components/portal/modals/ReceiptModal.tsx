@@ -89,7 +89,7 @@ export const ReceiptModal: React.FC<ReceiptModalProps> = ({
                   {stage.receiptNumber || "REC-88421"}
                 </div>
                 <div className="text-slate-500">
-                  Date: {new Date(stage.paidAt || Date.now()).toLocaleDateString()}
+                  Date: {new Date(stage.paidAt || Date.now()).toLocaleDateString("en-US")}
                 </div>
               </div>
             </div>

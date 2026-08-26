@@ -82,7 +82,7 @@ export const HospitalsSection = () => {
                       {hosp.rating || 4.8}
                     </span>
                     <span className="text-xs text-slate-400">
-                      ({hosp.reviewsCount ? hosp.reviewsCount.toLocaleString() : "850"})
+                      ({hosp.reviewsCount ? hosp.reviewsCount.toLocaleString("en-US") : "850"})
                     </span>
                   </div>
 

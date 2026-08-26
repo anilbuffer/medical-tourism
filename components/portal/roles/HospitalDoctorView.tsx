@@ -358,7 +358,7 @@ export const HospitalDoctorView: React.FC<HospitalDoctorViewProps> = ({
                         <div className="font-black text-emerald-900 text-sm">Case Accepted</div>
                         <div className="text-xs text-emerald-700 mt-0.5">
                           Accepted by <strong>{activeCase.acceptedByDoctorName}</strong> on{" "}
-                          {activeCase.acceptedAt ? new Date(activeCase.acceptedAt).toLocaleString() : "—"}
+                          {activeCase.acceptedAt ? new Date(activeCase.acceptedAt).toLocaleString("en-US") : "—"}
                         </div>
                         <div className="text-xs text-emerald-700 mt-1">Clinical Workspace and Tele-Consultation tabs are now unlocked.</div>
                       </div>
@@ -371,7 +371,7 @@ export const HospitalDoctorView: React.FC<HospitalDoctorViewProps> = ({
                       <div>
                         <div className="font-black text-rose-900 text-sm">Case Declined</div>
                         <div className="text-xs text-rose-700 mt-0.5">
-                          Declined on {activeCase.declinedAt ? new Date(activeCase.declinedAt).toLocaleString() : "—"}
+                          Declined on {activeCase.declinedAt ? new Date(activeCase.declinedAt).toLocaleString("en-US") : "—"}
                         </div>
                         <div className="text-xs text-rose-700 mt-1 font-medium">
                           Reason: {activeCase.declineReason}
@@ -451,7 +451,7 @@ export const HospitalDoctorView: React.FC<HospitalDoctorViewProps> = ({
                   {activeCase.clinicalWorkspace?.lastUpdatedAt && (
                     <div className="p-3 bg-blue-50 rounded-xl border border-blue-200 text-xs text-blue-800 flex items-center gap-2">
                       <CalendarClock className="w-4 h-4 text-blue-600 shrink-0" />
-                      Last updated: {new Date(activeCase.clinicalWorkspace.lastUpdatedAt).toLocaleString()} by{" "}
+                      Last updated: {new Date(activeCase.clinicalWorkspace.lastUpdatedAt).toLocaleString("en-US")} by{" "}
                       <strong>{activeCase.clinicalWorkspace.submittedByDoctorName}</strong>
                     </div>
                   )}
@@ -571,7 +571,7 @@ export const HospitalDoctorView: React.FC<HospitalDoctorViewProps> = ({
                       <div className="text-white font-bold text-sm">Patient: {activeCase.patientName}</div>
                       <div className="text-slate-300 text-xs mt-0.5">
                         {activeCase.consultation
-                          ? `Scheduled: ${new Date(activeCase.consultation.scheduledAt).toLocaleString()}`
+                          ? `Scheduled: ${new Date(activeCase.consultation.scheduledAt).toLocaleString("en-US")}`
                           : "No consultation scheduled yet"}
                       </div>
                     </div>

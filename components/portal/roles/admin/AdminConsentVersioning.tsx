@@ -180,7 +180,7 @@ export const AdminConsentVersioning: React.FC<AdminConsentVersioningProps> = ({ 
                 </td>
 
                 <td className="py-4 text-slate-600">
-                  {new Date(v.uploadedAt).toLocaleDateString()}
+                  {new Date(v.uploadedAt).toLocaleDateString("en-US")}
                 </td>
 
                 <td className="py-4 text-slate-600 font-semibold">{v.uploadedByName}</td>

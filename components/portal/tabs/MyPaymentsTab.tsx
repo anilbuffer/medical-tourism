@@ -95,14 +95,14 @@ export const MyPaymentsTab: React.FC<MyPaymentsTabProps> = ({ patientCase }) => 
           <div className="px-3 py-1 text-right">
             <div className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Total Paid</div>
             <div className="text-base font-extrabold text-[#3F4EB4]">
-              ${totalPaid.toLocaleString()} USD
+              ${totalPaid.toLocaleString("en-US")} USD
             </div>
           </div>
           <div className="h-8 w-px bg-slate-200" />
           <div className="px-3 py-1">
             <div className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Remaining</div>
             <div className="text-base font-extrabold text-slate-900">
-              ${remainingBalance.toLocaleString()} USD
+              ${remainingBalance.toLocaleString("en-US")} USD
             </div>
           </div>
         </div>
@@ -148,7 +148,7 @@ export const MyPaymentsTab: React.FC<MyPaymentsTabProps> = ({ patientCase }) => 
                 <div>
                   <h3 className="font-extrabold text-slate-900 text-lg">{stage.name}</h3>
                   <div className="text-2xl font-black text-slate-900 mt-2">
-                    ${stage.amountUsd.toLocaleString()}{" "}
+                    ${stage.amountUsd.toLocaleString("en-US")}{" "}
                     <span className="text-xs font-bold text-slate-500">USD</span>
                   </div>
                   <div className="text-xs text-slate-500 mt-0.5 font-medium">
@@ -227,7 +227,7 @@ export const MyPaymentsTab: React.FC<MyPaymentsTabProps> = ({ patientCase }) => 
                 <div>
                   <div className="text-xs text-slate-400 uppercase">Amount Due Now</div>
                   <div className="text-2xl font-black text-emerald-400">
-                    ${selectedStageForPayment.amountUsd.toLocaleString()} USD
+                    ${selectedStageForPayment.amountUsd.toLocaleString("en-US")} USD
                   </div>
                 </div>
                 <div className="text-xs text-slate-300 text-right">
@@ -371,7 +371,7 @@ export const MyPaymentsTab: React.FC<MyPaymentsTabProps> = ({ patientCase }) => 
               </div>
               <div className="pt-2 border-t border-slate-300 flex justify-between text-sm">
                 <span className="font-bold text-slate-900">Total Settled:</span>
-                <span className="font-black text-emerald-700">${activeReceiptStage.amountUsd.toLocaleString()} USD</span>
+                <span className="font-black text-emerald-700">${activeReceiptStage.amountUsd.toLocaleString("en-US")} USD</span>
               </div>
             </div>
 

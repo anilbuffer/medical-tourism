@@ -140,13 +140,13 @@ export const AdminRefundApprovals: React.FC<AdminRefundApprovalsProps> = ({ case
                       {req.caseId}
                     </span>
                     <span className="text-lg font-black text-rose-700">
-                      ${req.amountUsd.toLocaleString()} USD
+                      ${req.amountUsd.toLocaleString("en-US")} USD
                     </span>
                   </div>
 
                   <div className="text-xs text-slate-700">
                     <span className="text-slate-400 block text-[10px] uppercase font-bold">Claimed by:</span>
-                    <strong>{req.requestedByName}</strong> on {new Date(req.requestedAt).toLocaleString()}
+                    <strong>{req.requestedByName}</strong> on {new Date(req.requestedAt).toLocaleString("en-US")}
                   </div>
 
                   <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-800 leading-relaxed">

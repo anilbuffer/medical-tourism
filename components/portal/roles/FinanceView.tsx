@@ -187,11 +187,11 @@ export const FinanceView: React.FC<FinanceViewProps> = ({
         <div className="relative z-10 flex items-center gap-3 flex-wrap shrink-0">
           <div className="flex items-center gap-2 bg-emerald-500/20 px-4 py-2.5 rounded-xl border border-emerald-500/30 text-xs font-bold text-emerald-300">
             <TrendingUp className="w-4 h-4" />
-            <span>Revenue: ${totalRevenue.toLocaleString()}</span>
+            <span>Revenue: ${totalRevenue.toLocaleString("en-US")}</span>
           </div>
           <div className="flex items-center gap-2 bg-amber-500/20 px-4 py-2.5 rounded-xl border border-amber-500/30 text-xs font-bold text-amber-300">
             <Clock className="w-4 h-4" />
-            <span>Pending: ${totalPending.toLocaleString()}</span>
+            <span>Pending: ${totalPending.toLocaleString("en-US")}</span>
           </div>
         </div>
       </div>
@@ -209,9 +209,9 @@ export const FinanceView: React.FC<FinanceViewProps> = ({
       {/* KPI Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {[
-          { label: "Total Revenue (Paid)", value: `$${totalRevenue.toLocaleString()}`, icon: DollarSign, color: "emerald" },
-          { label: "Escrow Held (Pending)", value: `$${totalPending.toLocaleString()}`, icon: Wallet, color: "amber" },
-          { label: "Refunds Requested", value: `$${totalRefundRequested.toLocaleString()}`, icon: RefreshCcw, color: "rose" },
+          { label: "Total Revenue (Paid)", value: `$${totalRevenue.toLocaleString("en-US")}`, icon: DollarSign, color: "emerald" },
+          { label: "Escrow Held (Pending)", value: `$${totalPending.toLocaleString("en-US")}`, icon: Wallet, color: "amber" },
+          { label: "Refunds Requested", value: `$${totalRefundRequested.toLocaleString("en-US")}`, icon: RefreshCcw, color: "rose" },
           { label: "Cases in Escrow", value: escrowCases.length.toString(), icon: PiggyBank, color: "blue" },
         ].map((kpi) => (
           <div key={kpi.label} className="bg-white/95 rounded-2xl p-5 border border-slate-200 shadow-sm flex items-start gap-3">
@@ -311,7 +311,7 @@ export const FinanceView: React.FC<FinanceViewProps> = ({
                         </td>
                         <td className="py-3 font-semibold capitalize text-slate-800">{p.id}</td>
                         <td className="py-3">
-                          <span className="font-black text-slate-900">${p.amountUsd.toLocaleString()}</span>
+                          <span className="font-black text-slate-900">${p.amountUsd.toLocaleString("en-US")}</span>
                           <span className="text-slate-500 ml-1">{p.currency || "USD"}</span>
                         </td>
                         <td className="py-3">
@@ -322,7 +322,7 @@ export const FinanceView: React.FC<FinanceViewProps> = ({
                         <td className="py-3 text-slate-600 capitalize">{p.paymentMethod || "—"}</td>
                         <td className="py-3 font-mono text-[11px] text-slate-700">{p.receiptNumber || "—"}</td>
                         <td className="py-3 font-mono text-[11px] text-slate-700">{p.gatewayReference || "—"}</td>
-                        <td className="py-3 text-slate-600">{p.paidAt ? new Date(p.paidAt).toLocaleDateString() : "—"}</td>
+                        <td className="py-3 text-slate-600">{p.paidAt ? new Date(p.paidAt).toLocaleDateString("en-US") : "—"}</td>
                         <td className="py-3">
                           {p.status === "completed" ? (
                             p.reconciled ? (
@@ -373,7 +373,7 @@ export const FinanceView: React.FC<FinanceViewProps> = ({
                       </div>
                       <div className="text-right">
                         <div className="text-xs text-slate-500">Total Contract Value</div>
-                        <div className="text-xl font-black text-emerald-700">${c.quote?.totalCostUsd?.toLocaleString() || "—"}</div>
+                        <div className="text-xl font-black text-emerald-700">${c.quote?.totalCostUsd?.toLocaleString("en-US") || "—"}</div>
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -383,12 +383,12 @@ export const FinanceView: React.FC<FinanceViewProps> = ({
                             <div className="font-bold text-slate-900">{p.name}</div>
                             {p.status === "completed" && (
                               <div className="text-slate-500 text-[11px] mt-0.5">
-                                {p.paidAt ? `Paid: ${new Date(p.paidAt).toLocaleDateString()}` : ""} · {p.transactionId || "—"}
+                                {p.paidAt ? `Paid: ${new Date(p.paidAt).toLocaleDateString("en-US")}` : ""} · {p.transactionId || "—"}
                               </div>
                             )}
                           </div>
                           <div className="flex items-center gap-3 shrink-0">
-                            <span className="font-black text-slate-900">${p.amountUsd.toLocaleString()}</span>
+                            <span className="font-black text-slate-900">${p.amountUsd.toLocaleString("en-US")}</span>
                             <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${getStatusBadge(p.status)}`}>{p.status}</span>
                           </div>
                         </div>
@@ -449,7 +449,7 @@ export const FinanceView: React.FC<FinanceViewProps> = ({
                                     onClick={() => { setRefundModal({ case: c, stageId }); setRefundAmount(p.amountUsd); }}
                                     className="px-3 py-1.5 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-800 font-bold cursor-pointer text-[10px] border border-rose-200"
                                   >
-                                    Initiate (${p.amountUsd.toLocaleString()})
+                                    Initiate (${p.amountUsd.toLocaleString("en-US")})
                                   </button>
                                 )
                               ) : (
@@ -476,9 +476,9 @@ export const FinanceView: React.FC<FinanceViewProps> = ({
                     <div key={r.id} className="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between gap-3 flex-wrap text-xs">
                       <div>
                         <div className="font-bold text-slate-900">{r.patientName}</div>
-                        <div className="text-slate-600 mt-0.5">Stage: <strong>{r.paymentStageId}</strong> · Amount: <strong>${r.amountUsd.toLocaleString()}</strong></div>
+                        <div className="text-slate-600 mt-0.5">Stage: <strong>{r.paymentStageId}</strong> · Amount: <strong>${r.amountUsd.toLocaleString("en-US")}</strong></div>
                         <div className="text-slate-500 mt-0.5">Reason: {r.reason}</div>
-                        <div className="text-slate-400 mt-0.5 text-[11px]">By {r.requestedByName} · {new Date(r.requestedAt).toLocaleString()}</div>
+                        <div className="text-slate-400 mt-0.5 text-[11px]">By {r.requestedByName} · {new Date(r.requestedAt).toLocaleString("en-US")}</div>
                       </div>
                       <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full ${getRefundStatusBadge(r.status)}`}>
                         {r.status}
@@ -540,10 +540,10 @@ export const FinanceView: React.FC<FinanceViewProps> = ({
                           <div className="font-mono text-[10px] text-slate-500">{item.caseId}</div>
                         </td>
                         <td className="py-3 font-semibold capitalize text-slate-800">{item.id}</td>
-                        <td className="py-3 font-black text-slate-900">${item.amountUsd.toLocaleString()}</td>
+                        <td className="py-3 font-black text-slate-900">${item.amountUsd.toLocaleString("en-US")}</td>
                         <td className="py-3 font-mono text-[11px] text-slate-700">{item.receiptNumber || "—"}</td>
                         <td className="py-3 font-mono text-[11px] text-slate-700">{item.gatewayReference || "—"}</td>
-                        <td className="py-3 text-slate-600">{item.paidAt ? new Date(item.paidAt).toLocaleDateString() : "—"}</td>
+                        <td className="py-3 text-slate-600">{item.paidAt ? new Date(item.paidAt).toLocaleDateString("en-US") : "—"}</td>
                         <td className="py-3">
                           {item.reconciled ? (
                             <span className="flex items-center gap-1 text-[10px] font-bold text-emerald-700">
@@ -603,7 +603,7 @@ export const FinanceView: React.FC<FinanceViewProps> = ({
                       </div>
                       {c.billingDisputeAccessGrants && c.billingDisputeAccessGrants.length > 0 && (
                         <div className="text-xs text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-xl">
-                          Clinical access granted — expires {new Date(c.billingDisputeAccessGrants[c.billingDisputeAccessGrants.length - 1].expiresAt!).toLocaleString()}
+                          Clinical access granted — expires {new Date(c.billingDisputeAccessGrants[c.billingDisputeAccessGrants.length - 1].expiresAt!).toLocaleString("en-US")}
                         </div>
                       )}
                     </div>
@@ -669,7 +669,7 @@ export const FinanceView: React.FC<FinanceViewProps> = ({
             <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-700">
               <div>Patient: <strong>{refundModal.case.patientName}</strong></div>
               <div>Payment Stage: <strong className="capitalize">{refundModal.stageId}</strong></div>
-              <div>Original Amount: <strong>${refundModal.case.payments.find((p) => p.id === refundModal.stageId)?.amountUsd.toLocaleString()}</strong></div>
+              <div>Original Amount: <strong>${refundModal.case.payments.find((p) => p.id === refundModal.stageId)?.amountUsd.toLocaleString("en-US")}</strong></div>
             </div>
             {refundSaved ? (
               <div className="flex items-center gap-2 text-emerald-700 font-bold text-sm">

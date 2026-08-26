@@ -74,7 +74,7 @@ export const PatientLegalConsentsView: React.FC<PatientLegalConsentsViewProps> =
                 <p className="text-xs text-slate-500 leading-relaxed">{consent.description}</p>
                 {consent.agreed && consent.timestamp && (
                   <div className="text-[11px] text-slate-400 font-mono flex items-center gap-2 pt-0.5">
-                    <span suppressHydrationWarning>Signed on: {new Date(consent.timestamp).toLocaleDateString()}</span>
+                    <span suppressHydrationWarning>Signed on: {new Date(consent.timestamp).toLocaleDateString("en-US")}</span>
                     <span>•</span>
                     <span>IP: {consent.ipAddress || "185.120.45.10"}</span>
                     {consent.digitalSignature && (

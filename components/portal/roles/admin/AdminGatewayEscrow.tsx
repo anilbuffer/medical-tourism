@@ -103,7 +103,7 @@ export const AdminGatewayEscrow: React.FC<AdminGatewayEscrowProps> = ({ cases, o
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
         <div className="bg-white/95 rounded-2xl p-4 border border-slate-200 shadow-xs">
           <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Total Vault Held</span>
-          <div className="text-2xl font-black text-slate-900 mt-1">${totalLocked.toLocaleString()}</div>
+          <div className="text-2xl font-black text-slate-900 mt-1">${totalLocked.toLocaleString("en-US")}</div>
           <span className="text-[10px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full inline-block mt-2">
             Multi-Currency Escrow
           </span>
@@ -198,7 +198,7 @@ export const AdminGatewayEscrow: React.FC<AdminGatewayEscrowProps> = ({ cases, o
 
                   <td className="py-4">
                     <span className="font-mono font-black text-sm text-slate-900">
-                      ${(tx.amountUsd || 0).toLocaleString()}
+                      ${(tx.amountUsd || 0).toLocaleString("en-US")}
                     </span>
                   </td>
 

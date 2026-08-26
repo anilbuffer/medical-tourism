@@ -223,37 +223,49 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
   };
 
   return (
-    <div className="w-full bg-white rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl border border-slate-100 relative">
-      {/* Optional Close Button for Modals */}
-      {onClose && (
-        <button
-          onClick={onClose}
-          className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-900 flex items-center justify-center transition-colors z-10"
-          aria-label="Close"
-        >
-          <X className="w-4 h-4" />
-        </button>
-      )}
+    <div className={`w-full bg-white rounded-3xl shadow-xl border border-slate-100 flex flex-col relative ${isModal ? 'max-h-[90vh]' : ''}`}>
+      {/* Sticky Header */}
+      <div className="shrink-0 p-6 pb-4 sm:p-8 sm:pb-4 md:p-10 md:pb-4 border-b border-slate-100 relative z-10 bg-white rounded-t-3xl">
+        {/* Optional Close Button for Modals */}
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-900 flex items-center justify-center transition-colors z-20"
+            aria-label="Close"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        )}
 
-      {/* Top 2-Step Progress Indicator */}
-      <div className="grid grid-cols-2 gap-2 mb-8">
-        {/* Step 1 Bar */}
-        <div className={`h-1.5 rounded-full transition-all duration-300 ${step >= 1 ? "bg-gradient-to-r from-[#2ECDC5] to-[#3F4EB4]" : "bg-slate-200"}`}></div>
-        {/* Step 2 Bar */}
-        <div className={`h-1.5 rounded-full transition-all duration-300 ${step >= 2 ? "bg-gradient-to-r from-[#3F4EB4] to-[#283593]" : "bg-slate-200"}`}></div>
-      </div>
+        {/* Top 2-Step Progress Indicator */}
+        <div className={`grid grid-cols-2 gap-2 ${step !== 3 ? 'mb-4' : ''}`}>
+          <div className={`h-1.5 rounded-full transition-all duration-300 ${step >= 1 ? "bg-gradient-to-r from-[#2ECDC5] to-[#3F4EB4]" : "bg-slate-200"}`}></div>
+          <div className={`h-1.5 rounded-full transition-all duration-300 ${step >= 2 ? "bg-gradient-to-r from-[#3F4EB4] to-[#283593]" : "bg-slate-200"}`}></div>
+        </div>
 
-      {/* ================= STEP 1: INITIAL ENQUIRY ================= */}
-      {step === 1 && (
-        <form onSubmit={handleContinue} className="space-y-5 animate-in fade-in duration-200">
+        {step === 1 && (
           <div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight pr-8">
               Get a free consultation
             </h2>
             <p className="mt-1 text-sm text-slate-500 leading-relaxed">
               Tell us about your treatment needs — our care team will reach out within 24 hours.
             </p>
           </div>
+        )}
+        {step === 2 && (
+          <div>
+            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight pr-8">
+              Thank you. A few more questions for the hospital:
+            </h2>
+          </div>
+        )}
+      </div>
+
+      {/* ================= STEP 1: INITIAL ENQUIRY ================= */}
+      {step === 1 && (
+        <form onSubmit={handleContinue} className="flex flex-col flex-1 min-h-0 animate-in fade-in duration-200">
+          <div className={`flex-1 p-6 sm:p-8 md:p-10 pt-4 sm:pt-4 md:pt-4 space-y-5 ${isModal ? 'overflow-y-auto custom-scrollbar' : ''}`}>
 
           {/* Full Name */}
           <div className="space-y-1.5">
@@ -416,24 +428,23 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
             )}
           </div>
 
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full py-4 px-6 rounded-xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#283593]/20 hover:shadow-xl hover:shadow-[#283593]/30 hover:scale-[1.01] active:scale-[0.99] transition-all"
-          >
-            CONTINUE
-          </button>
+          </div>
+          {/* Submit Button Sticky Footer */}
+          <div className="shrink-0 p-6 pt-4 sm:p-8 sm:pt-4 md:p-10 md:pt-4 border-t border-slate-100 bg-white rounded-b-3xl relative z-10">
+            <button
+              type="submit"
+              className="w-full py-4 px-6 rounded-xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#283593]/20 hover:shadow-xl hover:shadow-[#283593]/30 hover:scale-[1.01] active:scale-[0.99] transition-all"
+            >
+              CONTINUE
+            </button>
+          </div>
         </form>
       )}
 
       {/* ================= STEP 2: HOSPITAL QUESTIONS ================= */}
       {step === 2 && (
-        <form onSubmit={handleSubmit} className="space-y-6 animate-in fade-in duration-200">
-          <div>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-              Thank you. A few more questions for the hospital:
-            </h2>
-          </div>
+        <form onSubmit={handleSubmit} className="flex flex-col flex-1 min-h-0 animate-in fade-in duration-200">
+          <div className={`flex-1 p-6 sm:p-8 md:p-10 pt-4 sm:pt-4 md:pt-4 space-y-6 ${isModal ? 'overflow-y-auto custom-scrollbar' : ''}`}>
 
           {/* Patient's age or date of birth */}
           <div className="space-y-1.5">
@@ -574,40 +585,43 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
             />
           </div>
 
-          {/* Action Buttons: Back + SUBMIT */}
-          <div className="pt-3 space-y-3 md:flex justify-between items-center md:space-y-0 gap-3">
-            <button
-              type="button"
-              onClick={() => {
-                setErrors({});
-                setStep(1);
-              }}
-              className="w-full py-3 px-4 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold text-sm transition-colors"
-            >
-              Back
-            </button>
+          </div>
+          {/* Action Buttons: Back + SUBMIT Sticky Footer */}
+          <div className="shrink-0 p-6 pt-4 sm:p-8 sm:pt-4 md:p-10 md:pt-4 border-t border-slate-100 bg-white rounded-b-3xl relative z-10">
+            <div className="space-y-3 md:flex justify-between items-center md:space-y-0 gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setErrors({});
+                  setStep(1);
+                }}
+                className="w-full md:w-auto py-3 px-8 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold text-sm transition-colors"
+              >
+                Back
+              </button>
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full py-4 px-6 rounded-xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#283593]/20 hover:shadow-xl hover:shadow-[#283593]/30 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-60 flex items-center justify-center gap-2"
-            >
-              {isSubmitting ? (
-                <>
-                  <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
-                  <span>SUBMITTING...</span>
-                </>
-              ) : (
-                <span>SUBMIT</span>
-              )}
-            </button>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full md:w-auto md:flex-1 py-4 px-6 rounded-xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#283593]/20 hover:shadow-xl hover:shadow-[#283593]/30 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-60 flex items-center justify-center gap-2"
+              >
+                {isSubmitting ? (
+                  <>
+                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                    <span>SUBMITTING...</span>
+                  </>
+                ) : (
+                  <span>SUBMIT</span>
+                )}
+              </button>
+            </div>
           </div>
         </form>
       )}
 
       {/* ================= STEP 3: CONFIRMATION ================= */}
       {step === 3 && (
-        <div className="py-8 text-center space-y-6 animate-in zoom-in-95 duration-300">
+        <div className={`flex-1 p-6 sm:p-8 md:p-10 text-center space-y-6 animate-in zoom-in-95 duration-300 ${isModal ? 'overflow-y-auto custom-scrollbar' : ''}`}>
           {/* Green Checkmark Circle */}
           <div className="w-16 h-16 rounded-full bg-[#2ECDC5]/15 text-[#2ECDC5] flex items-center justify-center mx-auto shadow-inner">
             <svg

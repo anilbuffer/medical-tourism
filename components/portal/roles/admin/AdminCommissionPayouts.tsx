@@ -110,17 +110,17 @@ export const AdminCommissionPayouts: React.FC<AdminCommissionPayoutsProps> = ({ 
                 </td>
 
                 <td className="py-4 font-mono font-bold text-slate-900">
-                  ${batch.grossAmountUsd.toLocaleString()}
+                  ${batch.grossAmountUsd.toLocaleString("en-US")}
                 </td>
 
                 <td className="py-4">
                   <span className="font-mono text-emerald-700 font-bold">
-                    ${batch.platformFeeUsd.toLocaleString()} ({batch.platformFeePercentage}%)
+                    ${batch.platformFeeUsd.toLocaleString("en-US")} ({batch.platformFeePercentage}%)
                   </span>
                 </td>
 
                 <td className="py-4 font-mono font-black text-sm text-[#3F4EB4]">
-                  ${batch.netPayoutUsd.toLocaleString()}
+                  ${batch.netPayoutUsd.toLocaleString("en-US")}
                 </td>
 
                 <td className="py-4 font-mono text-[10px] text-slate-500">
