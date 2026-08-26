@@ -22,6 +22,7 @@ import {
 import { VideoConsultationSDKModal } from "../modals/VideoConsultationSDKModal";
 import { DicomViewerModal } from "../modals/DicomViewerModal";
 import { ConsentSignModal } from "../modals/ConsentSignModal";
+import { WhatsAppContactModal } from "../modals/WhatsAppContactModal";
 
 interface OverviewTabProps {
   patientCase: PatientCase;
@@ -35,6 +36,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({ patientCase, onNavigat
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [dicomModalFileName, setDicomModalFileName] = useState<string | null>(null);
   const [selectedConsentToSign, setSelectedConsentToSign] = useState<ConsentRecord | null>(null);
+  const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
 
   // Tele-consultation consent status
   const teleConsentRecord = patientCase.consents.find(
@@ -180,6 +182,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({ patientCase, onNavigat
                 Message
               </button>
               <button
+                onClick={() => setIsWhatsAppOpen(true)}
                 className="flex-1 bg-gradient-to-b from-[#2ECDC5] to-[#28b8b0] hover:from-[#28b8b0] hover:to-[#22a49d] text-white py-3 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all shadow-[0_6px_32px_rgba(0,0,0,0.06)] border border-[#28b8b0] cursor-pointer"
               >
                 <Phone className="w-4 h-4" />
@@ -245,6 +248,14 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({ patientCase, onNavigat
           consent={selectedConsentToSign}
         />
       )}
+
+      {/* WhatsApp / Call Modal */}
+      <WhatsAppContactModal
+        isOpen={isWhatsAppOpen}
+        onClose={() => setIsWhatsAppOpen(false)}
+        coordinatorName="Ananya Sharma"
+        caseId={patientCase.id}
+      />
     </div>
   );
 };

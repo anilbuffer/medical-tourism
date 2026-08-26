@@ -61,7 +61,7 @@ export const PatientView: React.FC<PatientViewProps> = ({
   const incompleteDocsCount =
     patientCase.documents.filter((d) => d.status === "incomplete").length || undefined;
 
-  // 7 Revised Navigation Domains Configuration matching exact user specification
+  // 7 Revised Navigation Domains Configuration matching human-centered flow
   const NAV_GROUPS: {
     id: PatientNavGroup;
     label: string;
@@ -81,117 +81,117 @@ export const PatientView: React.FC<PatientViewProps> = ({
       items: [
         {
           id: "overview",
-          label: "Active Journey Overview",
+          label: "Dashboard Overview",
           icon: LayoutDashboard,
         },
       ],
     },
     {
       id: "medical_records_group",
-      label: "My Medical Record",
+      label: "My Documents",
       icon: FileText,
       items: [
         {
           id: "docs_vault",
           aliasIds: ["documents"],
-          label: "Document Vault & DICOM Scans",
+          label: "Medical Documents & Scans",
           icon: Layers,
           badge: incompleteDocsCount,
         },
         {
           id: "prescriptions_history",
-          label: "Prescriptions & Health History",
+          label: "Medications & Health Notes",
           icon: FileText,
         },
       ],
     },
     {
       id: "consultations_group",
-      label: "Consultations",
+      label: "Doctor Video Call",
       icon: Video,
       items: [
         {
           id: "upcoming_video",
           aliasIds: ["consultation"],
-          label: "Upcoming Video Calls",
+          label: "Video Call with Doctor",
           icon: Video,
         },
         {
           id: "doctor_opinions",
-          label: "Doctor Opinions & Written Plans",
+          label: "Doctor's Notes & Advice",
           icon: Stethoscope,
         },
       ],
     },
     {
       id: "quote_payments_group",
-      label: "Quote & Payments",
+      label: "What's Included & Price",
       icon: CreditCard,
       items: [
         {
           id: "package_quote",
           aliasIds: ["quote"],
-          label: "Package Details & Quotation",
+          label: "What's Included",
           icon: CreditCard,
         },
         {
           id: "payment_escrow",
           aliasIds: ["payments"],
-          label: "Payment History & Escrow",
+          label: "Your Payments",
           icon: Receipt,
         },
       ],
     },
     {
       id: "travel_logistics_group",
-      label: "Travel & Logistics",
+      label: "Trip & Travel",
       icon: Plane,
       items: [
         {
           id: "visa_checklist",
           aliasIds: ["booking"],
-          label: "Visa Checklist & Letters",
+          label: "Visa & Entry Permission",
           icon: Globe,
         },
         {
           id: "flight_hotel",
-          label: "Flight & Accommodation Details",
+          label: "Flight & Hotel Stay",
           icon: Building2,
         },
         {
           id: "concierge_contact",
-          label: "On-Ground Concierge Contact",
+          label: "Your Driver & Assistance",
           icon: Car,
         },
       ],
     },
     {
       id: "recovery_group",
-      label: "Recovery & Follow Up",
+      label: "Recovery & Care",
       icon: HeartHandshake,
       items: [
         {
           id: "discharge_summary",
           aliasIds: ["recovery", "post_treatment"],
-          label: "Post-Op Discharge Summary",
+          label: "Discharge Summary & Care Plan",
           icon: FileText,
         },
         {
           id: "recovery_forms",
-          label: "Structured Recovery Check-in Forms",
+          label: "Daily Recovery Check-in",
           icon: Activity,
         },
       ],
     },
     {
       id: "privacy_consents_group",
-      label: "Privacy & Consents",
+      label: "Forms & Consents",
       icon: Lock,
       items: [
         {
           id: "legal_consents",
           aliasIds: ["consents"],
-          label: "Legal Consent History (Read-Only)",
+          label: "Your Signed Agreements",
           icon: ShieldCheck,
         },
       ],

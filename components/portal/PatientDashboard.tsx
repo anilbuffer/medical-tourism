@@ -484,12 +484,12 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
       default: {
         // Patient Portal (Default)
         return {
-          portalBadge: "International Patient Desk",
-          headerTitle: "Unified Patient Care Portal",
-          portalSubtitle: "End-to-End Medical Travel & Surgical Escrow Gateway",
-          roleTag: "International Patient (Verified)",
+          portalBadge: "Patient Portal",
+          headerTitle: "Welcome, Tariq",
+          portalSubtitle: "Everything you need for your treatment journey in one simple place",
+          roleTag: "Patient",
           userName: activeCase?.patientName || currentUser?.name || "Tariq Al-Mansoor",
-          userSubtitle: `${activeCase?.id || "PT-2026-089412"} • ${activeCase?.patientCountry || "United Arab Emirates"}`,
+          userSubtitle: `Case ID: ${activeCase?.id || "PT-2026-089412"} • ${activeCase?.patientCountry || "United Arab Emirates"}`,
           avatar: currentUser?.avatar,
           defaultTab: "overview",
           menus: [
@@ -501,38 +501,38 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
             },
             {
               id: "docs_vault",
-              label: "My Medical Record",
+              label: "My Documents",
               icon: FileText,
               subTabs: ["docs_vault", "prescriptions_history", "documents"],
               badge: activeCase?.documents.filter((d) => d.status === "incomplete").length || undefined,
             },
             {
               id: "upcoming_video",
-              label: "Consultations",
+              label: "Doctor Video Call",
               icon: Video,
               subTabs: ["upcoming_video", "doctor_opinions", "consultation"],
             },
             {
               id: "package_quote",
-              label: "Quote & Payments",
+              label: "What's Included & Price",
               icon: CreditCard,
               subTabs: ["package_quote", "payment_escrow", "quote", "payments"],
             },
             {
               id: "visa_checklist",
-              label: "Travel & Logistics",
+              label: "Trip & Travel",
               icon: Plane,
               subTabs: ["visa_checklist", "flight_hotel", "concierge_contact", "booking"],
             },
             {
               id: "discharge_summary",
-              label: "Recovery & Follow Up",
+              label: "Recovery & Care",
               icon: HeartHandshake,
               subTabs: ["discharge_summary", "recovery_forms", "recovery", "post_treatment"],
             },
             {
               id: "legal_consents",
-              label: "Privacy & Consents",
+              label: "Forms & Consents",
               icon: Lock,
               subTabs: ["legal_consents", "consents"],
             },

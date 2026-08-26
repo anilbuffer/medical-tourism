@@ -16,12 +16,16 @@ import { PatientCase } from "@/types/portal";
 interface WhatsAppContactModalProps {
   isOpen: boolean;
   onClose: () => void;
-  patientCase: PatientCase;
+  coordinatorName?: string;
+  caseId?: string;
+  patientCase?: PatientCase;
 }
 
 export const WhatsAppContactModal: React.FC<WhatsAppContactModalProps> = ({
   isOpen,
   onClose,
+  coordinatorName = "Ananya Sharma",
+  caseId,
   patientCase,
 }) => {
   const [message, setMessage] = useState(
@@ -47,13 +51,13 @@ export const WhatsAppContactModal: React.FC<WhatsAppContactModalProps> = ({
               <div className="relative">
                 <img
                   src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80"
-                  alt="Ananya Sharma"
+                  alt={coordinatorName}
                   className="w-12 h-12 rounded-full object-cover ring-2 ring-white/80 shadow-md"
                 />
                 <span className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-emerald-400 ring-2 ring-emerald-800" />
               </div>
               <div>
-                <h3 className="font-extrabold text-base leading-tight">Ananya Sharma</h3>
+                <h3 className="font-extrabold text-base leading-tight">{coordinatorName}</h3>
                 <div className="text-xs text-emerald-100 font-medium">Assigned Care Coordinator</div>
                 <div className="text-[10px] text-emerald-200 flex items-center gap-1 mt-0.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />

@@ -9,17 +9,17 @@ import {
   AlertCircle,
   Eye,
   Download,
-  Lock,
-  Sparkles,
-  ShieldCheck,
-  RefreshCw,
-  X,
-  FilePlus,
   Plus,
+  Phone,
+  MessageSquare,
+  HelpCircle,
+  Clock,
+  Sparkles,
 } from "lucide-react";
 import { PatientCase, PatientDocument } from "@/types/portal";
 import { usePortal } from "@/lib/portal/store";
 import { DicomViewerModal } from "../../modals/DicomViewerModal";
+import { WhatsAppContactModal } from "../../modals/WhatsAppContactModal";
 
 interface PatientDicomVaultViewProps {
   patientCase: PatientCase;
@@ -32,8 +32,9 @@ export const PatientDicomVaultView: React.FC<PatientDicomVaultViewProps> = ({ pa
   const [targetDocId, setTargetDocId] = useState<string | undefined>(undefined);
   const [docTitle, setDocTitle] = useState("");
   const [category, setCategory] = useState<PatientDocument["category"]>("scan_imaging");
-  const [simulatedFileName, setSimulatedFileName] = useState("Blood_Work_Report_v1.2_Revised.pdf");
+  const [simulatedFileName, setSimulatedFileName] = useState("Blood_Work_Report_Revised.pdf");
   const [isUploading, setIsUploading] = useState(false);
+  const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
 
   const handleUpload = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,7 +42,7 @@ export const PatientDicomVaultView: React.FC<PatientDicomVaultViewProps> = ({ pa
     setTimeout(() => {
       uploadDocument(
         patientCase.id,
-        docTitle || "Medical Scan / Diagnostic Report",
+        docTitle || "Medical Scan / Report",
         category,
         simulatedFileName,
         "3.8 MB",
@@ -56,7 +57,7 @@ export const PatientDicomVaultView: React.FC<PatientDicomVaultViewProps> = ({ pa
     setTargetDocId(doc.id);
     setDocTitle(doc.title);
     setCategory(doc.category);
-    setSimulatedFileName(`${doc.title.replace(".pdf", "")}_v1.2_complete.pdf`);
+    setSimulatedFileName(`${doc.title.replace(".pdf", "")}_clear_copy.pdf`);
     setUploadModalOpen(true);
   };
 
@@ -66,14 +67,14 @@ export const PatientDicomVaultView: React.FC<PatientDicomVaultViewProps> = ({ pa
       <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2ECDC5]/10 text-[#3F4EB4] text-xs font-extrabold uppercase tracking-wider mb-2 border border-[#2ECDC5]/20">
-            <Layers className="w-3.5 h-3.5 text-[#2ECDC5]" />
-            Diagnostic PACS & Document Vault
+            <FileText className="w-3.5 h-3.5 text-[#2ECDC5]" />
+            Your Medical Records
           </div>
           <h2 className="text-2xl font-black text-slate-900 tracking-tight">
-            Document Vault & DICOM Scans
+            Medical Documents & Scans
           </h2>
           <p className="text-slate-500 text-sm mt-1 max-w-xl">
-            Upload and view high-resolution volumetric CT/MRI DICOM scans, pathology reports, and verified passport records.
+            Upload and view your test results, MRI/CT scans, doctor letters, and passport copies in one secure place.
           </p>
         </div>
 
@@ -82,13 +83,13 @@ export const PatientDicomVaultView: React.FC<PatientDicomVaultViewProps> = ({ pa
             setTargetDocId(undefined);
             setDocTitle("");
             setCategory("scan_imaging");
-            setSimulatedFileName("Abdominal_CT_3D_Volumetric.dicom");
+            setSimulatedFileName("Abdominal_CT_Scan.pdf");
             setUploadModalOpen(true);
           }}
-          className="px-5 py-3 rounded-2xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white text-xs font-black flex items-center gap-2 shadow-xl shadow-[#283593]/20 active:scale-95 transition-all cursor-pointer"
+          className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white text-xs font-black flex items-center gap-2 shadow-xl shadow-[#283593]/20 hover:scale-105 active:scale-95 transition-all cursor-pointer shrink-0"
         >
           <Plus className="w-4 h-4" />
-          <span>Upload New Diagnostic File</span>
+          <span>Upload a Document</span>
         </button>
       </div>
 
@@ -96,140 +97,253 @@ export const PatientDicomVaultView: React.FC<PatientDicomVaultViewProps> = ({ pa
       <div
         onClick={() => {
           setTargetDocId(undefined);
-          setDocTitle("Diagnostic Imaging Series");
+          setDocTitle("New Medical Document");
           setCategory("scan_imaging");
-          setSimulatedFileName("Volumetric_Hepatic_Study.dicom");
+          setSimulatedFileName("Doctor_Report_Recent.pdf");
           setUploadModalOpen(true);
         }}
-        className="bg-white/95 border-2 border-dashed border-[#3F4EB4]/30 hover:border-[#2ECDC5] rounded-3xl p-8 text-center cursor-pointer transition-all duration-300 group hover:bg-[#2ECDC5]/5"
+        className="bg-white/95 border-2 border-dashed border-[#3F4EB4]/30 hover:border-[#2ECDC5] rounded-3xl p-8 text-center cursor-pointer transition-all duration-300 group hover:bg-[#2ECDC5]/5 shadow-[0_6px_32px_rgba(0,0,0,0.04)]"
       >
         <div className="w-14 h-14 rounded-2xl bg-[#3F4EB4]/10 text-[#3F4EB4] group-hover:bg-[#2ECDC5]/20 group-hover:text-[#2ECDC5] flex items-center justify-center mx-auto mb-3 transition-colors">
           <Upload className="w-6 h-6" />
         </div>
-        <h4 className="text-sm font-extrabold text-slate-900">
-          Drag and drop MRI / CT DICOM files, lab results, clinical history, or passport scans
+        <h4 className="text-base font-extrabold text-slate-900">
+          Click or drop files here to upload
         </h4>
-        <p className="text-xs text-slate-500 mt-1">
-          Supports DICOM (.dcm/.dicom), PDF, high-resolution JPEG, and ZIP archives up to 500 MB.
+        <p className="text-xs text-slate-500 mt-1 max-w-md mx-auto">
+          We accept photos, PDFs, scans, and CD/DVD medical files. Any size or format is supported.
         </p>
       </div>
 
-      {/* Documents Table */}
-      <div className="bg-white/95 backdrop-blur-xl rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-        <div className="p-5 border-b border-slate-100 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <FileText className="w-4 h-4 text-[#3F4EB4]" />
-            <h3 className="font-extrabold text-sm text-slate-900">Document Status Ledger</h3>
-          </div>
-          <span className="text-xs text-slate-500 font-bold">
-            {patientCase.documents.length} Records on File
+      {/* Human-Centered Document Cards Grid */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between px-1">
+          <h3 className="text-lg font-black text-slate-900 tracking-tight">
+            Your Uploaded Records ({patientCase.documents.length})
+          </h3>
+          <span className="text-xs text-slate-500 font-medium">
+            All files are reviewed by your medical team
           </span>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
-            <thead className="bg-slate-50 border-b border-slate-200/80 text-[11px] font-extrabold text-slate-600 uppercase tracking-wider">
-              <tr>
-                <th className="p-4">Document Name</th>
-                <th className="p-4">Category</th>
-                <th className="p-4">Upload Date</th>
-                <th className="p-4">Status</th>
-                <th className="p-4 text-center">Version</th>
-                <th className="p-4 text-right">Action</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100 font-sans">
-              {patientCase.documents.map((doc) => {
-                const latestVersion = doc.versions[doc.versions.length - 1];
-                const isDicom = doc.title.toLowerCase().includes("dicom") || doc.title.toLowerCase().includes("mri");
-                const isPassport = doc.title.toLowerCase().includes("passport");
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {patientCase.documents.map((doc) => {
+            const latestVersion = doc.versions?.[0] || doc.versions?.[doc.versions.length - 1];
+            const uploadDate = latestVersion?.uploadedAt
+              ? new Date(latestVersion.uploadedAt).toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                })
+              : "Recent";
+            const fileSize = latestVersion?.fileSize || "3.2 MB";
+            const fileName = latestVersion?.fileName || doc.title;
 
-                return (
-                  <tr key={doc.id} className="hover:bg-slate-50/80 transition-colors">
-                    <td className="p-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-slate-100 text-[#3F4EB4] flex items-center justify-center shrink-0 border border-slate-200">
-                          {isDicom ? <Layers className="w-4 h-4" /> : <FileText className="w-4 h-4" />}
-                        </div>
-                        <div>
-                          <div className="font-extrabold text-slate-900">{doc.title}</div>
-                          <div className="text-[11px] text-slate-500">
-                            {latestVersion?.fileSize || "2.4 MB"}
-                          </div>
-                        </div>
-                      </div>
-                    </td>
+            return (
+              <div
+                key={doc.id}
+                className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-[0_6px_32px_rgba(0,0,0,0.06)] flex flex-col justify-between hover:shadow-xl hover:shadow-slate-200/40 transition-all group"
+              >
+                <div>
+                  {/* Card Header: Icon & Status Dot */}
+                  <div className="flex items-start justify-between gap-3 mb-4">
+                    <div
+                      className={`w-14 h-14 rounded-2xl flex items-center justify-center ${
+                        doc.status === "reviewed"
+                          ? "bg-emerald-100 text-emerald-700"
+                          : doc.status === "incomplete"
+                          ? "bg-amber-100 text-amber-700"
+                          : "bg-blue-100 text-[#3F4EB4]"
+                      }`}
+                    >
+                      <FileText className="w-7 h-7" />
+                    </div>
 
-                    <td className="p-4 text-slate-600 font-medium capitalize">
-                      {isDicom ? "Imaging Scan" : isPassport ? "Identity" : "Pathology"}
-                    </td>
+                    {doc.status === "reviewed" ? (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                        Received
+                      </span>
+                    ) : doc.status === "incomplete" ? (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-amber-50 text-amber-700 border border-amber-200 animate-pulse">
+                        <span className="w-2 h-2 rounded-full bg-amber-500" />
+                        Needs another copy
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-blue-50 text-[#3F4EB4] border border-blue-200">
+                        <span className="w-2 h-2 rounded-full bg-[#3F4EB4]" />
+                        Under Review
+                      </span>
+                    )}
+                  </div>
 
-                    <td className="p-4 text-slate-600 font-medium" suppressHydrationWarning>
-                      {latestVersion?.uploadedAt
-                        ? new Date(latestVersion.uploadedAt).toLocaleDateString("en-US", {
-                            month: "short",
-                            day: "numeric",
-                            year: "numeric",
-                          })
-                        : "Aug 24, 2026"}
-                    </td>
+                  {/* Title & Details */}
+                  <h4 className="font-black text-slate-900 text-base tracking-tight mb-1 group-hover:text-[#3F4EB4] transition-colors">
+                    {doc.title}
+                  </h4>
 
-                    <td className="p-4">
-                      {isPassport ? (
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                          <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                          🟢 Verified for Visa
-                        </span>
-                      ) : doc.status === "reviewed" ? (
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                          <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                          🟢 Reviewed
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-amber-50 text-amber-700 border border-amber-200 animate-pulse">
-                          <span className="w-2 h-2 rounded-full bg-amber-500" />
-                          🟡 Missing Page 2
-                        </span>
-                      )}
-                    </td>
+                  <p className="text-xs text-slate-500">
+                    Uploaded on {uploadDate} • {fileSize}
+                  </p>
 
-                    <td className="p-4 text-center font-mono text-xs font-bold text-slate-700">
-                      v1.{doc.versions.length > 1 ? "1" : "0"}
-                    </td>
+                  {/* Feedback / Explanatory Note if incomplete */}
+                  {doc.status === "incomplete" && (
+                    <div className="mt-3 p-3 bg-amber-50 rounded-2xl border border-amber-200/70 text-xs text-amber-900 font-medium">
+                      <strong>Note from coordinator:</strong>{" "}
+                      {doc.csFeedback || "Page was blurry or incomplete. Please upload a clear photo or scan."}
+                    </div>
+                  )}
 
-                    <td className="p-4 text-right">
-                      {isDicom ? (
-                        <button
-                          onClick={() => setSelectedDicomModal(doc.title)}
-                          className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-[#1d8983] to-[#1baba4] text-white font-extrabold text-xs shadow-md shadow-[#283593]/20 hover:scale-105 active:scale-95 transition-all cursor-pointer inline-flex items-center gap-1.5"
-                        >
-                          <Eye className="w-3.5 h-3.5" />
-                          <span>View DICOM</span>
-                        </button>
-                      ) : doc.status === "incomplete" ? (
-                        <button
-                          onClick={() => openReupload(doc)}
-                          className="px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs shadow-md shadow-amber-500/20 hover:scale-105 active:scale-95 transition-all cursor-pointer inline-flex items-center gap-1.5"
-                        >
-                          <RefreshCw className="w-3.5 h-3.5" />
-                          <span>Re-Upload</span>
-                        </button>
-                      ) : (
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 text-xs font-extrabold border border-slate-200">
-                          <Lock className="w-3.5 h-3.5 text-slate-500" />
-                          <span>Locked</span>
-                        </span>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                  {doc.status === "reviewed" && (
+                    <p className="mt-2 text-xs text-emerald-700 font-medium flex items-center gap-1">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      Doctor verified & ready
+                    </p>
+                  )}
+                </div>
+
+                {/* Card Actions */}
+                <div className="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+                  {doc.status === "incomplete" ? (
+                    <button
+                      onClick={() => openReupload(doc)}
+                      className="w-full py-2.5 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs transition-colors cursor-pointer flex items-center justify-center gap-1.5 shadow-sm"
+                    >
+                      <Upload className="w-3.5 h-3.5" />
+                      <span>Upload Clear Copy</span>
+                    </button>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => setSelectedDicomModal(fileName)}
+                        className="flex-1 py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                      >
+                        <Eye className="w-3.5 h-3.5 text-[#3F4EB4]" />
+                        <span>View</span>
+                      </button>
+
+                      <button
+                        onClick={() => {
+                          alert(`Downloading ${doc.title}...`);
+                        }}
+                        className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-colors cursor-pointer"
+                        title="Download file"
+                      >
+                        <Download className="w-4 h-4" />
+                      </button>
+                    </>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
-      {/* DICOM Modal */}
+      {/* Human Helper Banner */}
+      <div className="bg-gradient-to-r from-[#141d60] via-[#1b2360] to-[#101e76] rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#2ECDC5]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="flex items-center gap-4 relative z-10">
+          <img
+            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80"
+            alt="Ananya Sharma"
+            className="w-16 h-16 rounded-full object-cover ring-4 ring-white/20 shadow-lg shrink-0"
+          />
+          <div>
+            <h4 className="font-extrabold text-base text-white">Need help sending your files?</h4>
+            <p className="text-xs text-slate-200 mt-0.5">
+              If uploading is tricky, you can take a phone photo and send it directly to Ananya on WhatsApp.
+            </p>
+          </div>
+        </div>
+
+        <button
+          onClick={() => setIsWhatsAppOpen(true)}
+          className="relative z-10 px-6 py-3 rounded-2xl bg-[#2ECDC5] hover:bg-[#28b8b0] text-slate-950 font-black text-xs transition-all shadow-lg hover:scale-105 active:scale-95 cursor-pointer shrink-0 flex items-center gap-2"
+        >
+          <MessageSquare className="w-4 h-4" />
+          <span>Send via WhatsApp</span>
+        </button>
+      </div>
+
+      {/* Upload Modal */}
+      {uploadModalOpen && (
+        <div className="fixed inset-0 z-[120] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl w-full max-w-lg p-6 sm:p-8 space-y-5 shadow-2xl border border-slate-200 animate-in fade-in duration-200">
+            <div>
+              <h3 className="text-xl font-black text-slate-900 tracking-tight">
+                {targetDocId ? "Upload New Copy" : "Upload Medical Document"}
+              </h3>
+              <p className="text-xs text-slate-500 mt-1">
+                Select your file or photo. Your care team will be notified immediately.
+              </p>
+            </div>
+
+            <form onSubmit={handleUpload} className="space-y-4 text-xs">
+              <div>
+                <label className="text-slate-700 font-bold block mb-1.5">Document Name</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Recent Blood Test, Liver MRI Scan"
+                  value={docTitle}
+                  onChange={(e) => setDocTitle(e.target.value)}
+                  className="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-xs font-semibold text-slate-900 focus:outline-none focus:border-[#2ECDC5]"
+                />
+              </div>
+
+              <div>
+                <label className="text-slate-700 font-bold block mb-1.5">Category</label>
+                <select
+                  value={category}
+                  onChange={(e: any) => setCategory(e.target.value)}
+                  className="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-xs font-bold text-slate-900"
+                >
+                  <option value="scan_imaging">Scan / MRI / CT / X-Ray</option>
+                  <option value="medical_report">Blood Test / Lab Report</option>
+                  <option value="prescription">Doctor Prescription / Letter</option>
+                  <option value="passport_id">Passport / ID Document</option>
+                  <option value="other">Other Document</option>
+                </select>
+              </div>
+
+              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-center">
+                <div className="w-10 h-10 rounded-xl bg-[#3F4EB4]/10 text-[#3F4EB4] flex items-center justify-center mx-auto mb-2">
+                  <FileText className="w-5 h-5" />
+                </div>
+                <div className="font-bold text-slate-800 text-xs">{simulatedFileName}</div>
+                <span className="text-[11px] text-slate-400">Ready to attach (3.8 MB)</span>
+              </div>
+
+              <div className="flex gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setUploadModalOpen(false)}
+                  className="flex-1 py-3.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-colors cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isUploading}
+                  className="flex-1 py-3.5 rounded-2xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-black text-xs shadow-lg shadow-[#283593]/25 active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-2"
+                >
+                  {isUploading ? (
+                    <span>Uploading...</span>
+                  ) : (
+                    <>
+                      <Upload className="w-4 h-4" />
+                      <span>Save & Submit</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* DICOM / Viewer Modal */}
       {selectedDicomModal && (
         <DicomViewerModal
           isOpen={!!selectedDicomModal}
@@ -238,62 +352,13 @@ export const PatientDicomVaultView: React.FC<PatientDicomVaultViewProps> = ({ pa
         />
       )}
 
-      {/* Upload/Re-Upload Modal */}
-      {uploadModalOpen && (
-        <div className="fixed inset-0 z-[120] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl w-full max-w-lg p-6 space-y-4 shadow-2xl border border-slate-200">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-              <h3 className="text-base font-extrabold text-slate-900">
-                {targetDocId ? "Re-Upload Revised Document" : "Upload Medical Document"}
-              </h3>
-              <button onClick={() => setUploadModalOpen(false)} className="p-1 rounded-lg text-slate-400 hover:text-slate-600">
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <form onSubmit={handleUpload} className="space-y-4">
-              <div>
-                <label className="text-xs font-bold text-slate-600 block mb-1">Document Title</label>
-                <input
-                  type="text"
-                  required
-                  value={docTitle}
-                  onChange={(e) => setDocTitle(e.target.value)}
-                  className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 font-bold"
-                  placeholder="e.g. Blood_Work_Report.pdf"
-                />
-              </div>
-
-              <div>
-                <label className="text-xs font-bold text-slate-600 block mb-1">Simulated File Name</label>
-                <input
-                  type="text"
-                  value={simulatedFileName}
-                  onChange={(e) => setSimulatedFileName(e.target.value)}
-                  className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 font-mono"
-                />
-              </div>
-
-              <div className="flex justify-end gap-2 pt-2">
-                <button
-                  type="button"
-                  onClick={() => setUploadModalOpen(false)}
-                  className="px-4 py-2 rounded-xl border text-xs font-bold text-slate-600"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={isUploading}
-                  className="px-5 py-2 rounded-xl bg-[#2ECDC5] text-slate-950 text-xs font-black shadow-md"
-                >
-                  {isUploading ? "Uploading..." : "Save to Vault"}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
+      {/* WhatsApp Modal */}
+      <WhatsAppContactModal
+        isOpen={isWhatsAppOpen}
+        onClose={() => setIsWhatsAppOpen(false)}
+        coordinatorName="Ananya Sharma"
+        caseId={patientCase.id}
+      />
     </div>
   );
 };

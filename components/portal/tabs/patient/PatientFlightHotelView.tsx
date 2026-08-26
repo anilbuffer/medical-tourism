@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   Plane,
   Building,
@@ -12,8 +12,12 @@ import {
   Sparkles,
   Users,
   ShieldCheck,
+  Phone,
+  MessageSquare,
+  Hotel,
 } from "lucide-react";
 import { PatientCase } from "@/types/portal";
+import { WhatsAppContactModal } from "../../modals/WhatsAppContactModal";
 
 interface PatientFlightHotelViewProps {
   patientCase: PatientCase;
@@ -22,7 +26,7 @@ interface PatientFlightHotelViewProps {
 export const PatientFlightHotelView: React.FC<PatientFlightHotelViewProps> = ({
   patientCase,
 }) => {
-  const itinerary = patientCase.itinerary;
+  const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
 
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
@@ -31,33 +35,36 @@ export const PatientFlightHotelView: React.FC<PatientFlightHotelViewProps> = ({
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2ECDC5]/10 text-[#3F4EB4] text-xs font-extrabold uppercase tracking-wider mb-2 border border-[#2ECDC5]/20">
             <Plane className="w-3.5 h-3.5 text-[#2ECDC5]" />
-            VIP Concierge & Travel Logistics
+            Your Travel Details
           </div>
           <h2 className="text-2xl font-black text-slate-900 tracking-tight">
-            Flight & Accommodation Details
+            Flight & Hotel Stay
           </h2>
           <p className="text-slate-500 text-sm mt-1 max-w-xl">
-            Flight manifest, 5-Star executive suite booking, and airport reception protocol in Delhi.
+            Confirmed flight itinerary to Delhi and your 5-Star executive apartment booking for you and your companion.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 text-xs font-extrabold text-emerald-700 bg-emerald-50 px-4 py-2 rounded-2xl border border-emerald-200">
-          <CheckCircle2 className="w-4 h-4" />
-          <span>Concierge Transfer Confirmed</span>
-        </div>
+        <button
+          onClick={() => setIsWhatsAppOpen(true)}
+          className="px-5 py-3 rounded-2xl bg-white border border-slate-200 hover:bg-slate-50 text-slate-800 text-xs font-bold flex items-center gap-2 shadow-xs transition-colors cursor-pointer shrink-0"
+        >
+          <Phone className="w-4 h-4 text-emerald-600" />
+          <span>Need flight/hotel changes?</span>
+        </button>
       </div>
 
       {/* Flight & Hotel Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Flight Details Card */}
-        <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-4">
+        <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-slate-100">
             <div className="flex items-center gap-2.5">
               <div className="w-9 h-9 rounded-xl bg-[#3F4EB4]/10 text-[#3F4EB4] flex items-center justify-center">
-                <Plane className="w-4 h-4" />
+                <Plane className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-extrabold text-sm text-slate-900">Inbound Flight Manifest</h3>
+                <h3 className="font-extrabold text-base text-slate-900">Your Flight to Delhi</h3>
                 <span className="text-[11px] text-slate-500">Dubai (DXB) → Delhi (DEL)</span>
               </div>
             </div>
@@ -69,68 +76,76 @@ export const PatientFlightHotelView: React.FC<PatientFlightHotelViewProps> = ({
 
           <div className="space-y-3 text-xs">
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
-              <span className="text-slate-500 font-medium">Flight Number:</span>
-              <span className="font-extrabold text-slate-900 text-sm">EK-512 (Emirates)</span>
+              <span className="text-slate-500 font-medium">Airline & Flight:</span>
+              <span className="font-extrabold text-slate-900 text-sm">Emirates (EK-512)</span>
             </div>
 
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
-              <span className="text-slate-500 font-medium">Arrival Schedule:</span>
-              <span className="font-bold text-slate-900">Aug 31, 2026 at 04:15 AM (IST)</span>
+              <span className="text-slate-500 font-medium">Landing in Delhi:</span>
+              <span className="font-bold text-slate-900">Monday, Aug 31 at 04:15 AM (IST)</span>
             </div>
 
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
               <span className="text-slate-500 font-medium">Arrival Terminal:</span>
-              <span className="font-bold text-slate-900">Terminal 3 (DEL International)</span>
+              <span className="font-bold text-slate-900">Terminal 3 (International Arrivals)</span>
             </div>
 
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
-              <span className="text-slate-500 font-medium">Attendants / Companions:</span>
-              <span className="font-bold text-slate-900">1 Escort (Faris Al-Mansoor)</span>
+              <span className="text-slate-500 font-medium">Passengers:</span>
+              <span className="font-bold text-slate-900">Tariq Al-Mansoor & Faris Al-Mansoor</span>
             </div>
           </div>
         </div>
 
         {/* 5-Star Hotel Details Card */}
-        <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-4">
+        <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-slate-100">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center">
-                <Building className="w-4 h-4" />
+              <div className="w-9 h-9 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center">
+                <Hotel className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-extrabold text-sm text-slate-900">Executive Apartment Suite</h3>
-                <span className="text-[11px] text-slate-500">Attendant & Post-Op Recovery</span>
+                <h3 className="font-extrabold text-base text-slate-900">5-Star Apartment Suite</h3>
+                <span className="text-[11px] text-slate-500">For Companion & Post-Op Stay</span>
               </div>
             </div>
 
             <span className="px-3 py-1 rounded-full text-xs font-black bg-amber-50 text-amber-800 border border-amber-200">
-              5-Star Reserved
+              Reserved & Paid
             </span>
           </div>
 
           <div className="space-y-3 text-xs">
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
               <span className="text-slate-500 font-medium">Hotel Partner:</span>
-              <span className="font-extrabold text-slate-900">The Oberoi Gurugram</span>
+              <span className="font-extrabold text-slate-900 text-sm">The Oberoi Gurugram</span>
             </div>
 
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
-              <span className="text-slate-500 font-medium">Room Category:</span>
+              <span className="text-slate-500 font-medium">Room Type:</span>
               <span className="font-bold text-slate-900">Executive Suite with Kitchenette</span>
             </div>
 
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
-              <span className="text-slate-500 font-medium">Stay Duration:</span>
-              <span className="font-bold text-slate-900">Aug 31 – Sep 18, 2026 (18 Nights)</span>
+              <span className="text-slate-500 font-medium">Dates of Stay:</span>
+              <span className="font-bold text-slate-900">Aug 31 – Sep 18 (18 Nights)</span>
             </div>
 
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
-              <span className="text-slate-500 font-medium">Booking Reference:</span>
-              <span className="font-mono font-bold text-slate-900">OB-MED-89412-UAE</span>
+              <span className="text-slate-500 font-medium">Distance to Hospital:</span>
+              <span className="font-bold text-emerald-700">5 minutes from Medanta (Free Chauffeur)</span>
             </div>
           </div>
         </div>
       </div>
+
+      {/* WhatsApp Modal */}
+      <WhatsAppContactModal
+        isOpen={isWhatsAppOpen}
+        onClose={() => setIsWhatsAppOpen(false)}
+        coordinatorName="Ananya Sharma"
+        caseId={patientCase.id}
+      />
     </div>
   );
 };
