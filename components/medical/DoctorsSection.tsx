@@ -107,10 +107,10 @@ export const DoctorsSection = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-6">
           <div className="max-w-2xl">
-            <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2ECDC5] mb-2">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/70 text-[#0D9488] text-xs font-bold uppercase tracking-wider mb-3">
               {t.doctors.eyebrow}
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3851A2] tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
               {t.doctors.heading}
             </h2>
             <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -125,7 +125,7 @@ export const DoctorsSection = () => {
                 onClick={handlePrev}
                 disabled={totalItems <= 1}
                 aria-label="Previous Doctor"
-                className="w-10 h-10 rounded-xl bg-slate-50 hover:bg-[#3851A2] text-slate-700 hover:text-white border border-slate-200/80 hover:border-[#3851A2] shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed group"
+                className="w-10 h-10 rounded-xl bg-slate-50 hover:bg-[#0D9488] text-slate-700 hover:text-white border border-slate-200/80 hover:border-[#0D9488] shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed group cursor-pointer"
               >
                 <ChevronLeft className="w-5 h-5 rtl:rotate-180 group-hover:-translate-x-0.5 rtl:group-hover:translate-x-0.5 transition-transform" />
               </button>
@@ -133,7 +133,7 @@ export const DoctorsSection = () => {
                 onClick={handleNext}
                 disabled={totalItems <= 1}
                 aria-label="Next Doctor"
-                className="w-10 h-10 rounded-xl bg-slate-50 hover:bg-[#3851A2] text-slate-700 hover:text-white border border-slate-200/80 hover:border-[#3851A2] shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed group"
+                className="w-10 h-10 rounded-xl bg-slate-50 hover:bg-[#0D9488] text-slate-700 hover:text-white border border-slate-200/80 hover:border-[#0D9488] shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed group cursor-pointer"
               >
                 <ChevronRight className="w-5 h-5 rtl:rotate-180 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform" />
               </button>
@@ -147,9 +147,9 @@ export const DoctorsSection = () => {
             <button
               key={spec}
               onClick={() => setActiveSpecialty(spec)}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap shrink-0 ${activeSpecialty === spec
-                ? "bg-[#3851A2] text-white shadow-md shadow-teal-950/20 scale-[1.02]"
-                : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer ${activeSpecialty === spec
+                ? "bg-slate-900 text-[#2ECDC5] border border-teal-500/40 shadow-sm scale-[1.02]"
+                : "bg-white text-slate-700 hover:bg-teal-50 hover:text-teal-900 border border-slate-200"
                 }`}
             >
               {spec}
@@ -178,7 +178,7 @@ export const DoctorsSection = () => {
                 <div
                   key={doc.id}
                   className={`w-[85vw] sm:w-[78vw] md:w-[calc(33.333%-14px)] lg:w-[385px] shrink-0 snap-start bg-white rounded-3xl overflow-hidden border ${isCurrent ? "border-teal-400 shadow-luxury-hover" : "border-slate-200/80 shadow-card"
-                    } hover:shadow-luxury-hover transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5`}
+                    } hover:shadow-luxury-hover hover:border-teal-400 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5`}
                 >
                   {/* Doctor Avatar Header */}
                   <div className="relative h-60 w-full overflow-hidden bg-slate-100">
@@ -197,7 +197,7 @@ export const DoctorsSection = () => {
                     </div>
 
                     {/* Experience Badge */}
-                    <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-[#283593]/90 backdrop-blur-md border border-[#3F4EB4]/40 text-[#2ECDC5] text-[11px] font-bold">
+                    <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-slate-900/90 backdrop-blur-md border border-teal-500/30 text-teal-300 text-[11px] font-bold">
                       {doc.experienceYears}+ {t.doctors.experience}
                     </div>
                   </div>
@@ -206,10 +206,10 @@ export const DoctorsSection = () => {
                   <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                     <div className="space-y-2">
                       <div>
-                        <h3 className="text-lg font-extrabold text-slate-900 group-hover:text-blue-700 transition-colors">
+                        <h3 className="text-lg font-extrabold text-slate-900 group-hover:text-teal-700 transition-colors">
                           {language === "ar" ? doc.nameAr : doc.name}
                         </h3>
-                        <p className="text-xs font-semibold text-blue-700">
+                        <p className="text-xs font-semibold text-teal-700">
                           {language === "ar" ? doc.titleAr : doc.title}
                         </p>
                       </div>

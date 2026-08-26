@@ -14,8 +14,8 @@ export const QuickEntryCards = () => {
       description: t.quickEntry.card1Desc,
       cta: t.quickEntry.card1Cta,
       badge: "50+ Procedures",
-      accent: "from-[#283593] to-[#3F4EB4]",
-      borderHover: "group-hover:border-[#2ECDC5]/50",
+      accent: "from-[#0D9488] to-[#0A2E50]",
+      borderHover: "group-hover:border-teal-400",
       action: () => {
         const el = document.getElementById("specialties");
         if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -27,8 +27,8 @@ export const QuickEntryCards = () => {
       description: t.quickEntry.card2Desc,
       cta: t.quickEntry.card2Cta,
       badge: "120+ Consultants",
-      accent: "from-[#3F4EB4] to-[#283593]",
-      borderHover: "group-hover:border-[#3F4EB4]/50",
+      accent: "from-[#0284C7] to-[#0D9488]",
+      borderHover: "group-hover:border-teal-400",
       action: () => {
         const el = document.getElementById("doctors");
         if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -40,8 +40,8 @@ export const QuickEntryCards = () => {
       description: t.quickEntry.card3Desc,
       cta: t.quickEntry.card3Cta,
       badge: "24h Response",
-      accent: "from-[#2ECDC5] to-[#3F4EB4]",
-      borderHover: "group-hover:border-[#2ECDC5]/50",
+      accent: "from-[#2ECDC5] to-[#0284C7]",
+      borderHover: "group-hover:border-teal-400",
       action: () => openIntake("Medical Opinion"),
     },
     {
@@ -50,8 +50,8 @@ export const QuickEntryCards = () => {
       description: t.quickEntry.card4Desc,
       cta: t.quickEntry.card4Cta,
       badge: "End-to-End VIP",
-      accent: "from-[#283593] to-[#2ECDC5]",
-      borderHover: "group-hover:border-[#2ECDC5]/50",
+      accent: "from-[#0A2E50] to-[#0D9488]",
+      borderHover: "group-hover:border-teal-400",
       action: () => openChat("I'd like to plan my medical trip to India."),
     },
   ];
@@ -61,10 +61,10 @@ export const QuickEntryCards = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2ECDC5] mb-2">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/70 text-[#0D9488] text-xs font-bold uppercase tracking-wider mb-3">
             Quick Patient Entry
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3851A2] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
             {t.quickEntry.heading}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto">
@@ -80,23 +80,23 @@ export const QuickEntryCards = () => {
               <div
                 key={idx}
                 onClick={card.action}
-                className={`group relative bg-white rounded-2xl p-6 shadow-card hover:shadow-luxury-hover border border-slate-200/80 ${card.borderHover} transition-all duration-300 cursor-pointer flex flex-col justify-between hover:-translate-y-1.5`}
+                className={`group relative bg-white rounded-3xl p-6 shadow-md shadow-slate-200/40 hover:shadow-2xl border border-slate-200/80 ${card.borderHover} transition-all duration-300 cursor-pointer flex flex-col justify-between hover:-translate-y-1.5`}
               >
                 <div>
                   {/* Top Bar with Icon & Badge */}
                   <div className="flex items-center justify-between mb-5">
                     <div
-                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${card.accent} flex items-center justify-center text-white shadow-md shadow-slate-900/10 group-hover:scale-110 transition-transform`}
+                      className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${card.accent} flex items-center justify-center text-white shadow-md shadow-teal-950/15 group-hover:scale-110 transition-transform`}
                     >
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 group-hover:bg-[#3F4EB4]/10 group-hover:text-[#3F4EB4] transition-colors">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 group-hover:bg-teal-50 group-hover:text-teal-700 transition-colors">
                       {card.badge}
                     </span>
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#3F4EB4] transition-colors mb-2">
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-teal-700 transition-colors mb-2">
                     {card.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -105,9 +105,9 @@ export const QuickEntryCards = () => {
                 </div>
 
                 {/* Bottom CTA Link */}
-                <div className="pt-6 mt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#3F4EB4] group-hover:text-[#283593]">
+                <div className="pt-6 mt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-teal-700 group-hover:text-teal-900">
                   <span>{card.cta}</span>
-                  <div className="w-7 h-7 rounded-full bg-[#3F4EB4]/10 group-hover:bg-[#283593] group-hover:text-white text-[#3F4EB4] flex items-center justify-center transition-colors">
+                  <div className="w-7 h-7 rounded-full bg-teal-50 group-hover:bg-[#2ECDC5] group-hover:text-slate-950 text-teal-700 flex items-center justify-center transition-colors">
                     <ArrowRight className="w-3.5 h-3.5 rtl:rotate-180" />
                   </div>
                 </div>
@@ -119,3 +119,4 @@ export const QuickEntryCards = () => {
     </section>
   );
 };
+

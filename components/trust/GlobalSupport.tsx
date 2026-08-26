@@ -24,10 +24,10 @@ export const GlobalSupport = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2ECDC5] mb-2">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/70 text-[#0D9488] text-xs font-bold uppercase tracking-wider mb-3">
             {t.support.eyebrow}
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3851A2] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
             {t.support.heading}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto">
@@ -41,13 +41,13 @@ export const GlobalSupport = () => {
             href="https://wa.me/971501234567"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-[#2ECDC5] hover:shadow-lg transition-all flex items-center gap-3 group"
+            className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-teal-400 hover:shadow-lg transition-all flex items-center gap-3 group"
           >
-            <div className="w-11 h-11 rounded-xl bg-[#2ECDC5]/15 text-[#1DA89F] flex items-center justify-center group-hover:bg-[#2ECDC5] group-hover:text-white transition-colors">
+            <div className="w-11 h-11 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center group-hover:bg-[#2ECDC5] group-hover:text-slate-950 transition-colors">
               <MessageSquare className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xs font-bold text-slate-900 group-hover:text-[#2ECDC5]">
+              <div className="text-xs font-bold text-slate-900 group-hover:text-teal-700">
                 {t.support.whatsappChat}
               </div>
               <div className="text-[11px] text-slate-500">Immediate coordinator reply</div>
@@ -56,13 +56,13 @@ export const GlobalSupport = () => {
 
           <button
             onClick={() => openChat("I'd like to schedule a phone call with the care desk.")}
-            className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-[#3F4EB4] hover:shadow-lg transition-all flex items-center gap-3 group text-left rtl:text-right"
+            className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-teal-400 hover:shadow-lg transition-all flex items-center gap-3 group text-left rtl:text-right cursor-pointer"
           >
-            <div className="w-11 h-11 rounded-xl bg-[#3F4EB4]/10 text-[#3F4EB4] flex items-center justify-center group-hover:bg-[#3F4EB4] group-hover:text-white transition-colors">
+            <div className="w-11 h-11 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center group-hover:bg-teal-600 group-hover:text-white transition-colors">
               <Phone className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xs font-bold text-slate-900 group-hover:text-blue-700">
+              <div className="text-xs font-bold text-slate-900 group-hover:text-teal-700">
                 {t.support.callDesk}
               </div>
               <div className="text-[11px] text-slate-500">24/7 International helpline</div>
@@ -71,13 +71,13 @@ export const GlobalSupport = () => {
 
           <button
             onClick={() => openChat("I want to book an exploratory video consultation.")}
-            className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-[#283593] hover:shadow-lg transition-all flex items-center gap-3 group text-left rtl:text-right"
+            className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-teal-400 hover:shadow-lg transition-all flex items-center gap-3 group text-left rtl:text-right cursor-pointer"
           >
-            <div className="w-11 h-11 rounded-xl bg-[#283593]/10 text-[#283593] flex items-center justify-center group-hover:bg-[#283593] group-hover:text-white transition-colors">
+            <div className="w-11 h-11 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center group-hover:bg-[#2ECDC5] group-hover:text-slate-950 transition-colors">
               <Video className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xs font-bold text-slate-900 group-hover:text-[#3F4EB4]">
+              <div className="text-xs font-bold text-slate-900 group-hover:text-teal-700">
                 {t.support.videoDesk}
               </div>
               <div className="text-[11px] text-slate-500">HD Virtual Consultation</div>
@@ -86,13 +86,13 @@ export const GlobalSupport = () => {
 
           <button
             onClick={() => openChat("I want to send my medical enquiry via email.")}
-            className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-[#2ECDC5] hover:shadow-lg transition-all flex items-center gap-3 group text-left rtl:text-right"
+            className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-teal-400 hover:shadow-lg transition-all flex items-center gap-3 group text-left rtl:text-right cursor-pointer"
           >
-            <div className="w-11 h-11 rounded-xl bg-[#2ECDC5]/10 text-[#1DA89F] flex items-center justify-center group-hover:bg-[#2ECDC5] group-hover:text-white transition-colors">
+            <div className="w-11 h-11 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center group-hover:bg-[#2ECDC5] group-hover:text-slate-950 transition-colors">
               <Mail className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xs font-bold text-slate-900 group-hover:text-[#2ECDC5]">
+              <div className="text-xs font-bold text-slate-900 group-hover:text-teal-700">
                 {t.support.emailDesk}
               </div>
               <div className="text-[11px] text-slate-500">care@vedara.health</div>

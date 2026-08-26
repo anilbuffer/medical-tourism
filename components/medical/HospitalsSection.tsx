@@ -19,10 +19,10 @@ export const HospitalsSection = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div className="max-w-3xl">
-            <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2ECDC5] mb-2">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/70 text-[#0D9488] text-xs font-bold uppercase tracking-wider mb-3">
               {t.hospitals.eyebrow}
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3851A2] tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
               {t.hospitals.heading}
             </h2>
             <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -31,20 +31,20 @@ export const HospitalsSection = () => {
           </div>
 
           <button
-            onClick={() => openIntake("Chandigarh Hospital Selection")}
-            className="inline-flex items-center gap-2 text-xs font-bold text-blue-700 hover:text-teal-800 tracking-wider uppercase group shrink-0"
+            onClick={() => openIntake("Hospital Selection")}
+            className="inline-flex items-center gap-2 text-xs font-bold text-teal-700 hover:text-teal-900 tracking-wider uppercase group shrink-0 cursor-pointer"
           >
             <span>{t.hospitals.exploreNetwork}</span>
             <ChevronRight className="w-4 h-4 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
           </button>
         </div>
 
-        {/* 4 Hospital Cards Grid (Matching Provided Screenshot) */}
+        {/* 4 Hospital Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {chandigarhHospitals.map((hosp) => (
             <div
               key={hosp.id}
-              className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-md shadow-slate-200/50 hover:shadow-2xl hover:border-[#2ECDC5]/60 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+              className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-md shadow-slate-200/50 hover:shadow-2xl hover:border-teal-400 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
               onClick={() => openIntake(`Hospital: ${hosp.name}`)}
             >
               {/* Top Hospital Photo */}
@@ -61,7 +61,7 @@ export const HospitalsSection = () => {
               <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                 <div>
                   {/* Hospital Title */}
-                  <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-700 transition-colors leading-snug">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-teal-700 transition-colors leading-snug">
                     {language === "ar" ? hosp.nameAr : hosp.name}
                   </h3>
 
@@ -91,7 +91,7 @@ export const HospitalsSection = () => {
                     {hosp.specialties.slice(0, 3).map((spec, i) => (
                       <span
                         key={i}
-                        className="px-2.5 py-1 rounded-full bg-[#3F4EB4]/10 text-[#3F4EB4] text-[11px] font-semibold border border-[#3F4EB4]/20"
+                        className="px-2.5 py-1 rounded-full bg-teal-50 text-teal-700 text-[11px] font-semibold border border-teal-200/70"
                       >
                         {spec}
                       </span>

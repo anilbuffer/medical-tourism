@@ -123,70 +123,64 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
       {/* Trigger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all border shadow-sm ${
-          lightMode
-            ? "bg-slate-100/90 text-slate-800 border-slate-200/90 hover:bg-slate-200/80"
-            : "bg-white/10 text-white border-white/20 hover:bg-white/20 hover:border-[#2ECDC5]/40"
-        } ${isOpen ? "ring-2 ring-[#2ECDC5]/40 border-[#2ECDC5]" : ""}`}
+        className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide transition-all border shadow-sm cursor-pointer ${lightMode
+          ? "bg-slate-100 text-slate-900 border-slate-300 hover:bg-slate-200"
+          : "bg-[#06203D] text-white border-teal-500/40 hover:bg-[#0A2E50] hover:border-[#2ECDC5]"
+          } ${isOpen ? "ring-2 ring-[#2ECDC5] border-[#2ECDC5]" : ""}`}
         aria-label="Language and Country Selector"
         aria-expanded={isOpen}
       >
         <Globe className="w-3.5 h-3.5 text-[#2ECDC5] shrink-0" />
-        <span className="font-bold tracking-wider">{language === "ar" ? "AR" : "EN"}</span>
+        <span className="font-extrabold tracking-wider">{language === "ar" ? "العربية (AR)" : "EN"}</span>
         <ChevronDown
-          className={`w-3 h-3 text-slate-400 transition-transform duration-200 ${
-            isOpen ? "rotate-180 text-[#2ECDC5]" : ""
-          }`}
+          className={`w-3.5 h-3.5 text-slate-300 transition-transform duration-200 ${isOpen ? "rotate-180 text-[#2ECDC5]" : ""
+            }`}
         />
       </button>
 
-      {/* Glassmorphic Dropdown Panel */}
+      {/* Solid High-Contrast Dropdown Panel */}
       {isOpen && (
         <div
-          className={`absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-80 origin-top-right rounded-2xl shadow-2xl z-50 overflow-hidden border backdrop-blur-2xl animate-in fade-in zoom-in-95 duration-150 ${
-            lightMode
-              ? "bg-white/98 text-slate-900 border-slate-200 shadow-slate-900/15"
-              : "bg-[#0B192C]/98 text-white border-slate-700/80 shadow-slate-950/70"
-          }`}
+          className={`absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-96 origin-top-right rounded-2xl shadow-2xl z-50 overflow-hidden border animate-in fade-in zoom-in-95 duration-150 ${lightMode
+            ? "bg-white text-slate-900 border-slate-200 shadow-slate-900/20"
+            : "bg-[#041326] text-white border-teal-500/40 shadow-2xl shadow-black ring-1 ring-white/10"
+            }`}
         >
           {/* Header Tab Switcher */}
           <div
-            className={`p-2 border-b grid grid-cols-2 gap-1 ${
-              lightMode ? "bg-slate-50/80 border-slate-100" : "bg-slate-900/60 border-slate-800"
-            }`}
+            className={`p-2 border-b grid grid-cols-2 gap-1.5 ${lightMode ? "bg-slate-100 border-slate-200" : "bg-[#020B17] border-teal-900/50"
+              }`}
           >
             <button
               onClick={() => setActiveTab("language")}
-              className={`py-1.5 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 ${
-                activeTab === "language"
-                  ? "bg-[#2ECDC5] text-slate-950 shadow-sm"
-                  : lightMode
-                  ? "text-slate-600 hover:bg-slate-200/60"
-                  : "text-slate-300 hover:bg-white/10"
-              }`}
+              className={`py-2 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer ${activeTab === "language"
+                ? "bg-gradient-to-r from-[#2ECDC5] to-[#5EEAD4] text-slate-950 font-extrabold shadow-md"
+                : lightMode
+                  ? "text-slate-700 hover:bg-slate-200 font-semibold"
+                  : "text-slate-300 hover:bg-white/10 font-semibold"
+                }`}
             >
-              <Globe className="w-3.5 h-3.5" />
+              <Globe className="w-4 h-4" />
               <span>{language === "ar" ? "اللغة" : "Language"}</span>
             </button>
             <button
               onClick={() => setActiveTab("country")}
-              className={`py-1.5 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 ${
-                activeTab === "country"
-                  ? "bg-[#2ECDC5] text-slate-950 shadow-sm"
-                  : lightMode
-                  ? "text-slate-600 hover:bg-slate-200/60"
-                  : "text-slate-300 hover:bg-white/10"
-              }`}
+              className={`py-2 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer ${activeTab === "country"
+                ? "bg-gradient-to-r from-[#2ECDC5] to-[#5EEAD4] text-slate-950 font-extrabold shadow-md"
+                : lightMode
+                  ? "text-slate-700 hover:bg-slate-200 font-semibold"
+                  : "text-slate-300 hover:bg-white/10 font-semibold"
+                }`}
             >
-              <MapPin className="w-3.5 h-3.5" />
-              <span>{language === "ar" ? "الدولة / العملة" : "Country / Currency"}</span>
+              <MapPin className="w-4 h-4" />
+              <span>{language === "ar" ? "الدولة والعملة" : "Country / Currency"}</span>
             </button>
           </div>
 
           {/* Tab 1: Language Options */}
           {activeTab === "language" && (
-            <div className="p-2 space-y-1.5">
-              <div className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#2ECDC5]">
+            <div className="p-3 space-y-2 bg-[#041326]">
+              <div className="px-2 py-1 text-[11px] font-extrabold uppercase tracking-wider text-teal-400">
                 {language === "ar" ? "اختر لغة العرض" : "Select Display Language"}
               </div>
 
@@ -196,29 +190,30 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
                   setLanguage("en");
                   setIsOpen(false);
                 }}
-                className={`w-full text-left rtl:text-right px-3 py-2.5 rounded-xl text-xs flex items-center justify-between transition-all group ${
-                  language === "en"
-                    ? lightMode
-                      ? "bg-[#3F4EB4]/10 text-[#283593] font-bold border border-[#3F4EB4]/20"
-                      : "bg-[#2ECDC5]/15 text-[#2ECDC5] font-bold border border-[#2ECDC5]/30"
-                    : lightMode
-                    ? "text-slate-700 hover:bg-slate-100"
-                    : "text-slate-200 hover:bg-white/10"
-                }`}
+                className={`w-full text-left rtl:text-right px-3.5 py-3 rounded-xl text-xs flex items-center justify-between transition-all cursor-pointer group ${language === "en"
+                  ? "bg-[#0A2E50] text-[#2ECDC5] font-bold border-2 border-[#2ECDC5] shadow-md"
+                  : "bg-[#081E38] text-white hover:bg-[#0E355F] border border-slate-700/80"
+                  }`}
               >
-                <div className="flex items-center gap-2.5">
-                  <span className="text-base">🌐</span>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-teal-500/20 text-[#2ECDC5] flex items-center justify-center text-sm font-bold">
+                    EN
+                  </div>
                   <div>
-                    <div className="font-bold flex items-center gap-1.5">
+                    <div className="font-extrabold text-sm text-white flex items-center gap-2">
                       <span>English</span>
-                      <span className="text-[9px] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 font-semibold uppercase">
+                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold uppercase">
                         Default
                       </span>
                     </div>
-                    <span className="text-[11px] text-slate-400 block">International (EN)</span>
+                    <span className="text-xs text-slate-300 block mt-0.5 font-medium">International (EN)</span>
                   </div>
                 </div>
-                {language === "en" && <Check className="w-4 h-4 text-[#2ECDC5]" />}
+                {language === "en" && (
+                  <div className="w-5 h-5 rounded-full bg-[#2ECDC5] text-slate-950 flex items-center justify-center">
+                    <Check className="w-3.5 h-3.5 stroke-[3]" />
+                  </div>
+                )}
               </button>
 
               {/* Arabic */}
@@ -227,35 +222,38 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
                   setLanguage("ar");
                   setIsOpen(false);
                 }}
-                className={`w-full text-left rtl:text-right px-3 py-2.5 rounded-xl text-xs flex items-center justify-between transition-all group ${
-                  language === "ar"
-                    ? lightMode
-                      ? "bg-[#3F4EB4]/10 text-[#283593] font-bold border border-[#3F4EB4]/20"
-                      : "bg-[#2ECDC5]/15 text-[#2ECDC5] font-bold border border-[#2ECDC5]/30"
-                    : lightMode
-                    ? "text-slate-700 hover:bg-slate-100"
-                    : "text-slate-200 hover:bg-white/10"
-                }`}
+                className={`w-full text-left rtl:text-right px-3.5 py-3 rounded-xl text-xs flex items-center justify-between transition-all cursor-pointer group ${language === "ar"
+                  ? "bg-[#0A2E50] text-[#2ECDC5] font-bold border-2 border-[#2ECDC5] shadow-md"
+                  : "bg-[#081E38] text-white hover:bg-[#0E355F] border border-slate-700/80"
+                  }`}
               >
-                <div className="flex items-center gap-2.5">
-                  <span className="text-base">🌐</span>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-teal-500/20 text-[#2ECDC5] flex items-center justify-center text-sm font-bold">
+                    AR
+                  </div>
                   <div>
-                    <div className="font-bold font-arabic">العربية</div>
-                    <span className="text-[11px] text-slate-400 block">
-                      Arabic · GCC & International
+                    <div className="font-extrabold text-sm text-white font-arabic">
+                      العربية (Arabic)
+                    </div>
+                    <span className="text-xs text-slate-300 block mt-0.5 font-medium">
+                      GCC & International · الدعم الكامل
                     </span>
                   </div>
                 </div>
-                {language === "ar" && <Check className="w-4 h-4 text-[#2ECDC5]" />}
+                {language === "ar" && (
+                  <div className="w-5 h-5 rounded-full bg-[#2ECDC5] text-slate-950 flex items-center justify-center">
+                    <Check className="w-3.5 h-3.5 stroke-[3]" />
+                  </div>
+                )}
               </button>
             </div>
           )}
 
           {/* Tab 2: Country Selection (The 7 target countries) */}
           {activeTab === "country" && (
-            <div className="p-2 max-h-72 overflow-y-auto space-y-1">
-              <div className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#2ECDC5]">
-                {language === "ar" ? "الدول المعتمدة ومكاتب الدعم" : "Supported Patient Desks"}
+            <div className="p-3 max-h-80 overflow-y-auto space-y-1.5 bg-[#041326]">
+              <div className="px-2 py-1 text-[11px] font-extrabold uppercase tracking-wider text-teal-400">
+                {language === "ar" ? "الدول المعتمدة ومكاتب الدعم" : "Supported Patient Desks & Currency"}
               </div>
 
               {SUPPORTED_COUNTRIES.map((c) => {
@@ -267,46 +265,44 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
                       setCountry(c.code);
                       setIsOpen(false);
                     }}
-                    className={`w-full text-left rtl:text-right px-3 py-2 rounded-xl text-xs flex items-center justify-between transition-all ${
-                      isSelected
-                        ? lightMode
-                          ? "bg-[#3F4EB4]/10 text-[#283593] font-bold border border-[#3F4EB4]/20"
-                          : "bg-[#2ECDC5]/15 text-[#2ECDC5] font-bold border border-[#2ECDC5]/30"
-                        : lightMode
-                        ? "text-slate-700 hover:bg-slate-100"
-                        : "text-slate-200 hover:bg-white/10"
-                    }`}
+                    className={`w-full text-left rtl:text-right px-3.5 py-2.5 rounded-xl text-xs flex items-center justify-between transition-all cursor-pointer ${isSelected
+                      ? "bg-[#0A2E50] text-[#2ECDC5] font-bold border-2 border-[#2ECDC5]"
+                      : "bg-[#081E38] text-white hover:bg-[#0E355F] border border-slate-700/70"
+                      }`}
                   >
-                    <div className="flex items-center gap-2.5">
-                      <span className="text-base">{c.flag}</span>
+                    <div className="flex items-center gap-3">
+                      <span className="text-xl shrink-0">{c.flag}</span>
                       <div>
-                        <div className="font-semibold flex items-center gap-1.5">
+                        <div className="font-bold text-white flex items-center gap-1.5">
                           <span>{language === "ar" ? c.nameAr : c.name}</span>
-                          <span className="text-[10px] text-slate-400">({c.shortName})</span>
+                          <span className="text-xs text-slate-300">({c.shortName})</span>
                         </div>
-                        <span className="text-[10px] text-slate-400 block">
-                          Currency: <span className="text-[#2ECDC5] font-mono font-bold">{c.currencyCode} ({c.currencySymbol})</span> · {c.dialCode}
+                        <span className="text-[11px] text-slate-300 block mt-0.5">
+                          Currency: <span className="text-[#2ECDC5] font-mono font-extrabold">{c.currencyCode} ({c.currencySymbol})</span> · {c.dialCode}
                         </span>
                       </div>
                     </div>
-                    {isSelected && <Check className="w-4 h-4 text-[#2ECDC5] shrink-0" />}
+                    {isSelected && (
+                      <div className="w-5 h-5 rounded-full bg-[#2ECDC5] text-slate-950 flex items-center justify-center shrink-0">
+                        <Check className="w-3.5 h-3.5 stroke-[3]" />
+                      </div>
+                    )}
                   </button>
                 );
               })}
             </div>
           )}
 
-          {/* Dropdown Footer info */}
+          {/* Dropdown Footer Info */}
           <div
-            className={`px-3 py-2 border-t text-[10px] flex items-center justify-between ${
-              lightMode ? "bg-slate-50 text-slate-500 border-slate-100" : "bg-slate-900/80 text-slate-400 border-slate-800"
-            }`}
+            className={`px-4 py-2.5 border-t text-[11px] font-semibold flex items-center justify-between ${lightMode ? "bg-slate-100 text-slate-600 border-slate-200" : "bg-[#020B17] text-slate-300 border-teal-900/50"
+              }`}
           >
-            <span className="flex items-center gap-1">
-              <Sparkles className="w-3 h-3 text-[#2ECDC5]" />
-              <span>7 International Hubs</span>
+            <span className="flex items-center gap-1.5 text-slate-300">
+              <Sparkles className="w-3.5 h-3.5 text-teal-400" />
+              <span>7 International Desks</span>
             </span>
-            <span className="font-mono text-[#2ECDC5] font-bold">24/7 Concierge</span>
+            <span className="font-mono text-[#2ECDC5] font-bold">24/7 Live Concierge</span>
           </div>
         </div>
       )}

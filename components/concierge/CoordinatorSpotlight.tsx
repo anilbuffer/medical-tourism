@@ -21,15 +21,15 @@ export const CoordinatorSpotlight = () => {
   return (
     <section className="py-24 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-br from-[#1a2468] via-[#283593] to-[#0B1E33] rounded-3xl p-8 sm:p-12 lg:p-16 text-white shadow-2xl border border-[#3F4EB4]/30 relative overflow-hidden">
+        <div className="bg-gradient-to-br from-[#031126] via-[#06203D] to-[#0A2E50] rounded-3xl p-8 sm:p-12 lg:p-16 text-white shadow-2xl border border-teal-500/30 relative overflow-hidden">
           {/* Subtle Ambient Light */}
-          <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#2ECDC5]/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#2ECDC5]/15 rounded-full blur-3xl pointer-events-none"></div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left Coordinator Photo & Badges */}
             <div className="lg:col-span-5 relative">
               <div className="relative mx-auto max-w-sm">
-                <div className="relative h-80 sm:h-96 rounded-3xl overflow-hidden ring-4 ring-white/10 shadow-2xl">
+                <div className="relative h-80 sm:h-96 rounded-3xl overflow-hidden ring-4 ring-teal-500/20 shadow-2xl">
                   <Image
                     src={CARE_COORDINATOR.avatar}
                     alt={CARE_COORDINATOR.name}
@@ -39,7 +39,7 @@ export const CoordinatorSpotlight = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
 
                   {/* Availability Badge */}
-                  <div className="absolute bottom-4 left-4 bg-slate-950/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 flex items-center gap-2">
+                  <div className="absolute bottom-4 left-4 bg-slate-950/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-teal-500/30 flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#2ECDC5] animate-pulse"></span>
                     <span className="text-xs font-bold text-white tracking-wide">
                       🟢 {t.coordinator.responseSpeed}
@@ -48,8 +48,8 @@ export const CoordinatorSpotlight = () => {
                 </div>
 
                 {/* Floating Micro Card */}
-                <div className="absolute -top-4 -right-4 sm:-right-6 bg-white text-slate-900 rounded-2xl p-3.5 shadow-xl border border-slate-100 max-w-[200px]">
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-[#3F4EB4]">
+                <div className="absolute -top-4 -right-4 sm:-right-6 bg-white text-slate-900 rounded-2xl p-3.5 shadow-xl border border-teal-100 max-w-[200px]">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-teal-700">
                     Active Patients
                   </div>
                   <div className="text-sm font-extrabold text-slate-900 mt-0.5">
@@ -100,7 +100,7 @@ export const CoordinatorSpotlight = () => {
                   (lang, i) => (
                     <span
                       key={i}
-                      className="px-2.5 py-1 rounded-full bg-white/10 border border-white/20 text-[#2ECDC5] font-semibold"
+                      className="px-2.5 py-1 rounded-full bg-white/10 text-white font-medium border border-white/15"
                     >
                       {lang}
                     </span>
@@ -108,15 +108,15 @@ export const CoordinatorSpotlight = () => {
                 )}
               </div>
 
-              {/* CTA */}
+              {/* Action Button */}
               <div className="pt-2">
                 <button
-                  onClick={() => openChat("Hello Aisha, I would like to enquire about treatment in India.")}
-                  className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl text-sm font-bold text-white  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] shadow-xl shadow-[#283593]/20 hover:scale-[1.02] active:scale-[0.98] transition-all group"
+                  onClick={() => openChat("Hello Aisha, I'd like to ask you a question about my medical trip.")}
+                  className="inline-flex items-center gap-3 px-8 py-4 rounded-xl text-sm sm:text-base font-bold text-slate-950 bg-gradient-to-r from-[#2ECDC5] via-[#5EEAD4] to-[#2ECDC5] shadow-xl shadow-[#2ECDC5]/20 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
                 >
-                  <MessageSquare className="w-4 h-4 text-white" />
-                  <span>{t.coordinator.messageBtn}</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
+                  <MessageSquare className="w-5 h-5" />
+                  <span>{t.coordinator.cta}</span>
+                  <ArrowRight className="w-4 h-4 rtl:rotate-180" />
                 </button>
               </div>
             </div>

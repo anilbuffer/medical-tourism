@@ -103,10 +103,10 @@ export const SpecialtiesSection = () => {
         {/* Section Header with Title & Nav Buttons */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-6">
           <div className="max-w-2xl">
-            <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2ECDC5] mb-2">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/70 text-[#0D9488] text-xs font-bold uppercase tracking-wider mb-3">
               {t.specialties.eyebrow}
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3851A2] tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
               {t.specialties.heading}
             </h2>
             <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed">
@@ -118,7 +118,7 @@ export const SpecialtiesSection = () => {
           <div className="flex items-center gap-4 shrink-0">
             <button
               onClick={() => openIntake()}
-              className="inline-flex items-center gap-2 text-xs font-bold text-blue-700 hover:text-teal-800 tracking-wider uppercase group mr-2"
+              className="inline-flex items-center gap-2 text-xs font-bold text-teal-700 hover:text-teal-900 tracking-wider uppercase group mr-2"
             >
               <span>{t.specialties.viewAll}</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
@@ -128,14 +128,14 @@ export const SpecialtiesSection = () => {
               <button
                 onClick={handlePrev}
                 aria-label="Previous Specialty"
-                className="w-10 h-10 rounded-xl bg-white hover:bg-[#3F4EB4] text-slate-700 hover:text-white border border-slate-200/70 hover:border-[#3F4EB4] shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95 group"
+                className="w-10 h-10 rounded-xl bg-white hover:bg-[#0D9488] text-slate-700 hover:text-white border border-slate-200/70 hover:border-[#0D9488] shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95 group cursor-pointer"
               >
                 <ChevronLeft className="w-5 h-5 rtl:rotate-180 group-hover:-translate-x-0.5 rtl:group-hover:translate-x-0.5 transition-transform" />
               </button>
               <button
                 onClick={handleNext}
                 aria-label="Next Specialty"
-                className="w-10 h-10 rounded-xl bg-white hover:bg-[#3F4EB4] text-slate-700 hover:text-white border border-slate-200/70 hover:border-[#3F4EB4] shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95 group"
+                className="w-10 h-10 rounded-xl bg-white hover:bg-[#0D9488] text-slate-700 hover:text-white border border-slate-200/70 hover:border-[#0D9488] shadow-sm flex items-center justify-center transition-all duration-200 active:scale-95 group cursor-pointer"
               >
                 <ChevronRight className="w-5 h-5 rtl:rotate-180 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform" />
               </button>
@@ -178,12 +178,12 @@ export const SpecialtiesSection = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
 
                     {/* Icon badge floating */}
-                    <div className="absolute top-4 left-4 w-11 h-11 rounded-2xl bg-white/90 backdrop-blur-md text-blue-700 flex items-center justify-center shadow-lg">
+                    <div className="absolute top-4 left-4 w-11 h-11 rounded-2xl bg-white/95 backdrop-blur-md text-teal-700 flex items-center justify-center shadow-lg border border-teal-100">
                       <Icon className="w-5 h-5" />
                     </div>
 
                     {/* Success Rate Pill */}
-                    <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold flex items-center gap-1.5">
+                    <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-slate-900/85 backdrop-blur-md border border-teal-500/30 text-white text-[11px] font-bold flex items-center gap-1.5">
                       <ShieldCheck className="w-3.5 h-3.5 text-[#2ECDC5]" />
                       <span>{spec.successRate} Success</span>
                     </div>
@@ -192,10 +192,10 @@ export const SpecialtiesSection = () => {
                   {/* Content */}
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                     <div>
-                      <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-blue-700 transition-colors mb-1.5">
+                      <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-teal-700 transition-colors mb-1.5">
                         {language === "ar" ? spec.nameAr : spec.name}
                       </h3>
-                      <p className="text-xs text-blue-700 font-semibold mb-2.5">
+                      <p className="text-xs text-teal-700 font-semibold mb-2.5">
                         {language === "ar" ? spec.taglineAr : spec.tagline}
                       </p>
                       <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">

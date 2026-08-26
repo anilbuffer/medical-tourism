@@ -2,6 +2,7 @@
 
 import React from "react";
 import { HeroSection } from "@/components/hero/HeroSection";
+import { TreatmentQuickFinder } from "@/components/hero/TreatmentQuickFinder";
 import { TrustStrip } from "@/components/hero/TrustStrip";
 import { QuickEntryCards } from "@/components/intake/QuickEntryCards";
 import { IntakePreview } from "@/components/intake/IntakePreview";
@@ -23,16 +24,19 @@ import { FinalCtaSection } from "@/components/trust/FinalCtaSection";
 export default function HomePage() {
   return (
     <div className="w-full">
-      {/* 02. Hero Section */}
+      {/* 01. Hero Banner Section */}
       <HeroSection />
 
-      {/* Hero Trust Strip Overlay */}
+      {/* 02. Global Trust & Accreditation Strip */}
       <TrustStrip />
 
-      {/* 03. Quick Patient Entry */}
+      {/* 03. Instant Treatment & Cost Quick-Finder (Dedicated Section) */}
+      <TreatmentQuickFinder />
+
+      {/* 04. Quick Patient Entry Pathways */}
       <QuickEntryCards />
 
-      {/* 04. “Start Your Care Journey” Intake Preview */}
+      {/* 05. “Start Your Care Journey” Intake Preview */}
       <IntakePreview />
 
       {/* 05. The Patient Journey */}

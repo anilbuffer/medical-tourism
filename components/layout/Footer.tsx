@@ -18,18 +18,18 @@ export const Footer = () => {
   const { t, language, openIntake, openChat } = useCare();
 
   return (
-    <footer className="bg-[#040A10] text-white pt-20 pb-12 border-t border-slate-800">
+    <footer className="bg-[#031126] text-white pt-20 pb-12 border-t border-teal-900/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top 4-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-slate-800/80">
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-5">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#283593] to-[#3F4EB4] flex items-center justify-center shadow-lg border border-[#2ECDC5]/30">
-                <span className="text-white font-bold text-lg font-serif">V</span>
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0D9488] via-[#0A2E50] to-[#031126] flex items-center justify-center shadow-lg border border-[#2ECDC5]/40 group-hover:scale-105 transition-transform">
+                <span className="text-white font-black text-lg font-serif">V</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-extrabold tracking-widest text-lg text-white">
+                <span className="font-extrabold tracking-widest text-lg text-white group-hover:text-[#2ECDC5] transition-colors">
                   {t.nav.brandName}
                 </span>
                 <span className="text-[10px] uppercase font-bold tracking-wider text-[#2ECDC5]">

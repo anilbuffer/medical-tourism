@@ -102,10 +102,10 @@ export const CostTransparency = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2ECDC5] mb-2">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/70 text-[#0D9488] text-xs font-bold uppercase tracking-wider mb-3">
             {t.cost.eyebrow}
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3851A2] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
             {t.cost.heading}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl">
@@ -113,18 +113,18 @@ export const CostTransparency = () => {
           </p>
         </div>
 
-        {/* Row 1: 4 Feature Cards in a Single Row (1 col on mobile, 2 on tablet, 4 on desktop) */}
+        {/* Row 1: 4 Feature Cards in a Single Row */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-12">
           {features.map((item, idx) => {
             const Icon = item.icon;
             return (
               <div
                 key={idx}
-                className="bg-white rounded-3xl p-6 border border-slate-100 shadow-md shadow-slate-200/40 hover:shadow-xl hover:border-[#2ECDC5] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                className="bg-white rounded-3xl p-6 border border-slate-100 shadow-md shadow-slate-200/40 hover:shadow-xl hover:border-teal-400 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   {/* Icon Container */}
-                  <div className="w-12 h-12 rounded-2xl bg-[#2ECDC5]/15 text-[#2ECDC5] flex items-center justify-center mb-5">
+                  <div className="w-12 h-12 rounded-2xl bg-teal-50 text-teal-700 flex items-center justify-center mb-5 border border-teal-100">
                     <Icon className="w-6 h-6" />
                   </div>
 
@@ -147,7 +147,7 @@ export const CostTransparency = () => {
         <div className="w-full">
           <div className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xl shadow-slate-200/60">
             {/* Header Strip */}
-            <div className="bg-gradient-to-r from-[#283593] via-[#3F4EB4] to-[#283593] text-white px-4 sm:px-8 py-4 sm:py-5 font-bold text-sm sm:text-base tracking-tight flex items-center justify-between">
+            <div className="bg-gradient-to-r from-[#031126] via-[#06203D] to-[#0A2E50] text-white px-4 sm:px-8 py-4 sm:py-5 font-bold text-sm sm:text-base tracking-tight flex items-center justify-between">
               <span>{t.cost.compareTitle}</span>
               <span className="text-xs text-[#2ECDC5] font-semibold hidden sm:inline-flex items-center gap-1.5 bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm">
                 <Sparkles className="w-3.5 h-3.5" />
@@ -159,12 +159,12 @@ export const CostTransparency = () => {
             <div className="overflow-x-auto scrollbar-thin">
               <div className="min-w-[560px] sm:min-w-0">
                 {/* Sub-Header Column Labels */}
-                <div className="bg-[#3F4EB4]/10 px-4 sm:px-8 py-3.5 text-[11px] font-extrabold uppercase tracking-wider text-[#283593] grid grid-cols-12 gap-2 border-b border-slate-200">
+                <div className="bg-teal-50/80 px-4 sm:px-8 py-3.5 text-[11px] font-extrabold uppercase tracking-wider text-[#0D9488] grid grid-cols-12 gap-2 border-b border-teal-100">
                   <div className="col-span-4">TREATMENT</div>
                   <div className="col-span-1 text-center">UK</div>
                   <div className="col-span-2 text-center">CANADA</div>
                   <div className="col-span-2 text-center">AUSTRALIA</div>
-                  <div className="col-span-2 text-center text-[#283593] font-black">INDIA</div>
+                  <div className="col-span-2 text-center text-teal-900 font-black">INDIA</div>
                   <div className="col-span-1 text-center">SAVINGS</div>
                 </div>
 
@@ -174,10 +174,10 @@ export const CostTransparency = () => {
                     <div
                       key={index}
                       onClick={() => openIntake(row.treatment)}
-                      className="px-4 sm:px-8 py-4 sm:py-4.5 text-xs sm:text-sm grid grid-cols-12 gap-2 items-center hover:bg-[#3F4EB4]/5 transition-colors cursor-pointer group"
+                      className="px-4 sm:px-8 py-4 sm:py-4.5 text-xs sm:text-sm grid grid-cols-12 gap-2 items-center hover:bg-teal-50/50 transition-colors cursor-pointer group"
                     >
                       {/* Treatment Name */}
-                      <div className="col-span-4 font-bold text-slate-900 group-hover:text-[#3F4EB4] transition-colors leading-snug">
+                      <div className="col-span-4 font-bold text-slate-900 group-hover:text-teal-700 transition-colors leading-snug">
                         {language === "ar" ? row.treatmentAr : row.treatment}
                       </div>
 
@@ -197,13 +197,13 @@ export const CostTransparency = () => {
                       </div>
 
                       {/* India (Highlighted) */}
-                      <div className="col-span-2 text-center font-black text-[#283593] text-sm sm:text-base">
+                      <div className="col-span-2 text-center font-black text-teal-700 text-sm sm:text-base">
                         {row.india}
                       </div>
 
-                      {/* Savings Badge */}
-                      <div className="col-span-1 flex justify-center">
-                        <span className="px-2.5 py-1 rounded-full bg-[#2ECDC5]/15 text-[#1DA89F] font-bold text-xs">
+                      {/* Savings */}
+                      <div className="col-span-1 text-center">
+                        <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-bold text-xs border border-emerald-200">
                           {row.savings}
                         </span>
                       </div>
@@ -215,12 +215,15 @@ export const CostTransparency = () => {
 
             {/* Table Footer Note */}
             <div className="px-4 sm:px-8 py-4 bg-slate-50 border-t border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-500">
-              <span>{t.cost.disclaimer}</span>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span>Includes surgeon fees, hospital admission, standard implants, nursing & transfers.</span>
+              </div>
               <button
                 onClick={() => openIntake()}
-                className="font-bold text-[#3F4EB4] hover:text-[#283593] flex items-center gap-1.5 shrink-0"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-700 hover:text-teal-900 transition-colors cursor-pointer"
               >
-                <span>{language === "ar" ? "طلب عرض سعر" : "Get Custom Quote"}</span>
+                <span>Request Custom Hospital Quotation</span>
                 <ArrowRight className="w-3.5 h-3.5 rtl:rotate-180" />
               </button>
             </div>

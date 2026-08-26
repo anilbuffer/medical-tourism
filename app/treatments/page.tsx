@@ -54,17 +54,17 @@ export default function TreatmentsPage() {
         </div>
 
         {/* Page Header */}
-        <div className="bg-gradient-to-br from-slate-900 via-slate-900 to-[#0B1E33] text-white rounded-3xl p-8 sm:p-12 mb-10 shadow-xl border border-slate-800">
+        <div className="bg-gradient-to-br from-[#031126] via-[#06203D] to-[#0A2E50] text-white rounded-3xl p-8 sm:p-12 mb-10 shadow-xl border border-teal-500/30">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2ECDC5]/10 border border-[#2ECDC5]/30 text-[#2ECDC5] text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#0D9488]/20 to-[#0284C7]/20 border border-[#2ECDC5]/40 text-[#2ECDC5] text-xs font-bold uppercase tracking-wider backdrop-blur-md">
               <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-              <span>Transparent Medical Packages</span>
+              <span>Verified Hospital Pricing Guide</span>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
-              Treatments & Cost Transparency Guide
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white font-sans">
+              Popular Treatments & Cost Estimates
             </h1>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Explore indicative pricing, hospital stay lengths, recovery expectations, and global savings across India's top quaternary medical institutes.
+            <p className="text-sm sm:text-base text-slate-200/90 leading-relaxed">
+              Explore comprehensive treatment packages, hospital stay durations, and recovery timelines across leading accredited medical centers in India.
             </p>
           </div>
         </div>

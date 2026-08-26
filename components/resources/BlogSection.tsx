@@ -122,10 +122,10 @@ export const BlogSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2ECDC5] mb-2">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/70 text-[#0D9488] text-xs font-bold uppercase tracking-wider mb-3">
             {t.blog.eyebrow}
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3851A2] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
             {t.blog.heading}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl">
@@ -133,13 +133,13 @@ export const BlogSection = () => {
           </p>
         </div>
 
-        {/* 4 Article Cards Grid (Matching User Screenshot) */}
+        {/* 4 Article Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {BLOG_POSTS.map((post) => (
             <div
               key={post.id}
               onClick={() => setActiveArticle(post)}
-              className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-md shadow-slate-200/50 hover:shadow-2xl hover:border-[#2ECDC5]/60 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-pointer group"
+              className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-md shadow-slate-200/50 hover:shadow-2xl hover:border-teal-400 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-pointer group"
             >
               {/* Top Article Image */}
               <div className="relative h-48 w-full overflow-hidden bg-slate-100">
@@ -155,12 +155,12 @@ export const BlogSection = () => {
               <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                 <div className="space-y-2.5">
                   {/* Category Pill Tag */}
-                  <span className="inline-block px-3 py-1 rounded-full bg-[#3F4EB4]/10 text-[#3F4EB4] text-[11px] font-semibold border border-[#3F4EB4]/20">
+                  <span className="inline-block px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-[11px] font-semibold border border-teal-200/70">
                     {language === "ar" ? post.categoryAr : post.category}
                   </span>
 
                   {/* Article Title */}
-                  <h3 className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-[#3F4EB4] transition-colors leading-snug line-clamp-2">
+                  <h3 className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-teal-700 transition-colors leading-snug line-clamp-2">
                     {language === "ar" ? post.titleAr : post.title}
                   </h3>
                 </div>

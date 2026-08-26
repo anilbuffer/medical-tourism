@@ -61,16 +61,16 @@ export default function DoctorsPage() {
         </div>
 
         {/* Page Header */}
-        <div className="bg-gradient-to-br from-slate-900 via-slate-900 to-[#0B1E33] text-white rounded-3xl p-8 sm:p-12 mb-10 shadow-xl border border-slate-800">
+        <div className="bg-gradient-to-br from-[#031126] via-[#06203D] to-[#0A2E50] text-white rounded-3xl p-8 sm:p-12 mb-10 shadow-xl border border-teal-500/30">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2ECDC5]/10 border border-[#2ECDC5]/30 text-[#2ECDC5] text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#0D9488]/20 to-[#0284C7]/20 border border-[#2ECDC5]/40 text-[#2ECDC5] text-xs font-bold uppercase tracking-wider backdrop-blur-md">
               <Sparkles className="w-3.5 h-3.5 text-amber-300" />
               <span>Chandigarh City · Verified Senior Clinicians</span>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white font-sans">
               Top Specialist Consultants & Surgeons in Chandigarh
             </h1>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-200/90 text-sm sm:text-base leading-relaxed">
               Connect with globally acclaimed medical directors, chief surgeons, and department heads across Chandigarh City's premier multi-class quaternary institutes.
             </p>
           </div>

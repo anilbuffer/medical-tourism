@@ -28,14 +28,14 @@ export const FaqSection = () => {
   };
 
   return (
-    <section id="faqs" className="py-24 bg-white relative">
+    <section id="faq" className="py-24 bg-white relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2ECDC5] mb-2">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/70 text-[#0D9488] text-xs font-bold uppercase tracking-wider mb-3">
             {t.faq.eyebrow}
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3851A2] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
             {t.faq.heading}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto">
@@ -64,20 +64,20 @@ export const FaqSection = () => {
                 key={faq.id}
                 className={`rounded-2xl border transition-all duration-200 overflow-hidden ${isOpen
                   ? "bg-slate-50/80 border-[#2ECDC5] shadow-md ring-1 ring-[#2ECDC5]/20"
-                  : "bg-white border-slate-200/80 hover:border-slate-300"
+                  : "bg-white border-slate-200/80 hover:border-teal-300"
                   }`}
               >
                 <button
                   onClick={() => toggleFaq(faq.id)}
-                  className="w-full text-left rtl:text-right p-5 sm:p-6 flex items-center justify-between gap-4 font-extrabold text-sm sm:text-base text-slate-900"
+                  className="w-full text-left rtl:text-right p-5 sm:p-6 flex items-center justify-between gap-4 font-extrabold text-sm sm:text-base text-slate-900 cursor-pointer"
                 >
                   <span className="flex items-center gap-3">
-                    <HelpCircle className={`w-5 h-5 shrink-0 ${isOpen ? "text-[#3F4EB4]" : "text-slate-400"}`} />
+                    <HelpCircle className={`w-5 h-5 shrink-0 ${isOpen ? "text-teal-600" : "text-slate-400"}`} />
                     <span>{language === "ar" ? faq.questionAr : faq.question}</span>
                   </span>
                   <ChevronDown
                     className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200 ${
-                      isOpen ? "rotate-180 text-[#3F4EB4]" : ""
+                      isOpen ? "rotate-180 text-teal-600" : ""
                     }`}
                   />
                 </button>
@@ -93,17 +93,17 @@ export const FaqSection = () => {
         </div>
 
         {/* Still have questions CTA */}
-        <div className="mt-12 p-6 rounded-2xl bg-[#3F4EB4]/10 border border-[#3F4EB4]/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left rtl:sm:text-right">
+        <div className="mt-12 p-6 rounded-2xl bg-teal-50 border border-teal-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left rtl:sm:text-right">
           <div>
-            <h4 className="text-sm font-bold text-[#283593]">Have a specific question about your condition?</h4>
-            <p className="text-xs text-[#3F4EB4] mt-0.5">Our international care team is available 24/7 on WhatsApp & Chat.</p>
+            <h4 className="text-sm font-bold text-teal-950">Have a specific question about your condition?</h4>
+            <p className="text-xs text-teal-700 mt-0.5">Our international care team is available 24/7 on WhatsApp & Chat.</p>
           </div>
           <button
-            onClick={() => openChat()}
-            className="px-5 py-2.5 rounded-xl bg-[#3F4EB4] hover:bg-[#283593] text-white text-xs font-bold shadow-md transition-all shrink-0 flex items-center gap-2"
+            onClick={() => openChat("I have a question about planning my medical travel.")}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-[#2ECDC5] via-[#5EEAD4] to-[#2ECDC5] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-sm shrink-0 cursor-pointer"
           >
             <MessageSquare className="w-4 h-4" />
-            <span>Ask a Coordinator</span>
+            <span>Chat with Care Coordinator</span>
           </button>
         </div>
       </div>
