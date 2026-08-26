@@ -128,47 +128,57 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
           userName: currentUser?.name || "Aisha Khan",
           userSubtitle: "Triage & CS Queue Lead",
           avatar: currentUser?.avatar,
-          defaultTab: "overview",
+          defaultTab: "triage_queues",
           menus: [
-            {
-              id: "overview",
-              label: "Triage & SLA Queue",
-              icon: Activity,
-              badge: newLeadsTotal > 0 ? newLeadsTotal : undefined,
-            },
-            {
-              id: "documents",
-              label: "Document Verification",
-              icon: FileText,
-              badge: pendingDocsTotal > 0 ? pendingDocsTotal : undefined,
-            },
-            {
-              id: "consent",
-              label: "Consent Tracking",
-              icon: ShieldCheck,
-            },
-            {
-              id: "notes",
-              label: "Coordinator Notes",
-              icon: StickyNote,
-            },
-            {
-              id: "handoff",
-              label: "Hospital Handoff",
-              icon: Building2,
-            },
-            {
-              id: "quote_builder",
-              label: "Quotation Desk",
-              icon: DollarSign,
-            },
-            {
-              id: "messages",
-              label: "Patient Messages",
-              icon: MessageSquare,
-              badge: unreadMsgsTotal > 0 ? unreadMsgsTotal : undefined,
-            },
+            { id: "triage_queues", label: "Triage & SLA Queues", icon: Activity, badge: newLeadsTotal > 0 ? newLeadsTotal : undefined },
+            { id: "raw_intake", label: "Raw Intake Payload", icon: FileText },
+            { id: "master_cases", label: "All Master Cases", icon: ClipboardList },
+            { id: "hospital_handovers", label: "Hospital Handovers", icon: Building2 },
+            { id: "tele_consultations", label: "Tele-Consultations", icon: Video },
+            { id: "quote_builder", label: "Package & Quote Builder", icon: DollarSign },
+            { id: "visas_flights", label: "Visas & Flights", icon: Plane },
+            { id: "concierge_hospitality", label: "Concierge & Hospitality", icon: Building2 },
+            { id: "patient_messages", label: "Patient Messages", icon: MessageSquare, badge: unreadMsgsTotal > 0 ? unreadMsgsTotal : undefined },
+            { id: "document_vault", label: "Document Vault & Scans", icon: FileText, badge: pendingDocsTotal > 0 ? pendingDocsTotal : undefined },
+            { id: "consents_compliance", label: "Consents & Compliance", icon: ShieldCheck },
           ],
+          navGroups: [
+            {
+              id: "main_workspace",
+              label: "MAIN WORKSPACE",
+              items: [
+                { id: "triage_queues", label: "Triage & SLA Queues", icon: Activity, badge: newLeadsTotal > 0 ? newLeadsTotal : undefined },
+                { id: "raw_intake", label: "Raw Intake Payload", icon: FileText },
+                { id: "master_cases", label: "All Master Cases", icon: ClipboardList },
+              ]
+            },
+            {
+              id: "case_execution",
+              label: "CASE EXECUTION",
+              items: [
+                { id: "hospital_handovers", label: "Hospital Handovers", icon: Building2 },
+                { id: "tele_consultations", label: "Tele-Consultations", icon: Video },
+                { id: "quote_builder", label: "Package & Quote Builder", icon: DollarSign },
+              ]
+            },
+            {
+              id: "logistics_travel",
+              label: "LOGISTICS & TRAVEL",
+              items: [
+                { id: "visas_flights", label: "Visas & Flights", icon: Plane },
+                { id: "concierge_hospitality", label: "Concierge & Hospitality", icon: Building2 },
+              ]
+            },
+            {
+              id: "communication_legal",
+              label: "COMMUNICATION & LEGAL",
+              items: [
+                { id: "patient_messages", label: "Patient Messages (Threaded)", icon: MessageSquare, badge: unreadMsgsTotal > 0 ? unreadMsgsTotal : undefined },
+                { id: "document_vault", label: "Document Vault & Scans", icon: FileText, badge: pendingDocsTotal > 0 ? pendingDocsTotal : undefined },
+                { id: "consents_compliance", label: "Consents & Compliance", icon: ShieldCheck },
+              ]
+            }
+          ]
         };
       }
 
@@ -324,11 +334,10 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
               subTabs: ["geo_sla_timers", "routing_automation"],
             },
           ],
-          adminNavGroups: [
+          navGroups: [
             {
               id: "dashboard_group",
               label: "Overview",
-              icon: LayoutDashboard,
               items: [
                 {
                   id: "dashboard_overview",
@@ -340,7 +349,6 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
             {
               id: "user_rbac_group",
               label: "User and Access Management",
-              icon: Users,
               items: [
                 {
                   id: "internal_staff",
@@ -362,7 +370,6 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
             {
               id: "compliance_legal_group",
               label: "Compliance and Legal Engine",
-              icon: Shield,
               items: [
                 {
                   id: "consent_versioning",
@@ -390,7 +397,6 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
             {
               id: "case_queues_group",
               label: "CaseJourney & Queues",
-              icon: Layers,
               items: [
                 {
                   id: "case_master_directory",
@@ -415,7 +421,6 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
             {
               id: "financial_ledger_group",
               label: "Financial and PaymentsLedger",
-              icon: Wallet,
               items: [
                 {
                   id: "gateway_escrow",
@@ -438,7 +443,6 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
             {
               id: "system_audit_group",
               label: "System Audit and Logs",
-              icon: ClipboardList,
               items: [
                 {
                   id: "system_audit_trail",
@@ -460,7 +464,6 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
             {
               id: "system_config_group",
               label: "System Configuration",
-              icon: Settings,
               items: [
                 {
                   id: "geo_sla_timers",
@@ -544,16 +547,18 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
     const validIds = [
       ...portalConfig.menus.flatMap((m: any) => [m.id, ...(m.subTabs || [])]),
       ...((portalConfig as any).patientNavGroups?.flatMap((g: any) => g.items.map((i: any) => i.id)) || []),
-      ...((portalConfig as any).adminNavGroups?.flatMap((g: any) => g.items.map((i: any) => i.id)) || []),
-      "documents",
-      "consents",
-      "consultation",
-      "quote",
-      "payments",
-      "booking",
-      "messages",
-      "recovery",
-      "post_treatment",
+      ...((portalConfig as any).navGroups?.flatMap((g: any) => g.items.map((i: any) => i.id)) || []),
+      "triage_queues",
+      "raw_intake",
+      "master_cases",
+      "hospital_handovers",
+      "tele_consultations",
+      "quote_builder",
+      "visas_flights",
+      "concierge_hospitality",
+      "patient_messages",
+      "document_vault",
+      "consents_compliance",
     ];
     if (!validIds.includes(activeTab)) {
       setActiveTab(portalConfig.defaultTab);
@@ -634,46 +639,94 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
 
         {/* Navigation Menus */}
         <div className="flex-1 overflow-y-auto px-3 py-4 space-y-1.5 scrollbar-none relative z-10">
-          {portalConfig.menus.map((menu: any) => {
-            const Icon = menu.icon;
-            const isActive =
-              activeTab === menu.id ||
-              (menu.subTabs && menu.subTabs.includes(activeTab));
+          {(portalConfig as any).navGroups ? (
+            (portalConfig as any).navGroups.map((group: any, idx: number) => (
+              <div key={group.id} className={`${idx > 0 ? "mt-6" : ""}`}>
+                {sidebarOpen && (
+                  <div className="px-4 mb-2 text-[10px] font-black text-[#3F4EB4] uppercase tracking-widest opacity-80">
+                    {group.label}
+                  </div>
+                )}
+                <div className="space-y-1">
+                  {group.items.map((menu: any) => {
+                    const Icon = menu.icon;
+                    const isActive = activeTab === menu.id || (menu.subTabs && menu.subTabs.includes(activeTab));
 
-            return (
-              <button
-                key={menu.id}
-                onClick={() => {
-                  setActiveTab(menu.id);
-                }}
-                title={!sidebarOpen ? menu.label : undefined}
-                className={`w-full flex items-center rounded-2xl text-xs font-bold transition-all relative group cursor-pointer ${sidebarOpen ? "gap-3.5 px-4 py-3" : "justify-center px-0 py-3.5"
-                  } ${isActive
-                    ? "bg-gradient-to-r from-[#23b3ab] via-[#1baba4] to-[#1d8983] text-white shadow-lg shadow-[#283593]/35 font-extrabold"
-                    : "text-slate-300 hover:text-white hover:bg-white/5"
-                  }`}
-              >
-                <Icon
-                  className={`w-4 h-4 shrink-0 transition-colors ${isActive ? "text-white" : "text-slate-400 group-hover:text-[#2ECDC5]"
+                    return (
+                      <button
+                        key={menu.id}
+                        onClick={() => setActiveTab(menu.id)}
+                        title={!sidebarOpen ? menu.label : undefined}
+                        className={`w-full flex items-center rounded-2xl text-xs font-bold transition-all relative group cursor-pointer ${sidebarOpen ? "gap-3.5 px-4 py-3" : "justify-center px-0 py-3.5"
+                          } ${isActive
+                            ? "bg-gradient-to-r from-[#23b3ab] via-[#1baba4] to-[#1d8983] text-white shadow-lg shadow-[#283593]/35 font-extrabold"
+                            : "text-slate-300 hover:text-white hover:bg-white/5"
+                          }`}
+                      >
+                        <Icon
+                          className={`w-4 h-4 shrink-0 transition-colors ${isActive ? "text-white" : "text-slate-400 group-hover:text-[#2ECDC5]"
+                            }`}
+                        />
+                        {sidebarOpen && <span className="truncate">{menu.label}</span>}
+                        {typeof menu.badge === "number" && menu.badge > 0 && sidebarOpen && (
+                          <span
+                            className={`ml-auto px-2 py-0.5 rounded-full text-[10px] font-black ${isActive ? "bg-white text-[#283593]" : "bg-[#2ECDC5] text-slate-950"
+                              }`}
+                          >
+                            {menu.badge}
+                          </span>
+                        )}
+                        {typeof menu.badge === "number" && menu.badge > 0 && !sidebarOpen && (
+                          <span className="absolute top-2 right-2.5 w-2 h-2 rounded-full bg-[#2ECDC5] ring-2 ring-[#0B1E33]" />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ))
+          ) : (
+            portalConfig.menus.map((menu: any) => {
+              const Icon = menu.icon;
+              const isActive =
+                activeTab === menu.id ||
+                (menu.subTabs && menu.subTabs.includes(activeTab));
+
+              return (
+                <button
+                  key={menu.id}
+                  onClick={() => {
+                    setActiveTab(menu.id);
+                  }}
+                  title={!sidebarOpen ? menu.label : undefined}
+                  className={`w-full flex items-center rounded-2xl text-xs font-bold transition-all relative group cursor-pointer ${sidebarOpen ? "gap-3.5 px-4 py-3" : "justify-center px-0 py-3.5"
+                    } ${isActive
+                      ? "bg-gradient-to-r from-[#23b3ab] via-[#1baba4] to-[#1d8983] text-white shadow-lg shadow-[#283593]/35 font-extrabold"
+                      : "text-slate-300 hover:text-white hover:bg-white/5"
                     }`}
-                />
-                {sidebarOpen && <span className="truncate">{menu.label}</span>}
-
-                {/* Badge Indicator */}
-                {typeof menu.badge === "number" && menu.badge > 0 && sidebarOpen && (
-                  <span
-                    className={`ml-auto px-2 py-0.5 rounded-full text-[10px] font-black ${isActive ? "bg-white text-[#283593]" : "bg-[#2ECDC5] text-slate-950"
+                >
+                  <Icon
+                    className={`w-4 h-4 shrink-0 transition-colors ${isActive ? "text-white" : "text-slate-400 group-hover:text-[#2ECDC5]"
                       }`}
-                  >
-                    {menu.badge}
-                  </span>
-                )}
-                {typeof menu.badge === "number" && menu.badge > 0 && !sidebarOpen && (
-                  <span className="absolute top-2 right-2.5 w-2 h-2 rounded-full bg-[#2ECDC5] ring-2 ring-[#0B1E33]" />
-                )}
-              </button>
-            );
-          })}
+                  />
+                  {sidebarOpen && <span className="truncate">{menu.label}</span>}
+
+                  {/* Badge Indicator */}
+                  {typeof menu.badge === "number" && menu.badge > 0 && sidebarOpen && (
+                    <span
+                      className={`ml-auto px-2 py-0.5 rounded-full text-[10px] font-black ${isActive ? "bg-white text-[#283593]" : "bg-[#2ECDC5] text-slate-950"
+                        }`}
+                    >
+                      {menu.badge}
+                    </span>
+                  )}
+                  {typeof menu.badge === "number" && menu.badge > 0 && !sidebarOpen && (
+                    <span className="absolute top-2 right-2.5 w-2 h-2 rounded-full bg-[#2ECDC5] ring-2 ring-[#0B1E33]" />
+                  )}
+                </button>
+              );
+            })
+          )}
         </div>
 
         {/* Bottom Actions & Profile Pill */}
@@ -985,16 +1038,15 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
             </button>
 
             <div>
-              {isAdmin && (portalConfig as any).adminNavGroups ? (
+              {(portalConfig as any).navGroups ? (
                 (() => {
-                  const activeGroup = (portalConfig as any).adminNavGroups?.find((g: any) =>
+                  const activeGroup = (portalConfig as any).navGroups?.find((g: any) =>
                     g.items.some((i: any) => i.id === activeTab)
                   );
                   const activeItem = activeGroup?.items.find((i: any) => i.id === activeTab);
 
                   return (
                     <div>
-
                       <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight leading-tight">
                         {activeItem?.label || portalConfig.headerTitle}
                       </h2>
