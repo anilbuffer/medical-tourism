@@ -451,6 +451,47 @@ export interface SlaThreshold {
   escalationMinutes: number;
 }
 
+// ─── Patient Portal Revised Architecture Types ──────────────────────────────
+export type PatientTab =
+  | "overview"
+  // My Medical Record
+  | "docs_vault"
+  | "prescriptions_history"
+  | "documents"
+  // Consultations
+  | "upcoming_video"
+  | "doctor_opinions"
+  | "consultation"
+  // Quote & Payments
+  | "package_quote"
+  | "payment_escrow"
+  | "quote"
+  | "payments"
+  // Travel & Logistics
+  | "visa_checklist"
+  | "flight_hotel"
+  | "concierge_contact"
+  | "booking"
+  // Recovery & Follow Up
+  | "discharge_summary"
+  | "recovery_forms"
+  | "recovery"
+  | "post_treatment"
+  // Privacy & Consents
+  | "legal_consents"
+  | "consents"
+  // Messaging
+  | "messages";
+
+export type PatientNavGroup =
+  | "dashboard_group"
+  | "medical_records_group"
+  | "consultations_group"
+  | "quote_payments_group"
+  | "travel_logistics_group"
+  | "recovery_group"
+  | "privacy_consents_group";
+
 // ─── Super Admin Revised Architecture Types ──────────────────────────────────
 export type AdminTab =
   | "dashboard_overview"

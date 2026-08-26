@@ -131,6 +131,7 @@ export const PatientDicomVaultView: React.FC<PatientDicomVaultViewProps> = ({ pa
             <thead className="bg-slate-50 border-b border-slate-200/80 text-[11px] font-extrabold text-slate-600 uppercase tracking-wider">
               <tr>
                 <th className="p-4">Document Name</th>
+                <th className="p-4">Category</th>
                 <th className="p-4">Upload Date</th>
                 <th className="p-4">Status</th>
                 <th className="p-4 text-center">Version</th>
@@ -141,6 +142,7 @@ export const PatientDicomVaultView: React.FC<PatientDicomVaultViewProps> = ({ pa
               {patientCase.documents.map((doc) => {
                 const latestVersion = doc.versions[doc.versions.length - 1];
                 const isDicom = doc.title.toLowerCase().includes("dicom") || doc.title.toLowerCase().includes("mri");
+                const isPassport = doc.title.toLowerCase().includes("passport");
 
                 return (
                   <tr key={doc.id} className="hover:bg-slate-50/80 transition-colors">
@@ -152,10 +154,14 @@ export const PatientDicomVaultView: React.FC<PatientDicomVaultViewProps> = ({ pa
                         <div>
                           <div className="font-extrabold text-slate-900">{doc.title}</div>
                           <div className="text-[11px] text-slate-500">
-                            {latestVersion?.fileSize || "2.4 MB"} • {doc.category.replace("_", " ")}
+                            {latestVersion?.fileSize || "2.4 MB"}
                           </div>
                         </div>
                       </div>
+                    </td>
+
+                    <td className="p-4 text-slate-600 font-medium capitalize">
+                      {isDicom ? "Imaging Scan" : isPassport ? "Identity" : "Pathology"}
                     </td>
 
                     <td className="p-4 text-slate-600 font-medium" suppressHydrationWarning>
@@ -169,7 +175,12 @@ export const PatientDicomVaultView: React.FC<PatientDicomVaultViewProps> = ({ pa
                     </td>
 
                     <td className="p-4">
-                      {doc.status === "reviewed" ? (
+                      {isPassport ? (
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                          <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                          🟢 Verified for Visa
+                        </span>
+                      ) : doc.status === "reviewed" ? (
                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-50 text-emerald-700 border border-emerald-200">
                           <span className="w-2 h-2 rounded-full bg-emerald-500" />
                           🟢 Reviewed
@@ -183,7 +194,7 @@ export const PatientDicomVaultView: React.FC<PatientDicomVaultViewProps> = ({ pa
                     </td>
 
                     <td className="p-4 text-center font-mono text-xs font-bold text-slate-700">
-                      v{doc.currentVersion}.{doc.versions.length - 1}
+                      v1.{doc.versions.length > 1 ? "1" : "0"}
                     </td>
 
                     <td className="p-4 text-right">

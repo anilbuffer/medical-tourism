@@ -35,7 +35,7 @@ interface StepMeta {
 const JOURNEY_STEPS: StepMeta[] = [
   { id: "lead", label: "1. Intake", shortLabel: "1. Intake", icon: FileText, tabTarget: "overview" },
   { id: "contacted", label: "2. Contacted", shortLabel: "2. Contacted", icon: UserCheck, tabTarget: "overview" },
-  { id: "documents_collected", label: "3. Documents Collected", shortLabel: "3. Documents", icon: FolderOpen, tabTarget: "docs_vault" },
+  { id: "documents_collected", label: "3. Docs Uploaded", shortLabel: "3. Docs Uploaded", icon: FolderOpen, tabTarget: "docs_vault" },
   { id: "hospital_handover", label: "4. Hospital Review", shortLabel: "4. Review", icon: Building2, tabTarget: "doctor_opinions" },
   { id: "consultation", label: "5. Tele-Consultation", shortLabel: "5. Tele-Consult", icon: Video, tabTarget: "upcoming_video" },
   { id: "quote", label: "6. Quote", shortLabel: "6. Quote", icon: CreditCard, tabTarget: "package_quote" },
