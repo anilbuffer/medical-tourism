@@ -379,7 +379,7 @@ export const PatientDashboard: React.FC = () => {
         {/* Edge Toggle Button (Floating cleanly on sidebar border, tri-color symmetric palette) */}
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="hidden md:flex absolute -right-4 top-6 z-50 w-8 h-8 rounded-full bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  active:scale-95 text-white items-center justify-center shadow-xl ring-2 ring-white transition-all duration-200 hover:scale-110 cursor-pointer"
+          className="hidden md:flex absolute -right-4 top-6 z-50 w-8 h-8 rounded-full  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] active:scale-95 text-white items-center justify-center shadow-xl ring-2 ring-white transition-all duration-200 hover:scale-110 cursor-pointer"
           title={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
           aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
         >
@@ -389,7 +389,7 @@ export const PatientDashboard: React.FC = () => {
         {/* Top Logo / Brand Header */}
         <div className={`h-20 flex items-center border-b border-slate-800/80 relative z-10 transition-all ${sidebarOpen ? "px-5 gap-3" : "justify-center px-2"}`}>
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] flex items-center justify-center shadow-lg shadow-[#283593]/30 ring-1 ring-[#2ECDC5]/50 group-hover:scale-105 transition-transform shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2ECDC5] via-[#1baba4] to-[#2abdb5] flex items-center justify-center shadow-lg shadow-[#283593]/30 ring-1 ring-[#2ECDC5]/50 group-hover:scale-105 transition-transform shrink-0">
               <span className="text-white font-black text-lg font-serif">V</span>
             </div>
             {sidebarOpen && (
@@ -423,7 +423,7 @@ export const PatientDashboard: React.FC = () => {
                 title={!sidebarOpen ? menu.label : undefined}
                 className={`w-full flex items-center rounded-2xl text-xs font-bold transition-all relative group cursor-pointer ${sidebarOpen ? "gap-3.5 px-4 py-3" : "justify-center px-0 py-3.5"
                   } ${isActive
-                    ? "bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] text-white shadow-lg shadow-[#283593]/35 font-extrabold"
+                    ? " bg-gradient-to-r from-[#23b3ab] via-[#1baba4] to-[#1d8983]text-white shadow-lg shadow-[#283593]/35 font-extrabold"
                     : "text-slate-300 hover:text-white hover:bg-white/5"
                   }`}
               >
@@ -481,7 +481,7 @@ export const PatientDashboard: React.FC = () => {
               }`}
             title={!sidebarOpen ? portalConfig.userName : undefined}
           >
-            <div className="relative w-9 h-9 rounded-full bg-gradient-to-br from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] text-white font-bold flex items-center justify-center shrink-0 ring-2 ring-[#2ECDC5]/50 shadow-md overflow-hidden">
+            <div className="relative w-9 h-9 rounded-full bg-gradient-to-br from-[#2ECDC5] via-[#1baba4] to-[#2abdb5] text-white font-bold flex items-center justify-center shrink-0 ring-2 ring-[#2ECDC5]/50 shadow-md overflow-hidden">
               {portalConfig.avatar ? (
                 <img
                   src={portalConfig.avatar}
@@ -525,7 +525,7 @@ export const PatientDashboard: React.FC = () => {
               >
                 {/* Header with User Info */}
                 <div className="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center gap-2.5 mb-1.5">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] text-white font-bold text-xs flex items-center justify-center shrink-0 ring-1 ring-[#2ECDC5]/60 overflow-hidden">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#2ECDC5] via-[#1baba4] to-[#2abdb5] text-white font-bold text-xs flex items-center justify-center shrink-0 ring-1 ring-[#2ECDC5]/60 overflow-hidden">
                     {portalConfig.avatar ? (
                       <img
                         src={portalConfig.avatar}
@@ -573,7 +573,7 @@ export const PatientDashboard: React.FC = () => {
           <div className="w-72 bg-gradient-to-b from-[#141d60] via-[#1b2360] to-[#101e76] text-white flex flex-col h-full p-4 space-y-4 animate-in slide-in-from-left duration-200 border-r border-slate-800">
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] flex items-center justify-center font-bold text-white ring-1 ring-[#2ECDC5]/40">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#2ECDC5] via-[#1baba4] to-[#2abdb5] flex items-center justify-center font-bold text-white ring-1 ring-[#2ECDC5]/40">
                   V
                 </div>
                 <div className="flex flex-col">
@@ -604,7 +604,7 @@ export const PatientDashboard: React.FC = () => {
                       setMobileMenuOpen(false);
                     }}
                     className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-2xl text-xs font-bold transition-all ${isActive
-                      ? "bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] text-white font-extrabold shadow-md"
+                      ? " bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983]text-white font-extrabold shadow-md"
                       : "text-slate-300 hover:text-white hover:bg-white/5"
                       }`}
                   >

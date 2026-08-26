@@ -184,7 +184,7 @@ export const MyPaymentsTab: React.FC<MyPaymentsTabProps> = ({ patientCase }) => 
                 ) : isCurrentActive ? (
                   <button
                     onClick={() => handleOpenPayment(stage)}
-                    className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-xs shadow-xl shadow-[#283593]/25 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3.5 rounded-2xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-xs shadow-xl shadow-[#283593]/25 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Lock className="w-4 h-4" />
                     <span>Accept Terms & Pay Stage</span>

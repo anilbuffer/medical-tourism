@@ -110,7 +110,7 @@ export const MedicalOpinion = () => {
                 {/* Upload Action */}
                 <button
                   onClick={() => openIntake(selectedReportType)}
-                  className="w-full py-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  shadow-xl shadow-[#283593]/20 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2"
+                  className="w-full py-4 rounded-xl text-sm font-bold text-white  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] shadow-xl shadow-[#283593]/20 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2"
                 >
                   <Upload className="w-4 h-4" />
                   <span>{t.opinion.cta}</span>

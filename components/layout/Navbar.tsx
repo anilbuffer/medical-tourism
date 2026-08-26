@@ -205,7 +205,7 @@ export const Navbar = () => {
             {/* Primary Get Free Quote CTA */}
             <a
               href="/#assessment"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  shadow-md shadow-[#283593]/30 hover:shadow-lg hover:shadow-[#283593]/40 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] shadow-md shadow-[#283593]/30 hover:shadow-lg hover:shadow-[#283593]/40 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap"
             >
               <span>{t.nav.startJourney}</span>
             </a>
@@ -305,7 +305,7 @@ export const Navbar = () => {
             <a
               href="/#assessment"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#283593]/40"
+              className="w-full py-3 rounded-xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983]text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#283593]/40"
             >
               {/* <Sparkles className="w-4 h-4 text-amber-300" /> */}
               <span>{t.nav.startJourney}</span>

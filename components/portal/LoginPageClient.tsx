@@ -736,7 +736,7 @@ const LoginPageContent: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#2948C9] via-[#1E74D4] to-[#2ECDC5] hover:from-[#233FA8] hover:via-[#1964B5] hover:to-[#26B3AC] text-white font-bold text-[14px] shadow-lg shadow-[#2948C9]/25 hover:shadow-xl hover:shadow-[#2ECDC5]/30 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2.5 group cursor-pointer disabled:opacity-75 disabled:pointer-events-none"
+              className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#1baba4] via-[#1964B5] to-[#2ECDC5] hover:from-[#197e79] hover:via-[#1964B5] hover:to-[#26B3AC] text-white font-bold text-[14px] shadow-lg shadow-[#2948C9]/25 hover:shadow-xl hover:shadow-[#2ECDC5]/30 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2.5 group cursor-pointer disabled:opacity-75 disabled:pointer-events-none"
             >
               <span>{isSubmitting ? "Authenticating..." : `Sign in to ${currentRole.title}`}</span>
               <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
@@ -827,7 +827,7 @@ const LoginPageContent: React.FC = () => {
                 type="button"
                 onClick={executeFinalLogin}
                 disabled={isSubmitting || otpCode.length < 6}
-                className="flex-1 py-3 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                className="flex-1 py-3 rounded-2xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-xs shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <>

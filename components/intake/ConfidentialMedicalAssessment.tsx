@@ -419,7 +419,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#283593]/20 hover:shadow-xl hover:shadow-[#283593]/30 hover:scale-[1.01] active:scale-[0.99] transition-all"
+            className="w-full py-4 px-6 rounded-xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#283593]/20 hover:shadow-xl hover:shadow-[#283593]/30 hover:scale-[1.01] active:scale-[0.99] transition-all"
           >
             CONTINUE
           </button>
@@ -590,7 +590,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#283593]/20 hover:shadow-xl hover:shadow-[#283593]/30 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-60 flex items-center justify-center gap-2"
+              className="w-full py-4 px-6 rounded-xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#283593]/20 hover:shadow-xl hover:shadow-[#283593]/30 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-60 flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>
@@ -660,7 +660,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
           <div className="pt-2 flex flex-col gap-2.5 max-w-md mx-auto">
             <a
               href="/patient"
-              className="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2"
+              className="w-full py-3.5 px-5 rounded-xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2"
             >
               <Sparkles className="w-4 h-4 text-amber-300" />
               <span>Open My Patient Portal Dashboard</span>

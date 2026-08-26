@@ -205,7 +205,7 @@ export const DoctorModal = () => {
                 <div className="pt-2">
                   <button
                     onClick={handleConfirm}
-                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-sm shadow-xl shadow-[#283593]/20 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-3.5 rounded-xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-sm shadow-xl shadow-[#283593]/20 transition-all flex items-center justify-center gap-2"
                   >
                     <Calendar className="w-4 h-4" />
                     <span>Confirm Video Consultation Slot</span>

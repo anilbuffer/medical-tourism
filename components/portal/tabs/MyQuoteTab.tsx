@@ -249,7 +249,7 @@ export const MyQuoteTab: React.FC<MyQuoteTabProps> = ({ patientCase, onNavigateT
             {!isAccepted && (
               <button
                 onClick={handleAccept}
-                className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-sm shadow-xl shadow-[#283593]/25 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-4 rounded-2xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-sm shadow-xl shadow-[#283593]/25 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Check className="w-5 h-5" />
                 <span>Accept Quote & Proceed to Staged Payment</span>
@@ -259,7 +259,7 @@ export const MyQuoteTab: React.FC<MyQuoteTabProps> = ({ patientCase, onNavigateT
             {isAccepted && (
               <button
                 onClick={onNavigateToPayments}
-                className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-sm shadow-xl shadow-[#283593]/25 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-4 rounded-2xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-sm shadow-xl shadow-[#283593]/25 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <CreditCard className="w-5 h-5" />
                 <span>Go to Staged Payments Dashboard</span>

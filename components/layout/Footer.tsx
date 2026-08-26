@@ -145,7 +145,7 @@ export const Footer = () => {
               <div className="pt-2">
                 <a
                   href="/#assessment"
-                  className="block w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-bold text-xs shadow-md shadow-[#283593]/30 transition-all text-center"
+                  className="block w-full py-2.5 px-3 rounded-xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-bold text-xs shadow-md shadow-[#283593]/30 transition-all text-center"
                 >
                   {t.nav.startJourney}
                 </a>

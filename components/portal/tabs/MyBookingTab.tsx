@@ -65,7 +65,7 @@ export const MyBookingTab: React.FC<MyBookingTabProps> = ({ patientCase }) => {
 
         <button
           onClick={() => setVisaLetterModalOpen(true)}
-          className="px-5 py-3.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-extrabold text-xs shadow-xl shadow-[#283593]/25 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2 shrink-0 cursor-pointer"
+          className="px-5 py-3.5 rounded-2xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-xs shadow-xl shadow-[#283593]/25 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2 shrink-0 cursor-pointer"
         >
           <Award className="w-4 h-4 text-amber-300" />
           <span>Download M-Visa Invitation Letter</span>

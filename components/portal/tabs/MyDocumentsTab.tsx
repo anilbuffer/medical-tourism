@@ -131,7 +131,7 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
 
         <button
           onClick={openNewUpload}
-          className="px-5 py-3 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-bold text-sm shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-2 shrink-0 cursor-pointer"
+          className="px-5 py-3 rounded-2xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-bold text-sm shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-2 shrink-0 cursor-pointer"
         >
           <Upload className="w-4 h-4" />
           <span>Upload New Record</span>
@@ -151,7 +151,7 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
             key={f.id}
             onClick={() => setFilterCategory(f.id)}
             className={`px-4 py-2.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${filterCategory === f.id
-              ? "bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5] text-white shadow-md font-extrabold"
+              ? " bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983]text-white shadow-md font-extrabold"
               : "bg-white/95 backdrop-blur-xl text-slate-600 border border-slate-200 shadow-xs hover:border-[#2ECDC5]/40 hover:bg-slate-50"
               }`}
           >
@@ -174,7 +174,7 @@ export const MyDocumentsTab: React.FC<MyDocumentsTabProps> = ({ patientCase }) =
           </div>
           <button
             onClick={openNewUpload}
-            className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  text-white font-bold text-xs inline-flex items-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer"
+            className="px-5 py-2.5 rounded-2xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-bold text-xs inline-flex items-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer"
           >
             <Upload className="w-4 h-4" />
             Upload Document Now

@@ -112,7 +112,7 @@ export const CoordinatorSpotlight = () => {
               <div className="pt-2">
                 <button
                   onClick={() => openChat("Hello Aisha, I would like to enquire about treatment in India.")}
-                  className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#2ECDC5] via-[#2ECDC5] to-[#2abdb5]  shadow-xl shadow-[#283593]/20 hover:scale-[1.02] active:scale-[0.98] transition-all group"
+                  className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl text-sm font-bold text-white  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] shadow-xl shadow-[#283593]/20 hover:scale-[1.02] active:scale-[0.98] transition-all group"
                 >
                   <MessageSquare className="w-4 h-4 text-white" />
                   <span>{t.coordinator.messageBtn}</span>
