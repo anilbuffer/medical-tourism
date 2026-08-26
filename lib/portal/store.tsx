@@ -128,6 +128,9 @@ export interface PortalContextType {
   addCsNote: (caseId: string, text: string) => void;
   updateStageWithReason: (caseId: string, stage: PatientJourneyStage, reason?: string) => void;
   moveToNurture: (caseId: string, entry: Omit<NurtureEntry, 'addedAt' | 'addedByName'>) => void;
+  bulkAssignCases: (caseIds: string[], coordinatorName: string) => void;
+  bulkUpdateStage: (caseIds: string[], stage: PatientJourneyStage) => void;
+  bulkSendMessage: (caseIds: string[], text: string) => void;
 
   // Finance actions
   initiateRefund: (caseId: string, paymentStageId: PaymentStageId, amountUsd: number, reason: string) => void;
@@ -343,7 +346,7 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
       assignedHospitalId: referredHospitalId || "hosp_medanta",
       assignedDoctorId: referredDoctorId || "doc_trehan",
       assignedQueue,
-      assignedCoordinatorName: "Aisha Khan",
+      assignedCoordinatorName: "",
 
       leadCreatedAt: now.toISOString(),
       slaTargetMinutes: slaMinutes,
@@ -1087,6 +1090,81 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
 
   // ─── Finance Actions ─────────────────────────────────────────────────────────
 
+  const bulkAssignCases = (caseIds: string[], coordinatorName: string) => {
+    const now = new Date().toISOString();
+    const actorName = currentUser?.name || "CS Agent";
+    setAllCases((prev) =>
+      prev.map((c) => {
+        if (!caseIds.includes(c.id)) return c;
+        const audit: AuditLog = {
+          id: `aud_${Date.now()}_${Math.random()}`,
+          caseId: c.id,
+          action: "BULK_ASSIGN",
+          actorName,
+          actorRole: currentUser?.role || "customer_support",
+          timestamp: now,
+          details: `Assigned to ${coordinatorName} via bulk action.`,
+        };
+        return { ...c, assignedCoordinatorName: coordinatorName, auditLogs: [audit, ...c.auditLogs] };
+      })
+    );
+  };
+
+  const bulkUpdateStage = (caseIds: string[], stage: PatientJourneyStage) => {
+    const now = new Date().toISOString();
+    const actorName = currentUser?.name || "CS Agent";
+    const actorRole = currentUser?.role || "customer_support";
+    setAllCases((prev) =>
+      prev.map((c) => {
+        if (!caseIds.includes(c.id)) return c;
+        const stageEvent: StageHistoryEvent = {
+          id: `sh_${Date.now()}_${Math.random()}`,
+          fromStage: c.stage,
+          toStage: stage,
+          changedAt: now,
+          changedByName: actorName,
+          changedByRole: actorRole,
+          reason: "Bulk stage update",
+        };
+        const audit: AuditLog = {
+          id: `aud_${Date.now()}_${Math.random()}`,
+          caseId: c.id,
+          action: "BULK_STAGE_UPDATE",
+          actorName,
+          actorRole,
+          timestamp: now,
+          details: `Stage changed from ${c.stage} to ${stage} via bulk action.`,
+        };
+        return {
+          ...c,
+          stage,
+          stageHistory: [...c.stageHistory, stageEvent],
+          auditLogs: [audit, ...c.auditLogs],
+        };
+      })
+    );
+  };
+
+  const bulkSendMessage = (caseIds: string[], text: string) => {
+    const senderRole = currentUser?.role === "customer_support" ? "cs_coordinator" : "patient";
+    const senderName = currentUser?.name || "CS Agent";
+    setAllCases((prev) =>
+      prev.map((c) => {
+        if (!caseIds.includes(c.id)) return c;
+        const newMsg: InPortalMessage = {
+          id: `msg_${Date.now()}_${Math.random()}`,
+          senderId: currentUser?.id || "user_cs",
+          senderName,
+          senderRole,
+          text,
+          timestamp: "Just now",
+          isRead: false,
+        };
+        return { ...c, messages: [...c.messages, newMsg] };
+      })
+    );
+  };
+
   const initiateRefund = (caseId: string, paymentStageId: PaymentStageId, amountUsd: number, reason: string) => {
     const now = new Date().toISOString();
     const requesterName = currentUser?.name || "Finance";
@@ -1191,6 +1269,9 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
         addCsNote,
         updateStageWithReason,
         moveToNurture,
+        bulkAssignCases,
+        bulkUpdateStage,
+        bulkSendMessage,
         // Finance
         initiateRefund,
         grantBillingDisputeAccess,

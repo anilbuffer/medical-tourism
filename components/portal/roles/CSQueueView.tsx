@@ -17,6 +17,7 @@ import {
   Search,
   AlertTriangle,
   XCircle,
+  X,
   Activity,
   StickyNote,
   Heart,
@@ -26,7 +27,7 @@ import {
   RotateCcw,
 } from "lucide-react";
 
-export type CSTab = "overview" | "documents" | "consent" | "notes" | "handoff" | "quote_builder" | "messages";
+export type CSTab = "overview" | "intake" | "documents" | "consent" | "notes" | "handoff" | "quote_builder" | "messages";
 export type QueueFilter = "all" | PatientJourneyStage;
 
 interface CSQueueViewProps {
@@ -94,10 +95,19 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
     addCsNote,
     sendPortalMessage,
     moveToNurture,
+    bulkAssignCases,
+    bulkUpdateStage,
+    bulkSendMessage,
     currentUser,
   } = usePortal();
 
   const [queueFilter, setQueueFilter] = useState<QueueFilter>("all");
+  const [coordinatorFilter, setCoordinatorFilter] = useState<"my_queue" | "team_queue" | "unassigned">("my_queue");
+  const [viewMode, setViewMode] = useState<"list" | "board">("list");
+  const [selectedCases, setSelectedCases] = useState<string[]>([]);
+  const [showBulkMessage, setShowBulkMessage] = useState(false);
+  const [bulkMessageText, setBulkMessageText] = useState("");
+
   const [searchQuery, setSearchQuery] = useState("");
   const [internalTab, setInternalTab] = useState<CSTab>("overview");
   const activeTab = controlledTab ?? internalTab;
@@ -147,6 +157,11 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
     if (queueFilter !== "all") {
       filtered = filtered.filter((c) => c.stage === queueFilter);
     }
+    if (coordinatorFilter === "my_queue" && currentUser?.name) {
+      filtered = filtered.filter((c) => c.assignedCoordinatorName === currentUser.name);
+    } else if (coordinatorFilter === "unassigned") {
+      filtered = filtered.filter((c) => !c.assignedCoordinatorName);
+    }
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
       filtered = filtered.filter(
@@ -154,7 +169,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
       );
     }
     return filtered;
-  }, [cases, queueFilter, searchQuery]);
+  }, [cases, queueFilter, coordinatorFilter, searchQuery, currentUser]);
 
   const filterCounts = useMemo(() => {
     const counts: Record<string, number> = { all: cases.length };
@@ -231,6 +246,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
 
   const CS_TABS: { id: CSTab; label: string; icon: React.ElementType }[] = [
     { id: "overview", label: "Overview", icon: Activity },
+    { id: "intake", label: "Intake", icon: FileText },
     { id: "documents", label: "Documents", icon: FileText },
     { id: "consent", label: "Consent", icon: ShieldCheck },
     { id: "notes", label: "Notes", icon: StickyNote },
@@ -249,147 +265,375 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
   return (
     <div className="space-y-5 animate-in fade-in duration-300">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-[#141d60] via-[#1b2360] to-[#101e76] rounded-2xl p-6 sm:p-8 text-white shadow-xl border border-slate-800/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-48 h-48 bg-[#2ECDC5]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="bg-[#101955] rounded-[24px] p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 relative overflow-hidden mb-6">
         <div className="relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2ECDC5]/15 text-[#2ECDC5] text-xs font-bold tracking-wider uppercase mb-2 border border-[#2ECDC5]/30">
-            <Users className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1e2a78] text-[#2ECDC5] text-xs font-bold tracking-wider uppercase mb-4 border border-[#2a3891]">
+            <Users className="w-4 h-4" />
             Customer Support Queue Desk
           </div>
-          <h2 className="text-2xl font-black tracking-tight text-white">
+          <h2 className="text-[28px] font-bold tracking-tight text-white mb-2">
             International Patient Triage & SLA Monitor
           </h2>
-          <p className="text-slate-300 text-xs sm:text-sm mt-1 max-w-2xl">
+          <p className="text-slate-300 text-sm max-w-2xl">
             Logged in as <strong>{currentUser?.name}</strong> • Queues:{" "}
-            {currentUser?.assignedQueues?.join(", ") || "Global Queue"}. Clinical fields are read-only per RBAC.
+            {currentUser?.assignedQueues?.join(", ") || "Global Queue"}.<br />
+            Clinical fields are read-only per RBAC.
           </p>
         </div>
-        <div className="relative z-10 flex items-center gap-3 bg-white/10 px-4 py-2.5 rounded-2xl backdrop-blur-md border border-white/15 text-xs font-bold text-slate-200">
+        <div className="relative z-10 flex items-center gap-3 bg-white/10 px-5 py-3 rounded-full backdrop-blur-md border border-white/10 text-sm font-bold text-slate-200">
           <Clock className="w-4 h-4 text-[#2ECDC5]" />
           <span>Tier-1 SLA Target: &lt; 45m</span>
         </div>
       </div>
 
-      {/* Queue Filter Tabs */}
-      <div className="flex overflow-x-auto gap-1.5 bg-white/95 rounded-2xl p-1.5 border border-slate-200 shadow-sm">
-        {FILTER_TABS.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setQueueFilter(tab.id)}
-            className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${queueFilter === tab.id
-              ? "bg-gradient-to-r from-[#3abdb6] to-[#3fc1ba] text-white shadow-sm"
-              : "text-slate-600 hover:bg-slate-100"
-              }`}
-          >
-            {tab.label}
-            {filterCounts[tab.id === "all" ? "all" : tab.id] > 0 && (
-              <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${queueFilter === tab.id ? "bg-white/20 text-white" : "bg-slate-100 text-slate-600"
-                }`}>
-                {filterCounts[tab.id === "all" ? "all" : tab.id] || 0}
-              </span>
-            )}
-          </button>
-        ))}
-      </div>
-
-      {/* Search Bar */}
-      <div className="relative">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-        <input
-          type="text"
-          placeholder="Search by Patient ID (PT-2026-…) or name…"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full bg-white border border-slate-200 rounded-2xl pl-10 pr-4 py-3 text-xs text-slate-900 shadow-sm focus:ring-2 focus:ring-[#2ECDC5] focus:outline-none"
-        />
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left Col: Queue Table */}
-        <div className="bg-white/95 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] overflow-hidden">
-          <div className="p-4 border-b border-slate-100 flex items-center justify-between">
-            <h3 className="font-extrabold text-slate-900 text-sm">
-              Queue ({filteredCases.length} cases)
-            </h3>
-            <span className="text-[11px] text-[#3F4EB4] font-bold bg-[#2ECDC5]/10 px-2.5 py-0.5 rounded-full border border-[#2ECDC5]/20">
-              Live Feed
-            </span>
-          </div>
-          <div className="divide-y divide-slate-100 max-h-[640px] overflow-y-auto">
-            {filteredCases.length === 0 ? (
-              <div className="p-8 text-center text-xs text-slate-400">No cases match this filter.</div>
-            ) : (
-              filteredCases.map((c) => {
-                const isSelected = c.id === activeCaseId;
-                const slaColor = getSlaColor(c.slaExpiresAt, c.slaBreached);
-                const slaLabel = getSlaLabel(c.slaExpiresAt, c.slaBreached);
-                const pendingDocs = c.documents.filter((d) => d.status === "pending_review").length;
-
+      {/* Queue Filter Tabs & View Toggle */}
+      <div className="bg-white rounded-[24px] p-5 border border-slate-100 shadow-[0_4px_24px_rgba(0,0,0,0.02)] space-y-5 mb-6">
+        <div className="flex items-center justify-between flex-wrap gap-4">
+          <div className="flex overflow-x-auto gap-2 sm:gap-6 items-center">
+            {FILTER_TABS.map((tab) => {
+              const isActive = queueFilter === tab.id;
+              const count = filterCounts[tab.id === "all" ? "all" : tab.id] || 0;
+              const isNurture = tab.id === "nurture";
+              
+              if (isNurture) {
                 return (
                   <button
-                    key={c.id}
-                    onClick={() => onSelectCase(c.id)}
-                    className={`w-full text-left p-4 transition-all duration-200 cursor-pointer ${isSelected
-                      ? "bg-gradient-to-r from-[#071321] to-[#0D2642] text-white"
-                      : "hover:bg-slate-50 text-slate-800"
-                      }`}
+                    key={tab.id}
+                    onClick={() => setQueueFilter(tab.id)}
+                    className={`flex items-center gap-2 px-5 py-2 rounded-full text-sm font-bold transition-all whitespace-nowrap cursor-pointer ${isActive ? "bg-[#2ECDC5] text-white shadow-md" : "bg-[#2ECDC5] text-white hover:bg-[#28b8b0]"}`}
                   >
-                    {/* Row: Patient ID + SLA */}
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="font-mono text-[10px] font-bold text-[#2ECDC5]">{c.id}</span>
-                      <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full border ${slaColor}`}>
-                        {slaLabel}
-                      </span>
-                    </div>
-                    {/* Patient Name */}
-                    <div className="font-black text-sm mt-1 truncate">{c.patientName}</div>
-                    {/* Source + Treatment */}
-                    <div className={`text-[11px] mt-0.5 truncate ${isSelected ? "text-slate-300" : "text-slate-500"}`}>
-                      {c.utmSource || "direct"} · {c.treatmentCategory}
-                    </div>
-                    {/* Stage + Last contact */}
-                    <div className="flex items-center justify-between mt-2">
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${isSelected
-                        ? "bg-white/20 text-white"
-                        : c.stage === "nurture" ? "bg-purple-100 text-purple-800"
-                          : "bg-[#2ECDC5]/15 text-[#3F4EB4]"
-                        }`}>
-                        {STAGE_LABEL_MAP[c.stage] || c.stage}
-                      </span>
-                      {pendingDocs > 0 && (
-                        <span className={`text-[10px] font-bold ${isSelected ? "text-amber-300" : "text-amber-600"}`}>
-                          {pendingDocs} doc{pendingDocs > 1 ? "s" : ""} pending
-                        </span>
-                      )}
-                    </div>
+                    {tab.label}
                   </button>
                 );
-              })
-            )}
+              }
+              
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setQueueFilter(tab.id)}
+                  className={`flex items-center gap-2 text-sm font-bold transition-all whitespace-nowrap cursor-pointer pb-1 border-b-2 ${isActive
+                    ? "border-[#2ECDC5] text-slate-900"
+                    : "border-transparent text-slate-500 hover:text-slate-800"
+                    }`}
+                >
+                  {tab.label}
+                  {count > 0 && tab.id === "all" && (
+                    <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold bg-slate-100 text-slate-600`}>
+                      {count}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+          <div className="flex items-center gap-1 bg-slate-50 p-1 rounded-full border border-slate-100">
+            <button
+              onClick={() => setViewMode("list")}
+              className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all cursor-pointer ${viewMode === "list" ? "bg-white text-slate-900 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}
+            >
+              List View
+            </button>
+            <button
+              onClick={() => setViewMode("board")}
+              className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all cursor-pointer ${viewMode === "board" ? "bg-white text-slate-900 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}
+            >
+              Board View
+            </button>
           </div>
         </div>
 
-        {/* Right 2 Cols: Case Detail Tabs */}
-        {activeCase && (
-          <div className="lg:col-span-2 space-y-4">
-            {/* Case Header + Status Override */}
-            <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-5 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)]">
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 flex-wrap">
+        <div className="flex flex-col md:flex-row items-center gap-4">
+          <div className="flex overflow-x-auto gap-2 bg-slate-50 p-1 rounded-full border border-slate-100 shrink-0">
+            {[
+              { id: "my_queue", label: "My Queue" },
+              { id: "team_queue", label: "Team Queue" },
+              { id: "unassigned", label: "Unassigned" },
+            ].map(f => (
+              <button
+                key={f.id}
+                onClick={() => setCoordinatorFilter(f.id as any)}
+                className={`px-5 py-2 rounded-full text-sm font-bold transition-all cursor-pointer ${coordinatorFilter === f.id ? "bg-[#101955] text-white shadow-md" : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/50"}`}
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
+          <div className="relative flex-1 w-full">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <input
+              type="text"
+              placeholder="Search by Patient ID (PT-2026-…) or name…"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-white border border-slate-200 rounded-full pl-11 pr-4 py-3 text-sm text-slate-600 focus:ring-2 focus:ring-[#2ECDC5] focus:outline-none placeholder:text-slate-300"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Bulk Action Bar */}
+      {selectedCases.length > 0 && (
+        <div className="bg-blue-50 border border-blue-200 rounded-2xl p-3 flex flex-wrap items-center justify-between shadow-sm sticky top-4 z-40 gap-3">
+          <div className="text-sm font-bold text-blue-900 flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4" />
+            {selectedCases.length} case{selectedCases.length > 1 ? "s" : ""} selected
+          </div>
+          <div className="flex items-center gap-2 flex-wrap">
+            <button
+              onClick={() => {
+                bulkAssignCases(selectedCases, currentUser?.name || "CS Agent");
+                setSelectedCases([]);
+              }}
+              className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition-colors cursor-pointer"
+            >
+              Claim (Assign to Me)
+            </button>
+            <button
+              onClick={() => {
+                bulkUpdateStage(selectedCases, "nurture");
+                setSelectedCases([]);
+              }}
+              className="px-3 py-1.5 bg-purple-100 hover:bg-purple-200 text-purple-700 text-xs font-bold rounded-lg border border-purple-200 transition-colors cursor-pointer"
+            >
+              Move to Nurture
+            </button>
+            <button
+              onClick={() => setShowBulkMessage(true)}
+              className="px-3 py-1.5 bg-emerald-100 hover:bg-emerald-200 text-emerald-700 text-xs font-bold rounded-lg border border-emerald-200 transition-colors cursor-pointer"
+            >
+              Bulk Message
+            </button>
+            <button
+              onClick={() => setSelectedCases([])}
+              className="px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold rounded-lg transition-colors cursor-pointer"
+            >
+              Clear Selection
+            </button>
+          </div>
+        </div>
+      )}
+
+      {viewMode === "board" ? (
+        <div className="flex overflow-x-auto gap-4 pb-4 snap-x min-h-[600px] items-start">
+          {ALL_STAGES.map((stage) => {
+            const stageCases = filteredCases.filter(c => c.stage === stage);
+            if (queueFilter !== "all" && queueFilter !== stage) return null;
+            return (
+              <div key={stage} className="min-w-[320px] w-[320px] bg-slate-100/80 rounded-2xl p-3 flex flex-col snap-start border border-slate-200 shadow-sm"
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={(e) => {
+                  const caseId = e.dataTransfer.getData("caseId");
+                  if (caseId) {
+                    updateStageWithReason(caseId, stage, "Moved via Kanban board");
+                  }
+                }}
+              >
+                <div className="font-extrabold text-slate-800 text-sm mb-3 flex items-center justify-between px-1">
+                  {STAGE_LABEL_MAP[stage] || stage}
+                  <span className="bg-slate-200 text-slate-700 px-2.5 py-0.5 rounded-full text-[10px] font-bold shadow-xs border border-slate-300/50">{stageCases.length}</span>
+                </div>
+                <div className="flex-1 overflow-y-auto space-y-3 pr-1 max-h-[700px] scrollbar-thin scrollbar-thumb-slate-300">
+                  {stageCases.map(c => {
+                    const isSelected = selectedCases.includes(c.id);
+                    const isGlobalSelected = c.id === activeCaseId;
+                    const slaColor = getSlaColor(c.slaExpiresAt, c.slaBreached);
+                    const slaLabel = getSlaLabel(c.slaExpiresAt, c.slaBreached);
+                    return (
+                      <div 
+                        key={c.id} 
+                        draggable 
+                        onDragStart={(e) => e.dataTransfer.setData("caseId", c.id)}
+                        className={`bg-white rounded-xl p-3 shadow-[0_2px_8px_rgba(0,0,0,0.04)] border transition-all cursor-pointer ${isGlobalSelected ? "ring-2 ring-[#2ECDC5] border-transparent" : "border-slate-200 hover:border-[#2ECDC5]/50 hover:shadow-md"}`}
+                      >
+                        <div className="flex items-start justify-between gap-2 mb-2">
+                          <div className="flex items-center gap-2">
+                            <input 
+                              type="checkbox" 
+                              checked={isSelected} 
+                              onChange={(e) => {
+                                e.stopPropagation();
+                                setSelectedCases(prev => e.target.checked ? [...prev, c.id] : prev.filter(id => id !== c.id));
+                              }}
+                              className="rounded text-[#2ECDC5] focus:ring-[#2ECDC5] cursor-pointer"
+                            />
+                            <span className="font-mono text-[10px] font-bold text-[#3F4EB4] bg-[#3F4EB4]/5 px-1.5 py-0.5 rounded-md">{c.id}</span>
+                          </div>
+                          <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full border ${slaColor}`}>
+                            {slaLabel}
+                          </span>
+                        </div>
+                        <div className="font-black text-sm text-slate-900 truncate" onClick={() => onSelectCase(c.id)}>{c.patientName}</div>
+                        <div className="text-[10px] text-slate-500 mt-1 truncate" onClick={() => onSelectCase(c.id)}>{c.utmSource || "direct"} · {c.treatmentCategory}</div>
+                        <div className="mt-3 flex items-center justify-between pt-2 border-t border-slate-100" onClick={() => onSelectCase(c.id)}>
+                          <div className="flex items-center gap-1.5 max-w-[70%]">
+                            <div className="w-4 h-4 rounded-full bg-slate-200 flex items-center justify-center text-[8px] font-bold text-slate-600 shrink-0">
+                              {(c.assignedCoordinatorName || "U")[0]}
+                            </div>
+                            <span className="text-[9px] font-bold text-slate-600 truncate">
+                              {c.assignedCoordinatorName || "Unassigned"}
+                            </span>
+                          </div>
+                          <button className="text-[10px] text-[#2ECDC5] font-bold group flex items-center gap-0.5">
+                            View <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                  {stageCases.length === 0 && (
+                    <div className="text-center py-6 text-xs text-slate-400 border-2 border-dashed border-slate-200 rounded-xl">
+                      Drop case here
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="bg-white rounded-[24px] border border-slate-100 shadow-[0_4px_24px_rgba(0,0,0,0.02)] overflow-hidden flex flex-col mb-6">
+          {/* List Header */}
+          <div className="p-5 border-b border-slate-50 flex items-center justify-between shrink-0 bg-slate-50/50">
+            <div className="flex items-center gap-3">
+              <input 
+                type="checkbox" 
+                checked={filteredCases.length > 0 && selectedCases.length === filteredCases.length}
+                onChange={(e) => setSelectedCases(e.target.checked ? filteredCases.map(c => c.id) : [])}
+                className="rounded text-[#2ECDC5] focus:ring-[#2ECDC5] cursor-pointer w-4 h-4"
+              />
+              <h3 className="font-bold text-slate-900 text-[15px]">
+                Scheduled Shifts List ({filteredCases.length})
+              </h3>
+            </div>
+            <span className="text-[11px] text-[#2ECDC5] font-bold bg-[#2ECDC5]/10 px-3 py-1 rounded-full border border-[#2ECDC5]/20">
+              Live Feed
+            </span>
+          </div>
+          
+          {/* Table Container */}
+          <div className="w-full overflow-x-auto min-h-[500px]">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-slate-50/50 text-[10px] uppercase font-bold text-slate-500 tracking-wider border-b border-slate-100">
+                  <th className="py-4 pl-5 pr-4 w-12"></th>
+                  <th className="py-4 px-4 whitespace-nowrap cursor-pointer hover:text-slate-700">DATE &amp; TIME ↑↓</th>
+                  <th className="py-4 px-4 whitespace-nowrap cursor-pointer hover:text-slate-700">PATIENT ↑↓</th>
+                  <th className="py-4 px-4 whitespace-nowrap cursor-pointer hover:text-slate-700">CAREGIVER ↑↓</th>
+                  <th className="py-4 px-4 whitespace-nowrap cursor-pointer hover:text-slate-700">STATUS ↑↓</th>
+                  <th className="py-4 px-4 whitespace-nowrap cursor-pointer hover:text-slate-700">REGION ↑↓</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {filteredCases.length === 0 ? (
+                  <tr>
+                    <td colSpan={6} className="p-8 text-center text-sm text-slate-400">No cases match this filter.</td>
+                  </tr>
+                ) : (
+                  filteredCases.map((c) => {
+                    const isSelected = selectedCases.includes(c.id);
+                    const slaColor = getSlaColor(c.slaExpiresAt, c.slaBreached);
+                    const slaLabel = getSlaLabel(c.slaExpiresAt, c.slaBreached);
+                    const pendingDocs = c.documents.filter((d) => d.status === "pending_review").length;
+
+                    return (
+                      <tr 
+                        key={c.id}
+                        onClick={() => onSelectCase(c.id)}
+                        className={`hover:bg-slate-50 transition-colors cursor-pointer group`}
+                      >
+                        <td className="py-4 pl-5 pr-4" onClick={e => e.stopPropagation()}>
+                          <input 
+                            type="checkbox" 
+                            checked={isSelected}
+                            onChange={(e) => {
+                              setSelectedCases(prev => e.target.checked ? [...prev, c.id] : prev.filter(id => id !== c.id));
+                            }}
+                            className="rounded text-[#2ECDC5] focus:ring-[#2ECDC5] cursor-pointer"
+                          />
+                        </td>
+                        <td className="py-4 px-4 align-top">
+                          <div className="flex flex-col gap-1 items-start">
+                            <span className="font-mono text-xs font-bold text-[#2ECDC5]">{c.id}</span>
+                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${slaColor} whitespace-nowrap`}>
+                              {slaLabel}
+                            </span>
+                          </div>
+                        </td>
+                        <td className="py-4 px-4 align-top">
+                          <div className="font-black text-sm text-slate-900 group-hover:text-[#2ECDC5] transition-colors">{c.patientName}</div>
+                          <div className="text-[11px] text-slate-500 mt-1">{c.utmSource || "direct"} · {c.treatmentCategory}</div>
+                        </td>
+                        <td className="py-4 px-4 align-top">
+                          <div className="flex items-center gap-2">
+                            <div className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600 shrink-0">
+                              {(c.assignedCoordinatorName || "U")[0]}
+                            </div>
+                            <span className={`text-xs font-semibold ${c.assignedCoordinatorName ? "text-slate-700" : "text-slate-400 italic"}`}>
+                              {c.assignedCoordinatorName || "Unassigned"}
+                            </span>
+                          </div>
+                        </td>
+                        <td className="py-4 px-4 align-top">
+                          <div className="flex flex-col gap-1 items-start">
+                            <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full ${
+                                c.stage === "nurture" ? "bg-purple-100 text-purple-800"
+                                : c.stage === "lead" ? "bg-rose-50 text-rose-700"
+                                : c.stage === "contacted" ? "bg-amber-100 text-amber-800"
+                                : "bg-emerald-50 text-emerald-700"
+                              }`}>
+                              {STAGE_LABEL_MAP[c.stage] || c.stage}
+                            </span>
+                            {pendingDocs > 0 && (
+                              <span className="text-[10px] font-bold text-amber-600 mt-1 whitespace-nowrap">
+                                {pendingDocs} doc{pendingDocs > 1 ? "s" : ""} pending
+                              </span>
+                            )}
+                          </div>
+                        </td>
+                        <td className="py-4 px-4 align-top">
+                          <div className="text-sm text-slate-600">{c.patientCountry}</div>
+                        </td>
+                      </tr>
+                    );
+                  })
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      )}
+
+      {/* Case Detail XL Modal Overlay */}
+      {activeCase && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-slate-950/40 backdrop-blur-sm animate-in fade-in" onClick={() => onSelectCase("")}>
+          <div className="bg-slate-50 w-full max-w-6xl max-h-full rounded-[24px] shadow-2xl flex flex-col overflow-hidden relative" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-6 bg-white border-b border-slate-100 shrink-0">
+                <h2 className="text-xl font-bold text-slate-900">Case Details: {activeCase.patientName}</h2>
+                <button onClick={() => onSelectCase("")} className="p-2 rounded-full hover:bg-slate-100 text-slate-500 cursor-pointer transition-colors">
+                    <X className="w-5 h-5" />
+                </button>
+            </div>
+            <div className="flex-1 overflow-y-auto p-6 lg:p-8">
+              <div className="space-y-6">
+                {/* Case Header + Status Override */}
+                <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 flex-wrap">
                 <div>
-                  <span className="text-xs font-mono font-bold text-[#3F4EB4]">{activeCase.id}</span>
-                  <h3 className="text-lg font-black text-slate-900 mt-0.5">{activeCase.patientName}</h3>
-                  <div className="text-xs text-slate-500 flex flex-wrap gap-x-3 gap-y-1 mt-0.5">
+                  <span className="text-xs font-mono font-bold text-[#4B6BFB]">{activeCase.id}</span>
+                  <h3 className="text-2xl font-bold text-slate-900 mt-1">{activeCase.patientName}</h3>
+                  <div className="text-sm text-slate-500 flex flex-wrap gap-x-4 gap-y-2 mt-2 font-medium">
                     <span>{activeCase.patientCountry}</span>
-                    <span>•</span>
+                    <span className="text-slate-300">•</span>
                     <span>{activeCase.patientPhone}</span>
-                    <span>•</span>
+                    <span className="text-slate-300">•</span>
                     <span>{activeCase.patientEmail}</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 flex-wrap">
+                <div className="flex items-center gap-3 flex-wrap mt-4 sm:mt-0">
                   {/* Manual Stage Override */}
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-slate-500">Stage:</span>
+                  <div className="flex items-center gap-3 bg-slate-50 p-1.5 rounded-full border border-slate-100">
+                    <span className="text-sm font-bold text-slate-500 pl-3">Stage:</span>
                     <select
                       value={overrideStage || activeCase.stage}
                       onChange={(e) => {
@@ -399,7 +643,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                         const targetIdx = ALL_STAGES.indexOf(newStage);
                         setShowOverrideReason(targetIdx - currentIdx > 1);
                       }}
-                      className="bg-white border border-slate-300 text-xs font-extrabold text-slate-900 rounded-xl p-2 shadow-xs focus:ring-2 focus:ring-[#2ECDC5] focus:outline-none cursor-pointer"
+                      className="bg-white border border-slate-200 text-sm font-bold text-slate-900 rounded-full py-1.5 px-4 shadow-sm focus:ring-2 focus:ring-[#4B6BFB] focus:outline-none cursor-pointer"
                     >
                       {ALL_STAGES.map((s) => (
                         <option key={s} value={s}>{STAGE_LABEL_MAP[s] || s}</option>
@@ -407,16 +651,16 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                     </select>
                     <button
                       onClick={handleStageOverride}
-                      className="px-3 py-2 rounded-xl bg-[#3F4EB4] hover:bg-[#283593] text-white text-xs font-bold transition-all cursor-pointer"
+                      className="px-5 py-1.5 rounded-full bg-[#4B6BFB] hover:bg-[#3A56D4] text-white text-sm font-bold transition-all cursor-pointer shadow-md"
                     >
                       Apply
                     </button>
                   </div>
                   <button
                     onClick={() => setNurtureModalOpen(true)}
-                    className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-purple-100 hover:bg-purple-200 text-purple-800 text-xs font-bold transition-all cursor-pointer border border-purple-200"
+                    className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-purple-50 hover:bg-purple-100 text-purple-700 text-sm font-bold transition-all cursor-pointer border border-purple-100"
                   >
-                    <Heart className="w-3.5 h-3.5" />
+                    <Heart className="w-4 h-4" />
                     Nurture
                   </button>
                 </div>
@@ -446,24 +690,24 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
             </div>
 
             {/* Tab Bar */}
-            <div className="flex overflow-x-auto gap-1 bg-white/95 rounded-2xl p-1.5 border border-slate-200 shadow-sm">
+            <div className="flex overflow-x-auto gap-2 bg-white rounded-2xl p-2 border border-slate-100 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
               {CS_TABS.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${activeTab === tab.id
-                    ? "bg-gradient-to-r from-[#3abdb6] to-[#3fc1ba] text-white shadow-sm"
-                    : "text-slate-600 hover:bg-slate-100"
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold transition-all whitespace-nowrap cursor-pointer ${activeTab === tab.id
+                    ? "bg-[#2ECDC5] text-white shadow-md"
+                    : "text-slate-600 hover:bg-slate-50"
                     }`}
                 >
-                  <tab.icon className="w-3.5 h-3.5" />
+                  <tab.icon className="w-4 h-4" />
                   {tab.label}
                 </button>
               ))}
             </div>
 
             {/* Tab Content */}
-            <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-6 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] min-h-[300px]">
+            <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_4px_24px_rgba(0,0,0,0.02)] min-h-[300px]">
 
               {/* ─── Overview ───────────────────────────────────────── */}
               {activeTab === "overview" && (
@@ -508,6 +752,42 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                       {(!activeCase.stageHistory || activeCase.stageHistory.length === 0) && (
                         <div className="text-xs text-slate-400">No stage history available.</div>
                       )}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* ─── Intake ───────────────────────────────────────── */}
+              {activeTab === "intake" && (
+                <div className="space-y-5 animate-in fade-in duration-300">
+                  <h4 className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                    <FileText className="w-4 h-4 text-[#3F4EB4]" />
+                    Raw Intake Form Data
+                  </h4>
+                  <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-4 text-xs">
+                    <div>
+                      <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Patient Message / Chief Complaint</div>
+                      <div className="font-medium text-slate-800 bg-white p-3 rounded-xl border border-slate-200 leading-relaxed min-h-[60px]">
+                        {activeCase.clinicalSummary?.chiefComplaint || "No message provided."}
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Preferred Contact Time</div>
+                        <div className="font-semibold text-slate-800">{activeCase.preferredContactTime || "—"}</div>
+                      </div>
+                      <div>
+                        <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Entry Path</div>
+                        <div className="font-semibold text-slate-800 capitalize">{activeCase.entryPath?.replace(/_/g, " ") || "—"}</div>
+                      </div>
+                      <div>
+                        <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Referred Hospital</div>
+                        <div className="font-semibold text-slate-800">{activeCase.referredHospitalId || "—"}</div>
+                      </div>
+                      <div>
+                        <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Referred Doctor</div>
+                        <div className="font-semibold text-slate-800">{activeCase.referredDoctorId || "—"}</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -834,9 +1114,11 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                 </div>
               )}
             </div>
+              </div>
+            </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
       {/* Nurture Queue Panel */}
       {queueFilter === "nurture" && cases.filter((c) => c.stage === "nurture").length > 0 && (
@@ -965,6 +1247,38 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
               <button onClick={() => setNurtureModalOpen(false)} className="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs cursor-pointer">Cancel</button>
               <button onClick={handleMoveToNurture} className="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs cursor-pointer">
                 Move to Nurture
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Bulk Message Modal */}
+      {showBulkMessage && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md animate-in fade-in">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100 space-y-5">
+            <h3 className="text-lg font-black text-slate-900">Send Bulk Message</h3>
+            <p className="text-xs text-slate-600">This message will be sent to {selectedCases.length} patient(s).</p>
+            <textarea
+              rows={4}
+              value={bulkMessageText}
+              onChange={(e) => setBulkMessageText(e.target.value)}
+              placeholder="Type your message here..."
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-900 focus:ring-2 focus:ring-[#2ECDC5] focus:outline-none"
+            />
+            <div className="flex gap-2 justify-end">
+              <button onClick={() => setShowBulkMessage(false)} className="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs cursor-pointer">Cancel</button>
+              <button 
+                onClick={() => {
+                  bulkSendMessage(selectedCases, bulkMessageText);
+                  setShowBulkMessage(false);
+                  setSelectedCases([]);
+                  setBulkMessageText("");
+                }} 
+                className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs cursor-pointer"
+                disabled={!bulkMessageText.trim()}
+              >
+                Send Message
               </button>
             </div>
           </div>

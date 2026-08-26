@@ -56,12 +56,12 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({ patientCase, onNavigat
           <div className="absolute bottom-0 left-10 w-64 h-64 bg-[#3F4EB4]/25 rounded-full blur-3xl pointer-events-none" />
 
           <div className="space-y-4 relative z-10 max-w-2xl">
-            <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-white flex items-center gap-3">
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white flex items-center gap-3">
               <span>Video call with your doctor</span>
               <span className="inline-block w-3 h-3 rounded-full bg-emerald-400 animate-pulse" />
             </h1>
 
-            <p className="text-lg text-slate-200 font-medium">
+            <p className="text-md text-slate-200 font-medium">
               You are scheduled to meet with <strong>Dr. Subhash Gupta</strong> on <strong className="text-white">Thursday, Aug 27 at 03:30 PM IST</strong>.
             </p>
 
@@ -174,13 +174,13 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({ patientCase, onNavigat
             <div className="flex gap-3 w-full mt-auto">
               <button
                 onClick={() => onNavigateTab("messages")}
-                className="flex-1 bg-white hover:bg-slate-50 text-slate-700 py-3 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all border border-slate-200 shadow-sm cursor-pointer"
+                className="flex-1 bg-white hover:bg-slate-50 text-slate-700 py-3 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] cursor-pointer"
               >
                 <MessageSquare className="w-4 h-4" />
                 Message
               </button>
               <button
-                className="flex-1 bg-gradient-to-b from-[#2ECDC5] to-[#28b8b0] hover:from-[#28b8b0] hover:to-[#22a49d] text-white py-3 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all shadow-md shadow-[#2ECDC5]/20 border border-[#28b8b0] cursor-pointer"
+                className="flex-1 bg-gradient-to-b from-[#2ECDC5] to-[#28b8b0] hover:from-[#28b8b0] hover:to-[#22a49d] text-white py-3 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all shadow-[0_6px_32px_rgba(0,0,0,0.06)] border border-[#28b8b0] cursor-pointer"
               >
                 <Phone className="w-4 h-4" />
                 Call me
