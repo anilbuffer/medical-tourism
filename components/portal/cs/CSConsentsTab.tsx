@@ -58,7 +58,7 @@ export const CSConsentsTab: React.FC<CSConsentsTabProps> = ({ patientCase }) => 
   return (
     <div className="space-y-6 animate-in fade-in duration-200">
       {/* Header Banner */}
-      <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-white rounded-2xl p-4 shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <h3 className="font-extrabold text-base text-slate-900">
@@ -97,11 +97,10 @@ export const CSConsentsTab: React.FC<CSConsentsTabProps> = ({ patientCase }) => 
           return (
             <div
               key={ctype}
-              className={`rounded-3xl p-5 border transition-all space-y-3 flex flex-col justify-between ${
-                isObtained
+              className={`rounded-3xl p-5 border transition-all space-y-3 flex flex-col justify-between ${isObtained
                   ? "bg-emerald-50/40 border-emerald-200"
                   : "bg-amber-50/40 border-amber-200"
-              }`}
+                }`}
             >
               <div className="space-y-2">
                 <div className="flex items-start justify-between gap-2">
@@ -109,11 +108,10 @@ export const CSConsentsTab: React.FC<CSConsentsTabProps> = ({ patientCase }) => 
                     {info.title}
                   </div>
                   <span
-                    className={`text-[10px] font-extrabold px-2.5 py-0.5 rounded-full shrink-0 ${
-                      isObtained
+                    className={`text-[10px] font-extrabold px-2.5 py-0.5 rounded-full shrink-0 ${isObtained
                         ? "bg-emerald-100 text-emerald-800 border border-emerald-300"
                         : "bg-amber-100 text-amber-800 border border-amber-300"
-                    }`}
+                      }`}
                   >
                     {isObtained ? "✓ Signed & Verified" : "Pending Signature"}
                   </span>

@@ -105,7 +105,7 @@ export const CSItineraryWorkspace: React.FC<CSItineraryWorkspaceProps> = ({
   return (
     <div className="space-y-6 animate-in fade-in duration-200">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-[#101955] to-[#1e2a78] text-white rounded-3xl p-6 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-gradient-to-r from-[#101955] to-[#1e2a78] text-white rounded-2xl p-4 md:p-6 shadow-[0_6px_32px_rgba(0,0,0,0.08)] flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#2ECDC5] text-xs font-bold uppercase tracking-wider mb-2 border border-white/10">
             <Plane className="w-3.5 h-3.5" />

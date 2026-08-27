@@ -38,7 +38,7 @@ export const CSQuoteBuilderWorkspace: React.FC<CSQuoteBuilderWorkspaceProps> = (
   const [clinicalBaseCost, setClinicalBaseCost] = useState<number>(defaultClinicalCost);
   const [procedureTitle, setProcedureTitle] = useState<string>(
     patientCase.clinicalSummary?.recommendedProcedure ||
-      "Living Donor Liver Transplant (LDLT)"
+    "Living Donor Liver Transplant (LDLT)"
   );
   const [stayDays, setStayDays] = useState<number>(
     patientCase.clinicalWorkspace?.expectedStayDays || 14
@@ -152,7 +152,7 @@ export const CSQuoteBuilderWorkspace: React.FC<CSQuoteBuilderWorkspaceProps> = (
   return (
     <div className="space-y-6 animate-in fade-in duration-200">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-[#101955] to-[#1e2a78] text-white rounded-3xl p-6 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-gradient-to-r from-[#101955] to-[#1e2a78] text-white rounded-2xl p-4 md:p-6 shadow-[0_6px_32px_rgba(0,0,0,0.08)] flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#2ECDC5] text-xs font-bold uppercase tracking-wider mb-2 border border-white/10">
             <DollarSign className="w-3.5 h-3.5" />
@@ -306,11 +306,10 @@ export const CSQuoteBuilderWorkspace: React.FC<CSQuoteBuilderWorkspaceProps> = (
                 key={t.id}
                 type="button"
                 onClick={() => setSelectedTier(t.id as any)}
-                className={`p-4 rounded-2xl text-left border-2 transition-all cursor-pointer relative ${
-                  isSelected
+                className={`p-4 rounded-2xl text-left border-2 transition-all cursor-pointer relative ${isSelected
                     ? "bg-purple-50/50 border-purple-600 shadow-md ring-1 ring-purple-600"
                     : "bg-slate-50 border-slate-200 hover:bg-slate-100"
-                }`}
+                  }`}
               >
                 {t.popular && (
                   <span className="absolute -top-2.5 right-3 bg-purple-600 text-white text-[9px] font-black uppercase px-2 py-0.5 rounded-full shadow-xs">

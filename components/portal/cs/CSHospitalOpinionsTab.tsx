@@ -38,15 +38,15 @@ export const CSHospitalOpinionsTab: React.FC<CSHospitalOpinionsTabProps> = ({
     (patientCase.assignedDoctorId === "doc_gupta"
       ? "Dr. Subhash Gupta"
       : patientCase.assignedDoctorId === "doc_ashok_rajgopal"
-      ? "Dr. Ashok Rajgopal"
-      : "Lead Surgeon");
+        ? "Dr. Ashok Rajgopal"
+        : "Lead Surgeon");
 
   const hospitalName =
     patientCase.assignedHospitalId === "hosp_medanta"
       ? "Medanta – The Medicity, Delhi NCR"
       : patientCase.assignedHospitalId === "hosp_apollo"
-      ? "Apollo Hospitals, Chennai"
-      : "Fortis Memorial Research Institute";
+        ? "Apollo Hospitals, Chennai"
+        : "Fortis Memorial Research Institute";
 
   const suitability =
     patientCase.clinicalWorkspace?.suitabilityDetermination ||
@@ -82,7 +82,7 @@ export const CSHospitalOpinionsTab: React.FC<CSHospitalOpinionsTabProps> = ({
   return (
     <div className="space-y-6 animate-in fade-in duration-200">
       {/* Top Handoff Status Strip */}
-      <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-white rounded-2xl p-4 shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <span className="font-extrabold text-base text-slate-900">

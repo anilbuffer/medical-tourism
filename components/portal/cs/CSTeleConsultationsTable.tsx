@@ -130,7 +130,7 @@ export const CSTeleConsultationsTable: React.FC<CSTeleConsultationsTableProps> =
   return (
     <div className="space-y-5 animate-in fade-in duration-200">
       {/* Header Info & Search */}
-      <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm shadow-slate-100/50 space-y-4">
+      <div className="bg-white rounded-2xl p-4 shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90 space-y-4 transition-all group">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
@@ -167,11 +167,10 @@ export const CSTeleConsultationsTable: React.FC<CSTeleConsultationsTableProps> =
             <button
               key={pill.id}
               onClick={() => setStatusFilter(pill.id as any)}
-              className={`px-3.5 py-1.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
-                statusFilter === pill.id
-                  ? "bg-[#101955] text-white shadow-xs"
-                  : "bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/80"
-              }`}
+              className={`px-3.5 py-1.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${statusFilter === pill.id
+                ? "bg-[#101955] text-white shadow-xs"
+                : "bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/80"
+                }`}
             >
               {pill.label}
             </button>
@@ -180,7 +179,7 @@ export const CSTeleConsultationsTable: React.FC<CSTeleConsultationsTableProps> =
       </div>
 
       {/* Consultations List Table */}
-      <div className="bg-white rounded-3xl border border-slate-100 shadow-sm shadow-slate-100/50 overflow-hidden">
+      <div className="bg-white rounded-2xl  shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90  overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>

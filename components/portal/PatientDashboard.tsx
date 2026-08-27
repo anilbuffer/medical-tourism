@@ -656,7 +656,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
             (portalConfig as any).navGroups.map((group: any, idx: number) => (
               <div key={group.id} className={`${idx > 0 ? "mt-6" : ""}`}>
                 {sidebarOpen && (
-                  <div className="px-4 mb-2 text-[10px] font-black text-[#3F4EB4] uppercase tracking-widest opacity-80">
+                  <div className="px-4 mb-2 text-[10px] font-black text-[#3F4EB4] uppercase tracking-widest opacity-90">
                     {group.label}
                   </div>
                 )}
@@ -790,9 +790,8 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
 
               {/* 100% Solid Opaque Dropdown Card (Matching Image 2) */}
               <div
-                className={`absolute bottom-full mb-3 bg-[#111c2e] rounded-2xl p-2 shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-slate-700/80 text-xs space-y-1 z-50 animate-in fade-in zoom-in-95 duration-150 text-white ${
-                  sidebarOpen ? "left-3 right-3" : "left-3 w-56"
-                }`}
+                className={`absolute bottom-full mb-3 bg-[#111c2e] rounded-2xl p-2 shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-slate-700/80 text-xs space-y-1 z-50 animate-in fade-in zoom-in-95 duration-150 text-white ${sidebarOpen ? "left-3 right-3" : "left-3 w-56"
+                  }`}
               >
                 {/* Settings Option (Matching Image 2) */}
                 <button

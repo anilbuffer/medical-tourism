@@ -109,7 +109,7 @@ export const CSConciergeTable: React.FC<CSConciergeTableProps> = ({
   return (
     <div className="space-y-5 animate-in fade-in duration-200">
       {/* Header & Search */}
-      <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm shadow-slate-100/50 space-y-4">
+      <div className="bg-white rounded-2xl p-4 shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90 space-y-4 transition-all group">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
@@ -146,11 +146,10 @@ export const CSConciergeTable: React.FC<CSConciergeTableProps> = ({
             <button
               key={pill.id}
               onClick={() => setFilterType(pill.id)}
-              className={`px-3.5 py-1.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
-                filterType === pill.id
-                  ? "bg-[#101955] text-white shadow-xs"
-                  : "bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/80"
-              }`}
+              className={`px-3.5 py-1.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${filterType === pill.id
+                ? "bg-[#101955] text-white shadow-xs"
+                : "bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/80"
+                }`}
             >
               {pill.label}
             </button>
@@ -159,7 +158,7 @@ export const CSConciergeTable: React.FC<CSConciergeTableProps> = ({
       </div>
 
       {/* Concierge List Table */}
-      <div className="bg-white rounded-3xl border border-slate-100 shadow-sm shadow-slate-100/50 overflow-hidden">
+      <div className="bg-white rounded-2xl  shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90  overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
@@ -191,10 +190,10 @@ export const CSConciergeTable: React.FC<CSConciergeTableProps> = ({
                     >
                       {/* Patient */}
                       <td className="py-4 px-4">
-                        <div className="font-extrabold text-sm text-slate-900 group-hover:text-[#101955] transition-colors flex items-center gap-1.5">
+                        <div className="font-extrabold text-sm text-slate-900 group-hover:text-[#101955] transition-colors flex items-center gap-1.5 whitespace-nowrap">
                           <span>{c.patientName}</span>
                         </div>
-                        <div className="text-xs text-slate-500 font-medium mt-0.5 flex items-center gap-1">
+                        <div className="text-xs text-slate-500 font-medium mt-0.5 flex items-center gap-1 whitespace-nowrap">
                           <span>{getCountryFlag(c.patientCountry)} {c.patientCountry}</span>
                           <span>•</span>
                           <span className="font-mono text-[10px] text-slate-400">{c.id}</span>
@@ -203,7 +202,7 @@ export const CSConciergeTable: React.FC<CSConciergeTableProps> = ({
 
                       {/* Translator */}
                       <td className="py-4 px-4">
-                        <div className="font-bold text-xs text-slate-800 flex items-center gap-1">
+                        <div className="font-bold text-xs text-slate-800 flex items-center gap-1 whitespace-nowrap">
                           <Languages className="w-3.5 h-3.5 text-blue-600" />
                           <span>{item.translator}</span>
                         </div>
@@ -211,7 +210,7 @@ export const CSConciergeTable: React.FC<CSConciergeTableProps> = ({
 
                       {/* Chauffeur */}
                       <td className="py-4 px-4">
-                        <div className="text-xs text-slate-700 font-medium flex items-center gap-1">
+                        <div className="text-xs text-slate-700 font-medium flex items-center gap-1 whitespace-nowrap">
                           <Car className="w-3.5 h-3.5 text-slate-400" />
                           <span>{item.chauffeur}</span>
                         </div>
@@ -219,7 +218,7 @@ export const CSConciergeTable: React.FC<CSConciergeTableProps> = ({
 
                       {/* Local Amenities */}
                       <td className="py-4 px-4">
-                        <div className="text-xs text-slate-600 font-medium flex items-center gap-1">
+                        <div className="text-xs text-slate-600 font-medium flex items-center gap-1 whitespace-nowrap">
                           <Wifi className="w-3.5 h-3.5 text-teal-600" />
                           <span>{item.localAmenities}</span>
                         </div>
@@ -227,12 +226,12 @@ export const CSConciergeTable: React.FC<CSConciergeTableProps> = ({
 
                       {/* Hospital Liaison */}
                       <td className="py-4 px-4">
-                        <div className="text-xs text-slate-800 font-bold">{item.hospitalLiaison}</div>
+                        <div className="text-xs text-slate-800 font-bold whitespace-nowrap">{item.hospitalLiaison}</div>
                       </td>
 
                       {/* Status */}
                       <td className="py-4 px-4">
-                        <span className={`px-2.5 py-1 rounded-full text-xs font-black border ${item.statusBadge}`}>
+                        <span className={`px-2.5 py-1 rounded-full text-xs font-black border whitespace-nowrap ${item.statusBadge}`}>
                           {item.status}
                         </span>
                       </td>

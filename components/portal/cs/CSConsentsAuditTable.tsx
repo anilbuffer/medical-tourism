@@ -105,7 +105,7 @@ export const CSConsentsAuditTable: React.FC<CSConsentsAuditTableProps> = ({
   return (
     <div className="space-y-5 animate-in fade-in duration-200">
       {/* Header & Search */}
-      <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm shadow-slate-100/50 space-y-4">
+      <div className="bg-white rounded-2xl p-4 shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90 space-y-4 transition-all group">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
@@ -141,11 +141,10 @@ export const CSConsentsAuditTable: React.FC<CSConsentsAuditTableProps> = ({
             <button
               key={pill.id}
               onClick={() => setConsentFilter(pill.id)}
-              className={`px-3.5 py-1.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
-                consentFilter === pill.id
-                  ? "bg-[#101955] text-white shadow-xs"
-                  : "bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/80"
-              }`}
+              className={`px-3.5 py-1.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${consentFilter === pill.id
+                ? "bg-[#101955] text-white shadow-xs"
+                : "bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/80"
+                }`}
             >
               {pill.label}
             </button>
@@ -154,7 +153,7 @@ export const CSConsentsAuditTable: React.FC<CSConsentsAuditTableProps> = ({
       </div>
 
       {/* Consent Audit List Table */}
-      <div className="bg-white rounded-3xl border border-slate-100 shadow-sm shadow-slate-100/50 overflow-hidden">
+      <div className="bg-white rounded-2xl  shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90  overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
@@ -185,20 +184,20 @@ export const CSConsentsAuditTable: React.FC<CSConsentsAuditTableProps> = ({
                     >
                       {/* Patient */}
                       <td className="py-4 px-4">
-                        <div className="font-extrabold text-sm text-slate-900 group-hover:text-[#101955] transition-colors flex items-center gap-1.5">
+                        <div className="font-extrabold text-sm text-slate-900 group-hover:text-[#101955] transition-colors flex items-center gap-1.5 whitespace-nowrap">
                           <span>{c.patientName}</span>
                         </div>
-                        <div className="text-xs text-slate-500 font-medium mt-0.5 flex items-center gap-1">
+                        <div className="text-xs text-slate-500 font-medium mt-0.5 flex items-center gap-1 whitespace-nowrap">
                           <span>{getCountryFlag(c.patientCountry)} {c.patientCountry}</span>
                           <span>•</span>
-                          <span className="font-mono text-[10px] text-slate-400">{c.id}</span>
+                          <span className="font-mono text-[10px] text-slate-400 whitespace-nowrap">{c.id}</span>
                         </div>
                       </td>
 
                       {/* Consent Scope */}
                       <td className="py-4 px-4">
-                        <div className="font-bold text-xs text-slate-900">{item.activeConsent}</div>
-                        <div className="text-[11px] text-slate-500 mt-0.5">Compliant with Indian DPDP Act 2023</div>
+                        <div className="font-bold text-xs text-slate-900 whitespace-nowrap">{item.activeConsent}</div>
+                        <div className="text-[11px] text-slate-500 mt-0.5 whitespace-nowrap">Compliant with Indian DPDP Act 2023</div>
                       </td>
 
                       {/* Timestamp */}
@@ -219,7 +218,7 @@ export const CSConsentsAuditTable: React.FC<CSConsentsAuditTableProps> = ({
 
                       {/* Status */}
                       <td className="py-4 px-4">
-                        <span className={`px-2.5 py-1 rounded-full text-xs font-black border ${item.statusBadge}`}>
+                        <span className={`px-2.5 py-1 rounded-full text-xs font-black border whitespace-nowrap ${item.statusBadge}`}>
                           {item.status}
                         </span>
                       </td>

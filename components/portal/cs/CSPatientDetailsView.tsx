@@ -124,7 +124,7 @@ export const CSPatientDetailsView: React.FC<CSPatientDetailsViewProps> = ({
   return (
     <div className="space-y-5 animate-in fade-in duration-200">
       {/* Top Header Navigation Strip */}
-      <div className="bg-slate-900 text-white rounded-3xl p-4 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-lg shadow-slate-900/10">
+      <div className="bg-slate-900 text-white rounded-2xl p-4 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-lg shadow-slate-900/10">
         <div className="flex items-center gap-3">
           <button
             onClick={onBack}
@@ -151,7 +151,7 @@ export const CSPatientDetailsView: React.FC<CSPatientDetailsViewProps> = ({
       </div>
 
       {/* Patient Master HUD Card */}
-      <div className="bg-white rounded-2xl p-3 sm:p-4 border border-slate-100 shadow-sm shadow-slate-100/50 space-y-5">
+      <div className="bg-white rounded-2xl p-3 sm:p-4 shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90 space-y-5">
         {/* Top: Demographics & Stage Selector & Quick Actions */}
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-4 border-b border-slate-100">
           {/* Left: Patient Avatar & Identity */}
@@ -170,10 +170,10 @@ export const CSPatientDetailsView: React.FC<CSPatientDetailsViewProps> = ({
                 </span>
                 <span
                   className={`text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase ${patientCase.stage === "nurture"
-                      ? "bg-purple-100 text-purple-800"
-                      : patientCase.stage === "treatment" || patientCase.stage === "booking"
-                        ? "bg-emerald-100 text-emerald-800"
-                        : "bg-blue-100 text-blue-800"
+                    ? "bg-purple-100 text-purple-800"
+                    : patientCase.stage === "treatment" || patientCase.stage === "booking"
+                      ? "bg-emerald-100 text-emerald-800"
+                      : "bg-blue-100 text-blue-800"
                     }`}
                 >
                   {STAGE_LABEL_MAP[patientCase.stage] || patientCase.stage}
@@ -244,7 +244,7 @@ export const CSPatientDetailsView: React.FC<CSPatientDetailsViewProps> = ({
               className="px-4 py-2 rounded-xl bg-[#101955] hover:bg-[#1a2770] text-white font-black text-xs flex items-center gap-1.5 transition-all shadow-xs cursor-pointer transform hover:scale-[1.02]"
             >
               <Phone className="w-3.5 h-3.5 text-[#2ECDC5]" />
-              <span>📞 Audio Call</span>
+              <span>Audio Call</span>
             </button>
 
             <button
@@ -252,7 +252,7 @@ export const CSPatientDetailsView: React.FC<CSPatientDetailsViewProps> = ({
               className="px-4 py-2 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 font-black text-xs flex items-center gap-1.5 transition-all shadow-xs cursor-pointer transform hover:scale-[1.02]"
             >
               <MessageSquare className="w-3.5 h-3.5 text-slate-950" />
-              <span>💬 WhatsApp Chat</span>
+              <span>WhatsApp Chat</span>
             </button>
 
             <button
@@ -260,7 +260,7 @@ export const CSPatientDetailsView: React.FC<CSPatientDetailsViewProps> = ({
               className="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center gap-1.5 border border-slate-200 transition-all cursor-pointer"
             >
               <ClipboardList className="w-3.5 h-3.5 text-slate-600" />
-              <span>📋 Log Interaction</span>
+              <span>Log Interaction</span>
             </button>
           </div>
 
@@ -289,8 +289,8 @@ export const CSPatientDetailsView: React.FC<CSPatientDetailsViewProps> = ({
                 key={tab.id}
                 onClick={() => setActiveSubTab(tab.id as PatientDetailsSubTab)}
                 className={`px-4 py-2.5 rounded-2xl text-xs font-extrabold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${isActive
-                    ? "bg-[#101955] text-white shadow-sm"
-                    : "bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200"
+                  ? "bg-[#101955] text-white shadow-sm"
+                  : "bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200"
                   }`}
               >
                 <span>{tab.label}</span>
@@ -301,7 +301,7 @@ export const CSPatientDetailsView: React.FC<CSPatientDetailsViewProps> = ({
       </div>
 
       {/* Main Subtab Workspace Body */}
-      <div className="bg-white rounded-2xl p-3 sm:p-4 border border-slate-100 shadow-sm min-h-[520px]">
+      <div className="bg-white rounded-2xl p-3 sm:p-4 shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90 min-h-[520px]">
         {/* Tab 1: Intake & Overview */}
         {activeSubTab === "intake_overview" && (
           <div className="space-y-6 animate-in fade-in duration-200">

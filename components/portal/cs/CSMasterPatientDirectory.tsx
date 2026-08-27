@@ -209,7 +209,7 @@ export const CSMasterPatientDirectory: React.FC<CSMasterPatientDirectoryProps> =
       {/* ========================================================================= */}
       {/* SEARCH, FILTER & VIEW TOGGLE TOOLBAR                                      */}
       {/* ========================================================================= */}
-      <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm shadow-slate-100/50 space-y-4">
+      <div className="bg-white rounded-2xl p-4 shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90 space-y-4 transition-all group">
         {/* Top Row: Search Box + View Switcher (Table vs Grid) + Export */}
         <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
           <div className="relative flex-1 max-w-xl">
@@ -228,11 +228,10 @@ export const CSMasterPatientDirectory: React.FC<CSMasterPatientDirectoryProps> =
             <div className="flex items-center bg-slate-100 p-1 rounded-xl">
               <button
                 onClick={() => setViewMode("table")}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
-                  viewMode === "table"
-                    ? "bg-[#101955] text-white shadow-2xs font-extrabold"
-                    : "text-slate-600 hover:text-slate-900"
-                }`}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${viewMode === "table"
+                  ? "bg-[#101955] text-white shadow-2xs font-extrabold"
+                  : "text-slate-600 hover:text-slate-900"
+                  }`}
               >
                 <TableIcon className="w-3.5 h-3.5" />
                 <span>Table View</span>
@@ -240,11 +239,10 @@ export const CSMasterPatientDirectory: React.FC<CSMasterPatientDirectoryProps> =
 
               <button
                 onClick={() => setViewMode("grid")}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
-                  viewMode === "grid"
-                    ? "bg-[#101955] text-white shadow-2xs font-extrabold"
-                    : "text-slate-600 hover:text-slate-900"
-                }`}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${viewMode === "grid"
+                  ? "bg-[#101955] text-white shadow-2xs font-extrabold"
+                  : "text-slate-600 hover:text-slate-900"
+                  }`}
               >
                 <LayoutGrid className="w-3.5 h-3.5" />
                 <span>Grid View</span>
@@ -290,11 +288,10 @@ export const CSMasterPatientDirectory: React.FC<CSMasterPatientDirectoryProps> =
             <button
               key={pill.id}
               onClick={() => setActiveFilter(pill.id as any)}
-              className={`px-4 py-2 rounded-2xl text-xs font-extrabold whitespace-nowrap transition-all cursor-pointer ${
-                activeFilter === pill.id
-                  ? "bg-[#101955] text-white shadow-xs"
-                  : "bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80"
-              }`}
+              className={`px-4 py-2 rounded-2xl text-xs font-extrabold whitespace-nowrap transition-all cursor-pointer ${activeFilter === pill.id
+                ? "bg-[#101955] text-white shadow-xs"
+                : "bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80"
+                }`}
             >
               {pill.label}
             </button>
@@ -326,7 +323,7 @@ export const CSMasterPatientDirectory: React.FC<CSMasterPatientDirectoryProps> =
       {/* VIEW 1: MASTER DIRECTORY TABLE (LIST)                                     */}
       {/* ========================================================================= */}
       {viewMode === "table" ? (
-        <div className="bg-white rounded-3xl border border-slate-100 shadow-sm shadow-slate-100/50 overflow-hidden">
+        <div className="bg-white rounded-2xl  shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90  overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
@@ -362,9 +359,8 @@ export const CSMasterPatientDirectory: React.FC<CSMasterPatientDirectoryProps> =
                       <tr
                         key={c.id}
                         onClick={() => onSelectCase(c.id)}
-                        className={`hover:bg-slate-50/90 transition-all cursor-pointer group ${
-                          isChecked ? "bg-blue-50/40" : ""
-                        }`}
+                        className={`hover:bg-slate-50/90 transition-all cursor-pointer group ${isChecked ? "bg-blue-50/40" : ""
+                          }`}
                       >
                         {/* Checkbox */}
                         <td className="py-4 px-4" onClick={(e) => e.stopPropagation()}>
