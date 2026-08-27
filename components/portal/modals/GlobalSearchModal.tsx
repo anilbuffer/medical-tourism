@@ -229,6 +229,7 @@ const PORTAL_PAGES = [
   { id: "recovery_forms", label: "Structured Recovery Check-in Forms", group: "Recovery & Follow Up", icon: FileText, tab: "recovery_forms" },
   { id: "legal_consents", label: "Legal Consent History (Immutable Audit)", group: "Privacy & Consents", icon: ShieldCheck, tab: "legal_consents" },
   { id: "messages", label: "Patient Messages Desk", group: "Communications", icon: Compass, tab: "messages" },
+  { id: "settings", label: "Profile Settings & Account Configuration", group: "Account", icon: Compass, tab: "settings" },
   // Coordinator / Role specific
   { id: "triage_queues", label: "Care Control Center & Triage Queues", group: "Coordinator", icon: Compass, tab: "triage_queues" },
   { id: "kanban_pipeline", label: "Kanban Patient Journey Pipeline", group: "Coordinator", icon: Layers, tab: "kanban_pipeline" },

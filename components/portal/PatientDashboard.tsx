@@ -12,6 +12,7 @@ import { HospitalDoctorView, HospitalTab } from "./roles/HospitalDoctorView";
 import { FinanceView, FinanceTab } from "./roles/FinanceView";
 import { SuperAdminView, AdminTab } from "./roles/SuperAdminView";
 import { PatientView } from "./roles/PatientView";
+import { ProfileSettingsView } from "./tabs/ProfileSettingsView";
 import {
   Search,
   LayoutDashboard,
@@ -569,6 +570,8 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
       "patient_messages",
       "document_vault",
       "consents_compliance",
+      "settings",
+      "profile_settings",
     ];
     if (!validIds.includes(activeTab)) {
       setActiveTab(portalConfig.defaultTab);
@@ -740,29 +743,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
         </div>
 
         {/* Bottom Actions & Profile Pill */}
-        <div className="p-3 bg-[#141d60] shadow-2xl border-t border-slate-800/80 relative z-30 space-y-2 ">
-          {/* Quick Exit Action Buttons (Visible when sidebar is expanded) */}
-          {sidebarOpen && (
-            <div className="grid grid-cols-2 gap-1.5 pb-1 animate-in fade-in duration-200">
-              <button
-                onClick={handleGoToMainSite}
-                className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-[#3F4EB4]/15 hover:bg-[#3F4EB4]/25 text-slate-200 hover:text-white text-[11px] font-bold border border-[#3F4EB4]/30 shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-all cursor-pointer"
-                title="Return to Main Website"
-              >
-                <ArrowLeft className="w-3.5 h-3.5 text-[#2ECDC5]" />
-                <span className="truncate">Main Site</span>
-              </button>
-              <button
-                onClick={handleLogout}
-                className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-rose-950/40 hover:bg-rose-900/60 text-rose-200 hover:text-rose-100 text-[11px] font-bold border border-rose-900/50 shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-all cursor-pointer"
-                title="Log Out of Portal"
-              >
-                <LogOut className="w-3.5 h-3.5 text-rose-400" />
-                <span className="truncate">Sign Out</span>
-              </button>
-            </div>
-          )}
-
+        <div className="p-3 bg-[#141d60] shadow-2xl border-t border-slate-800/80 relative z-30 space-y-2">
           {/* User Profile Pill */}
           <button
             onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
@@ -807,48 +788,36 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
                 onClick={() => setProfileDropdownOpen(false)}
               />
 
-              {/* 100% Solid Opaque Dropdown Card */}
+              {/* 100% Solid Opaque Dropdown Card (Matching Image 2) */}
               <div
-                className={`absolute bottom-full mb-3 bg-[#0B1E33] rounded-2xl p-2.5 shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-slate-700/90 text-xs space-y-1.5 z-50 animate-in fade-in zoom-in-95 duration-150 text-white ${sidebarOpen ? "left-3 right-3" : "left-3 w-60"
-                  }`}
+                className={`absolute bottom-full mb-3 bg-[#111c2e] rounded-2xl p-2 shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-slate-700/80 text-xs space-y-1 z-50 animate-in fade-in zoom-in-95 duration-150 text-white ${
+                  sidebarOpen ? "left-3 right-3" : "left-3 w-56"
+                }`}
               >
-                {/* Header with User Info */}
-                <div className="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center gap-2.5 mb-1.5">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#2ECDC5] via-[#1baba4] to-[#2abdb5] text-white font-bold text-xs flex items-center justify-center shrink-0 ring-1 ring-[#2ECDC5]/60 overflow-hidden">
-                    {portalConfig.avatar ? (
-                      <img
-                        src={portalConfig.avatar}
-                        alt={portalConfig.userName}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <span>{portalConfig.userName.charAt(0)}</span>
-                    )}
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="font-extrabold text-white text-xs truncate">
-                      {portalConfig.userName}
-                    </div>
-                    <div className="text-[10px] text-[#2ECDC5] font-bold truncate">
-                      {portalConfig.roleTag}
-                    </div>
-                  </div>
-                </div>
-
+                {/* Settings Option (Matching Image 2) */}
                 <button
-                  onClick={handleGoToMainSite}
-                  className="w-full flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 text-white font-bold text-left transition-colors border border-slate-700/40 cursor-pointer"
+                  type="button"
+                  onClick={() => {
+                    setActiveTab("settings");
+                    setProfileDropdownOpen(false);
+                  }}
+                  className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-800/80 text-slate-200 hover:text-white font-bold text-xs text-left transition-colors cursor-pointer"
                 >
-                  <ArrowLeft className="w-4 h-4 text-[#2ECDC5] shrink-0" />
-                  <span className="text-white font-bold text-xs">Return to Main Site</span>
+                  <Settings className="w-4 h-4 text-slate-400" />
+                  <span>Settings</span>
                 </button>
 
+                {/* Thin Divider Line (Matching Image 2) */}
+                <div className="border-t border-slate-800 my-1" />
+
+                {/* Log out Option (Matching Image 2) */}
                 <button
+                  type="button"
                   onClick={handleLogout}
-                  className="w-full flex items-center gap-2.5 p-2.5 rounded-xl bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 hover:text-rose-100 font-bold text-left transition-colors border border-rose-900/40 cursor-pointer"
+                  className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-rose-950/40 text-[#ff5a79] hover:text-rose-300 font-bold text-xs text-left transition-colors cursor-pointer"
                 >
-                  <LogOut className="w-4 h-4 text-rose-400 shrink-0" />
-                  <span className="text-xs">Sign Out / Log Out</span>
+                  <LogOut className="w-4 h-4 text-[#ff5a79]" />
+                  <span>Log out</span>
                 </button>
               </div>
             </>
@@ -914,11 +883,14 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
             {/* Mobile Drawer Bottom Actions */}
             <div className="pt-3 border-t border-slate-800 space-y-2">
               <button
-                onClick={handleGoToMainSite}
+                onClick={() => {
+                  setActiveTab("settings");
+                  setMobileMenuOpen(false);
+                }}
                 className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-bold transition-all cursor-pointer"
               >
-                <ArrowLeft className="w-4 h-4 text-[#2ECDC5]" />
-                <span>Return to Main Website</span>
+                <Settings className="w-4 h-4 text-[#2ECDC5]" />
+                <span>Profile Settings</span>
               </button>
               <button
                 onClick={handleLogout}
@@ -1088,6 +1060,8 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
                     legal_consents: { group: "Privacy & Consents", label: "Legal Consent History (Read-Only)" },
                     consents: { group: "Privacy & Consents", label: "Legal Consent History (Read-Only)" },
                     messages: { group: "Communications", label: "Patient Messages Desk" },
+                    settings: { group: "Account", label: "Settings & Configuration" },
+                    profile_settings: { group: "Account", label: "Settings & Configuration" },
                   };
 
                   const info = PATIENT_SUB_MAP[activeTab];
@@ -1158,9 +1132,14 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
         </header>
 
         {/* Main Body Content Container */}
-        <main className={`flex-1 p-4 sm:p-6 w-full mx-auto ${isCS ? "max-w-[1680px]" : "max-w-7xl"}`}>
-          {/* If CS Role -> CS Queue View */}
-          {isCS && (
+        <main className={`flex-1 p-4 sm:p-6 w-full mx-auto ${(activeTab === "settings" || activeTab === "profile_settings") ? "max-w-6xl" : isCS ? "max-w-[1680px]" : "max-w-7xl"}`}>
+          {/* Profile Settings View (For all roles) */}
+          {(activeTab === "settings" || activeTab === "profile_settings") ? (
+            <ProfileSettingsView
+              userRole={effectiveRole}
+              onNavigateTab={(tab) => setActiveTab(tab)}
+            />
+          ) : isCS ? (
             <CSQueueView
               cases={visibleCases}
               activeCaseId={activeCase?.id || ""}
@@ -1168,10 +1147,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
               activeTab={activeTab as CSTab}
               onSelectTab={(tab) => setActiveTab(tab)}
             />
-          )}
-
-          {/* If Hospital Doctor Role -> Hospital Doctor View */}
-          {isDoctor && (
+          ) : isDoctor ? (
             <HospitalDoctorView
               cases={visibleCases}
               activeCaseId={activeCase?.id || ""}
@@ -1179,34 +1155,25 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
               activeTab={activeTab as HospitalTab}
               onSelectTab={(tab) => setActiveTab(tab)}
             />
-          )}
-
-          {/* If Finance Role -> Finance View */}
-          {isFinance && (
+          ) : isFinance ? (
             <FinanceView
               cases={visibleCases}
               activeTab={activeTab as FinanceTab}
               onSelectTab={(tab) => setActiveTab(tab)}
             />
-          )}
-
-          {/* If Super Admin Role -> Super Admin View */}
-          {isAdmin && (
+          ) : isAdmin ? (
             <SuperAdminView
               cases={visibleCases}
               activeTab={activeTab as AdminTab}
               onSelectTab={(tab) => setActiveTab(tab)}
             />
-          )}
-
-          {/* Patient View (Default) */}
-          {!isCS && !isDoctor && !isFinance && !isAdmin && activeCase && (
+          ) : activeCase ? (
             <PatientView
               patientCase={activeCase}
               activeTab={activeTab}
               onSelectTab={(tabId) => setActiveTab(tabId)}
             />
-          )}
+          ) : null}
         </main>
       </div>
 
