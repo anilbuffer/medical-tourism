@@ -15,13 +15,9 @@ import {
   ChevronUp,
   Download,
   AlertCircle,
-  HelpCircle,
   Phone,
   MessageSquare,
-  Car,
-  Globe,
   Hotel,
-  Lock,
   AlertTriangle,
   Wallet,
 } from "lucide-react";
@@ -38,7 +34,7 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
   patientCase,
   onNavigateToPayments,
 }) => {
-  const { respondToQuote, formatCurrency, currency } = usePortal();
+  const { respondToQuote, formatCurrency } = usePortal();
   const quote = patientCase.quote;
   const [decisionState, setDecisionState] = useState<"none" | "accepted" | "declined" | "change_requested">(
     quote?.status === "accepted" ? "accepted" : "none"
@@ -55,20 +51,6 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
     if (onNavigateToPayments) {
       setTimeout(() => onNavigateToPayments(), 600);
     }
-  };
-
-  const handleDecline = () => {
-    if (confirm("Are you sure you want to decline this treatment package?")) {
-      respondToQuote(patientCase.id, "declined", "Patient requested alternative dates/tier.");
-      setDecisionState("declined");
-    }
-  };
-
-  const handleRequestMod = (e: React.FormEvent) => {
-    e.preventDefault();
-    respondToQuote(patientCase.id, "change_requested", modNotes);
-    setDecisionState("change_requested");
-    setShowModModal(false);
   };
 
   const totalAmount = quote?.totalCostUsd || 28500;
@@ -136,7 +118,7 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
                   </div>
                   <div>
                     <strong className="text-slate-900 font-extrabold text-sm block">14 Days Hospital Stay</strong>
-                    <span className="text-slate-600 text-xs">Private suite with bed for your family member + ICU care.</span>
+                    <span className="text-slate-600 text-xs">Private suite with bed for your companion + ICU care.</span>
                   </div>
                 </div>
 
@@ -165,7 +147,7 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <div>
-                    <strong className="text-slate-900 font-extrabold text-sm block">Airport VIP Pickup & Drop</strong>
+                    <strong className="text-slate-900 font-extrabold text-sm block">Airport VIP Pickup & Driver</strong>
                     <span className="text-slate-600 text-xs">Private chauffeur at Airport Gate 5 and all hospital transfers.</span>
                   </div>
                 </div>
@@ -176,7 +158,7 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
                   </div>
                   <div>
                     <strong className="text-slate-900 font-extrabold text-sm block">Personal Translator & Coordinator</strong>
-                    <span className="text-slate-600 text-xs">24/7 dedicated support in Arabic and English by your side.</span>
+                    <span className="text-slate-600 text-xs">Dedicated assistance in Arabic and English by your side.</span>
                   </div>
                 </div>
 
@@ -186,13 +168,13 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
                   </div>
                   <div>
                     <strong className="text-slate-900 font-extrabold text-sm block">All In-Hospital Medicines & Tests</strong>
-                    <span className="text-slate-600 text-xs">All routine diagnostics, medications, and surgical consumables.</span>
+                    <span className="text-slate-600 text-xs">All routine diagnostics, medications, and surgical care.</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Simple Cost Breakdown */}
+            {/* Simple Price Breakdown */}
             <div>
               <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500 block mb-2">
                 Price Breakdown
@@ -229,19 +211,18 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
           </div>
         </div>
 
-        {/* Right Column: Staged Escrow + Decision Actions */}
+        {/* Right Column: Payment Plan + Actions */}
         <div className="space-y-5">
-
-          {/* Staged Payment Roadmap */}
-          <div className="bg-gradient-to-br from-[#141d60] via-[#1b2360] to-[#101e76] rounded-2xl p-3 sm:p-4 text-white shadow-xl border border-slate-800 space-y-4 relative overflow-hidden">
+          {/* Payment Plan */}
+          <div className="bg-gradient-to-br from-[#141d60] via-[#1b2360] to-[#101e76] rounded-3xl p-6 text-white shadow-xl border border-slate-800 space-y-4 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-48 h-48 bg-[#2ECDC5]/10 rounded-full blur-3xl pointer-events-none" />
             <div className="flex items-center gap-2.5 relative z-10">
               <div className="w-8 h-8 rounded-xl bg-[#2ECDC5]/20 flex items-center justify-center">
                 <Wallet className="w-4 h-4 text-[#2ECDC5]" />
               </div>
               <div>
-                <div className="text-sm font-black text-white">Staged Escrow Payment Plan</div>
-                <div className="text-[11px] text-slate-300">Your funds are held in secure escrow at each stage</div>
+                <div className="text-sm font-black text-white">Your Payment Steps</div>
+                <div className="text-[11px] text-slate-300">Protected in healthcare escrow at each stage</div>
               </div>
             </div>
 
@@ -254,7 +235,7 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
                 <div className="flex-1">
                   <div className="text-xs font-extrabold text-emerald-300">Stage 1 — Booking Deposit</div>
                   <div className="text-lg font-black text-white">{formatCurrency(3000)}</div>
-                  <div className="text-[11px] text-slate-300">Escrow Held · Paid upon package acceptance</div>
+                  <div className="text-[11px] text-slate-300">Secures your visa letter and hospital booking</div>
                 </div>
               </div>
 
@@ -266,7 +247,7 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
                 <div className="flex-1">
                   <div className="text-xs font-extrabold text-slate-300">Stage 2 — Hospital Booking Advance</div>
                   <div className="text-lg font-black text-slate-200">{formatCurrency(15000)}</div>
-                  <div className="text-[11px] text-slate-400">Due 30 days before procedure · Released to hospital</div>
+                  <div className="text-[11px] text-slate-400">Due by Aug 30 • Secures surgery date</div>
                 </div>
               </div>
 
@@ -278,22 +259,22 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
                 <div className="flex-1">
                   <div className="text-xs font-extrabold text-slate-300">Stage 3 — Final Settlement</div>
                   <div className="text-lg font-black text-slate-200">{formatCurrency(10500)}</div>
-                  <div className="text-[11px] text-slate-400">Due on hospital admission day</div>
+                  <div className="text-[11px] text-slate-400">Due at hospital check-in on Sep 1</div>
                 </div>
               </div>
 
               <div className="pt-1 flex justify-between items-center text-xs font-bold border-t border-white/10">
-                <span className="text-slate-300">Total All-Inclusive:</span>
+                <span className="text-slate-300">Total Price:</span>
                 <span className="text-[#2ECDC5] text-base font-black">{formatCurrency(totalAmount)}</span>
               </div>
             </div>
           </div>
 
           {/* Decision Actions */}
-          <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-3 sm:p-4 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] space-y-4">
+          <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-6 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] space-y-4">
             <h4 className="font-black text-base text-slate-900">Ready to move forward?</h4>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Accepting reserves your surgery slot with Dr. Gupta and triggers your Stage 1 deposit invoice.
+              Accepting reserves your surgery slot with Dr. Gupta and prepares your Stage 1 deposit.
             </p>
 
             {/* Refund & Cancellation Terms — expandable */}
@@ -312,8 +293,7 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
                 <div className="px-4 py-3 text-xs text-slate-600 space-y-2 border-t border-slate-100">
                   <p><strong className="text-slate-800">Stage 1 Deposit ($3,000):</strong> Fully refundable if cancelled ≥ 30 days before admission.</p>
                   <p><strong className="text-slate-800">Stage 2 Advance ($15,000):</strong> 70% refundable if cancelled 15–30 days prior. Non-refundable &lt;15 days.</p>
-                  <p><strong className="text-slate-800">Stage 3 Final ($10,500):</strong> Non-refundable once hospital admission occurs.</p>
-                  <p className="text-[11px] text-slate-400 pt-1">All refund requests are reviewed by the Finance & Escrow Desk within 7 business days.</p>
+                  <p><strong className="text-slate-800">Stage 3 Final ($10,500):</strong> Payable at hospital check-in.</p>
                 </div>
               )}
             </div>
@@ -323,7 +303,7 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
                 <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
                 <div className="font-black text-base text-emerald-900">Package Accepted!</div>
                 <p className="text-xs text-emerald-800 leading-relaxed">
-                  Your treatment slot is reserved. Stage 1 deposit invoice has been triggered.
+                  Your treatment slot is reserved. Stage 1 deposit has been prepared.
                 </p>
                 {onNavigateToPayments && (
                   <button
@@ -337,7 +317,7 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
             ) : changeRequestSent ? (
               <div className="p-4 bg-amber-50 rounded-2xl border border-amber-200 text-center space-y-1.5">
                 <div className="font-black text-sm text-amber-800">✓ Request Sent to Ananya!</div>
-                <p className="text-xs text-amber-600">Your coordinator has received an urgent notification about your change request.</p>
+                <p className="text-xs text-amber-600">Your coordinator will call or message you right away with updated options.</p>
               </div>
             ) : (
               <div className="space-y-3">
@@ -356,13 +336,13 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
                   Ask to Change or Add Something
                 </button>
 
-                <button
-                  onClick={() => setIsWhatsAppOpen(true)}
+                <a
+                  href="tel:+919810188412"
                   className="w-full py-3 px-4 rounded-2xl bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-bold text-xs transition-colors cursor-pointer flex items-center justify-center gap-2"
                 >
                   <Phone className="w-4 h-4 text-emerald-600" />
                   <span>Talk with Coordinator First</span>
-                </button>
+                </a>
               </div>
             )}
           </div>
@@ -379,9 +359,6 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
             </p>
 
             <form onSubmit={(e) => { e.preventDefault(); respondToQuote(patientCase.id, "change_requested", modNotes); setChangeRequestSent(true); setDecisionState("change_requested"); setShowModModal(false); }} className="space-y-4 text-xs">
-              <div className="p-3 bg-amber-50 border border-amber-100 rounded-xl text-xs text-amber-700 font-medium">
-                ⚡ This will create an urgent action item in Ananya's coordinator queue.
-              </div>
               <textarea
                 required
                 rows={4}
@@ -403,7 +380,7 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
                   type="submit"
                   className="flex-1 py-3 bg-gradient-to-r from-[#1d8983] to-[#1baba4] hover:scale-105 active:scale-95 text-white rounded-xl font-bold text-xs shadow-md cursor-pointer"
                 >
-                  Send Urgent Request
+                  Send Request
                 </button>
               </div>
             </form>

@@ -2,14 +2,10 @@
 
 import React, { useState } from "react";
 import {
-  ShieldCheck,
-  CheckCircle2,
   Lock,
-  FileText,
   X,
-  Sparkles,
   KeyRound,
-  Check,
+  ShieldCheck,
 } from "lucide-react";
 import { usePortal } from "@/lib/portal/store";
 import { ConsentRecord } from "@/types/portal";
@@ -66,7 +62,7 @@ export const ConsentSignModal: React.FC<ConsentSignModalProps> = ({
             <div>
               <h3 className="font-extrabold text-base leading-tight">{consent.title}</h3>
               <div className="text-xs text-slate-300">
-                Version {consent.version} • Cryptographic Append-Only Ledger
+                Official Hospital Agreement
               </div>
             </div>
           </div>
@@ -85,20 +81,20 @@ export const ConsentSignModal: React.FC<ConsentSignModalProps> = ({
             <div className="font-bold text-slate-900 text-sm">{consent.title}</div>
             <p>{consent.description}</p>
             <p className="text-slate-500 text-[11px]">
-              By providing your electronic signature below, you confirm that you have read, understood, and consented to the clinical evaluation scope, cross-border telemedicine advisory terms, and data processing procedures under HIPAA, GDPR, and Indian DPDP Act 2023.
+              By typing your name below, you confirm that you have read and agreed to these terms for your medical evaluation and care.
             </p>
           </div>
 
-          <div className="space-y-2">
-            <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
-              Digital Signature (Full Legal Name)
+          <div className="space-y-1.5">
+            <label className="text-[11px] font-bold text-slate-700 uppercase tracking-wider block">
+              Your Full Legal Name
             </label>
             <input
               type="text"
               required
               value={signatureName}
               onChange={(e) => setSignatureName(e.target.value)}
-              className="w-full p-3 bg-slate-50 border border-slate-200 rounded-2xl text-xs font-bold text-slate-900 focus:outline-none focus:border-[#3F4EB4]"
+              className="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-xs font-bold text-slate-900 focus:outline-none focus:border-[#3F4EB4]"
               placeholder="e.g. Tariq Al-Mansoor"
             />
           </div>
@@ -112,13 +108,14 @@ export const ConsentSignModal: React.FC<ConsentSignModalProps> = ({
               className="mt-0.5 w-4 h-4 text-[#3F4EB4] rounded border-slate-300 focus:ring-[#3F4EB4] cursor-pointer"
             />
             <label htmlFor="consent-agreed" className="text-xs text-teal-900 font-semibold cursor-pointer">
-              I acknowledge and execute this legal instrument with the full legal effect of a handwritten signature.
+              I have reviewed and agree to these terms for my treatment.
             </label>
           </div>
 
           <div className="flex items-center justify-between pt-2 border-t border-slate-100">
-            <div className="text-[10px] text-slate-400 font-mono">
-              IP: 185.120.45.10 (Dubai) • SHA256 Verification
+            <div className="flex items-center gap-1.5 text-xs text-emerald-700 font-bold">
+              <ShieldCheck className="w-4 h-4" />
+              <span>Encrypted & Verified</span>
             </div>
 
             <div className="flex gap-2">
@@ -132,10 +129,10 @@ export const ConsentSignModal: React.FC<ConsentSignModalProps> = ({
               <button
                 type="submit"
                 disabled={!agreedCheckbox || !signatureName.trim() || isSubmitting}
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] disabled:opacity-50 text-white text-xs font-black shadow-lg shadow-[#283593]/20 active:scale-95 transition-all cursor-pointer flex items-center gap-1.5"
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] disabled:opacity-50 text-white text-xs font-black shadow-lg shadow-[#1d8983]/20 active:scale-95 transition-all cursor-pointer flex items-center gap-1.5"
               >
                 <KeyRound className="w-3.5 h-3.5" />
-                <span>{isSubmitting ? "Signing..." : "Digitally Sign & Seal"}</span>
+                <span>{isSubmitting ? "Saving..." : "Sign & Confirm"}</span>
               </button>
             </div>
           </div>

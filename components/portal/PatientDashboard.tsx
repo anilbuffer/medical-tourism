@@ -23,6 +23,7 @@ import {
   DollarSign,
   Plane,
   MessageSquare,
+  Phone,
   HeartHandshake,
   Bell,
   PanelLeft,
@@ -937,16 +938,24 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
                 </button>
               </div>
 
-              {/* Assigned Coordinator with 1-Click WhatsApp Trigger */}
-              <div className="hidden sm:flex items-center gap-1.5 text-[11px]">
-                <span className="text-slate-400">Assigned Coordinator:</span>
+              {/* Assigned Coordinator with 1-Click Call & WhatsApp Trigger */}
+              <div className="flex items-center gap-2 text-[11px]">
+                <span className="hidden sm:inline text-slate-400">Care Coordinator:</span>
+                <a
+                  href="tel:+919810188412"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black transition-all cursor-pointer shadow-xs"
+                  title="Call Ananya (Direct Coordinator Line)"
+                >
+                  <Phone className="w-3 h-3 text-slate-950" />
+                  <span>Call Ananya</span>
+                </a>
                 <button
                   onClick={() => setIsWhatsAppOpen(true)}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 transition-all font-bold cursor-pointer"
+                  className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 transition-all font-bold cursor-pointer"
                   title="Open Instant WhatsApp"
                 >
                   <MessageSquare className="w-3 h-3 text-emerald-400" />
-                  <span>Ananya Sharma (WhatsApp)</span>
+                  <span>WhatsApp</span>
                 </button>
               </div>
 

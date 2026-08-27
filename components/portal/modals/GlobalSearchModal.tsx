@@ -226,8 +226,7 @@ const PORTAL_PAGES = [
   { id: "flight_hotel", label: "Flight & Accommodation Details", group: "Travel & Logistics", icon: Plane, tab: "flight_hotel" },
   { id: "concierge_contact", label: "On-Ground Concierge Contact", group: "Travel & Logistics", icon: Building2, tab: "concierge_contact" },
   { id: "discharge_summary", label: "Post-Op Discharge Summary", group: "Recovery & Follow Up", icon: FileText, tab: "discharge_summary" },
-  { id: "recovery_forms", label: "Structured Recovery Check-in Forms", group: "Recovery & Follow Up", icon: FileText, tab: "recovery_forms" },
-  { id: "legal_consents", label: "Legal Consent History (Immutable Audit)", group: "Privacy & Consents", icon: ShieldCheck, tab: "legal_consents" },
+  { id: "legal_consents", label: "Forms & Signed Agreements", group: "Forms & Consents", icon: ShieldCheck, tab: "legal_consents" },
   { id: "messages", label: "Patient Messages Desk", group: "Communications", icon: Compass, tab: "messages" },
   { id: "settings", label: "Profile Settings & Account Configuration", group: "Account", icon: Compass, tab: "settings" },
   // Coordinator / Role specific

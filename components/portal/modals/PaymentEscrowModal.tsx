@@ -7,11 +7,8 @@ import {
   ShieldCheck,
   CheckCircle2,
   X,
-  Sparkles,
   Building,
   ArrowRight,
-  DollarSign,
-  Receipt,
   AlertCircle,
 } from "lucide-react";
 import { usePortal } from "@/lib/portal/store";
@@ -30,7 +27,7 @@ export const PaymentEscrowModal: React.FC<PaymentEscrowModalProps> = ({
   caseId,
   stage,
 }) => {
-  const { payStage, formatCurrency, currency } = usePortal();
+  const { payStage, formatCurrency } = usePortal();
   const [paymentMethod, setPaymentMethod] = useState<"card" | "wire" | "swift" | "crypto">("card");
   const [termsAgreed, setTermsAgreed] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -59,9 +56,9 @@ export const PaymentEscrowModal: React.FC<PaymentEscrowModalProps> = ({
               <Lock className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="font-extrabold text-base leading-tight">PCI-DSS Escrow Gateway</h3>
+              <h3 className="font-extrabold text-base leading-tight">Safe & Protected Payment</h3>
               <div className="text-xs text-emerald-300">
-                {stage.name} • Certified Healthcare Escrow
+                {stage.name} • Dedicated Medical Account
               </div>
             </div>
           </div>
@@ -80,15 +77,15 @@ export const PaymentEscrowModal: React.FC<PaymentEscrowModalProps> = ({
           <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
             <div>
               <div className="text-[10px] uppercase font-extrabold tracking-wider text-slate-400">
-                Milestone Amount Due
+                Payment Amount
               </div>
               <div className="text-2xl font-black text-slate-900 mt-0.5">
                 {formatCurrency(stage.amountUsd)}
               </div>
             </div>
 
-            <span className="px-3 py-1 rounded-full text-xs font-black bg-amber-50 text-amber-800 border border-amber-200">
-              Escrow Protected
+            <span className="px-3 py-1 rounded-full text-xs font-black bg-emerald-50 text-emerald-800 border border-emerald-200">
+              Protected Healthcare Escrow
             </span>
           </div>
 
@@ -96,17 +93,17 @@ export const PaymentEscrowModal: React.FC<PaymentEscrowModalProps> = ({
           <div className="p-3.5 bg-amber-50/60 rounded-2xl border border-amber-200/80 text-xs text-amber-950 space-y-1">
             <div className="font-bold flex items-center gap-1.5 text-amber-900">
               <AlertCircle className="w-3.5 h-3.5 text-amber-600" />
-              <span>Milestone Policy Terms</span>
+              <span>Payment & Refund Policy</span>
             </div>
             <p className="text-[11px] leading-relaxed text-amber-800">
-              {stage.cancellationTerms || "Non-refundable after hospital suite reservation. Funds held in certified healthcare escrow until check-in."}
+              {stage.cancellationTerms || "Funds are securely held in medical escrow and released to the hospital as treatment proceeds."}
             </p>
           </div>
 
           {/* Payment Method Selector */}
           <div className="space-y-1.5">
             <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
-              Select Settlement Method
+              Select Payment Method
             </label>
             <div className="grid grid-cols-2 gap-2">
               <button
@@ -132,7 +129,7 @@ export const PaymentEscrowModal: React.FC<PaymentEscrowModalProps> = ({
                 }`}
               >
                 <Building className="w-4 h-4" />
-                <span>SWIFT / Wire Transfer</span>
+                <span>Bank Transfer</span>
               </button>
             </div>
           </div>
@@ -147,7 +144,7 @@ export const PaymentEscrowModal: React.FC<PaymentEscrowModalProps> = ({
               className="mt-0.5 w-4 h-4 text-[#3F4EB4] rounded border-slate-300 focus:ring-[#3F4EB4] cursor-pointer"
             />
             <label htmlFor="escrow-terms-agreed" className="text-xs text-slate-700 font-semibold cursor-pointer">
-              I agree to the milestone terms and authorize locking {formatCurrency(stage.amountUsd)} in healthcare escrow.
+              I authorize securing {formatCurrency(stage.amountUsd)} in my dedicated medical account.
             </label>
           </div>
 
@@ -155,7 +152,7 @@ export const PaymentEscrowModal: React.FC<PaymentEscrowModalProps> = ({
           <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
             <div className="flex items-center gap-1.5 text-[10px] font-bold text-emerald-700">
               <ShieldCheck className="w-4 h-4" />
-              <span>TLS 1.3 / PCI-DSS L1</span>
+              <span>256-Bit Bank-Grade Protection</span>
             </div>
 
             <div className="flex gap-2">
@@ -171,7 +168,7 @@ export const PaymentEscrowModal: React.FC<PaymentEscrowModalProps> = ({
                 disabled={!termsAgreed || isProcessing}
                 className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 disabled:opacity-50 text-white text-xs font-black shadow-lg shadow-emerald-600/20 active:scale-95 transition-all cursor-pointer flex items-center gap-1.5"
               >
-                <span>{isProcessing ? "Processing Escrow..." : `Pay ${formatCurrency(stage.amountUsd)}`}</span>
+                <span>{isProcessing ? "Processing..." : `Pay ${formatCurrency(stage.amountUsd)}`}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

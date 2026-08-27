@@ -41,13 +41,13 @@ export const ReceiptModal: React.FC<ReceiptModalProps> = ({
             </div>
             <div>
               <div className="text-sm font-extrabold flex items-center gap-2">
-                Official Escrow Payment Receipt
+                Payment Receipt
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300">
-                  Paid & Reconciled
+                  Paid & Protected
                 </span>
               </div>
               <div className="text-[11px] text-slate-400">
-                Receipt #{stage.receiptNumber || "REC-88421"} • Gateway Ref: {stage.gatewayReference || "GW_REF_88421"}
+                Receipt #{stage.receiptNumber || "REC-88421"}
               </div>
             </div>
           </div>
@@ -77,7 +77,7 @@ export const ReceiptModal: React.FC<ReceiptModalProps> = ({
                   VEDARA CARE INTERNATIONAL
                 </h3>
                 <div className="text-xs text-slate-500">
-                  Global Healthcare Escrow & Cross-Border Patient Settlement
+                  Cross-Border Patient Care & Medical Travel Settlement
                 </div>
                 <div className="text-[11px] text-slate-400">
                   Tax Registration: IN-MED-2026-GST9921
@@ -98,7 +98,7 @@ export const ReceiptModal: React.FC<ReceiptModalProps> = ({
             <div className="grid grid-cols-2 gap-4 text-xs">
               <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-0.5">
                 <span className="text-slate-400 text-[10px] uppercase font-bold block">
-                  Billed Patient
+                  Patient
                 </span>
                 <div className="font-extrabold text-slate-900">{patientCase.patientName}</div>
                 <div className="text-slate-600 font-mono text-[11px]">{patientCase.id}</div>
@@ -144,7 +144,7 @@ export const ReceiptModal: React.FC<ReceiptModalProps> = ({
                 <tfoot className="bg-slate-50 border-t border-slate-200 font-bold">
                   <tr>
                     <td colSpan={2} className="p-3 text-right text-slate-600">
-                      Total Paid into Escrow:
+                      Total Paid into Medical Account:
                     </td>
                     <td className="p-3 text-right font-black text-emerald-700 text-sm">
                       {formatCurrency(stage.amountUsd)}
@@ -158,21 +158,21 @@ export const ReceiptModal: React.FC<ReceiptModalProps> = ({
             <div className="flex items-center justify-between text-[11px] text-slate-500 pt-2 border-t border-slate-100">
               <div className="flex items-center gap-1.5 text-emerald-700 font-bold">
                 <ShieldCheck className="w-4 h-4" />
-                <span>PCI-DSS Escrow Certificate Active</span>
+                <span>Verified Healthcare Escrow Certificate</span>
               </div>
-              <span className="font-mono">AUTH: 98412-SUCCESS-ESCROW</span>
+              <span className="font-mono">REF: 98412-SUCCESS</span>
             </div>
           </div>
         </div>
 
         {/* Footer */}
         <div className="px-6 py-4 bg-white border-t border-slate-200 flex items-center justify-between shrink-0">
-          <span className="text-xs text-slate-500">Tax Deductible Cross-Border Medical Invoice</span>
+          <span className="text-xs text-slate-500">Official Medical Care Invoice</span>
           <button
             onClick={() => {
               alert("Official receipt PDF downloaded successfully!");
             }}
-            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white text-xs font-black flex items-center gap-2 shadow-lg shadow-[#283593]/20 active:scale-95 transition-all cursor-pointer"
+            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white text-xs font-black flex items-center gap-2 shadow-lg shadow-[#1d8983]/20 active:scale-95 transition-all cursor-pointer"
           >
             <Download className="w-4 h-4" />
             <span>Download Official PDF Receipt</span>
