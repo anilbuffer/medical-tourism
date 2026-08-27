@@ -233,7 +233,7 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
         <div className="space-y-5">
 
           {/* Staged Payment Roadmap */}
-          <div className="bg-gradient-to-br from-[#141d60] via-[#1b2360] to-[#101e76] rounded-3xl p-5 sm:p-6 text-white shadow-xl border border-slate-800 space-y-4 relative overflow-hidden">
+          <div className="bg-gradient-to-br from-[#141d60] via-[#1b2360] to-[#101e76] rounded-2xl p-3 sm:p-4 text-white shadow-xl border border-slate-800 space-y-4 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-48 h-48 bg-[#2ECDC5]/10 rounded-full blur-3xl pointer-events-none" />
             <div className="flex items-center gap-2.5 relative z-10">
               <div className="w-8 h-8 rounded-xl bg-[#2ECDC5]/20 flex items-center justify-center">
@@ -290,7 +290,7 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
           </div>
 
           {/* Decision Actions */}
-          <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] space-y-4">
+          <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-3 sm:p-4 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] space-y-4">
             <h4 className="font-black text-base text-slate-900">Ready to move forward?</h4>
             <p className="text-xs text-slate-500 leading-relaxed">
               Accepting reserves your surgery slot with Dr. Gupta and triggers your Stage 1 deposit invoice.

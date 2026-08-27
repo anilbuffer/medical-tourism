@@ -42,6 +42,9 @@ import {
   Hourglass,
   Timer,
   ChevronRight,
+  UserCheck,
+  RotateCcw,
+  Zap,
 } from "lucide-react";
 
 export type CSTab =
@@ -100,7 +103,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
   activeTab: controlledTab,
   onSelectTab: controlledOnSelectTab,
 }) => {
-  const { currentUser, moveToNurture } = usePortal();
+  const { currentUser, moveToNurture, allCases, bulkAssignCases } = usePortal();
 
   // Navigation and view state
   const [viewMode, setViewMode] = useState<CSViewMode>("dashboard");
@@ -111,6 +114,11 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
   const [queueFilter, setQueueFilter] = useState<"all" | "sla_expiring" | "lead" | "documents_collected">("all");
   const [coordinatorFilter, setCoordinatorFilter] = useState<"all" | "my_queue" | "unassigned">("all");
   const [searchQuery, setSearchQuery] = useState("");
+
+  // Base list of cases available for triage in CS Desk
+  const baseCases = useMemo(() => {
+    return (allCases && allCases.length > 0) ? allCases : (cases || []);
+  }, [allCases, cases]);
 
   // Interactive Modals State
   const [intakeModalOpen, setIntakeModalOpen] = useState(false);
@@ -141,8 +149,19 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
 
   // Find active case
   const activeCase = useMemo(() => {
-    return cases.find((c) => c.id === activeCaseId) || cases[0];
-  }, [cases, activeCaseId]);
+    return baseCases.find((c) => c.id === activeCaseId) || baseCases[0];
+  }, [baseCases, activeCaseId]);
+
+  // Find Tariq Al-Mansoor case for the today's tele-consultation widget
+  const tariqCase = useMemo(() => {
+    return (
+      baseCases.find(
+        (c) =>
+          c.id === "PT-2026-089412" ||
+          c.patientName.toLowerCase().includes("tariq")
+      ) || baseCases[0]
+    );
+  }, [baseCases]);
 
   // Synchronize when controlled sidebar tab changes
   useEffect(() => {
@@ -184,43 +203,24 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
     setViewMode(previousViewMode || "dashboard");
   };
 
-  // Specific priority urgent cases
-  const eleanorCase = useMemo(
-    () => cases.find((c) => c.patientName.includes("Eleanor") || c.id === "PT-2026-004819") || cases[0],
-    [cases]
-  );
+  // Scope live counts (independent of urgency filter)
+  const scopeCounts = useMemo(() => {
+    const currentName = currentUser?.name || "";
+    const total = baseCases.length;
+    const myQueue = baseCases.filter((c) => c.assignedCoordinatorName === currentName).length;
+    const unassigned = baseCases.filter((c) => !c.assignedCoordinatorName || c.assignedCoordinatorName.trim() === "").length;
+    return { total, myQueue, unassigned };
+  }, [baseCases, currentUser]);
 
-  const tariqCase = useMemo(
-    () => cases.find((c) => c.patientName.includes("Tariq") || c.id === "PT-2026-089412") || cases[1] || cases[0],
-    [cases]
-  );
+  // Urgency live counts (based on current scope filter & search)
+  const urgencyCounts = useMemo(() => {
+    let list = baseCases;
+    const currentName = currentUser?.name || "";
 
-  const davidCase = useMemo(
-    () => cases.find((c) => c.patientName.includes("David") || c.id === "PT-2026-004412") || cases[2] || cases[0],
-    [cases]
-  );
-
-  // Filtering cases for Dashboard urgency queue
-  const filteredDashboardCases = useMemo(() => {
-    let list = cases;
-
-    if (queueFilter === "sla_expiring") {
-      list = list.filter((c) => {
-        const msLeft = new Date(c.slaExpiresAt).getTime() - Date.now();
-        return c.slaBreached || msLeft / 60000 <= 45;
-      });
-    } else if (queueFilter !== "all") {
-      list = list.filter((c) => c.stage === queueFilter);
-    }
-
-    if (coordinatorFilter === "my_queue" && currentUser?.name) {
-      list = list.filter(
-        (c) =>
-          c.assignedCoordinatorName === currentUser.name ||
-          (!c.assignedCoordinatorName && c.id === activeCaseId)
-      );
+    if (coordinatorFilter === "my_queue") {
+      list = list.filter((c) => c.assignedCoordinatorName === currentName);
     } else if (coordinatorFilter === "unassigned") {
-      list = list.filter((c) => !c.assignedCoordinatorName);
+      list = list.filter((c) => !c.assignedCoordinatorName || c.assignedCoordinatorName.trim() === "");
     }
 
     if (searchQuery.trim()) {
@@ -234,8 +234,65 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
       );
     }
 
-    return list;
-  }, [cases, queueFilter, coordinatorFilter, searchQuery, currentUser, activeCaseId]);
+    const all = list.length;
+    const urgent = list.filter((c) => {
+      const msLeft = new Date(c.slaExpiresAt).getTime() - Date.now();
+      return c.slaBreached || msLeft / 60000 <= 45 || c.slaTargetMinutes <= 45;
+    }).length;
+    const leads = list.filter((c) => c.stage === "lead" || c.stage === "contacted").length;
+    const docs = list.filter((c) => c.stage === "documents_collected" || (c.documents && c.documents.length > 0)).length;
+
+    return { all, urgent, leads, docs };
+  }, [baseCases, coordinatorFilter, searchQuery, currentUser]);
+
+  // Filtering cases for Dashboard urgency queue
+  const filteredDashboardCases = useMemo(() => {
+    let list = baseCases;
+    const currentName = currentUser?.name || "";
+
+    // 1. Scope Filter
+    if (coordinatorFilter === "my_queue") {
+      list = list.filter((c) => c.assignedCoordinatorName === currentName);
+    } else if (coordinatorFilter === "unassigned") {
+      list = list.filter((c) => !c.assignedCoordinatorName || c.assignedCoordinatorName.trim() === "");
+    }
+
+    // 2. Search Query
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      list = list.filter(
+        (c) =>
+          c.id.toLowerCase().includes(q) ||
+          c.patientName.toLowerCase().includes(q) ||
+          c.treatmentCategory.toLowerCase().includes(q) ||
+          c.patientCountry.toLowerCase().includes(q) ||
+          (c.clinicalSummary?.chiefComplaint && c.clinicalSummary.chiefComplaint.toLowerCase().includes(q)) ||
+          (c.clinicalSummary?.diagnosis && c.clinicalSummary.diagnosis.toLowerCase().includes(q)) ||
+          (c.assignedCoordinatorName && c.assignedCoordinatorName.toLowerCase().includes(q))
+      );
+    }
+
+    // 3. Response-Time Urgency Filter
+    if (queueFilter === "sla_expiring") {
+      list = list.filter((c) => {
+        const msLeft = new Date(c.slaExpiresAt).getTime() - Date.now();
+        return c.slaBreached || msLeft / 60000 <= 45 || c.slaTargetMinutes <= 45;
+      });
+    } else if (queueFilter === "lead") {
+      list = list.filter((c) => c.stage === "lead" || c.stage === "contacted");
+    } else if (queueFilter === "documents_collected") {
+      list = list.filter((c) => c.stage === "documents_collected" || (c.documents && c.documents.length > 0));
+    }
+
+    // 4. Strict SLA Urgency Sorting (Breached first, then least minutes remaining)
+    return [...list].sort((a, b) => {
+      if (a.slaBreached && !b.slaBreached) return -1;
+      if (!a.slaBreached && b.slaBreached) return 1;
+      const aTime = new Date(a.slaExpiresAt).getTime();
+      const bTime = new Date(b.slaExpiresAt).getTime();
+      return aTime - bTime;
+    });
+  }, [baseCases, queueFilter, coordinatorFilter, searchQuery, currentUser]);
 
   // Modal Handlers
   const handleOpenCallModal = (patient: PatientCase) => {
@@ -280,7 +337,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
       {/* TOP METRIC STRIP (ROW OF 6 CARDS)                                         */}
       {/* ========================================================================= */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
-        <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm shadow-slate-100/50 flex flex-col justify-between hover:shadow-md transition-all group">
+        <div className="bg-white rounded-2xl p-4 backdrop-blur-xl rounded-2xl p-3 sm:p-4 shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90 flex flex-col justify-between hover:shadow-[0_6px_32px_rgba(0,0,0,0.08)] transition-all group">
           <div className="flex items-center justify-between gap-2">
             <span className="text-xs font-bold text-slate-700 leading-snug">New Inquiries Today</span>
             <div className="w-8 h-8 rounded-full bg-[#E6F8F3] border border-emerald-200/80 flex items-center justify-center text-emerald-700 shrink-0">
@@ -297,7 +354,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm shadow-slate-100/50 flex flex-col justify-between hover:shadow-md transition-all group">
+        <div className="bg-white rounded-2xl p-4 backdrop-blur-xl rounded-2xl p-3 sm:p-4 shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90 flex flex-col justify-between hover:shadow-[0_6px_32px_rgba(0,0,0,0.08)] transition-all group">
           <div className="flex items-center justify-between gap-2">
             <span className="text-xs font-bold text-slate-700 leading-snug">Awaiting Triage Call</span>
             <div className="w-8 h-8 rounded-full bg-[#FEF6E7] border border-amber-200/80 flex items-center justify-center text-amber-700 shrink-0">
@@ -314,7 +371,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm shadow-slate-100/50 flex flex-col justify-between hover:shadow-md transition-all group">
+        <div className="bg-white rounded-2xl p-4 backdrop-blur-xl rounded-2xl p-3 sm:p-4 shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90 flex flex-col justify-between hover:shadow-[0_6px_32px_rgba(0,0,0,0.08)] transition-all group">
           <div className="flex items-center justify-between gap-2">
             <span className="text-xs font-bold text-slate-700 leading-snug">Tele-Consults Scheduled</span>
             <div className="w-8 h-8 rounded-full bg-[#EEF2FF] border border-blue-200/80 flex items-center justify-center text-blue-700 shrink-0">
@@ -331,7 +388,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm shadow-slate-100/50 flex flex-col justify-between hover:shadow-md transition-all group">
+        <div className="bg-white rounded-2xl p-4 backdrop-blur-xl rounded-2xl p-3 sm:p-4 shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90 flex flex-col justify-between hover:shadow-[0_6px_32px_rgba(0,0,0,0.08)] transition-all group">
           <div className="flex items-center justify-between gap-2">
             <span className="text-xs font-bold text-slate-700 leading-snug">Hospital Acceptance Rate</span>
             <div className="w-8 h-8 rounded-full bg-[#EBF8F5] border border-teal-200/80 flex items-center justify-center text-teal-700 shrink-0">
@@ -348,7 +405,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm shadow-slate-100/50 flex flex-col justify-between hover:shadow-md transition-all group">
+        <div className="bg-white rounded-2xl p-4 backdrop-blur-xl rounded-2xl p-3 sm:p-4 shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90 flex flex-col justify-between hover:shadow-[0_6px_32px_rgba(0,0,0,0.08)] transition-all group">
           <div className="flex items-center justify-between gap-2">
             <span className="text-xs font-bold text-slate-700 leading-snug">Visa Clearance Rate</span>
             <div className="w-8 h-8 rounded-full bg-[#F3E8FF] border border-purple-200/80 flex items-center justify-center text-purple-700 shrink-0">
@@ -365,7 +422,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm shadow-slate-100/50 flex flex-col justify-between hover:shadow-md transition-all group">
+        <div className="bg-white rounded-2xl p-4 backdrop-blur-xl rounded-2xl p-3 sm:p-4 shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90 flex flex-col justify-between hover:shadow-[0_6px_32px_rgba(0,0,0,0.08)] transition-all group">
           <div className="flex items-center justify-between gap-2">
             <span className="text-xs font-bold text-slate-700 leading-snug">Avg Time to Quote</span>
             <div className="w-8 h-8 rounded-full bg-[#F1F5F9] border border-slate-300 flex items-center justify-center text-slate-700 shrink-0">
@@ -481,25 +538,32 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
         /* ========================================================================= */
         <div className="space-y-5">
           {/* Dashboard Toolbar */}
-          <div className="bg-white rounded-3xl p-3.5 sm:px-5 border border-slate-100 shadow-sm shadow-slate-100/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-            <div className="flex items-center gap-2">
+          <div className="bg-white rounded-2xl p-3 sm:px-4 shadow-[0_6px_32px_rgba(0,0,0,0.04)] hover:shadow-[0_6px_32px_rgba(0,0,0,0.08)] border border-slate-200/90 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 transition-all group">
+            <div className="flex items-center gap-2 flex-wrap">
               <span className="text-xs font-bold text-slate-500 hidden md:inline">Scope Filter:</span>
-              <div className="flex items-center bg-slate-100 p-1 rounded-xl">
+              <div className="flex items-center bg-slate-100 p-1 rounded-xl gap-1">
                 {[
-                  { id: "all", label: "All Cases" },
-                  { id: "my_queue", label: "My Queue" },
-                  { id: "unassigned", label: "⚡ Unassigned" },
+                  { id: "all", label: "All Cases", count: scopeCounts.total },
+                  { id: "my_queue", label: "My Queue", count: scopeCounts.myQueue },
+                  { id: "unassigned", label: "⚡ Unassigned", count: scopeCounts.unassigned },
                 ].map((f) => (
                   <button
                     key={f.id}
                     onClick={() => setCoordinatorFilter(f.id as any)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                      coordinatorFilter === f.id
-                        ? "bg-[#101955] text-white shadow-2xs font-extrabold"
-                        : "text-slate-600 hover:text-slate-900"
-                    }`}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${coordinatorFilter === f.id
+                      ? "bg-[#101955] text-white shadow-2xs font-extrabold"
+                      : "text-slate-600 hover:text-slate-900"
+                      }`}
                   >
-                    {f.label}
+                    <span>{f.label}</span>
+                    <span
+                      className={`px-1.5 py-0.2 rounded-md text-[10px] font-mono font-black ${coordinatorFilter === f.id
+                        ? "bg-white/20 text-white"
+                        : "bg-slate-200/80 text-slate-700"
+                        }`}
+                    >
+                      {f.count}
+                    </span>
                   </button>
                 ))}
               </div>
@@ -512,8 +576,17 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                 placeholder="Search patient, condition, country..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-xl pl-8 pr-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#2ECDC5]/40 font-medium"
+                className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-xl pl-8 pr-8 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#2ECDC5]/40 font-medium"
               />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs font-bold cursor-pointer"
+                  title="Clear search"
+                >
+                  ×
+                </button>
+              )}
             </div>
           </div>
 
@@ -521,7 +594,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             {/* Left Column (65% Width): Live SLA Urgency Queue */}
             <div className="lg:col-span-8 space-y-4">
-              <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm shadow-slate-100/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="bg-white rounded-2xl p-4 backdrop-blur-xl  p-3 sm:p-4 shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90 hover:shadow-[0_6px_32px_rgba(0,0,0,0.08)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 transition-all group">
                 <div>
                   <div className="flex items-center gap-2">
                     <h2 className="text-lg font-black text-slate-900 tracking-tight">
@@ -538,237 +611,303 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
 
                 <div className="flex items-center gap-1 overflow-x-auto scrollbar-none">
                   {[
-                    { id: "all", label: "All" },
-                    { id: "sla_expiring", label: "🔥 Urgent" },
-                    { id: "lead", label: "Leads" },
-                    { id: "documents_collected", label: "Docs" },
+                    { id: "all", label: "All", count: urgencyCounts.all },
+                    { id: "sla_expiring", label: "🔥 Urgent", count: urgencyCounts.urgent },
+                    { id: "lead", label: "Leads", count: urgencyCounts.leads },
+                    { id: "documents_collected", label: "Docs", count: urgencyCounts.docs },
                   ].map((f) => (
                     <button
                       key={f.id}
                       onClick={() => setQueueFilter(f.id as any)}
-                      className={`px-2.5 py-1 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
-                        queueFilter === f.id
-                          ? "bg-[#101955] text-white shadow-xs"
-                          : "bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200"
-                      }`}
+                      className={`px-2.5 py-1 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${queueFilter === f.id
+                        ? "bg-[#101955] text-white shadow-xs"
+                        : "bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200"
+                        }`}
                     >
-                      {f.label}
+                      <span>{f.label}</span>
+                      <span
+                        className={`px-1.5 py-0.2 rounded-md text-[10px] font-mono font-black ${queueFilter === f.id
+                          ? "bg-white/20 text-white"
+                          : "bg-slate-200 text-slate-600"
+                          }`}
+                      >
+                        {f.count}
+                      </span>
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* URGENT CASE CARD 1: Eleanor Ruth Whitfield [UK] */}
-              {eleanorCase && (
-                <div className="bg-white rounded-3xl p-5 sm:p-6 border border-rose-200/80 shadow-md shadow-rose-500/5 hover:shadow-lg hover:shadow-rose-500/10 transition-all space-y-4 relative overflow-hidden group">
-                  <div className="absolute top-0 left-0 bottom-0 w-2 bg-rose-500" />
-
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                    <div className="flex items-center gap-2.5 flex-wrap">
-                      <span className="font-black text-lg text-slate-900 group-hover:text-[#101955] transition-colors">
-                        {eleanorCase.patientName}
-                      </span>
-                      <span className="px-2.5 py-0.5 rounded-lg bg-slate-100 border border-slate-200 text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                        <span>🇬🇧</span>
-                        <span>UK</span>
-                      </span>
-                      <span className="px-2.5 py-0.5 rounded-lg bg-rose-100 text-rose-800 border border-rose-200 text-[11px] font-black tracking-wide flex items-center gap-1">
-                        <span className="w-2 h-2 rounded-full bg-rose-600 animate-ping inline-block" />
-                        <span>🔴 URGENT DISCHARGE / SURGERY</span>
-                      </span>
-                    </div>
-
-                    <div className="px-3.5 py-1.5 rounded-full bg-rose-50 text-rose-700 border border-rose-300 ring-2 ring-rose-400/40 text-xs font-extrabold flex items-center gap-1.5 animate-pulse shrink-0">
-                      <Clock className="w-3.5 h-3.5 text-rose-600" />
-                      <span>⏱️ Wait: 12m</span>
-                    </div>
+              {/* Dynamic Queue Case Cards */}
+              {filteredDashboardCases.length === 0 ? (
+                <div className="bg-white rounded-3xl p-10 border border-slate-100 shadow-sm text-center space-y-4">
+                  <div className="w-14 h-14 mx-auto rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400">
+                    <Search className="w-6 h-6" />
                   </div>
-
-                  <div className="bg-slate-50/90 rounded-2xl p-3.5 border border-slate-100 text-xs space-y-1">
-                    <div className="font-extrabold text-slate-900 flex items-center gap-2">
-                      <span className="text-[#101955]">Requirement:</span>
-                      <span>Cardiac CABG Bypass • Ref: Mercy Gen / NHS Waitlist</span>
-                    </div>
-                    <div className="text-slate-600 text-[11px] leading-relaxed">
-                      Severe triple vessel disease with critical LAD stenosis (&gt;90%). 14-month NHS waitlist backlog. Awaiting surgical slot confirmation with Dr. Naresh Trehan at Medanta.
-                    </div>
+                  <div>
+                    <h3 className="text-base font-black text-slate-900">No matching patient cases</h3>
+                    <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
+                      No patient records match the selected scope ({coordinatorFilter.replace("_", " ")}) and urgency queue filters.
+                    </p>
                   </div>
-
-                  <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <button
-                        onClick={() => handleOpenCallModal(eleanorCase)}
-                        className="px-4 py-2 rounded-xl bg-[#101955] hover:bg-[#1a2670] text-white text-xs font-bold flex items-center gap-1.5 shadow-xs transition-all cursor-pointer transform hover:scale-[1.02]"
-                      >
-                        <Phone className="w-3.5 h-3.5 text-[#2ECDC5]" />
-                        <span>📞 Call Patient</span>
-                      </button>
-
-                      <button
-                        onClick={() => handleOpenWhatsAppModal(eleanorCase)}
-                        className="px-4 py-2 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 text-xs font-black flex items-center gap-1.5 shadow-xs transition-all cursor-pointer transform hover:scale-[1.02]"
-                      >
-                        <MessageSquare className="w-3.5 h-3.5 text-slate-950" />
-                        <span>💬 WhatsApp</span>
-                      </button>
-
-                      <button
-                        onClick={() => handleOpenLogContactModal(eleanorCase)}
-                        className="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center gap-1.5 border border-slate-200 transition-all cursor-pointer"
-                      >
-                        <FileText className="w-3.5 h-3.5 text-slate-600" />
-                        <span>📋 Log Contact</span>
-                      </button>
-                    </div>
-
-                    <button
-                      onClick={() => handleOpenPatientDetails(eleanorCase.id, "intake_overview")}
-                      className="px-3.5 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-extrabold flex items-center gap-1 transition-all cursor-pointer border border-blue-200 self-end sm:self-auto group/btn"
-                    >
-                      <span>View Case</span>
-                      <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
-                    </button>
-                  </div>
+                  <button
+                    onClick={() => {
+                      setCoordinatorFilter("all");
+                      setQueueFilter("all");
+                      setSearchQuery("");
+                    }}
+                    className="px-4 py-2 rounded-xl bg-[#101955] text-white text-xs font-bold shadow-xs hover:bg-[#1a2670] transition-all cursor-pointer inline-flex items-center gap-1.5"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                    <span>Reset All Filters</span>
+                  </button>
                 </div>
-              )}
+              ) : (
+                <div className="space-y-4">
+                  {filteredDashboardCases.map((patientCase) => {
+                    const msLeft = new Date(patientCase.slaExpiresAt).getTime() - Date.now();
+                    const minsLeft = Math.round(msLeft / 60000);
+                    const isBreached = patientCase.slaBreached || msLeft < 0;
+                    const isUrgent = isBreached || minsLeft <= 30;
 
-              {/* URGENT CASE CARD 2: Tariq Al-Mansoor [UAE] */}
-              {tariqCase && (
-                <div className="bg-white rounded-3xl p-5 sm:p-6 border border-amber-200/80 shadow-md shadow-amber-500/5 hover:shadow-lg hover:shadow-amber-500/10 transition-all space-y-4 relative overflow-hidden group">
-                  <div className="absolute top-0 left-0 bottom-0 w-2 bg-amber-500" />
+                    const countryFlag = patientCase.patientCountry?.includes("UK")
+                      ? "🇬🇧"
+                      : patientCase.patientCountry?.includes("UAE")
+                        ? "🇦🇪"
+                        : patientCase.patientCountry?.includes("USA")
+                          ? "🇺🇸"
+                          : patientCase.patientCountry?.includes("Kenya")
+                            ? "🇰🇪"
+                            : patientCase.patientCountry?.includes("China")
+                              ? "🇨🇳"
+                              : "🌐";
 
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                    <div className="flex items-center gap-2.5 flex-wrap">
-                      <span className="font-black text-lg text-slate-900 group-hover:text-[#101955] transition-colors">
-                        {tariqCase.patientName}
-                      </span>
-                      <span className="px-2.5 py-0.5 rounded-lg bg-slate-100 border border-slate-200 text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                        <span>🇦🇪</span>
-                        <span>UAE</span>
-                      </span>
-                      <span className="px-2.5 py-0.5 rounded-lg bg-amber-100 text-amber-900 border border-amber-200 text-[11px] font-black tracking-wide flex items-center gap-1">
-                        <span className="w-2 h-2 rounded-full bg-amber-600 inline-block" />
-                        <span>🟡 LIVER TRANSPLANT TRIAGE</span>
-                      </span>
-                    </div>
+                    const countryShort = patientCase.patientCountry?.includes("UK")
+                      ? "UK"
+                      : patientCase.patientCountry?.includes("UAE")
+                        ? "UAE"
+                        : patientCase.patientCountry?.includes("USA")
+                          ? "USA"
+                          : patientCase.patientCountry?.includes("Kenya")
+                            ? "Kenya"
+                            : patientCase.patientCountry?.includes("China")
+                              ? "China"
+                              : patientCase.patientCountry;
 
-                    <div className="px-3.5 py-1.5 rounded-full bg-amber-50 text-amber-900 border border-amber-300 ring-2 ring-amber-400/40 text-xs font-extrabold flex items-center gap-1.5 shrink-0">
-                      <Clock className="w-3.5 h-3.5 text-amber-700" />
-                      <span>⏱️ Wait: 28m</span>
-                    </div>
-                  </div>
+                    const requirementSnippet =
+                      patientCase.treatmentCategory || "Specialist Evaluation & Clinical Triage";
 
-                  <div className="bg-slate-50/90 rounded-2xl p-3.5 border border-slate-100 text-xs space-y-1">
-                    <div className="font-extrabold text-slate-900 flex items-center gap-2">
-                      <span className="text-[#101955]">Requirement:</span>
-                      <span>Organ Transplant • DICOM Scans Uploaded</span>
-                    </div>
-                    <div className="text-slate-600 text-[11px] leading-relaxed">
-                      Living Donor Liver Transplant (LDLT) evaluation. Son Faris confirmed donor candidate. Abdominal MRI PACS loaded. Tele-consult confirmed today at 14:30 IST with Dr. Subhash Gupta.
-                    </div>
-                  </div>
+                    const clinicalDetails =
+                      patientCase.clinicalSummary?.chiefComplaint ||
+                      patientCase.csNotes?.[0]?.text ||
+                      patientCase.clinicalWorkspace?.treatmentPlan ||
+                      "Comprehensive international patient case intake and clinical triage review.";
 
-                  <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <button
-                        onClick={() => handleOpenCallModal(tariqCase)}
-                        className="px-4 py-2 rounded-xl bg-[#101955] hover:bg-[#1a2670] text-white text-xs font-bold flex items-center gap-1.5 shadow-xs transition-all cursor-pointer transform hover:scale-[1.02]"
-                      >
-                        <Phone className="w-3.5 h-3.5 text-[#2ECDC5]" />
-                        <span>📞 Call Patient</span>
-                      </button>
+                    const hasIncompleteDocs = patientCase.documents?.some(
+                      (d) => d.status === "incomplete" || d.status === "pending_review"
+                    );
 
-                      <button
-                        onClick={() => handleOpenWhatsAppModal(tariqCase)}
-                        className="px-4 py-2 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 text-xs font-black flex items-center gap-1.5 shadow-xs transition-all cursor-pointer transform hover:scale-[1.02]"
-                      >
-                        <MessageSquare className="w-3.5 h-3.5 text-slate-950" />
-                        <span>💬 WhatsApp</span>
-                      </button>
+                    const isAssignedToMe =
+                      Boolean(currentUser?.name && patientCase.assignedCoordinatorName === currentUser.name);
 
-                      <button
-                        onClick={() => handleOpenLogContactModal(tariqCase)}
-                        className="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center gap-1.5 border border-slate-200 transition-all cursor-pointer"
-                      >
-                        <FileText className="w-3.5 h-3.5 text-slate-600" />
-                        <span>📋 Log Contact</span>
-                      </button>
-                    </div>
-
-                    <button
-                      onClick={() => handleOpenPatientDetails(tariqCase.id, "docs_scans")}
-                      className="px-3.5 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-extrabold flex items-center gap-1 transition-all cursor-pointer border border-blue-200 self-end sm:self-auto group/btn"
-                    >
-                      <span>View DICOM Case</span>
-                      <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* Additional Queue Cases */}
-              <div className="space-y-2.5">
-                {filteredDashboardCases
-                  .filter((c) => c.id !== eleanorCase?.id && c.id !== tariqCase?.id)
-                  .map((c) => {
                     return (
                       <div
-                        key={c.id}
-                        onClick={() => handleOpenPatientDetails(c.id, "intake_overview")}
-                        className="bg-white rounded-3xl p-4 sm:p-5 border border-slate-100 shadow-sm shadow-slate-100/50 hover:shadow-md hover:border-[#2ECDC5] transition-all cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3 group"
+                        key={patientCase.id}
+                        className={`bg-white rounded-2xl p-3 sm:p-4 border transition-all space-y-4 relative overflow-hidden group shadow-sm hover:shadow-md ${isBreached
+                          ? "border-rose-300 shadow-rose-500/5 hover:border-rose-400"
+                          : isUrgent
+                            ? "border-rose-200/90 shadow-rose-500/5 hover:border-rose-300"
+                            : patientCase.stage === "consultation"
+                              ? "border-amber-200/80 shadow-amber-500/5 hover:border-amber-300"
+                              : "border-slate-100 hover:border-[#2ECDC5]/60"
+                          }`}
                       >
-                        <div className="flex items-start sm:items-center gap-3.5">
-                          <div className="w-10 h-10 rounded-2xl bg-slate-100 flex items-center justify-center font-black text-xs text-slate-700 shrink-0 group-hover:bg-[#101955] group-hover:text-white transition-colors">
-                            {c.patientCountry?.includes("UK") ? "🇬🇧" : c.patientCountry?.includes("UAE") ? "🇦🇪" : c.patientCountry?.includes("USA") ? "🇺🇸" : "🌐"}
+                        {/* Status color side bar */}
+                        <div
+                          className={`absolute top-0 left-0 bottom-0 w-2 ${isBreached
+                            ? "bg-rose-600"
+                            : isUrgent
+                              ? "bg-rose-500"
+                              : patientCase.stage === "consultation"
+                                ? "bg-amber-500"
+                                : patientCase.stage === "quote"
+                                  ? "bg-purple-600"
+                                  : patientCase.stage === "nurture"
+                                    ? "bg-orange-500"
+                                    : "bg-[#101955]"
+                            }`}
+                        />
+
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                          <div className="flex items-center gap-2.5 flex-wrap">
+                            <span
+                              onClick={() => handleOpenPatientDetails(patientCase.id, "intake_overview")}
+                              className="font-black text-lg text-slate-900 group-hover:text-[#101955] transition-colors cursor-pointer hover:underline"
+                            >
+                              {patientCase.patientName}
+                            </span>
+                            <span className="px-2.5 py-0.5 rounded-lg bg-slate-100 border border-slate-200 text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                              <span>{countryFlag}</span>
+                              <span>{countryShort}</span>
+                            </span>
+                            <span className="font-mono text-[10px] text-slate-400 font-bold bg-slate-50 px-2 py-0.5 rounded border border-slate-200">
+                              {patientCase.id}
+                            </span>
+
+                            {/* Stage / Urgency Badge */}
+                            {isBreached ? (
+                              <span className="px-2.5 py-0.5 rounded-lg bg-rose-100 text-rose-800 border border-rose-200 text-[11px] font-black tracking-wide flex items-center gap-1">
+                                <span className="w-2 h-2 rounded-full bg-rose-600 animate-ping inline-block" />
+                                <span>🔴 SLA BREACHED • IMMEDIATE ESCALATION</span>
+                              </span>
+                            ) : patientCase.stage === "lead" ? (
+                              <span className="px-2.5 py-0.5 rounded-lg bg-rose-100 text-rose-800 border border-rose-200 text-[11px] font-black tracking-wide flex items-center gap-1">
+                                <span className="w-2 h-2 rounded-full bg-rose-600 animate-ping inline-block" />
+                                <span>🔴 URGENT INTAKE / SURGERY</span>
+                              </span>
+                            ) : patientCase.stage === "consultation" ? (
+                              <span className="px-2.5 py-0.5 rounded-lg bg-amber-100 text-amber-900 border border-amber-200 text-[11px] font-black tracking-wide flex items-center gap-1">
+                                <span className="w-2 h-2 rounded-full bg-amber-600 inline-block" />
+                                <span>🟡 CLINICAL CONSULTATION</span>
+                              </span>
+                            ) : patientCase.stage === "quote" ? (
+                              <span className="px-2.5 py-0.5 rounded-lg bg-purple-100 text-purple-900 border border-purple-200 text-[11px] font-black tracking-wide">
+                                🟣 PACKAGE QUOTE ISSUED
+                              </span>
+                            ) : patientCase.stage === "nurture" ? (
+                              <span className="px-2.5 py-0.5 rounded-lg bg-orange-100 text-orange-900 border border-orange-200 text-[11px] font-black tracking-wide">
+                                🟠 NURTURE FOLLOW-UP
+                              </span>
+                            ) : (
+                              <span className="px-2.5 py-0.5 rounded-lg bg-blue-100 text-blue-900 border border-blue-200 text-[11px] font-black tracking-wide">
+                                🔵 {patientCase.stage.replace("_", " ").toUpperCase()}
+                              </span>
+                            )}
                           </div>
-                          <div>
-                            <div className="flex items-center gap-2 flex-wrap">
-                              <span className="font-extrabold text-sm text-slate-900 group-hover:text-[#101955]">
-                                {c.patientName}
-                              </span>
-                              <span className="text-xs text-slate-500 font-medium">({c.patientCountry})</span>
-                              <span className="font-mono text-[10px] text-slate-400 font-bold bg-slate-50 px-2 py-0.5 rounded border border-slate-200">
-                                {c.id}
-                              </span>
-                            </div>
-                            <div className="text-xs text-slate-500 mt-0.5 truncate max-w-md">
-                              {c.treatmentCategory}
-                            </div>
+
+                          {/* SLA Wait Indicator */}
+                          <div
+                            className={`px-3.5 py-1.5 rounded-full text-xs font-extrabold flex items-center gap-1.5 shrink-0 ${isBreached
+                              ? "bg-rose-100 text-rose-800 border border-rose-300 ring-2 ring-rose-400/40 animate-pulse"
+                              : isUrgent
+                                ? "bg-rose-50 text-rose-700 border border-rose-300 ring-2 ring-rose-400/40 animate-pulse"
+                                : minsLeft <= 60
+                                  ? "bg-amber-50 text-amber-900 border border-amber-300 ring-2 ring-amber-400/40"
+                                  : "bg-slate-100 text-slate-700 border border-slate-200"
+                              }`}
+                          >
+                            <Clock className={`w-3.5 h-3.5 ${isBreached || isUrgent ? "text-rose-600" : "text-amber-700"}`} />
+                            <span>
+                              {isBreached
+                                ? "SLA Breached"
+                                : minsLeft > 0
+                                  ? `Wait: ${minsLeft}m`
+                                  : "Due Now"}
+                            </span>
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-2 self-end sm:self-auto">
+                        {/* Clinical summary & requirements */}
+                        <div className="bg-slate-50/90 rounded-2xl p-3.5 border border-slate-100 text-xs space-y-1.5">
+                          <div className="font-extrabold text-slate-900 flex items-center justify-between gap-2 flex-wrap">
+                            <div className="flex items-center gap-2">
+                              <span className="text-[#101955]">Requirement:</span>
+                              <span>{requirementSnippet}</span>
+                            </div>
+                            <div className="flex items-center gap-2 text-[11px]">
+                              {patientCase.assignedCoordinatorName ? (
+                                <span className="px-2 py-0.5 rounded-md bg-white border border-slate-200 text-slate-700 font-bold flex items-center gap-1">
+                                  <Users className="w-3 h-3 text-slate-500" />
+                                  <span>{patientCase.assignedCoordinatorName}</span>
+                                  {isAssignedToMe && (
+                                    <span className="text-[10px] font-black text-emerald-600 bg-emerald-50 px-1 rounded">
+                                      You
+                                    </span>
+                                  )}
+                                </span>
+                              ) : (
+                                <span className="px-2 py-0.5 rounded-md bg-amber-50 border border-amber-200 text-amber-800 font-black flex items-center gap-1 animate-pulse">
+                                  <Zap className="w-3 h-3 text-amber-600" />
+                                  <span>Unassigned Lead</span>
+                                </span>
+                              )}
+                            </div>
+                          </div>
+
+                          <div className="text-slate-600 text-[11px] leading-relaxed">
+                            {clinicalDetails}
+                          </div>
+
+                          {hasIncompleteDocs && (
+                            <div className="mt-1 px-2.5 py-1 rounded-lg bg-amber-50 border border-amber-200 text-[11px] font-bold text-amber-800 flex items-center gap-1.5">
+                              <AlertTriangle className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                              <span>
+                                Documents: Scans uploaded • Missing items or clinical review pending
+                              </span>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Action buttons row */}
+                        <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <button
+                              onClick={() => handleOpenCallModal(patientCase)}
+                              className="px-4 py-2 rounded-xl bg-[#101955] hover:bg-[#1a2670] text-white text-xs font-bold flex items-center gap-1.5 shadow-xs transition-all cursor-pointer transform hover:scale-[1.02]"
+                            >
+                              <Phone className="w-3.5 h-3.5 text-[#2ECDC5]" />
+                              <span>Call Patient</span>
+                            </button>
+
+                            <button
+                              onClick={() => handleOpenWhatsAppModal(patientCase)}
+                              className="px-4 py-2 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 text-xs font-black flex items-center gap-1.5 shadow-xs transition-all cursor-pointer transform hover:scale-[1.02]"
+                            >
+                              <MessageSquare className="w-3.5 h-3.5 text-slate-950" />
+                              <span>WhatsApp</span>
+                            </button>
+
+                            <button
+                              onClick={() => handleOpenLogContactModal(patientCase)}
+                              className="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center gap-1.5 border border-slate-200 transition-all cursor-pointer"
+                            >
+                              <FileText className="w-3.5 h-3.5 text-slate-600" />
+                              <span>Log Contact</span>
+                            </button>
+
+                            {!patientCase.assignedCoordinatorName && (
+                              <button
+                                onClick={() => {
+                                  const agentName = currentUser?.name || "Care Coordinator";
+                                  bulkAssignCases([patientCase.id], agentName);
+                                }}
+                                className="px-3.5 py-2 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-black flex items-center gap-1.5 border border-indigo-200 transition-all cursor-pointer"
+                              >
+                                <UserCheck className="w-3.5 h-3.5 text-indigo-600" />
+                                <span>Claim Lead</span>
+                              </button>
+                            )}
+                          </div>
+
                           <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleOpenCallModal(c);
-                            }}
-                            className="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 cursor-pointer"
-                            title="Call Patient"
-                          >
-                            <Phone className="w-3.5 h-3.5" />
-                          </button>
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleOpenPatientDetails(c.id);
-                            }}
-                            className="px-3.5 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-bold flex items-center gap-1 cursor-pointer"
+                            onClick={() => handleOpenPatientDetails(patientCase.id, "intake_overview")}
+                            className="px-3.5 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-extrabold flex items-center gap-1 transition-all cursor-pointer border border-blue-200 self-end sm:self-auto group/btn"
                           >
                             <span>View Case</span>
-                            <ChevronRight className="w-4 h-4" />
+                            <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
                           </button>
                         </div>
                       </div>
                     );
                   })}
-              </div>
+                </div>
+              )}
             </div>
 
             {/* Right Column (35% Width): Consultations Widget & Pipeline Funnel */}
             <div className="lg:col-span-4 space-y-5">
               {/* Today's Tele-Consultations Widget */}
-              <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm shadow-slate-100/50 space-y-4">
+              <div className="bg-white rounded-2xl p-4 backdrop-blur-xl rounded-3xl p-5 sm:p-6 shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90 space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
@@ -800,7 +939,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2 pt-1 border-t border-slate-200/60">
+                    <div className="flex items-center gap-2 pt-3 border-t border-slate-200/60">
                       <button
                         onClick={() =>
                           handleOpenReassignModal({
@@ -811,14 +950,14 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                             caseId: "PT-2026-089412",
                           })
                         }
-                        className="flex-1 py-1.5 px-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 text-xs font-bold border border-slate-200 flex items-center justify-center gap-1 transition-all cursor-pointer"
+                        className="flex-1 py-2.5 px-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 text-xs font-bold border border-slate-200 flex items-center justify-center gap-1 transition-all cursor-pointer"
                       >
                         <span>Reassign</span>
                       </button>
 
                       <button
                         onClick={() => tariqCase && handleJoinVideoRoom(tariqCase)}
-                        className="flex-1 py-1.5 px-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black flex items-center justify-center gap-1 shadow-xs transition-all cursor-pointer"
+                        className="flex-1 py-2.5 px-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black flex items-center justify-center gap-1 shadow-[0_6px_32px_rgba(0,0,0,0.04)] transition-all cursor-pointer"
                       >
                         <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
                         <span>Join Room</span>
@@ -829,7 +968,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
               </div>
 
               {/* Pipeline Funnel Snapshot Widget */}
-              <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm shadow-slate-100/50 space-y-4">
+              <div className="bg-white backdrop-blur-xl rounded-3xl p-5 sm:p-6 shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90 space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center">

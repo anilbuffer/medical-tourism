@@ -36,15 +36,8 @@ export function applyRowLevelSecurity(
       );
 
     case "customer_support":
-      // CS sees all cases in assigned queues, or all cases if global CS
-      if (!currentUser.assignedQueues || currentUser.assignedQueues.length === 0) {
-        return cases;
-      }
-      return cases.filter(
-        (c) =>
-          currentUser.assignedQueues?.includes(c.assignedQueue) ||
-          currentUser.assignedQueues?.includes("General_Global")
-      );
+      // CS coordinators have global triage visibility across cases, with scope filter for My Queue / Unassigned
+      return cases;
 
     case "finance_accounts":
       // Finance has row access across cases, but clinical fields are redacted

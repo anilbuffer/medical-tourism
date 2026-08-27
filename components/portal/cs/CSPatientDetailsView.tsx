@@ -151,7 +151,7 @@ export const CSPatientDetailsView: React.FC<CSPatientDetailsViewProps> = ({
       </div>
 
       {/* Patient Master HUD Card */}
-      <div className="bg-white rounded-3xl p-5 sm:p-6 border border-slate-100 shadow-sm shadow-slate-100/50 space-y-5">
+      <div className="bg-white rounded-2xl p-3 sm:p-4 border border-slate-100 shadow-sm shadow-slate-100/50 space-y-5">
         {/* Top: Demographics & Stage Selector & Quick Actions */}
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-4 border-b border-slate-100">
           {/* Left: Patient Avatar & Identity */}
@@ -169,13 +169,12 @@ export const CSPatientDetailsView: React.FC<CSPatientDetailsViewProps> = ({
                   {patientCase.id}
                 </span>
                 <span
-                  className={`text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase ${
-                    patientCase.stage === "nurture"
+                  className={`text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase ${patientCase.stage === "nurture"
                       ? "bg-purple-100 text-purple-800"
                       : patientCase.stage === "treatment" || patientCase.stage === "booking"
-                      ? "bg-emerald-100 text-emerald-800"
-                      : "bg-blue-100 text-blue-800"
-                  }`}
+                        ? "bg-emerald-100 text-emerald-800"
+                        : "bg-blue-100 text-blue-800"
+                    }`}
                 >
                   {STAGE_LABEL_MAP[patientCase.stage] || patientCase.stage}
                 </span>
@@ -289,11 +288,10 @@ export const CSPatientDetailsView: React.FC<CSPatientDetailsViewProps> = ({
               <button
                 key={tab.id}
                 onClick={() => setActiveSubTab(tab.id as PatientDetailsSubTab)}
-                className={`px-4 py-2.5 rounded-2xl text-xs font-extrabold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
-                  isActive
+                className={`px-4 py-2.5 rounded-2xl text-xs font-extrabold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${isActive
                     ? "bg-[#101955] text-white shadow-sm"
                     : "bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200"
-                }`}
+                  }`}
               >
                 <span>{tab.label}</span>
               </button>
@@ -303,7 +301,7 @@ export const CSPatientDetailsView: React.FC<CSPatientDetailsViewProps> = ({
       </div>
 
       {/* Main Subtab Workspace Body */}
-      <div className="bg-white rounded-3xl p-5 sm:p-6 border border-slate-100 shadow-sm min-h-[520px]">
+      <div className="bg-white rounded-2xl p-3 sm:p-4 border border-slate-100 shadow-sm min-h-[520px]">
         {/* Tab 1: Intake & Overview */}
         {activeSubTab === "intake_overview" && (
           <div className="space-y-6 animate-in fade-in duration-200">

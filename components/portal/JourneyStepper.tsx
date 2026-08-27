@@ -137,7 +137,7 @@ export const JourneyStepper: React.FC<JourneyStepperProps> = ({
   const completedCount = JOURNEY_STEPS.filter((s, i) => getStepStatus(s, i) === "completed").length;
 
   return (
-    <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-5 sm:p-6 shadow-[0_6px_32px_rgba(0,0,0,0.06)] border border-slate-200/90 space-y-4">
+    <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-3 sm:p-4 shadow-[0_6px_32px_rgba(0,0,0,0.06)] border border-slate-200/90 space-y-4">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#2ECDC5] to-[#1baba4] flex items-center justify-center text-white shadow-md shadow-[#2ECDC5]/20">
@@ -186,20 +186,18 @@ export const JourneyStepper: React.FC<JourneyStepperProps> = ({
               <button
                 key={step.id}
                 onClick={() => onNavigateTab && onNavigateTab(step.tabTarget)}
-                className={`relative z-10 flex flex-col items-center gap-2 group cursor-pointer transition-all duration-200 ${
-                  isCurrent ? "scale-110" : "hover:scale-105"
-                }`}
+                className={`relative z-10 flex flex-col items-center gap-2 group cursor-pointer transition-all duration-200 ${isCurrent ? "scale-110" : "hover:scale-105"
+                  }`}
                 title={`Navigate to ${step.label}`}
               >
                 {/* Step Circle */}
                 <div
-                  className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all relative ${
-                    isCompleted
+                  className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all relative ${isCompleted
                       ? "bg-gradient-to-br from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-500/20 ring-2 ring-emerald-200"
                       : isCurrent
-                      ? "bg-gradient-to-br from-[#141d60] via-[#1b2360] to-[#101e76] text-[#2ECDC5] ring-4 ring-[#2ECDC5]/40 shadow-xl shadow-[#283593]/30"
-                      : "bg-slate-100 text-slate-400 group-hover:bg-slate-200/80 group-hover:text-slate-600 border border-slate-200/60"
-                  }`}
+                        ? "bg-gradient-to-br from-[#141d60] via-[#1b2360] to-[#101e76] text-[#2ECDC5] ring-4 ring-[#2ECDC5]/40 shadow-xl shadow-[#283593]/30"
+                        : "bg-slate-100 text-slate-400 group-hover:bg-slate-200/80 group-hover:text-slate-600 border border-slate-200/60"
+                    }`}
                 >
                   {isCompleted ? (
                     <CheckCircle2 className="w-4 h-4 text-white" />
@@ -215,13 +213,12 @@ export const JourneyStepper: React.FC<JourneyStepperProps> = ({
                 {/* Step Label */}
                 <div className="text-center max-w-[72px]">
                   <div
-                    className={`text-[10px] font-black leading-tight transition-colors ${
-                      isCurrent
+                    className={`text-[10px] font-black leading-tight transition-colors ${isCurrent
                         ? "text-[#141d60] underline decoration-[#2ECDC5] decoration-2 underline-offset-2"
                         : isCompleted
-                        ? "text-emerald-700"
-                        : "text-slate-400 group-hover:text-slate-600"
-                    }`}
+                          ? "text-emerald-700"
+                          : "text-slate-400 group-hover:text-slate-600"
+                      }`}
                   >
                     {step.shortLabel}
                   </div>
