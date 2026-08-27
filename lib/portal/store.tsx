@@ -131,6 +131,17 @@ export interface PortalContextType {
   bulkAssignCases: (caseIds: string[], coordinatorName: string) => void;
   bulkUpdateStage: (caseIds: string[], stage: PatientJourneyStage) => void;
   bulkSendMessage: (caseIds: string[], text: string) => void;
+  claimNextUnassignedLead: (coordinatorName?: string) => string | null;
+  savePackageQuote: (caseId: string, customQuote: Partial<import("../../types/portal").QuotePackage>) => void;
+  sendMultiChannelMessage: (
+    caseId: string,
+    channel: import("../../types/portal").MessageChannel,
+    text: string,
+    recipient?: string,
+    mentionedRoles?: string[]
+  ) => void;
+  retriggerConsentRequest: (caseId: string, consentType: ConsentType) => void;
+  updateItineraryDetails: (caseId: string, itinerary: Partial<import("../../types/portal").LogisticsItinerary>) => void;
 
   // Finance actions
   initiateRefund: (caseId: string, paymentStageId: PaymentStageId, amountUsd: number, reason: string) => void;
@@ -1165,6 +1176,241 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
+  const claimNextUnassignedLead = (coordinatorName?: string): string | null => {
+    const assignedName = coordinatorName || currentUser?.name || "Care Coordinator";
+    const now = new Date().toISOString();
+    
+    // Find unassigned case (or first lead)
+    const targetCase = allCases.find((c) => !c.assignedCoordinatorName || c.stage === "lead");
+    if (!targetCase) return null;
+
+    setAllCases((prev) =>
+      prev.map((c) => {
+        if (c.id !== targetCase.id) return c;
+        const stageEvent: StageHistoryEvent = {
+          id: `sh_${Date.now()}`,
+          fromStage: c.stage,
+          toStage: c.stage === "lead" ? "contacted" : c.stage,
+          changedAt: now,
+          changedByName: assignedName,
+          changedByRole: currentUser?.role || "customer_support",
+          reason: "Claimed via 1-Click Fast Claim Desk",
+        };
+        const audit: AuditLog = {
+          id: `aud_${Date.now()}`,
+          caseId: c.id,
+          action: "LEAD_CLAIMED",
+          actorName: assignedName,
+          actorRole: currentUser?.role || "customer_support",
+          timestamp: now,
+          details: `Lead claimed by ${assignedName}. Assigned to queue: ${c.assignedQueue}.`,
+        };
+        return {
+          ...c,
+          assignedCoordinatorName: assignedName,
+          stage: c.stage === "lead" ? "contacted" : c.stage,
+          stageHistory: [...c.stageHistory, stageEvent],
+          auditLogs: [audit, ...c.auditLogs],
+        };
+      })
+    );
+
+    setActiveCaseId(targetCase.id);
+    return targetCase.id;
+  };
+
+  const savePackageQuote = (caseId: string, customQuote: Partial<import("../../types/portal").QuotePackage>) => {
+    const now = new Date().toISOString();
+    const actorName = currentUser?.name || "Care Coordinator";
+
+    setAllCases((prev) =>
+      prev.map((c) => {
+        if (c.id !== caseId) return c;
+        const existingQuote = c.quote || {
+          id: `qte_${c.id}_${Date.now()}`,
+          quoteNumber: `VED-QT-${Date.now().toString().slice(-5)}`,
+          treatmentName: c.treatmentCategory,
+          hospitalName: c.assignedHospitalId || "Medanta – The Medicity",
+          doctorName: c.assignedDoctorId || "Lead Surgeon",
+          city: "Delhi NCR, India",
+          totalCostUsd: 25000,
+          tier: "standard" as const,
+          status: "draft" as const,
+          createdAt: now,
+          validUntil: new Date(Date.now() + 30 * 24 * 3600 * 1000).toISOString(),
+          costBreakdown: {
+            hospitalChargesUsd: 8500,
+            surgeonAndAnesthesiaUsd: 9000,
+            implantsAndMedicationUsd: 5500,
+            stayAndIcuUsd: 2000,
+            vipConciergeAndLogisticsUsd: 0,
+            companionStayUsd: 0,
+            coordinationFeeUsd: 0,
+            travelAssistanceUsd: 0,
+            supportLayerUsd: 0,
+          },
+          inclusions: [],
+          exclusions: [],
+        };
+
+        const mergedQuote = {
+          ...existingQuote,
+          ...customQuote,
+          lastUpdatedAt: now,
+        };
+
+        const audit: AuditLog = {
+          id: `aud_${Date.now()}`,
+          caseId,
+          action: "PACKAGE_QUOTE_CONFIGURED",
+          actorName,
+          actorRole: currentUser?.role || "customer_support",
+          timestamp: now,
+          details: `Package Quote #${mergedQuote.quoteNumber} configured. Tier: ${mergedQuote.tier || 'standard'}. Total: $${mergedQuote.totalCostUsd} USD. Status: ${mergedQuote.status}.`,
+        };
+
+        return {
+          ...c,
+          quote: mergedQuote,
+          stage: mergedQuote.status === "sent" ? "quote" : c.stage,
+          auditLogs: [audit, ...c.auditLogs],
+        };
+      })
+    );
+  };
+
+  const sendMultiChannelMessage = (
+    caseId: string,
+    channel: import("../../types/portal").MessageChannel,
+    text: string,
+    recipient?: string,
+    mentionedRoles?: string[]
+  ) => {
+    const senderRole = currentUser?.role === "customer_support" ? "cs_coordinator" : "patient";
+    const senderName = currentUser?.name || "Care Coordinator";
+    const now = new Date().toISOString();
+
+    const newMsg: InPortalMessage = {
+      id: `msg_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
+      senderId: currentUser?.id || "user_cs",
+      senderName: channel === "internal_note" ? `[INTERNAL] ${senderName}` : senderName,
+      senderRole,
+      text,
+      timestamp: now,
+      isRead: false,
+      channel,
+      mentionedRoles,
+    };
+
+    const audit: AuditLog = {
+      id: `aud_${Date.now()}`,
+      caseId,
+      action: `MESSAGE_SENT_${channel.toUpperCase()}`,
+      actorName: senderName,
+      actorRole: currentUser?.role || "customer_support",
+      timestamp: now,
+      details: `Dispatched via ${channel.toUpperCase()} ${recipient ? `to ${recipient}` : ''}. ${mentionedRoles?.length ? `Tagged: ${mentionedRoles.join(', ')}` : ''}`,
+    };
+
+    setAllCases((prev) =>
+      prev.map((c) => {
+        if (c.id !== caseId) return c;
+        return {
+          ...c,
+          messages: [...c.messages, newMsg],
+          auditLogs: [audit, ...c.auditLogs],
+        };
+      })
+    );
+  };
+
+  const retriggerConsentRequest = (caseId: string, consentType: ConsentType) => {
+    const now = new Date().toISOString();
+    const actorName = currentUser?.name || "Care Coordinator";
+
+    setAllCases((prev) =>
+      prev.map((c) => {
+        if (c.id !== caseId) return c;
+        const audit: AuditLog = {
+          id: `aud_${Date.now()}`,
+          caseId,
+          action: "CONSENT_RETRIGGERED",
+          actorName,
+          actorRole: currentUser?.role || "customer_support",
+          timestamp: now,
+          details: `Re-sent digital consent signature request for: ${consentType}. Link dispatched via SMS & Email.`,
+        };
+
+        const autoMsg: InPortalMessage = {
+          id: `msg_${Date.now()}`,
+          senderId: "system",
+          senderName: "Vedara Compliance Desk",
+          senderRole: "system",
+          text: `A digital signature request for "${consentType.replace(/_/g, ' ')}" has been dispatched to your registered contact. Please review and sign.`,
+          timestamp: now,
+          isRead: false,
+          channel: "portal",
+        };
+
+        return {
+          ...c,
+          messages: [...c.messages, autoMsg],
+          auditLogs: [audit, ...c.auditLogs],
+        };
+      })
+    );
+  };
+
+  const updateItineraryDetails = (caseId: string, itinerary: Partial<import("../../types/portal").LogisticsItinerary>) => {
+    const now = new Date().toISOString();
+    const actorName = currentUser?.name || "Care Coordinator";
+
+    setAllCases((prev) =>
+      prev.map((c) => {
+        if (c.id !== caseId) return c;
+        const existing = c.itinerary || {
+          doctorAppointmentDate: "2026-09-01",
+          doctorAppointmentTime: "10:00 AM IST",
+          hospitalAddress: "Medanta – The Medicity, Gurugram, Delhi NCR",
+          coordinatorContact: {
+            name: "Ananya Sharma",
+            phone: "+91 98101 88412",
+            whatsapp: "+91 98101 88412",
+            email: "ananya.sharma@vedaracare.com",
+          },
+          visaDocumentChecklist: {
+            country: c.patientCountry,
+            passportValidityRequired: "6 Months",
+            mInvitationLetterReady: true,
+            embassySubmissionUrl: "https://indianvisaonline.gov.in/evisa/tvoa.html",
+            requiredItems: [],
+          },
+        };
+
+        const merged = {
+          ...existing,
+          ...itinerary,
+        };
+
+        const audit: AuditLog = {
+          id: `aud_${Date.now()}`,
+          caseId,
+          action: "ITINERARY_UPDATED",
+          actorName,
+          actorRole: currentUser?.role || "customer_support",
+          timestamp: now,
+          details: `Travel, Visa, and Concierge logistics updated.`,
+        };
+
+        return {
+          ...c,
+          itinerary: merged,
+          auditLogs: [audit, ...c.auditLogs],
+        };
+      })
+    );
+  };
+
   const initiateRefund = (caseId: string, paymentStageId: PaymentStageId, amountUsd: number, reason: string) => {
     const now = new Date().toISOString();
     const requesterName = currentUser?.name || "Finance";
@@ -1176,7 +1422,6 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
       reason,
       requestedAt: now,
       requestedByName: requesterName,
-      // Amounts above $2000 require approval — set pending_approval; below auto-approve
       status: amountUsd > 2000 ? "pending_approval" : "approved",
     };
     const audit: AuditLog = {
@@ -1272,6 +1517,11 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
         bulkAssignCases,
         bulkUpdateStage,
         bulkSendMessage,
+        claimNextUnassignedLead,
+        savePackageQuote,
+        sendMultiChannelMessage,
+        retriggerConsentRequest,
+        updateItineraryDetails,
         // Finance
         initiateRefund,
         grantBillingDisputeAccess,
@@ -1290,3 +1540,4 @@ export const usePortal = () => {
   }
   return ctx;
 };
+

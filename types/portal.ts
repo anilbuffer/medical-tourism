@@ -287,6 +287,8 @@ export interface LogisticsItinerary {
 }
 
 // ─── Messages ─────────────────────────────────────────────────────────────────
+export type MessageChannel = "whatsapp" | "email" | "portal" | "internal_note";
+
 export interface InPortalMessage {
   id: string;
   senderId: string;
@@ -297,7 +299,10 @@ export interface InPortalMessage {
   attachmentUrl?: string;
   attachmentName?: string;
   isRead: boolean;
+  channel?: MessageChannel;
+  mentionedRoles?: string[];
 }
+
 
 // ─── Recovery ─────────────────────────────────────────────────────────────────
 export interface RecoveryCheckIn {

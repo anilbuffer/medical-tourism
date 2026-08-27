@@ -358,6 +358,168 @@ export const MOCK_SLA_THRESHOLDS: SlaThreshold[] = [
 // ─── Patient Cases ────────────────────────────────────────────────────────────
 export const INITIAL_PATIENT_CASES: PatientCase[] = [
   {
+    id: "PT-2026-004819",
+    patientName: "Eleanor Ruth Whitfield",
+    patientEmail: "eleanor.whitfield@nhs-waitlist.co.uk",
+    patientPhone: "+44 7700 912845",
+    patientCountry: "United Kingdom",
+    preferredLanguage: "English",
+    treatmentCategory: "Cardiac CABG Bypass Surgery",
+    preferredContactTime: "09:00 - 13:00 GMT",
+    entryPath: "hospital_referred",
+    referredHospitalId: "hosp_medanta",
+    assignedHospitalId: "hosp_medanta",
+    assignedDoctorId: "doc_trehan",
+    assignedQueue: "Cardiology_Tier1",
+    assignedCoordinatorName: "Aisha Khan",
+    lastContactAt: new Date(Date.now() - 15 * 60 * 1000).toISOString(),
+
+    leadCreatedAt: new Date(Date.now() - 18 * 60 * 1000).toISOString(),
+    slaTargetMinutes: 30,
+    slaExpiresAt: new Date(Date.now() + 12 * 60 * 1000).toISOString(),
+    slaBreached: false,
+
+    utmSource: "mercy_gen_nhs_waitlist",
+    utmMedium: "nhs_fasttrack_referral",
+    utmCampaign: "cardiac_bypass_uk",
+
+    stage: "lead",
+    caseDecisionStatus: "pending_review",
+
+    hasBillingDispute: false,
+
+    clinicalSummary: {
+      chiefComplaint: "Severe triple vessel coronary artery disease with critical LAD stenosis (>90%). 14-month NHS waitlist backlog with increasing angina and dyspnea on minimal exertion.",
+      diagnosis: "Severe Coronary Artery Disease (CAD) - Triple Vessel Disease with critical Left Anterior Descending (LAD) and Circumflex stenosis.",
+      recommendedProcedure: "Coronary Artery Bypass Graft (CABG x 3) with Left Internal Mammary Artery (LIMA) to LAD bypass.",
+      pastMedicalHistory: "Hypertension, Hyperlipidemia, Ex-smoker (quit 2021). No prior cardiac interventions.",
+      allergies: ["Penicillin"],
+    },
+
+    stageHistory: [
+      {
+        id: "sh_el_01",
+        fromStage: null,
+        toStage: "lead",
+        changedAt: new Date(Date.now() - 18 * 60 * 1000).toISOString(),
+        changedByName: "Mercy Gen / NHS Backlog Triage",
+        changedByRole: "public",
+      },
+    ],
+
+    csNotes: [
+      {
+        id: "note_el_01",
+        text: "NHS backlog referral. Critical LAD stenosis >90%. Patient seeking private surgery in Delhi within 10 days. Tele-consult requested with Dr. Naresh Trehan.",
+        createdAt: new Date(Date.now() - 15 * 60 * 1000).toISOString(),
+        authorName: "Aisha Khan",
+        authorRole: "customer_support",
+      },
+    ],
+
+    documents: [
+      {
+        id: "doc_coronary_angio",
+        title: "Coronary_Angiography_Report_MercyGen.pdf",
+        category: "scan_imaging",
+        status: "reviewed",
+        csFeedback: "🟢 Reviewed — Triple vessel disease with 95% proximal LAD lesion documented.",
+        currentVersion: 1,
+        isRequired: true,
+        isCaseScoped: true,
+        requiredForStage: "documents_collected",
+        versions: [
+          {
+            version: 1,
+            fileName: "Coronary_Angiography_Report_MercyGen.pdf",
+            fileSize: "8.6 MB",
+            fileType: "application/pdf",
+            uploadedAt: new Date(Date.now() - 18 * 60 * 1000).toISOString(),
+            uploadedBy: "Mercy General Hospital",
+          },
+        ],
+      },
+      {
+        id: "doc_cardiac_echo",
+        title: "Transthoracic_Echocardiogram_2026.pdf",
+        category: "medical_report",
+        status: "reviewed",
+        csFeedback: "🟢 Reviewed — LVEF 50%, mild anterior hypokinesia.",
+        currentVersion: 1,
+        isRequired: true,
+        isCaseScoped: true,
+        requiredForStage: "documents_collected",
+        versions: [
+          {
+            version: 1,
+            fileName: "Transthoracic_Echocardiogram_2026.pdf",
+            fileSize: "3.2 MB",
+            fileType: "application/pdf",
+            uploadedAt: new Date(Date.now() - 18 * 60 * 1000).toISOString(),
+            uploadedBy: "Mercy General Hospital",
+          },
+        ],
+      },
+    ],
+
+    consents: [
+      {
+        id: "cst_privacy_eleanor",
+        consentType: "privacy_data_processing",
+        title: "UK GDPR & Medical Cross-Border Data Processing",
+        description: "Patient granted permission for Medanta Heart Institute to review NHS cardiology files.",
+        agreed: true,
+        timestamp: new Date(Date.now() - 18 * 60 * 1000).toISOString(),
+        ipAddress: "86.14.92.110 (London, UK)",
+        version: "v2.4",
+        digitalSignature: "Eleanor Ruth Whitfield",
+      },
+    ],
+
+    consultation: {
+      id: "tele_trehan_eleanor",
+      scheduledAt: new Date(Date.now() + 6 * 3600 * 1000).toISOString(),
+      durationMinutes: 30,
+      doctorName: "Dr. Naresh Trehan",
+      doctorSpecialty: "Chairman & Chief Cardiovascular Surgeon",
+      doctorHospital: "Medanta – The Medicity, Delhi NCR",
+      doctorAvatar: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=150&auto=format&fit=crop&q=80",
+      meetingLink: "https://vedaracare.health/teleconsult/ved-live-4819",
+      status: "scheduled",
+      outcome: "pending",
+      outcomeNotes: "Urgent CABG assessment. Coronary angio DICOM verified.",
+      recordingEnabled: false,
+    },
+
+    messages: [
+      {
+        id: "msg_el_01",
+        senderId: "coord_aisha",
+        senderName: "Aisha Khan (Lead Coordinator)",
+        senderRole: "cs_coordinator",
+        text: "Hello Eleanor! We received your NHS cardiology referral from Mercy Gen. Dr. Naresh Trehan's cardiac surgical team is reviewing your angiogram now.",
+        timestamp: new Date(Date.now() - 10 * 60 * 1000).toISOString(),
+        isRead: true,
+      },
+    ],
+    payments: [],
+    recoveryCheckIns: [],
+    auditLogs: [
+      {
+        id: "aud_el_01",
+        caseId: "PT-2026-004819",
+        action: "LEAD_CREATED",
+        actorName: "Mercy Gen NHS Backlog",
+        actorRole: "public",
+        timestamp: new Date(Date.now() - 18 * 60 * 1000).toISOString(),
+        details: "Urgent Cardiac lead generated from UK. SLA: 30 min.",
+        ipAddress: "86.14.92.110",
+      },
+    ],
+    refundRequests: [],
+  },
+
+  {
     id: "PT-2026-089412",
     patientName: "Tariq Al-Mansoor",
     patientEmail: "tariq.mansoor@alnoor.ae",
@@ -371,11 +533,11 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
     assignedDoctorId: "doc_gupta",
     assignedQueue: "Transplant_Tier1",
     assignedCoordinatorName: "Ananya Sharma",
-    lastContactAt: new Date(Date.now() - 2 * 3600 * 1000).toISOString(),
+    lastContactAt: new Date(Date.now() - 32 * 60 * 1000).toISOString(),
 
-    leadCreatedAt: new Date("2026-08-23T08:30:00Z").toISOString(),
-    slaTargetMinutes: 30,
-    slaExpiresAt: new Date("2026-08-23T09:00:00Z").toISOString(),
+    leadCreatedAt: new Date(Date.now() - 32 * 60 * 1000).toISOString(),
+    slaTargetMinutes: 60,
+    slaExpiresAt: new Date(Date.now() + 28 * 60 * 1000).toISOString(),
     slaBreached: false,
 
     utmSource: "executive_vip_referral",
@@ -852,33 +1014,180 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
         details: "Coordination deposit of $3,000 captured. Receipt #REC-88421 generated.",
       },
     ],
-
     refundRequests: [],
   },
 
   {
-    id: "PT-2026-004128",
-    patientName: "Tariq Al-Mansoor",
-    patientEmail: "tariq.mansoor@alnoor.ae",
-    patientPhone: "+971 50 123 4567",
-    patientCountry: "United Arab Emirates",
-    preferredLanguage: "Arabic",
+    id: "PT-2026-004412",
+    patientName: "David Miller",
+    patientEmail: "david.miller@cardiaccare.us",
+    patientPhone: "+1 (555) 349-8812",
+    patientCountry: "United States",
+    preferredLanguage: "English",
+    treatmentCategory: "Cardiology & Transcatheter Valve Replacement (TAVR)",
+    preferredContactTime: "14:00 - 18:00 EST",
+    entryPath: "doctor_referred",
+    assignedHospitalId: "hosp_fortis",
+    assignedDoctorId: "doc_seth",
+    assignedQueue: "Cardiology_Tier1",
+    assignedCoordinatorName: "Aisha Khan",
+    lastContactAt: new Date(Date.now() - 45 * 60 * 1000).toISOString(),
+
+    leadCreatedAt: new Date(Date.now() - 2 * 24 * 3600 * 1000).toISOString(),
+    slaTargetMinutes: 45,
+    slaExpiresAt: new Date(Date.now() + 75 * 60 * 1000).toISOString(),
+    slaBreached: false,
+
+    utmSource: "fortis_us_liaison",
+    utmMedium: "concierge_referral",
+    utmCampaign: "tavr_north_america",
+
+    stage: "consultation",
+    caseDecisionStatus: "accepted",
+    acceptedAt: new Date(Date.now() - 24 * 3600 * 1000).toISOString(),
+    acceptedByDoctorId: "doc_seth",
+    acceptedByDoctorName: "Dr. Ashok Seth",
+
+    hasBillingDispute: false,
+
+    clinicalSummary: {
+      chiefComplaint: "Severe calcific aortic stenosis with peak systolic gradient of 78 mmHg. High surgical risk for open heart surgery, recommended for Transcatheter Aortic Valve Replacement (TAVR).",
+      diagnosis: "Severe symptomatic Aortic Stenosis (valve area 0.65 cm2), STS mortality risk 6.2%.",
+      recommendedProcedure: "Transfemoral Transcatheter Aortic Valve Implantation (TAVI / TAVR) using Edwards SAPIEN 3 Ultra.",
+      pastMedicalHistory: "Prior stroke (2020 with complete recovery), Type 2 Diabetes, Mild CKD (eGFR 55).",
+      allergies: ["Sulfa drugs"],
+    },
+
+    stageHistory: [
+      {
+        id: "sh_dm_01",
+        fromStage: null,
+        toStage: "lead",
+        changedAt: new Date(Date.now() - 2 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "US Liaison Desk",
+        changedByRole: "public",
+      },
+      {
+        id: "sh_dm_02",
+        fromStage: "lead",
+        toStage: "hospital_handover",
+        changedAt: new Date(Date.now() - 1.5 * 24 * 3600 * 1000).toISOString(),
+        changedByName: "Aisha Khan",
+        changedByRole: "customer_support",
+      },
+      {
+        id: "sh_dm_03",
+        fromStage: "hospital_handover",
+        toStage: "consultation",
+        changedAt: new Date(Date.now() - 24 * 3600 * 1000).toISOString(),
+        changedByName: "Dr. Ashok Seth",
+        changedByRole: "hospital_doctor",
+      },
+    ],
+
+    csNotes: [
+      {
+        id: "note_dm_01",
+        text: "CT Angiogram of iliofemoral vessels reviewed by Fortis structural heart team. Transfemoral access suitable (bilateral lumen >6.5mm). Tele-consult confirmed for 17:00 IST today.",
+        createdAt: new Date(Date.now() - 3 * 3600 * 1000).toISOString(),
+        authorName: "Aisha Khan",
+        authorRole: "customer_support",
+      },
+    ],
+
+    documents: [
+      {
+        id: "doc_tavr_ct",
+        title: "TAVR_Protocol_CT_Angiography.pdf",
+        category: "scan_imaging",
+        status: "reviewed",
+        csFeedback: "🟢 Reviewed — Annular perimeter 76.4mm, annular area 448 mm2. Edwards SAPIEN 26mm recommended.",
+        currentVersion: 1,
+        isRequired: true,
+        isCaseScoped: true,
+        requiredForStage: "documents_collected",
+        versions: [
+          {
+            version: 1,
+            fileName: "TAVR_Protocol_CT_Angiography.pdf",
+            fileSize: "14.2 MB",
+            fileType: "application/pdf",
+            uploadedAt: new Date(Date.now() - 1.5 * 24 * 3600 * 1000).toISOString(),
+            uploadedBy: "David Miller",
+          },
+        ],
+      },
+    ],
+
+    consents: [
+      {
+        id: "cst_privacy_dm",
+        consentType: "privacy_data_processing",
+        title: "HIPAA & International Medical Data Release",
+        description: "Patient granted permission for Fortis Memorial Research Institute to evaluate cardiology telemetry.",
+        agreed: true,
+        timestamp: new Date(Date.now() - 2 * 24 * 3600 * 1000).toISOString(),
+        ipAddress: "72.229.28.185 (New York, USA)",
+        version: "v2.4",
+        digitalSignature: "David Miller",
+      },
+    ],
+
+    consultation: {
+      id: "tele_seth_dm",
+      scheduledAt: "Today 17:00 IST",
+      durationMinutes: 30,
+      doctorName: "Dr. Ashok Seth",
+      doctorSpecialty: "Chairman - Interventional Cardiology",
+      doctorHospital: "Fortis Memorial Research Institute, Delhi NCR",
+      doctorAvatar: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=150&auto=format&fit=crop&q=80",
+      meetingLink: "https://vedaracare.health/teleconsult/ved-live-4412",
+      status: "scheduled",
+      outcome: "pending",
+      outcomeNotes: "TAVR valve sizing & transfemoral access discussion with patient & daughter.",
+      recordingEnabled: false,
+    },
+
+    messages: [
+      {
+        id: "msg_dm_01",
+        senderId: "coord_aisha",
+        senderName: "Aisha Khan (Lead Coordinator)",
+        senderRole: "cs_coordinator",
+        text: "Good morning Mr. Miller! Dr. Ashok Seth has reviewed your CT Angio and confirmed our video appointment for 17:00 IST today.",
+        timestamp: new Date(Date.now() - 2 * 3600 * 1000).toISOString(),
+        isRead: true,
+      },
+    ],
+    payments: [],
+    recoveryCheckIns: [],
+    auditLogs: [],
+    refundRequests: [],
+  },
+
+  {
+    id: "PT-2026-089415",
+    patientName: "John Doe",
+    patientEmail: "john.doe@globalhealth.org",
+    patientPhone: "+1 (555) 438-9921",
+    patientCountry: "United States",
+    preferredLanguage: "English",
     treatmentCategory: "Orthopedics & Robotic Joint Replacement",
-    preferredContactTime: "10:00 - 14:00 GST",
+    preferredContactTime: "10:00 - 14:00 EST",
     entryPath: "hospital_referred",
     referredHospitalId: "hosp_apollo",
     assignedHospitalId: "hosp_apollo",
     assignedDoctorId: "doc_ashok_rajgopal",
     assignedQueue: "Orthopedics_MENA",
     assignedCoordinatorName: "Aisha Khan",
-    lastContactAt: new Date(Date.now() - 5 * 3600 * 1000).toISOString(),
+    lastContactAt: new Date(Date.now() - 1 * 3600 * 1000).toISOString(),
 
-    leadCreatedAt: new Date(Date.now() - 1.5 * 24 * 3600 * 1000).toISOString(),
-    slaTargetMinutes: 30,
-    slaExpiresAt: new Date(Date.now() - 1.2 * 24 * 3600 * 1000).toISOString(),
+    leadCreatedAt: new Date(Date.now() - 48 * 60 * 1000).toISOString(),
+    slaTargetMinutes: 60,
+    slaExpiresAt: new Date(Date.now() + 12 * 60 * 1000).toISOString(),
     slaBreached: false,
 
-    utmSource: "apollo_referral_dubai",
+    utmSource: "apollo_referral_usa",
     utmMedium: "hospital_direct",
 
     stage: "quote",
@@ -1147,10 +1456,10 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
     assignedHospitalId: "hosp_fortis",
     assignedDoctorId: "doc_vinod_raina",
     assignedQueue: "Oncology_EMEA",
-    assignedCoordinatorName: "Aisha Khan",
-    lastContactAt: new Date(Date.now() - 3 * 3600 * 1000).toISOString(),
+    assignedCoordinatorName: "",
+    lastContactAt: new Date(Date.now() - 30 * 60 * 1000).toISOString(),
 
-    leadCreatedAt: new Date(Date.now() - 0.8 * 24 * 3600 * 1000).toISOString(),
+    leadCreatedAt: new Date(Date.now() - 45 * 60 * 1000).toISOString(),
     slaTargetMinutes: 60,
     slaExpiresAt: new Date(Date.now() + 15 * 60 * 1000).toISOString(),
     slaBreached: false,
@@ -1159,7 +1468,7 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
     utmMedium: "seo",
     utmCampaign: "cyberknife_africa",
 
-    stage: "documents_collected",
+    stage: "lead",
     caseDecisionStatus: "pending_review",
 
     hasBillingDispute: false,

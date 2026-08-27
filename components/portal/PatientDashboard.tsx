@@ -56,6 +56,7 @@ import {
   Car,
   Layers,
   Zap,
+  Kanban,
 } from "lucide-react";
 import { UserRole } from "@/types/portal";
 
@@ -122,7 +123,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
 
         return {
           portalBadge: "Coordinator Workspace",
-          headerTitle: "Care Coordinator Desk",
+          headerTitle: "Care Control Center",
           portalSubtitle: "International Triage & SLA Monitor",
           roleTag: "Care Coordinator Lead",
           userName: currentUser?.name || "Aisha Khan",
@@ -130,26 +131,25 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
           avatar: currentUser?.avatar,
           defaultTab: "triage_queues",
           menus: [
-            { id: "triage_queues", label: "Triage & SLA Queues", icon: Activity, badge: newLeadsTotal > 0 ? newLeadsTotal : undefined },
-            { id: "raw_intake", label: "Raw Intake Payload", icon: FileText },
-            { id: "master_cases", label: "All Master Cases", icon: ClipboardList },
+            { id: "triage_queues", label: "Dashboard", icon: LayoutDashboard, badge: newLeadsTotal > 0 ? newLeadsTotal : undefined },
+            { id: "kanban_pipeline", label: "Kanban Pipeline", icon: Kanban },
+            { id: "patient_directory", label: "Master Directory", icon: Users, badge: visibleCases.length > 0 ? visibleCases.length : undefined },
             { id: "hospital_handovers", label: "Hospital Handovers", icon: Building2 },
-            { id: "tele_consultations", label: "Tele-Consultations", icon: Video },
+            { id: "tele_consultations", label: "Tele-Consultation Room", icon: Video },
             { id: "quote_builder", label: "Package & Quote Builder", icon: DollarSign },
-            { id: "visas_flights", label: "Visas & Flights", icon: Plane },
-            { id: "concierge_hospitality", label: "Concierge & Hospitality", icon: Building2 },
-            { id: "patient_messages", label: "Patient Messages", icon: MessageSquare, badge: unreadMsgsTotal > 0 ? unreadMsgsTotal : undefined },
-            { id: "document_vault", label: "Document Vault & Scans", icon: FileText, badge: pendingDocsTotal > 0 ? pendingDocsTotal : undefined },
-            { id: "consents_compliance", label: "Consents & Compliance", icon: ShieldCheck },
+            { id: "visas_flights", label: "Visas & Flight Bookings", icon: Plane },
+            { id: "concierge_hospitality", label: "On-Ground VIP Concierge", icon: Building2 },
+            { id: "document_vault", label: "Medical Document Vault", icon: FileText, badge: pendingDocsTotal > 0 ? pendingDocsTotal : undefined },
+            { id: "consents_compliance", label: "Immutable Consent Audit", icon: ShieldCheck },
           ],
           navGroups: [
             {
               id: "main_workspace",
               label: "MAIN WORKSPACE",
               items: [
-                { id: "triage_queues", label: "Triage & SLA Queues", icon: Activity, badge: newLeadsTotal > 0 ? newLeadsTotal : undefined },
-                { id: "raw_intake", label: "Raw Intake Payload", icon: FileText },
-                { id: "master_cases", label: "All Master Cases", icon: ClipboardList },
+                { id: "triage_queues", label: "Dashboard", icon: LayoutDashboard, badge: newLeadsTotal > 0 ? newLeadsTotal : undefined },
+                { id: "kanban_pipeline", label: "Kanban Pipeline", icon: Kanban },
+                { id: "patient_directory", label: "Master Directory", icon: Users, badge: visibleCases.length > 0 ? visibleCases.length : undefined },
               ]
             },
             {
@@ -157,25 +157,18 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
               label: "CASE EXECUTION",
               items: [
                 { id: "hospital_handovers", label: "Hospital Handovers", icon: Building2 },
-                { id: "tele_consultations", label: "Tele-Consultations", icon: Video },
+                { id: "tele_consultations", label: "Tele-Consultation", icon: Video },
                 { id: "quote_builder", label: "Package & Quote Builder", icon: DollarSign },
               ]
             },
             {
-              id: "logistics_travel",
-              label: "LOGISTICS & TRAVEL",
+              id: "logistics_compliance",
+              label: "LOGISTICS & COMPLIANCE",
               items: [
-                { id: "visas_flights", label: "Visas & Flights", icon: Plane },
-                { id: "concierge_hospitality", label: "Concierge & Hospitality", icon: Building2 },
-              ]
-            },
-            {
-              id: "communication_legal",
-              label: "COMMUNICATION & LEGAL",
-              items: [
-                { id: "patient_messages", label: "Patient Messages (Threaded)", icon: MessageSquare, badge: unreadMsgsTotal > 0 ? unreadMsgsTotal : undefined },
-                { id: "document_vault", label: "Document Vault & Scans", icon: FileText, badge: pendingDocsTotal > 0 ? pendingDocsTotal : undefined },
-                { id: "consents_compliance", label: "Consents & Compliance", icon: ShieldCheck },
+                { id: "visas_flights", label: "Visas & Flight Bookings", icon: Plane },
+                { id: "concierge_hospitality", label: "On-Ground VIP Concierge", icon: Building2 },
+                { id: "document_vault", label: "Medical Document Vault", icon: FileText, badge: pendingDocsTotal > 0 ? pendingDocsTotal : undefined },
+                { id: "consents_compliance", label: "Immutable Consent Audit", icon: ShieldCheck },
               ]
             }
           ]
@@ -549,6 +542,9 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
       ...((portalConfig as any).patientNavGroups?.flatMap((g: any) => g.items.map((i: any) => i.id)) || []),
       ...((portalConfig as any).navGroups?.flatMap((g: any) => g.items.map((i: any) => i.id)) || []),
       "triage_queues",
+      "kanban_pipeline",
+      "patient_directory",
+      "master_directory",
       "raw_intake",
       "master_cases",
       "hospital_handovers",
@@ -1144,7 +1140,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
         </header>
 
         {/* Main Body Content Container */}
-        <main className="flex-1 p-4 sm:p-8 max-w-7xl w-full mx-auto">
+        <main className={`flex-1 p-4 sm:p-6 w-full mx-auto ${isCS ? "max-w-[1680px]" : "max-w-7xl"}`}>
           {/* If CS Role -> CS Queue View */}
           {isCS && (
             <CSQueueView
