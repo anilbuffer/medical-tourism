@@ -3,15 +3,20 @@
 import React from "react";
 import { PatientJourneyStage } from "@/types/portal";
 import {
+  LayoutDashboard,
   FileText,
+  Video,
+  CreditCard,
   Plane,
   HeartHandshake,
+  Lock,
   CheckCircle2,
   Sparkles,
 } from "lucide-react";
 
 interface JourneyStepperProps {
   currentStage: PatientJourneyStage;
+  activeTab?: string;
   onSelectStage?: (stage: PatientJourneyStage) => void;
   onNavigateTab?: (tabId: string) => void;
 }
@@ -23,52 +28,113 @@ interface StepMeta {
   icon: React.ElementType;
   tabTarget: string;
   includesStages: PatientJourneyStage[];
+  includesTabs?: string[];
 }
 
 const JOURNEY_STEPS: StepMeta[] = [
   {
-    id: "getting_ready",
-    label: "Getting Ready",
-    shortLabel: "Getting Ready",
-    icon: FileText,
+    id: "dashboard",
+    label: "Dashboard",
+    shortLabel: "Dashboard",
+    icon: LayoutDashboard,
     tabTarget: "overview",
-    includesStages: [
-      "lead",
-      "contacted",
-      "documents_collected",
-      "hospital_handover",
-      "consultation",
-      "quote",
-      "payment",
-    ],
+    includesStages: ["lead", "contacted"],
+    includesTabs: ["overview"],
   },
   {
-    id: "your_trip",
-    label: "Your Trip",
-    shortLabel: "Your Trip",
+    id: "documents",
+    label: "My Documents",
+    shortLabel: "Documents",
+    icon: FileText,
+    tabTarget: "docs_vault",
+    includesStages: ["documents_collected"],
+    includesTabs: ["docs_vault", "documents", "prescriptions_history"],
+  },
+  {
+    id: "video_call",
+    label: "Doctor Video Call",
+    shortLabel: "Video Call",
+    icon: Video,
+    tabTarget: "upcoming_video",
+    includesStages: ["hospital_handover", "consultation"],
+    includesTabs: ["upcoming_video", "consultation", "doctor_opinions"],
+  },
+  {
+    id: "package_price",
+    label: "What's Included",
+    shortLabel: "Package & Price",
+    icon: CreditCard,
+    tabTarget: "package_quote",
+    includesStages: ["quote", "payment"],
+    includesTabs: ["package_quote", "quote", "payment_escrow", "payments"],
+  },
+  {
+    id: "trip_travel",
+    label: "Trip & Travel",
+    shortLabel: "Trip & Travel",
     icon: Plane,
     tabTarget: "visa_checklist",
     includesStages: ["booking", "treatment"],
+    includesTabs: ["visa_checklist", "booking", "flight_hotel", "concierge_contact"],
   },
   {
     id: "recovery",
-    label: "Recovery",
+    label: "Recovery & Care",
     shortLabel: "Recovery",
     icon: HeartHandshake,
     tabTarget: "discharge_summary",
     includesStages: ["followup"],
+    includesTabs: ["discharge_summary", "recovery", "post_treatment", "recovery_forms"],
   },
+  {
+    id: "consents",
+    label: "Forms & Consents",
+    shortLabel: "Consents",
+    icon: Lock,
+    tabTarget: "legal_consents",
+    includesStages: [],
+    includesTabs: ["legal_consents", "consents"],
+  },
+];
+
+// Order of stages for "completed" determination
+const STAGE_ORDER: PatientJourneyStage[] = [
+  "lead", "contacted", "documents_collected", "hospital_handover",
+  "consultation", "quote", "payment", "booking", "treatment", "followup",
 ];
 
 export const JourneyStepper: React.FC<JourneyStepperProps> = ({
   currentStage,
+  activeTab,
   onNavigateTab,
 }) => {
-  // Determine which of the 3 phases we are currently in
-  const activePhaseIndex = JOURNEY_STEPS.findIndex((phase) =>
-    phase.includesStages.includes(currentStage)
+  const currentStageIndex = STAGE_ORDER.indexOf(currentStage);
+
+  // Determine active step index — prefer tab match, fall back to stage
+  let activeStepIndex = JOURNEY_STEPS.findIndex(
+    (s) => activeTab && s.includesTabs?.includes(activeTab)
   );
-  const safeIndex = activePhaseIndex >= 0 ? activePhaseIndex : 0; // Default to phase 1
+  if (activeStepIndex < 0) {
+    activeStepIndex = JOURNEY_STEPS.findIndex((s) =>
+      s.includesStages.includes(currentStage)
+    );
+  }
+  const safeIndex = activeStepIndex >= 0 ? activeStepIndex : 0;
+
+  // Compute which steps are "completed" based on journey stage progress
+  const getStepStatus = (step: StepMeta, idx: number): "completed" | "active" | "upcoming" => {
+    if (idx === safeIndex) return "active";
+    // A step is completed if ALL its associated stages are past the current stage
+    const maxStageIdx = Math.max(
+      ...step.includesStages.map((s) => STAGE_ORDER.indexOf(s)),
+      -1
+    );
+    if (maxStageIdx >= 0 && maxStageIdx < currentStageIndex) return "completed";
+    if (idx < safeIndex) return "completed";
+    return "upcoming";
+  };
+
+  const completedCount = JOURNEY_STEPS.filter((s, i) => getStepStatus(s, i) === "completed").length;
 
   return (
     <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-5 sm:p-6 shadow-[0_6px_32px_rgba(0,0,0,0.06)] border border-slate-200/90 space-y-4">
@@ -81,50 +147,53 @@ export const JourneyStepper: React.FC<JourneyStepperProps> = ({
             <h3 className="text-sm font-black uppercase tracking-wider text-slate-900 flex items-center gap-2">
               Your Journey
               <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-                Phase {safeIndex + 1} of 3
+                Step {safeIndex + 1} of {JOURNEY_STEPS.length}
               </span>
             </h3>
             <p className="text-[11px] text-slate-500">
-              Track your progress toward a successful recovery
+              {completedCount} of {JOURNEY_STEPS.length} milestones complete
             </p>
           </div>
         </div>
 
         <div className="flex items-center gap-2 text-xs font-bold text-[#3F4EB4] bg-[#3F4EB4]/5 px-3.5 py-1.5 rounded-full border border-[#3F4EB4]/15">
           <span className="w-2 h-2 rounded-full bg-[#2ECDC5] animate-pulse" />
-          <span>Active Phase: {JOURNEY_STEPS[safeIndex]?.label}</span>
+          <span>Active: {JOURNEY_STEPS[safeIndex]?.label}</span>
         </div>
       </div>
 
-      {/* Responsive Horizontal Stepper Strip */}
+      {/* 7-Node Horizontal Stepper Strip */}
       <div className="overflow-x-auto pb-3 pt-2 scrollbar-none">
-        <div className="flex items-center min-w-[600px] justify-between relative px-8">
+        <div className="flex items-start min-w-[700px] justify-between relative px-5">
           {/* Background Connecting Line */}
-          <div className="absolute top-[20px] left-16 right-16 h-1 bg-slate-200/80 z-0 rounded-full" />
+          <div className="absolute top-[18px] left-10 right-10 h-0.5 bg-slate-200/80 z-0 rounded-full" />
           <div
-            className="absolute top-[20px] left-16 h-1 bg-gradient-to-r from-emerald-500 via-[#2ECDC5] to-[#3F4EB4] transition-all duration-500 z-0 rounded-full shadow-sm"
+            className="absolute top-[18px] left-10 h-0.5 bg-gradient-to-r from-emerald-500 via-[#2ECDC5] to-[#3F4EB4] transition-all duration-700 z-0 rounded-full shadow-sm"
             style={{
-              width: `calc(${(safeIndex / (JOURNEY_STEPS.length - 1)) * 100}% - 32px)`,
+              width: safeIndex === 0
+                ? "0%"
+                : `calc(${(safeIndex / (JOURNEY_STEPS.length - 1)) * 100}% - 20px)`,
             }}
           />
 
           {JOURNEY_STEPS.map((step, idx) => {
-            const isCompleted = idx < safeIndex;
-            const isCurrent = idx === safeIndex;
+            const status = getStepStatus(step, idx);
+            const isCompleted = status === "completed";
+            const isCurrent = status === "active";
             const Icon = step.icon;
 
             return (
               <button
                 key={step.id}
                 onClick={() => onNavigateTab && onNavigateTab(step.tabTarget)}
-                className={`relative z-10 flex flex-col items-center gap-2 group cursor-pointer transition-all ${
+                className={`relative z-10 flex flex-col items-center gap-2 group cursor-pointer transition-all duration-200 ${
                   isCurrent ? "scale-110" : "hover:scale-105"
                 }`}
                 title={`Navigate to ${step.label}`}
               >
                 {/* Step Circle */}
                 <div
-                  className={`w-10 h-10 rounded-2xl flex items-center justify-center transition-all relative ${
+                  className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all relative ${
                     isCompleted
                       ? "bg-gradient-to-br from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-500/20 ring-2 ring-emerald-200"
                       : isCurrent
@@ -133,22 +202,22 @@ export const JourneyStepper: React.FC<JourneyStepperProps> = ({
                   }`}
                 >
                   {isCompleted ? (
-                    <CheckCircle2 className="w-5 h-5 text-white" />
+                    <CheckCircle2 className="w-4 h-4 text-white" />
                   ) : (
                     <Icon className="w-4 h-4" />
                   )}
 
                   {isCurrent && (
-                    <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#2ECDC5] ring-2 ring-white animate-ping" />
+                    <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#2ECDC5] ring-2 ring-white animate-ping" />
                   )}
                 </div>
 
                 {/* Step Label */}
-                <div className="text-center">
+                <div className="text-center max-w-[72px]">
                   <div
-                    className={`text-sm font-black leading-tight transition-colors ${
+                    className={`text-[10px] font-black leading-tight transition-colors ${
                       isCurrent
-                        ? "text-[#141d60] font-extrabold underline decoration-[#2ECDC5] decoration-2 underline-offset-4"
+                        ? "text-[#141d60] underline decoration-[#2ECDC5] decoration-2 underline-offset-2"
                         : isCompleted
                         ? "text-emerald-700"
                         : "text-slate-400 group-hover:text-slate-600"
@@ -156,8 +225,8 @@ export const JourneyStepper: React.FC<JourneyStepperProps> = ({
                   >
                     {step.shortLabel}
                   </div>
-                  <div className="text-[10px] font-semibold text-slate-400 capitalize truncate mt-0.5">
-                    {isCompleted ? "Verified" : isCurrent ? "In Progress" : "Upcoming"}
+                  <div className="text-[9px] font-semibold text-slate-400 capitalize mt-0.5">
+                    {isCompleted ? "✓ Done" : isCurrent ? "Active" : "Upcoming"}
                   </div>
                 </div>
               </button>
@@ -168,4 +237,3 @@ export const JourneyStepper: React.FC<JourneyStepperProps> = ({
     </div>
   );
 };
-

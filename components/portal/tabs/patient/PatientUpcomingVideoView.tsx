@@ -15,6 +15,11 @@ import {
   Phone,
   MessageSquare,
   HelpCircle,
+  ChevronDown,
+  ChevronUp,
+  Globe,
+  Unlock,
+  ArrowRight,
 } from "lucide-react";
 import { PatientCase } from "@/types/portal";
 import { VideoConsultationSDKModal } from "../../modals/VideoConsultationSDKModal";
@@ -22,16 +27,68 @@ import { WhatsAppContactModal } from "../../modals/WhatsAppContactModal";
 
 interface PatientUpcomingVideoViewProps {
   patientCase: PatientCase;
+  onNavigateTab?: (tabId: string) => void;
 }
+
+const PRE_CALL_QUESTIONS = [
+  { id: "q1", text: "What are the risks specific to my age and condition?" },
+  { id: "q2", text: "What is the expected recovery timeline after transplant?" },
+  { id: "q3", text: "What medications will I need before and after surgery?" },
+  { id: "q4", text: "Can my son Faris be present in the hospital room?" },
+  { id: "q5", text: "What happens if complications arise during the procedure?" },
+  { id: "q6", text: "What pre-operative tests are still needed from my side?" },
+  { id: "q7", text: "What is the follow-up care schedule after I return to Dubai?" },
+];
 
 export const PatientUpcomingVideoView: React.FC<PatientUpcomingVideoViewProps> = ({
   patientCase,
+  onNavigateTab,
 }) => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
+  const [agendaOpen, setAgendaOpen] = useState(false);
+  const [checkedQuestions, setCheckedQuestions] = useState<Set<string>>(new Set());
+
+  const toggleQuestion = (id: string) => {
+    setCheckedQuestions((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  // Check if call outcome shows surgical suitability
+  const latestConsult = patientCase.consultation;
+  const isSuitableCandidate = latestConsult?.outcome === "suitable";
 
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
+      {/* Post-Call Unlock Banner — shown when CS marks patient as suitable */}
+      {isSuitableCandidate && (
+        <div className="flex items-center gap-4 bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-2xl p-4 shadow-sm">
+          <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center shrink-0">
+            <Unlock className="w-5 h-5 text-emerald-600" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="text-sm font-extrabold text-emerald-800">
+              Dr. Gupta has marked you as a suitable transplant candidate
+            </div>
+            <div className="text-xs text-emerald-600 mt-0.5">
+              {latestConsult?.outcomeNotes || "Your package details and payment options are now unlocked."}
+            </div>
+          </div>
+          {onNavigateTab && (
+            <button
+              onClick={() => onNavigateTab("package_quote")}
+              className="shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition-all cursor-pointer shadow-md"
+            >
+              View Package <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          )}
+        </div>
+      )}
+
       {/* Top Banner */}
       <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
@@ -81,11 +138,25 @@ export const PatientUpcomingVideoView: React.FC<PatientUpcomingVideoViewProps> =
             </div>
           </div>
 
-          <div className="text-left sm:text-right bg-white/10 sm:bg-transparent p-4 sm:p-0 rounded-2xl border sm:border-0 border-white/15 w-full sm:w-auto">
+          {/* Dual Timezone Clock */}
+          <div className="space-y-3 text-left sm:text-right">
             <div className="text-xs font-bold text-[#2ECDC5] uppercase tracking-wider">Appointment Date & Time</div>
-            <div className="text-2xl font-black text-white mt-0.5">Thursday, Aug 27</div>
-            <div className="text-base font-bold text-slate-200">03:30 PM (Your Local Time)</div>
-            <div className="text-xs text-slate-300 mt-1">Duration: ~45 Minutes</div>
+            <div className="text-2xl font-black text-white">Thursday, Aug 27</div>
+            <div className="flex flex-col sm:items-end gap-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/10 border border-white/20 text-xs font-bold">
+                <Globe className="w-3.5 h-3.5 text-[#2ECDC5]" />
+                <span className="text-[#2ECDC5]">02:00 PM</span>
+                <span className="text-slate-300">GST — Dubai, UAE</span>
+                <span className="text-[10px] text-slate-400 font-medium">(Your Time)</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-amber-500/15 border border-amber-400/30 text-xs font-bold">
+                <Clock className="w-3.5 h-3.5 text-amber-300" />
+                <span className="text-amber-300">03:30 PM</span>
+                <span className="text-slate-300">IST — New Delhi, India</span>
+                <span className="text-[10px] text-slate-400 font-medium">(Doctor's Time)</span>
+              </div>
+              <div className="text-xs text-slate-300 mt-1">Duration: ~45 Minutes</div>
+            </div>
           </div>
         </div>
 
@@ -144,6 +215,68 @@ export const PatientUpcomingVideoView: React.FC<PatientUpcomingVideoViewProps> =
         </div>
       </div>
 
+      {/* Pre-Consultation Agenda / Questionnaire */}
+      <div className="bg-white/95 backdrop-blur-xl rounded-3xl border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] overflow-hidden">
+        <button
+          onClick={() => setAgendaOpen(!agendaOpen)}
+          className="w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50/50 transition-colors cursor-pointer"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-[#3F4EB4]/10 text-[#3F4EB4] flex items-center justify-center">
+              <FileText className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="font-extrabold text-base text-slate-900">Pre-Consultation Agenda</h3>
+              <p className="text-xs text-slate-500">
+                Check the questions you want to ask Dr. Gupta — {checkedQuestions.size} of {PRE_CALL_QUESTIONS.length} selected
+              </p>
+            </div>
+          </div>
+          {agendaOpen ? (
+            <ChevronUp className="w-5 h-5 text-slate-400 shrink-0" />
+          ) : (
+            <ChevronDown className="w-5 h-5 text-slate-400 shrink-0" />
+          )}
+        </button>
+
+        {agendaOpen && (
+          <div className="px-5 sm:px-6 pb-5 sm:pb-6 space-y-2 border-t border-slate-100 pt-4">
+            <p className="text-xs text-slate-500 mb-3">
+              High-stress calls can make it easy to forget your questions. Check off what you want to discuss, and we'll remind you 10 minutes before the call.
+            </p>
+            {PRE_CALL_QUESTIONS.map((q) => (
+              <label
+                key={q.id}
+                className="flex items-start gap-3 p-3.5 rounded-2xl hover:bg-slate-50 cursor-pointer group transition-colors"
+              >
+                <div
+                  onClick={() => toggleQuestion(q.id)}
+                  className={`w-5 h-5 rounded-lg border-2 flex items-center justify-center shrink-0 mt-0.5 transition-all ${
+                    checkedQuestions.has(q.id)
+                      ? "bg-[#1baba4] border-[#1baba4] text-white"
+                      : "border-slate-300 group-hover:border-[#1baba4]"
+                  }`}
+                >
+                  {checkedQuestions.has(q.id) && <CheckCircle2 className="w-3.5 h-3.5" />}
+                </div>
+                <span
+                  className={`text-sm font-medium transition-colors ${
+                    checkedQuestions.has(q.id) ? "text-[#1baba4] line-through opacity-60" : "text-slate-800"
+                  }`}
+                >
+                  {q.text}
+                </span>
+              </label>
+            ))}
+            {checkedQuestions.size > 0 && (
+              <div className="mt-3 p-3 bg-teal-50 border border-teal-100 rounded-xl text-xs text-teal-700 font-medium">
+                ✓ {checkedQuestions.size} question{checkedQuestions.size > 1 ? "s" : ""} selected. Your coordinator Ananya will remind you before the call.
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
       {/* Helpful Call Preparation Tips */}
       <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-4">
@@ -160,7 +293,7 @@ export const PatientUpcomingVideoView: React.FC<PatientUpcomingVideoViewProps> =
 
         <button
           onClick={() => setIsWhatsAppOpen(true)}
-          className="text-xs font-bold text-[#3F4EB4] hover:text-[#283593] hover:underline cursor-pointer transition-colors"
+          className="text-xs font-bold text-[#3F4EB4] hover:text-[#283593] hover:underline cursor-pointer transition-colors whitespace-nowrap"
         >
           Need help preparing? Contact Coordinator
         </button>

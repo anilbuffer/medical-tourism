@@ -11,6 +11,8 @@ import {
   ShieldCheck,
   Check,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   Download,
   AlertCircle,
   HelpCircle,
@@ -19,6 +21,9 @@ import {
   Car,
   Globe,
   Hotel,
+  Lock,
+  AlertTriangle,
+  Wallet,
 } from "lucide-react";
 import { PatientCase } from "@/types/portal";
 import { usePortal } from "@/lib/portal/store";
@@ -41,6 +46,8 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
   const [modNotes, setModNotes] = useState("");
   const [showModModal, setShowModModal] = useState(false);
   const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
+  const [changeRequestSent, setChangeRequestSent] = useState(false);
+  const [refundTermsOpen, setRefundTermsOpen] = useState(false);
 
   const handleAccept = () => {
     respondToQuote(patientCase.id, "accepted");
@@ -222,20 +229,101 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
           </div>
         </div>
 
-        {/* Right Column: Decision Actions */}
-        <div className="space-y-6">
-          <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] space-y-4">
+        {/* Right Column: Staged Escrow + Decision Actions */}
+        <div className="space-y-5">
+
+          {/* Staged Payment Roadmap */}
+          <div className="bg-gradient-to-br from-[#141d60] via-[#1b2360] to-[#101e76] rounded-3xl p-5 sm:p-6 text-white shadow-xl border border-slate-800 space-y-4 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-[#2ECDC5]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="flex items-center gap-2.5 relative z-10">
+              <div className="w-8 h-8 rounded-xl bg-[#2ECDC5]/20 flex items-center justify-center">
+                <Wallet className="w-4 h-4 text-[#2ECDC5]" />
+              </div>
+              <div>
+                <div className="text-sm font-black text-white">Staged Escrow Payment Plan</div>
+                <div className="text-[11px] text-slate-300">Your funds are held in secure escrow at each stage</div>
+              </div>
+            </div>
+
+            <div className="space-y-3 relative z-10">
+              {/* Stage 1 */}
+              <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-emerald-500/15 border border-emerald-400/30">
+                <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center shrink-0 mt-0.5">
+                  <Check className="w-3.5 h-3.5 text-white" />
+                </div>
+                <div className="flex-1">
+                  <div className="text-xs font-extrabold text-emerald-300">Stage 1 — Booking Deposit</div>
+                  <div className="text-lg font-black text-white">{formatCurrency(3000)}</div>
+                  <div className="text-[11px] text-slate-300">Escrow Held · Paid upon package acceptance</div>
+                </div>
+              </div>
+
+              {/* Stage 2 */}
+              <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-white/5 border border-white/15">
+                <div className="w-6 h-6 rounded-full bg-slate-600 flex items-center justify-center shrink-0 mt-0.5">
+                  <span className="text-[10px] font-black text-white">2</span>
+                </div>
+                <div className="flex-1">
+                  <div className="text-xs font-extrabold text-slate-300">Stage 2 — Hospital Booking Advance</div>
+                  <div className="text-lg font-black text-slate-200">{formatCurrency(15000)}</div>
+                  <div className="text-[11px] text-slate-400">Due 30 days before procedure · Released to hospital</div>
+                </div>
+              </div>
+
+              {/* Stage 3 */}
+              <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-white/5 border border-white/15">
+                <div className="w-6 h-6 rounded-full bg-slate-600 flex items-center justify-center shrink-0 mt-0.5">
+                  <span className="text-[10px] font-black text-white">3</span>
+                </div>
+                <div className="flex-1">
+                  <div className="text-xs font-extrabold text-slate-300">Stage 3 — Final Settlement</div>
+                  <div className="text-lg font-black text-slate-200">{formatCurrency(10500)}</div>
+                  <div className="text-[11px] text-slate-400">Due on hospital admission day</div>
+                </div>
+              </div>
+
+              <div className="pt-1 flex justify-between items-center text-xs font-bold border-t border-white/10">
+                <span className="text-slate-300">Total All-Inclusive:</span>
+                <span className="text-[#2ECDC5] text-base font-black">{formatCurrency(totalAmount)}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Decision Actions */}
+          <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-[0_6px_32px_rgba(0,0,0,0.06)] space-y-4">
             <h4 className="font-black text-base text-slate-900">Ready to move forward?</h4>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Accepting this package reserves your surgery slot with Dr. Gupta and moves you to the next step.
+              Accepting reserves your surgery slot with Dr. Gupta and triggers your Stage 1 deposit invoice.
             </p>
+
+            {/* Refund & Cancellation Terms — expandable */}
+            <div className="rounded-2xl border border-slate-200 overflow-hidden">
+              <button
+                onClick={() => setRefundTermsOpen(!refundTermsOpen)}
+                className="w-full flex items-center justify-between px-4 py-3 bg-slate-50 hover:bg-slate-100 transition-colors cursor-pointer text-left"
+              >
+                <div className="flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4 text-amber-500" />
+                  <span className="text-xs font-extrabold text-slate-700">Refund & Cancellation Terms</span>
+                </div>
+                {refundTermsOpen ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
+              </button>
+              {refundTermsOpen && (
+                <div className="px-4 py-3 text-xs text-slate-600 space-y-2 border-t border-slate-100">
+                  <p><strong className="text-slate-800">Stage 1 Deposit ($3,000):</strong> Fully refundable if cancelled ≥ 30 days before admission.</p>
+                  <p><strong className="text-slate-800">Stage 2 Advance ($15,000):</strong> 70% refundable if cancelled 15–30 days prior. Non-refundable &lt;15 days.</p>
+                  <p><strong className="text-slate-800">Stage 3 Final ($10,500):</strong> Non-refundable once hospital admission occurs.</p>
+                  <p className="text-[11px] text-slate-400 pt-1">All refund requests are reviewed by the Finance & Escrow Desk within 7 business days.</p>
+                </div>
+              )}
+            </div>
 
             {decisionState === "accepted" ? (
               <div className="p-5 bg-emerald-50 rounded-2xl border border-emerald-200 text-center space-y-3">
                 <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
                 <div className="font-black text-base text-emerald-900">Package Accepted!</div>
                 <p className="text-xs text-emerald-800 leading-relaxed">
-                  Your treatment slot is reserved. You can now view your payment steps.
+                  Your treatment slot is reserved. Stage 1 deposit invoice has been triggered.
                 </p>
                 {onNavigateToPayments && (
                   <button
@@ -245,6 +333,11 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
                     View Your Payments
                   </button>
                 )}
+              </div>
+            ) : changeRequestSent ? (
+              <div className="p-4 bg-amber-50 rounded-2xl border border-amber-200 text-center space-y-1.5">
+                <div className="font-black text-sm text-amber-800">✓ Request Sent to Ananya!</div>
+                <p className="text-xs text-amber-600">Your coordinator has received an urgent notification about your change request.</p>
               </div>
             ) : (
               <div className="space-y-3">
@@ -285,13 +378,16 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
               Let your Care Coordinator know what you'd like adjusted (e.g. longer hotel stay, extra family member, flight booking).
             </p>
 
-            <form onSubmit={handleRequestMod} className="space-y-4 text-xs">
+            <form onSubmit={(e) => { e.preventDefault(); respondToQuote(patientCase.id, "change_requested", modNotes); setChangeRequestSent(true); setDecisionState("change_requested"); setShowModModal(false); }} className="space-y-4 text-xs">
+              <div className="p-3 bg-amber-50 border border-amber-100 rounded-xl text-xs text-amber-700 font-medium">
+                ⚡ This will create an urgent action item in Ananya's coordinator queue.
+              </div>
               <textarea
                 required
                 rows={4}
                 value={modNotes}
                 onChange={(e) => setModNotes(e.target.value)}
-                placeholder="Type your request here..."
+                placeholder="Describe what you'd like changed (e.g. longer hotel stay, extra family room, different dates)..."
                 className="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-900 font-medium focus:outline-none focus:border-[#2ECDC5]"
               />
 
@@ -299,15 +395,15 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
                 <button
                   type="button"
                   onClick={() => setShowModModal(false)}
-                  className="flex-1 py-3 bg-slate-100 hover:bg-slate-200 rounded-xl text-slate-700 font-bold text-xs"
+                  className="flex-1 py-3 bg-slate-100 hover:bg-slate-200 rounded-xl text-slate-700 font-bold text-xs cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 py-3 bg-gradient-to-r from-[#1d8983] to-[#1baba4] hover:scale-105 active:scale-95 text-white rounded-xl font-bold text-xs shadow-md"
+                  className="flex-1 py-3 bg-gradient-to-r from-[#1d8983] to-[#1baba4] hover:scale-105 active:scale-95 text-white rounded-xl font-bold text-xs shadow-md cursor-pointer"
                 >
-                  Send Request
+                  Send Urgent Request
                 </button>
               </div>
             </form>

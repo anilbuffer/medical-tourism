@@ -459,6 +459,7 @@ export const CSPatientDetailsView: React.FC<CSPatientDetailsViewProps> = ({
         isOpen={exportPdfOpen}
         onClose={() => setExportPdfOpen(false)}
         patientCase={patientCase}
+        quoteData={undefined}
       />
     </div>
   );

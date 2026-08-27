@@ -36,7 +36,7 @@ export const getPortalPathForRole = (role: string) => {
 export const PersonaSwitcher: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const { currentUser, availableUsers, loginAs } = usePortal();
+  const { currentUser, availableUsers, loginAs, activeCase, setActiveCaseId } = usePortal();
   const [isOpen, setIsOpen] = useState(false);
 
   const getRoleIcon = (role: string) => {
@@ -75,12 +75,25 @@ export const PersonaSwitcher: React.FC = () => {
 
   const handleSelectPersona = (user: PortalUser) => {
     loginAs(user);
+    if (user.role === "patient" && user.patientId) {
+      setActiveCaseId(user.patientId);
+    }
     setIsOpen(false);
     const targetPath = getPortalPathForRole(user.role);
     if (pathname !== targetPath) {
       router.push(targetPath);
     }
   };
+
+  // Dynamic patient name binding if role is patient
+  const displayName =
+    currentUser?.role === "patient"
+      ? activeCase?.patientName || currentUser?.name || "Tariq Al-Mansoor"
+      : currentUser?.name || "Select Persona";
+
+  const displayAvatar =
+    currentUser?.avatar ||
+    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80";
 
   return (
     <div className="relative">
@@ -91,11 +104,8 @@ export const PersonaSwitcher: React.FC = () => {
       >
         <div className="w-6 h-6 rounded-full overflow-hidden ring-1 ring-[#2ECDC5]/60 shrink-0">
           <img
-            src={
-              currentUser?.avatar ||
-              "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80"
-            }
-            alt={currentUser?.name || "User"}
+            src={displayAvatar}
+            alt={displayName}
             className="w-full h-full object-cover"
           />
         </div>
@@ -104,7 +114,7 @@ export const PersonaSwitcher: React.FC = () => {
             {getRoleLabel(currentUser?.role || "patient")}
           </div>
           <div className="text-xs font-extrabold text-slate-900 leading-tight">
-            {currentUser?.name || "Select Persona"}
+            {displayName}
           </div>
         </div>
         <ChevronDown className={`w-3.5 h-3.5 text-slate-400 ml-1 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
@@ -136,7 +146,7 @@ export const PersonaSwitcher: React.FC = () => {
                     key={user.id}
                     onClick={() => handleSelectPersona(user)}
                     className={`w-full text-left p-2.5 rounded-xl flex items-center justify-between transition-all cursor-pointer border ${isSelected
-                      ? " bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983]text-white font-bold shadow-md border-transparent"
+                      ? " bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-bold shadow-md border-transparent"
                       : "bg-slate-50/70 hover:bg-slate-100 text-slate-800 hover:text-slate-900 border-slate-100 hover:border-slate-200"
                       }`}
                   >

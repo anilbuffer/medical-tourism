@@ -248,6 +248,7 @@ export const PatientView: React.FC<PatientViewProps> = ({
         <OverviewTab
           patientCase={patientCase}
           onNavigateTab={(tabId) => setActiveTab(tabId)}
+          activeTab={activeTab}
         />
       )}
 
@@ -260,7 +261,7 @@ export const PatientView: React.FC<PatientViewProps> = ({
       )}
 
       {(activeTab === "upcoming_video" || activeTab === "consultation") && (
-        <PatientUpcomingVideoView patientCase={patientCase} />
+        <PatientUpcomingVideoView patientCase={patientCase} onNavigateTab={setActiveTab} />
       )}
 
       {activeTab === "doctor_opinions" && (
@@ -293,7 +294,7 @@ export const PatientView: React.FC<PatientViewProps> = ({
       {(activeTab === "discharge_summary" ||
         activeTab === "recovery" ||
         activeTab === "post_treatment") && (
-        <PatientDischargeSummaryView patientCase={patientCase} />
+        <PatientDischargeSummaryView patientCase={patientCase} onNavigateTab={setActiveTab} />
       )}
 
       {activeTab === "recovery_forms" && (

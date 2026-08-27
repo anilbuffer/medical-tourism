@@ -74,7 +74,84 @@ export const PatientPaymentEscrowView: React.FC<PatientPaymentEscrowViewProps> =
         </div>
       </div>
 
-      {/* Step-by-Step Payment Cards (Progressive Disclosure) */}
+      {/* Staged Escrow Progress Tracker */}
+      <div className="bg-gradient-to-br from-[#141d60] via-[#1b2360] to-[#101e76] rounded-3xl p-5 sm:p-7 text-white shadow-xl border border-slate-800 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#2ECDC5]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="flex items-center gap-2.5 mb-5 relative z-10">
+          <div className="w-8 h-8 rounded-xl bg-[#2ECDC5]/20 flex items-center justify-center">
+            <ShieldCheck className="w-4 h-4 text-[#2ECDC5]" />
+          </div>
+          <div>
+            <div className="text-sm font-black text-white">Staged Escrow Payment Tracker</div>
+            <div className="text-[11px] text-slate-300">Funds held securely at each milestone — released only upon delivery</div>
+          </div>
+        </div>
+
+        <div className="relative z-10">
+          {/* Progress Line */}
+          <div className="absolute top-[22px] left-[24px] right-[24px] h-0.5 bg-white/10 rounded-full hidden sm:block" />
+          <div
+            className="absolute top-[22px] left-[24px] h-0.5 bg-gradient-to-r from-emerald-400 to-[#2ECDC5] rounded-full hidden sm:block"
+            style={{ width: totalPaid >= 3000 ? (totalPaid >= 18000 ? "100%" : "50%") : "0%" }}
+          />
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {/* Stage 1 */}
+            <div className={`relative p-4 rounded-2xl border space-y-2 ${totalPaid >= 3000 ? "bg-emerald-500/15 border-emerald-400/30" : "bg-white/5 border-white/15"}`}>
+              <div className="flex items-center gap-2">
+                <div className={`w-11 h-11 rounded-full flex items-center justify-center font-black text-sm shadow-md ${totalPaid >= 3000 ? "bg-emerald-500 text-white" : "bg-slate-600 text-slate-300"}`}>
+                  {totalPaid >= 3000 ? <CheckCircle2 className="w-5 h-5" /> : "1"}
+                </div>
+                <div>
+                  <div className={`text-xs font-extrabold ${totalPaid >= 3000 ? "text-emerald-300" : "text-slate-300"}`}>Stage 1</div>
+                  <div className="text-[11px] text-slate-400">Booking Deposit</div>
+                </div>
+              </div>
+              <div className="text-xl font-black text-white">{formatCurrency(3000)}</div>
+              <div className={`text-[11px] font-bold ${totalPaid >= 3000 ? "text-emerald-400" : "text-slate-400"}`}>
+                {totalPaid >= 3000 ? "✓ Escrow Held" : "Pending payment"}
+              </div>
+            </div>
+
+            {/* Stage 2 */}
+            <div className={`relative p-4 rounded-2xl border space-y-2 ${totalPaid >= 18000 ? "bg-emerald-500/15 border-emerald-400/30" : "bg-white/5 border-white/15"}`}>
+              <div className="flex items-center gap-2">
+                <div className={`w-11 h-11 rounded-full flex items-center justify-center font-black text-sm shadow-md ${totalPaid >= 18000 ? "bg-emerald-500 text-white" : "bg-slate-600 text-slate-300"}`}>
+                  {totalPaid >= 18000 ? <CheckCircle2 className="w-5 h-5" /> : "2"}
+                </div>
+                <div>
+                  <div className={`text-xs font-extrabold ${totalPaid >= 18000 ? "text-emerald-300" : "text-slate-300"}`}>Stage 2</div>
+                  <div className="text-[11px] text-slate-400">Hospital Advance</div>
+                </div>
+              </div>
+              <div className="text-xl font-black text-white">{formatCurrency(15000)}</div>
+              <div className="text-[11px] text-slate-400">Due 30 days before admission</div>
+            </div>
+
+            {/* Stage 3 */}
+            <div className="relative p-4 rounded-2xl border space-y-2 bg-white/5 border-white/15">
+              <div className="flex items-center gap-2">
+                <div className="w-11 h-11 rounded-full bg-slate-600 text-slate-300 flex items-center justify-center font-black text-sm shadow-md">
+                  3
+                </div>
+                <div>
+                  <div className="text-xs font-extrabold text-slate-300">Stage 3</div>
+                  <div className="text-[11px] text-slate-400">Final Settlement</div>
+                </div>
+              </div>
+              <div className="text-xl font-black text-white">{formatCurrency(10500)}</div>
+              <div className="text-[11px] text-slate-400">Due on hospital admission day</div>
+            </div>
+          </div>
+
+          <div className="flex justify-between items-center pt-4 mt-2 border-t border-white/10 text-xs font-bold">
+            <span className="text-slate-300">Total Package:</span>
+            <span className="text-[#2ECDC5] text-base font-black">{formatCurrency(totalPackageCost)}</span>
+          </div>
+        </div>
+      </div>
+
+
       <div className="space-y-4">
         <div className="flex items-center justify-between px-1">
           <h3 className="text-lg font-black text-slate-900 tracking-tight">

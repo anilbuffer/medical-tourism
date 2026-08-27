@@ -27,8 +27,10 @@ export const ConsentSignModal: React.FC<ConsentSignModalProps> = ({
   caseId,
   consent,
 }) => {
-  const { recordConsent } = usePortal();
-  const [signatureName, setSignatureName] = useState("Tariq Al-Mansoor");
+  const { recordConsent, activeCase, currentUser } = usePortal();
+  const [signatureName, setSignatureName] = useState(
+    activeCase?.patientName || currentUser?.name || "Tariq Al-Mansoor"
+  );
   const [agreedCheckbox, setAgreedCheckbox] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
