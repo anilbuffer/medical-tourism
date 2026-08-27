@@ -4,15 +4,16 @@ import React, { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { usePortal } from "@/lib/portal/store";
-import { PersonaSwitcher } from "./PersonaSwitcher";
 import { PublicIntakeModal } from "./PublicIntakeModal";
 import { WhatsAppContactModal } from "./modals/WhatsAppContactModal";
+import { GlobalSearchModal } from "./modals/GlobalSearchModal";
 import { CSQueueView, CSTab } from "./roles/CSQueueView";
 import { HospitalDoctorView, HospitalTab } from "./roles/HospitalDoctorView";
 import { FinanceView, FinanceTab } from "./roles/FinanceView";
 import { SuperAdminView, AdminTab } from "./roles/SuperAdminView";
 import { PatientView } from "./roles/PatientView";
 import {
+  Search,
   LayoutDashboard,
   FileText,
   Lock,
@@ -100,6 +101,19 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [copiedId, setCopiedId] = useState(false);
   const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+
+  // Global shortcut for opening Search Modal (⌘K or Ctrl+K)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setIsSearchModalOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   // Role checks based on effectiveRole
   const isCS = effectiveRole === "customer_support";
@@ -1099,20 +1113,24 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
           </div>
 
           {/* Right Header Action Utilities */}
-          <div className="flex items-center gap-2 sm:gap-2.5 relative z-10">
-            {/* Back to Website (Desktop & Tablet) */}
+          <div className="flex items-center gap-2 sm:gap-3 relative z-10">
+            {/* Searchbox Action Trigger Button */}
             <button
-              onClick={handleGoToMainSite}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200/80 border border-slate-200/80 shadow-xs transition-all group cursor-pointer"
-              title="Return to Main Website"
+              type="button"
+              onClick={() => setIsSearchModalOpen(true)}
+              className="flex items-center justify-between gap-2 sm:gap-3 px-3 sm:px-3.5 py-2 rounded-2xl bg-slate-100/90 hover:bg-slate-100 hover:border-slate-300 text-slate-500 hover:text-slate-800 border border-slate-200/80 shadow-2xs transition-all w-48 sm:w-64 md:w-80 group cursor-pointer"
+              title="Search tickets by title or #ticket-no... (⌘K / Ctrl+K)"
             >
-              <ArrowLeft className="w-3.5 h-3.5 text-[#3F4EB4] group-hover:-translate-x-0.5 transition-transform" />
-              <span className="hidden sm:inline">Main Website</span>
-              <span className="sm:hidden">Home</span>
+              <div className="flex items-center gap-2 min-w-0">
+                <Search className="w-4 h-4 text-slate-400 group-hover:text-[#3F4EB4] transition-colors shrink-0" />
+                <span className="text-xs font-normal text-slate-500 group-hover:text-slate-700 truncate select-none">
+                  Search tickets by title or #ticket-no...
+                </span>
+              </div>
+              <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold text-slate-400 bg-white border border-slate-200 rounded-md shadow-2xs shrink-0">
+                ⌘K
+              </kbd>
             </button>
-
-            {/* Persona Switcher (RBAC Tester) */}
-            <PersonaSwitcher />
 
             {/* Notification Bell Button */}
             <button
@@ -1205,6 +1223,18 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
       <PublicIntakeModal
         isOpen={isIntakeModalOpen}
         onClose={() => setIsIntakeModalOpen(false)}
+      />
+
+      {/* Global Command Palette / Fullscreen Search Modal */}
+      <GlobalSearchModal
+        isOpen={isSearchModalOpen}
+        onClose={() => setIsSearchModalOpen(false)}
+        activeRole={effectiveRole}
+        onSelectTab={(tabId) => setActiveTab(tabId)}
+        onSelectCase={(caseId, tabId) => {
+          setActiveCaseId(caseId);
+          if (tabId) setActiveTab(tabId);
+        }}
       />
     </div>
   );
