@@ -4,7 +4,7 @@ import React, { useState, useEffect, useMemo, useRef } from "react";
 import {
   Search,
   X,
-  Ticket,
+  ClipboardList,
   User,
   Stethoscope,
   Building2,
@@ -26,7 +26,7 @@ import { UserRole } from "@/types/portal";
 
 export interface SearchResultItem {
   id: string;
-  category: "ticket" | "case" | "doctor" | "hospital" | "document" | "navigation";
+  category: "request" | "case" | "doctor" | "hospital" | "document" | "navigation";
   title: string;
   subtitle: string;
   tag?: string;
@@ -46,10 +46,10 @@ interface GlobalSearchModalProps {
   onSelectCase?: (caseId: string, tabId?: string) => void;
 }
 
-// Preset Support Tickets & Service Inquiries Database
-const MOCK_TICKETS = [
+// Preset Medical Requests & Service Inquiries Database
+const MOCK_REQUESTS = [
   {
-    ticketNo: "#TCK-8941",
+    requestNo: "#REQ-8941",
     title: "Visa Extension Request & Embassy Medical Verification Letter",
     patientName: "Tariq Al-Mansoor",
     caseId: "PT-2026-089412",
@@ -58,7 +58,7 @@ const MOCK_TICKETS = [
     destinationTab: "visa_checklist",
   },
   {
-    ticketNo: "#TCK-8942",
+    requestNo: "#REQ-8942",
     title: "DICOM Liver MRI Volumetric Analysis & Second Opinion Review",
     patientName: "Tariq Al-Mansoor",
     caseId: "PT-2026-089412",
@@ -67,7 +67,7 @@ const MOCK_TICKETS = [
     destinationTab: "docs_vault",
   },
   {
-    ticketNo: "#TCK-8943",
+    requestNo: "#REQ-8943",
     title: "Terminal 3 Gate 5 VIP Airport Transfer & Wheelchair Escort",
     patientName: "Tariq Al-Mansoor",
     caseId: "PT-2026-089412",
@@ -76,7 +76,7 @@ const MOCK_TICKETS = [
     destinationTab: "flight_hotel",
   },
   {
-    ticketNo: "#TCK-8944",
+    requestNo: "#REQ-8944",
     title: "Milestone 2 Escrow Release - Surgical Admission Deposit ($15,000)",
     patientName: "Tariq Al-Mansoor",
     caseId: "PT-2026-089412",
@@ -85,7 +85,7 @@ const MOCK_TICKETS = [
     destinationTab: "payment_escrow",
   },
   {
-    ticketNo: "#TCK-8945",
+    requestNo: "#REQ-8945",
     title: "Pre-Operative Fasting Guidelines & Cardiac Anesthesia Clearance",
     patientName: "Eleanor Vance",
     caseId: "PT-2026-004819",
@@ -94,7 +94,7 @@ const MOCK_TICKETS = [
     destinationTab: "doctor_opinions",
   },
   {
-    ticketNo: "#TCK-8946",
+    requestNo: "#REQ-8946",
     title: "Arabic Medical Interpreter Assignment for Video Consultation",
     patientName: "Tariq Al-Mansoor",
     caseId: "PT-2026-089412",
@@ -103,7 +103,7 @@ const MOCK_TICKETS = [
     destinationTab: "upcoming_video",
   },
   {
-    ticketNo: "#TCK-8947",
+    requestNo: "#REQ-8947",
     title: "Fortis Cardiology Angiogram Review & CABG Surgical Candidacy",
     patientName: "Eleanor Vance",
     caseId: "PT-2026-004819",
@@ -112,7 +112,7 @@ const MOCK_TICKETS = [
     destinationTab: "triage_queues",
   },
   {
-    ticketNo: "#TCK-8948",
+    requestNo: "#REQ-8948",
     title: "Flight EK-512 Re-scheduling and Hotel Booking Sync (Dubai to Chandigarh)",
     patientName: "Elena Rostova",
     caseId: "PT-2026-009104",
@@ -121,7 +121,7 @@ const MOCK_TICKETS = [
     destinationTab: "flight_hotel",
   },
   {
-    ticketNo: "#TCK-8949",
+    requestNo: "#REQ-8949",
     title: "Digital Consent Signature Verification Token (LDLT Protocol)",
     patientName: "Carlos Mendoza",
     caseId: "PT-2026-007214",
@@ -130,7 +130,7 @@ const MOCK_TICKETS = [
     destinationTab: "legal_consents",
   },
   {
-    ticketNo: "#TCK-8950",
+    requestNo: "#REQ-8950",
     title: "Post-Op Wound Healing Check & Structured Recovery Form #3",
     patientName: "Robert Vance",
     caseId: "PT-2026-007214",
@@ -267,24 +267,24 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
 
     const results: SearchResultItem[] = [];
 
-    // 1. Search Tickets
-    MOCK_TICKETS.forEach((t) => {
+    // 1. Search Requests & Service Inquiries
+    MOCK_REQUESTS.forEach((t) => {
       if (
-        t.ticketNo.toLowerCase().includes(q) ||
+        t.requestNo.toLowerCase().includes(q) ||
         t.title.toLowerCase().includes(q) ||
         t.patientName.toLowerCase().includes(q) ||
         t.caseId.toLowerCase().includes(q) ||
         t.status.toLowerCase().includes(q)
       ) {
         results.push({
-          id: `ticket-${t.ticketNo}`,
-          category: "ticket",
-          title: `${t.ticketNo}: ${t.title}`,
+          id: `request-${t.requestNo}`,
+          category: "request",
+          title: `${t.requestNo}: ${t.title}`,
           subtitle: `Patient: ${t.patientName} (${t.caseId}) • ${t.priority} Priority`,
           badge: t.status,
-          tag: "Ticket",
+          tag: "Request",
           tagColor: "bg-blue-50 text-blue-700 border-blue-200",
-          icon: Ticket,
+          icon: ClipboardList,
           iconBg: "bg-blue-50",
           iconColor: "text-blue-600",
           action: () => {
@@ -499,7 +499,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
     >
       {/* Modal Dialog Container */}
       <div
-        className="bg-white rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.22)] border border-slate-200 w-full max-w-2xl overflow-hidden animate-in zoom-in-95 duration-150 flex flex-col max-h-[85vh]"
+        className="bg-white rounded-2xl shadow-[0_25px_70px_rgba(0,0,0,0.22)] border border-slate-200 w-full max-w-2xl overflow-hidden animate-in zoom-in-95 duration-150 flex flex-col max-h-[85vh]"
         onClick={(e) => e.stopPropagation()}
         onKeyDown={handleKeyDown}
       >
@@ -511,7 +511,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search tickets by title or #ticket-no..."
+            placeholder="Search medical cases, requests, or doctors..."
             className="w-full bg-transparent py-1 text-sm sm:text-base text-slate-900 placeholder:text-slate-400 focus:outline-none font-normal tracking-tight"
           />
 
@@ -542,14 +542,14 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
             /* Reference Empty State Prompt */
             <div className="py-14 sm:py-16 px-6 text-center select-none">
               <p className="text-slate-400 text-sm font-normal">
-                Start typing to search tickets across every project you have access to.
+                Start typing to search medical cases, doctors, records, and service requests across your portal.
               </p>
 
               {/* Quick Suggestion Chips */}
               <div className="mt-6 flex flex-wrap items-center justify-center gap-1.5 max-w-lg mx-auto">
                 <span className="text-[11px] font-medium text-slate-400 mr-1">Try searching:</span>
                 {[
-                  "#TCK-8941",
+                  "#REQ-8941",
                   "Tariq Al-Mansoor",
                   "PT-2026-089412",
                   "Liver Transplant",
@@ -577,7 +577,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
               </div>
               <h4 className="text-sm font-bold text-slate-700">No results found</h4>
               <p className="text-xs text-slate-400 mt-1">
-                No tickets, cases, doctors, or records matching &ldquo;{searchQuery}&rdquo;
+                No medical cases, requests, doctors, or records matching &ldquo;{searchQuery}&rdquo;
               </p>
             </div>
           ) : (
@@ -594,11 +594,10 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
                     data-result-index={index}
                     onClick={item.action}
                     onMouseEnter={() => setSelectedIndex(index)}
-                    className={`w-full text-left p-3 rounded-2xl flex items-center justify-between gap-3 transition-all cursor-pointer border ${
-                      isSelected
+                    className={`w-full text-left p-3 rounded-2xl flex items-center justify-between gap-3 transition-all cursor-pointer border ${isSelected
                         ? "bg-slate-100/90 border-slate-200/90 shadow-2xs"
                         : "bg-transparent hover:bg-slate-50/80 border-transparent"
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       {/* Icon */}
@@ -616,9 +615,8 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
                           </span>
                           {item.tag && (
                             <span
-                              className={`text-[10px] font-bold px-1.5 py-0.5 rounded-md border shrink-0 ${
-                                item.tagColor || "bg-slate-100 text-slate-600 border-slate-200"
-                              }`}
+                              className={`text-[10px] font-bold px-1.5 py-0.5 rounded-md border shrink-0 ${item.tagColor || "bg-slate-100 text-slate-600 border-slate-200"
+                                }`}
                             >
                               {item.tag}
                             </span>
@@ -638,11 +636,10 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
                         </span>
                       )}
                       <ChevronRight
-                        className={`w-4 h-4 transition-transform ${
-                          isSelected
+                        className={`w-4 h-4 transition-transform ${isSelected
                             ? "text-[#3F4EB4] translate-x-0.5"
                             : "text-slate-300 opacity-0 group-hover:opacity-100"
-                        }`}
+                          }`}
                       />
                     </div>
                   </button>

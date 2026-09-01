@@ -143,7 +143,7 @@ export const AdminSlaEscalationEngine: React.FC<AdminSlaEscalationEngineProps> =
               </span>
             </div>
             <p className="text-amber-900 text-[11px] leading-relaxed">
-              If uncontacted after 30 mins, ticket is broadcast to Secondary On-Shift Coordinators with high-priority audio alert.
+              If uncontacted after 30 mins, inquiry is broadcast to Secondary On-Shift Coordinators with high-priority audio alert.
             </p>
           </div>
 
@@ -166,7 +166,7 @@ export const AdminSlaEscalationEngine: React.FC<AdminSlaEscalationEngineProps> =
         <div className="p-4 border-b border-slate-100 flex items-center justify-between">
           <h3 className="font-extrabold text-slate-900 text-xs uppercase tracking-wider flex items-center gap-2">
             <AlertTriangle className="w-4 h-4 text-rose-600" />
-            Active SLA Breaches & Overdue Triage Tickets
+            Active SLA Breaches & Overdue Triage Cases
           </h3>
           <span className="text-[10px] font-bold text-slate-400">
             {breachedCases.length} Breaches Detected

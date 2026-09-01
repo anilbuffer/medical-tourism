@@ -1138,7 +1138,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
               type="button"
               onClick={() => setIsSearchModalOpen(true)}
               className="flex items-center justify-between gap-2 sm:gap-3 px-3 sm:px-3.5 py-2 rounded-2xl bg-slate-100/90 hover:bg-slate-100 hover:border-slate-300 text-slate-500 hover:text-slate-800 border border-slate-200/80 shadow-2xs transition-all w-48 sm:w-64 md:w-80 group cursor-pointer"
-              title="Search tickets by title or #ticket-no... (⌘K / Ctrl+K)"
+              title="Search medical cases, requests, or doctors... (⌘K / Ctrl+K)"
             >
               <div className="flex items-center gap-2 min-w-0">
                 <Search className="w-4 h-4 text-slate-400 group-hover:text-[#3F4EB4] transition-colors shrink-0" />
@@ -1147,7 +1147,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
                     ? "Search assigned cases (⌘K)..."
                     : isCS
                     ? "Search patients, cases, queues (⌘K)..."
-                    : "Search tickets by title or #ticket-no..."}
+                    : "Search medical cases, requests, or doctors..."}
                 </span>
               </div>
               <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold text-slate-400 bg-white border border-slate-200 rounded-md shadow-2xs shrink-0">
