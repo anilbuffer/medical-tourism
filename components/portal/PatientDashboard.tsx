@@ -336,14 +336,14 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
             },
             {
               id: "internal_staff",
-              label: "User and Access Management",
+              label: "User Management",
               icon: Users,
               group: "user_rbac_group",
               subTabs: ["internal_staff", "hospital_doctors", "role_permission_matrix"],
             },
             {
               id: "consent_versioning",
-              label: "Compliance and Legal Engine",
+              label: "Legal & Compliance",
               icon: Shield,
               group: "compliance_legal_group",
               subTabs: ["consent_versioning", "visa_rules", "refund_escrow_rules", "accreditation_registry"],
@@ -351,7 +351,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
             },
             {
               id: "case_master_directory",
-              label: "CaseJourney & Queues",
+              label: "Case Management",
               icon: Layers,
               group: "case_queues_group",
               subTabs: ["case_master_directory", "sla_escalation_engine", "nurture_queue"],
@@ -359,7 +359,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
             },
             {
               id: "gateway_escrow",
-              label: "Financial and PaymentsLedger",
+              label: "Finance & Escrow Desk",
               icon: Wallet,
               group: "financial_ledger_group",
               subTabs: ["gateway_escrow", "commission_payouts", "refund_approvals"],
@@ -367,7 +367,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
             },
             {
               id: "system_audit_trail",
-              label: "System Audit and Logs",
+              label: "System Audit & Logs",
               icon: ClipboardList,
               group: "system_audit_group",
               subTabs: ["system_audit_trail", "security_mfa_logs", "marketing_utm_analytics"],
@@ -394,7 +394,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
             },
             {
               id: "user_rbac_group",
-              label: "User and Access Management",
+              label: "User Management",
               items: [
                 {
                   id: "internal_staff",
@@ -403,7 +403,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
                 },
                 {
                   id: "hospital_doctors",
-                  label: "Hospital Accounts & Doctors",
+                  label: "Hospital & Doctor Accounts",
                   icon: Building2,
                 },
                 {
@@ -415,11 +415,11 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
             },
             {
               id: "compliance_legal_group",
-              label: "Compliance and Legal Engine",
+              label: "Legal & Compliance",
               items: [
                 {
                   id: "consent_versioning",
-                  label: "Dynamic Consent Versioning",
+                  label: "Consent Versioning",
                   icon: FileText,
                 },
                 {
@@ -442,7 +442,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
             },
             {
               id: "case_queues_group",
-              label: "CaseJourney & Queues",
+              label: "Case Management",
               items: [
                 {
                   id: "case_master_directory",
@@ -466,7 +466,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
             },
             {
               id: "financial_ledger_group",
-              label: "Financial and PaymentsLedger",
+              label: "Finance & Escrow",
               items: [
                 {
                   id: "gateway_escrow",
@@ -1146,8 +1146,8 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
                   {isDoctor
                     ? "Search assigned cases (⌘K)..."
                     : isCS
-                    ? "Search patients, cases, queues (⌘K)..."
-                    : "Search medical cases, requests, or doctors..."}
+                      ? "Search patients, cases, queues (⌘K)..."
+                      : "Search medical cases, requests, or doctors..."}
                 </span>
               </div>
               <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold text-slate-400 bg-white border border-slate-200 rounded-md shadow-2xs shrink-0">
