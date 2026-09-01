@@ -485,7 +485,7 @@ export const CSMasterPatientDirectory: React.FC<CSMasterPatientDirectoryProps> =
                 <div
                   key={c.id}
                   onClick={() => onSelectCase(c.id)}
-                  className="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm shadow-slate-100/50 hover:shadow-md hover:border-[#2ECDC5] transition-all cursor-pointer space-y-4 group flex flex-col justify-between"
+                  className="bg-white rounded-2xl p-4 shadow-[0_6px_32px_rgba(0,0,0,0.04)] border border-slate-200/90 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all cursor-pointer space-y-4 group flex flex-col justify-between"
                 >
                   {/* Card Header: Avatar, Name, Country & ID */}
                   <div className="space-y-3">
