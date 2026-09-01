@@ -66,9 +66,9 @@ export const CSTeleConsultationsTable: React.FC<CSTeleConsultationsTableProps> =
       let statusBadge = "bg-amber-50 text-amber-800 border-amber-200";
 
       if (c.patientName.includes("Tariq")) {
-        time = "Today 14:30 IST (In 52m)";
-        doctor = "Dr. Subhash Gupta";
-        hospital = "Medanta Medicity";
+        time = "Thursday, Aug 27, 03:30 PM GST (02:00 PM GST)";
+        doctor = c.consultation?.doctorName || "Dr. Subhash Gupta";
+        hospital = c.consultation?.doctorHospital || "Medanta – The Medicity";
         status = "today";
         statusLabel = "🟢 Live Room Ready";
         statusBadge = "bg-emerald-50 text-emerald-800 border-emerald-300 font-extrabold animate-pulse";

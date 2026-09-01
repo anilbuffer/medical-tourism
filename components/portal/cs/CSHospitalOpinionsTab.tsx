@@ -58,7 +58,8 @@ export const CSHospitalOpinionsTab: React.FC<CSHospitalOpinionsTabProps> = ({
 
   const costEstimate =
     patientCase.clinicalWorkspace?.costEstimateUsd ||
-    (patientCase.id === "PT-2026-089412" ? 22000 : 7200);
+    patientCase.quote?.totalCostUsd ||
+    (patientCase.id === "PT-2026-089412" ? 28500 : 7200);
 
   const minRange = Math.round(costEstimate * 0.95);
   const maxRange = Math.round(costEstimate * 1.15);

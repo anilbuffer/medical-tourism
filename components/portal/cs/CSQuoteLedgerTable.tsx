@@ -54,11 +54,11 @@ export const CSQuoteLedgerTable: React.FC<CSQuoteLedgerTableProps> = ({
       let hospital = c.assignedHospitalId?.replace("hosp_", "").toUpperCase() || "MEDANTA";
 
       if (c.patientName.includes("Tariq")) {
-        packageTier = "VIP Platinum Care";
-        amountUsd = 36000;
-        quoteStatus = "Drafting Custom Options";
-        quoteStatusBadge = "bg-amber-50 text-amber-800 border-amber-200";
-        escrowStatus = "Quote Under Review";
+        packageTier = "Living Donor Liver Transplant (LDLT) VIP Package";
+        amountUsd = c.quote?.totalCostUsd || 28500;
+        quoteStatus = "Sent to Patient (Deposit Paid: $3,000)";
+        quoteStatusBadge = "bg-emerald-50 text-emerald-800 border-emerald-200 font-extrabold";
+        escrowStatus = "Deposit Locked ($3,000 USD)";
       } else if (c.patientName.includes("Eleanor")) {
         packageTier = "Gold Surgical";
         amountUsd = 14200;

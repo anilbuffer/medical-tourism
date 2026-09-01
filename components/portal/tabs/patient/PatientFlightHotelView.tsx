@@ -77,22 +77,28 @@ export const PatientFlightHotelView: React.FC<PatientFlightHotelViewProps> = ({
           <div className="space-y-3 text-xs">
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
               <span className="text-slate-500 font-medium">Airline & Flight:</span>
-              <span className="font-extrabold text-slate-900 text-sm">Emirates (EK-512)</span>
+              <span className="font-extrabold text-slate-900 text-sm">
+                {patientCase.itinerary?.flightDetails ? `${patientCase.itinerary.flightDetails.airline} (${patientCase.itinerary.flightDetails.flightNumber})` : "Emirates (EK-512)"}
+              </span>
             </div>
 
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
               <span className="text-slate-500 font-medium">Landing in Delhi:</span>
-              <span className="font-bold text-slate-900">Monday, Aug 31 at 04:15 AM (IST)</span>
+              <span className="font-bold text-slate-900">
+                {patientCase.itinerary?.flightDetails ? `${patientCase.itinerary.flightDetails.arrivalDate} at ${patientCase.itinerary.flightDetails.arrivalTime}` : "Monday, Aug 31 at 04:15 AM (IST)"}
+              </span>
             </div>
 
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
               <span className="text-slate-500 font-medium">Arrival Terminal:</span>
-              <span className="font-bold text-slate-900">Terminal 3 (International Arrivals)</span>
+              <span className="font-bold text-slate-900">
+                {patientCase.itinerary?.flightDetails?.terminal || "Terminal 3 (International Arrivals)"}
+              </span>
             </div>
 
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
               <span className="text-slate-500 font-medium">Passengers:</span>
-              <span className="font-bold text-slate-900">Tariq Al-Mansoor & Faris Al-Mansoor</span>
+              <span className="font-bold text-slate-900">{patientCase.patientName} & Faris Al-Mansoor</span>
             </div>
           </div>
         </div>
@@ -118,17 +124,23 @@ export const PatientFlightHotelView: React.FC<PatientFlightHotelViewProps> = ({
           <div className="space-y-3 text-xs">
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
               <span className="text-slate-500 font-medium">Hotel Partner:</span>
-              <span className="font-extrabold text-slate-900 text-sm">The Oberoi Gurugram</span>
+              <span className="font-extrabold text-slate-900 text-sm">
+                {patientCase.itinerary?.hotelDetails?.name || "The Oberoi Gurugram"}
+              </span>
             </div>
 
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
               <span className="text-slate-500 font-medium">Room Type:</span>
-              <span className="font-bold text-slate-900">Executive Suite with Kitchenette</span>
+              <span className="font-bold text-slate-900">
+                {patientCase.itinerary?.hotelDetails?.roomType || "Executive Suite with Kitchenette"}
+              </span>
             </div>
 
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
               <span className="text-slate-500 font-medium">Dates of Stay:</span>
-              <span className="font-bold text-slate-900">Aug 31 – Sep 18 (18 Nights)</span>
+              <span className="font-bold text-slate-900">
+                {patientCase.itinerary?.hotelDetails ? `${patientCase.itinerary.hotelDetails.checkIn} – ${patientCase.itinerary.hotelDetails.checkOut}` : "Aug 31 – Sep 18"}
+              </span>
             </div>
 
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">

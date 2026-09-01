@@ -85,8 +85,8 @@ export const PatientVisaChecklistView: React.FC<PatientVisaChecklistViewProps> =
             </div>
 
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
-              <span className="text-slate-500 font-medium">Visa Reference:</span>
-              <span className="font-mono font-bold text-slate-900">MEA/MED/2026/089412</span>
+              <span className="text-slate-500 font-medium">Passport Status:</span>
+              <span className="font-mono font-bold text-emerald-700">Verified & e-Visa Linked</span>
             </div>
 
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
@@ -129,29 +129,29 @@ export const PatientVisaChecklistView: React.FC<PatientVisaChecklistViewProps> =
           <div className="p-4 bg-gradient-to-br from-[#141d60]/5 to-[#3F4EB4]/5 rounded-2xl border border-[#3F4EB4]/15 space-y-3">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-2xl bg-[#3F4EB4] flex items-center justify-center text-white font-black text-lg">
-                R
+                {(patientCase.itinerary?.airportPickup?.driverName || "Rajesh Varma")[0]}
               </div>
               <div>
-                <div className="font-extrabold text-slate-900">Driver: Ramesh Kumar</div>
+                <div className="font-extrabold text-slate-900">Driver: {patientCase.itinerary?.airportPickup?.driverName || "Rajesh Varma"}</div>
                 <div className="text-xs text-slate-500">Personal Chauffeur — Medanta VIP Fleet</div>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-2 text-xs">
               <div className="p-2.5 bg-white rounded-xl border border-slate-100">
                 <div className="text-slate-400 font-medium">Contact</div>
-                <div className="font-bold text-slate-900 mt-0.5">+91-98110-43721</div>
+                <div className="font-bold text-slate-900 mt-0.5">{patientCase.itinerary?.airportPickup?.contactPhone || "+91 98110 55432"}</div>
               </div>
               <div className="p-2.5 bg-white rounded-xl border border-slate-100">
                 <div className="text-slate-400 font-medium">Vehicle</div>
-                <div className="font-bold text-slate-900 mt-0.5">Toyota Innova</div>
+                <div className="font-bold text-slate-900 mt-0.5">{patientCase.itinerary?.airportPickup?.vehicleType || "Toyota Alphard VIP Executive Van"}</div>
               </div>
               <div className="p-2.5 bg-white rounded-xl border border-slate-100">
                 <div className="text-slate-400 font-medium">Registration</div>
-                <div className="font-bold text-slate-900 mt-0.5">DL-01-CA-2847</div>
+                <div className="font-bold text-slate-900 mt-0.5">{patientCase.itinerary?.airportPickup?.vehicleNumber || "DL 1VB 9022"}</div>
               </div>
               <div className="p-2.5 bg-white rounded-xl border border-slate-100">
                 <div className="text-slate-400 font-medium">Pickup Location</div>
-                <div className="font-bold text-slate-900 mt-0.5">Gate 5, T3 — IGI Airport</div>
+                <div className="font-bold text-slate-900 mt-0.5">{patientCase.itinerary?.airportPickup?.pickupLocation || "Arrivals Gate 5, Terminal 3"}</div>
               </div>
             </div>
             <div className="p-3 bg-amber-50 border border-amber-100 rounded-xl text-xs text-amber-700 font-medium">

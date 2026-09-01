@@ -75,25 +75,27 @@ export const PatientConciergeContactView: React.FC<PatientConciergeContactViewPr
           <div className="space-y-3 text-xs">
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
               <span className="text-slate-500 font-medium">Driver Name:</span>
-              <span className="font-extrabold text-slate-900 text-sm">Rajesh Varma</span>
+              <span className="font-extrabold text-slate-900 text-sm">{patientCase.itinerary?.airportPickup?.driverName || "Rajesh Varma"}</span>
             </div>
 
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
               <span className="text-slate-500 font-medium">Phone Number:</span>
-              <a href="tel:+919811055432" className="font-bold text-[#3F4EB4] hover:underline">
-                +91 98110 55432
+              <a href={`tel:${patientCase.itinerary?.airportPickup?.contactPhone || "+919811055432"}`} className="font-bold text-[#3F4EB4] hover:underline">
+                {patientCase.itinerary?.airportPickup?.contactPhone || "+91 98110 55432"}
               </a>
             </div>
 
             <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex justify-between items-center">
               <span className="text-slate-500 font-medium">Car Model:</span>
-              <span className="font-bold text-slate-900">Toyota Alphard Luxury Van (DL 1VB 9022)</span>
+              <span className="font-bold text-slate-900">
+                {patientCase.itinerary?.airportPickup?.vehicleType || "Toyota Alphard VIP Executive Van"} ({patientCase.itinerary?.airportPickup?.vehicleNumber || "DL 1VB 9022"})
+              </span>
             </div>
 
             <div className="p-4 bg-teal-50/70 rounded-2xl border border-teal-100 text-teal-950 font-medium leading-relaxed space-y-1">
               <strong>How to find your driver:</strong>
               <p className="text-[11px] text-teal-900">
-                Rajesh will be standing right outside <strong>Terminal 3, Gate 5</strong> holding a welcome sign with your name: <strong>"TARIQ AL-MANSOOR"</strong>.
+                {patientCase.itinerary?.airportPickup?.driverName?.split(" ")[0] || "Rajesh"} will be standing right outside <strong>{patientCase.itinerary?.airportPickup?.pickupLocation || "Terminal 3, Gate 5"}</strong> holding a welcome sign with your name: <strong>"{patientCase.patientName.toUpperCase()}"</strong>.
               </p>
             </div>
 

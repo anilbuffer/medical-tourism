@@ -54,12 +54,12 @@ export const CSVisasFlightsTable: React.FC<CSVisasFlightsTableProps> = ({
       let chauffeur = "Rajesh Kumar (+91 98110-XXXXX)";
 
       if (c.patientName.includes("Tariq")) {
-        visaStatus = "Medical Visa Verified";
+        visaStatus = "Medical Visa Verified (e-Visa Approved)";
         visaBadge = "bg-emerald-50 text-emerald-800 border-emerald-200";
-        flight = "EK-512 (DXB → DEL)";
-        arrival = "Tomorrow 09:30 IST (DEL T3)";
-        hotel = "The Leela Ambience, Gurugram (Suite)";
-        chauffeur = "Sukhvinder Singh (Mercedes V-Class)";
+        flight = c.itinerary?.flightDetails?.flightNumber ? `${c.itinerary.flightDetails.flightNumber} (DXB → DEL)` : "EK-512 (DXB → DEL)";
+        arrival = c.itinerary?.flightDetails?.arrivalDate ? `${c.itinerary.flightDetails.arrivalDate} at ${c.itinerary.flightDetails.arrivalTime}` : "Aug 31 at 04:15 AM IST (DEL T3)";
+        hotel = c.itinerary?.hotelDetails?.name || "The Oberoi Gurugram (Executive Suite)";
+        chauffeur = c.itinerary?.airportPickup?.driverName ? `${c.itinerary.airportPickup.driverName} (${c.itinerary.airportPickup.vehicleType || "Toyota Alphard VIP"})` : "Rajesh Varma (Toyota Alphard VIP)";
       } else if (c.patientName.includes("Eleanor")) {
         visaStatus = "Invitation Letter Dispatched";
         visaBadge = "bg-amber-50 text-amber-800 border-amber-200";

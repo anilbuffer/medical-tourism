@@ -53,10 +53,10 @@ export const CSConciergeTable: React.FC<CSConciergeTableProps> = ({
       let statusBadge = "bg-amber-50 text-amber-800 border-amber-200";
 
       if (c.patientName.includes("Tariq")) {
-        chauffeur = "Sukhvinder Singh (VIP Mercedes Van)";
-        translator = "Arabic Medical Interpreter (Omar Al-Haddad)";
+        chauffeur = c.itinerary?.airportPickup?.driverName ? `${c.itinerary.airportPickup.driverName} (${c.itinerary.airportPickup.vehicleType || "Toyota Alphard VIP Van"})` : "Rajesh Varma (Toyota Alphard VIP Van)";
+        translator = "Arabic Medical Coordinator (Sana Haidari)";
         localAmenities = "Pre-Activated 5G eSIM + ₹50,000 INR Forex";
-        hospitalLiaison = "Aisha Khan (Medanta Suite Desk)";
+        hospitalLiaison = `${c.itinerary?.coordinatorContact?.name || c.assignedCoordinatorName || "Ananya Sharma"} (Medanta VIP Desk)`;
         status = "VIP Meet & Greet Active";
         statusBadge = "bg-emerald-50 text-emerald-800 border-emerald-300 font-extrabold";
       } else if (c.patientName.includes("Eleanor")) {
