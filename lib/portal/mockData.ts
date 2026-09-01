@@ -1018,6 +1018,126 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
   },
 
   {
+    id: "PT-2026-007711",
+    patientName: "Mei Lin",
+    patientEmail: "mei.lin@pacifichealth.sg",
+    patientPhone: "+65 9123 4567",
+    patientCountry: "Singapore",
+    preferredLanguage: "English / Mandarin",
+    treatmentCategory: "Spine Surgery & Neuro-Orthopedics",
+    preferredContactTime: "10:00 - 16:00 SGT",
+    entryPath: "hospital_referred",
+    assignedHospitalId: "hosp_medanta",
+    assignedDoctorId: "doc_gupta",
+    assignedQueue: "Orthopedics_MENA",
+    assignedCoordinatorName: "Ananya Sharma",
+    lastContactAt: new Date("2026-08-20T15:00:00Z").toISOString(),
+
+    leadCreatedAt: new Date("2026-08-20T09:00:00Z").toISOString(),
+    slaTargetMinutes: 60,
+    slaExpiresAt: new Date("2026-08-20T10:00:00Z").toISOString(),
+    slaBreached: false,
+
+    utmSource: "singapore_spine_referral",
+    utmMedium: "medical_travel_sg",
+    utmCampaign: "spine_fusion_asia",
+
+    stage: "nurture",
+    caseDecisionStatus: "declined",
+    declinedAt: new Date("2026-08-20T14:30:00Z").toISOString(),
+    declineReason: "Outside our liver transplant & HPB surgery scope — recommend referral to spine surgery at Artemis Hospital. Patient's MRI shows C4–C7 myelopathy requiring ACDF, not HPB intervention.",
+
+    hasBillingDispute: false,
+
+    clinicalSummary: {
+      chiefComplaint: "Severe cervical radiculopathy and progressive upper extremity weakness secondary to C5-C6 and C6-C7 disc herniation.",
+      diagnosis: "Cervical Spondylotic Myelopathy & Radiculopathy (C5-C7).",
+      recommendedProcedure: "Anterior Cervical Discectomy and Fusion (ACDF) x 2 levels.",
+      pastMedicalHistory: "Osteopenia, No prior surgeries.",
+      allergies: ["Latex"],
+    },
+
+    stageHistory: [
+      {
+        id: "sh_ml_01",
+        fromStage: null,
+        toStage: "lead",
+        changedAt: new Date("2026-08-20T09:00:00Z").toISOString(),
+        changedByName: "Singapore Liaison Desk",
+        changedByRole: "public",
+      },
+      {
+        id: "sh_ml_02",
+        fromStage: "lead",
+        toStage: "hospital_handover",
+        changedAt: new Date("2026-08-20T11:00:00Z").toISOString(),
+        changedByName: "Ananya Sharma",
+        changedByRole: "customer_support",
+      },
+      {
+        id: "sh_ml_03",
+        fromStage: "hospital_handover",
+        toStage: "nurture",
+        changedAt: new Date("2026-08-20T14:30:00Z").toISOString(),
+        changedByName: "Dr. Subhash Gupta",
+        changedByRole: "hospital_doctor",
+        reason: "Outside HPB surgical scope. Redirected to Spine Surgery at Artemis.",
+      },
+    ],
+
+    csNotes: [
+      {
+        id: "note_ml_01",
+        text: "Case redirected by Dr. Gupta to Artemis Spine Institute. Lead moved to Nurture queue for coordinator reassignment.",
+        createdAt: new Date("2026-08-20T15:00:00Z").toISOString(),
+        authorName: "Ananya Sharma",
+        authorRole: "customer_support",
+      },
+    ],
+
+    documents: [
+      {
+        id: "doc_cervical_mri",
+        title: "Cervical_Spine_MRI_Scan.pdf",
+        category: "scan_imaging",
+        status: "reviewed",
+        csFeedback: "🟢 Reviewed by Dr. Gupta — C5-C7 disc compression documented.",
+        currentVersion: 1,
+        isRequired: true,
+        isCaseScoped: true,
+        requiredForStage: "documents_collected",
+        versions: [
+          {
+            version: 1,
+            fileName: "Cervical_Spine_MRI_Scan.pdf",
+            fileSize: "28.4 MB",
+            fileType: "application/pdf",
+            uploadedAt: "2026-08-20T10:00:00Z",
+            uploadedBy: "Mei Lin",
+          },
+        ],
+      },
+    ],
+
+    consents: [],
+    payments: [],
+    recoveryCheckIns: [],
+    messages: [],
+    auditLogs: [
+      {
+        id: "aud_ml_01",
+        caseId: "PT-2026-007711",
+        action: "CASE_DECLINED_BY_HOSPITAL",
+        actorName: "Dr. Subhash Gupta",
+        actorRole: "hospital_doctor",
+        timestamp: "2026-08-20T14:30:00Z",
+        details: "Declined by Dr. Gupta. Scope redirect to Spine Institute.",
+      },
+    ],
+    refundRequests: [],
+  },
+
+  {
     id: "PT-2026-004412",
     patientName: "David Miller",
     patientEmail: "david.miller@cardiaccare.us",

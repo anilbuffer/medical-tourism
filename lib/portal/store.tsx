@@ -123,6 +123,7 @@ export interface PortalContextType {
   declineCase: (caseId: string, reason: string) => void;
   saveClinicalWorkspace: (caseId: string, workspace: Omit<ClinicalWorkspace, 'submittedAt' | 'submittedByDoctorId' | 'submittedByDoctorName' | 'lastUpdatedAt'>) => void;
   toggleConsultationRecording: (caseId: string, enabled: boolean, consentObtained?: boolean) => void;
+  requestDocumentViaCs: (caseId: string, docTitle: string, note: string) => void;
 
   // CS Portal actions
   addCsNote: (caseId: string, text: string) => void;
@@ -968,9 +969,68 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
           timestamp: now,
           details: `Treatment plan updated. LOS: ${workspace.expectedStayDays}d, Cost: $${workspace.costEstimateUsd}, Suitability: ${workspace.suitabilityDetermination.toUpperCase()}. Record timestamped to ${doctorName} account — system of record for clinical liability.`,
         };
+        const quoteUpdate = c.quote
+          ? {
+              ...c.quote,
+              totalCostUsd: workspace.costEstimateUsd || c.quote.totalCostUsd,
+              costBreakdown: {
+                ...c.quote.costBreakdown,
+                hospitalChargesUsd: workspace.costEstimateUsd
+                  ? Math.round(workspace.costEstimateUsd * 0.6)
+                  : c.quote.costBreakdown.hospitalChargesUsd,
+                surgeonAndAnesthesiaUsd: workspace.costEstimateUsd
+                  ? Math.round(workspace.costEstimateUsd * 0.4)
+                  : c.quote.costBreakdown.surgeonAndAnesthesiaUsd,
+              },
+            }
+          : undefined;
+
         return {
           ...c,
           clinicalWorkspace: fullWorkspace,
+          quote: quoteUpdate,
+          auditLogs: [audit, ...c.auditLogs],
+        };
+      })
+    );
+  };
+
+  const requestDocumentViaCs = (caseId: string, docTitle: string, note: string) => {
+    const now = new Date().toISOString();
+    const doctorName = currentUser?.name || "Dr. Subhash Gupta";
+    setAllCases((prev) =>
+      prev.map((c) => {
+        if (c.id !== caseId) return c;
+        const csNote: CsNote = {
+          id: `note_${Date.now()}`,
+          text: `🚩 CLINICAL DOCUMENT REQUEST from ${doctorName}: Missing diagnostic scan/page for "${docTitle}". Notes: ${note}`,
+          createdAt: now,
+          authorName: doctorName,
+          authorRole: "hospital_doctor",
+        };
+        const audit: AuditLog = {
+          id: `aud_${Date.now()}`,
+          caseId,
+          action: "DOCUMENT_CLARIFICATION_REQUESTED",
+          actorName: doctorName,
+          actorRole: "hospital_doctor",
+          timestamp: now,
+          details: `Requested missing pages for ${docTitle} via CS desk: ${note}`,
+        };
+        const updatedDocs = c.documents.map((d) => {
+          if (d.title.toLowerCase() === docTitle.toLowerCase() || d.id === docTitle) {
+            return {
+              ...d,
+              status: "incomplete" as const,
+              csFeedback: `🟡 Missing details requested by ${doctorName}: ${note}`,
+            };
+          }
+          return d;
+        });
+        return {
+          ...c,
+          csNotes: [csNote, ...c.csNotes],
+          documents: updatedDocs,
           auditLogs: [audit, ...c.auditLogs],
         };
       })
@@ -1510,6 +1570,7 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
         declineCase,
         saveClinicalWorkspace,
         toggleConsultationRecording,
+        requestDocumentViaCs,
         // CS
         addCsNote,
         updateStageWithReason,

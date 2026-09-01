@@ -197,12 +197,17 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
           portalBadge: "Doctor & Hospital Portal",
           headerTitle: "Chief Surgeon Clinical Desk",
           portalSubtitle: "Diagnostic Evaluation & Surgical Candidacy",
-          roleTag: "Chief Surgeon",
-          userName: currentUser?.name || "Dr. Naresh Trehan",
-          userSubtitle: "Specialist • Medanta Hospital",
-          avatar: currentUser?.avatar,
-          defaultTab: "case_info",
+          roleTag: "Chairman - HPB Surgery",
+          userName: currentUser?.name || "Dr. Subhash Gupta",
+          userSubtitle: "Chairman - Liver Transplant & HPB Surgery | Medanta – The Medicity",
+          avatar: currentUser?.avatar || "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=150&auto=format&fit=crop&q=80",
+          defaultTab: "dashboard",
           menus: [
+            {
+              id: "dashboard",
+              label: "Dashboard",
+              icon: LayoutDashboard,
+            },
             {
               id: "case_info",
               label: "Assigned Cases",
@@ -223,11 +228,43 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
               id: "tele_consult",
               label: "Tele-Consultation",
               icon: Video,
+              badge: "Today",
             },
             {
               id: "accreditation",
               label: "Hospital Accreditation",
               icon: BadgeCheck,
+            },
+          ],
+          navGroups: [
+            {
+              id: "clinical_triage_group",
+              label: "CLINICAL TRIAGE",
+              items: [
+                { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
+                {
+                  id: "case_info",
+                  label: "Assigned Cases",
+                  icon: FileText,
+                  badge: activeDoctorCases > 0 ? activeDoctorCases : undefined,
+                },
+                { id: "accept_decline", label: "Surgical Candidacy", icon: CheckCircle2 },
+              ],
+            },
+            {
+              id: "telehealth_execution",
+              label: "SURGICAL & CONSULTATION",
+              items: [
+                { id: "clinical_workspace", label: "Clinical Workspace", icon: Stethoscope },
+                { id: "tele_consult", label: "Tele-Consultation", icon: Video, badge: "Today" },
+              ],
+            },
+            {
+              id: "hospital_compliance_group",
+              label: "HOSPITAL PROFILE",
+              items: [
+                { id: "accreditation", label: "Hospital Accreditation", icon: BadgeCheck },
+              ],
             },
           ],
         };
@@ -1106,7 +1143,11 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
               <div className="flex items-center gap-2 min-w-0">
                 <Search className="w-4 h-4 text-slate-400 group-hover:text-[#3F4EB4] transition-colors shrink-0" />
                 <span className="text-xs font-normal text-slate-500 group-hover:text-slate-700 truncate select-none">
-                  Search tickets by title or #ticket-no...
+                  {isDoctor
+                    ? "Search assigned cases (⌘K)..."
+                    : isCS
+                    ? "Search patients, cases, queues (⌘K)..."
+                    : "Search tickets by title or #ticket-no..."}
                 </span>
               </div>
               <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold text-slate-400 bg-white border border-slate-200 rounded-md shadow-2xs shrink-0">
