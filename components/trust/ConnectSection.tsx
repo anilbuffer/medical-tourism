@@ -5,8 +5,13 @@ import { UploadCloud, ArrowRight, Lock } from "lucide-react";
 
 export const ConnectSection = () => {
   return (
-    <section className="py-12 sm:py-16 bg-dark-3 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 sm:py-24 bg-gradient-to-b from-[#020B18] via-[#06203D] to-[#0A2E50] text-white relative overflow-hidden">
+      {/* Dynamic Ambient Gradient Lights */}
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-vedara-cyan/15 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-10 left-1/4 w-[600px] h-[600px] bg-vedara-blue/20 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(46,205,197,0.12),transparent)] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
         <div className="text-center mb-16">
@@ -29,7 +34,7 @@ export const ConnectSection = () => {
             
             <div className="space-y-8 flex-1">
               <div className="flex gap-4">
-                <div className="w-8 h-8 rounded-full bg-dark-step flex items-center justify-center font-bold shrink-0">1</div>
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-vedara-cyan/30 to-vedara-blue/50 border border-vedara-cyan/40 flex items-center justify-center font-bold text-white shrink-0 shadow-sm">1</div>
                 <div>
                   <h4 className="font-bold text-lg mb-1">Today.</h4>
                   <p className="text-slate-300 text-sm leading-relaxed">We reply and tell you which records are still missing.</p>
@@ -37,7 +42,7 @@ export const ConnectSection = () => {
               </div>
               
               <div className="flex gap-4">
-                <div className="w-8 h-8 rounded-full bg-dark-step flex items-center justify-center font-bold shrink-0">2</div>
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-vedara-cyan/30 to-vedara-blue/50 border border-vedara-cyan/40 flex items-center justify-center font-bold text-white shrink-0 shadow-sm">2</div>
                 <div>
                   <h4 className="font-bold text-lg mb-1">Within 24 hours for urgent cases.</h4>
                   <p className="text-slate-300 text-sm leading-relaxed">A specialist in the relevant field reads the file and gives a written opinion.</p>
@@ -45,7 +50,7 @@ export const ConnectSection = () => {
               </div>
 
               <div className="flex gap-4">
-                <div className="w-8 h-8 rounded-full bg-dark-step flex items-center justify-center font-bold shrink-0">3</div>
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-vedara-cyan/30 to-vedara-blue/50 border border-vedara-cyan/40 flex items-center justify-center font-bold text-white shrink-0 shadow-sm">3</div>
                 <div>
                   <h4 className="font-bold text-lg mb-1">By day three.</h4>
                   <p className="text-slate-300 text-sm leading-relaxed">An itemised quote and a visa invitation letter — or a written explanation of why we&apos;ve said no.</p>
@@ -53,7 +58,7 @@ export const ConnectSection = () => {
               </div>
 
               <div className="flex gap-4">
-                <div className="w-8 h-8 rounded-full bg-dark-step flex items-center justify-center font-bold shrink-0">4</div>
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-vedara-cyan/30 to-vedara-blue/50 border border-vedara-cyan/40 flex items-center justify-center font-bold text-white shrink-0 shadow-sm">4</div>
                 <div>
                   <h4 className="font-bold text-lg mb-1">Then, if it&apos;s a &apos;yes&apos;.</h4>
                   <p className="text-slate-300 text-sm leading-relaxed">A video call with the treating doctor, with your whole family in the room and an interpreter if you want one.</p>
@@ -61,7 +66,7 @@ export const ConnectSection = () => {
               </div>
             </div>
 
-            <div className="mt-12 bg-dark-2 p-5 rounded-2xl border border-white/5 flex gap-4">
+            <div className="mt-12 bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-md p-5 rounded-2xl border border-white/10 flex gap-4">
               <Lock className="w-6 h-6 text-vedara-gold-muted shrink-0" />
               <p className="text-xs text-slate-400 leading-relaxed">
                 Records are encrypted, stored in the EU, and handled under India&apos;s DPDP Act 2023, the UK GDPR and equivalent local rules. Shared only with the clinician you approve. Data Protection Officer: dpo@mycaretourindia.com
@@ -70,16 +75,16 @@ export const ConnectSection = () => {
           </div>
 
           {/* Right Column: Form */}
-          <div className="bg-dark-2 rounded-3xl p-8 border border-white/10 shadow-2xl">
+          <div className="bg-gradient-to-b from-[#06203D]/95 to-[#031126]/95 backdrop-blur-xl rounded-3xl p-8 border border-white/10 shadow-2xl">
             <form className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-slate-300 mb-1.5">Your name</label>
-                  <input type="text" className="w-full bg-dark-3 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-vedara-gold-muted" />
+                  <input type="text" className="w-full bg-[#031126]/80 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-vedara-gold transition-colors" />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-slate-300 mb-1.5">You are</label>
-                  <select className="w-full bg-dark-3 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-vedara-gold-muted appearance-none">
+                  <select className="w-full bg-[#031126]/80 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-vedara-gold transition-colors appearance-none">
                     <option>The patient</option>
                     <option>Family/Friend</option>
                     <option>Doctor</option>
@@ -90,22 +95,22 @@ export const ConnectSection = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-slate-300 mb-1.5">Email address</label>
-                  <input type="email" className="w-full bg-dark-3 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-vedara-gold-muted" />
+                  <input type="email" className="w-full bg-[#031126]/80 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-vedara-gold transition-colors" />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-slate-300 mb-1.5">Phone / WhatsApp (including country code)</label>
-                  <input type="tel" className="w-full bg-dark-3 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-vedara-gold-muted" />
+                  <input type="tel" className="w-full bg-[#031126]/80 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-vedara-gold transition-colors" />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-slate-300 mb-1.5">Where are you now?</label>
-                  <input type="text" className="w-full bg-dark-3 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-vedara-gold-muted" />
+                  <input type="text" className="w-full bg-[#031126]/80 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-vedara-gold transition-colors" />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-slate-300 mb-1.5">Language you&apos;d prefer to speak</label>
-                  <select className="w-full bg-dark-3 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-vedara-gold-muted appearance-none">
+                  <select className="w-full bg-[#031126]/80 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-vedara-gold transition-colors appearance-none">
                     <option>English</option>
                     <option>Arabic</option>
                     <option>French</option>
@@ -116,12 +121,12 @@ export const ConnectSection = () => {
 
               <div>
                 <label className="block text-xs font-bold text-slate-300 mb-1.5">Tell us what&apos;s happening</label>
-                <textarea rows={3} className="w-full bg-dark-3 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-vedara-gold-muted resize-none"></textarea>
+                <textarea rows={3} className="w-full bg-[#031126]/80 border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-vedara-gold transition-colors resize-none"></textarea>
               </div>
 
               <div>
                 <label className="block text-xs font-bold text-slate-300 mb-1.5">Scans, reports, biopsy results</label>
-                <div className="w-full border-2 border-dashed border-white/20 rounded-xl p-6 text-center hover:bg-white/5 transition-colors cursor-pointer flex flex-col items-center gap-2">
+                <div className="w-full border-2 border-dashed border-white/20 hover:border-vedara-cyan/50 rounded-xl p-6 text-center bg-white/[0.02] hover:bg-white/[0.05] transition-all cursor-pointer flex flex-col items-center gap-2">
                   <UploadCloud className="w-8 h-8 text-vedara-gold-muted" />
                   <span className="text-sm text-slate-300 font-medium">Drag and drop or browse files</span>
                 </div>

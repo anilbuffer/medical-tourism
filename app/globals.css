@@ -82,6 +82,8 @@
   --background-image-cyan-gradient: linear-gradient(135deg, #2ECDC5 0%, #1DA89F 100%);
   --background-image-hero-gradient: linear-gradient(135deg, #1a2468 0%, #283593 40%, #3F4EB4 100%);
   --background-image-accent-gradient: linear-gradient(135deg, #2ECDC5 0%, #3F4EB4 100%);
+  --background-image-dark-gradient: linear-gradient(180deg, #020B18 0%, #06203D 50%, #0A2E50 100%);
+  --background-image-dark-gradient-br: linear-gradient(135deg, #020B18 0%, #06203D 50%, #0A2E50 100%);
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-float-delayed: float 6s ease-in-out 3s infinite;
@@ -267,4 +269,13 @@ body {
 
 .animate-teal-pulse {
   animation: tealPulse 2.8s ease-in-out infinite;
+}
+
+/* ── Dynamic Luxury Dark Gradient Backgrounds ── */
+.bg-dark-section {
+  background: linear-gradient(180deg, #020B18 0%, #06203D 50%, #0A2E50 100%);
+}
+
+.bg-dark-section-br {
+  background: linear-gradient(135deg, #020B18 0%, #06203D 50%, #0A2E50 100%);
 }

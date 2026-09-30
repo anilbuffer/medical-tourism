@@ -116,7 +116,7 @@ export const CostFlightEstimator = () => {
               </div>
             </div>
 
-            <div className="bg-dark-3 border border-vedara-blue/30 rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden shadow-xl shadow-dark-3/20">
+            <div className="bg-gradient-to-br from-[#020B18] via-[#06203D] to-[#0A2E50] border border-vedara-blue/30 rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden shadow-xl shadow-dark-3/20">
               <div className="absolute top-0 right-0 w-32 h-32 bg-vedara-cyan/10 rounded-full blur-2xl pointer-events-none"></div>
               <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2 relative z-10">
                 <span className="w-6 h-6 rounded-full bg-vedara-cyan text-slate-900 flex items-center justify-center text-xs">3</span>

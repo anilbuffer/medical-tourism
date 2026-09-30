@@ -81,9 +81,9 @@ export const ExitIntentModal = () => {
 
         <div className="flex flex-col md:flex-row">
           {/* Left/Top Image Section */}
-          <div className="md:w-5/12 bg-dark-3 relative p-8 flex flex-col justify-center items-center text-center overflow-hidden">
+          <div className="md:w-5/12 bg-gradient-to-br from-[#020B18] via-[#06203D] to-[#0A2E50] relative p-8 flex flex-col justify-center items-center text-center overflow-hidden">
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600')] opacity-20 bg-cover bg-center"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-dark-3 via-dark-3/80 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#020B18] via-[#06203D]/80 to-transparent"></div>
             
             <div className="relative z-10 flex flex-col items-center">
               <div className="w-16 h-16 rounded-2xl bg-vedara-cyan/20 flex items-center justify-center mb-6 border border-vedara-cyan/40 shadow-[0_0_30px_rgba(46,205,197,0.3)]">

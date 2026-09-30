@@ -18,8 +18,11 @@ export const Footer = () => {
   const { t, language, openIntake, openChat } = useCare();
 
   return (
-    <footer className="bg-[#031126] text-white pt-20 pb-12 border-t border-teal-900/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-gradient-to-b from-[#020B18] via-[#051A33] to-[#020B18] text-white pt-20 pb-12 border-t border-teal-900/40 relative overflow-hidden">
+      {/* Ambient background lighting */}
+      <div className="absolute top-0 left-1/3 w-[500px] h-[300px] bg-vedara-cyan/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[300px] bg-vedara-blue/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Top 4-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-slate-800/80">
           {/* Brand Column */}

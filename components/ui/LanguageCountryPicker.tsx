@@ -143,12 +143,12 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
         <div
           className={`absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-96 origin-top-right rounded-2xl shadow-2xl z-50 overflow-hidden border animate-in fade-in zoom-in-95 duration-150 ${lightMode
             ? "bg-white text-slate-900 border-slate-200 shadow-slate-900/20"
-            : "bg-dark-4 text-white border-teal-500/40 shadow-2xl shadow-black ring-1 ring-white/10"
+            : "bg-gradient-to-b from-[#06203D] to-[#020B18] text-white border-teal-500/40 shadow-2xl shadow-black ring-1 ring-white/10"
             }`}
         >
           {/* Header Tab Switcher */}
           <div
-            className={`p-2 border-b grid grid-cols-2 gap-1.5 ${lightMode ? "bg-slate-100 border-slate-200" : "bg-dark-1 border-teal-900/50"
+            className={`p-2 border-b grid grid-cols-2 gap-1.5 ${lightMode ? "bg-slate-100 border-slate-200" : "bg-gradient-to-r from-[#020B18] via-[#06203D] to-[#020B18] border-teal-900/50"
               }`}
           >
             <button
@@ -295,7 +295,7 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
 
           {/* Dropdown Footer Info */}
           <div
-            className={`px-4 py-2.5 border-t text-[11px] font-semibold flex items-center justify-between ${lightMode ? "bg-slate-100 text-slate-600 border-slate-200" : "bg-dark-1 text-slate-300 border-teal-900/50"
+            className={`px-4 py-2.5 border-t text-[11px] font-semibold flex items-center justify-between ${lightMode ? "bg-slate-100 text-slate-600 border-slate-200" : "bg-gradient-to-r from-[#020B18] via-[#06203D] to-[#020B18] text-slate-300 border-teal-900/50"
               }`}
           >
             <span className="flex items-center gap-1.5 text-slate-300">

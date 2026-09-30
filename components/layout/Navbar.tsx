@@ -86,7 +86,7 @@ export const Navbar = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled
-        ? "bg-dark-1/95 backdrop-blur-xl shadow-xl shadow-slate-950/40 border-b border-teal-900/40 text-white"
+        ? "bg-gradient-to-r from-[#020B18]/95 via-[#06203D]/95 to-[#020B18]/95 backdrop-blur-xl shadow-xl shadow-slate-950/40 border-b border-teal-900/40 text-white"
         : "bg-gradient-to-b from-dark-1/90 via-dark-1/50 to-transparent text-white"
         }`}
     >

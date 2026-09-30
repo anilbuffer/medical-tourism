@@ -92,6 +92,8 @@ const config: Config = {
         "cyan-gradient":     "linear-gradient(135deg, #2ECDC5 0%, #1DA89F 100%)",
         "hero-gradient":     "linear-gradient(135deg, #1a2468 0%, #283593 40%, #3F4EB4 100%)",
         "accent-gradient":   "linear-gradient(135deg, #2ECDC5 0%, #3F4EB4 100%)",
+        "dark-gradient":     "linear-gradient(180deg, #020B18 0%, #06203D 50%, #0A2E50 100%)",
+        "dark-gradient-br":  "linear-gradient(135deg, #020B18 0%, #06203D 50%, #0A2E50 100%)",
       },
       keyframes: {
         float: {

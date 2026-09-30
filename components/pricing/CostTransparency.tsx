@@ -5,8 +5,13 @@ import { ArrowRight, Info, ShieldCheck } from "lucide-react";
 
 export const CostTransparency = () => {
   return (
-    <section className="py-16 sm:py-24 bg-dark-1">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 sm:py-24 bg-gradient-to-b from-[#020B18] via-[#06203D] to-[#0A2E50] text-white relative overflow-hidden">
+      {/* Ambient background glows for rich dynamic gradient depth */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-vedara-cyan/15 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-10 right-1/4 w-[600px] h-[600px] bg-vedara-blue/20 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(46,205,197,0.12),transparent)] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
