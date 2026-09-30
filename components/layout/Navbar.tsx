@@ -141,7 +141,13 @@ export const Navbar = () => {
               href="#doctors"
               className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-200 hover:text-white hover:bg-white/10 transition-all whitespace-nowrap"
             >
-              Doctors & Hospitals
+              Doctors
+            </a>
+            <a
+              href="#doctors"
+              className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-200 hover:text-white hover:bg-white/10 transition-all whitespace-nowrap"
+            >
+              Hospitals
             </a>
 
             {/* How It Works Link */}
