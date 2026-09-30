@@ -1,100 +1,136 @@
 "use client";
 
 import React from "react";
-import { useCare } from "@/context/CareContext";
-import { ArrowRight, Sparkles } from "lucide-react";
+import Image from "next/image";
 
 export const PatientJourney = () => {
-  const { t, language, openIntake } = useCare();
-
-  const steps = [
-    {
-      num: "01",
-      title: t.journey.step1Title,
-      description: t.journey.step1Desc,
-    },
-    {
-      num: "02",
-      title: t.journey.step2Title,
-      description: t.journey.step2Desc,
-    },
-    {
-      num: "03",
-      title: t.journey.step3Title,
-      description: t.journey.step3Desc,
-    },
-    {
-      num: "04",
-      title: t.journey.step4Title,
-      description: t.journey.step4Desc,
-    },
-    {
-      num: "05",
-      title: t.journey.step5Title,
-      description: t.journey.step5Desc,
-    },
-    {
-      num: "06",
-      title: t.journey.step6Title,
-      description: t.journey.step6Desc,
-    },
-  ];
-
   return (
-    <section id="journey" className="py-20 sm:py-24 bg-gradient-to-b from-[#031126] via-[#06203D] to-[#0A2E50] relative overflow-hidden text-white">
-      {/* Subtle radial ambient backdrop */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#0284C7]/15 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-0 left-10 w-96 h-96 bg-[#2ECDC5]/15 rounded-full blur-3xl pointer-events-none"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#0D9488]/20 to-[#0284C7]/20 border border-[#2ECDC5]/40 text-[#2ECDC5] text-xs font-bold uppercase tracking-wider mb-3 backdrop-blur-md">
-            {t.journey.eyebrow}
+    <section className="py-12 sm:py-16 bg-[#f8f9fa] border-t border-slate-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row justify-between items-end mb-16 gap-6">
+          <div>
+            <p className="text-[#a58d34] font-bold text-xs uppercase tracking-widest mb-3">
+              Your journey
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F1340]">
+              From your first message to your<br className="hidden sm:block" />
+              first day back at work.
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4 font-sans">
-            {t.journey.heading}
-          </h2>
-          <p className="text-sm sm:text-base text-slate-200/90 leading-relaxed max-w-3xl">
-            {t.journey.subheading}
-          </p>
+          <div className="flex items-center gap-3">
+            <span className="text-xs font-bold text-slate-400 tracking-widest">STEP</span>
+            <span className="px-3 py-1 rounded-full bg-[#f4f6dc] text-[#a58d34] text-sm font-black border border-[#e5ca76]">
+              5 <span className="text-[#a58d34]/60 font-medium">/ 6</span>
+            </span>
+          </div>
         </div>
 
-        {/* 6 Guided Steps Cards (3x2 Grid) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-          {steps.map((step, idx) => (
-            <div
-              key={idx}
-              onClick={() => openIntake()}
-              className="group relative bg-slate-900/80 hover:bg-slate-900 rounded-3xl p-7 sm:p-8 border border-teal-500/25 hover:border-teal-400 shadow-xl shadow-slate-950/40 hover:shadow-2xl hover:shadow-teal-500/10 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-pointer"
-            >
-              <div>
-                {/* Number */}
-                <div className="text-2xl sm:text-3xl font-black text-[#2ECDC5] mb-4 group-hover:scale-105 transition-transform inline-block">
-                  {step.num}
-                </div>
-
-                {/* Title */}
-                <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-[#5EEAD4] transition-colors mb-2.5 leading-snug">
-                  {step.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  {step.description}
-                </p>
+        {/* Timeline Visualization (Simplified for the layout) */}
+        <div className="relative mb-20 hidden md:block">
+          <div className="absolute top-6 left-0 right-0 h-0.5 bg-slate-200"></div>
+          
+          <div className="flex justify-between relative z-10">
+            {/* Step 1 */}
+            <div className="flex flex-col items-center w-32">
+              <div className="w-12 h-12 rounded-full bg-[#f4f6dc] border-4 border-white flex items-center justify-center text-[#a58d34] text-sm font-bold shadow-sm mb-3">
+                1
               </div>
+              <div className="text-[10px] text-slate-400 font-bold uppercase mb-1">3 Wks Before</div>
+              <div className="text-xs text-slate-600 text-center font-medium">Send your X-Rays</div>
+            </div>
+            
+            {/* Step 2 */}
+            <div className="flex flex-col items-center w-32">
+              <div className="w-12 h-12 rounded-full bg-[#f4f6dc] border-4 border-white flex items-center justify-center text-[#a58d34] text-sm font-bold shadow-sm mb-3">
+                2
+              </div>
+              <div className="text-[10px] text-slate-400 font-bold uppercase mb-1">2 Wks Before</div>
+              <div className="text-xs text-slate-600 text-center font-medium">MEET YOUR SURGEON</div>
+            </div>
 
-              {/* Hover CTA Indicator */}
-              <div className="mt-6 pt-4 border-t border-teal-500/20 flex items-center justify-between text-xs font-semibold text-[#2ECDC5] opacity-80 group-hover:opacity-100 transition-opacity">
-                <span>{language === "ar" ? "ابدأ هذه الخطوة" : "Start this step"}</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
+            {/* Step 3 */}
+            <div className="flex flex-col items-center w-32">
+              <div className="w-12 h-12 rounded-full bg-[#f4f6dc] border-4 border-white flex items-center justify-center text-[#a58d34] text-sm font-bold shadow-sm mb-3">
+                3
+              </div>
+              <div className="text-[10px] text-slate-400 font-bold uppercase mb-1">10 Days Before</div>
+              <div className="text-xs text-slate-600 text-center font-medium">Visa & flights</div>
+            </div>
+
+            {/* Step 4 */}
+            <div className="flex flex-col items-center w-32">
+              <div className="w-12 h-12 rounded-full bg-[#f4f6dc] border-4 border-white flex items-center justify-center text-[#a58d34] text-sm font-bold shadow-sm mb-3">
+                4
+              </div>
+              <div className="text-[10px] text-slate-400 font-bold uppercase mb-1">3 Days Before</div>
+              <div className="text-xs text-slate-600 text-center font-medium">Arrive & assessment</div>
+            </div>
+
+            {/* Step 5 (Active) */}
+            <div className="flex flex-col items-center w-32">
+              <div className="w-12 h-12 rounded-full bg-[#a58d34] border-4 border-white flex items-center justify-center text-white text-sm font-bold shadow-md mb-3 scale-110">
+                5
+              </div>
+              <div className="text-[10px] text-slate-500 font-bold uppercase mb-1">Day 3</div>
+              <div className="text-xs text-slate-900 text-center font-bold">Surgery</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Selected Step Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Left / Main Content */}
+          <div className="lg:col-span-7 xl:col-span-8 flex flex-col sm:flex-row gap-6">
+            <div className="relative w-full sm:w-48 h-48 rounded-3xl overflow-hidden shrink-0 shadow-md">
+              <Image 
+                src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=400" 
+                alt="Surgery" 
+                fill 
+                className="object-cover" 
+              />
+            </div>
+            <div className="pt-2">
+              <div className="text-[#a58d34] text-sm font-bold mb-1">Day 3</div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Surgery</h3>
+              <p className="text-slate-600 text-sm leading-relaxed max-w-lg">
+                Met inside arrivals, not outside the terminal. Nothing clinical on day one. 
+                Day two is bloods, imaging and your anesthetic review — and if anything changes 
+                the plan, you hear it in person that day.
+              </p>
+            </div>
+          </div>
+
+          {/* Right Content / Info Box */}
+          <div className="lg:col-span-5 xl:col-span-4">
+            <div className="bg-[#f4f6dc] rounded-3xl p-8 h-full border border-[#e5ca76]/30">
+              <p className="text-[#a58d34] font-bold text-sm leading-snug mb-6">
+                The day everyone dreads and almost nobody remembers:
+              </p>
+              
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-[#a58d34] text-xs font-bold shrink-0">A</div>
+                  <div>
+                    <div className="text-xs text-slate-500 font-bold mb-0.5">Where</div>
+                    <div className="text-sm text-slate-800 font-medium">Partner hospital, Mohali</div>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-[#a58d34] text-xs font-bold shrink-0">B</div>
+                  <div>
+                    <div className="text-xs text-slate-500 font-bold mb-0.5">With you</div>
+                    <div className="text-sm text-slate-800 font-medium">Your surgeon - family waiting</div>
+                  </div>
+                </div>
               </div>
             </div>
-          ))}
+          </div>
         </div>
+
       </div>
     </section>
   );
 };
-

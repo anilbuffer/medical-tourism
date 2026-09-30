@@ -28,6 +28,19 @@
     /* Deep navy base */
     --color-navy:        #283593;
     --color-navy-dark:   #1a2468;
+
+    /* Additional App Colors */
+    --color-dark-1: #031126;
+    --color-dark-2: #06203D;
+    --color-dark-3: #0A2E50;
+    --color-dark-4: #041326;
+    --color-dark-5: #071321;
+    --color-teal-600: #0D9488;
+    --color-teal-300: #5EEAD4;
+    --color-teal-mid1: #1d8983;
+    --color-teal-mid2: #1baba4;
+    --color-sky-600: #0284C7;
+    --color-sky-400: #38BDF8;
   }
 
   html {

@@ -1,53 +1,61 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
-import { useCare } from "@/context/CareContext";
-import { HOSPITALS, Hospital } from "@/data/mockData";
-import { MapPin, Sparkles, ChevronRight, Star } from "lucide-react";
+import { MapPin, Star, ArrowRight } from "lucide-react";
 
 export const HospitalsSection = () => {
-  const { t, language, openIntake, openChat } = useCare();
-  const [selectedHospital, setSelectedHospital] = useState<Hospital | null>(null);
-
-  // Focus on the 4 premier Chandigarh City hospitals
-  const chandigarhHospitals = HOSPITALS.slice(0, 4);
+  const hospitals = [
+    {
+      name: "MAX Super Speciality Hospital",
+      location: "Sector 8C, Chandigarh",
+      rating: "4.9 (1,240)",
+      image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&q=80",
+    },
+    {
+      name: "Fortis Hospital Mohali",
+      location: "Sector 8C, Chandigarh",
+      rating: "4.9 (1,240)",
+      image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80",
+    },
+    {
+      name: "Healing Super Specialty Hospital",
+      location: "Sector 8C, Chandigarh",
+      rating: "4.9 (1,240)",
+      image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80",
+    },
+    {
+      name: "Sangam Netralaya",
+      location: "Sector 8C, Chandigarh",
+      rating: "4.9 (1,240)",
+      image: "https://images.unsplash.com/photo-1538108149393-fbbd81893907?auto=format&fit=crop&q=80",
+    },
+  ];
 
   return (
-    <section id="hospitals" className="py-20 sm:py-24 bg-[#F8FAFC] relative overflow-hidden">
+    <section className="py-12 sm:py-16 bg-[#f8f9fa]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/70 text-[#0D9488] text-xs font-bold uppercase tracking-wider mb-3">
-              {t.hospitals.eyebrow}
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-              {t.hospitals.heading}
-            </h2>
-            <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed">
-              {t.hospitals.subheading}
-            </p>
-          </div>
-
-          <button
-            onClick={() => openIntake("Hospital Selection")}
-            className="inline-flex items-center gap-2 text-xs font-bold text-teal-700 hover:text-teal-900 tracking-wider uppercase group shrink-0 cursor-pointer"
-          >
-            <span>{t.hospitals.exploreNetwork}</span>
-            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
-          </button>
+        
+        {/* Header Section */}
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          <p className="text-[#a58d34] font-bold text-xs uppercase tracking-widest mb-3">
+            BEING STRAIGHT WITH YOU
+          </p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F1340] mb-6">
+            We&apos;re new. Our <span className="italic text-[#0D9488]">hospitals</span> are not.
+          </h2>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">
+            You won&apos;t find hundreds of reviews for us, because we started this year. What you can verify today is every hospital we work with — when it was founded, what it&apos;s accredited to, when that accreditation expires, and how many of your procedure it does each year.
+          </p>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            That&apos;s the record that matters. We&apos;re the people who get you to it and stay beside you while you&apos;re there.
+          </p>
         </div>
 
-        {/* 4 Hospital Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {chandigarhHospitals.map((hosp) => (
-            <div
-              key={hosp.id}
-              className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-md shadow-slate-200/50 hover:shadow-2xl hover:border-teal-400 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
-              onClick={() => openIntake(`Hospital: ${hosp.name}`)}
-            >
-              {/* Top Hospital Photo */}
+        {/* Hospital Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {hospitals.map((hosp, idx) => (
+            <div key={idx} className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 flex flex-col group">
               <div className="relative h-48 w-full overflow-hidden bg-slate-100">
                 <Image
                   src={hosp.image}
@@ -56,74 +64,45 @@ export const HospitalsSection = () => {
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-
-              {/* Body Content */}
-              <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                <div>
-                  {/* Hospital Title */}
-                  <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-teal-700 transition-colors leading-snug">
-                    {language === "ar" ? hosp.nameAr : hosp.name}
-                  </h3>
-
-                  {/* Location Pin */}
-                  <div className="flex items-center gap-1.5 text-xs text-slate-400 font-medium mt-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                    <span>{language === "ar" ? hosp.cityAr : hosp.city}</span>
-                  </div>
-
-                  {/* Rating Stars & Reviews */}
-                  <div className="flex items-center gap-1.5 mt-2.5">
-                    <div className="flex text-amber-500">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                      ))}
-                    </div>
-                    <span className="text-xs font-bold text-slate-800">
-                      {hosp.rating || 4.8}
-                    </span>
-                    <span className="text-xs text-slate-400">
-                      ({hosp.reviewsCount ? hosp.reviewsCount.toLocaleString("en-US") : "850"})
-                    </span>
-                  </div>
-
-                  {/* Specialty Tags */}
-                  <div className="flex flex-wrap gap-1.5 mt-3.5">
-                    {hosp.specialties.slice(0, 3).map((spec, i) => (
-                      <span
-                        key={i}
-                        className="px-2.5 py-1 rounded-full bg-teal-50 text-teal-700 text-[11px] font-semibold border border-teal-200/70"
-                      >
-                        {spec}
-                      </span>
+              
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="font-bold text-lg text-slate-900 leading-tight mb-2 h-12">
+                  {hosp.name}
+                </h3>
+                
+                <div className="flex items-center gap-1.5 text-xs text-slate-500 mb-3">
+                  <MapPin className="w-3.5 h-3.5" />
+                  <span>{hosp.location}</span>
+                </div>
+                
+                <div className="flex items-center gap-1.5 mb-6">
+                  <div className="flex text-[#ffc107]">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-current" />
                     ))}
                   </div>
+                  <span className="text-xs font-semibold text-slate-500">{hosp.rating}</span>
                 </div>
 
-                {/* Bottom Action Buttons: View Profile & Compare */}
-                <div className="pt-3 border-t border-slate-100 flex items-center gap-2">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      openIntake(`Hospital Profile: ${hosp.name}`);
-                    }}
-                    className="flex-1 py-2.5 px-3 rounded-xl bg-[#3F4EB4] hover:bg-[#283593] text-white font-bold text-xs text-center transition-colors shadow-sm"
-                  >
-                    View Profile
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      openChat(`Hello, I would like to compare ${hosp.name} in Chandigarh with other options.`);
-                    }}
-                    className="py-2.5 px-3.5 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold text-xs text-center transition-colors"
-                  >
-                    Compare
+                <div className="mt-auto">
+                  <button className="w-full py-2.5 rounded-xl bg-[#031126] hover:bg-[#06203D] text-white text-xs font-bold transition-colors flex items-center justify-center gap-1">
+                    <span>View Profile</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Bottom CTA */}
+        <div className="mt-12 flex justify-end">
+          <button className="px-6 py-3 rounded-xl bg-[#ffeb3b] hover:bg-[#fdd835] text-slate-900 text-sm font-bold shadow-md flex items-center gap-2 transition-colors">
+            <span>See the hospitals</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+
       </div>
     </section>
   );

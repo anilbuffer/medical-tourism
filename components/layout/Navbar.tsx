@@ -17,6 +17,7 @@ import {
   Compass,
   HelpCircle,
   ShieldCheck,
+  PhoneCall,
 } from "lucide-react";
 
 export const Navbar = () => {
@@ -85,27 +86,43 @@ export const Navbar = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled
-        ? "bg-[#031126]/95 backdrop-blur-xl shadow-xl shadow-slate-950/40 py-2.5 border-b border-teal-900/40 text-white"
-        : "bg-gradient-to-b from-[#031126]/90 via-[#031126]/50 to-transparent py-4 text-white"
+        ? "bg-[var(--color-dark-1)]/95 backdrop-blur-xl shadow-xl shadow-slate-950/40 border-b border-teal-900/40 text-white"
+        : "bg-gradient-to-b from-[var(--color-dark-1)]/90 via-[var(--color-dark-1)]/50 to-transparent text-white"
         }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Top Bar from Image */}
+      <div className="hidden lg:flex items-center justify-center gap-6 py-2.5 border-b border-white/10 bg-[var(--color-dark-4)]/80 backdrop-blur-md text-xs">
+        <div className="flex items-center gap-2 font-medium text-slate-300">
+          <Globe className="w-4 h-4" />
+          <span>Where are you coming from?</span>
+        </div>
+        <div className="flex items-center gap-4 text-slate-400 font-medium">
+           <button className="px-3 py-1 bg-[var(--accent-blue-light)] text-white rounded-full transition-colors">Kenya</button>
+           <button className="hover:text-white transition-colors">Nigeria</button>
+           <button className="hover:text-white transition-colors">Tanzania</button>
+           <button className="hover:text-white transition-colors">Ethiopia</button>
+           <button className="hover:text-white transition-colors">Bangladesh</button>
+           <button className="hover:text-white transition-colors">UAE & Gulf</button>
+           <button className="hover:text-white transition-colors">Uzbekistan</button>
+           <button className="hover:text-white transition-colors">UK</button>
+           <button className="hover:text-white transition-colors">Australia</button>
+           <button className="hover:text-white transition-colors">Somewhere else</button>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
         <div className="flex items-center justify-between gap-6">
           {/* 01. Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-[#0D9488] via-[#0A2E50] to-[#031126] flex items-center justify-center shadow-lg shadow-teal-900/30 ring-1 ring-[#2ECDC5]/40 group-hover:scale-105 transition-transform">
-              <span className="text-white font-black text-lg font-serif">V</span>
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-[var(--color-teal-600)] via-[var(--color-dark-3)] to-[var(--color-dark-1)] flex items-center justify-center shadow-lg shadow-teal-900/30 ring-1 ring-[#2ECDC5]/40 group-hover:scale-105 transition-transform">
+              <span className="text-white font-black text-lg font-serif">M</span>
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-1.5 leading-tight">
                 <span className="font-extrabold tracking-widest text-base sm:text-lg text-white group-hover:text-[#2ECDC5] transition-colors">
-                  {t.nav.brandName}
+                  My Care Tour India
                 </span>
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#2ECDC5] animate-pulse"></span>
               </div>
-              <span className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-wider text-[#2ECDC5]/80 leading-none">
-                {t.nav.brandSub}
-              </span>
             </div>
           </Link>
 
@@ -116,7 +133,7 @@ export const Navbar = () => {
               href="#treatments"
               className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-200 hover:text-white hover:bg-white/10 transition-all whitespace-nowrap"
             >
-              {t.nav.treatments}
+              Treatments
             </a>
 
             {/* Doctors & Hospitals Link */}
@@ -124,7 +141,7 @@ export const Navbar = () => {
               href="#doctors"
               className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-200 hover:text-white hover:bg-white/10 transition-all whitespace-nowrap"
             >
-              {t.nav.doctorsHospitals}
+              Doctors & Hospitals
             </a>
 
             {/* How It Works Link */}
@@ -132,7 +149,7 @@ export const Navbar = () => {
               href="#journey"
               className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-200 hover:text-white hover:bg-white/10 transition-all whitespace-nowrap"
             >
-              {t.nav.howItWorks}
+              How It Works
             </a>
 
             {/* Explore Dropdown */}
@@ -197,27 +214,16 @@ export const Navbar = () => {
             </div>
           </nav>
 
-          {/* 03. Right Action Utilities (Language + Primary CTA + Login at right end) */}
-          <div className="hidden lg:flex items-center gap-2.5 shrink-0">
-            {/* Language & Country Picker */}
-            <LanguageCountryPicker />
-
-            {/* Primary Get Free Quote CTA */}
+          {/* 03. Right Action Utilities */}
+          <div className="hidden lg:flex items-center gap-4 shrink-0">
+            {/* Primary Get Free Quote CTA replaced by Book a call */}
             <button
               onClick={() => openIntake()}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-extrabold text-slate-950 bg-gradient-to-r from-[#2ECDC5] via-[#5EEAD4] to-[#2ECDC5] shadow-md shadow-[#2ECDC5]/20 hover:brightness-110 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-slate-900 bg-[#ffc107] hover:bg-[#ffb300] shadow-md transition-all whitespace-nowrap cursor-pointer"
             >
-              <span>{t.nav.startJourney}</span>
+              <PhoneCall className="w-4 h-4" />
+              <span>Book a call</span>
             </button>
-
-            {/* Patient Portal / Login Direct Link (Right End) */}
-            <Link
-              href="/login"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-slate-900/60 hover:bg-slate-800 hover:text-white border border-teal-500/30 shadow-xs transition-all whitespace-nowrap"
-            >
-              <ShieldCheck className="w-3.5 h-3.5 text-[#2ECDC5]" />
-              <span>Login</span>
-            </Link>
           </div>
 
           {/* 04. Mobile Navigation Toggle */}
