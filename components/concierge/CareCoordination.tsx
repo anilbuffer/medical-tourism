@@ -45,10 +45,10 @@ export const CareCoordination = () => {
         
         {/* Header */}
         <div className="text-center mb-10">
-          <p className="text-[#3f51b5] font-bold text-xs uppercase tracking-widest mb-3">
+          <p className="text-vedara-blue font-bold text-xs uppercase tracking-widest mb-3">
             CARE COORDINATION
           </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F1340] mb-4">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-vedara-deep mb-4">
             Care doesn&apos;t Stop at the Hospital Door.
           </h2>
           <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto">
@@ -63,8 +63,8 @@ export const CareCoordination = () => {
               key={idx}
               className={`px-4 py-2 rounded-full text-xs font-bold transition-colors ${
                 idx === 2 
-                  ? "bg-[#0F1340] text-white" 
-                  : "bg-[#f8f9fa] text-slate-500 hover:bg-slate-200"
+                  ? "bg-vedara-deep text-white" 
+                  : "bg-vedara-offwhite text-slate-500 hover:bg-slate-200"
               }`}
             >
               {tab}
@@ -75,10 +75,10 @@ export const CareCoordination = () => {
         {/* Content Section - Full Container Width matching max-w-7xl */}
         <div className="w-full">
           <div className="mb-10 text-center sm:text-left">
-            <p className="text-[#a58d34] font-bold text-xs uppercase tracking-widest mb-2">
+            <p className="text-vedara-gold-muted font-bold text-xs uppercase tracking-widest mb-2">
               AROUND THE TREATMENT
             </p>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0F1340] mb-3">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-vedara-deep mb-3">
               The same trip, arranged two ways.
             </h3>
             <p className="text-slate-600 text-sm sm:text-base max-w-3xl">
@@ -89,7 +89,7 @@ export const CareCoordination = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             
             {/* Left Column: DIY */}
-            <div className="bg-[#fff8f8] rounded-3xl p-6 sm:p-8 border border-red-100">
+            <div className="bg-vedara-tint-red rounded-3xl p-6 sm:p-8 border border-red-100">
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-10 h-10 rounded-full bg-red-100/80 flex items-center justify-center text-red-500">
                   <XCircle className="w-5 h-5" />
@@ -113,21 +113,21 @@ export const CareCoordination = () => {
             </div>
 
             {/* Right Column: With Us - Unified Palette (No Green Accents) */}
-            <div className="bg-[#f8faff] rounded-3xl p-6 sm:p-8 border border-[#0F1340]/10 shadow-sm">
+            <div className="bg-vedara-tint-blue rounded-3xl p-6 sm:p-8 border border-vedara-deep/10 shadow-sm">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-full bg-[#0F1340] flex items-center justify-center text-[#C9A24A]">
+                <div className="w-10 h-10 rounded-full bg-vedara-deep flex items-center justify-center text-vedara-gold">
                   <CheckCircle2 className="w-5 h-5" />
                 </div>
                 <div>
                   <h4 className="font-bold text-slate-900 text-lg">With us</h4>
-                  <p className="text-xs text-[#0F1340]/70 font-medium">Personally coordinated care</p>
+                  <p className="text-xs text-vedara-deep/70 font-medium">Personally coordinated care</p>
                 </div>
               </div>
               
               <div className="space-y-5">
                 {comparison.map((item, idx) => (
                   <div key={idx} className="bg-white rounded-2xl p-4.5 shadow-xs border border-slate-200/80 relative">
-                    <div className="absolute -left-2.5 -top-2.5 w-5 h-5 rounded-full bg-[#0F1340] flex items-center justify-center text-[#C9A24A] font-bold text-[10px]">
+                    <div className="absolute -left-2.5 -top-2.5 w-5 h-5 rounded-full bg-vedara-deep flex items-center justify-center text-vedara-gold font-bold text-[10px]">
                       {idx + 1}
                     </div>
                     <p className="text-slate-800 font-medium text-sm leading-relaxed">{item.good}</p>

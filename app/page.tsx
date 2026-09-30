@@ -14,7 +14,7 @@ import { ConnectSection } from "@/components/trust/ConnectSection";
 
 export default function HomePage() {
   return (
-    <div className="w-full bg-[#f8f9fa]">
+    <div className="w-full bg-vedara-offwhite">
       <HeroSection />
       <TrustStrip />
       <SpecialtiesSection />

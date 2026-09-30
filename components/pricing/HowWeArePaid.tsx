@@ -31,10 +31,10 @@ export const HowWeArePaid = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <p className="text-[#a58d34] font-bold text-xs uppercase tracking-widest mb-3">
+          <p className="text-vedara-gold-muted font-bold text-xs uppercase tracking-widest mb-3">
             UNCOMPROMISING INTEGRITY
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F1340] mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-vedara-deep mb-4">
             How we&apos;re paid.
           </h2>
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
@@ -53,7 +53,7 @@ export const HowWeArePaid = () => {
                 className="bg-slate-50 rounded-3xl p-8 border border-slate-200/80 shadow-sm flex flex-col justify-between hover:shadow-md hover:border-slate-300 transition-all"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-[#C9A24A] shadow-xs mb-6">
+                  <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-vedara-gold shadow-xs mb-6">
                     <Icon className="w-6 h-6" />
                   </div>
                   <h3 className="font-bold text-lg text-slate-900 mb-3">
@@ -64,8 +64,8 @@ export const HowWeArePaid = () => {
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-200/60 flex items-center gap-2 text-xs font-bold text-[#0F1340]">
-                  <CheckCircle2 className="w-4 h-4 text-[#C9A24A]" />
+                <div className="mt-6 pt-4 border-t border-slate-200/60 flex items-center gap-2 text-xs font-bold text-vedara-deep">
+                  <CheckCircle2 className="w-4 h-4 text-vedara-gold" />
                   <span>Guaranteed in writing</span>
                 </div>
               </div>
@@ -74,9 +74,9 @@ export const HowWeArePaid = () => {
         </div>
 
         {/* Reassurance Banner */}
-        <div className="bg-[#031126] rounded-2xl p-6 sm:p-8 text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="bg-dark-1 rounded-2xl p-6 sm:p-8 text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="flex items-center gap-4 text-center sm:text-left">
-            <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center shrink-0 text-[#C9A24A]">
+            <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center shrink-0 text-vedara-gold">
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>

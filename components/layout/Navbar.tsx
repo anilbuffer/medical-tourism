@@ -86,18 +86,18 @@ export const Navbar = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled
-        ? "bg-[var(--color-dark-1)]/95 backdrop-blur-xl shadow-xl shadow-slate-950/40 border-b border-teal-900/40 text-white"
-        : "bg-gradient-to-b from-[var(--color-dark-1)]/90 via-[var(--color-dark-1)]/50 to-transparent text-white"
+        ? "bg-dark-1/95 backdrop-blur-xl shadow-xl shadow-slate-950/40 border-b border-teal-900/40 text-white"
+        : "bg-gradient-to-b from-dark-1/90 via-dark-1/50 to-transparent text-white"
         }`}
     >
       {/* Top Bar from Image */}
-      <div className="hidden lg:flex items-center justify-center gap-6 py-2.5 border-b border-white/10 bg-[var(--color-dark-4)]/80 backdrop-blur-md text-xs">
+      <div className="hidden lg:flex items-center justify-center gap-6 py-2.5 border-b border-white/10 bg-dark-4/80 backdrop-blur-md text-xs">
         <div className="flex items-center gap-2 font-medium text-slate-300">
           <Globe className="w-4 h-4" />
           <span>Where are you coming from?</span>
         </div>
         <div className="flex items-center gap-4 text-slate-400 font-medium">
-           <button className="px-3 py-1 bg-[var(--accent-blue-light)] text-white rounded-full transition-colors">Kenya</button>
+           <button className="px-3 py-1 bg-vedara-blue-light text-white rounded-full transition-colors">Kenya</button>
            <button className="hover:text-white transition-colors">Nigeria</button>
            <button className="hover:text-white transition-colors">Tanzania</button>
            <button className="hover:text-white transition-colors">Ethiopia</button>
@@ -114,12 +114,12 @@ export const Navbar = () => {
         <div className="flex items-center justify-between gap-6">
           {/* 01. Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-[var(--color-teal-600)] via-[var(--color-dark-3)] to-[var(--color-dark-1)] flex items-center justify-center shadow-lg shadow-teal-900/30 ring-1 ring-[#2ECDC5]/40 group-hover:scale-105 transition-transform">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-teal-600 via-dark-3 to-dark-1 flex items-center justify-center shadow-lg shadow-teal-900/30 ring-1 ring-vedara-cyan/40 group-hover:scale-105 transition-transform">
               <span className="text-white font-black text-lg font-serif">M</span>
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-1.5 leading-tight">
-                <span className="font-extrabold tracking-widest text-base sm:text-lg text-white group-hover:text-[#2ECDC5] transition-colors">
+                <span className="font-extrabold tracking-widest text-base sm:text-lg text-white group-hover:text-vedara-cyan transition-colors">
                   My Care Tour India
                 </span>
               </div>
@@ -166,7 +166,7 @@ export const Navbar = () => {
                 <span>{t.nav.explore}</span>
                 <ChevronDown
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    exploreOpen ? "rotate-180 text-[#2ECDC5]" : ""
+                    exploreOpen ? "rotate-180 text-vedara-cyan" : ""
                   }`}
                 />
               </button>
@@ -175,7 +175,7 @@ export const Navbar = () => {
               {exploreOpen && (
                 <div
                   onMouseLeave={() => setExploreOpen(false)}
-                  className="absolute top-full left-0 mt-2 w-80 rounded-2xl bg-[#041326] border border-teal-500/40 shadow-2xl shadow-black ring-1 ring-white/10 p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
+                  className="absolute top-full left-0 mt-2 w-80 rounded-2xl bg-dark-4 border border-teal-500/40 shadow-2xl shadow-black ring-1 ring-white/10 p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
                 >
                   <div className="space-y-1">
                     {exploreLinks.map((item, idx) => {
@@ -185,18 +185,18 @@ export const Navbar = () => {
                           key={idx}
                           href={item.href}
                           onClick={() => setExploreOpen(false)}
-                          className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#0A2E50] transition-colors group cursor-pointer"
+                          className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-dark-3 transition-colors group cursor-pointer"
                         >
-                          <div className="w-8 h-8 rounded-lg bg-teal-500/15 border border-teal-500/30 flex items-center justify-center text-[#2ECDC5] group-hover:bg-[#2ECDC5] group-hover:text-slate-950 transition-colors shrink-0 mt-0.5">
+                          <div className="w-8 h-8 rounded-lg bg-teal-500/15 border border-teal-500/30 flex items-center justify-center text-vedara-cyan group-hover:bg-vedara-cyan group-hover:text-slate-950 transition-colors shrink-0 mt-0.5">
                             <Icon className="w-4 h-4" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between gap-1 mb-0.5">
-                              <span className="text-xs font-bold text-white group-hover:text-[#2ECDC5] transition-colors">
+                              <span className="text-xs font-bold text-white group-hover:text-vedara-cyan transition-colors">
                                 {item.title}
                               </span>
                               {item.badge && (
-                                <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-teal-950/80 text-[#2ECDC5] border border-[#2ECDC5]/30 whitespace-nowrap">
+                                <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-teal-950/80 text-vedara-cyan border border-vedara-cyan/30 whitespace-nowrap">
                                   {item.badge}
                                 </span>
                               )}
@@ -219,7 +219,7 @@ export const Navbar = () => {
             {/* Primary Get Free Quote CTA replaced by Book a call */}
             <button
               onClick={() => openIntake()}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-[#0F1340] bg-[#C9A24A] hover:bg-[#B8923D] shadow-md transition-all whitespace-nowrap cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-vedara-deep bg-vedara-gold hover:bg-vedara-gold-hover shadow-md transition-all whitespace-nowrap cursor-pointer"
             >
               <PhoneCall className="w-4 h-4" />
               <span>Book a call</span>
@@ -242,10 +242,10 @@ export const Navbar = () => {
 
       {/* 05. Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#071321]/98 backdrop-blur-2xl border-b border-slate-800 px-4 pt-3 pb-6 text-white space-y-4 animate-in slide-in-from-top-2 duration-200">
+        <div className="lg:hidden bg-dark-5/98 backdrop-blur-2xl border-b border-slate-800 px-4 pt-3 pb-6 text-white space-y-4 animate-in slide-in-from-top-2 duration-200">
           <div className="flex items-center justify-between pb-2 border-b border-slate-800/80">
             <div className="flex items-center gap-2 text-xs text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-[#2ECDC5] animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-vedara-cyan animate-pulse"></span>
               <span>24/7 International Desk</span>
             </div>
             <LanguageCountryPicker />
@@ -258,31 +258,31 @@ export const Navbar = () => {
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center gap-2 p-2.5 rounded-xl bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-bold col-span-2"
             >
-              <ShieldCheck className="w-4 h-4 text-[#2ECDC5]" />
+              <ShieldCheck className="w-4 h-4 text-vedara-cyan" />
               <span>Login / Patient Portal</span>
             </Link>
             <a
               href="#treatments"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#3F4EB4]/40"
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-vedara-blue/40"
             >
-              <Stethoscope className="w-4 h-4 text-[#2ECDC5]" />
+              <Stethoscope className="w-4 h-4 text-vedara-cyan" />
               <span>{t.nav.treatments}</span>
             </a>
             <a
               href="#doctors"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#3F4EB4]/40"
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-vedara-blue/40"
             >
-              <UserCheck className="w-4 h-4 text-[#2ECDC5]" />
+              <UserCheck className="w-4 h-4 text-vedara-cyan" />
               <span>{t.nav.doctorsHospitals}</span>
             </a>
             <a
               href="#journey"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#3F4EB4]/40 col-span-2"
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-vedara-blue/40 col-span-2"
             >
-              <Compass className="w-4 h-4 text-[#2ECDC5]" />
+              <Compass className="w-4 h-4 text-vedara-cyan" />
               <span>{t.nav.howItWorks}</span>
             </a>
           </div>
@@ -298,7 +298,7 @@ export const Navbar = () => {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-2.5 py-2 rounded-lg text-xs text-slate-300 hover:bg-white/5 hover:text-[#2ECDC5] transition-colors"
+                  className="px-2.5 py-2 rounded-lg text-xs text-slate-300 hover:bg-white/5 hover:text-vedara-cyan transition-colors"
                 >
                   {item.title}
                 </a>
@@ -311,7 +311,7 @@ export const Navbar = () => {
             <a
               href="/#assessment"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-3 rounded-xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983]text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#283593]/40"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-teal-mid1 via-teal-mid2 to-teal-mid1 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-vedara-slate/40"
             >
               {/* <Sparkles className="w-4 h-4 text-amber-300" /> */}
               <span>{t.nav.startJourney}</span>

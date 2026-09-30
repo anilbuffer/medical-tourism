@@ -43,7 +43,7 @@ export const HeroSection = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8">
             <button
               onClick={() => openIntake()}
-              className="w-full sm:w-auto px-8 py-3.5 rounded-xl text-sm sm:text-base font-bold text-[#0F1340] bg-[#C9A24A] hover:bg-[#B8923D] shadow-lg transition-all cursor-pointer"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-xl text-sm sm:text-base font-bold text-vedara-deep bg-vedara-gold hover:bg-vedara-gold-hover shadow-lg transition-all cursor-pointer"
             >
               Send us the reports
             </button>
@@ -58,13 +58,13 @@ export const HeroSection = () => {
           {/* Trust Highlights */}
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 text-sm font-medium text-white shadow-sm">
             <span className="flex items-center gap-1.5 drop-shadow-md">
-              <span className="text-[#2ECDC5]">🎁</span> Free assessment
+              <span className="text-vedara-cyan">🎁</span> Free assessment
             </span>
             <span className="flex items-center gap-1.5 drop-shadow-md">
-              <span className="text-[#2ECDC5]">🏥</span> You pay the hospital, never us
+              <span className="text-vedara-cyan">🏥</span> You pay the hospital, never us
             </span>
             <span className="flex items-center gap-1.5 drop-shadow-md">
-              <span className="text-[#2ECDC5]">🚫</span> No obligation
+              <span className="text-vedara-cyan">🚫</span> No obligation
             </span>
           </div>
         </div>

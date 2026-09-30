@@ -33,16 +33,16 @@ export const HospitalsSection = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-16 bg-[#f8f9fa]">
+    <section className="py-12 sm:py-16 bg-vedara-offwhite">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <p className="text-[#a58d34] font-bold text-xs uppercase tracking-widest mb-3">
+          <p className="text-vedara-gold-muted font-bold text-xs uppercase tracking-widest mb-3">
             BEING STRAIGHT WITH YOU
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F1340] mb-6">
-            We&apos;re new. Our <span className="italic text-[#0D9488]">hospitals</span> are not.
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-vedara-deep mb-6">
+            We&apos;re new. Our <span className="italic text-teal-600">hospitals</span> are not.
           </h2>
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">
             You won&apos;t find hundreds of reviews for us, because we started this year. What you can verify today is every hospital we work with — when it was founded, what it&apos;s accredited to, when that accreditation expires, and how many of your procedure it does each year.
@@ -78,7 +78,7 @@ export const HospitalsSection = () => {
                 </div>
                 
                 <div className="flex items-center gap-1.5 mb-6">
-                  <div className="flex text-[#C9A24A]">
+                  <div className="flex text-vedara-gold">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-3.5 h-3.5 fill-current" />
                     ))}
@@ -88,7 +88,7 @@ export const HospitalsSection = () => {
 
                 <div className="mt-auto">
                   {/* Secondary Action: Outlined Navy */}
-                  <button className="w-full py-2.5 rounded-xl border border-[#0F1340] text-[#0F1340] hover:bg-[#0F1340] hover:text-white text-xs font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer">
+                  <button className="w-full py-2.5 rounded-xl border border-vedara-deep text-vedara-deep hover:bg-vedara-deep hover:text-white text-xs font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer">
                     <span>View Profile</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
@@ -100,7 +100,7 @@ export const HospitalsSection = () => {
 
         {/* Bottom CTA - Secondary Action: Outlined Navy */}
         <div className="mt-12 flex justify-end">
-          <button className="px-6 py-3 rounded-xl border-2 border-[#0F1340] text-[#0F1340] hover:bg-[#0F1340] hover:text-white text-sm font-bold shadow-xs flex items-center gap-2 transition-all cursor-pointer">
+          <button className="px-6 py-3 rounded-xl border-2 border-vedara-deep text-vedara-deep hover:bg-vedara-deep hover:text-white text-sm font-bold shadow-xs flex items-center gap-2 transition-all cursor-pointer">
             <span>See the hospitals</span>
             <ArrowRight className="w-4 h-4" />
           </button>

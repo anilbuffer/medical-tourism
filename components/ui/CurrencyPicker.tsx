@@ -65,7 +65,7 @@ export const CurrencyPicker: React.FC<{ lightMode?: boolean }> = ({ lightMode = 
               }}
               className={`w-full text-left px-3 py-2 text-xs flex items-center justify-between transition-colors ${
                 currency === c.code
-                  ? "bg-[#3F4EB4]/10 text-[#283593] font-semibold"
+                  ? "bg-vedara-blue/10 text-vedara-slate font-semibold"
                   : "text-slate-700 hover:bg-slate-50"
               }`}
             >
@@ -73,7 +73,7 @@ export const CurrencyPicker: React.FC<{ lightMode?: boolean }> = ({ lightMode = 
                 <span>{c.flag}</span>
                 <span>{c.label}</span>
               </div>
-              {currency === c.code && <Check className="w-3.5 h-3.5 text-[#3F4EB4]" />}
+              {currency === c.code && <Check className="w-3.5 h-3.5 text-vedara-blue" />}
             </button>
           ))}
         </div>

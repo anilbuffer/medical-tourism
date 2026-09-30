@@ -32,13 +32,13 @@ export const SpecialtiesSection = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-16 bg-[#f8f9fa] pt-24">
+    <section className="py-12 sm:py-16 bg-vedara-offwhite pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center sm:text-left mb-10">
-          <p className="text-[#a58d34] font-bold text-xs uppercase tracking-wider mb-2">
+          <p className="text-vedara-gold-muted font-bold text-xs uppercase tracking-wider mb-2">
             OUR SPECIALTIES
           </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F1340]">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-vedara-deep">
             Comprehensive care. World-class expertise.
           </h2>
         </div>
@@ -57,7 +57,7 @@ export const SpecialtiesSection = () => {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
               />
               {/* Unified dark gradient overlay across all four cards for 100% legibility */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#031126] via-[#031126]/60 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-dark-1 via-dark-1/60 to-transparent"></div>
               
               <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end">
                 <h3 className="text-white font-bold text-xl mb-1 leading-snug">

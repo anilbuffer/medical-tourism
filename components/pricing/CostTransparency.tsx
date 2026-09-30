@@ -5,12 +5,12 @@ import { ArrowRight, Info, ShieldCheck } from "lucide-react";
 
 export const CostTransparency = () => {
   return (
-    <section className="py-16 sm:py-24 bg-[#031126]">
+    <section className="py-16 sm:py-24 bg-dark-1">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="text-[#C9A24A] font-bold text-xs uppercase tracking-widest mb-3">
+          <p className="text-vedara-gold font-bold text-xs uppercase tracking-widest mb-3">
             COST & FINANCIAL TRANSPARENCY
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">
@@ -29,13 +29,13 @@ export const CostTransparency = () => {
             
             <div className="mb-8">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-6 h-6 rounded-full bg-[#0F1340] text-white flex items-center justify-center text-xs font-bold">
+                <div className="w-6 h-6 rounded-full bg-vedara-deep text-white flex items-center justify-center text-xs font-bold">
                   1
                 </div>
                 <h3 className="font-bold text-slate-900">Select treatment category</h3>
               </div>
               <div className="flex gap-2 mb-4 pl-9">
-                <button className="flex-1 py-2.5 rounded-xl bg-[#C9A24A] text-[#0F1340] text-sm font-bold shadow-sm transition-all cursor-pointer">
+                <button className="flex-1 py-2.5 rounded-xl bg-vedara-gold text-vedara-deep text-sm font-bold shadow-sm transition-all cursor-pointer">
                   Serious
                 </button>
                 <button className="flex-1 py-2.5 rounded-xl bg-white text-slate-600 text-sm font-semibold border border-slate-200 hover:bg-slate-100 transition-colors cursor-pointer">
@@ -43,7 +43,7 @@ export const CostTransparency = () => {
                 </button>
               </div>
               <div className="pl-9">
-                <select className="w-full p-3.5 rounded-xl border border-slate-200 bg-white text-slate-700 text-sm font-medium outline-none focus:border-[#C9A24A]">
+                <select className="w-full p-3.5 rounded-xl border border-slate-200 bg-white text-slate-700 text-sm font-medium outline-none focus:border-vedara-gold">
                   <option>Choose treatment</option>
                   <option>Knee replacement (Bilateral)</option>
                   <option>Hip replacement (Robotic)</option>
@@ -56,13 +56,13 @@ export const CostTransparency = () => {
 
             <div className="mb-8">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-6 h-6 rounded-full bg-[#0F1340] text-white flex items-center justify-center text-xs font-bold">
+                <div className="w-6 h-6 rounded-full bg-vedara-deep text-white flex items-center justify-center text-xs font-bold">
                   2
                 </div>
                 <h3 className="font-bold text-slate-900">Number of attendants</h3>
               </div>
               <div className="pl-9">
-                <select className="w-full p-3.5 rounded-xl border border-slate-200 bg-white text-slate-700 text-sm font-medium outline-none focus:border-[#C9A24A]">
+                <select className="w-full p-3.5 rounded-xl border border-slate-200 bg-white text-slate-700 text-sm font-medium outline-none focus:border-vedara-gold">
                   <option>1 attendant (included in base plan)</option>
                   <option>2 attendants</option>
                   <option>Travelling alone (bedside nurse arranged)</option>
@@ -126,13 +126,13 @@ export const CostTransparency = () => {
                   <div className="font-bold text-slate-900">Total All-In Trip</div>
                   <div className="text-[11px] text-slate-500 font-medium">Including flights, companion & lodging</div>
                 </div>
-                <div className="font-black text-2xl text-[#0F1340]">$27,350 – $35,350</div>
+                <div className="font-black text-2xl text-vedara-deep">$27,350 – $35,350</div>
               </div>
             </div>
 
             {/* Savings Callout - Clean Slate Container (No Green Accent) */}
             <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex items-start gap-3">
-              <div className="text-[#C9A24A] shrink-0 mt-0.5">
+              <div className="text-vedara-gold shrink-0 mt-0.5">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <p className="text-xs text-slate-700 font-medium leading-relaxed">
@@ -147,7 +147,7 @@ export const CostTransparency = () => {
         <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-white/10">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
             <div>
-              <h3 className="font-extrabold text-2xl text-[#0F1340] flex items-center gap-2.5">
+              <h3 className="font-extrabold text-2xl text-vedara-deep flex items-center gap-2.5">
                 <span>How it compares</span>
               </h3>
               <p className="text-sm text-slate-500 mt-1">
@@ -161,7 +161,7 @@ export const CostTransparency = () => {
               <thead>
                 <tr className="border-b border-slate-200 text-slate-400 font-bold uppercase tracking-wider text-[11px]">
                   <th className="pb-4 font-bold">Treatment</th>
-                  <th className="pb-4 font-bold text-[#0F1340]">India, All-In Trip *</th>
+                  <th className="pb-4 font-bold text-vedara-deep">India, All-In Trip *</th>
                   <th className="pb-4 font-bold text-slate-500">At Home (Private)</th>
                   <th className="pb-4 font-bold text-slate-500">Wait Times At Home</th>
                 </tr>
@@ -171,7 +171,7 @@ export const CostTransparency = () => {
                   <td className="py-4 font-bold text-slate-900 flex items-center gap-2">
                     <span>🦴</span> Knee replacement (Bilateral)
                   </td>
-                  <td className="py-4 font-black text-[#0F1340]">$27,350 – $35,350</td>
+                  <td className="py-4 font-black text-vedara-deep">$27,350 – $35,350</td>
                   <td className="py-4 text-slate-600 font-semibold">$120,000 – $180,000</td>
                   <td className="py-4 text-slate-500">12 – 18 months wait</td>
                 </tr>
@@ -179,7 +179,7 @@ export const CostTransparency = () => {
                   <td className="py-4 font-bold text-slate-900 flex items-center gap-2">
                     <span>🦵</span> Hip replacement (Robotic)
                   </td>
-                  <td className="py-4 font-black text-[#0F1340]">$11,200 – $16,800</td>
+                  <td className="py-4 font-black text-vedara-deep">$11,200 – $16,800</td>
                   <td className="py-4 text-slate-600 font-semibold">$25,000 – $45,000</td>
                   <td className="py-4 text-slate-500">9 – 14 months wait</td>
                 </tr>
@@ -187,7 +187,7 @@ export const CostTransparency = () => {
                   <td className="py-4 font-bold text-slate-900 flex items-center gap-2">
                     <span>🦷</span> Full-arch dental rehabilitation
                   </td>
-                  <td className="py-4 font-black text-[#0F1340]">$8,400 – $12,600</td>
+                  <td className="py-4 font-black text-vedara-deep">$8,400 – $12,600</td>
                   <td className="py-4 text-slate-600 font-semibold">$15,000 – $30,000</td>
                   <td className="py-4 text-slate-500">6 – 8 months wait</td>
                 </tr>
@@ -195,7 +195,7 @@ export const CostTransparency = () => {
                   <td className="py-4 font-bold text-slate-900 flex items-center gap-2">
                     <span>👶</span> IVF with ICSI & genetic screening
                   </td>
-                  <td className="py-4 font-black text-[#0F1340]">$10,500 – $15,000</td>
+                  <td className="py-4 font-black text-vedara-deep">$10,500 – $15,000</td>
                   <td className="py-4 text-slate-600 font-semibold">$20,000 – $35,000</td>
                   <td className="py-4 text-slate-500">Limited NHS cycles</td>
                 </tr>
@@ -203,7 +203,7 @@ export const CostTransparency = () => {
                   <td className="py-4 font-bold text-slate-900 flex items-center gap-2">
                     <span>👁️</span> Advanced refractive & lens surgery
                   </td>
-                  <td className="py-4 font-black text-[#0F1340]">$20,000 – $28,000</td>
+                  <td className="py-4 font-black text-vedara-deep">$20,000 – $28,000</td>
                   <td className="py-4 text-slate-600 font-semibold">$80,000 – $150,000</td>
                   <td className="py-4 text-slate-500">8 – 12 months wait</td>
                 </tr>
@@ -217,7 +217,7 @@ export const CostTransparency = () => {
             </p>
 
             {/* Primary Action: Gold Button */}
-            <button className="shrink-0 px-8 py-3.5 rounded-xl bg-[#C9A24A] hover:bg-[#B8923D] text-[#0F1340] text-sm font-bold shadow-md flex items-center gap-2 transition-all cursor-pointer">
+            <button className="shrink-0 px-8 py-3.5 rounded-xl bg-vedara-gold hover:bg-vedara-gold-hover text-vedara-deep text-sm font-bold shadow-md flex items-center gap-2 transition-all cursor-pointer">
               <span>Get a written quote</span>
               <ArrowRight className="w-4 h-4" />
             </button>

@@ -61,9 +61,9 @@ export default function DoctorsPage() {
         </div>
 
         {/* Page Header */}
-        <div className="bg-gradient-to-br from-[#031126] via-[#06203D] to-[#0A2E50] text-white rounded-3xl p-8 sm:p-12 mb-10 shadow-xl border border-teal-500/30">
+        <div className="bg-gradient-to-br from-dark-1 via-dark-2 to-dark-3 text-white rounded-3xl p-8 sm:p-12 mb-10 shadow-xl border border-teal-500/30">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#0D9488]/20 to-[#0284C7]/20 border border-[#2ECDC5]/40 text-[#2ECDC5] text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-teal-600/20 to-sky-600/20 border border-vedara-cyan/40 text-vedara-cyan text-xs font-bold uppercase tracking-wider backdrop-blur-md">
               <Sparkles className="w-3.5 h-3.5 text-amber-300" />
               <span>Chandigarh City · Verified Senior Clinicians</span>
             </div>
@@ -85,7 +85,7 @@ export default function DoctorsPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search doctor, hospital, keyword..."
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-[#2ECDC5]"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-vedara-cyan"
             />
           </div>
 
@@ -95,7 +95,7 @@ export default function DoctorsPage() {
               <select
                 value={selectedSpecialty}
                 onChange={(e) => setSelectedSpecialty(e.target.value)}
-                className="px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-[#2ECDC5]"
+                className="px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-vedara-cyan"
               >
                 {specialties.map((s) => (
                   <option key={s} value={s}>
@@ -110,7 +110,7 @@ export default function DoctorsPage() {
               <select
                 value={selectedHospital}
                 onChange={(e) => setSelectedHospital(e.target.value)}
-                className="px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-[#2ECDC5]"
+                className="px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-vedara-cyan"
               >
                 {hospitals.map((h) => (
                   <option key={h} value={h}>
@@ -127,7 +127,7 @@ export default function DoctorsPage() {
           {filteredDoctors.map((doc) => (
             <div
               key={doc.id}
-              className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 hover:border-[#2ECDC5]/60 shadow-card hover:shadow-luxury-hover transition-all duration-300 flex flex-col justify-between group"
+              className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 hover:border-vedara-cyan/60 shadow-card hover:shadow-luxury-hover transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
                 {/* Doctor Avatar Header */}
@@ -145,7 +145,7 @@ export default function DoctorsPage() {
                     <span>{doc.rating}</span>
                   </div>
 
-                  <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-[#283593]/90 backdrop-blur-md border border-[#2ECDC5]/30 text-[#2ECDC5] text-[11px] font-bold">
+                  <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-vedara-slate/90 backdrop-blur-md border border-vedara-cyan/30 text-vedara-cyan text-[11px] font-bold">
                     {doc.experienceYears}+ Years Experience
                   </div>
                 </div>
@@ -153,10 +153,10 @@ export default function DoctorsPage() {
                 {/* Body */}
                 <div className="p-6 space-y-4">
                   <div>
-                    <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-[#3F4EB4] transition-colors">
+                    <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-vedara-blue transition-colors">
                       {language === "ar" ? doc.nameAr : doc.name}
                     </h3>
-                    <p className="text-xs font-semibold text-[#3F4EB4]">
+                    <p className="text-xs font-semibold text-vedara-blue">
                       {language === "ar" ? doc.titleAr : doc.title}
                     </p>
                   </div>
@@ -185,21 +185,21 @@ export default function DoctorsPage() {
 
               {/* Action Strip */}
               <div className="p-6 pt-0 space-y-2">
-                <div className="text-[11px] font-bold text-[#283593] bg-[#3F4EB4]/10 px-2.5 py-1 rounded-lg flex items-center gap-1.5 mb-2">
-                  <Video className="w-3 h-3 text-[#3F4EB4]" />
+                <div className="text-[11px] font-bold text-vedara-slate bg-vedara-blue/10 px-2.5 py-1 rounded-lg flex items-center gap-1.5 mb-2">
+                  <Video className="w-3 h-3 text-vedara-blue" />
                   <span>Next Video Slot: {doc.nextAvailable}</span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2">
                   <button
                     onClick={() => openDoctorModal(doc)}
-                    className="py-2.5 rounded-xl border border-slate-200 hover:border-[#3F4EB4]/40 hover:text-[#3F4EB4] text-xs font-bold text-slate-700 text-center transition-colors"
+                    className="py-2.5 rounded-xl border border-slate-200 hover:border-vedara-blue/40 hover:text-vedara-blue text-xs font-bold text-slate-700 text-center transition-colors"
                   >
                     View Bio & Slots
                   </button>
                   <button
                     onClick={() => openDoctorModal(doc)}
-                    className="py-2.5 rounded-xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white text-xs font-bold text-center shadow-md shadow-[#283593]/20 transition-all"
+                    className="py-2.5 rounded-xl bg-gradient-to-r from-teal-mid1 via-teal-mid2 to-teal-mid1 text-white text-xs font-bold text-center shadow-md shadow-vedara-slate/20 transition-all"
                   >
                     Book Video Call
                   </button>

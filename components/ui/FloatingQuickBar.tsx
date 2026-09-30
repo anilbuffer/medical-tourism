@@ -33,7 +33,7 @@ export const FloatingQuickBar = () => {
             rel="noopener noreferrer"
             className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 p-2 hover:bg-slate-50 rounded-lg transition-colors group flex-1 sm:flex-none justify-center"
           >
-            <div className="w-8 h-8 rounded-full bg-[#25D366]/10 flex items-center justify-center text-[#25D366] group-hover:bg-[#25D366] group-hover:text-white transition-colors">
+            <div className="w-8 h-8 rounded-full bg-whatsapp/10 flex items-center justify-center text-whatsapp group-hover:bg-whatsapp group-hover:text-white transition-colors">
               <MessageCircle className="w-4 h-4" />
             </div>
             <span className="text-[10px] sm:text-xs font-bold text-slate-700 whitespace-nowrap">
@@ -63,7 +63,7 @@ export const FloatingQuickBar = () => {
             href="tel:+919876543210"
             className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 p-2 hover:bg-slate-50 rounded-lg transition-colors group flex-1 sm:flex-none justify-center"
           >
-            <div className="w-8 h-8 rounded-full bg-[#3F4EB4]/10 flex items-center justify-center text-[#3F4EB4] group-hover:bg-[#3F4EB4] group-hover:text-white transition-colors">
+            <div className="w-8 h-8 rounded-full bg-vedara-blue/10 flex items-center justify-center text-vedara-blue group-hover:bg-vedara-blue group-hover:text-white transition-colors">
               <Phone className="w-4 h-4" />
             </div>
             <span className="text-[10px] sm:text-xs font-bold text-slate-700 whitespace-nowrap">

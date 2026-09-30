@@ -81,13 +81,13 @@ export const ExitIntentModal = () => {
 
         <div className="flex flex-col md:flex-row">
           {/* Left/Top Image Section */}
-          <div className="md:w-5/12 bg-[#0A2E50] relative p-8 flex flex-col justify-center items-center text-center overflow-hidden">
+          <div className="md:w-5/12 bg-dark-3 relative p-8 flex flex-col justify-center items-center text-center overflow-hidden">
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600')] opacity-20 bg-cover bg-center"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A2E50] via-[#0A2E50]/80 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-dark-3 via-dark-3/80 to-transparent"></div>
             
             <div className="relative z-10 flex flex-col items-center">
-              <div className="w-16 h-16 rounded-2xl bg-[#2ECDC5]/20 flex items-center justify-center mb-6 border border-[#2ECDC5]/40 shadow-[0_0_30px_rgba(46,205,197,0.3)]">
-                <FileText className="w-8 h-8 text-[#2ECDC5]" />
+              <div className="w-16 h-16 rounded-2xl bg-vedara-cyan/20 flex items-center justify-center mb-6 border border-vedara-cyan/40 shadow-[0_0_30px_rgba(46,205,197,0.3)]">
+                <FileText className="w-8 h-8 text-vedara-cyan" />
               </div>
               <h3 className="text-xl font-bold text-white mb-2 leading-tight">2026 Medical Travel Guide</h3>
               <p className="text-xs text-teal-100/80">Includes hospital comparison dossier & visa requirements.</p>
@@ -121,7 +121,7 @@ export const ExitIntentModal = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder={t.exitIntent.namePlaceholder}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 focus:ring-2 focus:ring-[#2ECDC5] outline-none transition-all"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 focus:ring-2 focus:ring-vedara-cyan outline-none transition-all"
                   />
                 </div>
                 <div>
@@ -134,12 +134,12 @@ export const ExitIntentModal = () => {
                     value={contact}
                     onChange={(e) => setContact(e.target.value)}
                     placeholder={t.exitIntent.contactPlaceholder}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 focus:ring-2 focus:ring-[#2ECDC5] outline-none transition-all"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 focus:ring-2 focus:ring-vedara-cyan outline-none transition-all"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full mt-2 inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-extrabold text-slate-950 bg-gradient-to-r from-[#2ECDC5] via-[#5EEAD4] to-[#2ECDC5] hover:brightness-105 shadow-lg shadow-[#2ECDC5]/20 transition-all cursor-pointer"
+                  className="w-full mt-2 inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-extrabold text-slate-950 bg-gradient-to-r from-vedara-cyan via-teal-300 to-vedara-cyan hover:brightness-105 shadow-lg shadow-vedara-cyan/20 transition-all cursor-pointer"
                 >
                   <Download className="w-4 h-4" />
                   <span>{t.exitIntent.downloadBtn}</span>

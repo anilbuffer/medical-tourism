@@ -34,10 +34,10 @@ export const BlogSection = () => {
         
         {/* Header */}
         <div className="text-center mb-12">
-          <p className="text-[#a58d34] font-bold text-xs uppercase tracking-widest mb-3">
+          <p className="text-vedara-gold-muted font-bold text-xs uppercase tracking-widest mb-3">
             OUR BLOGS
           </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F1340]">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-vedara-deep">
             Latest news & stories
           </h2>
         </div>
@@ -54,7 +54,7 @@ export const BlogSection = () => {
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              <h3 className="font-bold text-slate-900 leading-snug mb-2 group-hover:text-[#a58d34] transition-colors line-clamp-2">
+              <h3 className="font-bold text-slate-900 leading-snug mb-2 group-hover:text-vedara-gold-muted transition-colors line-clamp-2">
                 {blog.title}
               </h3>
               <p className="text-sm text-slate-500 line-clamp-2">
@@ -66,7 +66,7 @@ export const BlogSection = () => {
 
         {/* Bottom CTA - Text Link */}
         <div className="mt-12 flex justify-center">
-          <button className="inline-flex items-center gap-2 text-sm font-bold text-[#0F1340] hover:text-[#C9A24A] transition-colors group cursor-pointer">
+          <button className="inline-flex items-center gap-2 text-sm font-bold text-vedara-deep hover:text-vedara-gold transition-colors group cursor-pointer">
             <span>View all articles & news</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>

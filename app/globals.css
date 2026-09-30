@@ -4,10 +4,16 @@
 @source "..";
 
 @theme {
+  --color-vedara-deep: #0F1340;
   --color-vedara-dark: #1a2468;
   --color-vedara-slate: #283593;
   --color-vedara-midnight: #2f3ea8;
   --color-vedara-navy: #3547ba;
+
+  --color-vedara-gold: #C9A24A;
+  --color-vedara-gold-hover: #B8923D;
+  --color-vedara-gold-muted: #a58d34;
+  --color-vedara-gold-light: #E5CA76;
 
   --color-vedara-blue: #3F4EB4;
   --color-vedara-blue-light: #5062CC;
@@ -23,11 +29,41 @@
   --color-vedara-cyan: #2ECDC5;
   --color-vedara-cyan-light: #5ADBD5;
   --color-vedara-cyan-dark: #1DA89F;
+  --color-vedara-teal-mid1: #1d8983;
+  --color-vedara-teal-mid2: #1baba4;
 
   --color-vedara-cream: #F5F7FF;
   --color-vedara-platinum: #EEF0FA;
   --color-vedara-surface: #FFFFFF;
   --color-vedara-muted: #6B7DB3;
+  --color-vedara-offwhite: #f8f9fa;
+  --color-vedara-tint-blue: #f8faff;
+  --color-vedara-tint-red: #fff8f8;
+
+  --color-dark-1: #031126;
+  --color-dark-2: #06203D;
+  --color-dark-3: #0A2E50;
+  --color-dark-4: #041326;
+  --color-dark-5: #071321;
+  --color-dark-step: #1e4468;
+
+  --color-vedara-dark-1: #031126;
+  --color-vedara-dark-2: #06203D;
+  --color-vedara-dark-3: #0A2E50;
+  --color-vedara-dark-4: #041326;
+  --color-vedara-dark-5: #071321;
+  --color-vedara-dark-step: #1e4468;
+
+  --color-teal-600: #0D9488;
+  --color-teal-300: #5EEAD4;
+  --color-teal-mid1: #1d8983;
+  --color-teal-mid2: #1baba4;
+  --color-sky-600: #0284C7;
+  --color-sky-400: #38BDF8;
+  --color-whatsapp: #25D366;
+  --color-portal-green: #00A884;
+  --color-portal-green-hover: #008f70;
+  --color-portal-navy: #0E1F40;
 
   --font-sans: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
   --font-serif: var(--font-playfair), Georgia, serif;
@@ -71,12 +107,20 @@
    • Teal Accent    : #2ECDC5
    • Indigo Primary : #3F4EB4
    • Deep Navy Dark : #283593
+   • Primary Deep   : #0F1340
+   • Primary Gold   : #C9A24A
    ============================================================ */
 
 :root {
   /* Core surface */
   --bg-primary:        #F5F7FF;
   --text-primary:      #0F1340;
+
+  /* Gold CTA & Accents */
+  --accent-gold:       #C9A24A;
+  --accent-gold-hover: #B8923D;
+  --accent-gold-muted: #a58d34;
+  --accent-gold-light: #E5CA76;
 
   /* Indigo primary */
   --accent-blue:       #3F4EB4;
@@ -91,6 +135,7 @@
   /* Deep navy base */
   --color-navy:        #283593;
   --color-navy-dark:   #1a2468;
+  --color-navy-deep:   #0F1340;
 
   /* Additional App Colors */
   --color-dark-1: #031126;
@@ -98,6 +143,7 @@
   --color-dark-3: #0A2E50;
   --color-dark-4: #041326;
   --color-dark-5: #071321;
+  --color-dark-step: #1e4468;
   --color-teal-600: #0D9488;
   --color-teal-300: #5EEAD4;
   --color-teal-mid1: #1d8983;

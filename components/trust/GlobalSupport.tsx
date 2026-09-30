@@ -24,7 +24,7 @@ export const GlobalSupport = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/70 text-[#0D9488] text-xs font-bold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/70 text-teal-600 text-xs font-bold uppercase tracking-wider mb-3">
             {t.support.eyebrow}
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
@@ -43,7 +43,7 @@ export const GlobalSupport = () => {
             rel="noopener noreferrer"
             className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-teal-400 hover:shadow-lg transition-all flex items-center gap-3 group"
           >
-            <div className="w-11 h-11 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center group-hover:bg-[#2ECDC5] group-hover:text-slate-950 transition-colors">
+            <div className="w-11 h-11 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center group-hover:bg-vedara-cyan group-hover:text-slate-950 transition-colors">
               <MessageSquare className="w-5 h-5" />
             </div>
             <div>
@@ -73,7 +73,7 @@ export const GlobalSupport = () => {
             onClick={() => openChat("I want to book an exploratory video consultation.")}
             className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-teal-400 hover:shadow-lg transition-all flex items-center gap-3 group text-left rtl:text-right cursor-pointer"
           >
-            <div className="w-11 h-11 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center group-hover:bg-[#2ECDC5] group-hover:text-slate-950 transition-colors">
+            <div className="w-11 h-11 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center group-hover:bg-vedara-cyan group-hover:text-slate-950 transition-colors">
               <Video className="w-5 h-5" />
             </div>
             <div>
@@ -88,7 +88,7 @@ export const GlobalSupport = () => {
             onClick={() => openChat("I want to send my medical enquiry via email.")}
             className="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-teal-400 hover:shadow-lg transition-all flex items-center gap-3 group text-left rtl:text-right cursor-pointer"
           >
-            <div className="w-11 h-11 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center group-hover:bg-[#2ECDC5] group-hover:text-slate-950 transition-colors">
+            <div className="w-11 h-11 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center group-hover:bg-vedara-cyan group-hover:text-slate-950 transition-colors">
               <Mail className="w-5 h-5" />
             </div>
             <div>
@@ -118,7 +118,7 @@ export const GlobalSupport = () => {
                 onClick={() => setSelectedDesk(desk)}
                 className={`p-4 rounded-2xl border text-left rtl:text-right transition-all flex flex-col justify-between ${
                   selectedDesk.code === desk.code
-                    ? "bg-[#3F4EB4]/10 border-[#3F4EB4] ring-2 ring-[#3F4EB4]/20"
+                    ? "bg-vedara-blue/10 border-vedara-blue ring-2 ring-vedara-blue/20"
                     : "bg-slate-50/70 border-slate-200/80 hover:bg-slate-100"
                 }`}
               >
@@ -130,7 +130,7 @@ export const GlobalSupport = () => {
                   <div className="text-[10px] text-slate-500">{desk.city}</div>
                 </div>
 
-                <div className="pt-3 mt-2 border-t border-slate-200/80 text-[10px] font-bold text-[#3F4EB4]">
+                <div className="pt-3 mt-2 border-t border-slate-200/80 text-[10px] font-bold text-vedara-blue">
                   {desk.phone}
                 </div>
               </button>
@@ -142,7 +142,7 @@ export const GlobalSupport = () => {
             <div className="flex items-center gap-3">
               <span className="text-2xl">{selectedDesk.flag}</span>
               <div>
-                <span className="font-bold text-[#2ECDC5]">
+                <span className="font-bold text-vedara-cyan">
                   {selectedDesk.country} Coordination Officer: {selectedDesk.coordinator}
                 </span>
                 <span className="block text-[11px] text-slate-300">
@@ -153,7 +153,7 @@ export const GlobalSupport = () => {
 
             <button
               onClick={() => openChat(`Connecting with ${selectedDesk.country} desk (${selectedDesk.coordinator})`)}
-              className="px-5 py-2.5 bg-[#2ECDC5] hover:bg-[#283593] hover:text-white text-slate-950 font-extrabold rounded-xl shrink-0 transition-colors shadow-md"
+              className="px-5 py-2.5 bg-vedara-cyan hover:bg-vedara-slate hover:text-white text-slate-950 font-extrabold rounded-xl shrink-0 transition-colors shadow-md"
             >
               Connect to {selectedDesk.code} Desk
             </button>

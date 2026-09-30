@@ -11,11 +11,20 @@ const config: Config = {
     extend: {
       colors: {
         vedara: {
-          // Deep Navy — darkest base (#283593)
+          // Deep Navy — darkest base / headings (#0F1340)
+          deep: "#0F1340",
           dark: "#1a2468",
           slate: "#283593",
           midnight: "#2f3ea8",
           navy: "#3547ba",
+
+          // Gold CTA & Accents
+          gold: {
+            DEFAULT: "#C9A24A",
+            hover: "#B8923D",
+            muted: "#a58d34",
+            light: "#E5CA76",
+          },
 
           // Indigo Primary — mid tone (#3F4EB4)
           blue: {
@@ -36,12 +45,31 @@ const config: Config = {
             DEFAULT: "#2ECDC5",
             light: "#5ADBD5",
             dark: "#1DA89F",
+            mid1: "#1d8983",
+            mid2: "#1baba4",
           },
 
           cream: "#F5F7FF",
           platinum: "#EEF0FA",
           surface: "#FFFFFF",
           muted: "#6B7DB3",
+          offwhite: "#f8f9fa",
+          "tint-blue": "#f8faff",
+          "tint-red": "#fff8f8",
+        },
+        dark: {
+          1: "#031126",
+          2: "#06203D",
+          3: "#0A2E50",
+          4: "#041326",
+          5: "#071321",
+          step: "#1e4468",
+        },
+        whatsapp: "#25D366",
+        portal: {
+          green: "#00A884",
+          "green-hover": "#008f70",
+          navy: "#0E1F40",
         },
       },
       fontFamily: {

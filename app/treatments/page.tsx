@@ -54,9 +54,9 @@ export default function TreatmentsPage() {
         </div>
 
         {/* Page Header */}
-        <div className="bg-gradient-to-br from-[#031126] via-[#06203D] to-[#0A2E50] text-white rounded-3xl p-8 sm:p-12 mb-10 shadow-xl border border-teal-500/30">
+        <div className="bg-gradient-to-br from-dark-1 via-dark-2 to-dark-3 text-white rounded-3xl p-8 sm:p-12 mb-10 shadow-xl border border-teal-500/30">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#0D9488]/20 to-[#0284C7]/20 border border-[#2ECDC5]/40 text-[#2ECDC5] text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-teal-600/20 to-sky-600/20 border border-vedara-cyan/40 text-vedara-cyan text-xs font-bold uppercase tracking-wider backdrop-blur-md">
               <Sparkles className="w-3.5 h-3.5 text-amber-300" />
               <span>Verified Hospital Pricing Guide</span>
             </div>
@@ -115,7 +115,7 @@ export default function TreatmentsPage() {
                 {/* Left: Info */}
                 <div className="lg:col-span-6 space-y-4">
                   <div className="flex items-center gap-2">
-                    <span className="px-3 py-1 rounded-full bg-[#3F4EB4]/10 text-[#3F4EB4] text-xs font-bold">
+                    <span className="px-3 py-1 rounded-full bg-vedara-blue/10 text-vedara-blue text-xs font-bold">
                       {language === "ar" ? item.specialtyAr : item.specialty}
                     </span>
                     {item.popular && (
@@ -148,7 +148,7 @@ export default function TreatmentsPage() {
                     <ul className="space-y-1.5">
                       {(language === "ar" ? item.inclusionsAr : item.inclusions).slice(0, 3).map((inc, i) => (
                         <li key={i} className="flex items-start gap-2 text-xs text-slate-600">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#2ECDC5] shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-vedara-cyan shrink-0 mt-0.5" />
                           <span>{inc}</span>
                         </li>
                       ))}
@@ -160,10 +160,10 @@ export default function TreatmentsPage() {
                 <div className="lg:col-span-6 bg-slate-900 text-white rounded-2xl p-6 border border-slate-800 space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="text-[11px] font-bold text-[#2ECDC5] uppercase tracking-wider">
+                      <div className="text-[11px] font-bold text-vedara-cyan uppercase tracking-wider">
                         Indicative India Package
                       </div>
-                      <div className="text-2xl sm:text-3xl font-extrabold text-[#2ECDC5] font-sans mt-0.5">
+                      <div className="text-2xl sm:text-3xl font-extrabold text-vedara-cyan font-sans mt-0.5">
                         {formatPriceRange(item.indiaCostUsd.min, item.indiaCostUsd.max)}
                       </div>
                     </div>
@@ -191,7 +191,7 @@ export default function TreatmentsPage() {
 
                   <button
                     onClick={() => openIntake(item.name)}
-                    className="w-full py-3.5  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-xs rounded-xl shadow-lg shadow-[#283593]/20 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-3.5 bg-gradient-to-r from-teal-mid1 via-teal-mid2 to-teal-mid1 text-white font-extrabold text-xs rounded-xl shadow-lg shadow-vedara-slate/20 transition-all flex items-center justify-center gap-2"
                   >
                     <span>Request Exact Hospital Quotation</span>
                     <ArrowRight className="w-4 h-4 rtl:rotate-180" />

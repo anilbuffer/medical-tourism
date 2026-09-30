@@ -78,7 +78,7 @@ export const CostFlightEstimator = () => {
                   <select
                     value={selectedTreatmentId}
                     onChange={(e) => setSelectedTreatmentId(e.target.value)}
-                    className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3.5 text-sm text-slate-900 font-semibold focus:ring-2 focus:ring-[#2ECDC5] outline-none shadow-xs cursor-pointer"
+                    className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3.5 text-sm text-slate-900 font-semibold focus:ring-2 focus:ring-vedara-cyan outline-none shadow-xs cursor-pointer"
                   >
                     {TREATMENT_COSTS.map((tItem) => (
                       <option key={tItem.id} value={tItem.id}>
@@ -101,7 +101,7 @@ export const CostFlightEstimator = () => {
                         setCountry(code);
                       }
                     }}
-                    className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3.5 text-sm text-slate-900 font-semibold focus:ring-2 focus:ring-[#2ECDC5] outline-none shadow-xs cursor-pointer"
+                    className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3.5 text-sm text-slate-900 font-semibold focus:ring-2 focus:ring-vedara-cyan outline-none shadow-xs cursor-pointer"
                   >
                     <option value="GB">United Kingdom</option>
                     <option value="CA">Canada</option>
@@ -116,17 +116,17 @@ export const CostFlightEstimator = () => {
               </div>
             </div>
 
-            <div className="bg-[#0A2E50] border border-[#3F4EB4]/30 rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden shadow-xl shadow-[#0A2E50]/20">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#2ECDC5]/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div className="bg-dark-3 border border-vedara-blue/30 rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden shadow-xl shadow-dark-3/20">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-vedara-cyan/10 rounded-full blur-2xl pointer-events-none"></div>
               <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2 relative z-10">
-                <span className="w-6 h-6 rounded-full bg-[#2ECDC5] text-slate-900 flex items-center justify-center text-xs">3</span>
+                <span className="w-6 h-6 rounded-full bg-vedara-cyan text-slate-900 flex items-center justify-center text-xs">3</span>
                 {t.estimatorWidget.step3}
               </h3>
               
               {isSubmitted ? (
                 <div className="flex flex-col items-center justify-center py-6 text-center animate-in fade-in zoom-in duration-300">
-                  <div className="w-12 h-12 rounded-full bg-[#2ECDC5]/20 flex items-center justify-center mb-3">
-                    <CheckCircle2 className="w-6 h-6 text-[#2ECDC5]" />
+                  <div className="w-12 h-12 rounded-full bg-vedara-cyan/20 flex items-center justify-center mb-3">
+                    <CheckCircle2 className="w-6 h-6 text-vedara-cyan" />
                   </div>
                   <p className="font-bold text-teal-100">{t.estimatorWidget.successMessage}</p>
                 </div>
@@ -142,12 +142,12 @@ export const CostFlightEstimator = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder={t.estimatorWidget.emailPlaceholder}
-                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-400 focus:ring-2 focus:ring-[#2ECDC5] outline-none transition-all"
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-400 focus:ring-2 focus:ring-vedara-cyan outline-none transition-all"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-extrabold text-slate-950 bg-[#2ECDC5] hover:bg-[#5EEAD4] shadow-lg shadow-[#2ECDC5]/20 transition-all cursor-pointer"
+                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-extrabold text-slate-950 bg-vedara-cyan hover:bg-teal-300 shadow-lg shadow-vedara-cyan/20 transition-all cursor-pointer"
                   >
                     <span>{t.estimatorWidget.submitBtn}</span>
                     <ArrowRight className="w-4 h-4 rtl:rotate-180" />
@@ -192,7 +192,7 @@ export const CostFlightEstimator = () => {
               </div>
 
               {/* Savings Highlight */}
-              <div className="mb-8 flex items-center gap-4 bg-gradient-to-r from-teal-500 to-[#0A2E50] p-4 rounded-2xl text-white shadow-md">
+              <div className="mb-8 flex items-center gap-4 bg-gradient-to-r from-teal-500 to-dark-3 p-4 rounded-2xl text-white shadow-md">
                 <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center shrink-0">
                   <Wallet className="w-6 h-6 text-white" />
                 </div>

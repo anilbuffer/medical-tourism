@@ -32,7 +32,7 @@ export const FaqSection = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/70 text-[#0D9488] text-xs font-bold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/70 text-teal-600 text-xs font-bold uppercase tracking-wider mb-3">
             {t.faq.eyebrow}
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
@@ -50,7 +50,7 @@ export const FaqSection = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t.faq.searchPlaceholder}
-              className="w-full pl-12 pr-4 rtl:pl-4 rtl:pr-12 py-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#2ECDC5] focus:bg-white transition-all shadow-sm"
+              className="w-full pl-12 pr-4 rtl:pl-4 rtl:pr-12 py-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-vedara-cyan focus:bg-white transition-all shadow-sm"
             />
           </div>
         </div>
@@ -63,7 +63,7 @@ export const FaqSection = () => {
               <div
                 key={faq.id}
                 className={`rounded-2xl border transition-all duration-200 overflow-hidden ${isOpen
-                  ? "bg-slate-50/80 border-[#2ECDC5] shadow-md ring-1 ring-[#2ECDC5]/20"
+                  ? "bg-slate-50/80 border-vedara-cyan shadow-md ring-1 ring-vedara-cyan/20"
                   : "bg-white border-slate-200/80 hover:border-teal-300"
                   }`}
               >
@@ -100,7 +100,7 @@ export const FaqSection = () => {
           </div>
           <button
             onClick={() => openChat("I have a question about planning my medical travel.")}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-[#2ECDC5] via-[#5EEAD4] to-[#2ECDC5] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-sm shrink-0 cursor-pointer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-vedara-cyan via-teal-300 to-vedara-cyan hover:scale-[1.02] active:scale-[0.98] transition-all shadow-sm shrink-0 cursor-pointer"
           >
             <MessageSquare className="w-4 h-4" />
             <span>Chat with Care Coordinator</span>

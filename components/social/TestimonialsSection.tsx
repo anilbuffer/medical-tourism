@@ -39,15 +39,15 @@ export const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-16 bg-[#f8f9fa]">
+    <section className="py-12 sm:py-16 bg-vedara-offwhite">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-[#a58d34] font-bold text-xs uppercase tracking-widest mb-3">
+          <p className="text-vedara-gold-muted font-bold text-xs uppercase tracking-widest mb-3">
             TESTIMONIALS
           </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F1340]">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-vedara-deep">
             Patient experiences from across the world
           </h2>
         </div>
@@ -98,7 +98,7 @@ export const TestimonialsSection = () => {
 
         {/* Bottom CTA - Text Link */}
         <div className="mt-12 flex justify-center">
-          <button className="inline-flex items-center gap-2 text-sm font-bold text-[#0F1340] hover:text-[#C9A24A] transition-colors group cursor-pointer">
+          <button className="inline-flex items-center gap-2 text-sm font-bold text-vedara-deep hover:text-vedara-gold transition-colors group cursor-pointer">
             <span>View more stories</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
