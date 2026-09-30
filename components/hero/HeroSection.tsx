@@ -18,7 +18,6 @@ export const HeroSection = () => {
           alt="Personalized Medical Travel and Quaternary Care in India"
           fill
           priority
-          quality={95}
           className="object-cover object-center"
         />
         {/* Subtle black gradient overlay for text & navbar readability */}
