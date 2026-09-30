@@ -4,6 +4,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useCare } from "@/context/CareContext";
 import { LanguageCountryPicker } from "@/components/ui/LanguageCountryPicker";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Globe,
   Sparkles,
@@ -202,9 +204,9 @@ export const Navbar = () => {
                                 {item.title}
                               </span>
                               {item.badge && (
-                                <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-teal-950/80 text-vedara-cyan border border-vedara-cyan/30 whitespace-nowrap">
+                                <Badge variant="teal" size="sm" className="text-[9px] font-bold px-1.5 py-0.5">
                                   {item.badge}
-                                </span>
+                                </Badge>
                               )}
                             </div>
                             <p className="text-[11px] text-slate-300 line-clamp-1 group-hover:text-slate-200">
@@ -222,14 +224,16 @@ export const Navbar = () => {
 
           {/* 03. Right Action Utilities */}
           <div className="hidden lg:flex items-center gap-4 shrink-0">
-            {/* Primary Get Free Quote CTA replaced by Book a call */}
-            <button
+            {/* Primary CTA using Shadcn Button */}
+            <Button
+              variant="gold"
+              size="default"
               onClick={() => openIntake()}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-vedara-deep bg-vedara-gold hover:bg-vedara-gold-hover shadow-md transition-all whitespace-nowrap cursor-pointer"
+              className="gap-2 px-5 py-2.5 rounded-xl text-sm font-bold shadow-md cursor-pointer whitespace-nowrap"
             >
               <PhoneCall className="w-4 h-4" />
               <span>Book a call</span>
-            </button>
+            </Button>
           </div>
 
           {/* 04. Mobile Navigation Toggle */}

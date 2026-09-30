@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ArrowRight, Info, ShieldCheck } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export const CostTransparency = () => {
   return (
@@ -40,12 +41,12 @@ export const CostTransparency = () => {
                 <h3 className="font-bold text-slate-900">Select treatment category</h3>
               </div>
               <div className="flex gap-2 mb-4 pl-9">
-                <button className="flex-1 py-2.5 rounded-xl bg-vedara-gold text-vedara-deep text-sm font-bold shadow-sm transition-all cursor-pointer">
+                <Button variant="gold" size="default" className="flex-1">
                   Serious
-                </button>
-                <button className="flex-1 py-2.5 rounded-xl bg-white text-slate-600 text-sm font-semibold border border-slate-200 hover:bg-slate-100 transition-colors cursor-pointer">
+                </Button>
+                <Button variant="outline" size="default" className="flex-1 bg-white text-slate-600 hover:bg-slate-100 border-slate-200">
                   Elective
-                </button>
+                </Button>
               </div>
               <div className="pl-9">
                 <select className="w-full p-3.5 rounded-xl border border-slate-200 bg-white text-slate-700 text-sm font-medium outline-none focus:border-vedara-gold">
@@ -222,10 +223,14 @@ export const CostTransparency = () => {
             </p>
 
             {/* Primary Action: Gold Button */}
-            <button className="shrink-0 px-8 py-3.5 rounded-xl bg-vedara-gold hover:bg-vedara-gold-hover text-vedara-deep text-sm font-bold shadow-md flex items-center gap-2 transition-all cursor-pointer">
+            <Button
+              variant="gold"
+              size="lg"
+              className="shrink-0 px-8 py-3.5 rounded-xl text-sm font-bold shadow-md flex items-center gap-2 cursor-pointer"
+            >
               <span>Get a written quote</span>
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Button>
           </div>
         </div>
 

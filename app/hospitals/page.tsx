@@ -4,23 +4,25 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useCare } from "@/context/CareContext";
-import { HOSPITALS, Hospital } from "@/data/mockData";
+import { HOSPITALS } from "@/data/mockData";
 import {
   Building2,
   MapPin,
   ShieldCheck,
   Bed,
   Users,
-  Plane,
   Sparkles,
   ArrowLeft,
   ArrowRight,
   Search,
-  Coffee,
 } from "lucide-react";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
 
 export default function HospitalsPage() {
-  const { t, language, openIntake } = useCare();
+  const { language, openIntake } = useCare();
   const [selectedHub, setSelectedHub] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -52,15 +54,19 @@ export default function HospitalsPage() {
         {/* Page Header */}
         <div className="bg-gradient-to-br from-dark-1 via-dark-2 to-dark-3 text-white rounded-3xl p-8 sm:p-12 mb-10 shadow-xl border border-teal-500/30">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-teal-600/20 to-sky-600/20 border border-vedara-cyan/40 text-vedara-cyan text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+            <Badge
+              variant="teal"
+              size="lg"
+              className="gap-2 px-3 py-1 font-bold uppercase tracking-wider backdrop-blur-md"
+            >
               <Sparkles className="w-3.5 h-3.5 text-amber-300" />
               <span>Chandigarh City · Multi-Class Hospital Network</span>
-            </div>
+            </Badge>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white font-sans">
               Multi-Class Hospitals & Super-Specialty Centers in Chandigarh
             </h1>
             <p className="text-slate-200/90 text-sm sm:text-base leading-relaxed">
-              Explore Chandigarh City's premier JCI & NABH accredited hospitals, featuring world-class robotic surgical suites, hybrid cath labs, cancer radiotherapy, and dedicated international patient care.
+              Explore Chandigarh City&apos;s premier JCI & NABH accredited hospitals, featuring world-class robotic surgical suites, hybrid cath labs, cancer radiotherapy, and dedicated international patient care.
             </p>
           </div>
         </div>
@@ -68,13 +74,13 @@ export default function HospitalsPage() {
         {/* Controls */}
         <div className="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200/80 shadow-sm mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="relative w-full md:w-80">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-            <input
+            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5 z-10" />
+            <Input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search Chandigarh hospitals or specialties..."
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-vedara-cyan"
+              className="pl-10 h-11 rounded-xl"
             />
           </div>
 
@@ -83,7 +89,7 @@ export default function HospitalsPage() {
             <select
               value={selectedHub}
               onChange={(e) => setSelectedHub(e.target.value)}
-              className="px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-vedara-cyan"
+              className="px-3 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-vedara-cyan outline-none"
             >
               {hubs.map((c) => (
                 <option key={c} value={c}>
@@ -94,10 +100,10 @@ export default function HospitalsPage() {
           </div>
         </div>
 
-        {/* Hospitals Grid */}
+        {/* Hospitals Grid (Shadcn Card System) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredHospitals.map((hosp) => (
-            <div
+            <Card
               key={hosp.id}
               className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 hover:border-vedara-cyan/60 shadow-card hover:shadow-luxury-hover transition-all duration-300 flex flex-col justify-between group"
             >
@@ -113,13 +119,15 @@ export default function HospitalsPage() {
 
                   <div className="absolute top-4 left-4 flex flex-wrap gap-1.5">
                     {hosp.accreditations.map((acc, i) => (
-                      <span
+                      <Badge
                         key={i}
-                        className="px-2.5 py-1 rounded-full bg-slate-900/85 backdrop-blur-md border border-white/20 text-vedara-cyan text-[10px] font-bold flex items-center gap-1"
+                        variant="teal"
+                        size="sm"
+                        className="gap-1 bg-slate-900/85 backdrop-blur-md border-white/20 text-vedara-cyan text-[10px] font-bold"
                       >
                         <ShieldCheck className="w-3 h-3 text-vedara-cyan" />
                         <span>{acc}</span>
-                      </span>
+                      </Badge>
                     ))}
                   </div>
 
@@ -129,7 +137,7 @@ export default function HospitalsPage() {
                   </div>
                 </div>
 
-                <div className="p-6 space-y-4">
+                <CardContent className="p-6 space-y-4">
                   <h3 className="text-2xl font-extrabold text-slate-900 group-hover:text-vedara-blue transition-colors">
                     {language === "ar" ? hosp.nameAr : hosp.name}
                   </h3>
@@ -140,19 +148,21 @@ export default function HospitalsPage() {
 
                   <div className="flex flex-wrap gap-1.5">
                     {hosp.specialties.map((spec, i) => (
-                      <span
+                      <Badge
                         key={i}
-                        className="px-2.5 py-1 rounded-lg bg-vedara-blue/10 text-vedara-blue text-xs font-semibold"
+                        variant="navy"
+                        size="default"
+                        className="rounded-lg text-xs font-semibold px-2.5 py-1"
                       >
                         {spec}
-                      </span>
+                      </Badge>
                     ))}
                   </div>
-                </div>
+                </CardContent>
               </div>
 
-              <div className="p-6 pt-0 space-y-3">
-                <div className="grid grid-cols-2 gap-2 text-xs text-slate-600 bg-slate-50 p-3 rounded-2xl border border-slate-100">
+              <CardFooter className="p-6 pt-0 flex flex-col space-y-3 mt-auto">
+                <div className="grid grid-cols-2 gap-2 text-xs text-slate-600 bg-slate-50 p-3 rounded-2xl border border-slate-100 w-full">
                   <div className="flex items-center gap-1.5">
                     <Bed className="w-4 h-4 text-slate-400" />
                     <span>{hosp.bedsCount} Inpatient Beds</span>
@@ -163,15 +173,17 @@ export default function HospitalsPage() {
                   </div>
                 </div>
 
-                <button
+                <Button
+                  variant="cyan"
+                  size="lg"
                   onClick={() => openIntake(hosp.name)}
-                  className="w-full py-3.5 rounded-xl bg-gradient-to-r from-teal-mid1 via-teal-mid2 to-teal-mid1 text-white font-bold text-xs shadow-md shadow-vedara-slate/20 transition-all flex items-center justify-center gap-2"
+                  className="w-full text-xs font-bold gap-2 rounded-xl"
                 >
                   <span>Coordinate Admission at {hosp.name}</span>
                   <ArrowRight className="w-4 h-4 rtl:rotate-180" />
-                </button>
-              </div>
-            </div>
+                </Button>
+              </CardFooter>
+            </Card>
           ))}
         </div>
       </div>

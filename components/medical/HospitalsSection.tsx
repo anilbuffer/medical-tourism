@@ -2,7 +2,10 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { MapPin, Star, ArrowRight } from "lucide-react";
+import { Card, CardContent, CardFooter, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export const HospitalsSection = () => {
   const hospitals = [
@@ -52,10 +55,13 @@ export const HospitalsSection = () => {
           </p>
         </div>
 
-        {/* Hospital Cards */}
+        {/* Hospital Cards (Shadcn Card System) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {hospitals.map((hosp, idx) => (
-            <div key={idx} className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 flex flex-col group">
+            <Card
+              key={idx}
+              className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 flex flex-col group hover:shadow-xl transition-all duration-300"
+            >
               {/* Unified Photographic Rule: Interiors - Wards & Patient Suites with identical 16/10 aspect ratio */}
               <div className="relative w-full aspect-[16/10] overflow-hidden bg-slate-100">
                 <Image
@@ -67,17 +73,17 @@ export const HospitalsSection = () => {
                 />
               </div>
               
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="font-bold text-lg text-slate-900 leading-tight mb-2 h-12">
+              <CardContent className="p-6 flex flex-col flex-1 pb-4">
+                <CardTitle className="font-bold text-lg text-slate-900 leading-tight mb-2 h-12">
                   {hosp.name}
-                </h3>
+                </CardTitle>
                 
                 <div className="flex items-center gap-1.5 text-xs text-slate-500 mb-3">
-                  <MapPin className="w-3.5 h-3.5" />
+                  <MapPin className="w-3.5 h-3.5 text-vedara-cyan" />
                   <span>{hosp.location}</span>
                 </div>
                 
-                <div className="flex items-center gap-1.5 mb-6">
+                <div className="flex items-center gap-1.5 mb-2">
                   <div className="flex text-vedara-gold">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-3.5 h-3.5 fill-current" />
@@ -85,25 +91,34 @@ export const HospitalsSection = () => {
                   </div>
                   <span className="text-xs font-semibold text-slate-500">{hosp.rating}</span>
                 </div>
+              </CardContent>
 
-                <div className="mt-auto">
-                  {/* Secondary Action: Outlined Navy */}
-                  <button className="w-full py-2.5 rounded-xl border border-vedara-deep text-vedara-deep hover:bg-vedara-deep hover:text-white text-xs font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer">
-                    <span>View Profile</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-            </div>
+              <CardFooter className="p-6 pt-0 mt-auto">
+                <Button
+                  variant="outlineNavy"
+                  size="sm"
+                  className="w-full text-xs font-bold gap-1.5 py-2.5 rounded-xl cursor-pointer"
+                  render={<Link href="/hospitals" />}
+                >
+                  <span>View Profile</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Button>
+              </CardFooter>
+            </Card>
           ))}
         </div>
 
-        {/* Bottom CTA - Secondary Action: Outlined Navy */}
+        {/* Bottom CTA - Shadcn Button */}
         <div className="mt-12 flex justify-end">
-          <button className="px-6 py-3 rounded-xl border-2 border-vedara-deep text-vedara-deep hover:bg-vedara-deep hover:text-white text-sm font-bold shadow-xs flex items-center gap-2 transition-all cursor-pointer">
+          <Button
+            variant="outlineNavy"
+            size="lg"
+            className="border-2 font-bold gap-2 text-sm shadow-xs rounded-xl cursor-pointer"
+            render={<Link href="/hospitals" />}
+          >
             <span>See the hospitals</span>
             <ArrowRight className="w-4 h-4" />
-          </button>
+          </Button>
         </div>
 
       </div>

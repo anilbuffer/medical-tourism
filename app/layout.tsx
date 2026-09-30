@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
+import { Plus_Jakarta_Sans, Playfair_Display, Geist } from "next/font/google";
 import "./globals.css";
 import { CareProvider } from "@/context/CareContext";
 import { AppShell } from "@/components/layout/AppShell";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -46,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${plusJakarta.variable} ${playfair.variable}`}>
+    <html lang="en" className={cn(plusJakarta.variable, playfair.variable, "font-sans", geist.variable)}>
       <body className="min-h-screen flex flex-col justify-between font-sans antialiased">
         <CareProvider>
           <AppShell>{children}</AppShell>
