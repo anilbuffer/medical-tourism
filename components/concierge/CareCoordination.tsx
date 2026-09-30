@@ -72,35 +72,38 @@ export const CareCoordination = () => {
           ))}
         </div>
 
-        {/* Content Section */}
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-10">
-            <p className="text-slate-400 font-bold text-xs uppercase tracking-widest mb-2">
+        {/* Content Section - Full Container Width matching max-w-7xl */}
+        <div className="w-full">
+          <div className="mb-10 text-center sm:text-left">
+            <p className="text-[#a58d34] font-bold text-xs uppercase tracking-widest mb-2">
               AROUND THE TREATMENT
             </p>
-            <h3 className="text-2xl font-bold text-slate-900 mb-3">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0F1340] mb-3">
               The same trip, arranged two ways.
             </h3>
-            <p className="text-slate-600 text-sm">
+            <p className="text-slate-600 text-sm sm:text-base max-w-3xl">
               You can organise treatment in India yourself — plenty of people do. This is what each part looks like either way.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             
             {/* Left Column: DIY */}
-            <div className="bg-[#fff5f5] rounded-3xl p-6 sm:p-8 border border-[#ffebee]">
+            <div className="bg-[#fff8f8] rounded-3xl p-6 sm:p-8 border border-red-100">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-500">
+                <div className="w-10 h-10 rounded-full bg-red-100/80 flex items-center justify-center text-red-500">
                   <XCircle className="w-5 h-5" />
                 </div>
-                <h4 className="font-bold text-slate-900 text-lg">Arranging it yourself</h4>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-lg">Arranging it yourself</h4>
+                  <p className="text-xs text-slate-500">Independent coordination</p>
+                </div>
               </div>
               
-              <div className="space-y-6">
+              <div className="space-y-5">
                 {comparison.map((item, idx) => (
-                  <div key={idx} className="bg-white rounded-2xl p-4 shadow-sm border border-red-50 relative">
-                    <div className="absolute -left-2 -top-2 w-5 h-5 rounded-full bg-red-100 flex items-center justify-center text-red-500 font-bold text-[10px]">
+                  <div key={idx} className="bg-white rounded-2xl p-4.5 shadow-xs border border-red-100/60 relative">
+                    <div className="absolute -left-2.5 -top-2.5 w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 font-bold text-[10px] border border-slate-200">
                       {idx + 1}
                     </div>
                     <p className="text-slate-600 text-sm leading-relaxed">{item.bad}</p>
@@ -109,22 +112,25 @@ export const CareCoordination = () => {
               </div>
             </div>
 
-            {/* Right Column: With Us */}
-            <div className="bg-[#f0fdf4] rounded-3xl p-6 sm:p-8 border border-[#dcfce7]">
+            {/* Right Column: With Us - Unified Palette (No Green Accents) */}
+            <div className="bg-[#f8faff] rounded-3xl p-6 sm:p-8 border border-[#0F1340]/10 shadow-sm">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                <div className="w-10 h-10 rounded-full bg-[#0F1340] flex items-center justify-center text-[#C9A24A]">
                   <CheckCircle2 className="w-5 h-5" />
                 </div>
-                <h4 className="font-bold text-slate-900 text-lg">With us</h4>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-lg">With us</h4>
+                  <p className="text-xs text-[#0F1340]/70 font-medium">Personally coordinated care</p>
+                </div>
               </div>
               
-              <div className="space-y-6">
+              <div className="space-y-5">
                 {comparison.map((item, idx) => (
-                  <div key={idx} className="bg-white rounded-2xl p-4 shadow-sm border border-green-50 relative">
-                    <div className="absolute -left-2 -top-2 w-5 h-5 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold text-[10px]">
+                  <div key={idx} className="bg-white rounded-2xl p-4.5 shadow-xs border border-slate-200/80 relative">
+                    <div className="absolute -left-2.5 -top-2.5 w-5 h-5 rounded-full bg-[#0F1340] flex items-center justify-center text-[#C9A24A] font-bold text-[10px]">
                       {idx + 1}
                     </div>
-                    <p className="text-slate-700 font-medium text-sm leading-relaxed">{item.good}</p>
+                    <p className="text-slate-800 font-medium text-sm leading-relaxed">{item.good}</p>
                   </div>
                 ))}
               </div>

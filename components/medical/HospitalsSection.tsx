@@ -10,25 +10,25 @@ export const HospitalsSection = () => {
       name: "MAX Super Speciality Hospital",
       location: "Sector 8C, Chandigarh",
       rating: "4.9 (1,240)",
-      image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&q=80",
+      image: "https://images.unsplash.com/photo-1512678080530-7760d81faba6?auto=format&fit=crop&q=80&w=800",
     },
     {
       name: "Fortis Hospital Mohali",
       location: "Sector 8C, Chandigarh",
       rating: "4.9 (1,240)",
-      image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80",
+      image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&q=80&w=800",
     },
     {
       name: "Healing Super Specialty Hospital",
       location: "Sector 8C, Chandigarh",
       rating: "4.9 (1,240)",
-      image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80",
+      image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800",
     },
     {
       name: "Sangam Netralaya",
       location: "Sector 8C, Chandigarh",
       rating: "4.9 (1,240)",
-      image: "https://images.unsplash.com/photo-1538108149393-fbbd81893907?auto=format&fit=crop&q=80",
+      image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800",
     },
   ];
 
@@ -56,12 +56,14 @@ export const HospitalsSection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {hospitals.map((hosp, idx) => (
             <div key={idx} className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 flex flex-col group">
-              <div className="relative h-48 w-full overflow-hidden bg-slate-100">
+              {/* Unified Photographic Rule: Interiors - Wards & Patient Suites with identical 16/10 aspect ratio */}
+              <div className="relative w-full aspect-[16/10] overflow-hidden bg-slate-100">
                 <Image
                   src={hosp.image}
                   alt={hosp.name}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
               </div>
               
@@ -76,7 +78,7 @@ export const HospitalsSection = () => {
                 </div>
                 
                 <div className="flex items-center gap-1.5 mb-6">
-                  <div className="flex text-[#ffc107]">
+                  <div className="flex text-[#C9A24A]">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-3.5 h-3.5 fill-current" />
                     ))}
@@ -85,7 +87,8 @@ export const HospitalsSection = () => {
                 </div>
 
                 <div className="mt-auto">
-                  <button className="w-full py-2.5 rounded-xl bg-[#031126] hover:bg-[#06203D] text-white text-xs font-bold transition-colors flex items-center justify-center gap-1">
+                  {/* Secondary Action: Outlined Navy */}
+                  <button className="w-full py-2.5 rounded-xl border border-[#0F1340] text-[#0F1340] hover:bg-[#0F1340] hover:text-white text-xs font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer">
                     <span>View Profile</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
@@ -95,9 +98,9 @@ export const HospitalsSection = () => {
           ))}
         </div>
 
-        {/* Bottom CTA */}
+        {/* Bottom CTA - Secondary Action: Outlined Navy */}
         <div className="mt-12 flex justify-end">
-          <button className="px-6 py-3 rounded-xl bg-[#ffeb3b] hover:bg-[#fdd835] text-slate-900 text-sm font-bold shadow-md flex items-center gap-2 transition-colors">
+          <button className="px-6 py-3 rounded-xl border-2 border-[#0F1340] text-[#0F1340] hover:bg-[#0F1340] hover:text-white text-sm font-bold shadow-xs flex items-center gap-2 transition-all cursor-pointer">
             <span>See the hospitals</span>
             <ArrowRight className="w-4 h-4" />
           </button>

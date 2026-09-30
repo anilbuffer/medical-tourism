@@ -64,11 +64,11 @@ export const BlogSection = () => {
           ))}
         </div>
 
-        {/* Bottom CTA */}
+        {/* Bottom CTA - Text Link */}
         <div className="mt-12 flex justify-center">
-          <button className="px-6 py-3 rounded-xl bg-[#e5ca76] hover:bg-[#d6b754] text-slate-900 text-sm font-bold shadow-md flex items-center gap-2 transition-colors">
-            <span>View more</span>
-            <ArrowRight className="w-4 h-4" />
+          <button className="inline-flex items-center gap-2 text-sm font-bold text-[#0F1340] hover:text-[#C9A24A] transition-colors group cursor-pointer">
+            <span>View all articles & news</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 

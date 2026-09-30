@@ -6,7 +6,7 @@ import { Award, Building2, Stethoscope, ShieldCheck } from "lucide-react";
 export const TrustStrip = () => {
   return (
     <section className="bg-[#0A2E50] py-16 flex items-center justify-center">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* The White Box representing the Trust Banner */}
         <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-8 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
           

@@ -219,7 +219,7 @@ export const Navbar = () => {
             {/* Primary Get Free Quote CTA replaced by Book a call */}
             <button
               onClick={() => openIntake()}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-slate-900 bg-[#ffc107] hover:bg-[#ffb300] shadow-md transition-all whitespace-nowrap cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-[#0F1340] bg-[#C9A24A] hover:bg-[#B8923D] shadow-md transition-all whitespace-nowrap cursor-pointer"
             >
               <PhoneCall className="w-4 h-4" />
               <span>Book a call</span>

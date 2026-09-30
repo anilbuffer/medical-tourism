@@ -134,7 +134,7 @@ export const ConnectSection = () => {
                 </label>
               </div>
 
-              <button type="button" className="w-full mt-6 px-6 py-4 rounded-xl bg-[#031126] hover:bg-[#06203D] text-white text-sm font-bold shadow-md flex items-center justify-center gap-2 transition-colors">
+              <button type="button" className="w-full mt-6 px-6 py-4 rounded-xl bg-[#C9A24A] hover:bg-[#B8923D] text-[#0F1340] text-sm font-bold shadow-lg flex items-center justify-center gap-2 transition-all cursor-pointer">
                 <span>Send reports</span>
                 <ArrowRight className="w-4 h-4" />
               </button>

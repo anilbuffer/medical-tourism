@@ -43,7 +43,7 @@ export const HeroSection = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8">
             <button
               onClick={() => openIntake()}
-              className="w-full sm:w-auto px-8 py-3.5 rounded-xl text-sm sm:text-base font-bold text-white bg-[#031126] hover:bg-[#06203D] shadow-lg transition-all"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-xl text-sm sm:text-base font-bold text-[#0F1340] bg-[#C9A24A] hover:bg-[#B8923D] shadow-lg transition-all cursor-pointer"
             >
               Send us the reports
             </button>

@@ -44,7 +44,7 @@ export const TestimonialsSection = () => {
         
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-[#3f51b5] font-bold text-xs uppercase tracking-widest mb-3">
+          <p className="text-[#a58d34] font-bold text-xs uppercase tracking-widest mb-3">
             TESTIMONIALS
           </p>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F1340]">
@@ -96,11 +96,11 @@ export const TestimonialsSection = () => {
           ))}
         </div>
 
-        {/* Bottom CTA */}
+        {/* Bottom CTA - Text Link */}
         <div className="mt-12 flex justify-center">
-          <button className="px-6 py-3 rounded-xl bg-[#3f51b5] hover:bg-[#303f9f] text-white text-sm font-bold shadow-md flex items-center gap-2 transition-colors">
+          <button className="inline-flex items-center gap-2 text-sm font-bold text-[#0F1340] hover:text-[#C9A24A] transition-colors group cursor-pointer">
             <span>View more stories</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
