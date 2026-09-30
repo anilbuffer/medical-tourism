@@ -8,6 +8,9 @@
 !.yarn/releases
 !.yarn/versions
 
+# typescript cache
+*.tsbuildinfo
+
 # next.js
 /.next/
 /out/
