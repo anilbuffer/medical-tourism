@@ -12,35 +12,36 @@ export const HeroSection = () => {
       {/* ── Background Image ── */}
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?auto=format&fit=crop&q=80"
-          alt="World-Class Hospital Background"
+          src="/hero-image.png"
+          alt="Personalized Medical Travel and Quaternary Care in India"
           fill
           priority
-          className="object-cover"
+          quality={95}
+          className="object-cover object-center"
         />
-        {/* Subtle black gradient for text readability (NO dark blue) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent"></div>
+        {/* Subtle black gradient overlay for text & navbar readability (NO dark blue) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 lg:bg-gradient-to-l lg:from-black/85 lg:via-black/50 lg:to-transparent"></div>
       </div>
 
       {/* ── Main Hero Content ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="max-w-2xl text-center lg:text-left">
+        <div className="max-w-2xl ml-auto text-center lg:text-right">
           {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-white mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-white mb-6 drop-shadow-md">
             World-Class Care.<br />
             Personally<br />
             Coordinated.
           </h1>
 
           {/* Supporting Narrative */}
-          <p className="text-base sm:text-lg text-slate-100 font-medium leading-relaxed mb-8">
+          <p className="text-base sm:text-lg text-slate-100 font-medium leading-relaxed mb-8 drop-shadow-sm max-w-xl lg:ml-auto">
             Access India&apos;s top 1% quaternary hospital network and board-certified chief
             surgeons. Complete end-to-end medical travel, express visa, and
             dedicated personal coordination.
           </p>
 
           {/* Primary Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-end gap-4 mb-8">
             <button
               onClick={() => openIntake()}
               className="w-full sm:w-auto px-8 py-3.5 rounded-xl text-sm sm:text-base font-bold text-vedara-deep bg-vedara-gold hover:bg-vedara-gold-hover shadow-lg transition-all cursor-pointer"
@@ -56,7 +57,7 @@ export const HeroSection = () => {
           </div>
 
           {/* Trust Highlights */}
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 text-sm font-medium text-white shadow-sm">
+          <div className="flex flex-wrap items-center justify-center lg:justify-end gap-x-6 gap-y-3 text-sm font-medium text-white shadow-sm">
             <span className="flex items-center gap-1.5 drop-shadow-md">
               <span className="text-vedara-cyan">🎁</span> Free assessment
             </span>
