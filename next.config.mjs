@@ -2,12 +2,26 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["images.unsplash.com", "randomuser.me", "assets.co"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "randomuser.me",
+      },
+      {
+        protocol: "https",
+        hostname: "assets.co",
+      },
+    ],
     unoptimized: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
+  turbopack: {
+    root: process.cwd(),
   },
+  agentRules: false,
 };
 
 export default nextConfig;

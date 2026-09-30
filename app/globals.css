@@ -1,6 +1,70 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@source "..";
+
+@theme {
+  --color-vedara-dark: #1a2468;
+  --color-vedara-slate: #283593;
+  --color-vedara-midnight: #2f3ea8;
+  --color-vedara-navy: #3547ba;
+
+  --color-vedara-blue: #3F4EB4;
+  --color-vedara-blue-light: #5062CC;
+  --color-vedara-blue-dark: #283593;
+  --color-vedara-blue-50: #ECEEF9;
+  --color-vedara-blue-100: #C8CCEF;
+  --color-vedara-blue-200: #9BA3E2;
+  --color-vedara-blue-500: #5062CC;
+  --color-vedara-blue-600: #3F4EB4;
+  --color-vedara-blue-700: #283593;
+  --color-vedara-blue-900: #141C55;
+
+  --color-vedara-cyan: #2ECDC5;
+  --color-vedara-cyan-light: #5ADBD5;
+  --color-vedara-cyan-dark: #1DA89F;
+
+  --color-vedara-cream: #F5F7FF;
+  --color-vedara-platinum: #EEF0FA;
+  --color-vedara-surface: #FFFFFF;
+  --color-vedara-muted: #6B7DB3;
+
+  --font-sans: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+
+  --shadow-luxury: 0 20px 40px -15px rgba(63, 78, 180, 0.12), 0 0 25px -5px rgba(40, 53, 147, 0.08);
+  --shadow-luxury-hover: 0 25px 50px -12px rgba(63, 78, 180, 0.25), 0 0 30px -5px rgba(40, 53, 147, 0.15);
+  --shadow-card: 0 4px 20px -2px rgba(63, 78, 180, 0.07), 0 2px 6px -1px rgba(40, 53, 147, 0.04);
+  --shadow-glass: 0 8px 32px 0 rgba(40, 53, 147, 0.10);
+  --shadow-glow: 0 0 30px rgba(46, 205, 197, 0.40);
+  --shadow-glow-indigo: 0 0 30px rgba(63, 78, 180, 0.40);
+
+  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+  --background-image-radial-highlight: radial-gradient(circle at 50% 0%, rgba(63, 78, 180, 0.18), transparent 70%);
+  --background-image-luxury-gradient: linear-gradient(135deg, #283593 0%, #1a2468 100%);
+  --background-image-blue-gradient: linear-gradient(135deg, #3F4EB4 0%, #283593 100%);
+  --background-image-cyan-gradient: linear-gradient(135deg, #2ECDC5 0%, #1DA89F 100%);
+  --background-image-hero-gradient: linear-gradient(135deg, #1a2468 0%, #283593 40%, #3F4EB4 100%);
+  --background-image-accent-gradient: linear-gradient(135deg, #2ECDC5 0%, #3F4EB4 100%);
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 6s ease-in-out 3s infinite;
+  --animate-pulse-slow: pulseSlow 3s ease-in-out infinite;
+  --animate-shimmer: shimmerSlide 2.5s infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes pulseSlow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  @keyframes shimmerSlide {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}
 
 /* ============================================================
    VEDARA PREMIUM COLOR PALETTE & DESIGN TOKENS
@@ -9,53 +73,58 @@
    • Deep Navy Dark : #283593
    ============================================================ */
 
-@layer base {
-  :root {
-    /* Core surface */
-    --bg-primary:        #F5F7FF;
-    --text-primary:      #0F1340;
+:root {
+  /* Core surface */
+  --bg-primary:        #F5F7FF;
+  --text-primary:      #0F1340;
 
-    /* Indigo primary */
-    --accent-blue:       #3F4EB4;
-    --accent-blue-light: #5062CC;
-    --accent-blue-dark:  #283593;
+  /* Indigo primary */
+  --accent-blue:       #3F4EB4;
+  --accent-blue-light: #5062CC;
+  --accent-blue-dark:  #283593;
 
-    /* Teal accent */
-    --accent-cyan:       #2ECDC5;
-    --accent-cyan-light: #5ADBD5;
-    --accent-cyan-dark:  #1DA89F;
+  /* Teal accent */
+  --accent-cyan:       #2ECDC5;
+  --accent-cyan-light: #5ADBD5;
+  --accent-cyan-dark:  #1DA89F;
 
-    /* Deep navy base */
-    --color-navy:        #283593;
-    --color-navy-dark:   #1a2468;
+  /* Deep navy base */
+  --color-navy:        #283593;
+  --color-navy-dark:   #1a2468;
 
-    /* Additional App Colors */
-    --color-dark-1: #031126;
-    --color-dark-2: #06203D;
-    --color-dark-3: #0A2E50;
-    --color-dark-4: #041326;
-    --color-dark-5: #071321;
-    --color-teal-600: #0D9488;
-    --color-teal-300: #5EEAD4;
-    --color-teal-mid1: #1d8983;
-    --color-teal-mid2: #1baba4;
-    --color-sky-600: #0284C7;
-    --color-sky-400: #38BDF8;
-  }
+  /* Additional App Colors */
+  --color-dark-1: #031126;
+  --color-dark-2: #06203D;
+  --color-dark-3: #0A2E50;
+  --color-dark-4: #041326;
+  --color-dark-5: #071321;
+  --color-teal-600: #0D9488;
+  --color-teal-300: #5EEAD4;
+  --color-teal-mid1: #1d8983;
+  --color-teal-mid2: #1baba4;
+  --color-sky-600: #0284C7;
+  --color-sky-400: #38BDF8;
+}
 
-  html {
-    scroll-behavior: smooth;
-    font-family: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
-  }
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
+}
 
-  html[lang="ar"] {
-    font-family: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
-  }
+html[lang="ar"] {
+  font-family: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
+}
 
-  body {
-    @apply bg-[#F5F7FF] text-[#0F1340] antialiased
-           selection:bg-[#3F4EB4]/20 selection:text-[#283593];
-  }
+body {
+  background-color: #F5F7FF;
+  color: #0F1340;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: rgba(63, 78, 180, 0.2);
+  color: #283593;
 }
 
 @layer utilities {
