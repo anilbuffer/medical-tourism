@@ -604,9 +604,9 @@ export const PatientJourney = () => {
               <span className="text-xs font-bold text-slate-400 tracking-widest uppercase">
                 STEP
               </span>
-              <div className="px-3.5 py-1.5 rounded-full bg-[#f4f6dc] text-[#a58d34] text-sm font-black border border-[#e5ca76] shadow-xs flex items-center gap-1.5">
+              <div className="px-3.5 py-1.5 rounded-full bg-vedara-cyan/10 text-vedara-blue text-sm font-black border border-vedara-cyan/40 shadow-xs flex items-center gap-1.5">
                 <span>{activeStep + 1}</span>
-                <span className="text-[#a58d34]/60 font-medium">/ {totalSteps}</span>
+                <span className="text-vedara-blue/60 font-medium">/ {totalSteps}</span>
               </div>
 
               {/* Prev / Next buttons */}
@@ -637,18 +637,18 @@ export const PatientJourney = () => {
           <div className="relative mb-10 sm:mb-14">
             {/* Desktop Timeline with Connecting Progress Line */}
             <div className="hidden md:block relative">
-              {/* Connecting background dashed track */}
+              {/* Connecting background track */}
               <div
-                className="absolute top-[82px] h-[2px] bg-slate-200 z-0 pointer-events-none"
+                className="absolute top-[82px] h-[3px] bg-gradient-to-r from-vedara-blue/20 via-vedara-cyan/20 to-vedara-gold/20 z-0 pointer-events-none rounded-full"
                 style={{
                   left: "calc(100% / 12)",
                   width: "calc(100% * 5 / 6)",
                 }}
               />
 
-              {/* Connecting animated gold progress line */}
+              {/* Connecting animated colorful progress line */}
               <motion.div
-                className="absolute top-[82px] h-[2.5px] bg-gradient-to-r from-[#C9A24A] via-[#E0BC6E] to-[#C9A24A] z-0 pointer-events-none shadow-xs"
+                className="absolute top-[82px] h-[3px] bg-gradient-to-r from-vedara-blue via-vedara-blue-light to-vedara-cyan z-0 pointer-events-none shadow-glow rounded-full"
                 style={{
                   left: "calc(100% / 12)",
                 }}
@@ -700,9 +700,9 @@ export const PatientJourney = () => {
                           transition={{ type: "spring", stiffness: 350, damping: 25 }}
                           className={`w-10 h-10 rounded-full flex items-center justify-center font-mono font-bold text-xs transition-all duration-300 ${
                             isActive
-                              ? "bg-[#a58d34] text-white border-4 border-white shadow-md ring-2 ring-[#a58d34]/40"
+                              ? "bg-gradient-to-br from-vedara-cyan to-vedara-blue text-white border-4 border-white shadow-md ring-2 ring-vedara-cyan/40"
                               : isCompleted
-                              ? "bg-[#f4f6dc] text-[#a58d34] border-2 border-[#C9A24A] shadow-xs"
+                              ? "bg-vedara-blue-50 text-vedara-blue-600 border-2 border-vedara-blue/30 shadow-xs"
                               : "bg-white text-slate-400 border-2 border-slate-200 group-hover:border-slate-300 shadow-xs"
                           }`}
                         >
@@ -714,9 +714,9 @@ export const PatientJourney = () => {
                       <span
                         className={`text-[10px] uppercase font-bold tracking-wider mt-1.5 transition-colors ${
                           isActive
-                            ? "text-[#a58d34]"
+                            ? "text-vedara-blue"
                             : isCompleted
-                            ? "text-slate-500"
+                            ? "text-vedara-blue-600"
                             : "text-slate-400"
                         }`}
                       >
@@ -752,16 +752,16 @@ export const PatientJourney = () => {
                     onClick={() => handleSelectStep(idx)}
                     className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-2xl shrink-0 border transition-all text-left ${
                       isActive
-                        ? "bg-[#f4f6dc] border-[#e5ca76] shadow-sm"
+                        ? "bg-vedara-cyan/10 border-vedara-cyan/40 shadow-sm"
                         : "bg-white border-slate-200 hover:border-slate-300"
                     }`}
                   >
                     <div
                       className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shrink-0 ${
                         isActive
-                          ? "bg-[#a58d34] text-white"
+                          ? "bg-gradient-to-br from-vedara-cyan to-vedara-blue text-white shadow-sm"
                           : isCompleted
-                          ? "bg-[#f4f6dc] text-[#a58d34] border border-[#C9A24A]"
+                          ? "bg-vedara-blue-50 text-vedara-blue-600 border border-vedara-blue/30"
                           : "bg-slate-100 text-slate-400"
                       }`}
                     >
@@ -770,7 +770,7 @@ export const PatientJourney = () => {
                     <div>
                       <div
                         className={`text-[9px] font-bold uppercase tracking-wider ${
-                          isActive ? "text-[#a58d34]" : "text-slate-400"
+                          isActive ? "text-vedara-blue" : "text-slate-400"
                         }`}
                       >
                         {step.badgeDay}
@@ -815,7 +815,7 @@ export const PatientJourney = () => {
 
                   {/* Step Text Info */}
                   <div className="pt-1 flex-1 flex flex-col justify-center">
-                    <div className="text-[#a58d34] text-xs font-bold uppercase tracking-wider mb-1.5">
+                    <div className="text-vedara-blue text-xs font-bold uppercase tracking-wider mb-1.5">
                       {currentStep.dayLabel}
                     </div>
                     <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0F1340] mb-3 tracking-tight">
@@ -828,21 +828,21 @@ export const PatientJourney = () => {
                 </div>
 
                 {/* Right Card: Emotional Feeling & Logistics Box */}
-                <div className="lg:col-span-5 xl:col-span-4 bg-[#f4f6dc] rounded-3xl p-6 sm:p-8 border border-[#e5ca76]/40 shadow-sm flex flex-col justify-between">
+                <div className="lg:col-span-5 xl:col-span-4 bg-vedara-cyan/10 rounded-3xl p-6 sm:p-8 border border-vedara-cyan/30 shadow-sm flex flex-col justify-between">
                   <div>
-                    <p className="text-[#7A5F22] font-semibold text-sm sm:text-[15.5px] italic leading-relaxed mb-6">
+                    <p className="text-vedara-blue-700 font-semibold text-sm sm:text-[15.5px] italic leading-relaxed mb-6">
                       &ldquo;{currentStep.feelQuote}&rdquo;
                     </p>
                   </div>
 
-                  <div className="space-y-4 pt-4 border-t border-[#e5ca76]/30">
+                  <div className="space-y-4 pt-4 border-t border-vedara-cyan/30">
                     {/* Item A: Where */}
                     <div className="flex items-start gap-3.5">
-                      <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-[#a58d34] text-xs font-black shrink-0 shadow-xs border border-[#e5ca76]/40 mt-0.5">
+                      <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-vedara-blue text-xs font-black shrink-0 shadow-xs border border-vedara-cyan/40 mt-0.5">
                         A
                       </div>
                       <div>
-                        <div className="text-[10px] font-extrabold tracking-widest text-[#a58d34] uppercase mb-0.5">
+                        <div className="text-[10px] font-extrabold tracking-widest text-vedara-blue uppercase mb-0.5">
                           WHERE
                         </div>
                         <div className="text-sm font-bold text-[#0F1340]">
@@ -853,11 +853,11 @@ export const PatientJourney = () => {
 
                     {/* Item B: With you */}
                     <div className="flex items-start gap-3.5">
-                      <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-[#a58d34] text-xs font-black shrink-0 shadow-xs border border-[#e5ca76]/40 mt-0.5">
+                      <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-vedara-blue text-xs font-black shrink-0 shadow-xs border border-vedara-cyan/40 mt-0.5">
                         B
                       </div>
                       <div>
-                        <div className="text-[10px] font-extrabold tracking-widest text-[#a58d34] uppercase mb-0.5">
+                        <div className="text-[10px] font-extrabold tracking-widest text-vedara-blue uppercase mb-0.5">
                           WITH YOU
                         </div>
                         <div className="text-sm font-bold text-[#0F1340]">
@@ -876,7 +876,7 @@ export const PatientJourney = () => {
         {isDesktop && (
           <div className="absolute bottom-0 left-0 right-0 h-1 bg-slate-200/50 overflow-hidden">
             <motion.div
-              className="h-full bg-gradient-to-r from-[#C9A24A] via-[#E0BC6E] to-[#C9A24A]"
+              className="h-full bg-gradient-to-r from-vedara-blue via-vedara-blue-light to-vedara-cyan"
               style={{
                 width: `${Math.max(0, Math.min(100, scrollProgress * 100))}%`,
               }}
