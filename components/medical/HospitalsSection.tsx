@@ -10,28 +10,22 @@ import { Button } from "@/components/ui/button";
 export const HospitalsSection = () => {
   const hospitals = [
     {
-      name: "MAX Super Speciality Hospital",
-      location: "Sector 8C, Chandigarh",
+      name: "Max Hospital",
+      location: "Chandigarh Road in Phase 6, Sahibzada Ajit Singh Nagar (Mohali), Punjab",
       rating: "4.9 (1,240)",
-      image: "https://images.unsplash.com/photo-1512678080530-7760d81faba6?auto=format&fit=crop&q=80&w=800",
+      image: "/max-hospital.jpg",
     },
     {
-      name: "Fortis Hospital Mohali",
-      location: "Sector 8C, Chandigarh",
+      name: "Profile Cosmetic Surgery",
+      location: "Ludhiana - Dr. Vikas Gupta, Surgeon",
       rating: "4.9 (1,240)",
-      image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      name: "Healing Super Specialty Hospital",
-      location: "Sector 8C, Chandigarh",
-      rating: "4.9 (1,240)",
-      image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800",
+      image: "/profileaestheticsurgery.png",
     },
     {
       name: "Sangam Netralaya",
-      location: "Sector 8C, Chandigarh",
+      location: "Ajitgarh, Punjab",
       rating: "4.9 (1,240)",
-      image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800",
+      image: "/sangam-netralaya.webp",
     },
   ];
 
@@ -56,34 +50,34 @@ export const HospitalsSection = () => {
         </div>
 
         {/* Hospital Cards (Shadcn Card System) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {hospitals.map((hosp, idx) => (
             <Card
               key={idx}
-              className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 flex flex-col group hover:shadow-xl transition-all duration-300"
+              className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full group hover:shadow-xl transition-all duration-300"
             >
-              {/* Unified Photographic Rule: Interiors - Wards & Patient Suites with identical 16/10 aspect ratio */}
-              <div className="relative w-full aspect-[16/10] overflow-hidden bg-slate-100">
+              {/* Image container with uniform aspect ratio and uncropped full image display */}
+              <div className="relative w-full aspect-[4/3] overflow-hidden bg-slate-100 flex items-center justify-center">
                 <Image
                   src={hosp.image}
                   alt={hosp.name}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-contain group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
               
               <CardContent className="p-6 flex flex-col flex-1 pb-4">
-                <CardTitle className="font-bold text-lg text-slate-900 leading-tight mb-2 h-12">
+                <CardTitle className="font-bold text-lg text-slate-900 leading-tight mb-2 min-h-[2.75rem] flex items-center">
                   {hosp.name}
                 </CardTitle>
                 
-                <div className="flex items-center gap-1.5 text-xs text-slate-500 mb-3">
-                  <MapPin className="w-3.5 h-3.5 text-vedara-cyan" />
-                  <span>{hosp.location}</span>
+                <div className="flex items-start gap-1.5 text-xs text-slate-500 mb-3 min-h-[2.5rem]">
+                  <MapPin className="w-3.5 h-3.5 text-vedara-cyan shrink-0 mt-0.5" />
+                  <span className="line-clamp-2">{hosp.location}</span>
                 </div>
                 
-                <div className="flex items-center gap-1.5 mb-2">
+                <div className="flex items-center gap-1.5 mb-2 mt-auto">
                   <div className="flex text-vedara-gold">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-3.5 h-3.5 fill-current" />

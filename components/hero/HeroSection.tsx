@@ -59,19 +59,6 @@ export const HeroSection = () => {
               See how it works &rarr;
             </Button>
           </div>
-
-          {/* Trust Highlights (Shadcn Badge with glass variant) */}
-          <div className="flex flex-wrap items-center justify-center lg:justify-end gap-2.5 sm:gap-3 text-sm font-medium">
-            <Badge variant="glass" size="lg" className="gap-1.5 px-3 py-1.5 text-white/95 border-white/20">
-              <span className="text-vedara-cyan">🎁</span> Free assessment
-            </Badge>
-            <Badge variant="glass" size="lg" className="gap-1.5 px-3 py-1.5 text-white/95 border-white/20">
-              <span className="text-vedara-cyan">🏥</span> You pay the hospital, never us
-            </Badge>
-            <Badge variant="glass" size="lg" className="gap-1.5 px-3 py-1.5 text-white/95 border-white/20">
-              <span className="text-vedara-cyan">🚫</span> No obligation
-            </Badge>
-          </div>
         </div>
       </div>
     </section>
