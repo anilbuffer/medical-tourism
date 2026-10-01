@@ -60,10 +60,9 @@ export const HeroSection = () => {
           {/* Main Headline */}
           <motion.h1 
             custom={1} initial="hidden" animate="visible" variants={fadeUpVariants}
-            className="text-5xl sm:text-6xl lg:text-7xl lg:leading-[1.1] font-serif text-white mb-8 drop-shadow-lg"
+            className="text-5xl sm:text-5xl lg:text-6xl lg:leading-[1.1] font-serif text-white mb-8 drop-shadow-lg"
           >
-            World-class care. <br />
-            <span className="text-white/90 italic font-light">Personally coordinated.</span>
+            Your treatment journey, handled from start to finish.
           </motion.h1>
 
           {/* Supporting Narrative */}
@@ -71,7 +70,7 @@ export const HeroSection = () => {
             custom={2} initial="hidden" animate="visible" variants={fadeUpVariants}
             className="text-lg sm:text-xl text-white/80 font-light leading-relaxed mb-10 max-w-xl drop-shadow-md"
           >
-            Access India&apos;s top 1% quaternary hospital network and board-certified chief surgeons. We curate your medical journey with absolute precision, empathy, and exclusivity.
+            We help you find the right surgeon and hospital in India, and coordinate everything around your treatment — from the first time a specialist reviews your scans to the day your records are back with your doctor at home.
           </motion.p>
 
           {/* Primary Action Buttons */}
