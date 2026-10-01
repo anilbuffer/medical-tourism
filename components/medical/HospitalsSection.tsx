@@ -3,117 +3,132 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Star, ArrowRight } from "lucide-react";
+import { MapPin, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardFooter, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 export const HospitalsSection = () => {
   const hospitals = [
     {
       name: "Max Hospital",
       location: "Chandigarh Road in Phase 6, Sahibzada Ajit Singh Nagar (Mohali), Punjab",
-      rating: "4.9 (1,240)",
       image: "/max-hospital.jpg",
     },
     {
       name: "Profile Cosmetic Surgery",
       location: "Ludhiana - Dr. Vikas Gupta, Surgeon",
-      rating: "4.9 (1,240)",
       image: "/profileaestheticsurgery.png",
     },
     {
       name: "Sangam Netralaya",
       location: "Ajitgarh, Punjab",
-      rating: "4.9 (1,240)",
       image: "/sangam-netralaya.webp",
     },
   ];
 
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as any } },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 },
+    },
+  };
+
   return (
-    <section className="py-12 sm:py-16 bg-vedara-offwhite">
+    <section className="py-20 sm:py-32 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}
-        <div className="text-center max-w-4xl mx-auto mb-16">
-          <p className="text-vedara-gold-muted font-bold text-xs uppercase tracking-widest mb-3">
-            BEING STRAIGHT WITH YOU
-          </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-vedara-deep mb-6">
-            We&apos;re new. Our <span className="italic text-teal-600">hospitals</span> are not.
+        <motion.div 
+          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
+          className="text-center max-w-3xl mx-auto mb-20"
+        >
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="h-[1px] w-8 bg-vedara-gold"></div>
+            <p className="text-vedara-gold font-bold text-xs uppercase tracking-widest">
+              BEING STRAIGHT WITH YOU
+            </p>
+            <div className="h-[1px] w-8 bg-vedara-gold"></div>
+          </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-vedara-deep mb-8 leading-tight">
+            We&apos;re new. <br />
+            <span className="italic font-light">Our hospitals are not.</span>
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">
+          <p className="text-base sm:text-lg text-slate-500 font-light leading-relaxed mb-6">
             You won&apos;t find hundreds of reviews for us, because we started this year. What you can verify today is every hospital we work with — when it was founded, what it&apos;s accredited to, when that accreditation expires, and how many of your procedure it does each year.
           </p>
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-500 font-light leading-relaxed">
             That&apos;s the record that matters. We&apos;re the people who get you to it and stay beside you while you&apos;re there.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Hospital Cards (Shadcn Card System) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        {/* Hospital Cards */}
+        <motion.div 
+          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10"
+        >
           {hospitals.map((hosp, idx) => (
-            <Card
-              key={idx}
-              className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 flex flex-col h-full group hover:shadow-xl transition-all duration-300"
-            >
-              {/* Image container with uniform aspect ratio and uncropped full image display */}
-              <div className="relative w-full aspect-[4/3] overflow-hidden bg-slate-100 flex items-center justify-center">
-                <Image
-                  src={hosp.image}
-                  alt={hosp.name}
-                  fill
-                  className="object-contain group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              </div>
-              
-              <CardContent className="p-6 flex flex-col flex-1 pb-4">
-                <CardTitle className="font-bold text-lg text-slate-900 leading-tight mb-2 min-h-[2.75rem] flex items-center">
-                  {hosp.name}
-                </CardTitle>
-                
-                <div className="flex items-start gap-1.5 text-xs text-slate-500 mb-3 min-h-[2.5rem]">
-                  <MapPin className="w-3.5 h-3.5 text-vedara-cyan shrink-0 mt-0.5" />
-                  <span className="line-clamp-2">{hosp.location}</span>
+            <motion.div key={idx} variants={fadeUp}>
+              <Card
+                className="bg-vedara-offwhite rounded-2xl overflow-hidden shadow-sm border-none flex flex-col h-full group hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
+              >
+                <div className="relative w-full aspect-[4/3] overflow-hidden bg-white flex items-center justify-center p-6">
+                  <Image
+                    src={hosp.image}
+                    alt={hosp.name}
+                    fill
+                    className="object-contain p-8 group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
                 
-                <div className="flex items-center gap-1.5 mb-2 mt-auto">
-                  <div className="flex text-vedara-gold">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                    ))}
+                <CardContent className="p-8 flex flex-col flex-1 pb-6">
+                  <CardTitle className="font-serif text-2xl text-vedara-deep leading-tight mb-4">
+                    {hosp.name}
+                  </CardTitle>
+                  
+                  <div className="flex items-start gap-3 text-sm text-slate-500 mb-4 font-light">
+                    <MapPin className="w-4 h-4 text-vedara-gold shrink-0 mt-0.5" />
+                    <span className="leading-relaxed">{hosp.location}</span>
                   </div>
-                  <span className="text-xs font-semibold text-slate-500">{hosp.rating}</span>
-                </div>
-              </CardContent>
+                </CardContent>
 
-              <CardFooter className="p-6 pt-0 mt-auto">
-                <Button
-                  variant="outlineNavy"
-                  size="sm"
-                  className="w-full text-xs font-bold gap-1.5 py-2.5 rounded-xl cursor-pointer"
-                  render={<Link href="/hospitals" />}
-                >
-                  <span>View Profile</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Button>
-              </CardFooter>
-            </Card>
+                <CardFooter className="p-8 pt-0 mt-auto">
+                  <Button
+                    variant="link"
+                    className="w-full text-sm font-semibold tracking-wide text-vedara-deep hover:text-vedara-gold p-0 justify-between group-hover:px-2 transition-all duration-300"
+                    render={<Link href="/hospitals" />}
+                  >
+                      <span>View Hospital Profile</span>
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </CardFooter>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Bottom CTA - Shadcn Button */}
-        <div className="mt-12 flex justify-end">
+        {/* Bottom CTA */}
+        <motion.div 
+          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+          className="mt-16 flex justify-center"
+        >
           <Button
             variant="outlineNavy"
-            size="lg"
-            className="border-2 font-bold gap-2 text-sm shadow-xs rounded-xl cursor-pointer"
+            size="xl"
             render={<Link href="/hospitals" />}
+            className="rounded-xl"
           >
-            <span>See the hospitals</span>
-            <ArrowRight className="w-4 h-4" />
+              See the full hospital network
           </Button>
-        </div>
+        </motion.div>
 
       </div>
     </section>

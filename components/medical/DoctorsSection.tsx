@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 export const DoctorsSection = () => {
   const [activeTab, setActiveTab] = useState("All");
@@ -53,130 +55,157 @@ export const DoctorsSection = () => {
 
   const displayDoctors = filteredDoctors.length > 0 ? filteredDoctors : doctors;
 
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as any } },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
   return (
-    <section className="py-12 sm:py-16 bg-white relative">
+    <section className="py-20 sm:py-32 bg-vedara-offwhite relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center mb-10">
-          <p className="text-vedara-gold-muted font-bold text-xs uppercase tracking-widest mb-3">
-            DISTINGUISHED CLINICIANS
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-vedara-deep">
-            Your surgeon, described by what they&apos;ve done.
+        <motion.div 
+          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
+          className="text-center mb-16 max-w-3xl mx-auto"
+        >
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="h-[1px] w-8 bg-vedara-gold"></div>
+            <p className="text-vedara-gold font-bold text-xs uppercase tracking-widest">
+              DISTINGUISHED CLINICIANS
+            </p>
+            <div className="h-[1px] w-8 bg-vedara-gold"></div>
+          </div>
+          <h2 className="text-4xl sm:text-5xl font-serif text-vedara-deep leading-tight">
+            Your surgeon, <br className="hidden sm:block" />
+            <span className="italic font-light">described by what they&apos;ve done.</span>
           </h2>
-        </div>
+        </motion.div>
 
         {/* Filter Tags */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        <motion.div 
+          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+          className="flex flex-wrap justify-center gap-3 mb-16"
+        >
           {tags.map((tag, idx) => (
             <button
               key={idx}
               onClick={() => setActiveTab(tag)}
-              className={`px-4 py-2 rounded-full text-xs font-bold transition-colors ${
+              className={`px-6 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 ${
                 activeTab === tag 
-                  ? "bg-vedara-deep text-white shadow-sm" 
-                  : "bg-transparent text-slate-500 hover:bg-slate-100"
+                  ? "bg-vedara-deep text-white shadow-lg scale-105" 
+                  : "bg-white text-slate-500 hover:bg-slate-100 border border-slate-200 hover:border-slate-300"
               }`}
             >
               {tag}
             </button>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Doctors Grid - Unmistakably Unified Set */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {displayDoctors.map((doc, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col sm:flex-row group"
-            >
-              {/* Image - Fill Height with identical head-and-shoulders portrait ratio */}
-              <div className="relative w-full sm:w-40 md:w-44 h-56 sm:h-auto shrink-0 bg-slate-100 self-stretch">
-                <Image
-                  src={doc.image}
-                  alt={doc.name}
-                  fill
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 640px) 100vw, 180px"
-                />
-              </div>
-              
-              {/* Details */}
-              <div className="flex-1 min-w-0 p-5 sm:p-6 flex flex-col justify-between">
-                <div>
-                  {/* Unified Board-Certified Badge across all three cards */}
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-vedara-deep/5 text-vedara-deep border border-vedara-deep/10 mb-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-vedara-gold"></span>
-                    <span>Verified Clinician</span>
+        {/* Doctors Grid */}
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+        >
+          <AnimatePresence mode="popLayout">
+            {displayDoctors.map((doc, idx) => (
+              <motion.div
+                key={doc.name}
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4 }}
+                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 flex flex-col sm:flex-row group"
+              >
+                {/* Image */}
+                <div className="relative w-full sm:w-48 h-64 sm:h-auto shrink-0 bg-slate-100 self-stretch overflow-hidden">
+                  <Image
+                    src={doc.image}
+                    alt={doc.name}
+                    fill
+                    className="object-cover object-top group-hover:scale-110 transition-transform duration-700 ease-out grayscale-[20%] group-hover:grayscale-0"
+                    sizes="(max-width: 640px) 100vw, 180px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                </div>
+                
+                {/* Details */}
+                <div className="flex-1 min-w-0 p-6 flex flex-col justify-between">
+                  <div>
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold bg-vedara-gold/10 text-vedara-gold-hover mb-4">
+                      <span className="w-1.5 h-1.5 rounded-full bg-vedara-gold animate-pulse"></span>
+                      <span className="uppercase tracking-wider">Verified Clinician</span>
+                    </div>
+
+                    <h3 className="font-serif text-xl text-vedara-deep truncate mb-1 group-hover:text-vedara-gold-hover transition-colors">
+                      {doc.name}
+                    </h3>
+                    <div className="text-sm font-light text-slate-500 mb-5 line-clamp-2">
+                      {doc.specialty}
+                    </div>
+                    
+                    <div className="space-y-3">
+                      {/* Exp */}
+                      <div className="flex items-start gap-3">
+                        <div className="min-w-0">
+                          <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Experience</div>
+                          <div className="text-xs text-slate-700 font-medium">{doc.experience}</div>
+                        </div>
+                      </div>
+                      {/* Edu */}
+                      <div className="flex items-start gap-3">
+                        <div className="min-w-0">
+                          <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Education</div>
+                          <div className="text-xs text-slate-700 font-medium truncate">{doc.education}</div>
+                        </div>
+                      </div>
+                      {/* Hosp */}
+                      <div className="flex items-start gap-3">
+                        <div className="min-w-0">
+                          <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Hospital</div>
+                          <div className="text-xs text-slate-700 font-medium truncate">{doc.hospital}</div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
-                  <h3 className="font-bold text-base text-slate-900 truncate mb-1 group-hover:text-vedara-deep transition-colors">
-                    {doc.name}
-                  </h3>
-                  <div className="text-xs font-medium text-slate-500 mb-3.5 line-clamp-1">
-                    {doc.specialty}
-                  </div>
-                  
-                  {/* Metadata Stats - Neutral Slate Icons, No Clashing Green */}
-                  <div className="space-y-2.5">
-                    {/* Exp */}
-                    <div className="flex items-start gap-2.5">
-                      <div className="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center shrink-0 mt-0.5 text-slate-600">
-                        <span className="text-[10px]">⭐</span>
-                      </div>
-                      <div className="min-w-0">
-                        <div className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Years of Experience</div>
-                        <div className="text-[11px] text-slate-800 font-medium">{doc.experience}</div>
-                      </div>
-                    </div>
-                    {/* Edu */}
-                    <div className="flex items-start gap-2.5">
-                      <div className="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center shrink-0 mt-0.5 text-slate-600">
-                        <span className="text-[10px]">🎓</span>
-                      </div>
-                      <div className="min-w-0">
-                        <div className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Education</div>
-                        <div className="text-[11px] text-slate-800 font-medium truncate">{doc.education}</div>
-                      </div>
-                    </div>
-                    {/* Hosp */}
-                    <div className="flex items-start gap-2.5">
-                      <div className="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center shrink-0 mt-0.5 text-slate-600">
-                        <span className="text-[10px]">🏥</span>
-                      </div>
-                      <div className="min-w-0">
-                        <div className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Hospital</div>
-                        <div className="text-[11px] text-slate-800 font-medium truncate">{doc.hospital}</div>
-                      </div>
-                    </div>
+                  <div className="mt-6 pt-4 border-t border-slate-100">
+                    <Button variant="link" render={<Link href="/doctors" />} className="p-0 text-sm font-semibold text-vedara-deep group-hover:text-vedara-gold transition-colors">
+                        View Profile <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
+                    </Button>
                   </div>
                 </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
-                <div className="mt-4 pt-3 border-t border-slate-100">
-                  <Link
-                    href="/doctors"
-                    className="inline-flex items-center gap-1 text-xs font-bold text-vedara-deep hover:text-vedara-gold transition-colors"
-                  >
-                    <span>View Profile</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Bottom CTA - Secondary Action: Outlined Navy */}
-        <div className="mt-12 flex justify-end">
-          <Link
-            href="/doctors"
-            className="px-6 py-3 rounded-xl border-2 border-vedara-deep text-vedara-deep hover:bg-vedara-deep hover:text-white text-sm font-bold shadow-xs flex items-center gap-2 transition-all cursor-pointer"
+        {/* Bottom CTA */}
+        <motion.div 
+          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+          className="mt-16 flex justify-center"
+        >
+          <Button
+            variant="outlineNavy"
+            size="xl"
+            render={<Link href="/doctors" />}
+            className="rounded-xl"
           >
-            <span>View all doctors</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
+              Meet our surgeons
+          </Button>
+        </motion.div>
 
       </div>
     </section>

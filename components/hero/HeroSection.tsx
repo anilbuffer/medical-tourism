@@ -4,15 +4,33 @@ import React from "react";
 import Image from "next/image";
 import { useCare } from "@/context/CareContext";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { motion } from "framer-motion";
 
 export const HeroSection = () => {
   const { openIntake } = useCare();
 
+  const fadeUpVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.15 + 0.2,
+        duration: 1.2,
+        ease: [0.16, 1, 0.3, 1] as any,
+      },
+    }),
+  };
+
   return (
-    <section className="relative min-h-[80vh] flex flex-col justify-center pt-32 pb-24">
-      {/* ── Background Image ── */}
-      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+    <section className="relative min-h-[90vh] md:min-h-screen flex flex-col justify-center overflow-hidden bg-vedara-deep">
+      {/* ── Background Image with Parallax effect ── */}
+      <motion.div 
+        initial={{ scale: 1.05 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 2, ease: "easeOut" }}
+        className="absolute inset-0 w-full h-full z-0"
+      >
         <Image
           src="/hero-image.png"
           alt="Personalized Medical Travel and Quaternary Care in India"
@@ -20,45 +38,67 @@ export const HeroSection = () => {
           priority
           className="object-cover object-center"
         />
-        {/* Subtle black gradient overlay for text & navbar readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 lg:bg-gradient-to-l lg:from-black/85 lg:via-black/50 lg:to-transparent"></div>
-      </div>
+        {/* Refined gradient overlay for deeper contrast and luxury feel */}
+        <div className="absolute inset-0 bg-gradient-to-t from-vedara-deep via-vedara-deep/60 to-transparent z-10" />
+        <div className="absolute inset-0 bg-black/30 z-10" />
+      </motion.div>
 
       {/* ── Main Hero Content ── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="max-w-2xl ml-auto text-center lg:text-right">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full pt-20">
+        <div className="max-w-3xl">
+          {/* Accent Line */}
+          <motion.div 
+            custom={0} initial="hidden" animate="visible" variants={fadeUpVariants}
+            className="flex items-center gap-4 mb-6"
+          >
+            <div className="h-[1px] w-12 bg-vedara-gold"></div>
+            <span className="text-vedara-gold text-sm md:text-base font-semibold tracking-[0.2em] uppercase">
+              International Care Concierge
+            </span>
+          </motion.div>
+
           {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-white mb-6 drop-shadow-md">
-            World-Class Care.<br />
-            Personally<br />
-            Coordinated.
-          </h1>
+          <motion.h1 
+            custom={1} initial="hidden" animate="visible" variants={fadeUpVariants}
+            className="text-5xl sm:text-6xl lg:text-7xl lg:leading-[1.1] font-serif text-white mb-8 drop-shadow-lg"
+          >
+            World-class care. <br />
+            <span className="text-white/90 italic font-light">Personally coordinated.</span>
+          </motion.h1>
 
           {/* Supporting Narrative */}
-          <p className="text-base sm:text-lg text-slate-100 font-medium leading-relaxed mb-8 drop-shadow-sm max-w-xl lg:ml-auto">
-            Access India&apos;s top 1% quaternary hospital network and board-certified chief
-            surgeons. Complete end-to-end medical travel, express visa, and
-            dedicated personal coordination.
-          </p>
+          <motion.p 
+            custom={2} initial="hidden" animate="visible" variants={fadeUpVariants}
+            className="text-lg sm:text-xl text-white/80 font-light leading-relaxed mb-10 max-w-xl drop-shadow-md"
+          >
+            Access India&apos;s top 1% quaternary hospital network and board-certified chief surgeons. We curate your medical journey with absolute precision, empathy, and exclusivity.
+          </motion.p>
 
-          {/* Primary Action Buttons (Shadcn Button with brand variants) */}
-          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-end gap-4 mb-8">
+          {/* Primary Action Buttons */}
+          <motion.div 
+            custom={3} initial="hidden" animate="visible" variants={fadeUpVariants}
+            className="flex flex-col sm:flex-row items-start gap-4"
+          >
             <Button
               variant="gold"
               size="xl"
               onClick={() => openIntake()}
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto text-vedara-deep hover:shadow-glow-indigo transition-all duration-300"
             >
-              Send us the reports
+              Start Your Journey
             </Button>
             <Button
-              variant="link"
+              variant="glass"
+              size="xl"
               render={<a href="#journey" />}
-              className="w-full sm:w-auto text-slate-200 hover:text-white underline underline-offset-4 text-sm font-semibold"
+              className="w-full sm:w-auto group"
             >
-              See how it works &rarr;
+              Explore The Experience
+              <span className="inline-block transition-transform duration-300 group-hover:translate-x-1 ml-2">
+                &rarr;
+              </span>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
