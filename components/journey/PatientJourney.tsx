@@ -107,8 +107,8 @@ const StepIllustration = ({
   type: JourneyStep["iconType"];
   active: boolean;
 }) => {
-  const strokeTeal = active ? "#062A38" : "#4A6570";
-  const strokeGold = "#C9A24A";
+  const strokeTeal = active ? "#3F4EB4" : "#9BA3E2";
+  const strokeGold = "#2ECDC5";
   const strokeWidth = "2.8";
 
   return (
