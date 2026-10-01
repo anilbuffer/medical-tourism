@@ -580,10 +580,10 @@ export const PatientJourney = () => {
       aria-label="Interactive Patient Journey"
     >
       <section
-        className={`w-full bg-[#f8f9fa] border-t border-slate-100 ${
+        className={`w-full bg-white border-t border-slate-100 py-16 sm:py-20 ${
           isDesktop
-            ? "lg:sticky lg:top-0 lg:h-screen lg:flex lg:flex-col lg:justify-center overflow-hidden"
-            : "py-12 sm:py-16"
+            ? "lg:sticky lg:top-0 lg:h-screen lg:flex lg:flex-col overflow-hidden"
+            : ""
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
