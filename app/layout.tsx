@@ -22,7 +22,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "VEDARA | International Care — India's International Care Concierge",
+  title: "Your Medicare Trip | International Care — India's International Care Concierge",
   description:
     "A premium medical-care coordination platform helping international patients discover the right Indian specialists, accredited hospitals, treatment options, and end-to-end travel support.",
   keywords: [
