@@ -11,31 +11,31 @@ export const SpecialtiesSection = () => {
       title: "Dentistry",
       subtitle: "Comprehensive dental care & smile restoration",
       tags: ["Implants", "Cosmetic", "Orthodontics"],
-      image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=800",
+      image: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&q=80&w=800",
     },
     {
       title: "Orthopaedics & Joint Replacement",
       subtitle: "Move better. Live fuller.",
       tags: ["Joints", "Spine", "Sports Medicine"],
-      image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800",
+      image: "https://images.unsplash.com/photo-1597764690523-15bea4c581c9?auto=format&fit=crop&q=80&w=800",
     },
     {
       title: "IVF & Fertility",
       subtitle: "Building families with advanced care",
       tags: ["IVF", "Reproductive", "Maternity"],
-      image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800",
+      image: "https://images.unsplash.com/photo-1625512239194-ab1ef761db86?auto=format&fit=crop&q=80&w=800",
     },
     {
       title: "Cosmetic Surgery",
       subtitle: "Enhancing natural beauty & confidence",
       tags: ["Aesthetics", "Plastic Surgery", "Reconstructive"],
-      image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=800",
+      image: "https://images.unsplash.com/photo-1621021544363-02108c715c1b?auto=format&fit=crop&q=80&w=800",
     },
     {
       title: "Ophthalmology",
       subtitle: "Advanced eye care & vision correction",
       tags: ["Lasik", "Cataract", "Retina"],
-      image: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=80&w=800",
+      image: "https://images.unsplash.com/photo-1501621667575-af81f1f0bacc?auto=format&fit=crop&q=80&w=800",
     },
   ];
 
