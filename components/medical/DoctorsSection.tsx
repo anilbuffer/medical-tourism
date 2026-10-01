@@ -12,40 +12,38 @@ export const DoctorsSection = () => {
   
   const tags = [
     "All",
-    "Transplant & Haematology",
-    "Cardiac",
-    "Oncology",
     "Orthopaedics",
-    "Fertility",
+    "Ophthalmology",
+    "Plastic Surgery",
   ];
 
   const doctors = [
     {
-      name: "Dr. Ramesh Kumar Sen",
-      specialty: "Orthopaedics & Joint Replacement",
+      name: "Dr. Jatinder Singla",
+      specialty: "Orthopedic Surgeon",
       category: "Orthopaedics",
-      experience: "38+ Years",
-      education: "Ph.D Orthopaedics, MS, MBBS",
-      hospital: "MAX Super Speciality Hospital",
-      image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=600",
+      experience: "25 Years",
+      education: "MBBS, MS - Orthopaedics",
+      hospital: "",
+      image: "/jatinder-singla.png",
     },
     {
-      name: "Dr. Jamie Holmes",
-      specialty: "Orthopaedics & Joint Replacement",
-      category: "Orthopaedics",
-      experience: "21+ Years",
-      education: "MBBS, MS, M.Ch (Ortho)",
-      hospital: "Fortis Hospital Mohali",
-      image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=600",
+      name: "Dr. Ashish Ahuja",
+      specialty: "Ophthalmology",
+      category: "Ophthalmology",
+      experience: "22 Years",
+      education: "MS (Ophthalmology)",
+      hospital: "",
+      image: "/ashish-ahuja.png",
     },
     {
-      name: "Dr. Adrianne Silvers",
-      specialty: "Oncology & Haematology Care",
-      category: "Oncology",
-      experience: "18+ Years",
-      education: "MBBS, MD, DM (Clinical Oncology)",
-      hospital: "Healing Super Specialty Hospital",
-      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=600",
+      name: "Dr. Vikas Gupta",
+      specialty: "Plastic Surgery",
+      category: "Plastic Surgery",
+      experience: "16 Years",
+      education: "MCh - Plastic Surgery",
+      hospital: "",
+      image: "/vikas-gupta.png",
     },
   ];
 
@@ -127,28 +125,23 @@ export const DoctorsSection = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4 }}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 flex flex-col sm:flex-row group"
+                className="bg-white h-full rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 flex flex-col group border border-slate-100"
               >
                 {/* Image */}
-                <div className="relative w-full sm:w-48 h-64 sm:h-auto shrink-0 bg-slate-100 self-stretch overflow-hidden">
+                <div className="relative w-full h-72 shrink-0 bg-slate-100 overflow-hidden">
                   <Image
                     src={doc.image}
                     alt={doc.name}
                     fill
                     className="object-cover object-top group-hover:scale-110 transition-transform duration-700 ease-out grayscale-[20%] group-hover:grayscale-0"
-                    sizes="(max-width: 640px) 100vw, 180px"
+                    sizes="(max-width: 640px) 100vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
                 
                 {/* Details */}
-                <div className="flex-1 min-w-0 p-6 flex flex-col justify-between">
+                <div className="flex-1 min-w-0 p-6 flex flex-col justify-between bg-white">
                   <div>
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold bg-vedara-gold/10 text-vedara-gold-hover mb-4">
-                      <span className="w-1.5 h-1.5 rounded-full bg-vedara-gold animate-pulse"></span>
-                      <span className="uppercase tracking-wider">Verified Clinician</span>
-                    </div>
-
                     <h3 className="font-serif text-xl text-vedara-deep truncate mb-1 group-hover:text-vedara-gold-hover transition-colors">
                       {doc.name}
                     </h3>
@@ -172,12 +165,14 @@ export const DoctorsSection = () => {
                         </div>
                       </div>
                       {/* Hosp */}
-                      <div className="flex items-start gap-3">
-                        <div className="min-w-0">
-                          <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Hospital</div>
-                          <div className="text-xs text-slate-700 font-medium truncate">{doc.hospital}</div>
+                      {doc.hospital && (
+                        <div className="flex items-start gap-3">
+                          <div className="min-w-0">
+                            <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Hospital</div>
+                            <div className="text-xs text-slate-700 font-medium truncate">{doc.hospital}</div>
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
                   </div>
 
