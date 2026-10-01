@@ -29,7 +29,7 @@ export const Footer = () => {
           <div className="lg:col-span-2 space-y-5">
             <Link href="/" className="flex items-center gap-3 group">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0D9488] via-[#0A2E50] to-[#031126] flex items-center justify-center shadow-lg border border-[#2ECDC5]/40 group-hover:scale-105 transition-transform">
-                <span className="text-white font-black text-lg font-serif">V</span>
+                <span className="text-white font-black text-lg font-serif">Y</span>
               </div>
               <div className="flex flex-col">
                 <span className="font-extrabold tracking-widest text-lg text-white group-hover:text-[#2ECDC5] transition-colors">

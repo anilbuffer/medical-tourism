@@ -117,12 +117,12 @@ export const Navbar = () => {
           {/* 01. Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group shrink-0">
             <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-teal-600 via-dark-3 to-dark-1 flex items-center justify-center shadow-lg shadow-teal-900/30 ring-1 ring-vedara-cyan/40 group-hover:scale-105 transition-transform">
-              <span className="text-white font-black text-lg font-serif">M</span>
+              <span className="text-white font-black text-lg font-serif">Y</span>
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-1.5 leading-tight">
                 <span className="font-extrabold tracking-widest text-base sm:text-lg text-white group-hover:text-vedara-cyan transition-colors">
-                  My Care Tour India
+                  Your Medicare Trip
                 </span>
               </div>
             </div>

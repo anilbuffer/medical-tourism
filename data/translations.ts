@@ -306,8 +306,8 @@ export interface Translations {
 export const DICTIONARY: Record<Language, Translations> = {
   en: {
     nav: {
-      brandName: "VEDARA",
-      brandSub: "International Care",
+      brandName: "Your Medicare Trip",
+      brandSub: "",
       treatments: "Treatments",
       specialties: "Specialties",
       doctors: "Doctors",
@@ -573,8 +573,8 @@ export const DICTIONARY: Record<Language, Translations> = {
       resourcesHeader: "Patient Resources",
       companyHeader: "About Vedara",
       supportHeader: "24/7 International Desk",
-      rights: "© 2026 Vedara International Care. All rights reserved.",
-      medicalDisclaimer: "Vedara is a medical travel facilitation and care coordination platform. We do not provide direct medical diagnosis. Care and treatments are provided by licensed partner hospitals and clinicians.",
+      rights: "© 2026 Your Medicare Trip. All rights reserved.",
+      medicalDisclaimer: "Your Medicare Trip is a medical travel facilitation and care coordination platform. We do not provide direct medical diagnosis. Care and treatments are provided by licensed partner hospitals and clinicians.",
     },
     floatingBar: {
       whatsapp: "WhatsApp Us",
@@ -612,8 +612,8 @@ export const DICTIONARY: Record<Language, Translations> = {
   },
   ar: {
     nav: {
-      brandName: "فيدارا",
-      brandSub: "الرعاية الدولية المنسقة",
+      brandName: "Your Medicare Trip",
+      brandSub: "",
       treatments: "العلاجات",
       specialties: "التخصصات الطبية",
       doctors: "الأطباء الاستشاريون",
