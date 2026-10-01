@@ -580,7 +580,7 @@ export const PatientJourney = () => {
       aria-label="Interactive Patient Journey"
     >
       <section
-        className={`w-full bg-white border-t border-slate-100 py-16 sm:py-20 ${
+        className={`w-full bg-gradient-to-b from-[#020B18] via-[#06203D] to-[#0A2E50] border-t border-slate-800 py-16 sm:py-20 ${
           isDesktop
             ? "lg:sticky lg:top-0 lg:h-screen lg:flex lg:flex-col overflow-hidden"
             : ""
@@ -590,10 +590,10 @@ export const PatientJourney = () => {
           {/* Header Row */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 sm:mb-14 gap-6">
             <div>
-              <p className="text-[#a58d34] font-bold text-xs uppercase tracking-widest mb-2.5">
+              <p className="text-vedara-gold font-bold text-xs uppercase tracking-widest mb-2.5">
                 Your journey
               </p>
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#0F1340] tracking-tight leading-[1.15]">
+              <h2 className="text-5xl sm:text-6xl md:text-7xl font-serif text-white tracking-tight leading-[1.1]">
                 From your first message to your
                 <br className="hidden sm:inline" /> first day back at work.
               </h2>
@@ -615,7 +615,7 @@ export const PatientJourney = () => {
                   type="button"
                   onClick={() => handleSelectStep(activeStep - 1)}
                   disabled={activeStep === 0}
-                  className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 disabled:opacity-35 disabled:cursor-not-allowed transition-all shadow-xs"
+                  className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 disabled:opacity-35 disabled:cursor-not-allowed transition-all shadow-xs"
                   aria-label="Previous step"
                 >
                   <ChevronLeft className="w-4 h-4" />
@@ -624,7 +624,7 @@ export const PatientJourney = () => {
                   type="button"
                   onClick={() => handleSelectStep(activeStep + 1)}
                   disabled={activeStep === totalSteps - 1}
-                  className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 disabled:opacity-35 disabled:cursor-not-allowed transition-all shadow-xs"
+                  className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 disabled:opacity-35 disabled:cursor-not-allowed transition-all shadow-xs"
                   aria-label="Next step"
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -700,10 +700,10 @@ export const PatientJourney = () => {
                           transition={{ type: "spring", stiffness: 350, damping: 25 }}
                           className={`w-10 h-10 rounded-full flex items-center justify-center font-mono font-bold text-xs transition-all duration-300 ${
                             isActive
-                              ? "bg-gradient-to-br from-vedara-cyan to-vedara-blue text-white border-4 border-white shadow-md ring-2 ring-vedara-cyan/40"
+                              ? "bg-gradient-to-br from-vedara-cyan to-vedara-blue text-white border-4 border-vedara-deep shadow-md ring-2 ring-vedara-cyan/40"
                               : isCompleted
-                              ? "bg-vedara-blue-50 text-vedara-blue-600 border-2 border-vedara-blue/30 shadow-xs"
-                              : "bg-white text-slate-400 border-2 border-slate-200 group-hover:border-slate-300 shadow-xs"
+                              ? "bg-vedara-blue-900/50 text-vedara-cyan border-2 border-vedara-cyan/30 shadow-xs"
+                              : "bg-vedara-deep text-white/50 border-2 border-white/20 group-hover:border-white/40 shadow-xs"
                           }`}
                         >
                           {step.id}
@@ -714,10 +714,10 @@ export const PatientJourney = () => {
                       <span
                         className={`text-[10px] uppercase font-bold tracking-wider mt-1.5 transition-colors ${
                           isActive
-                            ? "text-vedara-blue"
+                            ? "text-vedara-cyan"
                             : isCompleted
-                            ? "text-vedara-blue-600"
-                            : "text-slate-400"
+                            ? "text-vedara-cyan/80"
+                            : "text-white/40"
                         }`}
                       >
                         {step.badgeDay}
@@ -727,8 +727,8 @@ export const PatientJourney = () => {
                       <span
                         className={`text-xs font-semibold mt-0.5 line-clamp-1 max-w-[120px] transition-colors ${
                           isActive
-                            ? "text-[#0F1340] font-bold"
-                            : "text-slate-600 group-hover:text-slate-900"
+                            ? "text-white font-bold"
+                            : "text-white/60 group-hover:text-white"
                         }`}
                       >
                         {step.title}
@@ -753,7 +753,7 @@ export const PatientJourney = () => {
                     className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-2xl shrink-0 border transition-all text-left ${
                       isActive
                         ? "bg-vedara-cyan/10 border-vedara-cyan/40 shadow-sm"
-                        : "bg-white border-slate-200 hover:border-slate-300"
+                        : "bg-white/5 border-white/10 hover:border-white/20"
                     }`}
                   >
                     <div
@@ -761,8 +761,8 @@ export const PatientJourney = () => {
                         isActive
                           ? "bg-gradient-to-br from-vedara-cyan to-vedara-blue text-white shadow-sm"
                           : isCompleted
-                          ? "bg-vedara-blue-50 text-vedara-blue-600 border border-vedara-blue/30"
-                          : "bg-slate-100 text-slate-400"
+                          ? "bg-vedara-blue-900/50 text-vedara-cyan border border-vedara-cyan/30"
+                          : "bg-white/10 text-white/50"
                       }`}
                     >
                       {step.id}
@@ -770,14 +770,14 @@ export const PatientJourney = () => {
                     <div>
                       <div
                         className={`text-[9px] font-bold uppercase tracking-wider ${
-                          isActive ? "text-vedara-blue" : "text-slate-400"
+                          isActive ? "text-vedara-cyan" : "text-white/40"
                         }`}
                       >
                         {step.badgeDay}
                       </div>
                       <div
                         className={`text-xs font-bold ${
-                          isActive ? "text-[#0F1340]" : "text-slate-700"
+                          isActive ? "text-white" : "text-white/70"
                         }`}
                       >
                         {step.title}
@@ -801,9 +801,9 @@ export const PatientJourney = () => {
                 className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
               >
                 {/* Left Card: Clinical details & Image */}
-                <div className="lg:col-span-7 xl:col-span-8 bg-white rounded-3xl p-6 sm:p-8 shadow-[0_8px_30px_rgba(6,42,56,0.06)] border border-slate-100 flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+                <div className="lg:col-span-7 xl:col-span-8 bg-white/5 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-white/10 flex flex-col sm:flex-row gap-6 items-center sm:items-start">
                   {/* Step Image */}
-                  <div className="relative w-full sm:w-52 md:w-56 h-48 sm:h-52 rounded-2xl overflow-hidden shrink-0 shadow-sm bg-slate-100">
+                  <div className="relative w-full sm:w-52 md:w-56 h-48 sm:h-52 rounded-2xl overflow-hidden shrink-0 shadow-sm bg-slate-800">
                     <Image
                       src={currentStep.image}
                       alt={currentStep.title}
@@ -815,37 +815,37 @@ export const PatientJourney = () => {
 
                   {/* Step Text Info */}
                   <div className="pt-1 flex-1 flex flex-col justify-center">
-                    <div className="text-vedara-blue text-xs font-bold uppercase tracking-wider mb-1.5">
+                    <div className="text-vedara-cyan text-xs font-bold uppercase tracking-wider mb-1.5">
                       {currentStep.dayLabel}
                     </div>
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0F1340] mb-3 tracking-tight">
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-3 tracking-tight">
                       {currentStep.title}
                     </h3>
-                    <p className="text-slate-600 text-sm sm:text-[15px] leading-relaxed">
+                    <p className="text-white/80 text-sm sm:text-[15px] leading-relaxed">
                       {currentStep.description}
                     </p>
                   </div>
                 </div>
 
                 {/* Right Card: Emotional Feeling & Logistics Box */}
-                <div className="lg:col-span-5 xl:col-span-4 bg-vedara-cyan/10 rounded-3xl p-6 sm:p-8 border border-vedara-cyan/30 shadow-sm flex flex-col justify-between">
+                <div className="lg:col-span-5 xl:col-span-4 bg-white/10 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-white/20 shadow-sm flex flex-col justify-between">
                   <div>
-                    <p className="text-vedara-blue-700 font-semibold text-sm sm:text-[15.5px] italic leading-relaxed mb-6">
+                    <p className="text-white font-semibold text-sm sm:text-[15.5px] italic leading-relaxed mb-6">
                       &ldquo;{currentStep.feelQuote}&rdquo;
                     </p>
                   </div>
 
-                  <div className="space-y-4 pt-4 border-t border-vedara-cyan/30">
+                  <div className="space-y-4 pt-4 border-t border-white/20">
                     {/* Item A: Where */}
                     <div className="flex items-start gap-3.5">
-                      <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-vedara-blue text-xs font-black shrink-0 shadow-xs border border-vedara-cyan/40 mt-0.5">
+                      <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-white text-xs font-black shrink-0 border border-white/30 mt-0.5">
                         A
                       </div>
                       <div>
-                        <div className="text-[10px] font-extrabold tracking-widest text-vedara-blue uppercase mb-0.5">
+                        <div className="text-[10px] font-extrabold tracking-widest text-vedara-cyan uppercase mb-0.5">
                           WHERE
                         </div>
-                        <div className="text-sm font-bold text-[#0F1340]">
+                        <div className="text-sm font-bold text-white">
                           {currentStep.where}
                         </div>
                       </div>
@@ -853,14 +853,14 @@ export const PatientJourney = () => {
 
                     {/* Item B: With you */}
                     <div className="flex items-start gap-3.5">
-                      <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-vedara-blue text-xs font-black shrink-0 shadow-xs border border-vedara-cyan/40 mt-0.5">
+                      <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-white text-xs font-black shrink-0 border border-white/30 mt-0.5">
                         B
                       </div>
                       <div>
-                        <div className="text-[10px] font-extrabold tracking-widest text-vedara-blue uppercase mb-0.5">
+                        <div className="text-[10px] font-extrabold tracking-widest text-vedara-cyan uppercase mb-0.5">
                           WITH YOU
                         </div>
-                        <div className="text-sm font-bold text-[#0F1340]">
+                        <div className="text-sm font-bold text-white">
                           {currentStep.withYou}
                         </div>
                       </div>
