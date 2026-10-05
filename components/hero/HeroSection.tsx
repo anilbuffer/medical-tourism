@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+
 import { useCare } from "@/context/CareContext";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -31,13 +31,18 @@ export const HeroSection = () => {
         transition={{ duration: 2, ease: "easeOut" }}
         className="absolute inset-0 w-full h-full z-0"
       >
-        <Image
-          src="/hero-image.png"
-          alt="Personalized Medical Travel and Quaternary Care in India"
-          fill
-          priority
-          className="object-cover object-center"
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          poster="/hero-image.png"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          aria-hidden="true"
+        >
+          <source src="/hero-section-video.mp4" type="video/mp4" />
+        </video>
         {/* Refined gradient overlay for deeper contrast and luxury feel */}
         <div className="absolute inset-0 bg-gradient-to-t from-vedara-deep via-vedara-deep/60 to-transparent z-10" />
         <div className="absolute inset-0 bg-black/30 z-10" />
