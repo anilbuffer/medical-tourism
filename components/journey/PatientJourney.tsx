@@ -580,13 +580,14 @@ export const PatientJourney = () => {
       aria-label="Interactive Patient Journey"
     >
       <section
-        className={`w-full bg-gradient-to-b from-[#020B18] via-[#06203D] to-[#0A2E50] border-t border-slate-800 py-16 sm:py-20 ${
+        className={`w-full bg-gradient-to-b from-[#020B18] via-[#06203D] to-[#0A2E50] border-t border-slate-800 ${
           isDesktop
-            ? "lg:sticky lg:top-0 lg:h-screen lg:flex lg:flex-col overflow-hidden"
-            : ""
+            ? "lg:sticky lg:top-0 lg:h-screen overflow-hidden relative"
+            : "py-16 sm:py-20"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className={`w-full h-full ${isDesktop ? "overflow-y-auto no-scrollbar py-16 sm:py-20 lg:flex lg:flex-col" : ""}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           {/* Header Row */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 sm:mb-14 gap-6">
             <div>
@@ -871,10 +872,11 @@ export const PatientJourney = () => {
             </AnimatePresence>
           </div>
         </div>
+        </div>
 
         {/* Scrollytelling Bottom Progress Bar (Section A behaviour from HTML demo) */}
         {isDesktop && (
-          <div className="absolute bottom-0 left-0 right-0 h-1 bg-slate-200/50 overflow-hidden">
+          <div className="absolute bottom-0 left-0 right-0 h-1 bg-slate-200/50 overflow-hidden z-50">
             <motion.div
               className="h-full bg-gradient-to-r from-vedara-blue via-vedara-blue-light to-vedara-cyan"
               style={{
