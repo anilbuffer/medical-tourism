@@ -17,6 +17,7 @@ export const AppShell: React.FC<AppShellProps> = ({ children }) => {
   const pathname = usePathname();
   const portalPaths = ["/patient", "/login", "/customer", "/hospital", "/finance", "/superadmin", "/admin", "/coordinator", "/doctor"];
   const isPortal = pathname ? portalPaths.some(p => pathname.startsWith(p)) : false;
+  const isHomeAlternative1 = pathname === "/home-alternative1";
 
   if (isPortal) {
     return <main className="min-h-screen">{children}</main>;
@@ -24,9 +25,9 @@ export const AppShell: React.FC<AppShellProps> = ({ children }) => {
 
   return (
     <>
-      <Navbar />
+      {!isHomeAlternative1 && <Navbar />}
       <main className="flex-1">{children}</main>
-      <Footer />
+      {!isHomeAlternative1 && <Footer />}
 
       {/* Interactive Global Modals & Drawers */}
       <IntakeModal />
