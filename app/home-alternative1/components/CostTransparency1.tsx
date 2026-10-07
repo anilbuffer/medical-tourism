@@ -12,104 +12,153 @@ export const CostTransparency1 = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <p className="text-[#0070E0] font-bold text-xs uppercase tracking-widest mb-3">
-            COST & FINANCIAL TRANSPARENCY
-          </p>
+        <div className="max-w-4xl mb-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-4">
-            The whole trip, not just the operating table.
+            Choose how you want to stay
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Surprise medical bills are impossible when every item — surgery, attendants, flights, hotel, and aftercare buffer — is quoted in writing before you board.
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl">
+            Two plans. They differ in where you sleep, how you travel and what you do while you recover — never in who operates on you.
           </p>
         </div>
 
-        {/* Top Calculator Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-sm border border-[#E4E9ED] bg-white mb-14">
+        <div className="w-full h-px bg-[#0070E0] mb-10" />
+
+        {/* Identical Medical Care Section */}
+        <div className="mb-14">
+          <div className="flex items-start gap-4 mb-6">
+            <ShieldCheck className="w-6 h-6 text-[#0070E0] shrink-0 mt-1" />
+            <div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Your medical care is identical in both</h3>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-3xl">
+                The plan you pick changes your stay, not your treatment. Nobody gets a different surgeon, a cheaper implant or a shorter recovery because of what they paid.
+              </p>
+            </div>
+          </div>
           
-          {/* Left: Input */}
-          <div className="p-8 sm:p-12 flex flex-col border-b lg:border-b-0 lg:border-r border-[#E4E9ED]">
-            <div className="mb-8">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-6 h-6 rounded-full bg-[#007FFF] text-white flex items-center justify-center text-xs font-bold">1</div>
-                <h3 className="font-bold text-slate-900">Select Plan Type</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pl-0 sm:pl-10">
+            <div className="flex items-center gap-3 text-sm text-slate-700 font-medium"><span className="text-[#0070E0]">✓</span> The same surgeon</div>
+            <div className="flex items-center gap-3 text-sm text-slate-700 font-medium"><span className="text-[#0070E0]">✓</span> The same hospital and theatre</div>
+            <div className="flex items-center gap-3 text-sm text-slate-700 font-medium"><span className="text-[#0070E0]">✓</span> The same implant or device</div>
+            <div className="flex items-center gap-3 text-sm text-slate-700 font-medium"><span className="text-[#0070E0]">✓</span> The same room and nursing care</div>
+            <div className="flex items-center gap-3 text-sm text-slate-700 font-medium"><span className="text-[#0070E0]">✓</span> The same six months of follow-up</div>
+            <div className="flex items-center gap-3 text-sm text-slate-700 font-medium"><span className="text-[#0070E0]">✓</span> The same fixed quote before you fly</div>
+          </div>
+        </div>
+
+        {/* Cards Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          {/* Essential Card */}
+          <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-sm flex flex-col">
+            <div className="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full mb-6 w-max">Essential</div>
+            <h3 className="text-2xl font-bold text-slate-900 mb-3">Everything you need, nothing you don't</h3>
+            <p className="text-slate-600 text-sm mb-8 leading-relaxed">
+              For patients who'd rather keep the trip simple and spend the time resting close to the hospital.
+            </p>
+            
+            <div className="h-px bg-slate-100 w-full mb-8" />
+            
+            <p className="text-sm font-semibold text-slate-500 mb-6">Your stay includes</p>
+            
+            <div className="space-y-6 flex-1">
+              <div className="flex items-start gap-3">
+                <span className="text-[#0070E0] mt-0.5">✓</span>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-sm">Hotel near the hospital</h4>
+                </div>
               </div>
-              <div className="flex gap-2 mb-4 pl-9">
-                <Button 
-                  onClick={() => setPlanType("economical")}
-                  className={`flex-1 transition-all ${planType === "economical" ? "bg-[#0070E0] text-white hover:bg-[#007FFF]" : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`}
-                >
-                  Economical
-                </Button>
-                <Button 
-                  onClick={() => setPlanType("premium")}
-                  className={`flex-1 transition-all ${planType === "premium" ? "bg-[#0070E0] text-white hover:bg-[#007FFF]" : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`}
-                >
-                  Premium
-                </Button>
+              <div className="flex items-start gap-3">
+                <span className="text-[#0070E0] mt-0.5">✓</span>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-sm">Airport pickup and drop</h4>
+                  <p className="text-xs text-slate-500 mt-1">Air-conditioned sedan, wheelchair accessible if you need it</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-[#0070E0] mt-0.5">✓</span>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-sm">All hospital transfers</h4>
+                  <p className="text-xs text-slate-500 mt-1">Every consultation, scan and follow-up visit</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-[#0070E0] mt-0.5">✓</span>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-sm">One attendant included</h4>
+                  <p className="text-xs text-slate-500 mt-1">A bed in your room, meals during your admission</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-[#0070E0] mt-0.5">✓</span>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-sm">Daily coordinator visit</h4>
+                  <p className="text-xs text-slate-500 mt-1">The same named person, every day you're here</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-[#0070E0] mt-0.5">✓</span>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-sm">Arrival kit</h4>
+                  <p className="text-xs text-slate-500 mt-1">Local SIM, currency exchange</p>
+                </div>
               </div>
             </div>
-
-            <div className="mb-8">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-6 h-6 rounded-full bg-[#007FFF] text-white flex items-center justify-center text-xs font-bold">2</div>
-                <h3 className="font-bold text-slate-900">Number of attendants</h3>
-              </div>
-              <div className="pl-9">
-                <select className="w-full p-3.5 rounded-xl border border-slate-200 bg-white text-slate-700 text-sm font-medium outline-none focus:border-[#007FFF]">
-                  <option>1 attendant (included in base plan)</option>
-                  <option>2 attendants</option>
-                  <option>Travelling alone (bedside nurse arranged)</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="mt-auto pl-9">
-              <div className="flex items-start gap-2.5 text-slate-500">
-                <Info className="w-4 h-4 shrink-0 mt-0.5 text-slate-400" />
-                <p className="text-xs leading-relaxed">
-                  Indicative only. Your formal written quote is itemized and fixed before travel.
-                </p>
-              </div>
+            
+            <div className="mt-10">
+              <Button className="w-full py-6 bg-white border border-slate-200 text-slate-900 hover:bg-slate-50 font-bold rounded-xl transition-all shadow-sm">
+                Get a quote for Essential
+              </Button>
+              <p className="text-center text-xs text-slate-400 mt-4">No payment until the quote is in writing</p>
             </div>
           </div>
 
-          {/* Right: Output */}
-          <div className="bg-white p-8 sm:p-12 flex flex-col justify-between">
-            <div>
-              <h3 className="font-bold text-slate-900 text-lg mb-6">Itemized estimate</h3>
-              <div className="space-y-3.5 text-sm text-slate-600 mb-6">
-                <div className="flex justify-between items-center py-1 border-b border-slate-100">
-                  <div className="flex items-center gap-2"><span className="text-slate-400">🏥</span> Treatment range</div>
-                </div>
-                <div className="flex justify-between items-center py-1 border-b border-slate-100">
-                  <div className="flex items-center gap-2"><span className="text-slate-400">✈️</span> Return flights (all travelers)</div>
-                </div>
-                <div className="flex justify-between items-center py-1 border-b border-slate-100">
-                  <div className="flex items-center gap-2"><span className="text-slate-400">🏨</span> Accommodation (serviced apartment)</div>
-                </div>
-                {planType === "premium" && (
-                  <>
-                    <div className="flex justify-between items-center py-1 border-b border-slate-100">
-                      <div className="flex items-center gap-2"><span className="text-slate-400">👤</span> Attendant living allowance</div>
-                    </div>
-                    <div className="flex justify-between items-center py-1 border-b border-slate-100">
-                      <div className="flex items-center gap-2"><span className="text-slate-400">🚕</span> Airport & clinic VIP transfers</div>
-                    </div>
-                  </>
-                )}
-                <div className="flex justify-between items-center py-1 border-b border-slate-100">
-                  <div className="flex items-center gap-2"><span className="text-slate-400">💊</span> Take-home discharge medications</div>
-                </div>
-                {planType === "premium" && (
-                  <div className="flex justify-between items-center py-1 border-b border-slate-100">
-                    <div className="flex items-center gap-2"><span className="text-slate-400">🩺</span> Follow-up consult once home</div>
-                  </div>
-                )}
-                <div className="flex justify-between items-center py-1 border-b border-slate-100">
-                  <div className="flex items-center gap-2"><span className="text-slate-400">🛡️</span> 15% contingency buffer</div>
+          {/* Premium Card */}
+          <div className="bg-white rounded-3xl p-8 sm:p-10 border-2 border-[#0070E0] shadow-md flex flex-col relative">
+            <div className="inline-block px-3 py-1 bg-[#E6F0FA] text-[#0070E0] text-xs font-bold rounded-full mb-6 w-max">Premium</div>
+            <h3 className="text-2xl font-bold text-slate-900 mb-3">Room to recover properly</h3>
+            <p className="text-slate-600 text-sm mb-8 leading-relaxed">
+              For patients travelling with family, or anyone who'd rather the trip felt like more than a hospital stay.
+            </p>
+            
+            <div className="h-px bg-slate-100 w-full mb-8" />
+            
+            <p className="text-sm font-semibold text-slate-500 mb-6">Everything in Essential, and</p>
+            
+            <div className="space-y-6 flex-1">
+              <div className="bg-[#f8faff] border border-[#d6e6f5] rounded-2xl p-5 flex items-start gap-3">
+                <span className="text-[#0070E0] mt-0.5">✓</span>
+                <div>
+                  <h4 className="font-bold text-[#0070E0] text-sm mb-1">A day in the Himalayas</h4>
+                  <p className="text-xs text-slate-600 leading-relaxed">Shimla or Kasauli, about three hours from the hospital — arranged once your surgeon has cleared you to travel, and never before.</p>
                 </div>
               </div>
+              <div className="flex items-start gap-3">
+                <span className="text-[#0070E0] mt-0.5">✓</span>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-sm">Five-star hotel</h4>
+                  <p className="text-xs text-slate-500 mt-1">You and your companion</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-[#0070E0] mt-0.5">✓</span>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-sm">Private car and driver for your whole stay</h4>
+                  <p className="text-xs text-slate-500 mt-1">Luxury sedan or SUV, on call, not shared with other patients</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-[#0070E0] mt-0.5">✓</span>
+                <div>
+                  <h4 className="font-bold text-slate-900 text-sm">Airport meet-and-greet</h4>
+                  <p className="text-xs text-slate-500 mt-1">Fast-track immigration, met before you reach the queue</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-10">
+              <Button className="w-full py-6 bg-[#0070E0] text-white hover:bg-[#007FFF] font-bold rounded-xl transition-all shadow-md">
+                Get a quote for Premium
+              </Button>
+              <p className="text-center text-xs text-slate-400 mt-4">No payment until the quote is in writing</p>
             </div>
           </div>
         </div>
