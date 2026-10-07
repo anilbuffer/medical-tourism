@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import { Quicksand } from "next/font/google";
 
 import { Header1 } from "./components/Header1";
 import { HeroSection1 } from "./components/HeroSection1";
@@ -15,6 +16,11 @@ import { BlogSection1 } from "./components/BlogSection1";
 import { ConnectSection1 } from "./components/ConnectSection1";
 import { Footer1 } from "./components/Footer1";
 
+const quicksand = Quicksand({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
   title: "Best Medical Service/Treatment in India | Your Medicare Trip",
   description:
@@ -23,8 +29,16 @@ export const metadata: Metadata = {
 
 export default function HomeAlternative1Page() {
   return (
-    <div className="w-full bg-white text-slate-900 selection:bg-[#007FFF]/20 selection:text-[#0070E0] relative font-sans">
+    <div className={`w-full bg-white text-slate-900 selection:bg-[#007FFF]/20 selection:text-[#0070E0] relative font-sans home-alt-container ${quicksand.className}`}>
       
+      <style>{`
+        .home-alt-container,
+        .home-alt-container .font-sans, 
+        .home-alt-container .font-serif {
+          font-family: ${quicksand.style.fontFamily} !important;
+        }
+      `}</style>
+
       {/* 
         Separation tentpole logic: 
         All-white backgrounds remove main tool for separating sections. 
