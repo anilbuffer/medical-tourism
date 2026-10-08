@@ -18,7 +18,7 @@ export const HeroSection = () => {
     {
       number: "1,500+",
       label: "International Patients Treated",
-      color: "text-[#0b5d63]",
+      color: "text-[#e39b2d]",
     },
     {
       number: "70%",
@@ -28,7 +28,7 @@ export const HeroSection = () => {
     {
       number: "24 / 7",
       label: "Dedicated English Concierge",
-      color: "text-[#0b5d63]",
+      color: "text-[#e39b2d]",
     },
   ];
 
