@@ -48,26 +48,26 @@ export const LiveChatDrawer = () => {
       <div className="absolute inset-y-0 right-0 rtl:right-auto rtl:left-0 max-w-full flex">
         <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between border-l rtl:border-l-0 rtl:border-r border-slate-200 animate-in slide-in-from-right rtl:slide-in-from-left duration-300">
           {/* Header */}
-          <div className="bg-gradient-to-r from-slate-900 via-slate-900 to-teal-950 text-white p-4 sm:p-5 flex items-center justify-between shadow-md">
+          <div className="bg-gradient-to-r from-[#04272a] via-[#0b5d63] to-[#073c40] text-white p-4 sm:p-5 flex items-center justify-between shadow-md">
             <div className="flex items-center gap-3">
               <div className="relative">
                 <img
                   src={CARE_COORDINATOR.avatar}
                   alt={CARE_COORDINATOR.name}
-                  className="w-11 h-11 rounded-full object-cover ring-2 ring-teal-400"
+                  className="w-11 h-11 rounded-full object-cover ring-2 ring-[#e39b2d]"
                 />
-                <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-[#2ECDC5] ring-2 ring-slate-900"></span>
+                <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-[#10b981] ring-2 ring-[#04272a]"></span>
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
-                  <h4 className="font-extrabold text-sm text-white font-sans">
+                  <h4 className="font-extrabold text-sm text-white font-heading">
                     {language === "ar" ? CARE_COORDINATOR.nameAr : CARE_COORDINATOR.name}
                   </h4>
-                  <span className="text-[10px] bg-[#2ECDC5]/20 text-[#2ECDC5] px-2 py-0.2 rounded-full font-bold">
+                  <span className="text-[10px] bg-[#e39b2d]/20 text-[#e39b2d] px-2 py-0.2 rounded-full font-bold">
                     Online
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-300">
+                <p className="text-[11px] text-teal-100/80">
                   {language === "ar" ? CARE_COORDINATOR.roleAr : CARE_COORDINATOR.role}
                 </p>
               </div>
@@ -75,19 +75,19 @@ export const LiveChatDrawer = () => {
 
             <button
               onClick={closeChat}
-              className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+              className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
           {/* Quick Info Bar */}
-          <div className="bg-[#3F4EB4]/10 px-4 py-2 border-b border-[#3F4EB4]/20 flex items-center justify-between text-[11px] text-[#283593]">
+          <div className="bg-[#0b5d63]/10 px-4 py-2 border-b border-[#0b5d63]/20 flex items-center justify-between text-[11px] text-[#0b5d63]">
             <div className="flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#3F4EB4]" />
-              <span>Direct 1:1 Medical Concierge</span>
+              <ShieldCheck className="w-3.5 h-3.5 text-[#e39b2d]" />
+              <span className="font-medium">Direct 1:1 Medical Concierge</span>
             </div>
-            <span className="font-semibold text-[#283593]">Replies in &lt; 15 mins</span>
+            <span className="font-bold text-[#0b5d63]">Replies in &lt; 15 mins</span>
           </div>
 
           {/* Messages Container */}
@@ -103,12 +103,12 @@ export const LiveChatDrawer = () => {
                     <img
                       src={CARE_COORDINATOR.avatar}
                       alt="Coordinator"
-                      className="w-7 h-7 rounded-full object-cover mb-1 ring-1 ring-[#2ECDC5] shrink-0"
+                      className="w-7 h-7 rounded-full object-cover mb-1 ring-1 ring-[#0b5d63] shrink-0"
                     />
                   )}
                   <div
                     className={`max-w-[82%] rounded-2xl px-4 py-2.5 text-xs sm:text-sm leading-relaxed shadow-sm ${isUser
-                      ? "bg-[#3F4EB4] text-white rounded-br-none"
+                      ? "bg-[#0b5d63] text-white rounded-br-none"
                       : "bg-white text-slate-800 border border-slate-200/80 rounded-bl-none"
                       }`}
                   >
@@ -118,7 +118,7 @@ export const LiveChatDrawer = () => {
                         }`}
                     >
                       <span>{msg.timestamp}</span>
-                      {isUser && <CheckCheck className="w-3 h-3" />}
+                      {isUser && <CheckCheck className="w-3 h-3 text-[#e39b2d]" />}
                     </div>
                   </div>
                 </div>
@@ -137,7 +137,7 @@ export const LiveChatDrawer = () => {
                 <button
                   key={idx}
                   onClick={() => sendChatMessage(q)}
-                  className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-[#3F4EB4]/10 hover:text-[#283593] text-[11px] text-slate-700 font-medium transition-colors border border-slate-200 text-left rtl:text-right"
+                  className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-[#0b5d63]/10 hover:text-[#0b5d63] text-[11px] text-slate-700 font-medium transition-colors border border-slate-200 text-left rtl:text-right"
                 >
                   {q}
                 </button>
@@ -156,12 +156,12 @@ export const LiveChatDrawer = () => {
                   ? "اكتب رسالتك لعائشة خان..."
                   : "Type your care question for Aisha..."
               }
-              className="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#2ECDC5]"
+              className="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0b5d63]"
             />
             <button
               type="submit"
               disabled={!inputText.trim()}
-              className="p-2.5 rounded-xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] disabled:opacity-40 text-white shadow-md transition-all shrink-0"
+              className="p-2.5 rounded-xl bg-[#0b5d63] hover:bg-[#073c40] disabled:opacity-40 text-white shadow-md transition-all shrink-0"
             >
               <Send className="w-4 h-4 rtl:rotate-180" />
             </button>

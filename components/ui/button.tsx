@@ -9,15 +9,15 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm",
+          "bg-[#0b5d63] text-white hover:bg-[#073f43] shadow-sm font-heading font-bold",
         gold:
-          "bg-vedara-gold text-vedara-deep hover:bg-vedara-gold-hover shadow-md font-bold active:scale-[0.98]",
+          "bg-[#e39b2d] text-slate-950 hover:bg-[#a35f0b] hover:text-white shadow-md font-heading font-bold active:scale-[0.98]",
         cyan:
-          "bg-vedara-cyan text-slate-950 hover:bg-vedara-cyan-light shadow-md shadow-teal-500/20 font-bold active:scale-[0.98]",
+          "bg-[#0b5d63] text-white hover:bg-[#073f43] shadow-md font-heading font-bold active:scale-[0.98]",
         outline:
           "border border-border bg-background hover:bg-muted hover:text-foreground text-foreground",
         outlineNavy:
-          "border border-vedara-deep text-vedara-deep hover:bg-vedara-deep hover:text-white transition-colors font-bold",
+          "border border-[#0b5d63] text-[#0b5d63] hover:bg-[#0b5d63] hover:text-white transition-colors font-heading font-bold",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80 font-medium",
         ghost:

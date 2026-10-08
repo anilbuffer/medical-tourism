@@ -46,7 +46,7 @@ export default function TreatmentsPage() {
         <div className="mb-6">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-teal-800"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0b5d63] hover:text-[#04272a] transition-colors"
           >
             <ArrowLeft className="w-4 h-4 rtl:rotate-180" />
             <span>Back to Main Overview</span>
@@ -54,16 +54,16 @@ export default function TreatmentsPage() {
         </div>
 
         {/* Page Header */}
-        <div className="bg-gradient-to-br from-dark-1 via-dark-2 to-dark-3 text-white rounded-3xl p-8 sm:p-12 mb-10 shadow-xl border border-teal-500/30">
+        <div className="bg-gradient-to-br from-[#04272a] via-[#0b5d63] to-[#073c40] text-white rounded-3xl p-8 sm:p-12 mb-10 shadow-xl border border-[#0b5d63]/40">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-teal-600/20 to-sky-600/20 border border-vedara-cyan/40 text-vedara-cyan text-xs font-bold uppercase tracking-wider backdrop-blur-md">
-              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-[#e39b2d]/40 text-[#e39b2d] text-xs font-bold uppercase tracking-wider backdrop-blur-md font-heading">
+              <Sparkles className="w-3.5 h-3.5 text-[#e39b2d]" />
               <span>Verified Hospital Pricing Guide</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white font-sans">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white font-heading">
               Popular Treatments & Cost Estimates
             </h1>
-            <p className="text-sm sm:text-base text-slate-200/90 leading-relaxed">
+            <p className="text-sm sm:text-base text-teal-100/90 leading-relaxed font-body">
               Explore comprehensive treatment packages, hospital stay durations, and recovery timelines across leading accredited medical centers in India.
             </p>
           </div>
@@ -79,17 +79,17 @@ export default function TreatmentsPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search treatments (e.g. bypass, knee, IVF)..."
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0b5d63]"
             />
           </div>
 
           {/* Specialty Filter */}
           <div className="flex items-center gap-3 w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
-            <span className="text-xs font-bold text-slate-500 shrink-0">Specialty:</span>
+            <span className="text-xs font-bold text-slate-500 shrink-0 font-heading">Specialty:</span>
             <select
               value={selectedSpecialty}
               onChange={(e) => setSelectedSpecialty(e.target.value)}
-              className="px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-teal-500"
+              className="px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-[#0b5d63]"
             >
               {categories.map((c) => (
                 <option key={c} value={c}>
@@ -109,46 +109,46 @@ export default function TreatmentsPage() {
           {filtered.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 hover:border-teal-400 shadow-card hover:shadow-luxury-hover transition-all duration-300"
+              className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 hover:border-[#0b5d63]/40 shadow-sm hover:shadow-xl transition-all duration-300"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 {/* Left: Info */}
                 <div className="lg:col-span-6 space-y-4">
                   <div className="flex items-center gap-2">
-                    <span className="px-3 py-1 rounded-full bg-vedara-blue/10 text-vedara-blue text-xs font-bold">
+                    <span className="px-3 py-1 rounded-full bg-[#0b5d63]/10 text-[#0b5d63] text-xs font-bold">
                       {language === "ar" ? item.specialtyAr : item.specialty}
                     </span>
                     {item.popular && (
-                      <span className="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 text-[10px] font-extrabold">
+                      <span className="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-extrabold font-heading">
                         High Demand
                       </span>
                     )}
                   </div>
 
-                  <h3 className="text-2xl font-extrabold text-slate-900">
+                  <h3 className="text-2xl font-extrabold text-slate-900 font-heading">
                     {language === "ar" ? item.nameAr : item.name}
                   </h3>
 
                   <div className="grid grid-cols-2 gap-4 text-xs">
                     <div className="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                      <div className="text-slate-500">Typical In-Hospital Stay</div>
-                      <div className="font-extrabold text-slate-900 mt-0.5">{item.typicalStayDays}</div>
+                      <div className="text-slate-500 font-medium">Typical In-Hospital Stay</div>
+                      <div className="font-extrabold text-slate-900 mt-0.5 font-heading text-sm">{item.typicalStayDays}</div>
                     </div>
                     <div className="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                      <div className="text-slate-500">Recovery Timeline</div>
-                      <div className="font-extrabold text-slate-900 mt-0.5">{item.recoveryWeeks}</div>
+                      <div className="text-slate-500 font-medium">Recovery Timeline</div>
+                      <div className="font-extrabold text-slate-900 mt-0.5 font-heading text-sm">{item.recoveryWeeks}</div>
                     </div>
                   </div>
 
                   {/* Inclusions */}
                   <div>
-                    <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+                    <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 font-heading">
                       Package Highlights
                     </div>
                     <ul className="space-y-1.5">
                       {(language === "ar" ? item.inclusionsAr : item.inclusions).slice(0, 3).map((inc, i) => (
                         <li key={i} className="flex items-start gap-2 text-xs text-slate-600">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-vedara-cyan shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0b5d63] shrink-0 mt-0.5" />
                           <span>{inc}</span>
                         </li>
                       ))}
@@ -157,41 +157,41 @@ export default function TreatmentsPage() {
                 </div>
 
                 {/* Right: Comparative Cost Box & Action */}
-                <div className="lg:col-span-6 bg-slate-900 text-white rounded-2xl p-6 border border-slate-800 space-y-4">
+                <div className="lg:col-span-6 bg-gradient-to-br from-[#04272a] via-[#07383c] to-[#0b5d63] text-white rounded-2xl p-6 border border-[#0b5d63]/50 shadow-xl space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="text-[11px] font-bold text-vedara-cyan uppercase tracking-wider">
+                      <div className="text-[11px] font-bold text-[#e39b2d] uppercase tracking-wider font-heading">
                         Indicative India Package
                       </div>
-                      <div className="text-2xl sm:text-3xl font-extrabold text-vedara-cyan font-sans mt-0.5">
+                      <div className="text-2xl sm:text-3xl font-extrabold text-[#e39b2d] font-heading mt-0.5">
                         {formatPriceRange(item.indiaCostUsd.min, item.indiaCostUsd.max)}
                       </div>
                     </div>
-                    <div className="px-3 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full text-xs font-bold flex items-center gap-1">
-                      <TrendingDown className="w-3.5 h-3.5" />
+                    <div className="px-3 py-1 bg-[#e39b2d]/20 text-[#e39b2d] border border-[#e39b2d]/30 rounded-full text-xs font-bold flex items-center gap-1 font-heading">
+                      <TrendingDown className="w-3.5 h-3.5 text-[#e39b2d]" />
                       <span>70%+ Savings</span>
                     </div>
                   </div>
 
                   {/* Quick Comparative Row */}
                   <div className="grid grid-cols-3 gap-2 text-center text-xs">
-                    <div className="bg-white/5 p-2 rounded-lg">
-                      <div className="text-[10px] text-slate-400">US Estimate</div>
-                      <div className="font-bold text-slate-200 mt-0.5">{formatPrice(item.usCostUsd.min)}</div>
+                    <div className="bg-white/5 p-2 rounded-lg border border-white/5">
+                      <div className="text-[10px] text-teal-200/70">US Estimate</div>
+                      <div className="font-bold text-slate-100 mt-0.5 font-heading">{formatPrice(item.usCostUsd.min)}</div>
                     </div>
-                    <div className="bg-white/5 p-2 rounded-lg">
-                      <div className="text-[10px] text-slate-400">UK Estimate</div>
-                      <div className="font-bold text-slate-200 mt-0.5">{formatPrice(item.ukCostUsd.min)}</div>
+                    <div className="bg-white/5 p-2 rounded-lg border border-white/5">
+                      <div className="text-[10px] text-teal-200/70">UK Estimate</div>
+                      <div className="font-bold text-slate-100 mt-0.5 font-heading">{formatPrice(item.ukCostUsd.min)}</div>
                     </div>
-                    <div className="bg-white/5 p-2 rounded-lg">
-                      <div className="text-[10px] text-slate-400">UAE Estimate</div>
-                      <div className="font-bold text-slate-200 mt-0.5">{formatPrice(item.uaeCostUsd.min)}</div>
+                    <div className="bg-white/5 p-2 rounded-lg border border-white/5">
+                      <div className="text-[10px] text-teal-200/70">UAE Estimate</div>
+                      <div className="font-bold text-slate-100 mt-0.5 font-heading">{formatPrice(item.uaeCostUsd.min)}</div>
                     </div>
                   </div>
 
                   <button
                     onClick={() => openIntake(item.name)}
-                    className="w-full py-3.5 bg-gradient-to-r from-teal-mid1 via-teal-mid2 to-teal-mid1 text-white font-extrabold text-xs rounded-xl shadow-lg shadow-vedara-slate/20 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-3.5 bg-gradient-to-r from-[#e39b2d] to-[#c7821e] hover:from-[#c7821e] hover:to-[#a35f0b] text-slate-950 font-extrabold text-xs rounded-xl shadow-lg shadow-[#e39b2d]/25 transition-all flex items-center justify-center gap-2 font-heading uppercase tracking-wider"
                   >
                     <span>Request Exact Hospital Quotation</span>
                     <ArrowRight className="w-4 h-4 rtl:rotate-180" />

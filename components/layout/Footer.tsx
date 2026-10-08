@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useCare } from "@/context/CareContext";
 import { LanguageCountryPicker } from "@/components/ui/LanguageCountryPicker";
 import {
@@ -18,27 +19,23 @@ export const Footer = () => {
   const { t, language, openIntake, openChat } = useCare();
 
   return (
-    <footer className="bg-gradient-to-b from-[#020B18] via-[#051A33] to-[#020B18] text-white pt-20 pb-12 border-t border-teal-900/40 relative overflow-hidden">
+    <footer className="bg-gradient-to-b from-[#04272a] via-[#073f43] to-[#021618] text-white pt-20 pb-12 border-t border-[#0b5d63]/40 relative overflow-hidden font-sans">
       {/* Ambient background lighting */}
-      <div className="absolute top-0 left-1/3 w-[500px] h-[300px] bg-vedara-cyan/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[300px] bg-vedara-blue/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 left-1/3 w-[500px] h-[300px] bg-[#e39b2d]/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[300px] bg-[#0b5d63]/20 rounded-full blur-[120px] pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Top 4-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-slate-800/80">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-white/10">
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-5">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0D9488] via-[#0A2E50] to-[#031126] flex items-center justify-center shadow-lg border border-[#2ECDC5]/40 group-hover:scale-105 transition-transform">
-                <span className="text-white font-black text-lg font-serif">Y</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-extrabold tracking-widest text-lg text-white group-hover:text-[#2ECDC5] transition-colors">
-                  {t.nav.brandName}
-                </span>
-                <span className="text-[10px] uppercase font-bold tracking-wider text-[#2ECDC5]">
-                  {t.nav.brandSub}
-                </span>
-              </div>
+            <Link href="/" className="inline-block group">
+              <Image
+                src="/images/logo/logo-white.png"
+                alt="yourMedicareTrip - Your Medical Travel Company"
+                width={220}
+                height={44}
+                className="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              />
             </Link>
 
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">

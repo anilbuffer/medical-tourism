@@ -239,23 +239,23 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
 
         {/* Top 2-Step Progress Indicator */}
         <div className={`grid grid-cols-2 gap-2 ${step !== 3 ? 'mb-4' : ''}`}>
-          <div className={`h-1.5 rounded-full transition-all duration-300 ${step >= 1 ? "bg-gradient-to-r from-[#2ECDC5] to-[#3F4EB4]" : "bg-slate-200"}`}></div>
-          <div className={`h-1.5 rounded-full transition-all duration-300 ${step >= 2 ? "bg-gradient-to-r from-[#3F4EB4] to-[#283593]" : "bg-slate-200"}`}></div>
+          <div className={`h-1.5 rounded-full transition-all duration-300 ${step >= 1 ? "bg-gradient-to-r from-[#0b5d63] to-[#e39b2d]" : "bg-slate-200"}`}></div>
+          <div className={`h-1.5 rounded-full transition-all duration-300 ${step >= 2 ? "bg-gradient-to-r from-[#e39b2d] to-[#a35f0b]" : "bg-slate-200"}`}></div>
         </div>
 
         {step === 1 && (
           <div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight pr-8">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight pr-8 font-heading">
               Get a free consultation
             </h2>
-            <p className="mt-1 text-sm text-slate-500 leading-relaxed">
+            <p className="mt-1 text-sm text-slate-500 leading-relaxed font-body">
               Tell us about your treatment needs — our care team will reach out within 24 hours.
             </p>
           </div>
         )}
         {step === 2 && (
           <div>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight pr-8">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight pr-8 font-heading">
               Thank you. A few more questions for the hospital:
             </h2>
           </div>
@@ -417,7 +417,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
                   setAgreedToPrivacy(e.target.checked);
                   if (errors.agreedToPrivacy) setErrors({ ...errors, agreedToPrivacy: "" });
                 }}
-                className="mt-0.5 w-4 h-4 rounded text-[#3F4EB4] focus:ring-[#3F4EB4] border-slate-300"
+                className="mt-0.5 w-4 h-4 rounded text-[#0b5d63] focus:ring-[#0b5d63] border-slate-300"
               />
               <span className="text-xs text-slate-600 leading-normal">
                 I agree to the privacy policy and consent to being contacted about my enquiry.
@@ -433,7 +433,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
           <div className="shrink-0 p-6 pt-4 sm:p-8 sm:pt-4 md:p-10 md:pt-4 border-t border-slate-100 bg-white rounded-b-3xl relative z-10">
             <button
               type="submit"
-              className="w-full py-4 px-6 rounded-xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#283593]/20 hover:shadow-xl hover:shadow-[#283593]/30 hover:scale-[1.01] active:scale-[0.99] transition-all"
+              className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-[#0b5d63] to-[#08454a] hover:from-[#08454a] hover:to-[#052e31] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#0b5d63]/25 hover:shadow-xl hover:shadow-[#0b5d63]/35 hover:scale-[1.01] active:scale-[0.99] transition-all font-heading"
             >
               CONTINUE
             </button>
@@ -471,8 +471,8 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
 
           {/* Question 1: Doctor recommendation preference */}
           <div className="space-y-2.5 pt-2">
-            <label className="block text-xs sm:text-sm font-semibold text-slate-800">
-              1. What kind of doctors shall we recommend you? <span className="text-[#3F4EB4]">*</span>
+            <label className="block text-xs sm:text-sm font-semibold text-slate-800 font-heading">
+              1. What kind of doctors shall we recommend you? <span className="text-[#e39b2d]">*</span>
             </label>
             <div className="space-y-2">
               {[
@@ -496,7 +496,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
                 <label
                   key={opt.id}
                   className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${doctorPreference === opt.label
-                    ? "border-[#3F4EB4] bg-[#3F4EB4]/5 text-slate-900 font-medium ring-1 ring-[#3F4EB4]/20"
+                    ? "border-[#0b5d63] bg-[#0b5d63]/5 text-slate-900 font-medium ring-1 ring-[#0b5d63]/20"
                     : "border-slate-200 hover:bg-slate-50 text-slate-700"
                     }`}
                 >
@@ -509,7 +509,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
                       setDoctorPreference(opt.label);
                       if (errors.doctorPreference) setErrors({ ...errors, doctorPreference: "" });
                     }}
-                    className="mt-1 w-4 h-4 text-[#3F4EB4] focus:ring-[#3F4EB4]"
+                    className="mt-1 w-4 h-4 text-[#0b5d63] focus:ring-[#0b5d63]"
                   />
                   <span className="text-xs sm:text-sm leading-relaxed">{opt.label}</span>
                 </label>
@@ -522,8 +522,8 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
 
           {/* Question 2: Treatment Timeline */}
           <div className="space-y-2.5 pt-2">
-            <label className="block text-xs sm:text-sm font-semibold text-slate-800">
-              2. How soon do you plan for this treatment? <span className="text-[#3F4EB4]">*</span>
+            <label className="block text-xs sm:text-sm font-semibold text-slate-800 font-heading">
+              2. How soon do you plan for this treatment? <span className="text-[#e39b2d]">*</span>
             </label>
             <div className="space-y-2">
               {[
@@ -547,7 +547,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
                 <label
                   key={opt.id}
                   className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${treatmentTimeline === opt.label
-                    ? "border-[#3F4EB4] bg-[#3F4EB4]/5 text-slate-900 font-medium ring-1 ring-[#3F4EB4]/20"
+                    ? "border-[#0b5d63] bg-[#0b5d63]/5 text-slate-900 font-medium ring-1 ring-[#0b5d63]/20"
                     : "border-slate-200 hover:bg-slate-50 text-slate-700"
                     }`}
                 >
@@ -560,7 +560,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
                       setTreatmentTimeline(opt.label);
                       if (errors.treatmentTimeline) setErrors({ ...errors, treatmentTimeline: "" });
                     }}
-                    className="mt-1 w-4 h-4 text-[#3F4EB4] focus:ring-[#3F4EB4]"
+                    className="mt-1 w-4 h-4 text-[#0b5d63] focus:ring-[#0b5d63]"
                   />
                   <span className="text-xs sm:text-sm leading-relaxed">{opt.label}</span>
                 </label>
@@ -581,7 +581,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
               placeholder="Any preference for hospital or city?"
               value={preferredHospitalCity}
               onChange={(e) => setPreferredHospitalCity(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#3F4EB4] focus:border-[#3F4EB4] transition-all"
+              className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0b5d63] focus:border-[#0b5d63] transition-all"
             />
           </div>
 
@@ -603,7 +603,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full md:w-auto md:flex-1 py-4 px-6 rounded-xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#283593]/20 hover:shadow-xl hover:shadow-[#283593]/30 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-60 flex items-center justify-center gap-2"
+                className="w-full md:w-auto md:flex-1 py-4 px-6 rounded-xl bg-gradient-to-r from-[#0b5d63] to-[#08454a] hover:from-[#08454a] hover:to-[#052e31] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#0b5d63]/25 hover:shadow-xl hover:shadow-[#0b5d63]/35 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-60 flex items-center justify-center gap-2 font-heading"
               >
                 {isSubmitting ? (
                   <>
@@ -623,7 +623,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
       {step === 3 && (
         <div className={`flex-1 p-6 sm:p-8 md:p-10 text-center space-y-6 animate-in zoom-in-95 duration-300 ${isModal ? 'overflow-y-auto custom-scrollbar' : ''}`}>
           {/* Green Checkmark Circle */}
-          <div className="w-16 h-16 rounded-full bg-[#2ECDC5]/15 text-[#2ECDC5] flex items-center justify-center mx-auto shadow-inner">
+          <div className="w-16 h-16 rounded-full bg-[#0b5d63]/15 text-[#0b5d63] flex items-center justify-center mx-auto shadow-inner">
             <svg
               className="w-8 h-8 stroke-current stroke-[3] fill-none"
               viewBox="0 0 24 24"
@@ -633,7 +633,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
           </div>
 
           <div className="space-y-2">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-heading">
               Request received
             </h2>
             <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
@@ -645,8 +645,8 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
           <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 max-w-md mx-auto text-left rtl:text-right space-y-3">
             <div className="flex items-center justify-between pb-2 border-b border-slate-200 text-xs">
               <span className="font-bold text-slate-500 uppercase tracking-wider">Assessment Ref</span>
-              <span className="font-mono font-bold text-[#283593] bg-[#3F4EB4]/10 px-2 py-0.5 rounded">
-                {caseId || "VED-2026-9021"}
+              <span className="font-mono font-bold text-[#0b5d63] bg-[#0b5d63]/10 px-2 py-0.5 rounded">
+                {caseId || "YMT-2026-9021"}
               </span>
             </div>
 
@@ -657,7 +657,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
               </div>
               <div>
                 <span className="text-slate-400 block">Treatment</span>
-                <span className="font-semibold text-blue-700">{treatment || "Specialized Care"}</span>
+                <span className="font-semibold text-[#0b5d63]">{treatment || "Specialized Care"}</span>
               </div>
               <div>
                 <span className="text-slate-400 block">Country</span>
@@ -674,23 +674,23 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
           <div className="pt-2 flex flex-col gap-2.5 max-w-md mx-auto">
             <a
               href="/patient"
-              className="w-full py-3.5 px-5 rounded-xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2"
+              className="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-[#0b5d63] to-[#08454a] hover:from-[#08454a] hover:to-[#052e31] text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 font-heading"
             >
-              <Sparkles className="w-4 h-4 text-amber-300" />
+              <Sparkles className="w-4 h-4 text-[#e39b2d]" />
               <span>Open My Patient Portal Dashboard</span>
             </a>
 
             <div className="flex gap-2">
               <button
                 onClick={() => openChat(`Hello, I just submitted assessment ${caseId} for ${treatment}. Can I speak with coordinator Aisha?`)}
-                className="flex-1 py-2.5 px-3 rounded-xl bg-[#3F4EB4]/10 border border-[#3F4EB4]/30 hover:bg-[#3F4EB4]/20 text-[#283593] font-bold text-xs uppercase tracking-wider transition-colors"
+                className="flex-1 py-2.5 px-3 rounded-xl bg-[#0b5d63]/10 border border-[#0b5d63]/30 hover:bg-[#0b5d63]/20 text-[#0b5d63] font-bold text-xs uppercase tracking-wider transition-colors font-heading"
               >
                 Live Chat Desk
               </button>
               {onClose && (
                 <button
                   onClick={handleReset}
-                  className="flex-1 py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs uppercase tracking-wider transition-colors"
+                  className="flex-1 py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs uppercase tracking-wider transition-colors font-heading"
                 >
                   Close
                 </button>

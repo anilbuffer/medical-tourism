@@ -1,139 +1,129 @@
 "use client";
 
-import React from "react";
-import { XCircle, CheckCircle2 } from "lucide-react";
+import React, { useState } from "react";
+import { XCircle, CheckCircle2, ShieldCheck, MessageSquare, PhoneCall, Sparkles } from "lucide-react";
+import { useCare } from "@/context/CareContext";
 
 export const CareCoordination = () => {
-  const tabs = [
-    "Along the journey",
-    "What you won't have to do",
-    "With us / on your own",
-    "The inclusion ledger",
-    "One person, six jobs"
-  ];
+  const { openIntake } = useCare();
 
   const comparison = [
     {
-      bad: "Chasing hospitals for invitation letters across time zones and email threads.",
-      good: "Invitation letter and visa support — we coordinate the paperwork directly with the hospital.",
+      bad: "Chasing busy hospital administration offices across multiple time zones and unanswered email threads.",
+      good: "Official medical visa invitation letter issued within 24 hours directly from the hospital medical directorate.",
     },
     {
-      bad: "Arriving after a long flight and figuring out unfamiliar transport on your own.",
-      good: "Airport pickup and local transport to your hotel and medical appointments.",
+      bad: "Arriving after an exhausting 14-hour long-haul flight and navigating confusing airport taxi scams alone.",
+      good: "Personal chauffeur with air-conditioned private vehicle meets you at the gate, transferring you directly to your hotel.",
     },
     {
-      bad: "Finding accommodation near the hospital without knowing what \"near\" really means.",
-      good: "Carefully selected accommodation vetted for cleanliness, safety, and proximity.",
+      bad: "Searching hotel portals for accommodation near the hospital without knowing local safety or hygiene standards.",
+      good: "Clean, vetted 4 or 5-star patient-recovery suites handpicked for hygiene, elevator access, and hospital proximity.",
     },
     {
-      bad: "Navigating medical consultations and consent conversations across language barriers.",
-      good: "Interpreter support ensuring you understand every word of your consultation.",
+      bad: "Navigating complex surgical consent conversations, drug protocols, and doctor consultations across language accents.",
+      good: "Dedicated English-speaking coordinator accompanies you into clinical consultations ensuring 100% clarity.",
     },
     {
-      bad: "Re-explaining your medical history to a different person every time you call.",
-      good: "One dedicated coordinator who knows your case inside out, available via WhatsApp.",
+      bad: "Re-explaining your medical history and imaging scans to a different call-center agent every time you call.",
+      good: "One named coordinator who knows your case file inside-out, reachable 24/7 on WhatsApp before and during your stay.",
     },
     {
-      bad: "Leaving hospital with a stack of records and hoping nothing important is missing.",
-      good: "Your Continuity Pack, cleanly organised and translated for your doctor at home.",
+      bad: "Leaving India with loose paper files, hoping your doctor back home can understand the post-operative instructions.",
+      good: "Continuity Care Pack compiled: translated digital records, surgical notes, imaging on drive, and medication timetable.",
     }
   ];
 
   return (
-    <section className="py-12 sm:py-16 bg-white border-t border-[#E4E9ED]">
+    <section className="py-16 sm:py-24 bg-white border-t border-[#e2eaeb] font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center mb-10">
-          <p className="text-[#0070E0] font-bold text-xs uppercase tracking-widest mb-3">
-            CARE COORDINATION
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">
-            Care doesn&apos;t Stop at the Hospital Door.
+        <div className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f0f8f9] border border-[#dbeff0] text-[#0b5d63] text-xs font-heading font-bold uppercase tracking-wider mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-[#e39b2d]" />
+            <span>END-TO-END CARE CONCIERGE</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-slate-900 mb-4 leading-tight">
+            Care Doesn&apos;t Stop at the Hospital Door.
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto">
-            Your treatment is one part of the journey. Our concierge team coordinates every detail around it.
+          <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-normal">
+            Your surgery is one part of the journey. Our concierge coordinates every single detail around it so you can focus 100% on healing.
           </p>
         </div>
 
-        {/* Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {tabs.map((tab, idx) => (
-            <button
-              key={idx}
-              className={`px-4 py-2 rounded-full text-xs font-bold transition-colors ${
-                idx === 2 
-                  ? "bg-[#0070E0] text-white" 
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-
-        <div className="w-full">
-          <div className="mb-10 text-center sm:text-left">
-            <p className="text-[#007FFF] font-bold text-xs uppercase tracking-widest mb-2">
-              AROUND THE TREATMENT
-            </p>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">
-              The same trip, arranged two ways.
-            </h3>
-            <p className="text-slate-600 text-sm sm:text-base max-w-3xl">
-              You can organise treatment in India yourself — plenty of people do. This is what each part looks like either way.
-            </p>
+        {/* Side by Side Comparison Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          {/* Without Coordination */}
+          <div className="bg-slate-50 rounded-3xl p-6 sm:p-8 border border-slate-200">
+            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-slate-200">
+              <span className="w-6 h-6 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-xs shrink-0">✕</span>
+              <h3 className="font-heading font-bold text-lg text-slate-700">
+                Organising On Your Own (Stressful)
+              </h3>
+            </div>
+            <div className="space-y-4">
+              {comparison.map((item, idx) => (
+                <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-200 text-xs sm:text-sm text-slate-600">
+                  <XCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+                  <p className="leading-relaxed">{item.bad}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            {/* DIY */}
-            <div className="bg-rose-50 rounded-3xl p-6 sm:p-8 border border-rose-100">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-rose-500 border border-rose-200">
-                  <XCircle className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 text-lg">Arranging it yourself</h4>
-                  <p className="text-xs text-rose-600 font-medium">Independent coordination</p>
-                </div>
-              </div>
-              
-              <div className="space-y-5">
-                {comparison.map((item, idx) => (
-                  <div key={idx} className="bg-white rounded-2xl p-4.5 shadow-sm border border-rose-100 relative">
-                    <div className="absolute -left-2.5 -top-2.5 w-6 h-6 rounded-full bg-rose-100 flex items-center justify-center text-rose-600 font-bold text-[10px] border border-white">
-                      {idx + 1}
-                    </div>
-                    <p className="text-slate-600 text-sm leading-relaxed ml-2">{item.bad}</p>
-                  </div>
-                ))}
-              </div>
+          {/* With Your Medicare Trip */}
+          <div className="bg-gradient-to-br from-[#f0f8f9] to-white rounded-3xl p-6 sm:p-8 border-2 border-[#0b5d63] shadow-lg shadow-[#0b5d63]/5">
+            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-[#dbeff0]">
+              <span className="w-6 h-6 rounded-full bg-[#0b5d63] text-white flex items-center justify-center font-bold text-xs shrink-0">✓</span>
+              <h3 className="font-heading font-bold text-lg text-[#073f43]">
+                With Your Medicare Trip Concierge
+              </h3>
             </div>
+            <div className="space-y-4">
+              {comparison.map((item, idx) => (
+                <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-white border border-[#dbeff0] text-xs sm:text-sm text-slate-800 shadow-sm">
+                  <CheckCircle2 className="w-4 h-4 text-[#0b5d63] shrink-0 mt-0.5" />
+                  <p className="leading-relaxed font-medium">{item.good}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
 
-            {/* With Us */}
-            <div className="bg-slate-50 rounded-3xl p-6 sm:p-8 border border-[#007FFF]/20 shadow-sm relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#007FFF]/5 rounded-full blur-3xl pointer-events-none" />
-              <div className="flex items-center gap-3 mb-8 relative z-10">
-                <div className="w-10 h-10 rounded-full bg-[#0070E0] flex items-center justify-center text-white shadow-sm border border-[#007FFF]">
-                  <CheckCircle2 className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 text-lg">With us</h4>
-                  <p className="text-xs text-[#0070E0] font-medium">Personally coordinated care</p>
-                </div>
-              </div>
-              
-              <div className="space-y-5 relative z-10">
-                {comparison.map((item, idx) => (
-                  <div key={idx} className="bg-white rounded-2xl p-4.5 shadow-sm border border-[#E4E9ED] relative">
-                    <div className="absolute -left-2.5 -top-2.5 w-6 h-6 rounded-full bg-[#0070E0] flex items-center justify-center text-white font-bold text-[10px] border border-white">
-                      {idx + 1}
-                    </div>
-                    <p className="text-slate-800 font-medium text-sm leading-relaxed ml-2">{item.good}</p>
-                  </div>
-                ))}
-              </div>
+        {/* WhatsApp Assistance Banner */}
+        <div className="bg-[#04272a] text-white rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-[#0b5d63] flex items-center justify-center text-white shrink-0">
+              <MessageSquare className="w-6 h-6 text-[#e39b2d]" />
             </div>
+            <div>
+              <h4 className="font-heading font-bold text-xl text-white mb-1">
+                Have questions about visas, hotels or flights?
+              </h4>
+              <p className="text-slate-300 text-xs sm:text-sm">
+                Speak directly with an international care coordinator right now on WhatsApp.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            <a
+              href="https://wa.me/919876543210"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2"
+            >
+              <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+              <span>Chat on WhatsApp</span>
+            </a>
+
+            <button
+              onClick={() => openIntake("Concierge Request")}
+              className="px-6 py-3.5 rounded-xl bg-[#e39b2d] hover:bg-[#a35f0b] text-slate-950 hover:text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
+            >
+              Request Call Back
+            </button>
           </div>
         </div>
 
@@ -141,4 +131,3 @@ export const CareCoordination = () => {
     </section>
   );
 };
-

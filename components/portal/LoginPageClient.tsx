@@ -360,10 +360,10 @@ const getPortalPathForRole = (role?: string) => {
   return (
     <div className="min-h-screen flex flex-col lg:flex-row bg-[#071321] text-white">
       {/* 01. Left Column: Feature Narrative & Role Selector Strip (Home Banner Style) */}
-      <div className="lg:w-3/5 xl:w-[62%] relative flex flex-col justify-between p-6 sm:p-10 lg:p-14 bg-gradient-to-b from-[#141d60] via-[#1b2360] to-[#101e76] overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-800/80">
+      <div className="lg:w-3/5 xl:w-[62%] relative flex flex-col justify-between p-6 sm:p-10 lg:p-14 bg-gradient-to-b from-[#04272a] via-[#07383c] to-[#0b5d63] overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-800/80">
         {/* Ambient Lights & Texture */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#3F4EB4]/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-[#2ECDC5]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0b5d63]/30 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-[#e39b2d]/15 rounded-full blur-3xl pointer-events-none" />
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{
@@ -513,20 +513,12 @@ const getPortalPathForRole = (role?: string) => {
         {/* Top Header Logo */}
         <div className="flex items-center justify-between pb-6">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3F4EB4] via-[#283593] to-slate-900 flex items-center justify-center shadow-lg shadow-[#283593]/30 ring-1 ring-[#2ECDC5]/40 group-hover:scale-105 transition-transform">
-              <span className="text-white font-black text-lg font-serif">V</span>
-            </div>
-            <div className="flex flex-col">
-              <div className="flex items-center gap-1.5 leading-none">
-                <span className="font-extrabold tracking-widest text-base text-slate-900 group-hover:text-[#2ECDC5] transition-colors">
-                  VEDARA
-                </span>
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#2ECDC5] animate-pulse"></span>
-              </div>
-              <span className="text-[9px] uppercase font-semibold tracking-wider text-[#00897B] leading-none mt-0.5">
-                International Care
-              </span>
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/logo/logo.png"
+              alt="yourMedicareTrip"
+              className="h-9 w-auto object-contain transition-transform group-hover:scale-105"
+            />
           </Link>
 
           <Link
@@ -753,10 +745,10 @@ const getPortalPathForRole = (role?: string) => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#1baba4] via-[#1964B5] to-[#2ECDC5] hover:from-[#197e79] hover:via-[#1964B5] hover:to-[#26B3AC] text-white font-bold text-[14px] shadow-lg shadow-[#2948C9]/25 hover:shadow-xl hover:shadow-[#2ECDC5]/30 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2.5 group cursor-pointer disabled:opacity-75 disabled:pointer-events-none"
+              className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#0b5d63] to-[#08454a] hover:from-[#08454a] hover:to-[#052e31] text-white font-bold text-[14px] shadow-lg shadow-[#0b5d63]/25 hover:shadow-xl hover:shadow-[#0b5d63]/30 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2.5 group cursor-pointer disabled:opacity-75 disabled:pointer-events-none font-heading"
             >
               <span>{isSubmitting ? "Authenticating..." : `Sign in to ${currentRole.title}`}</span>
-              <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 text-[#e39b2d] group-hover:translate-x-1 transition-transform" />
             </button>
           </form>
 
@@ -767,7 +759,7 @@ const getPortalPathForRole = (role?: string) => {
             </div>
             <div className="relative flex justify-center text-xs">
               <span className="bg-white px-3 text-slate-400 font-medium">
-                New to Vedara Care?
+                New to yourMedicareTrip?
               </span>
             </div>
           </div>
@@ -775,16 +767,16 @@ const getPortalPathForRole = (role?: string) => {
           {/* Create Account Button */}
           <Link
             href="/#assessment"
-            className="w-full py-3 rounded-2xl bg-[#E6F8F3] hover:bg-[#D2F2E9] text-[#00897B] border border-[#2ECDC5]/30 font-bold text-xs flex items-center justify-center gap-2 transition-all"
+            className="w-full py-3 rounded-2xl bg-[#0b5d63]/10 hover:bg-[#0b5d63]/20 text-[#0b5d63] border border-[#0b5d63]/30 font-bold text-xs flex items-center justify-center gap-2 transition-all font-heading"
           >
-            <Sparkles className="w-3.5 h-3.5" />
+            <Sparkles className="w-3.5 h-3.5 text-[#e39b2d]" />
             <span>Create an account / Free Assessment</span>
           </Link>
         </div>
 
         {/* Footer */}
         <div className="pt-6 border-t border-slate-100 text-center text-[11px] text-slate-400">
-          Copyright © 2026 Vedara Care International LLC. All rights reserved.
+          Copyright © 2026 yourMedicareTrip. All rights reserved.
         </div>
       </div>
 

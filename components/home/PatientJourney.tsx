@@ -132,8 +132,8 @@ const JOURNEY_STEPS: JourneyStep[] = [
 
 /* Custom Vector SVG Icon */
 const StepVectorIcon = ({ type, active }: { type: JourneyStep["iconType"]; active: boolean }) => {
-  const strokeColor = active ? "#007FFF" : "#64748B";
-  const accentColor = active ? "#0070E0" : "#475569";
+  const strokeColor = active ? "#0b5d63" : "#94A3B8";
+  const accentColor = active ? "#e39b2d" : "#CBD5E1";
 
   return (
     <svg viewBox="0 0 80 80" className="w-8 h-8 transition-transform duration-300">
@@ -230,34 +230,34 @@ export const PatientJourney = () => {
   };
 
   return (
-    <div ref={sectionRef} id="journey" className="relative w-full bg-slate-50 text-slate-900 border-t border-[#E4E9ED]">
+    <div ref={sectionRef} id="journey" className="relative w-full bg-white text-slate-900 border-t border-[#e2eaeb] font-sans">
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <div className="flex items-center gap-3 mb-3">
-              <div className="h-[2px] w-10 bg-[#007FFF]" />
-              <p className="text-[#0070E0] font-bold text-xs uppercase tracking-[0.25em] flex items-center gap-2">
-                <Compass className="w-4 h-4 text-[#007FFF]" />
-                <span>YOUR JOURNEY — SCROLL STORY GUIDE</span>
+            <div className="flex items-center gap-2.5 mb-3">
+              <span className="h-2 w-2 rounded-full bg-[#e39b2d]"></span>
+              <p className="text-[#0b5d63] font-heading font-bold text-xs uppercase tracking-[0.2em] flex items-center gap-2">
+                <Compass className="w-4 h-4 text-[#0b5d63]" />
+                <span>PATIENT JOURNEY — STEP-BY-STEP CONCIERGE CARE</span>
               </p>
             </div>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif text-slate-900 leading-[1.12]">
-              From your first message to your <br className="hidden sm:inline" />
-              <span className="italic font-light text-slate-600">
-                first day back at work.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-slate-900 leading-[1.12]">
+              From Your First Report Review to Your <br className="hidden sm:inline" />
+              <span className="text-[#0b5d63]">
+                Safe Return Home.
               </span>
             </h2>
           </div>
         </div>
       </div>
 
-      <div className="sticky top-16 lg:top-20 z-30 bg-white/95 backdrop-blur-md border-y border-[#E4E9ED] py-3.5 shadow-sm">
+      <div className="sticky top-16 lg:top-20 z-30 bg-white/95 backdrop-blur-md border-y border-[#e2eaeb] py-3.5 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative mb-3">
             <div className="h-1.5 bg-slate-100 rounded-full w-full relative overflow-hidden">
               <motion.div
-                className="h-full bg-[#007FFF] rounded-full"
+                className="h-full bg-[#0b5d63] rounded-full"
                 style={{ scaleX: smoothProgress, transformOrigin: "left" }}
               />
             </div>
@@ -273,28 +273,28 @@ export const PatientJourney = () => {
                   onClick={() => handleScrollToStep(idx)}
                   className={`group relative flex items-center justify-start gap-3 p-3 rounded-xl border transition-all duration-300 cursor-pointer shrink-0 snap-start min-w-[220px] ${
                     isActive
-                      ? "bg-slate-50 border-[#007FFF] shadow-sm scale-[1.02]"
+                      ? "bg-[#f0f8f9] border-[#0b5d63] shadow-sm scale-[1.02]"
                       : isPast
-                      ? "bg-white border-[#E4E9ED] hover:border-[#0070E0]"
+                      ? "bg-white border-[#e2eaeb] hover:border-[#0b5d63]"
                       : "bg-white border-slate-100 hover:border-slate-200"
                   }`}
                 >
                   <span
-                    className={`w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-black shrink-0 transition-colors ${
+                    className={`w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold font-heading shrink-0 transition-colors ${
                       isActive
-                        ? "bg-[#007FFF] text-white"
+                        ? "bg-[#0b5d63] text-white"
                         : isPast
-                        ? "bg-[#007FFF]/10 text-[#0070E0]"
+                        ? "bg-[#0b5d63]/10 text-[#0b5d63]"
                         : "bg-slate-100 text-slate-400"
                     }`}
                   >
                     {step.id}
                   </span>
                   <div className="text-left">
-                    <div className="text-[9px] font-black uppercase tracking-wider text-slate-400 group-hover:text-[#0070E0] transition-colors">
+                    <div className="text-[9px] font-bold uppercase tracking-wider text-slate-400 group-hover:text-[#0b5d63] transition-colors font-heading">
                       {step.badgeDay}
                     </div>
-                    <div className={`text-xs font-bold ${isActive ? "text-[#0070E0]" : "text-slate-600"}`}>
+                    <div className={`text-xs font-bold font-heading ${isActive ? "text-[#0b5d63]" : "text-slate-600"}`}>
                       {step.title}
                     </div>
                   </div>
@@ -316,8 +316,8 @@ export const PatientJourney = () => {
                 const isPast = idx < activeStep;
                 return (
                   <button key={`node-${step.id}`} onClick={() => handleScrollToStep(idx)} className="relative flex items-center group cursor-pointer z-10">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 font-black text-xs ${
-                      isActive ? "bg-[#007FFF] text-white ring-4 ring-[#007FFF]/20 scale-110" : isPast ? "bg-white text-[#0070E0] border-2 border-[#0070E0]" : "bg-slate-50 text-slate-400 border-2 border-[#E4E9ED]"
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 font-bold font-heading text-xs ${
+                      isActive ? "bg-[#0b5d63] text-white ring-4 ring-[#0b5d63]/20 scale-110" : isPast ? "bg-white text-[#0b5d63] border-2 border-[#0b5d63]" : "bg-slate-50 text-slate-400 border-2 border-[#e2eaeb]"
                     }`}>
                       {step.id}
                     </div>
@@ -332,13 +332,13 @@ export const PatientJourney = () => {
                   if (idx !== activeStep) return null;
                   return (
                     <motion.div key={step.id} initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -40 }} transition={{ duration: 0.6 }} className="relative w-full">
-                      <div className="rounded-3xl border border-[#E4E9ED] overflow-hidden shadow-xl bg-white">
+                      <div className="rounded-3xl border border-[#e2eaeb] overflow-hidden shadow-xl bg-white">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
                           
-                          <div className="lg:col-span-7 xl:col-span-8 p-6 sm:p-8 md:p-10 flex flex-col md:flex-row gap-6 sm:gap-8 items-center md:items-start border-b lg:border-b-0 lg:border-r border-[#E4E9ED]">
+                          <div className="lg:col-span-7 xl:col-span-8 p-6 sm:p-8 md:p-10 flex flex-col md:flex-row gap-6 sm:gap-8 items-center md:items-start border-b lg:border-b-0 lg:border-r border-[#e2eaeb]">
                             <div className="relative w-full md:w-64 h-56 md:h-64 rounded-2xl overflow-hidden shrink-0 shadow-md">
                               <Image src={step.image} alt={step.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 300px" />
-                              <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 text-[#0070E0] text-[10px] font-black uppercase shadow-sm">
+                              <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#04272a]/90 backdrop-blur-md text-[#e39b2d] text-[10px] font-bold font-heading uppercase shadow-sm">
                                 {step.phase}
                               </div>
                             </div>
@@ -347,45 +347,45 @@ export const PatientJourney = () => {
                               <div>
                                 <div className="flex items-center gap-2 mb-2">
                                   <StepVectorIcon type={step.iconType} active={true} />
-                                  <span className="text-[#0070E0] text-xs font-black uppercase tracking-[0.2em]">{step.badgeDay}</span>
+                                  <span className="text-[#0b5d63] text-xs font-bold font-heading uppercase tracking-[0.2em]">{step.badgeDay}</span>
                                 </div>
-                                <h3 className="text-2xl sm:text-3xl font-serif text-slate-900 mb-3 leading-tight">{step.title}</h3>
-                                <p className="text-slate-600 text-sm sm:text-base font-light leading-relaxed mb-6">{step.description}</p>
+                                <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-slate-900 mb-3 leading-tight">{step.title}</h3>
+                                <p className="text-slate-600 text-sm sm:text-base font-normal leading-relaxed mb-6">{step.description}</p>
                               </div>
-                              <div className="pt-3 border-t border-[#E4E9ED] flex items-center gap-2.5 text-xs text-[#0070E0] font-bold">
-                                <CheckCircle2 className="w-4 h-4 shrink-0" />
+                              <div className="pt-3 border-t border-[#e2eaeb] flex items-center gap-2.5 text-xs text-[#0b5d63] font-semibold">
+                                <CheckCircle2 className="w-4 h-4 text-[#e39b2d] shrink-0" />
                                 <span>Clinical protocol verified before patient departure</span>
                               </div>
                             </div>
                           </div>
 
-                          <div className="lg:col-span-5 xl:col-span-4 p-6 sm:p-8 md:p-10 flex flex-col justify-between bg-slate-50">
+                          <div className="lg:col-span-5 xl:col-span-4 p-6 sm:p-8 md:p-10 flex flex-col justify-between bg-[#f8fafb]">
                             <div>
-                              <div className="flex items-center gap-2 mb-3 text-[#0070E0]">
-                                <Quote className="w-5 h-5 rotate-180" />
-                                <span className="text-[10px] font-black uppercase tracking-[0.2em]">PATIENT PERSPECTIVE</span>
+                              <div className="flex items-center gap-2 mb-3 text-[#0b5d63]">
+                                <Quote className="w-5 h-5 rotate-180 text-[#e39b2d]" />
+                                <span className="text-[10px] font-bold font-heading uppercase tracking-[0.2em]">PATIENT PERSPECTIVE</span>
                               </div>
-                              <blockquote className="text-slate-800 text-base sm:text-lg italic font-serif leading-relaxed mb-6">
+                              <blockquote className="text-slate-800 text-base sm:text-lg italic font-normal leading-relaxed mb-6">
                                 &ldquo;{step.feelQuote}&rdquo;
                               </blockquote>
                             </div>
 
-                            <div className="space-y-3.5 pt-4 border-t border-[#E4E9ED]">
+                            <div className="space-y-3.5 pt-4 border-t border-[#e2eaeb]">
                               <div className="flex items-start gap-3.5">
-                                <div className="w-9 h-9 rounded-xl bg-white border border-[#E4E9ED] flex items-center justify-center text-[#0070E0] shrink-0 shadow-sm"><MapPin className="w-4 h-4" /></div>
+                                <div className="w-9 h-9 rounded-xl bg-white border border-[#e2eaeb] flex items-center justify-center text-[#0b5d63] shrink-0 shadow-sm"><MapPin className="w-4 h-4" /></div>
                                 <div>
-                                  <div className="text-[9.5px] font-black tracking-widest text-slate-500 uppercase">WHERE</div>
+                                  <div className="text-[9.5px] font-bold tracking-widest text-slate-400 uppercase font-heading">WHERE</div>
                                   <div className="text-xs sm:text-sm font-bold text-slate-900 mt-0.5">{step.where}</div>
                                 </div>
                               </div>
                               <div className="flex items-start gap-3.5">
-                                <div className="w-9 h-9 rounded-xl bg-white border border-[#E4E9ED] flex items-center justify-center text-[#0070E0] shrink-0 shadow-sm"><Users className="w-4 h-4" /></div>
+                                <div className="w-9 h-9 rounded-xl bg-white border border-[#e2eaeb] flex items-center justify-center text-[#0b5d63] shrink-0 shadow-sm"><Users className="w-4 h-4" /></div>
                                 <div>
-                                  <div className="text-[9.5px] font-black tracking-widest text-slate-500 uppercase">WITH YOU</div>
+                                  <div className="text-[9.5px] font-bold tracking-widest text-slate-400 uppercase font-heading">WITH YOU</div>
                                   <div className="text-xs sm:text-sm font-bold text-slate-900 mt-0.5">{step.withYou}</div>
                                 </div>
                               </div>
-                              <Button variant="outline" onClick={() => openIntake(step.title)} className="w-full text-[#0070E0] border-[#0070E0] hover:bg-[#0070E0] hover:text-white rounded-xl mt-4 py-2.5 transition-all">
+                              <Button variant="outline" onClick={() => openIntake(step.title)} className="w-full text-[#0b5d63] border-2 border-[#0b5d63] hover:bg-[#0b5d63] hover:text-white font-heading font-bold rounded-xl mt-4 py-2.5 transition-all cursor-pointer">
                                 <span>Inquire About This Stage</span>
                                 <ChevronRight className="w-4 h-4 ml-1" />
                               </Button>

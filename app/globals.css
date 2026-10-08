@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -68,11 +68,13 @@
   --color-portal-green-hover: #008f70;
   --color-portal-navy: #0E1F40;
 
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-plus-jakarta: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-playfair: 'Playfair Display', Georgia, serif;
-  --font-quicksand: 'Quicksand', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: 'Jost', sans-serif;
+  --font-heading: 'Jost', sans-serif;
+  --font-body: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-plus-jakarta: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-playfair: 'Jost', sans-serif;
+  --font-quicksand: 'Jost', sans-serif;
 
   --shadow-luxury: 0 20px 40px -15px rgba(63, 78, 180, 0.12), 0 0 25px -5px rgba(40, 53, 147, 0.08);
   --shadow-luxury-hover: 0 25px 50px -12px rgba(63, 78, 180, 0.25), 0 0 30px -5px rgba(40, 53, 147, 0.15);
@@ -120,27 +122,40 @@
    ============================================================ */
 
 :root {
-  --font-plus-jakarta: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-playfair: 'Playfair Display', Georgia, serif;
-  --font-quicksand: 'Quicksand', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: 'Jost', sans-serif;
+  --font-body: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-sans: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: 'Jost', sans-serif;
+  --font-display: 'Jost', sans-serif;
+  --font-plus-jakarta: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-playfair: 'Jost', sans-serif;
+  --font-quicksand: 'Jost', sans-serif;
+
+  /* Primary Brand Theme */
+  --color-primary: #0b5d63;
+  --color-primary-dark: #073f43;
+  --color-primary-deep: #04272a;
+  --color-primary-light: #0e757c;
+  --color-secondary-1: #e39b2d;
+  --color-secondary-2: #a35f0b;
 
   /* Core surface */
-  --bg-primary:        #F5F7FF;
-  --text-primary:      #0F1340;
+  --bg-primary:        #f8fafb;
+  --text-primary:      #072b2e;
 
-  /* Gold CTA & Accents */
-  --accent-gold:       #C9A24A;
-  --accent-gold-hover: #B8923D;
-  --accent-gold-muted: #a58d34;
-  --accent-gold-light: #E5CA76;
+  /* Secondary 1 & 2 Accents */
+  --accent-gold:       #e39b2d;
+  --accent-gold-hover: #f0a73b;
+  --accent-gold-muted: #a35f0b;
+  --accent-gold-light: #fef7ec;
 
-  /* Indigo primary */
-  --accent-blue:       #3F4EB4;
-  --accent-blue-light: #5062CC;
-  --accent-blue-dark:  #283593;
+  /* Primary teal accents */
+  --accent-blue:       #0b5d63;
+  --accent-blue-light: #0e757c;
+  --accent-blue-dark:  #073f43;
 
-  /* Teal accent */
-  --accent-cyan:       #2ECDC5;
+  /* Warm accents */
+  --accent-cyan:       #e39b2d;
   --accent-cyan-light: #5ADBD5;
   --accent-cyan-dark:  #1DA89F;
 
@@ -198,23 +213,29 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
+  font-family: 'Roboto', system-ui, -apple-system, sans-serif;
 }
 
 html[lang="ar"] {
-  font-family: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
+  font-family: 'Roboto', system-ui, -apple-system, sans-serif;
 }
 
 body {
-  background-color: #F5F7FF;
-  color: #0F1340;
+  background-color: #f8fafb;
+  color: #1a2e30;
+  font-family: 'Roboto', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1, h2, h3, h4, h5, h6, .font-heading, .font-serif, .font-display {
+  font-family: 'Jost', sans-serif !important;
+  letter-spacing: -0.015em;
+}
+
 ::selection {
-  background-color: rgba(63, 78, 180, 0.2);
-  color: #283593;
+  background-color: rgba(227, 155, 45, 0.25);
+  color: #0b5d63;
 }
 
 @layer utilities {

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useCare } from "@/context/CareContext";
 import { LanguageCountryPicker } from "@/components/ui/LanguageCountryPicker";
 import { Button } from "@/components/ui/button";
@@ -87,45 +88,41 @@ export const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled
-        ? "bg-gradient-to-r from-[#020B18]/95 via-[#06203D]/95 to-[#020B18]/95 backdrop-blur-xl shadow-xl shadow-slate-950/40 border-b border-teal-900/40 text-white"
-        : "bg-gradient-to-b from-dark-1/90 via-dark-1/50 to-transparent text-white"
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 font-sans ${scrolled
+        ? "bg-[#04272a]/95 backdrop-blur-xl shadow-xl shadow-slate-950/40 border-b border-[#0b5d63]/40 text-white"
+        : "bg-gradient-to-b from-[#04272a]/95 via-[#073f43]/85 to-transparent text-white"
         }`}
     >
-      {/* Top Bar from Image */}
-      <div className="hidden lg:flex items-center justify-center gap-6 py-2.5 border-b border-white/10 bg-dark-4/80 backdrop-blur-md text-xs">
-        <div className="flex items-center gap-2 font-medium text-slate-300">
-          <Globe className="w-4 h-4" />
-          <span>Where are you coming from?</span>
+      {/* Top International Patient Banner */}
+      <div className="hidden lg:flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 border-b border-white/10 text-xs">
+        <div className="flex items-center gap-2 font-medium text-slate-200">
+          <Globe className="w-3.5 h-3.5 text-[#e39b2d]" />
+          <span className="font-semibold text-slate-200">International Care Concierge:</span>
+          <span className="text-slate-300">Direct Patient Coordination for India</span>
         </div>
-        <div className="flex items-center gap-4 text-slate-400 font-medium">
-           <button className="px-3 py-1 bg-vedara-blue-light text-white rounded-full transition-colors">Kenya</button>
-           <button className="hover:text-white transition-colors">Nigeria</button>
-           <button className="hover:text-white transition-colors">Tanzania</button>
-           <button className="hover:text-white transition-colors">Ethiopia</button>
-           <button className="hover:text-white transition-colors">Bangladesh</button>
-           <button className="hover:text-white transition-colors">UAE & Gulf</button>
-           <button className="hover:text-white transition-colors">Uzbekistan</button>
-           <button className="hover:text-white transition-colors">UK</button>
-           <button className="hover:text-white transition-colors">Australia</button>
-           <button className="hover:text-white transition-colors">Somewhere else</button>
+        <div className="flex items-center gap-3 text-slate-300 font-medium text-[11px]">
+           <span className="text-slate-400">Popular origins:</span>
+           <span className="px-2.5 py-0.5 bg-[#e39b2d] text-slate-950 font-bold rounded-full">UK</span>
+           <span className="px-2 py-0.5 bg-white/10 rounded-full hover:bg-white/20 cursor-pointer">Australia</span>
+           <span className="px-2 py-0.5 bg-white/10 rounded-full hover:bg-white/20 cursor-pointer">Kenya</span>
+           <span className="px-2 py-0.5 bg-white/10 rounded-full hover:bg-white/20 cursor-pointer">UAE & Gulf</span>
+           <span className="px-2 py-0.5 bg-white/10 rounded-full hover:bg-white/20 cursor-pointer">Nigeria</span>
+           <span className="px-2 py-0.5 bg-white/10 rounded-full hover:bg-white/20 cursor-pointer">Canada</span>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex items-center justify-between gap-6">
           {/* 01. Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-teal-600 via-dark-3 to-dark-1 flex items-center justify-center shadow-lg shadow-teal-900/30 ring-1 ring-vedara-cyan/40 group-hover:scale-105 transition-transform">
-              <span className="text-white font-black text-lg font-serif">Y</span>
-            </div>
-            <div className="flex flex-col">
-              <div className="flex items-center gap-1.5 leading-tight">
-                <span className="font-extrabold tracking-widest text-base sm:text-lg text-white group-hover:text-vedara-cyan transition-colors">
-                  Your Medicare Trip
-                </span>
-              </div>
-            </div>
+            <Image
+              src="/images/logo/logo-white.png"
+              alt="yourMedicareTrip - Your Medical Travel Company"
+              width={220}
+              height={44}
+              className="h-9 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              priority
+            />
           </Link>
 
           {/* 02. Clean Highlighted Navigation */}
@@ -223,17 +220,24 @@ export const Navbar = () => {
           </nav>
 
           {/* 03. Right Action Utilities */}
-          <div className="hidden lg:flex items-center gap-4 shrink-0">
-            {/* Primary CTA using Shadcn Button */}
-            <Button
-              variant="gold"
-              size="default"
-              onClick={() => openIntake()}
-              className="gap-2 px-5 py-2.5 rounded-xl text-sm font-bold shadow-md cursor-pointer whitespace-nowrap"
+          <div className="hidden lg:flex items-center gap-3 shrink-0">
+            <a
+              href="https://wa.me/919876543210"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-emerald-400 hover:text-white bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 transition-all"
             >
-              <PhoneCall className="w-4 h-4" />
-              <span>Book a call</span>
-            </Button>
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>24/7 WhatsApp</span>
+            </a>
+
+            <button
+              onClick={() => openIntake()}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-950 bg-[#e39b2d] hover:bg-[#a35f0b] hover:text-white transition-all shadow-md shadow-[#e39b2d]/25 cursor-pointer uppercase tracking-wider font-heading"
+            >
+              <PhoneCall className="w-3.5 h-3.5" />
+              <span>Get Free Quote</span>
+            </button>
           </div>
 
           {/* 04. Mobile Navigation Toggle */}

@@ -81,38 +81,38 @@ export const ExitIntentModal = () => {
 
         <div className="flex flex-col md:flex-row">
           {/* Left/Top Image Section */}
-          <div className="md:w-5/12 bg-gradient-to-br from-[#020B18] via-[#06203D] to-[#0A2E50] relative p-8 flex flex-col justify-center items-center text-center overflow-hidden">
+          <div className="md:w-5/12 bg-gradient-to-br from-[#04272a] via-[#0b5d63] to-[#073c40] relative p-8 flex flex-col justify-center items-center text-center overflow-hidden">
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600')] opacity-20 bg-cover bg-center"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-[#020B18] via-[#06203D]/80 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#04272a] via-[#0b5d63]/80 to-transparent"></div>
             
             <div className="relative z-10 flex flex-col items-center">
-              <div className="w-16 h-16 rounded-2xl bg-vedara-cyan/20 flex items-center justify-center mb-6 border border-vedara-cyan/40 shadow-[0_0_30px_rgba(46,205,197,0.3)]">
-                <FileText className="w-8 h-8 text-vedara-cyan" />
+              <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-6 border border-white/20 shadow-[0_0_30px_rgba(227,155,45,0.25)]">
+                <FileText className="w-8 h-8 text-[#e39b2d]" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2 leading-tight">2026 Medical Travel Guide</h3>
-              <p className="text-xs text-teal-100/80">Includes hospital comparison dossier & visa requirements.</p>
+              <h3 className="text-xl font-bold text-white mb-2 leading-tight font-heading">2026 Medical Travel Guide</h3>
+              <p className="text-xs text-teal-100/80 font-body">Includes hospital comparison dossier & visa requirements.</p>
             </div>
           </div>
 
           {/* Right/Bottom Form Section */}
           <div className="md:w-7/12 p-8 sm:p-10">
-            <h2 className="text-2xl font-black text-slate-900 mb-2">{t.exitIntent.heading}</h2>
-            <p className="text-sm text-slate-600 mb-8 leading-relaxed">
+            <h2 className="text-2xl font-black text-slate-900 mb-2 font-heading">{t.exitIntent.heading}</h2>
+            <p className="text-sm text-slate-600 mb-8 leading-relaxed font-body">
               {t.exitIntent.subheading}
             </p>
 
             {isSubmitted ? (
               <div className="bg-teal-50 border border-teal-100 rounded-2xl p-6 text-center animate-in fade-in duration-300">
                 <div className="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center mx-auto mb-3">
-                  <Download className="w-6 h-6 text-teal-600" />
+                  <Download className="w-6 h-6 text-[#0b5d63]" />
                 </div>
-                <h4 className="font-bold text-teal-900 mb-1">{t.exitIntent.successMessage}</h4>
+                <h4 className="font-bold text-[#0b5d63] mb-1 font-heading">{t.exitIntent.successMessage}</h4>
                 <p className="text-xs text-teal-700">Check your email or WhatsApp shortly.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 font-heading">
                     {t.exitIntent.nameLabel}
                   </label>
                   <input
@@ -121,11 +121,11 @@ export const ExitIntentModal = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder={t.exitIntent.namePlaceholder}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 focus:ring-2 focus:ring-vedara-cyan outline-none transition-all"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 focus:ring-2 focus:ring-[#0b5d63] outline-none transition-all"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 font-heading">
                     {t.exitIntent.contactLabel}
                   </label>
                   <input
@@ -134,14 +134,14 @@ export const ExitIntentModal = () => {
                     value={contact}
                     onChange={(e) => setContact(e.target.value)}
                     placeholder={t.exitIntent.contactPlaceholder}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 focus:ring-2 focus:ring-vedara-cyan outline-none transition-all"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 focus:ring-2 focus:ring-[#0b5d63] outline-none transition-all"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full mt-2 inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-extrabold text-slate-950 bg-gradient-to-r from-vedara-cyan via-teal-300 to-vedara-cyan hover:brightness-105 shadow-lg shadow-vedara-cyan/20 transition-all cursor-pointer"
+                  className="w-full mt-2 inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-extrabold text-white bg-gradient-to-r from-[#0b5d63] to-[#08454a] hover:from-[#08454a] hover:to-[#052e31] shadow-lg shadow-[#0b5d63]/25 transition-all cursor-pointer font-heading"
                 >
-                  <Download className="w-4 h-4" />
+                  <Download className="w-4 h-4 text-[#e39b2d]" />
                   <span>{t.exitIntent.downloadBtn}</span>
                 </button>
               </form>

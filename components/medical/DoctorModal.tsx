@@ -41,14 +41,14 @@ export const DoctorModal = () => {
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
       <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden my-8">
         {/* Top Header */}
-        <div className="bg-slate-900 px-6 py-4 text-white flex items-center justify-between">
-          <div className="flex items-center gap-2 text-xs text-[#2ECDC5] font-semibold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+        <div className="bg-gradient-to-r from-[#07383c] via-[#0b5d63] to-[#0e484c] px-6 py-4 text-white flex items-center justify-between">
+          <div className="flex items-center gap-2 text-xs text-[#e39b2d] font-semibold uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5 text-[#e39b2d]" />
             <span>Senior Specialist Profile & Video Consultation</span>
           </div>
           <button
             onClick={closeDoctorModal}
-            className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+            className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -57,10 +57,10 @@ export const DoctorModal = () => {
         <div className="p-6 sm:p-8 space-y-6">
           {isBooked ? (
             <div className="text-center py-8 space-y-4 animate-in zoom-in-95 duration-200">
-              <div className="w-16 h-16 bg-[#2ECDC5]/15 text-[#2ECDC5] rounded-full mx-auto flex items-center justify-center">
+              <div className="w-16 h-16 bg-[#0b5d63]/15 text-[#0b5d63] rounded-full mx-auto flex items-center justify-center">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
-              <h3 className="text-2xl font-extrabold text-slate-900">
+              <h3 className="text-2xl font-extrabold text-slate-900 font-heading">
                 Video Consultation Slot Reserved!
               </h3>
               <p className="text-sm text-slate-600 max-w-md mx-auto">
@@ -75,7 +75,7 @@ export const DoctorModal = () => {
                   setIsBooked(false);
                   closeDoctorModal();
                 }}
-                className="px-6 py-3 bg-slate-900 text-white font-bold text-xs rounded-xl shadow-md"
+                className="px-6 py-3 bg-[#0b5d63] hover:bg-[#07383c] text-white font-bold text-xs rounded-xl shadow-md transition-colors"
               >
                 Done
               </button>
@@ -84,7 +84,7 @@ export const DoctorModal = () => {
             <>
               {/* Doctor Bio Header */}
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5">
-                <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden shrink-0 ring-4 ring-slate-100 shadow-md">
+                <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden shrink-0 ring-4 ring-[#0b5d63]/10 shadow-md">
                   <Image
                     src={selectedDoctor.avatar}
                     alt={selectedDoctor.name}
@@ -95,34 +95,34 @@ export const DoctorModal = () => {
 
                 <div className="space-y-1.5 text-center sm:text-left rtl:sm:text-right flex-1">
                   <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full bg-[#3F4EB4]/10 text-[#3F4EB4] text-[11px] font-bold">
+                    <span className="px-2.5 py-0.5 rounded-full bg-[#0b5d63]/10 text-[#0b5d63] text-[11px] font-bold">
                       {language === "ar" ? selectedDoctor.specialtyAr : selectedDoctor.specialty}
                     </span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-[#3F4EB4]/10 text-[#283593] text-[11px] font-bold flex items-center gap-1">
-                      <Star className="w-3 h-3 fill-amber-500 text-amber-500" />
+                    <span className="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[11px] font-bold flex items-center gap-1 border border-amber-200">
+                      <Star className="w-3 h-3 fill-[#e39b2d] text-[#e39b2d]" />
                       <span>{selectedDoctor.rating} ({selectedDoctor.reviewsCount} reviews)</span>
                     </span>
                   </div>
 
-                  <h3 className="text-2xl font-extrabold text-slate-900">
+                  <h3 className="text-2xl font-extrabold text-slate-900 font-heading">
                     {language === "ar" ? selectedDoctor.nameAr : selectedDoctor.name}
                   </h3>
 
-                  <p className="text-xs text-[#3F4EB4] font-semibold">
+                  <p className="text-xs text-[#0b5d63] font-semibold">
                     {language === "ar" ? selectedDoctor.titleAr : selectedDoctor.title}
                   </p>
 
                   <div className="pt-1 flex flex-wrap items-center justify-center sm:justify-start gap-3 text-xs text-slate-600">
                     <div className="flex items-center gap-1">
-                      <Building className="w-3.5 h-3.5 text-slate-400" />
+                      <Building className="w-3.5 h-3.5 text-[#0b5d63]" />
                       <span>{language === "ar" ? selectedDoctor.hospitalAr : selectedDoctor.hospital}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                      <MapPin className="w-3.5 h-3.5 text-[#e39b2d]" />
                       <span>{language === "ar" ? selectedDoctor.cityAr : selectedDoctor.city}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <Award className="w-3.5 h-3.5 text-slate-400" />
+                      <Award className="w-3.5 h-3.5 text-[#0b5d63]" />
                       <span>{selectedDoctor.experienceYears}+ Yrs Experience</span>
                     </div>
                   </div>
@@ -142,7 +142,7 @@ export const DoctorModal = () => {
                 </div>
                 <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px]">
                   <span className="font-bold text-slate-900">Languages:</span>
-                  <span className="text-[#3F4EB4] font-semibold">{selectedDoctor.languages.join(" · ")}</span>
+                  <span className="text-[#0b5d63] font-semibold">{selectedDoctor.languages.join(" · ")}</span>
                 </div>
               </div>
 
@@ -150,17 +150,17 @@ export const DoctorModal = () => {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-[#3F4EB4]/10 text-[#3F4EB4] flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-lg bg-[#0b5d63]/10 text-[#0b5d63] flex items-center justify-center">
                       <Video className="w-4 h-4" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-slate-900">Schedule Video Consultation</h4>
+                      <h4 className="text-sm font-bold text-slate-900 font-heading">Schedule Video Consultation</h4>
                       <p className="text-[11px] text-slate-500">30-min direct clinical discussion with Senior Specialist</p>
                     </div>
                   </div>
                   <div className="text-right">
                     <div className="text-xs text-slate-400">Consultation Fee</div>
-                    <div className="text-sm font-extrabold text-[#283593]">
+                    <div className="text-base font-extrabold text-[#0b5d63] font-heading">
                       {formatPrice(selectedDoctor.consultationFeeUsd)}
                     </div>
                   </div>
@@ -174,7 +174,7 @@ export const DoctorModal = () => {
                       key={day}
                       onClick={() => setSelectedDate(day)}
                       className={`py-2 px-3 rounded-xl border text-center transition-all ${selectedDate === day
-                        ? "bg-[#3F4EB4]/10 border-[#3F4EB4] text-[#283593] font-bold"
+                        ? "bg-[#0b5d63]/10 border-[#0b5d63] text-[#0b5d63] font-bold"
                         : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100"
                         }`}
                     >
@@ -191,11 +191,11 @@ export const DoctorModal = () => {
                       key={slot}
                       onClick={() => setSelectedTimeSlot(slot)}
                       className={`p-2.5 rounded-xl border text-left rtl:text-right transition-all flex items-center gap-2 ${selectedTimeSlot === slot
-                        ? "bg-[#3F4EB4]/10 border-[#3F4EB4] text-[#283593] font-bold"
+                        ? "bg-[#0b5d63]/10 border-[#0b5d63] text-[#0b5d63] font-bold"
                         : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50"
                         }`}
                     >
-                      <Clock className="w-3.5 h-3.5 text-[#3F4EB4] shrink-0" />
+                      <Clock className="w-3.5 h-3.5 text-[#e39b2d] shrink-0" />
                       <span className="truncate">{slot}</span>
                     </button>
                   ))}
@@ -205,9 +205,9 @@ export const DoctorModal = () => {
                 <div className="pt-2">
                   <button
                     onClick={handleConfirm}
-                    className="w-full py-3.5 rounded-xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-extrabold text-sm shadow-xl shadow-[#283593]/20 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#0b5d63] to-[#08454a] hover:from-[#08454a] hover:to-[#052e31] text-white font-extrabold text-sm shadow-xl shadow-[#0b5d63]/25 transition-all flex items-center justify-center gap-2 tracking-wide font-heading uppercase"
                   >
-                    <Calendar className="w-4 h-4" />
+                    <Calendar className="w-4 h-4 text-[#e39b2d]" />
                     <span>Confirm Video Consultation Slot</span>
                   </button>
                 </div>
