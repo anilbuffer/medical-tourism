@@ -1,6 +1,5 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Quicksand } from "next/font/google";
 
 import { Header } from "@/components/home/Header";
 import { HeroSection } from "@/components/home/HeroSection";
@@ -16,11 +15,6 @@ import { BlogSection } from "@/components/home/BlogSection";
 import { ConnectSection } from "@/components/home/ConnectSection";
 import { Footer } from "@/components/home/Footer";
 
-const quicksand = Quicksand({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
-
 export const metadata: Metadata = {
   title: "Best Medical Service/Treatment in India | Your Medicare Trip",
   description:
@@ -29,13 +23,13 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div className={`w-full bg-white text-slate-900 selection:bg-[#007FFF]/20 selection:text-[#0070E0] relative font-sans home-alt-container ${quicksand.className}`}>
+    <div className="w-full bg-white text-slate-900 selection:bg-[#007FFF]/20 selection:text-[#0070E0] relative font-sans home-alt-container">
       
       <style>{`
         .home-alt-container,
         .home-alt-container .font-sans, 
         .home-alt-container .font-serif {
-          font-family: ${quicksand.style.fontFamily} !important;
+          font-family: var(--font-quicksand), 'Quicksand', system-ui, sans-serif !important;
         }
       `}</style>
 

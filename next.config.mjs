@@ -16,12 +16,7 @@ const nextConfig = {
         hostname: "assets.co",
       },
     ],
-    unoptimized: true,
   },
-  turbopack: {
-    root: process.cwd(),
-  },
-  agentRules: false,
 };
 
 export default nextConfig;
