@@ -7,6 +7,7 @@ import { useCare } from "@/context/CareContext";
 import { LanguageCountryPicker } from "@/components/ui/LanguageCountryPicker";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 import {
   Globe,
   Sparkles,
@@ -21,6 +22,7 @@ import {
   HelpCircle,
   ShieldCheck,
   PhoneCall,
+  ArrowRight,
 } from "lucide-react";
 
 export const Navbar = () => {
@@ -89,70 +91,40 @@ export const Navbar = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 font-sans ${scrolled
-        ? "bg-[#04272a]/95 backdrop-blur-xl shadow-xl shadow-slate-950/40 border-b border-[#0b5d63]/40 text-white"
-        : "bg-gradient-to-b from-[#04272a]/95 via-[#073f43]/85 to-transparent text-white"
+        ? "bg-[#062c30]/95 backdrop-blur-xl shadow-md border-b border-white/10 text-white"
+        : "bg-transparent text-white"
         }`}
     >
-      {/* Top International Patient Banner */}
-      <div className="hidden lg:flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 border-b border-white/10 text-xs">
-        <div className="flex items-center gap-2 font-medium text-slate-200">
-          <Globe className="w-3.5 h-3.5 text-[#e39b2d]" />
-          <span className="font-semibold text-slate-200">International Care Concierge:</span>
-          <span className="text-slate-300">Direct Patient Coordination for India</span>
-        </div>
-        <div className="flex items-center gap-3 text-slate-300 font-medium text-[11px]">
-           <span className="text-slate-400">Popular origins:</span>
-           <span className="px-2.5 py-0.5 bg-[#e39b2d] text-slate-950 font-bold rounded-full">UK</span>
-           <span className="px-2 py-0.5 bg-white/10 rounded-full hover:bg-white/20 cursor-pointer">Australia</span>
-           <span className="px-2 py-0.5 bg-white/10 rounded-full hover:bg-white/20 cursor-pointer">Kenya</span>
-           <span className="px-2 py-0.5 bg-white/10 rounded-full hover:bg-white/20 cursor-pointer">UAE & Gulf</span>
-           <span className="px-2 py-0.5 bg-white/10 rounded-full hover:bg-white/20 cursor-pointer">Nigeria</span>
-           <span className="px-2 py-0.5 bg-white/10 rounded-full hover:bg-white/20 cursor-pointer">Canada</span>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-        <div className="flex items-center justify-between gap-6">
-          {/* 01. Brand Logo */}
-          <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <Image
-              src="/images/logo/logo-white.png"
-              alt="yourMedicareTrip - Your Medical Travel Company"
-              width={220}
-              height={44}
-              className="h-9 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-              priority
-            />
+      <div className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-14 py-4">
+        <div className="flex items-center justify-between gap-8">
+          {/* 01. Brand Logo - Vector HD Sharp */}
+          <Link href="/" className="flex items-center gap-3 group shrink-0" aria-label="yourMedicareTrip Home">
+            <BrandLogo variant="white" className="h-10 sm:h-12 w-auto transition-transform duration-300 group-hover:scale-105" />
           </Link>
 
-          {/* 02. Clean Highlighted Navigation */}
-          <nav className="hidden lg:flex items-center gap-2 xl:gap-4">
-            {/* Treatments Link */}
+          {/* 02. Clean Spacious Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-sm font-medium">
             <a
               href="#treatments"
-              className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-200 hover:text-white hover:bg-white/10 transition-all whitespace-nowrap"
+              className="px-4 py-2 rounded-full text-slate-200 hover:text-white hover:bg-white/10 transition-all whitespace-nowrap"
             >
               Treatments
             </a>
-
-            {/* Doctors & Hospitals Link */}
             <a
               href="#doctors"
-              className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-200 hover:text-white hover:bg-white/10 transition-all whitespace-nowrap"
+              className="px-4 py-2 rounded-full text-slate-200 hover:text-white hover:bg-white/10 transition-all whitespace-nowrap"
             >
               Doctors
             </a>
             <a
-              href="#doctors"
-              className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-200 hover:text-white hover:bg-white/10 transition-all whitespace-nowrap"
+              href="#hospitals"
+              className="px-4 py-2 rounded-full text-slate-200 hover:text-white hover:bg-white/10 transition-all whitespace-nowrap"
             >
               Hospitals
             </a>
-
-            {/* How It Works Link */}
             <a
               href="#journey"
-              className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-200 hover:text-white hover:bg-white/10 transition-all whitespace-nowrap"
+              className="px-4 py-2 rounded-full text-slate-200 hover:text-white hover:bg-white/10 transition-all whitespace-nowrap"
             >
               How It Works
             </a>
@@ -165,13 +137,13 @@ export const Navbar = () => {
             >
               <button
                 onClick={() => setExploreOpen(!exploreOpen)}
-                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-200 hover:text-white hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-full text-slate-200 hover:text-white hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap"
                 aria-expanded={exploreOpen}
               >
                 <span>{t.nav.explore}</span>
                 <ChevronDown
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    exploreOpen ? "rotate-180 text-vedara-cyan" : ""
+                    exploreOpen ? "rotate-180 text-[#e39b2d]" : ""
                   }`}
                 />
               </button>
@@ -180,7 +152,7 @@ export const Navbar = () => {
               {exploreOpen && (
                 <div
                   onMouseLeave={() => setExploreOpen(false)}
-                  className="absolute top-full left-0 mt-2 w-80 rounded-2xl bg-dark-4 border border-teal-500/40 shadow-2xl shadow-black ring-1 ring-white/10 p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
+                  className="absolute top-full left-0 mt-2 w-80 rounded-2xl bg-[#04272a]/95 backdrop-blur-2xl border border-white/15 shadow-2xl p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
                 >
                   <div className="space-y-1">
                     {exploreLinks.map((item, idx) => {
@@ -190,18 +162,18 @@ export const Navbar = () => {
                           key={idx}
                           href={item.href}
                           onClick={() => setExploreOpen(false)}
-                          className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-dark-3 transition-colors group cursor-pointer"
+                          className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/10 transition-colors group cursor-pointer"
                         >
-                          <div className="w-8 h-8 rounded-lg bg-teal-500/15 border border-teal-500/30 flex items-center justify-center text-vedara-cyan group-hover:bg-vedara-cyan group-hover:text-slate-950 transition-colors shrink-0 mt-0.5">
+                          <div className="w-8 h-8 rounded-lg bg-[#0b5d63]/30 border border-[#0b5d63]/50 flex items-center justify-center text-[#e39b2d] group-hover:bg-[#e39b2d] group-hover:text-slate-950 transition-colors shrink-0 mt-0.5">
                             <Icon className="w-4 h-4" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between gap-1 mb-0.5">
-                              <span className="text-xs font-bold text-white group-hover:text-vedara-cyan transition-colors">
+                              <span className="text-xs font-bold text-white group-hover:text-[#e39b2d] transition-colors">
                                 {item.title}
                               </span>
                               {item.badge && (
-                                <Badge variant="teal" size="sm" className="text-[9px] font-bold px-1.5 py-0.5">
+                                <Badge variant="outline" size="sm" className="text-[9px] font-bold px-1.5 py-0.5 border-[#e39b2d]/40 text-[#e39b2d]">
                                   {item.badge}
                                 </Badge>
                               )}
@@ -219,30 +191,37 @@ export const Navbar = () => {
             </div>
           </nav>
 
-          {/* 03. Right Action Utilities */}
+          {/* 03. Right Action Utilities - Exact Two Buttons Matching User Screenshot */}
           <div className="hidden lg:flex items-center gap-3 shrink-0">
+            {/* Button 1: 24/7 WhatsApp Pill */}
             <a
               href="https://wa.me/919876543210"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-emerald-400 hover:text-white bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 transition-all"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-[#00e676] bg-[#032629]/80 hover:bg-[#032629] border border-[#00e676]/40 hover:border-[#00e676] transition-all shadow-sm"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-[#00e676] animate-pulse"></span>
               <span>24/7 WhatsApp</span>
             </a>
 
+            {/* Button 2: GET FREE QUOTE Pill Button */}
             <button
               onClick={() => openIntake()}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-950 bg-[#e39b2d] hover:bg-[#a35f0b] hover:text-white transition-all shadow-md shadow-[#e39b2d]/25 cursor-pointer uppercase tracking-wider font-heading"
+              className="flex items-center gap-2.5 px-6 py-2.5 rounded-full text-xs sm:text-sm font-black text-slate-950 bg-[#e39b2d] hover:bg-[#c7821e] active:scale-95 transition-all shadow-md shadow-[#e39b2d]/25 cursor-pointer uppercase tracking-wider font-heading"
             >
-              <PhoneCall className="w-3.5 h-3.5" />
-              <span>Get Free Quote</span>
+              <PhoneCall className="w-4 h-4 text-slate-950 stroke-[2.5]" />
+              <span>GET FREE QUOTE</span>
             </button>
           </div>
 
           {/* 04. Mobile Navigation Toggle */}
           <div className="flex items-center gap-2 lg:hidden">
-            <LanguageCountryPicker compact={true} />
+            <button
+              onClick={() => openIntake()}
+              className="px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-950 bg-[#e39b2d] font-heading"
+            >
+              Free Quote
+            </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-xl bg-white/10 text-white hover:bg-white/20 transition-colors border border-white/10"
@@ -267,37 +246,37 @@ export const Navbar = () => {
 
           {/* Primary Quick Links */}
           <div className="grid grid-cols-2 gap-2">
-            <Link
-              href="/login"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-bold col-span-2"
-            >
-              <ShieldCheck className="w-4 h-4 text-vedara-cyan" />
-              <span>Login / Patient Portal</span>
-            </Link>
             <a
               href="#treatments"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-vedara-blue/40"
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#0b5d63]/40"
             >
-              <Stethoscope className="w-4 h-4 text-vedara-cyan" />
-              <span>{t.nav.treatments}</span>
+              <Stethoscope className="w-4 h-4 text-[#e39b2d]" />
+              <span>Treatments</span>
             </a>
             <a
               href="#doctors"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-vedara-blue/40"
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#0b5d63]/40"
             >
-              <UserCheck className="w-4 h-4 text-vedara-cyan" />
-              <span>{t.nav.doctorsHospitals}</span>
+              <UserCheck className="w-4 h-4 text-[#e39b2d]" />
+              <span>Doctors</span>
+            </a>
+            <a
+              href="#hospitals"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#0b5d63]/40"
+            >
+              <ShieldCheck className="w-4 h-4 text-[#e39b2d]" />
+              <span>Hospitals</span>
             </a>
             <a
               href="#journey"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-vedara-blue/40 col-span-2"
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#0b5d63]/40"
             >
-              <Compass className="w-4 h-4 text-vedara-cyan" />
-              <span>{t.nav.howItWorks}</span>
+              <Compass className="w-4 h-4 text-[#e39b2d]" />
+              <span>How It Works</span>
             </a>
           </div>
 

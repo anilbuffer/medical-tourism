@@ -1,306 +1,175 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import Image from "next/image";
 import { useCare } from "@/context/CareContext";
 import { motion } from "framer-motion";
-import { 
-  ShieldCheck, 
-  Sparkles, 
-  ArrowRight, 
-  CheckCircle2, 
-  Stethoscope, 
-  Plane, 
-  Clock, 
-  PhoneCall,
-  CalendarCheck
-} from "lucide-react";
+import { Play } from "lucide-react";
 
 export const HeroSection = () => {
   const { openIntake } = useCare();
-  const [selectedSpecialty, setSelectedSpecialty] = useState("Orthopaedics");
-  const [patientCountry, setPatientCountry] = useState("United Kingdom");
-
-  const specialtiesList = [
-    "Orthopaedics & Joint Replacement",
-    "Cardiology & Heart Surgery",
-    "Dentistry & Full-Mouth Implants",
-    "IVF & Fertility Treatment",
-    "Cosmetic & Plastic Surgery",
-    "Ophthalmology & Eye Surgery",
-    "Oncology & Cancer Care",
-    "Neuro & Spine Surgery"
-  ];
-
-  const countriesList = [
-    "United Kingdom",
-    "Australia",
-    "United States",
-    "Canada",
-    "Kenya",
-    "Nigeria",
-    "United Arab Emirates",
-    "Ghana",
-    "Tanzania",
-    "South Africa",
-    "Other Country"
-  ];
-
-  const handleQuickInquiry = (e: React.FormEvent) => {
-    e.preventDefault();
-    openIntake(selectedSpecialty);
-  };
 
   return (
-    <section className="relative min-h-screen flex items-center pt-28 pb-16 sm:pb-24 overflow-hidden bg-[#04272a] font-sans">
-      {/* Background Video */}
-      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover object-center scale-105 filter brightness-[0.75]"
-          aria-hidden="true"
-        >
-          <source src="/hero-section-journey-video.mp4" type="video/mp4" />
-        </video>
-        {/* Deep Teal Scrim Overlay */}
-        <div 
-          className="absolute inset-0 z-10" 
-          style={{ 
-            background: "linear-gradient(115deg, rgba(4,39,42,0.94) 0%, rgba(7,63,67,0.88) 45%, rgba(11,93,99,0.55) 80%, rgba(4,39,42,0.85) 100%)" 
-          }}
+    <section className="relative min-h-[92vh] lg:min-h-screen flex items-center pt-28 pb-16 lg:py-0 overflow-hidden bg-[#062c30] font-sans text-white">
+      {/* 01. Full Section Background Banner Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/hero/hero-doctor.jpg"
+          alt="Expert Medical Healthcare in India"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[75%_center] lg:object-right"
         />
+        {/* Deep Brand Gradient Overlay: Solid on left for crisp readability, fading smoothly on the right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#062c30] via-[#062c30]/95 via-45% to-black/20 lg:to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#062c30] via-transparent to-transparent pointer-events-none" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      {/* Vertical "Scroll for more" on left margin - Matches Medixal Reference */}
+      <div className="hidden xl:flex absolute left-8 bottom-16 items-center gap-2 text-xs text-white/75 tracking-widest font-heading font-medium -rotate-90 origin-left z-20 pointer-events-none select-none">
+        <span>&larr; Scroll for more</span>
+      </div>
+
+      {/* Main Expanded Container */}
+      <div className="max-w-[1600px] mx-auto px-6 sm:px-12 lg:px-16 relative z-10 w-full h-full flex flex-col justify-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center min-h-[750px] lg:min-h-[820px]">
           
-          {/* Left Column: Catchy Jost Headline & Narrative */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* 02. Left Column: Medixal-Style Pure & Spacious Typography */}
+          <div className="lg:col-span-7 xl:col-span-6 space-y-6 lg:space-y-8 py-8 lg:py-0 lg:pl-6 xl:pl-10">
             
-            {/* Trust Pill Badge */}
+            {/* Small Eyebrow Label */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-teal-100/90 font-heading text-sm sm:text-base font-semibold tracking-wide"
+            >
+              Expert Medical Treatment
+            </motion.div>
+
+            {/* Confident, Clean Headline - Exact Medixal Reference Styling */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] font-extrabold text-white leading-[1.12] tracking-tight"
+            >
+              We Follow A<br />
+              Holistic Approach<br />
+              to Health care.
+            </motion.h1>
+
+            {/* Reassuring, Uncrowded Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-base sm:text-lg text-white/90 font-normal leading-relaxed max-w-xl font-body"
+            >
+              World-class quaternary hospitals, celebrated chief surgeons, and comprehensive 1-on-1 care coordination in India with up to 70% cost savings and zero wait times.
+            </motion.p>
+
+            {/* Medixal-Style Clean CTA: Play Button */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#0b5d63]/80 border border-[#e39b2d]/40 backdrop-blur-md text-white text-xs font-semibold tracking-wide shadow-sm"
-            >
-              <span className="flex h-2 w-2 rounded-full bg-[#e39b2d] animate-pulse" />
-              <span className="text-[#e39b2d] font-bold uppercase tracking-wider text-[11px] font-heading">
-                JCI & NABH Accredited Network
-              </span>
-              <span className="text-white/40">•</span>
-              <span className="text-slate-200">Zero Advance Consultation Fee</span>
-            </motion.div>
-
-            {/* Catchy Main Heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.08] tracking-tight drop-shadow-md"
-            >
-              World-Class Surgical Care in India.{" "}
-              <span className="text-[#e39b2d] block sm:inline">
-                Save Up to 70%. Zero Waiting.
-              </span>
-            </motion.h1>
-
-            {/* Subhead narrative */}
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-base sm:text-lg text-slate-200 font-normal leading-relaxed max-w-2xl"
-            >
-              Direct patient access to India’s most celebrated surgical directors, quaternary hospitals, fixed guaranteed pricing, and your personal 1-on-1 English-speaking clinical concierge from arrival to recovery.
-            </motion.p>
-
-            {/* Trust Bullet Highlights */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="grid grid-cols-2 sm:grid-cols-3 gap-3.5 pt-2"
-            >
-              <div className="flex items-center gap-2 text-xs font-medium text-slate-200">
-                <CheckCircle2 className="w-4 h-4 text-[#e39b2d] shrink-0" />
-                <span>Written Fixed Price</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs font-medium text-slate-200">
-                <CheckCircle2 className="w-4 h-4 text-[#e39b2d] shrink-0" />
-                <span>Named Chief Surgeons</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs font-medium text-slate-200">
-                <CheckCircle2 className="w-4 h-4 text-[#e39b2d] shrink-0" />
-                <span>VIP Airport Pickup</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs font-medium text-slate-200">
-                <CheckCircle2 className="w-4 h-4 text-[#e39b2d] shrink-0" />
-                <span>Medical Visa Support</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs font-medium text-slate-200">
-                <CheckCircle2 className="w-4 h-4 text-[#e39b2d] shrink-0" />
-                <span>6 Months Follow-up</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs font-medium text-slate-200">
-                <CheckCircle2 className="w-4 h-4 text-[#e39b2d] shrink-0" />
-                <span>1-on-1 Care Manager</span>
-              </div>
-            </motion.div>
-
-            {/* Quick Action Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex flex-wrap items-center gap-3.5 pt-4"
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="pt-2 flex flex-wrap items-center gap-6"
             >
               <button
                 onClick={() => openIntake()}
-                className="px-7 py-3.5 rounded-xl bg-[#e39b2d] hover:bg-[#a35f0b] text-slate-950 hover:text-white font-heading font-bold text-sm tracking-wide uppercase transition-all duration-300 shadow-xl shadow-[#e39b2d]/25 flex items-center gap-2 group cursor-pointer"
+                className="inline-flex items-center gap-3 text-base sm:text-lg font-bold text-white hover:text-white/80 transition-colors group cursor-pointer font-heading"
               >
-                <span>Check Eligibility & Get Quote</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                <div className="w-12 h-12 rounded-full bg-white/15 border border-white/30 group-hover:bg-white group-hover:text-[#0b5d63] flex items-center justify-center transition-all duration-300 shrink-0 shadow-lg">
+                  <Play className="w-4 h-4 fill-current ml-0.5 text-white group-hover:text-[#0b5d63]" />
+                </div>
+                <span>See How We Works</span>
               </button>
-
-              <a
-                href="#doctors"
-                className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md text-white text-sm font-semibold tracking-wide transition-all duration-300"
-              >
-                Browse Surgeons
-              </a>
-
-              <a
-                href="#hospitals"
-                className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md text-white text-sm font-semibold tracking-wide transition-all duration-300"
-              >
-                Accredited Hospitals
-              </a>
             </motion.div>
 
           </div>
 
-          {/* Right Column: Modern High-Converting Quick Estimate Card */}
-          <div className="lg:col-span-5">
+          {/* 03. Right Column: Floating Badges over the Full-Bleed Doctor Background */}
+          <div className="lg:col-span-5 xl:col-span-6 relative h-[380px] sm:h-[480px] lg:h-[650px] flex items-center justify-center lg:justify-end pointer-events-none">
+            
+            {/* FLOATING BADGE 1: Medixal Shield Crest (870+ Doctors) */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="w-full bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/20 text-[#1a2e30]"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="absolute top-12 left-4 sm:left-10 lg:left-6 xl:left-12 z-20 pointer-events-auto"
             >
-              <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
-                <div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#0b5d63] block font-heading">
-                    Instant Concierge Intake
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-heading font-bold text-slate-900">
-                    Get Your Free Treatment Plan
-                  </h3>
+              <div className="w-24 sm:w-28 py-3.5 px-2 bg-[#062c30]/90 backdrop-blur-md border border-white/25 rounded-2xl rounded-b-[2rem] shadow-2xl flex flex-col items-center text-center">
+                {/* Doctor Mini Avatar Stack */}
+                <div className="flex -space-x-2 mb-1.5">
+                  <img
+                    className="w-7 h-7 rounded-full ring-1.5 ring-white object-cover"
+                    src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=100"
+                    alt="Doctor"
+                  />
+                  <img
+                    className="w-7 h-7 rounded-full ring-1.5 ring-white object-cover"
+                    src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=100"
+                    alt="Doctor"
+                  />
+                  <img
+                    className="w-7 h-7 rounded-full ring-1.5 ring-white object-cover"
+                    src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=100"
+                    alt="Doctor"
+                  />
                 </div>
-                <div className="w-10 h-10 rounded-2xl bg-[#0b5d63]/10 flex items-center justify-center text-[#0b5d63]">
-                  <CalendarCheck className="w-5 h-5" />
+                <span className="text-xl sm:text-2xl font-extrabold font-heading text-white leading-none">
+                  870+
+                </span>
+                <span className="text-[11px] text-white/80 font-heading font-medium tracking-wide mt-0.5">
+                  Doctors
+                </span>
+              </div>
+            </motion.div>
+
+            {/* FLOATING BADGE 2: Medixal Pill (150K+ Satisfied Patients) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="absolute bottom-10 sm:bottom-14 right-2 sm:right-6 lg:right-4 xl:right-10 z-20 pointer-events-auto"
+            >
+              <div className="bg-[#042023]/95 backdrop-blur-md border border-white/20 rounded-full px-5 py-2.5 sm:px-6 sm:py-3 shadow-2xl flex items-center gap-3.5">
+                {/* Patient Avatars */}
+                <div className="flex -space-x-2 shrink-0">
+                  <img
+                    className="w-8 h-8 rounded-full ring-1.5 ring-white/60 object-cover"
+                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&auto=format&fit=crop&q=80"
+                    alt="Patient"
+                  />
+                  <img
+                    className="w-8 h-8 rounded-full ring-1.5 ring-white/60 object-cover"
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=80"
+                    alt="Patient"
+                  />
+                  <img
+                    className="w-8 h-8 rounded-full ring-1.5 ring-white/60 object-cover"
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&auto=format&fit=crop&q=80"
+                    alt="Patient"
+                  />
+                </div>
+                <div className="shrink-0 text-left">
+                  <div className="text-sm sm:text-base font-extrabold font-heading text-white leading-tight">
+                    150K+
+                  </div>
+                  <div className="text-[10px] sm:text-[11px] text-white/75 font-body leading-tight">
+                    Satisfied Patients
+                  </div>
                 </div>
               </div>
-
-              <form onSubmit={handleQuickInquiry} className="space-y-4">
-                {/* Specialty Select */}
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1.5 font-heading">
-                    Required Specialty or Treatment
-                  </label>
-                  <select
-                    value={selectedSpecialty}
-                    onChange={(e) => setSelectedSpecialty(e.target.value)}
-                    className="w-full px-3.5 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0b5d63] focus:bg-white transition-all"
-                  >
-                    {specialtiesList.map((spec, i) => (
-                      <option key={i} value={spec}>
-                        {spec}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Country of Residence */}
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1.5 font-heading">
-                    Travelling From
-                  </label>
-                  <select
-                    value={patientCountry}
-                    onChange={(e) => setPatientCountry(e.target.value)}
-                    className="w-full px-3.5 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0b5d63] focus:bg-white transition-all"
-                  >
-                    {countriesList.map((c, i) => (
-                      <option key={i} value={c}>
-                        {c}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Reassurance Feature Grid inside Card */}
-                <div className="bg-[#f0f8f9] rounded-2xl p-4 border border-[#dbeff0] space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-medium text-[#073f43]">
-                    <ShieldCheck className="w-4 h-4 text-[#0b5d63] shrink-0" />
-                    <span>Free surgeon opinion within 24–48 hours</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs font-medium text-[#073f43]">
-                    <Clock className="w-4 h-4 text-[#0b5d63] shrink-0" />
-                    <span>No waiting list — procedure in days, not months</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs font-medium text-[#073f43]">
-                    <Plane className="w-4 h-4 text-[#0b5d63] shrink-0" />
-                    <span>Free visa invitation & hotel coordination</span>
-                  </div>
-                </div>
-
-                {/* Submit CTA */}
-                <button
-                  type="submit"
-                  className="w-full py-4 rounded-xl bg-[#0b5d63] hover:bg-[#073f43] text-white font-heading font-bold text-sm tracking-wider uppercase transition-all shadow-lg shadow-[#0b5d63]/25 flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <Stethoscope className="w-4 h-4 text-[#e39b2d]" />
-                  <span>Request Clinical Estimate</span>
-                </button>
-
-                <p className="text-[11px] text-center text-slate-500 pt-1">
-                  🔒 Strictly Confidential & HIPAA Compliant • 100% Free
-                </p>
-              </form>
             </motion.div>
+
           </div>
 
         </div>
-
-        {/* Bottom Trust Stat Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-14 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-6 text-white"
-        >
-          <div>
-            <div className="text-2xl sm:text-3xl font-heading font-bold text-[#e39b2d]">99.2%</div>
-            <div className="text-xs text-slate-300 font-medium mt-0.5">Clinical Success Rate</div>
-          </div>
-          <div>
-            <div className="text-2xl sm:text-3xl font-heading font-bold text-white">15,000+</div>
-            <div className="text-xs text-slate-300 font-medium mt-0.5">International Patients Treated</div>
-          </div>
-          <div>
-            <div className="text-2xl sm:text-3xl font-heading font-bold text-[#e39b2d]">70%</div>
-            <div className="text-xs text-slate-300 font-medium mt-0.5">Average Cost Savings vs UK/US</div>
-          </div>
-          <div>
-            <div className="text-2xl sm:text-3xl font-heading font-bold text-white">24 / 7</div>
-            <div className="text-xs text-slate-300 font-medium mt-0.5">Dedicated English Concierge</div>
-          </div>
-        </motion.div>
-
       </div>
     </section>
   );
 };
+
