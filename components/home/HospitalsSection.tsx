@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   MapPin,
   ArrowRight,
@@ -33,14 +32,6 @@ export const HospitalsSection = () => {
   const [totalSlides, setTotalSlides] = useState(0);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
-  const [activeCategory, setActiveCategory] = useState("All Hospitals");
-
-  const categories = [
-    "All Hospitals",
-    "Quaternary & Robotic",
-    "Cosmetic & Plastic Surgery",
-    "Laser Ophthalmology",
-  ];
 
   const hospitals = [
     {
@@ -147,11 +138,6 @@ export const HospitalsSection = () => {
     },
   ];
 
-  const filteredHospitals =
-    activeCategory === "All Hospitals"
-      ? hospitals
-      : hospitals.filter((h) => h.category === activeCategory);
-
   // Sync Embla carousel state
   useEffect(() => {
     if (!api) return;
@@ -173,13 +159,6 @@ export const HospitalsSection = () => {
       api.off("reInit", onSelect);
     };
   }, [api]);
-
-  // Re-initialize scroll when category filter changes
-  useEffect(() => {
-    if (api) {
-      api.scrollTo(0);
-    }
-  }, [activeCategory, api]);
 
   return (
     <section
@@ -246,25 +225,6 @@ export const HospitalsSection = () => {
           </div>
         </div>
 
-        {/* Category Filter Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-3 mb-6 sm:mb-8">
-          {categories.map((cat) => {
-            const isSelected = activeCategory === cat;
-            return (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-heading font-bold whitespace-nowrap transition-all duration-200 cursor-pointer border ${isSelected
-                  ? "bg-[#0b5d63] border-[#0b5d63] text-white shadow-sm"
-                  : "bg-white hover:bg-slate-50 border-slate-200 text-slate-700"
-                  }`}
-              >
-                {cat}
-              </button>
-            );
-          })}
-        </div>
-
         {/* Carousel Showcase */}
         <div className="w-full">
           <Carousel
@@ -276,7 +236,7 @@ export const HospitalsSection = () => {
             className="w-full"
           >
             <CarouselContent className="-ml-4 sm:-ml-6">
-              {filteredHospitals.map((hosp) => (
+              {hospitals.map((hosp) => (
                 <CarouselItem
                   key={hosp.id}
                   className="pl-4 sm:pl-6 basis-full sm:basis-1/2 lg:basis-1/3"
@@ -393,6 +353,24 @@ export const HospitalsSection = () => {
               ))}
             </CarouselContent>
           </Carousel>
+
+          {/* Slide Indicator Dots */}
+          {totalSlides > 1 && (
+            <div className="flex items-center justify-center gap-2 mt-8">
+              {Array.from({ length: totalSlides }).map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => api?.scrollTo(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                    currentSlide === idx
+                      ? "w-8 bg-[#0b5d63]"
+                      : "w-2 bg-slate-200 hover:bg-slate-300"
+                  }`}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Global Hospital Partnership Standards Banner */}
