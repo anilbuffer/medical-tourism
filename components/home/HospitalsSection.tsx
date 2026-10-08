@@ -54,7 +54,7 @@ export const HospitalsSection = () => {
       rating: 4.9,
       reviewsCount: "1,240+ Patients",
       beds: "355+ Quaternary Beds",
-      ots: "11 Modular Robotic OTs",
+      ots: "11 Robotic OTs",
       specialties: ["Robotic Joint Replacement", "Cardiac Sciences", "Robotic Oncology", "Organ Transplant"],
       tech: "Da Vinci Xi & Stryker Mako Robotics",
       amenities: "Dedicated International Patient Lounge & Concierge",
@@ -71,7 +71,7 @@ export const HospitalsSection = () => {
       rating: 4.8,
       reviewsCount: "980+ Patients",
       beds: "230+ Dedicated Beds",
-      ots: "9 Modular Advanced OTs",
+      ots: "9 Modular OTs",
       specialties: ["Neurosciences", "Kidney Transplant", "Joint Replacement", "Cancer Radiotherapy"],
       tech: "TrueBeam STx Linac & Da Vinci Robot",
       amenities: "Private VIP Suites & Dedicated Patient Coordinators",
@@ -84,11 +84,11 @@ export const HospitalsSection = () => {
       location: "Ludhiana — Led by Dr. Vikas Gupta",
       airportDistance: "Chauffeured Airport Transit Available",
       image: "/profileaestheticsurgery.png",
-      accreditation: "ISO & Quality Healthcare Certified",
+      accreditation: "ISO & Quality Certified",
       rating: 4.9,
       reviewsCount: "520+ Patients",
-      beds: "Boutique Private Suites",
-      ots: "Specialised Sterile Aesthetic OTs",
+      beds: "Private VIP Suites",
+      ots: "Sterile Aesthetic OTs",
       specialties: ["High-Definition VASER", "Rhinoplasty", "3D Liposuction", "Body Contouring"],
       tech: "VASER Ultrasound & Micro-Aire Liposculpture",
       amenities: "100% Confidential VIP Recovery & Private Care",
@@ -104,8 +104,8 @@ export const HospitalsSection = () => {
       accreditation: "NABH Eye Care Centre of Excellence",
       rating: 5.0,
       reviewsCount: "850+ Patients",
-      beds: "Day-Care Surgical Suites",
-      ots: "Zeiss & Alcon Ultra-Clean OTs",
+      beds: "Day-Care Suites",
+      ots: "Zeiss & Alcon OTs",
       specialties: ["Blade-Free Contoura LASIK", "SMILE Pro Refractive", "Micro-Cataract", "Trifocal IOLs"],
       tech: "Zeiss Lumera 700 & Alcon EX500 Laser",
       amenities: "Same-Day Outpatient & 24h Visual Recovery",
@@ -118,11 +118,11 @@ export const HospitalsSection = () => {
       location: "Sector 8C, Chandigarh City",
       airportDistance: "15 Mins from Chandigarh Int'l Airport (IXC)",
       image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&q=80&w=800",
-      accreditation: "JCI & NABH Certified Network",
+      accreditation: "JCI & NABH Certified",
       rating: 4.9,
       reviewsCount: "1,150+ Patients",
       beds: "220+ Quaternary Beds",
-      ots: "Hybrid Cath Labs & Modular OTs",
+      ots: "Hybrid Cath Labs",
       specialties: ["Cardiac Care", "Orthopaedics", "Medical Oncology", "Critical Care"],
       tech: "3T MRI & Bi-Plane Vascular Cath Lab",
       amenities: "International Patient Lounge & Currency Desk",
@@ -139,7 +139,7 @@ export const HospitalsSection = () => {
       rating: 4.7,
       reviewsCount: "720+ Patients",
       beds: "150+ Dedicated Beds",
-      ots: "Minimally Invasive Endosuites",
+      ots: "Endosurgical Suites",
       specialties: ["Spine Surgery", "Organ Transplant", "Joint Reconstruction", "Urology"],
       tech: "4K HD Endoscopy & Laparoscopy Suites",
       amenities: "1-on-1 Doctor Care & Rapid Recovery Discharge",
@@ -194,7 +194,7 @@ export const HospitalsSection = () => {
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-2">
               <span className="h-2 w-2 rounded-full bg-[#e39b2d] animate-pulse" />
-              <p className="text-[#0b5d63] font-heading font-bold text-xs uppercase tracking-[0.22em]">
+              <p className="text-[#e39b2d] font-heading font-bold text-xs uppercase tracking-[0.22em]">
                 GLOBAL ACCREDITED HEALTHCARE NETWORK
               </p>
             </div>
@@ -213,7 +213,7 @@ export const HospitalsSection = () => {
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <Link
               href="/hospitals"
-              className="text-xs font-heading font-bold text-[#0b5d63] hover:text-[#04272a] hover:underline flex items-center gap-1.5 transition-colors mr-2"
+              className="text-xs font-heading font-bold text-[#e39b2d] hover:text-[#cf8822] hover:underline flex items-center gap-1.5 transition-colors mr-2"
             >
               <span>Explore All 15+ Hospitals</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -224,11 +224,10 @@ export const HospitalsSection = () => {
                 onClick={() => api?.scrollPrev()}
                 disabled={!canScrollPrev}
                 aria-label="Previous hospital slide"
-                className={`w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center transition-all cursor-pointer ${
-                  canScrollPrev
-                    ? "bg-white hover:bg-slate-100 text-slate-800 shadow-sm"
-                    : "bg-slate-50 text-slate-300 border-slate-100 cursor-not-allowed opacity-50"
-                }`}
+                className={`w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center transition-all cursor-pointer ${canScrollPrev
+                  ? "bg-white hover:bg-slate-100 text-slate-800 shadow-sm"
+                  : "bg-slate-50 text-slate-300 border-slate-100 cursor-not-allowed opacity-50"
+                  }`}
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -236,11 +235,10 @@ export const HospitalsSection = () => {
                 onClick={() => api?.scrollNext()}
                 disabled={!canScrollNext}
                 aria-label="Next hospital slide"
-                className={`w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center transition-all cursor-pointer ${
-                  canScrollNext
-                    ? "bg-[#0b5d63] hover:bg-[#073f43] text-white shadow-sm"
-                    : "bg-slate-50 text-slate-300 border-slate-100 cursor-not-allowed opacity-50"
-                }`}
+                className={`w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center transition-all cursor-pointer ${canScrollNext
+                  ? "bg-[#e39b2d] hover:bg-[#cf8822] text-white shadow-sm"
+                  : "bg-slate-50 text-slate-300 border-slate-100 cursor-not-allowed opacity-50"
+                  }`}
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -256,11 +254,10 @@ export const HospitalsSection = () => {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-heading font-bold whitespace-nowrap transition-all duration-200 cursor-pointer border ${
-                  isSelected
-                    ? "bg-[#0b5d63] border-[#0b5d63] text-white shadow-sm"
-                    : "bg-white hover:bg-slate-50 border-slate-200 text-slate-700"
-                }`}
+                className={`px-4 py-2 rounded-full text-xs font-heading font-bold whitespace-nowrap transition-all duration-200 cursor-pointer border ${isSelected
+                  ? "bg-[#0b5d63] border-[#0b5d63] text-white shadow-sm"
+                  : "bg-white hover:bg-slate-50 border-slate-200 text-slate-700"
+                  }`}
               >
                 {cat}
               </button>
@@ -282,16 +279,16 @@ export const HospitalsSection = () => {
               {filteredHospitals.map((hosp) => (
                 <CarouselItem
                   key={hosp.id}
-                  className="pl-4 sm:pl-6 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                  className="pl-4 sm:pl-6 basis-full sm:basis-1/2 lg:basis-1/3"
                 >
                   <div className="group relative bg-white rounded-2xl sm:rounded-3xl border border-[#e2eaeb] hover:border-[#0b5d63]/50 shadow-sm hover:shadow-xl transition-all duration-400 overflow-hidden flex flex-col justify-between h-full">
                     {/* Media Top Container */}
-                    <div className="relative h-56 sm:h-60 w-full overflow-hidden bg-slate-100 shrink-0">
+                    <div className="relative h-60 sm:h-80 w-full overflow-hidden bg-slate-100 shrink-0">
                       <Image
                         src={hosp.image}
                         alt={hosp.name}
                         fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
                       />
                       {/* Subtle Dark Gradient Overlay for Badges & Text Contrast */}
@@ -335,9 +332,11 @@ export const HospitalsSection = () => {
                         </p>
 
                         {/* Hospital Name */}
-                        <h3 className="font-heading font-extrabold text-lg sm:text-xl text-slate-900 group-hover:text-[#0b5d63] transition-colors leading-snug mb-1.5 line-clamp-1">
-                          {hosp.name}
-                        </h3>
+                        <div className="h-14 flex items-center mb-1.5">
+                          <h3 className="font-heading font-extrabold text-lg sm:text-xl text-slate-900 group-hover:text-[#0b5d63] transition-colors leading-snug line-clamp-2">
+                            {hosp.name}
+                          </h3>
+                        </div>
 
                         {/* Location */}
                         <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium mb-3">

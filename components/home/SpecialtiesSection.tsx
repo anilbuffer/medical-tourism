@@ -182,7 +182,7 @@ export const SpecialtiesSection = () => {
             <div>
               <div className="flex items-center gap-2 mb-1.5">
                 <span className="h-2 w-2 rounded-full bg-[#e39b2d] animate-pulse"></span>
-                <p className="text-[#0b5d63] font-heading font-bold text-xs uppercase tracking-[0.22em]">
+                <p className="text-[#e39b2d] font-heading font-bold text-xs uppercase tracking-[0.22em]">
                   QUATERNARY CLINICAL EXCELLENCE
                 </p>
               </div>
