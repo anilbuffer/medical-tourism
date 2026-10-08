@@ -95,11 +95,11 @@ export const Navbar = () => {
         : "bg-transparent text-white"
         }`}
     >
-      <div className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-14 py-4">
+      <div className="max-w-[1580px] mx-auto px-6 sm:px-10 lg:px-14 py-4">
         <div className="flex items-center justify-between gap-8">
           {/* 01. Brand Logo - Vector HD Sharp */}
           <Link href="/" className="flex items-center gap-3 group shrink-0" aria-label="yourMedicareTrip Home">
-            <BrandLogo variant="white" className="h-10 sm:h-12 w-auto transition-transform duration-300 group-hover:scale-105" />
+            <BrandLogo variant="white" className="h-10 sm:h-12 w-auto" />
           </Link>
 
           {/* 02. Clean Spacious Navigation Links */}
@@ -142,9 +142,8 @@ export const Navbar = () => {
               >
                 <span>{t.nav.explore}</span>
                 <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    exploreOpen ? "rotate-180 text-[#e39b2d]" : ""
-                  }`}
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${exploreOpen ? "rotate-180 text-[#e39b2d]" : ""
+                    }`}
                 />
               </button>
 
