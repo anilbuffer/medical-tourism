@@ -2,16 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { 
-  ArrowRight, 
-  Sparkles, 
-  Clock, 
-  Stethoscope, 
-  ShieldCheck, 
-  ChevronRight, 
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  ArrowRight,
+  Clock,
   CheckCircle2,
-  Cpu,
-  BadgePercent
+  ShieldCheck,
+  ChevronRight,
+  Sparkles
 } from "lucide-react";
 import { useCare } from "@/context/CareContext";
 
@@ -122,48 +120,22 @@ export const SpecialtiesSection = () => {
     },
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = specialties.findIndex((s) => `spec-${s.id}` === entry.target.id);
-            if (index !== -1) setActiveStep(index);
-          }
-        });
-      },
-      { rootMargin: "-40% 0px -40% 0px" }
-    );
-
-    specialties.forEach((spec) => {
-      const el = document.getElementById(`spec-${spec.id}`);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, [specialties]);
-
-  const handleScrollTo = (id: string) => {
-    const el = document.getElementById(`spec-${id}`);
-    if (el) {
-      const y = el.getBoundingClientRect().top + window.scrollY - 100;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
-  };
+  const current = specialties[activeStep];
 
   return (
-    <section 
-      id="treatments" 
-      className="bg-[#f8fafb] text-[#1a2e30] border-t border-[#e2eaeb] relative w-full py-16 sm:py-24 font-sans"
+    <section
+      id="treatments"
+      className="bg-[#f8fafb] text-[#1a2e30] border-t border-[#e2eaeb] relative w-full pt-16 sm:pt-24 pb-20 font-sans"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        
-        {/* Section Header with Catchy Jost Typography */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
+      {/* 1580px Expanded Container Matching Header and Hero */}
+      <div className="max-w-[1580px] mx-auto px-6 sm:px-10 lg:px-14 w-full">
+
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-6">
           <div>
             <div className="flex items-center gap-2.5 mb-3">
-              <span className="h-2 w-2 rounded-full bg-[#e39b2d]"></span>
-              <p className="text-[#0b5d63] font-heading font-bold text-xs uppercase tracking-[0.2em]">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#e39b2d] animate-pulse"></span>
+              <p className="text-[#0b5d63] font-heading font-bold text-xs uppercase tracking-[0.22em]">
                 QUATERNARY CLINICAL EXCELLENCE
               </p>
             </div>
@@ -174,94 +146,115 @@ export const SpecialtiesSection = () => {
               </span>
             </h2>
           </div>
-          <p className="text-slate-600 max-w-md text-sm sm:text-base leading-relaxed">
-            All surgeries are performed by Chief Specialists in JCI-accredited tertiary hospitals with US-FDA approved implants and zero waiting times.
+          <p className="text-slate-600 max-w-xl text-sm sm:text-base leading-relaxed font-body">
+            All surgeries are performed by Chief Specialists in JCI &amp; NABH-accredited tertiary hospitals with US-FDA approved implants, transparent packages, and zero waiting times.
           </p>
         </div>
 
-        {/* Content Grid */}
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+        {/* ONE UNIFIED CARD: Tabs + Content inside the same card */}
+        <div className="w-full rounded-[2.5rem] bg-white border border-[#e2eaeb] shadow-xl p-6 sm:p-10 lg:p-12">
           
-          {/* Left Column: Sticky Category Selector */}
-          <div className="lg:w-1/3 w-full lg:sticky lg:top-28 flex flex-col gap-2.5 z-20">
+          {/* Top: Horizontal Tabs Bar Inside the Card */}
+          <div className="flex items-center gap-3 sm:gap-4 overflow-x-auto no-scrollbar scroll-smooth pb-6 mb-8 sm:mb-10 border-b border-slate-100">
             {specialties.map((spec, idx) => {
               const isSelected = activeStep === idx;
               return (
                 <button
                   key={spec.id}
-                  onClick={() => handleScrollTo(spec.id)}
-                  className={`text-left p-4 rounded-2xl transition-all duration-300 border flex items-center justify-between cursor-pointer ${
+                  onClick={() => setActiveStep(idx)}
+                  className={`flex items-center gap-3.5 px-5 py-3 rounded-xl sm:rounded-2xl transition-all duration-300 text-left cursor-pointer shrink-0 border ${
                     isSelected
-                      ? "bg-white border-[#0b5d63] shadow-lg shadow-[#0b5d63]/10 ring-1 ring-[#0b5d63]/20"
-                      : "bg-white/60 hover:bg-white border-transparent hover:border-slate-200"
+                      ? "bg-[#0b5d63] border-[#0b5d63] shadow-md shadow-[#0b5d63]/25 ring-2 ring-[#0b5d63]/20"
+                      : "bg-white hover:bg-slate-50 border-slate-200/90 hover:border-slate-300"
                   }`}
                 >
-                  <div className="flex items-center gap-3.5">
-                    <div className={`w-9 h-9 rounded-xl flex items-center justify-center font-heading font-bold text-sm shrink-0 transition-colors ${
-                      isSelected 
-                        ? "bg-[#0b5d63] text-white" 
+                  {/* Number Circle Badge (Solid Amber on Active) */}
+                  <div
+                    className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-heading font-extrabold text-xs sm:text-sm shrink-0 transition-colors ${
+                      isSelected
+                        ? "bg-[#e39b2d] text-slate-950 shadow-sm"
                         : "bg-slate-100 text-slate-600"
-                    }`}>
-                      {idx + 1}
-                    </div>
-                    <div>
-                      <h3 className={`font-heading font-bold text-sm sm:text-base transition-colors ${
-                        isSelected ? "text-[#0b5d63]" : "text-slate-700"
-                      }`}>
-                        {spec.shortTitle}
-                      </h3>
-                      <div className="text-xs text-[#a35f0b] font-medium mt-0.5">
-                        {spec.savings} • {spec.stay}
-                      </div>
-                    </div>
+                    }`}
+                  >
+                    {idx + 1}
                   </div>
-                  <ChevronRight className={`w-4 h-4 transition-transform ${isSelected ? "text-[#e39b2d] translate-x-1" : "text-slate-300"}`} />
+
+                  {/* 2-Line Text Content (Title + Savings Subtext Matching Reference) */}
+                  <div className="flex flex-col">
+                    <span
+                      className={`font-heading font-extrabold text-sm sm:text-base leading-tight transition-colors whitespace-nowrap ${
+                        isSelected ? "text-white" : "text-slate-800"
+                      }`}
+                    >
+                      {spec.shortTitle}
+                    </span>
+                    <span
+                      className={`text-xs font-medium leading-tight mt-0.5 transition-colors whitespace-nowrap ${
+                        isSelected ? "text-teal-100" : "text-[#a35f0b]"
+                      }`}
+                    >
+                      • {spec.savings}
+                    </span>
+                  </div>
                 </button>
               );
             })}
           </div>
 
-          {/* Right Column: Detailed Procedure Cards */}
-          <div className="lg:w-2/3 flex flex-col gap-10">
-            {specialties.map((current) => (
-              <div
-                key={current.id}
-                id={`spec-${current.id}`}
-                className="w-full rounded-3xl bg-white border border-[#e2eaeb] shadow-xl p-6 sm:p-8 flex flex-col justify-between hover:border-[#0b5d63]/30 transition-all"
-              >
-                <div>
-                  <div className="relative w-full h-64 sm:h-80 rounded-2xl overflow-hidden mb-8">
-                    <Image
-                      src={current.image}
-                      alt={current.title}
-                      fill
-                      className="object-cover hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute top-4 left-4 z-10 flex flex-wrap gap-2">
-                      <span className="px-3.5 py-1.5 rounded-full bg-[#04272a]/85 backdrop-blur-md text-[#e39b2d] text-xs font-heading font-bold uppercase tracking-wider shadow-md">
-                        {current.featuredBadge}
-                      </span>
-                    </div>
-                    <div className="absolute bottom-4 right-4 z-10">
-                      <span className="px-3.5 py-1.5 rounded-xl bg-white/95 backdrop-blur-md text-[#0b5d63] text-xs font-bold shadow-md">
-                        {current.stat}
-                      </span>
-                    </div>
-                  </div>
+          {/* Bottom: Active Procedure Content Inside the Same Card */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.id}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.35, ease: "easeInOut" }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+            >
+              {/* Left: Procedure High-Resolution Visual */}
+              <div className="lg:col-span-5 relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group">
+                <Image
+                  src={current.image}
+                  alt={current.title}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                {/* Top Left: Category Featured Badge */}
+                <div className="absolute top-4 left-4 z-10 flex flex-wrap gap-2">
+                  <span className="px-3.5 py-1.5 rounded-full bg-[#04272a]/90 backdrop-blur-md text-[#e39b2d] text-xs font-heading font-bold uppercase tracking-wider shadow-md">
+                    {current.featuredBadge}
+                  </span>
+                </div>
+                {/* Bottom Right: Key Stat Pill */}
+                <div className="absolute bottom-4 right-4 z-10">
+                  <span className="px-3.5 py-1.5 rounded-xl bg-white/95 backdrop-blur-md text-[#0b5d63] text-xs font-bold shadow-md">
+                    {current.stat}
+                  </span>
+                </div>
+              </div>
 
-                  <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">
+              {/* Right: Rich Clinical Narrative & Protocols */}
+              <div className="lg:col-span-7 flex flex-col justify-between">
+                <div>
+                  {/* Procedure Headline & Subtitle */}
+                  <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 mb-2 leading-tight">
                     {current.title}
                   </h3>
-                  <p className="text-[#0b5d63] text-sm sm:text-base font-semibold mb-4">
+                  <p className="text-[#0b5d63] text-sm sm:text-base font-bold mb-3 font-heading">
                     {current.subtitle}
                   </p>
-                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 font-normal font-body">
                     {current.quote}
                   </p>
 
+                  {/* Protocol Highlights (2x2 Grid) */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-8">
                     {current.protocols.map((proto, pIdx) => (
-                      <div key={pIdx} className="flex items-start gap-2.5 text-xs text-slate-700 bg-[#f0f8f9] p-3.5 rounded-xl border border-[#dbeff0]">
+                      <div
+                        key={pIdx}
+                        className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-800 bg-[#f0f8f9] p-3.5 rounded-xl border border-[#dbeff0]"
+                      >
                         <CheckCircle2 className="w-4 h-4 text-[#0b5d63] shrink-0 mt-0.5" />
                         <span className="font-medium leading-relaxed">{proto}</span>
                       </div>
@@ -269,26 +262,30 @@ export const SpecialtiesSection = () => {
                   </div>
                 </div>
 
+                {/* Procedure Bottom Bar: Stay Duration + Action Button */}
                 <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-600">
                     <Clock className="w-4 h-4 text-[#e39b2d]" />
-                    <span>Average In-Country Stay: <strong className="text-slate-800">{current.stay}</strong></span>
+                    <span>Average In-Country Stay: <strong className="text-slate-900">{current.stay}</strong></span>
                   </div>
 
                   <button
                     onClick={() => openIntake(current.title)}
-                    className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-[#0b5d63] hover:bg-[#073f43] text-white font-heading font-bold text-xs uppercase tracking-wider shadow-md shadow-[#0b5d63]/20 flex items-center justify-center gap-2 transition-all cursor-pointer"
+                    className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#0b5d63] hover:bg-[#073f43] active:scale-95 text-white font-heading font-bold text-xs uppercase tracking-wider shadow-md shadow-[#0b5d63]/25 flex items-center justify-center gap-2.5 transition-all cursor-pointer group"
                   >
                     <span>Check Clinical Feasibility</span>
-                    <ArrowRight className="w-4 h-4 text-[#e39b2d]" />
+                    <ArrowRight className="w-4 h-4 text-[#e39b2d] transition-transform group-hover:translate-x-1" />
                   </button>
                 </div>
               </div>
-            ))}
-          </div>
+
+            </motion.div>
+          </AnimatePresence>
 
         </div>
+
       </div>
     </section>
   );
 };
+

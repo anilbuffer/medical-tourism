@@ -14,7 +14,7 @@ export const HeroSection = () => {
       {/* 01. Full Section Background Banner Image - Senior Couple Airport Medical Trip */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero/hero-airport-couple.jpg"
+          src="/images/hero/banner.jpg"
           alt="Mature senior couple arriving in India airport for medical travel with masks and trolley luggage"
           fill
           priority
@@ -48,26 +48,27 @@ export const HeroSection = () => {
               Expert Medical Treatment
             </motion.div>
 
-            {/* Confident, Clean Headline - Exact Medixal Reference Styling */}
+            {/* Confident Headline Matching User Reference Image */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] font-extrabold text-white leading-[1.12] tracking-tight"
+              className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-[4.15rem] font-extrabold text-white leading-[1.14] tracking-tight"
             >
-              We Follow A<br />
-              Holistic Approach<br />
-              to Health care.
+              World-Class Surgical Care in India.{" "}
+              <span className="text-[#e39b2d]">
+                Save Up to 70%. Zero Waiting.
+              </span>
             </motion.h1>
 
-            {/* Reassuring, Uncrowded Subtitle */}
+            {/* Subtitle Description Matching User Reference Image */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-base sm:text-lg text-white/90 font-normal leading-relaxed max-w-xl font-body"
+              className="text-base sm:text-lg text-white/90 font-normal leading-relaxed max-w-2xl font-body"
             >
-              World-class quaternary hospitals, celebrated chief surgeons, and comprehensive 1-on-1 care coordination in India with up to 70% cost savings and zero wait times.
+              Direct patient access to India&apos;s most celebrated surgical directors, quaternary hospitals, fixed guaranteed pricing, and your personal 1-on-1 English-speaking clinical concierge from arrival to recovery.
             </motion.p>
 
             {/* Hero CTA Button - Exactly matching user reference image */}
@@ -96,7 +97,7 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="absolute top-10 left-4 sm:left-8 lg:-left-6 xl:-left-4 z-20 pointer-events-auto"
+              className="absolute top-20 left-4 sm:left-8 lg:-left-6 xl:left-18 z-20 pointer-events-auto"
             >
               <div className="relative w-[124px] sm:w-[136px] h-[148px] sm:h-[162px] flex flex-col items-center justify-center pt-2 pb-5 px-3 select-none filter drop-shadow-2xl">
                 {/* SVG Security Shield Silhouette Outline & Background */}
