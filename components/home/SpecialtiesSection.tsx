@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import {
   ArrowRight,
   Clock,
@@ -16,6 +16,50 @@ import { useCare } from "@/context/CareContext";
 export const SpecialtiesSection = () => {
   const { openIntake } = useCare();
   const [activeStep, setActiveStep] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isClickScrolling = useRef(false);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"]
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (isClickScrolling.current) return;
+    const numTabs = 5;
+    const index = Math.min(
+      Math.floor(latest * numTabs),
+      numTabs - 1
+    );
+    if (index >= 0 && index !== activeStep) {
+      setActiveStep(index);
+    }
+  });
+
+  const handleTabClick = (idx: number) => {
+    setActiveStep(idx);
+    if (!sectionRef.current) return;
+
+    const rect = sectionRef.current.getBoundingClientRect();
+    const scrollTop = window.scrollY || window.pageYOffset;
+    const sectionTop = rect.top + scrollTop;
+    const scrollableDistance = sectionRef.current.offsetHeight - window.innerHeight;
+
+    if (scrollableDistance > 0) {
+      const progress = (idx + 0.5) / 5;
+      const targetY = sectionTop + progress * scrollableDistance;
+
+      isClickScrolling.current = true;
+      window.scrollTo({
+        top: targetY,
+        behavior: "smooth"
+      });
+
+      setTimeout(() => {
+        isClickScrolling.current = false;
+      }, 700);
+    }
+  };
 
   const specialties = [
     {
@@ -125,109 +169,114 @@ export const SpecialtiesSection = () => {
   return (
     <section
       id="treatments"
-      className="bg-[#f8fafb] text-[#1a2e30] border-t border-[#e2eaeb] relative w-full pt-16 sm:pt-24 pb-20 font-sans"
+      ref={sectionRef}
+      className="bg-[#f8fafb] text-[#1a2e30] border-t border-[#e2eaeb] relative w-full pt-8 sm:pt-10 pb-12 font-sans h-[350vh] lg:h-[400vh]"
     >
-      {/* 1580px Expanded Container Matching Header and Hero */}
-      <div className="max-w-[1580px] mx-auto px-6 sm:px-10 lg:px-14 w-full">
+      {/* Sticky Container pinned under Navbar */}
+      <div className="sticky top-16 lg:top-20 w-full z-20">
+        {/* 1580px Expanded Container Matching Header and Hero */}
+        <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-6">
-          <div>
-            <div className="flex items-center gap-2.5 mb-3">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#e39b2d] animate-pulse"></span>
-              <p className="text-[#0b5d63] font-heading font-bold text-xs uppercase tracking-[0.22em]">
-                QUATERNARY CLINICAL EXCELLENCE
-              </p>
+          {/* Section Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-4 sm:mb-6 gap-3">
+            <div>
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="h-2 w-2 rounded-full bg-[#e39b2d] animate-pulse"></span>
+                <p className="text-[#0b5d63] font-heading font-bold text-xs uppercase tracking-[0.22em]">
+                  QUATERNARY CLINICAL EXCELLENCE
+                </p>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-slate-900 leading-[1.12]">
+                Specialised Treatments.{" "}
+                <span className="text-[#0b5d63] block sm:inline">
+                  Celebrated Specialists.
+                </span>
+              </h2>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-slate-900 leading-[1.12]">
-              Specialised Treatments.{" "}
-              <span className="text-[#0b5d63] block sm:inline">
-                Celebrated Specialists.
-              </span>
-            </h2>
+            <p className="text-slate-600 max-w-xl text-xs sm:text-sm leading-relaxed font-body">
+              All surgeries are performed by Chief Specialists in JCI &amp; NABH-accredited tertiary hospitals with US-FDA approved implants, transparent packages, and zero waiting times.
+            </p>
           </div>
-          <p className="text-slate-600 max-w-xl text-sm sm:text-base leading-relaxed font-body">
-            All surgeries are performed by Chief Specialists in JCI &amp; NABH-accredited tertiary hospitals with US-FDA approved implants, transparent packages, and zero waiting times.
-          </p>
-        </div>
 
-        {/* ONE UNIFIED CARD: Tabs + Content inside the same card */}
-        <div className="w-full rounded-[2.5rem] bg-white border border-[#e2eaeb] shadow-xl p-6 sm:p-10 lg:p-12">
-          
-          {/* Top: Horizontal Tabs Bar Inside the Card */}
-          <div className="flex items-center gap-3 sm:gap-4 overflow-x-auto no-scrollbar scroll-smooth pb-6 mb-8 sm:mb-10 border-b border-slate-100">
-            {specialties.map((spec, idx) => {
-              const isSelected = activeStep === idx;
-              return (
-                <button
-                  key={spec.id}
-                  onClick={() => setActiveStep(idx)}
-                  className={`flex items-center gap-3.5 px-5 py-3 rounded-xl sm:rounded-2xl transition-all duration-300 text-left cursor-pointer shrink-0 border ${
-                    isSelected
-                      ? "bg-[#0b5d63] border-[#0b5d63] shadow-md shadow-[#0b5d63]/25 ring-2 ring-[#0b5d63]/20"
-                      : "bg-white hover:bg-slate-50 border-slate-200/90 hover:border-slate-300"
-                  }`}
-                >
-                  {/* Number Circle Badge (Solid Amber on Active) */}
-                  <div
-                    className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-heading font-extrabold text-xs sm:text-sm shrink-0 transition-colors ${
-                      isSelected
+          {/* ONE UNIFIED CARD: Tabs + Content inside the same card */}
+          <div className="w-full rounded-xl bg-white border border-[#e2eaeb] shadow-sm overflow-hidden">
+
+            {/* Top: Horizontal Tabs Bar Inside the Card */}
+            <div className="px-4 sm:px-6 lg:px-8 py-5 sm:py-6 border-b border-slate-100 bg-white">
+              <div className="flex items-stretch gap-2.5 sm:gap-3.5 w-full overflow-x-auto no-scrollbar scroll-smooth">
+                {specialties.map((spec, idx) => {
+                  const isSelected = activeStep === idx;
+                  return (
+                    <button
+                      key={spec.id}
+                      onClick={() => handleTabClick(idx)}
+                      className={`flex-1 min-w-[200px] lg:min-w-0 flex items-center gap-3 sm:gap-3.5 px-3.5 sm:px-4 py-3 rounded-xl transition-all duration-300 text-left cursor-pointer border ${isSelected
+                        ? "bg-[#0b5d63] border-[#0b5d63] shadow-sm text-white"
+                        : "bg-white hover:bg-slate-50 border-slate-200/90 hover:border-slate-300"
+                        }`}
+                    >
+                    {/* Number Circle Badge (Solid Amber on Active) */}
+                    <div
+                      className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-heading font-extrabold text-xs sm:text-sm shrink-0 transition-colors ${isSelected
                         ? "bg-[#e39b2d] text-slate-950 shadow-sm"
                         : "bg-slate-100 text-slate-600"
-                    }`}
-                  >
-                    {idx + 1}
-                  </div>
+                        }`}
+                    >
+                      {idx + 1}
+                    </div>
 
-                  {/* 2-Line Text Content (Title + Savings Subtext Matching Reference) */}
-                  <div className="flex flex-col">
-                    <span
-                      className={`font-heading font-extrabold text-sm sm:text-base leading-tight transition-colors whitespace-nowrap ${
-                        isSelected ? "text-white" : "text-slate-800"
-                      }`}
-                    >
-                      {spec.shortTitle}
-                    </span>
-                    <span
-                      className={`text-xs font-medium leading-tight mt-0.5 transition-colors whitespace-nowrap ${
-                        isSelected ? "text-teal-100" : "text-[#a35f0b]"
-                      }`}
-                    >
-                      • {spec.savings}
-                    </span>
-                  </div>
-                </button>
-              );
-            })}
+                    {/* 2-Line Text Content (Title + Savings Subtext Matching Reference) */}
+                    <div className="flex flex-col min-w-0">
+                      <span
+                        className={`font-heading font-extrabold text-sm sm:text-base leading-tight transition-colors whitespace-nowrap truncate ${isSelected ? "text-white" : "text-slate-800"
+                          }`}
+                      >
+                        {spec.shortTitle}
+                      </span>
+                      <span
+                        className={`text-xs font-medium leading-tight mt-0.5 transition-colors whitespace-nowrap truncate ${isSelected ? "text-teal-100" : "text-[#a35f0b]"
+                          }`}
+                      >
+                        • {spec.savings}
+                      </span>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           {/* Bottom: Active Procedure Content Inside the Same Card */}
           <AnimatePresence mode="wait">
             <motion.div
               key={current.id}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.35, ease: "easeInOut" }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="grid grid-cols-1 lg:grid-cols-12 items-stretch"
             >
-              {/* Left: Procedure High-Resolution Visual */}
-              <div className="lg:col-span-5 relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group">
+              {/* Left: Procedure High-Resolution Visual - BIG & Flush to Card Edges */}
+              <div className="lg:col-span-5 xl:col-span-6 relative w-full min-h-[380px] sm:min-h-[460px] lg:min-h-[540px] h-full overflow-hidden group">
                 <Image
                   src={current.image}
                   alt={current.title}
                   fill
-                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-70" />
+
                 {/* Top Left: Category Featured Badge */}
-                <div className="absolute top-4 left-4 z-10 flex flex-wrap gap-2">
+                <div className="absolute top-6 left-6 z-10 flex flex-wrap gap-2">
                   <span className="px-3.5 py-1.5 rounded-full bg-[#04272a]/90 backdrop-blur-md text-[#e39b2d] text-xs font-heading font-bold uppercase tracking-wider shadow-md">
                     {current.featuredBadge}
                   </span>
                 </div>
+
                 {/* Bottom Right: Key Stat Pill */}
-                <div className="absolute bottom-4 right-4 z-10">
+                <div className="absolute bottom-6 right-6 z-10">
                   <span className="px-3.5 py-1.5 rounded-xl bg-white/95 backdrop-blur-md text-[#0b5d63] text-xs font-bold shadow-md">
                     {current.stat}
                   </span>
@@ -235,7 +284,7 @@ export const SpecialtiesSection = () => {
               </div>
 
               {/* Right: Rich Clinical Narrative & Protocols */}
-              <div className="lg:col-span-7 flex flex-col justify-between">
+              <div className="lg:col-span-7 xl:col-span-6 p-6 sm:p-10 lg:p-12 xl:p-14 flex flex-col justify-between">
                 <div>
                   {/* Procedure Headline & Subtitle */}
                   <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 mb-2 leading-tight">
@@ -278,14 +327,12 @@ export const SpecialtiesSection = () => {
                   </button>
                 </div>
               </div>
-
             </motion.div>
           </AnimatePresence>
-
         </div>
-
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
 };
 
