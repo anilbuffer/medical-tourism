@@ -181,8 +181,8 @@ export const SpecialtiesSection = () => {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-4 sm:mb-8 gap-3">
             <div>
               <div className="flex items-center gap-2 mb-1.5">
-                <span className="h-2 w-2 rounded-full bg-[#e39b2d] animate-pulse"></span>
-                <p className="text-[#e39b2d] font-heading font-bold text-xs uppercase tracking-[0.22em]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#0b5d63]"></span>
+                <p className="text-[#0b5d63] font-heading font-semibold text-xs uppercase tracking-[0.2em]">
                   QUATERNARY CLINICAL EXCELLENCE
                 </p>
               </div>
@@ -215,17 +215,17 @@ export const SpecialtiesSection = () => {
                         : "bg-white hover:bg-slate-50 border-slate-200/90 hover:border-slate-300"
                         }`}
                     >
-                      {/* Number Circle Badge (Solid Amber on Active) */}
+                      {/* Number Circle Badge (Refined on Active) */}
                       <div
                         className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-heading font-extrabold text-xs sm:text-sm shrink-0 transition-colors ${isSelected
-                          ? "bg-[#e39b2d] text-slate-950 shadow-sm"
+                          ? "bg-white/20 text-white border border-white/30 backdrop-blur-sm shadow-sm"
                           : "bg-slate-100 text-slate-600"
                           }`}
                       >
                         {idx + 1}
                       </div>
 
-                      {/* 2-Line Text Content (Title + Savings Subtext Matching Reference) */}
+                      {/* 2-Line Text Content (Title + Savings Subtext) */}
                       <div className="flex flex-col min-w-0">
                         <span
                           className={`font-heading font-extrabold text-sm sm:text-base leading-tight transition-colors whitespace-nowrap truncate ${isSelected ? "text-white" : "text-slate-800"
@@ -234,7 +234,7 @@ export const SpecialtiesSection = () => {
                           {spec.shortTitle}
                         </span>
                         <span
-                          className={`text-xs font-medium leading-tight mt-0.5 transition-colors whitespace-nowrap truncate ${isSelected ? "text-teal-100" : "text-[#a35f0b]"
+                          className={`text-xs font-medium leading-tight mt-0.5 transition-colors whitespace-nowrap truncate ${isSelected ? "text-teal-100" : "text-slate-500"
                             }`}
                         >
                           • {spec.savings}
@@ -270,14 +270,14 @@ export const SpecialtiesSection = () => {
 
                   {/* Top Left: Category Featured Badge */}
                   <div className="absolute top-6 left-6 z-10 flex flex-wrap gap-2">
-                    <span className="px-3.5 py-1.5 rounded-full bg-[#04272a]/90 backdrop-blur-md text-[#e39b2d] text-xs font-heading font-bold uppercase tracking-wider shadow-md">
+                    <span className="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-white text-xs font-heading font-medium tracking-wider uppercase shadow-sm border border-white/20">
                       {current.featuredBadge}
                     </span>
                   </div>
 
                   {/* Bottom Right: Key Stat Pill */}
                   <div className="absolute bottom-6 right-6 z-10">
-                    <span className="px-3.5 py-1.5 rounded-xl bg-white/95 backdrop-blur-md text-[#0b5d63] text-xs font-bold shadow-md">
+                    <span className="px-3.5 py-1.5 rounded-xl bg-white/95 backdrop-blur-md text-slate-900 text-xs font-bold shadow-md">
                       {current.stat}
                     </span>
                   </div>
@@ -302,7 +302,7 @@ export const SpecialtiesSection = () => {
                       {current.protocols.map((proto, pIdx) => (
                         <div
                           key={pIdx}
-                          className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-800 bg-[#f0f8f9] p-3.5 rounded-xl border border-[#dbeff0]"
+                          className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-800 bg-[#f8fafb] p-3.5 rounded-xl border border-slate-200/80"
                         >
                           <CheckCircle2 className="w-4 h-4 text-[#0b5d63] shrink-0 mt-0.5" />
                           <span className="font-medium leading-relaxed">{proto}</span>
@@ -314,16 +314,16 @@ export const SpecialtiesSection = () => {
                   {/* Procedure Bottom Bar: Stay Duration + Action Button */}
                   <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-600">
-                      <Clock className="w-4 h-4 text-[#e39b2d]" />
+                      <Clock className="w-4 h-4 text-slate-400" />
                       <span>Average In-Country Stay: <strong className="text-slate-900">{current.stay}</strong></span>
                     </div>
 
                     <button
                       onClick={() => openIntake(current.title)}
-                      className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#e39b2d] hover:bg-[#cf8822] active:scale-95 text-slate-950 font-heading font-bold text-xs uppercase tracking-wider shadow-md shadow-[#e39b2d]/25 flex items-center justify-center gap-2.5 transition-all cursor-pointer group"
+                      className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#0b5d63] hover:bg-[#073f43] active:scale-95 text-white font-heading font-bold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2.5 transition-all cursor-pointer group"
                     >
                       <span>Check Clinical Feasibility</span>
-                      <ArrowRight className="w-4 h-4 text-slate-950 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="w-4 h-4 text-white transition-transform group-hover:translate-x-1" />
                     </button>
                   </div>
                 </div>

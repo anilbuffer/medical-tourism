@@ -23,9 +23,9 @@ export const Header = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-[#E4E9ED]" : "bg-white"}`}>
       {/* Top Country Bar - Highlighted */}
-      <div className="hidden lg:flex items-center justify-center gap-6 py-2.5 bg-[#007FFF] text-white text-xs">
+      <div className="hidden lg:flex items-center justify-center gap-6 py-2.5 bg-[#04272a] text-white text-xs">
         <div className="flex items-center gap-2 font-medium">
-          <Globe className="w-4 h-4" />
+          <Globe className="w-4 h-4 text-teal-300" />
           <span>Where are you coming from?</span>
         </div>
         <div className="flex items-center gap-4 font-medium">
@@ -45,11 +45,11 @@ export const Header = () => {
         <div className="flex items-center justify-between gap-6">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#007FFF] flex items-center justify-center shadow-md transition-transform">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0b5d63] flex items-center justify-center shadow-md transition-transform">
               <span className="text-white font-black text-lg font-serif">Y</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-extrabold tracking-widest text-base sm:text-lg text-[#0070E0]">
+              <span className="font-extrabold tracking-widest text-base sm:text-lg text-[#0b5d63]">
                 Your Medicare Trip
               </span>
             </div>
@@ -57,16 +57,16 @@ export const Header = () => {
 
           {/* Navigation */}
           <nav className="hidden lg:flex items-center gap-2 xl:gap-4">
-            <a href="#treatments" className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-600 hover:text-[#0070E0] hover:bg-slate-50 transition-all">
+            <a href="#treatments" className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-600 hover:text-[#0b5d63] hover:bg-slate-50 transition-all">
               Treatments
             </a>
-            <a href="#doctors" className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-600 hover:text-[#0070E0] hover:bg-slate-50 transition-all">
+            <a href="#doctors" className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-600 hover:text-[#0b5d63] hover:bg-slate-50 transition-all">
               Doctors
             </a>
-            <a href="#hospitals" className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-600 hover:text-[#0070E0] hover:bg-slate-50 transition-all">
+            <a href="#hospitals" className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-600 hover:text-[#0b5d63] hover:bg-slate-50 transition-all">
               Hospitals
             </a>
-            <a href="#journey" className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-600 hover:text-[#0070E0] hover:bg-slate-50 transition-all">
+            <a href="#journey" className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-slate-600 hover:text-[#0b5d63] hover:bg-slate-50 transition-all">
               How It Works
             </a>
           </nav>
@@ -75,7 +75,7 @@ export const Header = () => {
           <div className="hidden lg:flex items-center gap-4 shrink-0">
             <button
               onClick={() => openIntake()}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold shadow-sm bg-[#0070E0] hover:bg-[#007FFF] text-white transition-colors"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold shadow-sm bg-[#0b5d63] hover:bg-[#073f43] text-white transition-colors"
             >
               <PhoneCall className="w-4 h-4" />
               <span>Book a call</span>
@@ -86,7 +86,7 @@ export const Header = () => {
           <div className="flex items-center gap-2 lg:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-[#0070E0] hover:bg-slate-50 transition-colors border border-[#E4E9ED]"
+              className="p-2 rounded-xl text-[#0b5d63] hover:bg-slate-50 transition-colors border border-[#E4E9ED]"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -96,11 +96,10 @@ export const Header = () => {
 
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-b border-[#E4E9ED] px-4 pt-3 pb-6 space-y-4 animate-in slide-in-from-top-2">
-           {/* Mobile menu items... simplified for brevity */}
            <div className="flex flex-col gap-2">
-             <a href="#treatments" onClick={() => setMobileMenuOpen(false)} className="p-3 rounded-lg bg-slate-50 text-[#0070E0] font-bold">Treatments</a>
-             <a href="#doctors" onClick={() => setMobileMenuOpen(false)} className="p-3 rounded-lg bg-slate-50 text-[#0070E0] font-bold">Doctors & Hospitals</a>
-             <a href="#journey" onClick={() => setMobileMenuOpen(false)} className="p-3 rounded-lg bg-slate-50 text-[#0070E0] font-bold">How It Works</a>
+             <a href="#treatments" onClick={() => setMobileMenuOpen(false)} className="p-3 rounded-lg bg-slate-50 text-[#0b5d63] font-bold">Treatments</a>
+             <a href="#doctors" onClick={() => setMobileMenuOpen(false)} className="p-3 rounded-lg bg-slate-50 text-[#0b5d63] font-bold">Doctors & Hospitals</a>
+             <a href="#journey" onClick={() => setMobileMenuOpen(false)} className="p-3 rounded-lg bg-slate-50 text-[#0b5d63] font-bold">How It Works</a>
            </div>
         </div>
       )}

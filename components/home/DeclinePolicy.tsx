@@ -13,36 +13,35 @@ export const DeclinePolicy = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="bg-gradient-to-br from-[#f0f8f9] via-white to-[#fef7ec] rounded-3xl p-8 sm:p-14 border border-[#dbeff0] shadow-xl"
+          className="bg-[#f8fafb] rounded-3xl p-8 sm:p-14 border border-slate-200/80 shadow-md"
         >
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="h-[2px] w-10 bg-[#e39b2d]"></div>
-            <p className="text-[#0b5d63] font-heading font-bold text-xs uppercase tracking-[0.25em] flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-[#e39b2d]" />
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#0b5d63]" />
+            <p className="text-[#0b5d63] font-heading font-semibold text-xs uppercase tracking-[0.2em] flex items-center gap-1.5">
+              <ShieldCheck className="w-4 h-4 text-[#0b5d63]" />
               <span>CLINICAL INTEGRITY GUARANTEE</span>
             </p>
-            <div className="h-[2px] w-10 bg-[#e39b2d]"></div>
           </div>
           
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-slate-900 leading-[1.18] mb-6 max-w-4xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-extrabold text-slate-900 leading-[1.2] mb-6 max-w-4xl mx-auto">
             If we believe a procedure isn&apos;t right for you, or cannot ensure the highest standard of care, we simply won&apos;t arrange it.
           </h2>
           
-          <p className="text-base sm:text-xl font-normal text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-base sm:text-lg font-normal text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8">
             We are not a booking agency or medical broker. We are an international clinical concierge. Our reputation rests entirely on your clinical outcome and long-term wellbeing.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-[#073f43]">
-            <span className="px-4 py-2 rounded-xl bg-white border border-[#dbeff0] shadow-sm flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-[#e39b2d]" />
+          <div className="flex flex-wrap items-center justify-center gap-3.5 text-xs font-semibold text-slate-800">
+            <span className="px-4 py-2.5 rounded-xl bg-white border border-slate-200/80 shadow-sm flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-[#0b5d63]" />
               Independent Senior Specialist Review
             </span>
-            <span className="px-4 py-2 rounded-xl bg-white border border-[#dbeff0] shadow-sm flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-[#e39b2d]" />
+            <span className="px-4 py-2.5 rounded-xl bg-white border border-slate-200/80 shadow-sm flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-[#0b5d63]" />
               Zero Financial Pressure or Booking Quotas
             </span>
-            <span className="px-4 py-2 rounded-xl bg-white border border-[#dbeff0] shadow-sm flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-[#e39b2d]" />
+            <span className="px-4 py-2.5 rounded-xl bg-white border border-slate-200/80 shadow-sm flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-[#0b5d63]" />
               Direct Communication With Your Home Physician
             </span>
           </div>

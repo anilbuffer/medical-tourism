@@ -12,11 +12,11 @@ export const Footer = () => {
           
           <div className="col-span-1 md:col-span-1">
             <Link href="/" className="flex items-center gap-3 group shrink-0 mb-6">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#007FFF] flex items-center justify-center shadow-md transition-transform">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0b5d63] flex items-center justify-center shadow-md transition-transform">
                 <span className="text-white font-black text-lg font-serif">Y</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-extrabold tracking-widest text-base sm:text-lg text-white group-hover:text-[#007FFF] transition-colors">
+                <span className="font-extrabold tracking-widest text-base sm:text-lg text-white group-hover:text-teal-300 transition-colors">
                   Your Medicare Trip
                 </span>
               </div>
@@ -29,30 +29,30 @@ export const Footer = () => {
           <div>
             <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-xs">Treatments</h4>
             <ul className="space-y-3 text-sm">
-              <li><Link href="#" className="hover:text-[#007FFF] transition-colors">Orthopaedics & Joint</Link></li>
-              <li><Link href="#" className="hover:text-[#007FFF] transition-colors">Dentistry & Smile</Link></li>
-              <li><Link href="#" className="hover:text-[#007FFF] transition-colors">IVF & Advanced Fertility</Link></li>
-              <li><Link href="#" className="hover:text-[#007FFF] transition-colors">Cosmetic & Reconstructive</Link></li>
+              <li><Link href="#treatments" className="hover:text-teal-300 transition-colors">Orthopaedics & Joint</Link></li>
+              <li><Link href="#treatments" className="hover:text-teal-300 transition-colors">Dentistry & Smile</Link></li>
+              <li><Link href="#treatments" className="hover:text-teal-300 transition-colors">IVF & Advanced Fertility</Link></li>
+              <li><Link href="#treatments" className="hover:text-teal-300 transition-colors">Cosmetic & Reconstructive</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-xs">Patient Journey</h4>
             <ul className="space-y-3 text-sm">
-              <li><Link href="#" className="hover:text-[#007FFF] transition-colors">How it works</Link></li>
-              <li><Link href="#" className="hover:text-[#007FFF] transition-colors">Cost transparency</Link></li>
-              <li><Link href="#" className="hover:text-[#007FFF] transition-colors">Care coordination</Link></li>
-              <li><Link href="#" className="hover:text-[#007FFF] transition-colors">Verified testimonials</Link></li>
+              <li><Link href="#journey" className="hover:text-teal-300 transition-colors">How it works</Link></li>
+              <li><Link href="#costs" className="hover:text-teal-300 transition-colors">Cost transparency</Link></li>
+              <li><Link href="#support" className="hover:text-teal-300 transition-colors">Care coordination</Link></li>
+              <li><Link href="#stories" className="hover:text-teal-300 transition-colors">Verified testimonials</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-xs">Company</h4>
             <ul className="space-y-3 text-sm">
-              <li><Link href="#" className="hover:text-[#007FFF] transition-colors">About us</Link></li>
-              <li><Link href="#" className="hover:text-[#007FFF] transition-colors">Clinical blog</Link></li>
-              <li><Link href="#" className="hover:text-[#007FFF] transition-colors">Decline policy</Link></li>
-              <li><Link href="#" className="hover:text-[#007FFF] transition-colors">Contact us</Link></li>
+              <li><Link href="/about" className="hover:text-teal-300 transition-colors">About us</Link></li>
+              <li><Link href="/guides" className="hover:text-teal-300 transition-colors">Clinical blog</Link></li>
+              <li><Link href="#safety" className="hover:text-teal-300 transition-colors">Decline policy</Link></li>
+              <li><Link href="/contact" className="hover:text-teal-300 transition-colors">Contact us</Link></li>
             </ul>
           </div>
           

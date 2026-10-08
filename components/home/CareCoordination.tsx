@@ -41,7 +41,7 @@ export const CareCoordination = () => {
         {/* Header */}
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f0f8f9] border border-[#dbeff0] text-[#0b5d63] text-xs font-heading font-bold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-[#e39b2d]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#0b5d63]" />
             <span>END-TO-END CARE CONCIERGE</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-slate-900 mb-4 leading-tight">
@@ -57,7 +57,7 @@ export const CareCoordination = () => {
           {/* Without Coordination */}
           <div className="bg-slate-50 rounded-3xl p-6 sm:p-8 border border-slate-200">
             <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-slate-200">
-              <span className="w-6 h-6 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-xs shrink-0">✕</span>
+              <span className="w-6 h-6 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-bold text-xs shrink-0">✕</span>
               <h3 className="font-heading font-bold text-lg text-slate-700">
                 Organising On Your Own (Stressful)
               </h3>
@@ -65,7 +65,7 @@ export const CareCoordination = () => {
             <div className="space-y-4">
               {comparison.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-200 text-xs sm:text-sm text-slate-600">
-                  <XCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+                  <XCircle className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
                   <p className="leading-relaxed">{item.bad}</p>
                 </div>
               ))}
@@ -73,7 +73,7 @@ export const CareCoordination = () => {
           </div>
 
           {/* With Your Medicare Trip */}
-          <div className="bg-gradient-to-br from-[#f0f8f9] to-white rounded-3xl p-6 sm:p-8 border-2 border-[#0b5d63] shadow-lg shadow-[#0b5d63]/5">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border-2 border-[#0b5d63] shadow-md">
             <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-[#dbeff0]">
               <span className="w-6 h-6 rounded-full bg-[#0b5d63] text-white flex items-center justify-center font-bold text-xs shrink-0">✓</span>
               <h3 className="font-heading font-bold text-lg text-[#073f43]">
@@ -82,7 +82,7 @@ export const CareCoordination = () => {
             </div>
             <div className="space-y-4">
               {comparison.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-white border border-[#dbeff0] text-xs sm:text-sm text-slate-800 shadow-sm">
+                <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-[#f8fafb] border border-slate-200/80 text-xs sm:text-sm text-slate-800 shadow-xs">
                   <CheckCircle2 className="w-4 h-4 text-[#0b5d63] shrink-0 mt-0.5" />
                   <p className="leading-relaxed font-medium">{item.good}</p>
                 </div>
@@ -95,7 +95,7 @@ export const CareCoordination = () => {
         <div className="bg-[#04272a] text-white rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-[#0b5d63] flex items-center justify-center text-white shrink-0">
-              <MessageSquare className="w-6 h-6 text-[#e39b2d]" />
+              <MessageSquare className="w-6 h-6 text-white" />
             </div>
             <div>
               <h4 className="font-heading font-bold text-xl text-white mb-1">

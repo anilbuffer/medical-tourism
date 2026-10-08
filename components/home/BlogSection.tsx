@@ -45,7 +45,7 @@ export const BlogSection = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f0f8f9] border border-[#dbeff0] text-[#0b5d63] text-xs font-heading font-bold uppercase tracking-wider mb-3">
-              <BookOpen className="w-3.5 h-3.5 text-[#e39b2d]" />
+              <BookOpen className="w-3.5 h-3.5 text-[#0b5d63]" />
               <span>CLINICAL GUIDES & PATIENT EDUCATION</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-slate-900 leading-tight">
@@ -54,7 +54,7 @@ export const BlogSection = () => {
           </div>
           <Link
             href="/guides"
-            className="inline-flex items-center gap-2 text-xs uppercase font-heading font-bold tracking-wider text-[#0b5d63] hover:text-[#e39b2d] transition-colors group"
+            className="inline-flex items-center gap-2 text-xs uppercase font-heading font-bold tracking-wider text-[#0b5d63] hover:underline transition-colors group"
           >
             <span>View All Guides & Articles</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -74,7 +74,7 @@ export const BlogSection = () => {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-3 left-3">
-                    <span className="px-3 py-1 rounded-full bg-[#04272a]/85 backdrop-blur-md text-[#e39b2d] text-[10px] font-heading font-bold tracking-wider uppercase shadow-sm">
+                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] font-heading font-medium tracking-wider uppercase shadow-sm border border-white/20">
                       {blog.category}
                     </span>
                   </div>
@@ -94,7 +94,7 @@ export const BlogSection = () => {
                 </p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center text-xs font-heading font-bold text-[#0b5d63] group-hover:text-[#e39b2d] transition-colors">
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center text-xs font-heading font-bold text-[#0b5d63] group-hover:text-[#073f43] transition-colors">
                 <span>Read Full Guide</span>
                 <ArrowRight className="w-3.5 h-3.5 ml-1 transition-transform group-hover:translate-x-1" />
               </div>

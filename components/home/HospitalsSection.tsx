@@ -172,8 +172,8 @@ export const HospitalsSection = () => {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 sm:mb-10 gap-6">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-2">
-              <span className="h-2 w-2 rounded-full bg-[#e39b2d] animate-pulse" />
-              <p className="text-[#e39b2d] font-heading font-bold text-xs uppercase tracking-[0.22em]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#0b5d63]" />
+              <p className="text-[#0b5d63] font-heading font-semibold text-xs uppercase tracking-[0.2em]">
                 GLOBAL ACCREDITED HEALTHCARE NETWORK
               </p>
             </div>
@@ -192,7 +192,7 @@ export const HospitalsSection = () => {
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <Link
               href="/hospitals"
-              className="text-xs font-heading font-bold text-[#e39b2d] hover:text-[#cf8822] hover:underline flex items-center gap-1.5 transition-colors mr-2"
+              className="text-xs font-heading font-semibold text-[#0b5d63] hover:underline flex items-center gap-1.5 transition-colors mr-2"
             >
               <span>Explore All 15+ Hospitals</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -215,7 +215,7 @@ export const HospitalsSection = () => {
                 disabled={!canScrollNext}
                 aria-label="Next hospital slide"
                 className={`w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center transition-all cursor-pointer ${canScrollNext
-                  ? "bg-[#e39b2d] hover:bg-[#cf8822] text-white shadow-sm"
+                  ? "bg-[#0b5d63] hover:bg-[#073f43] text-white shadow-sm"
                   : "bg-slate-50 text-slate-300 border-slate-100 cursor-not-allowed opacity-50"
                   }`}
               >
@@ -256,8 +256,8 @@ export const HospitalsSection = () => {
 
                       {/* Top-Left: Accreditation Badge */}
                       <div className="absolute top-3.5 left-3.5 z-10">
-                        <span className="px-2.5 py-1 rounded-full bg-[#04272a]/90 backdrop-blur-md text-[#e39b2d] text-[10px] sm:text-[11px] font-heading font-bold uppercase tracking-wider shadow-sm flex items-center gap-1.5 border border-[#e39b2d]/30">
-                          <ShieldCheck className="w-3.5 h-3.5 text-[#e39b2d]" />
+                        <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-heading font-medium uppercase tracking-wider shadow-sm flex items-center gap-1.5 border border-white/20">
+                          <ShieldCheck className="w-3.5 h-3.5 text-teal-300" />
                           <span>{hosp.accreditation}</span>
                         </span>
                       </div>
@@ -273,11 +273,11 @@ export const HospitalsSection = () => {
                       {/* Bottom-Left Image Stats: Bed Capacity & OTs */}
                       <div className="absolute bottom-3 left-3 right-3 z-10 flex items-center justify-between">
                         <span className="px-2.5 py-0.5 rounded-md bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium flex items-center gap-1">
-                          <Bed className="w-3 h-3 text-[#e39b2d]" />
+                          <Bed className="w-3 h-3 text-slate-300" />
                           <span>{hosp.beds}</span>
                         </span>
-                        <span className="px-2 py-0.5 rounded-md bg-[#0b5d63]/90 backdrop-blur-sm text-teal-100 text-[11px] font-medium flex items-center gap-1">
-                          <Building2 className="w-3 h-3 text-[#e39b2d]" />
+                        <span className="px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium flex items-center gap-1">
+                          <Building2 className="w-3 h-3 text-slate-300" />
                           <span>{hosp.ots}</span>
                         </span>
                       </div>
@@ -300,7 +300,7 @@ export const HospitalsSection = () => {
 
                         {/* Location */}
                         <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium mb-3">
-                          <MapPin className="w-3.5 h-3.5 text-[#e39b2d] shrink-0" />
+                          <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                           <span className="truncate">{hosp.location}</span>
                         </div>
 
@@ -323,7 +323,7 @@ export const HospitalsSection = () => {
                             <span className="font-semibold line-clamp-1">{hosp.tech}</span>
                           </div>
                           <div className="flex items-center gap-2 text-slate-500 text-[11px]">
-                            <Plane className="w-3.5 h-3.5 text-[#e39b2d] shrink-0" />
+                            <Plane className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                             <span className="truncate">{hosp.airportDistance}</span>
                           </div>
                         </div>
@@ -336,7 +336,7 @@ export const HospitalsSection = () => {
                           className="w-full py-2.5 px-4 rounded-xl bg-[#0b5d63] hover:bg-[#073f43] active:scale-[0.98] text-white font-heading font-bold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer group/btn"
                         >
                           <span>Check Hospital Availability</span>
-                          <ArrowRight className="w-3.5 h-3.5 text-[#e39b2d] transition-transform group-hover/btn:translate-x-1" />
+                          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1" />
                         </button>
 
                         <Link
@@ -374,11 +374,11 @@ export const HospitalsSection = () => {
         </div>
 
         {/* Global Hospital Partnership Standards Banner */}
-        <div className="mt-12 sm:mt-16 rounded-2xl sm:rounded-3xl bg-[#f0f8f9] border border-[#dbeff0] p-6 sm:p-8 lg:p-10">
+        <div className="mt-12 sm:mt-16 rounded-2xl sm:rounded-3xl bg-[#f8fafb] border border-slate-200/80 p-6 sm:p-8 lg:p-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-[#0b5d63] text-white flex items-center justify-center shrink-0 shadow-sm">
-                <ShieldCheck className="w-5 h-5 text-[#e39b2d]" />
+              <div className="w-10 h-10 rounded-xl bg-[#f0f8f9] text-[#0b5d63] flex items-center justify-center shrink-0 border border-[#dbeff0]">
+                <ShieldCheck className="w-5 h-5 text-[#0b5d63]" />
               </div>
               <div>
                 <h4 className="font-heading font-bold text-sm text-slate-900">JCI & NABH Audited</h4>
@@ -389,8 +389,8 @@ export const HospitalsSection = () => {
             </div>
 
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-[#0b5d63] text-white flex items-center justify-center shrink-0 shadow-sm">
-                <CheckCircle2 className="w-5 h-5 text-[#e39b2d]" />
+              <div className="w-10 h-10 rounded-xl bg-[#f0f8f9] text-[#0b5d63] flex items-center justify-center shrink-0 border border-[#dbeff0]">
+                <CheckCircle2 className="w-5 h-5 text-[#0b5d63]" />
               </div>
               <div>
                 <h4 className="font-heading font-bold text-sm text-slate-900">Zero Waiting Lists</h4>
@@ -401,8 +401,8 @@ export const HospitalsSection = () => {
             </div>
 
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-[#0b5d63] text-white flex items-center justify-center shrink-0 shadow-sm">
-                <Award className="w-5 h-5 text-[#e39b2d]" />
+              <div className="w-10 h-10 rounded-xl bg-[#f0f8f9] text-[#0b5d63] flex items-center justify-center shrink-0 border border-[#dbeff0]">
+                <Award className="w-5 h-5 text-[#0b5d63]" />
               </div>
               <div>
                 <h4 className="font-heading font-bold text-sm text-slate-900">US-FDA Hardware</h4>
@@ -413,8 +413,8 @@ export const HospitalsSection = () => {
             </div>
 
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-[#0b5d63] text-white flex items-center justify-center shrink-0 shadow-sm">
-                <Building2 className="w-5 h-5 text-[#e39b2d]" />
+              <div className="w-10 h-10 rounded-xl bg-[#f0f8f9] text-[#0b5d63] flex items-center justify-center shrink-0 border border-[#dbeff0]">
+                <Building2 className="w-5 h-5 text-[#0b5d63]" />
               </div>
               <div>
                 <h4 className="font-heading font-bold text-sm text-slate-900">Dedicated Global Desks</h4>
@@ -425,7 +425,7 @@ export const HospitalsSection = () => {
             </div>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-[#dbeff0] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="mt-8 pt-6 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-xs sm:text-sm text-slate-700 font-medium text-center sm:text-left">
               Looking for specialized hospital centers across North India, Delhi NCR, or Mumbai?
             </div>
@@ -435,7 +435,7 @@ export const HospitalsSection = () => {
                 className="w-full sm:w-auto px-7 py-3 rounded-full bg-[#0b5d63] hover:bg-[#073f43] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-sm flex items-center justify-center gap-2"
               >
                 <span>Explore All 15+ Partner Hospitals</span>
-                <ArrowRight className="w-4 h-4 text-[#e39b2d]" />
+                <ArrowRight className="w-4 h-4 text-white" />
               </Link>
             </div>
           </div>

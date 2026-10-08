@@ -14,7 +14,7 @@ export const CostTransparency = () => {
         {/* Header */}
         <div className="max-w-4xl mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f0f8f9] border border-[#dbeff0] text-[#0b5d63] text-xs font-heading font-bold uppercase tracking-wider mb-3">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#e39b2d]" />
+            <ShieldCheck className="w-3.5 h-3.5 text-[#0b5d63]" />
             <span>TRANSPARENT ALL-INCLUSIVE PRICING</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-slate-900 mb-4 leading-tight">
@@ -131,12 +131,12 @@ export const CostTransparency = () => {
           </div>
 
           {/* Premium Concierge Plan */}
-          <div className="bg-white rounded-3xl p-8 sm:p-10 border-2 border-[#e39b2d] shadow-xl flex flex-col relative ring-1 ring-[#e39b2d]/30">
+          <div className="bg-white rounded-3xl p-8 sm:p-10 border-2 border-[#0b5d63] shadow-xl flex flex-col relative">
             <div className="flex items-center justify-between mb-6">
-              <div className="inline-block px-3.5 py-1 bg-[#fef7ec] text-[#a35f0b] text-xs font-heading font-bold rounded-full">
+              <div className="inline-block px-3.5 py-1 bg-[#f0f8f9] text-[#0b5d63] border border-[#dbeff0] text-xs font-heading font-bold rounded-full">
                 Premium Concierge
               </div>
-              <span className="px-3 py-1 rounded-full bg-[#04272a] text-[#e39b2d] text-[10px] font-heading font-bold tracking-wider uppercase">
+              <span className="px-3 py-1 rounded-full bg-[#0b5d63] text-white text-[10px] font-heading font-bold tracking-wider uppercase">
                 Most Popular
               </span>
             </div>
@@ -153,7 +153,7 @@ export const CostTransparency = () => {
             <p className="text-xs font-heading font-bold uppercase tracking-wider text-[#0b5d63] mb-5">Everything in Essential, plus</p>
             
             <div className="space-y-4 flex-1 text-xs sm:text-sm text-slate-700">
-              <div className="bg-[#f0f8f9] border border-[#dbeff0] rounded-2xl p-4 flex items-start gap-3">
+              <div className="bg-[#f8fafb] border border-slate-200/80 rounded-2xl p-4 flex items-start gap-3">
                 <Mountain className="w-5 h-5 text-[#0b5d63] shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-bold text-[#073f43] text-sm">Post-Recovery Himalayan Retreat Option</h4>
@@ -162,7 +162,7 @@ export const CostTransparency = () => {
               </div>
 
               <div className="flex items-start gap-3">
-                <span className="text-[#e39b2d] font-bold mt-0.5">✓</span>
+                <span className="text-[#0b5d63] font-bold mt-0.5">✓</span>
                 <div>
                   <h4 className="font-bold text-slate-900">5-Star Luxury Hotel Accommodation</h4>
                   <p className="text-xs text-slate-500 mt-0.5">Hyatt, Taj or Marriott partner property for you & companion</p>
@@ -170,7 +170,7 @@ export const CostTransparency = () => {
               </div>
               
               <div className="flex items-start gap-3">
-                <span className="text-[#e39b2d] font-bold mt-0.5">✓</span>
+                <span className="text-[#0b5d63] font-bold mt-0.5">✓</span>
                 <div>
                   <h4 className="font-bold text-slate-900">Dedicated Chauffeur & Luxury Vehicle On-Call</h4>
                   <p className="text-xs text-slate-500 mt-0.5">Exclusive private SUV on call throughout your entire stay</p>
@@ -178,7 +178,7 @@ export const CostTransparency = () => {
               </div>
 
               <div className="flex items-start gap-3">
-                <span className="text-[#e39b2d] font-bold mt-0.5">✓</span>
+                <span className="text-[#0b5d63] font-bold mt-0.5">✓</span>
                 <div>
                   <h4 className="font-bold text-slate-900">VIP Fast-Track Airport Meet & Greet</h4>
                   <p className="text-xs text-slate-500 mt-0.5">Immigration escort and lounge access upon landing</p>
@@ -189,7 +189,7 @@ export const CostTransparency = () => {
             <div className="mt-8 pt-6 border-t border-slate-100">
               <button 
                 onClick={() => openIntake("Premium Plan")}
-                className="w-full py-4 bg-[#e39b2d] hover:bg-[#a35f0b] text-slate-950 hover:text-white font-heading font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md shadow-[#e39b2d]/25 cursor-pointer"
+                className="w-full py-4 bg-[#0b5d63] hover:bg-[#073f43] text-white font-heading font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer"
               >
                 Get Written Quote for Premium
               </button>
@@ -224,31 +224,31 @@ export const CostTransparency = () => {
                   <td className="py-4 font-bold text-slate-900">🦴 Knee Replacement (Bilateral Robotic)</td>
                   <td className="py-4 font-heading font-bold text-[#0b5d63] text-base tabular-nums">$9,500 – $13,500</td>
                   <td className="py-4 text-slate-500 font-medium tabular-nums">$38,000 – $65,000</td>
-                  <td className="py-4 text-[#a35f0b] font-semibold">12 – 18 Months Waiting</td>
+                  <td className="py-4 text-slate-600 font-medium">12 – 18 Months Waiting</td>
                 </tr>
                 <tr className="hover:bg-slate-50 transition-colors">
                   <td className="py-4 font-bold text-slate-900">🦵 Hip Replacement (Direct Anterior)</td>
                   <td className="py-4 font-heading font-bold text-[#0b5d63] text-base tabular-nums">$8,200 – $11,500</td>
                   <td className="py-4 text-slate-500 font-medium tabular-nums">$32,000 – $52,000</td>
-                  <td className="py-4 text-[#a35f0b] font-semibold">10 – 14 Months Waiting</td>
+                  <td className="py-4 text-slate-600 font-medium">10 – 14 Months Waiting</td>
                 </tr>
                 <tr className="hover:bg-slate-50 transition-colors">
                   <td className="py-4 font-bold text-slate-900">🦷 Full-Arch Dental (All-on-4 / Zirconia)</td>
                   <td className="py-4 font-heading font-bold text-[#0b5d63] text-base tabular-nums">$4,800 – $7,200</td>
                   <td className="py-4 text-slate-500 font-medium tabular-nums">$22,000 – $38,000</td>
-                  <td className="py-4 text-[#a35f0b] font-semibold">6 – 9 Months Waiting</td>
+                  <td className="py-4 text-slate-600 font-medium">6 – 9 Months Waiting</td>
                 </tr>
                 <tr className="hover:bg-slate-50 transition-colors">
                   <td className="py-4 font-bold text-slate-900">👶 IVF Cycle with ICSI & PGT-A</td>
                   <td className="py-4 font-heading font-bold text-[#0b5d63] text-base tabular-nums">$4,200 – $6,500</td>
                   <td className="py-4 text-slate-500 font-medium tabular-nums">$14,000 – $24,000</td>
-                  <td className="py-4 text-[#a35f0b] font-semibold">Strict Age/NHS Caps</td>
+                  <td className="py-4 text-slate-600 font-medium">Strict Age/NHS Caps</td>
                 </tr>
                 <tr className="hover:bg-slate-50 transition-colors">
                   <td className="py-4 font-bold text-slate-900">👁️ Contoura Vision Lasik (Both Eyes)</td>
                   <td className="py-4 font-heading font-bold text-[#0b5d63] text-base tabular-nums">$1,400 – $1,900</td>
                   <td className="py-4 text-slate-500 font-medium tabular-nums">$5,500 – $8,000</td>
-                  <td className="py-4 text-[#a35f0b] font-semibold">Not Covered by NHS</td>
+                  <td className="py-4 text-slate-600 font-medium">Not Covered by NHS</td>
                 </tr>
               </tbody>
             </table>
@@ -263,7 +263,7 @@ export const CostTransparency = () => {
               className="px-7 py-3 rounded-xl bg-[#0b5d63] hover:bg-[#073f43] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2 cursor-pointer"
             >
               <span>Get Itemised Written Quote</span>
-              <ArrowRight className="w-4 h-4 text-[#e39b2d]" />
+              <ArrowRight className="w-4 h-4 text-white" />
             </button>
           </div>
         </div>

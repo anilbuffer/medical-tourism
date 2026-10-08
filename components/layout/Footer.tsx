@@ -49,7 +49,7 @@ export const Footer = () => {
 
           {/* Col 1: Care Pathway */}
           <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#2ECDC5]">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-teal-200 font-heading">
               {t.footer.careHeader}
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-400 font-medium">
@@ -78,12 +78,12 @@ export const Footer = () => {
 
           {/* Col 2: Portals & Resources */}
           <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#2ECDC5]">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-teal-200 font-heading">
               Portals & Resources
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-400 font-medium">
               <li>
-                <Link href="/login?portal=patient" className="text-[#2ECDC5] hover:text-white transition-colors flex items-center gap-1 font-bold">
+                <Link href="/login?portal=patient" className="text-teal-300 hover:text-white transition-colors flex items-center gap-1 font-bold">
                   <span>Patient Portal Login</span>
                   <span className="text-[10px]">→</span>
                 </Link>
@@ -123,34 +123,34 @@ export const Footer = () => {
 
           {/* Col 3: 24/7 International Desk */}
           <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#2ECDC5]">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-teal-200 font-heading">
               {t.footer.supportHeader}
             </h4>
             <div className="space-y-3 text-xs text-slate-400">
               <a
-                href="https://wa.me/971501234567"
+                href="https://wa.me/919876543210"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-[#2ECDC5] hover:underline font-semibold"
+                className="flex items-center gap-2 text-teal-300 hover:underline font-semibold"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>WhatsApp: +971 50 123 4567</span>
+                <span>WhatsApp: +91 98765 43210</span>
               </a>
 
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-[#2ECDC5] shrink-0" />
-                <span>Desk: +971 4 800 VEDARA</span>
+                <Phone className="w-4 h-4 text-teal-400 shrink-0" />
+                <span>Desk: +91 98765 43210</span>
               </div>
 
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[#2ECDC5] shrink-0" />
-                <span>care@vedara.health</span>
+                <Mail className="w-4 h-4 text-teal-400 shrink-0" />
+                <span>care@yourmedicaretrip.com</span>
               </div>
 
               <div className="pt-2">
                 <a
                   href="/#assessment"
-                  className="block w-full py-2.5 px-3 rounded-xl  bg-gradient-to-r from-[#1d8983] via-[#1baba4] to-[#1d8983] text-white font-bold text-xs shadow-md shadow-[#283593]/30 transition-all text-center"
+                  className="block w-full py-2.5 px-3 rounded-xl bg-[#0b5d63] hover:bg-[#0e757c] text-white font-bold text-xs shadow-md transition-all text-center uppercase tracking-wider font-heading"
                 >
                   {t.nav.startJourney}
                 </a>

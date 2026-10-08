@@ -1,205 +1,395 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Award, GraduationCap, Video, Stethoscope, Star } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  ArrowRight,
+  Award,
+  GraduationCap,
+  Star,
+  ChevronLeft,
+  ChevronRight,
+  ShieldCheck,
+  Sparkles,
+  MapPin,
+  Clock,
+} from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 import { useCare } from "@/context/CareContext";
 
 export const DoctorsSection = () => {
   const { openIntake } = useCare();
-  const [activeTab, setActiveTab] = useState("All");
-
-  const tags = [
-    "All",
-    "Orthopaedics",
-    "Ophthalmology",
-    "Plastic Surgery",
-  ];
+  const [api, setApi] = useState<CarouselApi>();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [totalSlides, setTotalSlides] = useState(0);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
 
   const doctors = [
     {
+      id: "dr-jatinder-singla",
       name: "Dr. Jatinder Singla",
       specialty: "Senior Director — Orthopaedic & Robotic Joint Surgery",
-      category: "Orthopaedics",
+      category: "Quaternary & Robotic Arthroplasty",
       experience: "25+ Years Experience",
-      education: "MBBS, MS - Orthopaedics, Fellowship in Joint Replacement",
-      hospital: "Fortis Hospital & Quaternary Centres",
+      experienceYears: 25,
+      education: "MBBS, MS (Orthopaedics), Fellowship in Joint Replacement",
+      fellowships: "Adult Arthroplasty Fellow (UK & Germany)",
+      hospital: "Fortis Hospital Mohali / Chandigarh Quaternary Hub",
       image: "/jatinder-singla.png",
-      rating: "4.9 / 5.0",
-      surgeries: "12,000+ Joint Surgeries",
+      rating: 4.9,
+      ratingText: "4.9",
+      reviewsCount: "480+ Reviews",
+      surgeries: "12,000+",
+      successRate: "99.4% Clinical Success",
+      technology: "Stryker Mako Robotic Joint Replacement & Computer Navigation",
+      bio: "Internationally acclaimed pioneer in computer-navigated and robotic joint replacement. Trained at apex quaternary centers in the UK and Germany, Dr. Singla has completed over 12,000 successful joint replacements for overseas patients with rapid same-week ambulation protocols.",
+      keyProcedures: [
+        "Mako Robotic Total Knee",
+        "Direct Anterior Hip Replacement",
+        "Complex Revision Arthroplasty",
+        "Minimally Invasive Joint Care",
+      ],
     },
     {
+      id: "dr-ashish-ahuja",
       name: "Dr. Ashish Ahuja",
-      specialty: "Director — Ophthalmology & Contoura Refractive Surgery",
-      category: "Ophthalmology",
+      specialty: "Director & Chief Surgeon — Ophthalmology & Contoura Refractive Surgery",
+      category: "Laser Ophthalmology & Refractive",
       experience: "22+ Years Experience",
+      experienceYears: 22,
       education: "MBBS, MS (Ophthalmology), Cornea & Refractive Specialist",
-      hospital: "Sangam Netralaya Super Speciality Eye Hospital",
+      fellowships: "Fellow of International Council of Ophthalmology (FICO, London)",
+      hospital: "Sangam Netralaya Super Speciality Eye Hospital, Mohali",
       image: "/ashish-ahuja.png",
-      rating: "5.0 / 5.0",
-      surgeries: "11,00+ Laser Procedures",
+      rating: 5.0,
+      ratingText: "5.0",
+      reviewsCount: "520+ Reviews",
+      surgeries: "11,000+",
+      successRate: "99.8% 20/20 Visual Acuity",
+      technology: "Zeiss Lumera 700 & Alcon WaveLight EX500 Femtosecond Laser",
+      bio: "Celebrated ophthalmic innovator specializing in blade-free personalized laser vision correction and premium trifocal cataract surgery. Using Zeiss Lumera 700 and Alcon EX500 technology, Dr. Ahuja has restored 20/20 eyesight for over 11,000 international travelers with painless 10-minute outpatient procedures.",
+      keyProcedures: [
+        "Blade-Free Contoura LASIK",
+        "SMILE Pro Refractive",
+        "Custom Trifocal IOLs",
+        "Femto Robotic Cataract",
+      ],
     },
     {
+      id: "dr-vikas-gupta",
       name: "Dr. Vikas Gupta",
-      specialty: "Chief Consultant — Aesthetic & Reconstructive Plastic Surgery",
-      category: "Plastic Surgery",
+      specialty: "Chief Consultant & Director — Aesthetic & Reconstructive Plastic Surgery",
+      category: "Cosmetic & Plastic Surgery",
       experience: "16+ Years Experience",
-      education: "MBBS, MS - General Surgery, MCh - Plastic Surgery",
-      hospital: "Profile Aesthetic & Cosmetic Surgery Institute",
+      experienceYears: 16,
+      education: "MBBS, MS (General Surgery), MCh (Plastic Surgery)",
+      fellowships: "International Society of Aesthetic Plastic Surgery (ISAPS)",
+      hospital: "Profile Aesthetic & Cosmetic Surgery Institute, Ludhiana / Chandigarh",
       image: "/vikas-gupta.png",
-      rating: "4.9 / 5.0",
-      surgeries: "4,500+ Aesthetic Surgeries",
+      rating: 4.9,
+      ratingText: "4.9",
+      reviewsCount: "390+ Reviews",
+      surgeries: "4,500+",
+      successRate: "99.2% Satisfaction Rate",
+      technology: "4D High-Definition VASER Ultrasound & Micro-Aire Liposculpture",
+      bio: "Renowned plastic surgeon and body contouring authority recognized for natural, harmonious aesthetic outcomes and undetectable scarring. Operating in private JCI-grade surgical suites, Dr. Gupta delivers bespoke facial rejuvenation and high-definition VASER contouring backed by 100% confidential VIP recovery protocols.",
+      keyProcedures: [
+        "4D High-Definition VASER",
+        "Preservation Rhinoplasty",
+        "Gynecomastia & Mommy Makeover",
+        "Deep Plane Facelift",
+      ],
+    },
+    {
+      id: "dr-sameer-malhotra",
+      name: "Dr. Sameer Malhotra",
+      specialty: "Senior Director & Chief Implantologist — Digital Dentistry",
+      category: "Digital Oral Implantology",
+      experience: "18+ Years Experience",
+      experienceYears: 18,
+      education: "BDS, MDS (Prosthodontics) — PGIMER & Bern University",
+      fellowships: "International Congress of Oral Implantologists (ICOI USA), Swiss ITI",
+      hospital: "Fortis Hospital Quaternary Dental Implant Centre, Chandigarh",
+      image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=800",
+      rating: 4.9,
+      ratingText: "4.9",
+      reviewsCount: "450+ Reviews",
+      surgeries: "8,500+",
+      successRate: "99.6% Osseointegration Rate",
+      technology: "Swiss Straumann, German Nobel Biocare & 3D Guided CBCT Stents",
+      bio: "Pioneering dental implant director recognized across Europe and the GCC for immediate-load All-on-4 and All-on-6 digital full-arch dental restorations. Specializes in computerized 3D stereolithographic guided surgery, allowing overseas travelers to receive fixed, permanent teeth in just 3 to 5 days with Swiss lifetime warranties.",
+      keyProcedures: [
+        "All-on-4 / All-on-6 Immediate Load",
+        "3D Guided Keyhole Implants",
+        "Full-Mouth Zirconia Bridges",
+        "Painless Bone Grafting",
+      ],
     },
   ];
 
-  const filteredDoctors = activeTab === "All"
-    ? doctors
-    : doctors.filter(doc => doc.category === activeTab || doc.specialty.includes(activeTab));
+  // Sync Embla carousel state
+  useEffect(() => {
+    if (!api) return;
 
-  const displayDoctors = filteredDoctors.length > 0 ? filteredDoctors : doctors;
+    const onSelect = () => {
+      setCurrentSlide(api.selectedScrollSnap());
+      setCanScrollPrev(api.canScrollPrev());
+      setCanScrollNext(api.canScrollNext());
+    };
 
-  const fadeUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as any } },
-  };
+    setTotalSlides(api.scrollSnapList().length);
+    onSelect();
+
+    api.on("select", onSelect);
+    api.on("reInit", onSelect);
+
+    return () => {
+      api.off("select", onSelect);
+      api.off("reInit", onSelect);
+    };
+  }, [api]);
 
   return (
-    <section id="doctors" className="py-16 sm:py-24 bg-[#f8fafb] relative border-t border-[#e2eaeb] font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="doctors"
+      className="py-16 sm:py-24 bg-white relative border-t border-[#e2eaeb] font-sans"
+    >
+      {/* 1580px Expanded Container Matching Header, Hero, and Hospitals */}
+      <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
-        {/* Header Section */}
-        <motion.div
-          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
-          className="text-center max-w-3xl mx-auto mb-12"
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f0f8f9] border border-[#dbeff0] text-[#0b5d63] text-xs font-heading font-bold uppercase tracking-wider mb-3">
-            <Stethoscope className="w-3.5 h-3.5 text-[#e39b2d]" />
-            <span>EXPERT SURGICAL DIRECTORS</span>
+        {/* Section Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 sm:mb-10 gap-6">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#0b5d63]" />
+              <p className="text-[#0b5d63] font-heading font-semibold text-xs uppercase tracking-[0.2em]">
+                EXPERT SURGICAL DIRECTORS
+              </p>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-slate-900 leading-[1.14]">
+              Meet Our Senior Medical Directors
+            </h2>
+            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-body mt-2 max-w-2xl">
+              Audited department heads and chief surgeons with international fellowships, documented high-volume success, and dedicated concierge coordination for overseas patients.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-slate-900 mb-4 leading-tight">
-            Meet Our Senior Medical Directors
-          </h2>
-          <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
-            Every specialist in our network is a vetted department director with international credentials, recognized track records, and dedicated care for overseas patients.
-          </p>
-        </motion.div>
 
-        {/* Filter Pills */}
-        <div className="flex flex-wrap justify-center gap-2.5 mb-12">
-          {tags.map((tag) => (
-            <button
-              key={tag}
-              onClick={() => setActiveTab(tag)}
-              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-heading font-bold transition-all duration-200 cursor-pointer ${activeTab === tag
-                  ? "bg-[#0b5d63] text-white shadow-md shadow-[#0b5d63]/20"
-                  : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
-                }`}
+          {/* Header Right: Carousel Navigation (Only Access Point) */}
+          <div className="flex items-center gap-3 shrink-0">
+            <Link
+              href="/doctors"
+              className="text-xs font-heading font-semibold text-[#0b5d63] hover:underline flex items-center gap-1.5 transition-colors mr-2"
             >
-              {tag}
-            </button>
-          ))}
+              <span>Explore All Specialists</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+
+            {/* Slide Index Counter */}
+            <span className="text-xs font-semibold text-slate-500 mr-1">
+              {currentSlide + 1} / {totalSlides || doctors.length}
+            </span>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => api?.scrollPrev()}
+                disabled={!canScrollPrev}
+                aria-label="Previous medical director"
+                className={`w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center transition-all cursor-pointer ${
+                  canScrollPrev
+                    ? "bg-white hover:bg-slate-100 text-slate-800 shadow-sm"
+                    : "bg-slate-50 text-slate-300 border-slate-100 cursor-not-allowed opacity-50"
+                }`}
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => api?.scrollNext()}
+                disabled={!canScrollNext}
+                aria-label="Next medical director"
+                className={`w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center transition-all cursor-pointer ${
+                  canScrollNext
+                    ? "bg-[#0b5d63] hover:bg-[#073f43] text-white shadow-sm"
+                    : "bg-slate-50 text-slate-300 border-slate-100 cursor-not-allowed opacity-50"
+                }`}
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
         </div>
 
-        {/* Doctor Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence>
-            {displayDoctors.map((doc) => (
-              <motion.div
-                key={doc.name}
-                layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4 }}
-                className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 flex flex-col group border border-[#e2eaeb]"
-              >
-                {/* Doctor Image with Experience Overlay */}
-                <div className="relative w-full h-80 shrink-0 bg-slate-100 overflow-hidden">
-                  <Image
-                    src={doc.image}
-                    alt={doc.name}
-                    fill
-                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
-                    sizes="(max-width: 640px) 100vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#04272a]/85 via-transparent to-transparent" />
+        {/* Carousel Showcase */}
+        <div className="w-full">
+          <Carousel
+            setApi={setApi}
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {doctors.map((doc, index) => (
+                <CarouselItem key={doc.id} className="basis-full">
+                  <div className="group relative bg-white rounded-2xl sm:rounded-3xl border border-[#e2eaeb] hover:border-[#0b5d63]/50 shadow-sm hover:shadow-xl transition-all duration-400 overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[520px] lg:min-h-[560px]">
 
-                  {/* Top Rating Badge */}
-                  <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#a35f0b] text-xs font-bold shadow-sm">
-                    <Star className="w-3.5 h-3.5 fill-[#e39b2d] text-[#e39b2d]" />
-                    <span>{doc.rating}</span>
-                  </div>
+                    {/* LEFT SIDE: Big Image in Full Section / Card Height */}
+                    <div className="lg:col-span-5 relative w-full h-[380px] sm:h-[460px] lg:h-full min-h-[380px] lg:min-h-[560px] bg-slate-100 overflow-hidden">
+                      <Image
+                        src={doc.image}
+                        alt={doc.name}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 42vw"
+                        className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                        priority={index === 0}
+                      />
 
-                  {/* Bottom Stats Badge on Image */}
-                  <div className="absolute bottom-4 left-4 right-4 z-10 flex items-center justify-between text-white text-xs">
-                    <span className="font-semibold text-slate-200">{doc.experience}</span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-[#e39b2d] text-slate-950 font-heading font-bold text-[11px]">
-                      {doc.surgeries}
-                    </span>
-                  </div>
-                </div>
+                      {/* Subtle Dark Gradient Overlay matching hospital cards */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#04272a]/85 via-black/20 to-transparent" />
 
-                {/* Details Section */}
-                <div className="flex-1 p-6 sm:p-7 flex flex-col justify-between bg-white">
-                  <div>
-                    <h3 className="font-heading font-extrabold text-2xl text-slate-900 mb-1 group-hover:text-[#0b5d63] transition-colors">
-                      {doc.name}
-                    </h3>
-                    <p className="text-xs sm:text-sm font-semibold text-[#0b5d63] mb-4 line-clamp-2">
-                      {doc.specialty}
-                    </p>
-
-                    <div className="space-y-2.5 text-xs text-slate-600 border-t border-slate-100 pt-3">
-                      <div className="flex items-start gap-2">
-                        <GraduationCap className="w-4 h-4 text-[#e39b2d] shrink-0 mt-0.5" />
-                        <span className="font-medium text-slate-700">{doc.education}</span>
+                      {/* Top-Left: Accreditation Badge */}
+                      <div className="absolute top-3.5 left-3.5 z-10">
+                        <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-heading font-medium uppercase tracking-wider shadow-sm flex items-center gap-1.5 border border-white/20">
+                          <ShieldCheck className="w-3.5 h-3.5 text-teal-300" />
+                          <span>SENIOR MEDICAL DIRECTOR</span>
+                        </span>
                       </div>
-                      <div className="flex items-start gap-2">
-                        <Award className="w-4 h-4 text-[#e39b2d] shrink-0 mt-0.5" />
-                        <span className="font-medium text-slate-700">{doc.hospital}</span>
+
+                      {/* Top-Right: Rating Pill */}
+                      <div className="absolute top-3.5 right-3.5 z-10">
+                        <span className="px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-slate-900 text-xs font-bold shadow-sm flex items-center gap-1">
+                          <Star className="w-3.5 h-3.5 fill-[#e39b2d] text-[#e39b2d]" />
+                          <span>{doc.ratingText}</span>
+                        </span>
+                      </div>
+
+                      {/* Bottom-Left & Bottom-Right Image Stats: Surgeries & Experience */}
+                      <div className="absolute bottom-3 left-3 right-3 z-10 flex items-center justify-between">
+                        <span className="px-2.5 py-0.5 rounded-md bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium flex items-center gap-1">
+                          <Award className="w-3 h-3 text-slate-300" />
+                          <span>{doc.surgeries} Surgeries</span>
+                        </span>
+                        <span className="px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium flex items-center gap-1">
+                          <Clock className="w-3 h-3 text-slate-300" />
+                          <span>{doc.experience}</span>
+                        </span>
                       </div>
                     </div>
+
+                    {/* RIGHT SIDE: Card Body Matching Hospital Card Aesthetics */}
+                    <div className="lg:col-span-7 p-6 sm:p-7 lg:p-8 flex-1 flex flex-col justify-between bg-white">
+                      <div>
+                        {/* Eyebrow Category */}
+                        <p className="text-[11px] font-heading font-extrabold uppercase tracking-wider text-[#0b5d63] mb-1">
+                          {doc.category}
+                        </p>
+
+                        {/* Doctor Name */}
+                        <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-slate-900 group-hover:text-[#0b5d63] transition-colors leading-snug mb-1">
+                          {doc.name}
+                        </h3>
+
+                        {/* Specialty Designation */}
+                        <p className="text-xs sm:text-sm font-semibold text-slate-600 mb-2">
+                          {doc.specialty}
+                        </p>
+
+                        {/* Location */}
+                        <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium mb-3.5">
+                          <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                          <span className="truncate">{doc.hospital}</span>
+                        </div>
+
+                        {/* Clean Subtle Metric Row — No Colored Boxes */}
+                        <div className="flex items-center gap-6 py-2.5 border-y border-slate-100 mb-4 text-xs">
+                          <div>
+                            <span className="text-slate-400 font-heading font-bold text-[10px] uppercase tracking-wider block">Surgeries</span>
+                            <span className="text-slate-900 font-heading font-extrabold text-sm sm:text-base">{doc.surgeries}</span>
+                            <span className="text-[#0b5d63] text-[11px] font-semibold ml-1.5">({doc.successRate})</span>
+                          </div>
+                          <div className="h-6 w-px bg-slate-200" />
+                          <div>
+                            <span className="text-slate-400 font-heading font-bold text-[10px] uppercase tracking-wider block">Rating</span>
+                            <div className="flex items-center gap-1">
+                              <span className="text-slate-900 font-heading font-extrabold text-sm sm:text-base">{doc.ratingText}</span>
+                              <Star className="w-3 h-3 fill-[#e39b2d] text-[#e39b2d]" />
+                              <span className="text-slate-500 text-[11px] font-medium">({doc.reviewsCount})</span>
+                            </div>
+                          </div>
+                          <div className="h-6 w-px bg-slate-200" />
+                          <div>
+                            <span className="text-slate-400 font-heading font-bold text-[10px] uppercase tracking-wider block">Practice</span>
+                            <span className="text-slate-900 font-heading font-extrabold text-sm sm:text-base">{doc.experienceYears}+ Years</span>
+                          </div>
+                        </div>
+
+                        {/* Specialty Tags */}
+                        <div className="flex flex-wrap gap-1.5 mb-4">
+                          {doc.keyProcedures.map((proc, sIdx) => (
+                            <span
+                              key={sIdx}
+                              className="px-2.5 py-1 rounded-md bg-[#f0f8f9] text-[#0b5d63] border border-[#dbeff0] text-[11px] font-medium leading-none"
+                            >
+                              {proc}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* Bio Narrative */}
+                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-body mb-4">
+                          {doc.bio}
+                        </p>
+
+                        {/* Technology & Credentials Box (Matching Hospital Tech Box) */}
+                        <div className="bg-[#f8fafb] rounded-xl p-3 border border-slate-100 space-y-1.5 mb-5 text-xs text-slate-600">
+                          <div className="flex items-start gap-2 text-slate-800">
+                            <Sparkles className="w-3.5 h-3.5 text-[#0b5d63] shrink-0 mt-0.5" />
+                            <span className="font-semibold line-clamp-1">{doc.technology}</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-slate-500 text-[11px]">
+                            <GraduationCap className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                            <span className="truncate">{doc.education} · {doc.fellowships}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Card Footer Actions (Matching Hospital Section Action Buttons) */}
+                      <div className="pt-3 border-t border-slate-100 space-y-2">
+                        <button
+                          onClick={() => openIntake(doc.name)}
+                          className="w-full py-2.5 px-4 rounded-xl bg-[#0b5d63] hover:bg-[#073f43] active:scale-[0.98] text-white font-heading font-bold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer group/btn"
+                        >
+                          <span>Schedule Video Consult</span>
+                          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1" />
+                        </button>
+
+                        <Link
+                          href="/doctors"
+                          className="w-full py-1 text-center text-xs font-semibold text-slate-600 hover:text-[#0b5d63] transition-colors flex items-center justify-center gap-1"
+                        >
+                          <span>View Facilities & Profiles</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
+
+                    </div>
+
                   </div>
-
-                  {/* Actions */}
-                  <div className="mt-6 pt-5 border-t border-slate-100 flex items-center gap-3">
-                    <button
-                      onClick={() => openIntake(doc.name)}
-                      className="flex-1 py-3 px-4 rounded-xl bg-[#0b5d63] hover:bg-[#073f43] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm"
-                    >
-                      <Video className="w-3.5 h-3.5 text-[#e39b2d]" />
-                      <span>Video Consult</span>
-                    </button>
-
-                    <Link
-                      href="/doctors"
-                      className="p-3 rounded-xl border border-slate-200 hover:border-[#0b5d63] text-slate-600 hover:text-[#0b5d63] transition-colors"
-                      title="View Full Profile"
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
-
-        {/* View All Doctors CTA */}
-        <div className="mt-14 text-center">
-          <Link
-            href="/doctors"
-            className="inline-flex items-center gap-2 text-sm font-heading font-bold text-[#0b5d63] hover:text-[#e39b2d] transition-colors group cursor-pointer"
-          >
-            <span>View All Doctors & Surgical Specialists Across India</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </Link>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </div>
 
       </div>
     </section>
   );
 };
+

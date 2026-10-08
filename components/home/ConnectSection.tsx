@@ -15,7 +15,7 @@ export const ConnectSection = () => {
         {/* Header */}
         <div className="text-center mb-14 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f0f8f9] border border-[#dbeff0] text-[#0b5d63] text-xs font-heading font-bold uppercase tracking-wider mb-3">
-            <Lock className="w-3.5 h-3.5 text-[#e39b2d]" />
+            <Lock className="w-3.5 h-3.5 text-[#0b5d63]" />
             <span>CONFIDENTIAL SURGEON CASE REVIEW</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-slate-900 mb-4 leading-tight">
@@ -78,7 +78,7 @@ export const ConnectSection = () => {
               </div>
 
               <div className="flex gap-4 items-start">
-                <div className="w-9 h-9 rounded-xl bg-[#e39b2d] text-slate-950 flex items-center justify-center font-heading font-bold text-sm shrink-0 shadow-md">
+                <div className="w-9 h-9 rounded-xl bg-[#0b5d63] text-white flex items-center justify-center font-heading font-bold text-sm shrink-0 shadow-md">
                   4
                 </div>
                 <div>

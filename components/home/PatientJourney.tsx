@@ -236,8 +236,8 @@ export const PatientJourney = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <div className="flex items-center gap-2.5 mb-3">
-              <span className="h-2 w-2 rounded-full bg-[#e39b2d]"></span>
-              <p className="text-[#0b5d63] font-heading font-bold text-xs uppercase tracking-[0.2em] flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#0b5d63]"></span>
+              <p className="text-[#0b5d63] font-heading font-semibold text-xs uppercase tracking-[0.2em] flex items-center gap-2">
                 <Compass className="w-4 h-4 text-[#0b5d63]" />
                 <span>PATIENT JOURNEY — STEP-BY-STEP CONCIERGE CARE</span>
               </p>
@@ -338,7 +338,7 @@ export const PatientJourney = () => {
                           <div className="lg:col-span-7 xl:col-span-8 p-6 sm:p-8 md:p-10 flex flex-col md:flex-row gap-6 sm:gap-8 items-center md:items-start border-b lg:border-b-0 lg:border-r border-[#e2eaeb]">
                             <div className="relative w-full md:w-64 h-56 md:h-64 rounded-2xl overflow-hidden shrink-0 shadow-md">
                               <Image src={step.image} alt={step.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 300px" />
-                              <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#04272a]/90 backdrop-blur-md text-[#e39b2d] text-[10px] font-bold font-heading uppercase shadow-sm">
+                              <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] font-medium font-heading uppercase tracking-wider shadow-sm border border-white/20">
                                 {step.phase}
                               </div>
                             </div>
@@ -352,8 +352,8 @@ export const PatientJourney = () => {
                                 <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-slate-900 mb-3 leading-tight">{step.title}</h3>
                                 <p className="text-slate-600 text-sm sm:text-base font-normal leading-relaxed mb-6">{step.description}</p>
                               </div>
-                              <div className="pt-3 border-t border-[#e2eaeb] flex items-center gap-2.5 text-xs text-[#0b5d63] font-semibold">
-                                <CheckCircle2 className="w-4 h-4 text-[#e39b2d] shrink-0" />
+                              <div className="pt-3 border-t border-[#e2eaeb] flex items-center gap-2.5 text-xs text-slate-700 font-semibold">
+                                <CheckCircle2 className="w-4 h-4 text-[#0b5d63] shrink-0" />
                                 <span>Clinical protocol verified before patient departure</span>
                               </div>
                             </div>
@@ -362,7 +362,7 @@ export const PatientJourney = () => {
                           <div className="lg:col-span-5 xl:col-span-4 p-6 sm:p-8 md:p-10 flex flex-col justify-between bg-[#f8fafb]">
                             <div>
                               <div className="flex items-center gap-2 mb-3 text-[#0b5d63]">
-                                <Quote className="w-5 h-5 rotate-180 text-[#e39b2d]" />
+                                <Quote className="w-5 h-5 rotate-180 text-[#0b5d63]" />
                                 <span className="text-[10px] font-bold font-heading uppercase tracking-[0.2em]">PATIENT PERSPECTIVE</span>
                               </div>
                               <blockquote className="text-slate-800 text-base sm:text-lg italic font-normal leading-relaxed mb-6">
@@ -372,20 +372,20 @@ export const PatientJourney = () => {
 
                             <div className="space-y-3.5 pt-4 border-t border-[#e2eaeb]">
                               <div className="flex items-start gap-3.5">
-                                <div className="w-9 h-9 rounded-xl bg-white border border-[#e2eaeb] flex items-center justify-center text-[#0b5d63] shrink-0 shadow-sm"><MapPin className="w-4 h-4" /></div>
+                                <div className="w-9 h-9 rounded-xl bg-white border border-[#e2eaeb] flex items-center justify-center text-[#0b5d63] shrink-0 shadow-sm"><MapPin className="w-4 h-4 text-slate-400" /></div>
                                 <div>
                                   <div className="text-[9.5px] font-bold tracking-widest text-slate-400 uppercase font-heading">WHERE</div>
                                   <div className="text-xs sm:text-sm font-bold text-slate-900 mt-0.5">{step.where}</div>
                                 </div>
                               </div>
                               <div className="flex items-start gap-3.5">
-                                <div className="w-9 h-9 rounded-xl bg-white border border-[#e2eaeb] flex items-center justify-center text-[#0b5d63] shrink-0 shadow-sm"><Users className="w-4 h-4" /></div>
+                                <div className="w-9 h-9 rounded-xl bg-white border border-[#e2eaeb] flex items-center justify-center text-[#0b5d63] shrink-0 shadow-sm"><Users className="w-4 h-4 text-slate-400" /></div>
                                 <div>
                                   <div className="text-[9.5px] font-bold tracking-widest text-slate-400 uppercase font-heading">WITH YOU</div>
                                   <div className="text-xs sm:text-sm font-bold text-slate-900 mt-0.5">{step.withYou}</div>
                                 </div>
                               </div>
-                              <Button variant="outline" onClick={() => openIntake(step.title)} className="w-full text-[#0b5d63] border-2 border-[#0b5d63] hover:bg-[#0b5d63] hover:text-white font-heading font-bold rounded-xl mt-4 py-2.5 transition-all cursor-pointer">
+                              <Button variant="outline" onClick={() => openIntake(step.title)} className="w-full bg-[#0b5d63] hover:bg-[#073f43] text-white border-0 font-heading font-bold rounded-xl mt-4 py-2.5 shadow-sm transition-all cursor-pointer">
                                 <span>Inquire About This Stage</span>
                                 <ChevronRight className="w-4 h-4 ml-1" />
                               </Button>

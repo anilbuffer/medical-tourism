@@ -7,40 +7,53 @@
 @source "..";
 
 @theme {
-  --color-vedara-deep: #0F1340;
-  --color-vedara-dark: #1a2468;
-  --color-vedara-slate: #283593;
-  --color-vedara-midnight: #2f3ea8;
-  --color-vedara-navy: #3547ba;
+  --color-primary: #0b5d63;
+  --color-primary-light: #0e757c;
+  --color-primary-dark: #073f43;
+  --color-primary-deep: #04272a;
+  --color-primary-hover: #084e53;
+  --color-primary-50: #f0f8f9;
+  --color-primary-100: #dbeff0;
 
-  --color-vedara-gold: #C9A24A;
-  --color-vedara-gold-hover: #B8923D;
-  --color-vedara-gold-muted: #a58d34;
-  --color-vedara-gold-light: #E5CA76;
+  --color-secondary: #e39b2d;
+  --color-secondary-hover: #f0a73b;
+  --color-secondary-muted: #a35f0b;
+  --color-secondary-light: #fef7ec;
 
-  --color-vedara-blue: #3F4EB4;
-  --color-vedara-blue-light: #5062CC;
-  --color-vedara-blue-dark: #283593;
-  --color-vedara-blue-50: #ECEEF9;
-  --color-vedara-blue-100: #C8CCEF;
-  --color-vedara-blue-200: #9BA3E2;
-  --color-vedara-blue-500: #5062CC;
-  --color-vedara-blue-600: #3F4EB4;
-  --color-vedara-blue-700: #283593;
-  --color-vedara-blue-900: #141C55;
+  --color-vedara-deep: #04272a;
+  --color-vedara-dark: #073f43;
+  --color-vedara-slate: #0b5d63;
+  --color-vedara-midnight: #073f43;
+  --color-vedara-navy: #0b5d63;
 
-  --color-vedara-cyan: #2ECDC5;
-  --color-vedara-cyan-light: #5ADBD5;
-  --color-vedara-cyan-dark: #1DA89F;
-  --color-vedara-teal-mid1: #1d8983;
-  --color-vedara-teal-mid2: #1baba4;
+  --color-vedara-gold: #e39b2d;
+  --color-vedara-gold-hover: #f0a73b;
+  --color-vedara-gold-muted: #a35f0b;
+  --color-vedara-gold-light: #fef7ec;
 
-  --color-vedara-cream: #F5F7FF;
-  --color-vedara-platinum: #EEF0FA;
+  --color-vedara-blue: #0b5d63;
+  --color-vedara-blue-light: #0e757c;
+  --color-vedara-blue-dark: #073f43;
+  --color-vedara-blue-50: #f0f8f9;
+  --color-vedara-blue-100: #dbeff0;
+  --color-vedara-blue-200: #bde0e3;
+  --color-vedara-blue-500: #0b5d63;
+  --color-vedara-blue-600: #094f54;
+  --color-vedara-blue-700: #073f43;
+  --color-vedara-blue-900: #04272a;
+
+  --color-vedara-cyan: #0b5d63;
+  --color-vedara-cyan-light: #14909a;
+  --color-vedara-cyan-dark: #073f43;
+  --color-vedara-teal-mid1: #0b5d63;
+  --color-vedara-teal-mid2: #0e757c;
+
+  --color-vedara-cream: #f8fafb;
+  --color-vedara-platinum: #eef4f5;
   --color-vedara-surface: #FFFFFF;
-  --color-vedara-muted: #6B7DB3;
-  --color-vedara-offwhite: #f8f9fa;
-  --color-vedara-tint-blue: #f8faff;
+  --color-vedara-muted: #5c7376;
+  --color-vedara-offwhite: #f8fafb;
+  --color-vedara-tint-blue: #f0f8f9;
   --color-vedara-tint-red: #fff8f8;
 
   --color-dark-1: #031126;
