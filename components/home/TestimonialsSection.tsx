@@ -5,7 +5,7 @@ import Image from "next/image";
 import { ArrowRight, Play } from "lucide-react";
 import { CommonCarousel } from "@/components/ui/common-carousel";
 
-export const TestimonialsSection1 = () => {
+export const TestimonialsSection = () => {
   const testimonials = [
     {
       type: "text",
@@ -124,3 +124,4 @@ export const TestimonialsSection1 = () => {
     </section>
   );
 };
+

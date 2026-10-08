@@ -3,7 +3,7 @@
 import React from "react";
 import { UploadCloud, ArrowRight, Lock } from "lucide-react";
 
-export const ConnectSection1 = () => {
+export const ConnectSection = () => {
   return (
     <section className="py-12 sm:py-16 bg-slate-50 border-t border-[#E4E9ED]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -136,3 +136,4 @@ export const ConnectSection1 = () => {
     </section>
   );
 };
+

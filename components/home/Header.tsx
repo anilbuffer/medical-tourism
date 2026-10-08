@@ -7,7 +7,7 @@ import { LanguageCountryPicker } from "@/components/ui/LanguageCountryPicker";
 import { Button } from "@/components/ui/button";
 import { Globe, Menu, X, PhoneCall } from "lucide-react";
 
-export const Header1 = () => {
+export const Header = () => {
   const { t, openIntake } = useCare();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -107,3 +107,4 @@ export const Header1 = () => {
     </header>
   );
 };
+

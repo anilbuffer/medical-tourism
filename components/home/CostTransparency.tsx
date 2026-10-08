@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { ArrowRight, Info, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export const CostTransparency1 = () => {
+export const CostTransparency = () => {
   const [planType, setPlanType] = useState<"economical" | "premium">("premium");
 
   return (
@@ -236,3 +236,4 @@ export const CostTransparency1 = () => {
     </section>
   );
 };
+

@@ -144,7 +144,7 @@ const StepVectorIcon = ({ type, active }: { type: JourneyStep["iconType"]; activ
   );
 };
 
-export const PatientJourney1 = () => {
+export const PatientJourney = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
   const { openIntake } = useCare();
@@ -405,3 +405,4 @@ export const PatientJourney1 = () => {
     </div>
   );
 };
+

@@ -19,7 +19,7 @@ import {
 import { useCare } from "@/context/CareContext";
 import { Button } from "@/components/ui/button";
 
-export const SpecialtiesSection1 = () => {
+export const SpecialtiesSection = () => {
   const { openIntake } = useCare();
   const [activeStep, setActiveStep] = useState(0);
 
@@ -280,3 +280,4 @@ export const SpecialtiesSection1 = () => {
     </section>
   );
 };
+

@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight, Globe } from "lucide-react";
 
-export const Footer1 = () => {
+export const Footer = () => {
   return (
     <footer className="bg-slate-900 text-slate-300 py-12 sm:py-16 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,3 +69,4 @@ export const Footer1 = () => {
     </footer>
   );
 };
+

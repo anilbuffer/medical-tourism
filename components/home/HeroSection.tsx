@@ -5,7 +5,7 @@ import { useCare } from "@/context/CareContext";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
-export const HeroSection1 = () => {
+export const HeroSection = () => {
   const { openIntake } = useCare();
 
   const fadeUpVariants = {
@@ -81,4 +81,5 @@ export const HeroSection1 = () => {
     </section>
   );
 };
+
 

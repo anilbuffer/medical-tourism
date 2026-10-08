@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { CommonCarousel } from "@/components/ui/common-carousel";
 
-export const HospitalsSection1 = () => {
+export const HospitalsSection = () => {
   const hospitals = [
     {
       name: "Fortis",
@@ -123,3 +123,4 @@ export const HospitalsSection1 = () => {
     </section>
   );
 };
+

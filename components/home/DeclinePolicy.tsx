@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export const DeclinePolicy1 = () => {
+export const DeclinePolicy = () => {
   return (
     <section className="py-12 sm:py-16 bg-white border-t border-[#E4E9ED]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -33,3 +33,4 @@ export const DeclinePolicy1 = () => {
     </section>
   );
 };
+
