@@ -10,7 +10,7 @@ import { useCare } from "@/context/CareContext";
 export const DoctorsSection = () => {
   const { openIntake } = useCare();
   const [activeTab, setActiveTab] = useState("All");
-  
+
   const tags = [
     "All",
     "Orthopaedics",
@@ -39,7 +39,7 @@ export const DoctorsSection = () => {
       hospital: "Sangam Netralaya Super Speciality Eye Hospital",
       image: "/ashish-ahuja.png",
       rating: "5.0 / 5.0",
-      surgeries: "15,000+ Laser Procedures",
+      surgeries: "11,00+ Laser Procedures",
     },
     {
       name: "Dr. Vikas Gupta",
@@ -54,8 +54,8 @@ export const DoctorsSection = () => {
     },
   ];
 
-  const filteredDoctors = activeTab === "All" 
-    ? doctors 
+  const filteredDoctors = activeTab === "All"
+    ? doctors
     : doctors.filter(doc => doc.category === activeTab || doc.specialty.includes(activeTab));
 
   const displayDoctors = filteredDoctors.length > 0 ? filteredDoctors : doctors;
@@ -68,9 +68,9 @@ export const DoctorsSection = () => {
   return (
     <section id="doctors" className="py-16 sm:py-24 bg-[#f8fafb] relative border-t border-[#e2eaeb] font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header Section */}
-        <motion.div 
+        <motion.div
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
           className="text-center max-w-3xl mx-auto mb-12"
         >
@@ -92,11 +92,10 @@ export const DoctorsSection = () => {
             <button
               key={tag}
               onClick={() => setActiveTab(tag)}
-              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-heading font-bold transition-all duration-200 cursor-pointer ${
-                activeTab === tag
+              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-heading font-bold transition-all duration-200 cursor-pointer ${activeTab === tag
                   ? "bg-[#0b5d63] text-white shadow-md shadow-[#0b5d63]/20"
                   : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
-              }`}
+                }`}
             >
               {tag}
             </button>
@@ -126,7 +125,7 @@ export const DoctorsSection = () => {
                     sizes="(max-width: 640px) 100vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#04272a]/85 via-transparent to-transparent" />
-                  
+
                   {/* Top Rating Badge */}
                   <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#a35f0b] text-xs font-bold shadow-sm">
                     <Star className="w-3.5 h-3.5 fill-[#e39b2d] text-[#e39b2d]" />
@@ -141,7 +140,7 @@ export const DoctorsSection = () => {
                     </span>
                   </div>
                 </div>
-                
+
                 {/* Details Section */}
                 <div className="flex-1 p-6 sm:p-7 flex flex-col justify-between bg-white">
                   <div>
@@ -151,7 +150,7 @@ export const DoctorsSection = () => {
                     <p className="text-xs sm:text-sm font-semibold text-[#0b5d63] mb-4 line-clamp-2">
                       {doc.specialty}
                     </p>
-                    
+
                     <div className="space-y-2.5 text-xs text-slate-600 border-t border-slate-100 pt-3">
                       <div className="flex items-start gap-2">
                         <GraduationCap className="w-4 h-4 text-[#e39b2d] shrink-0 mt-0.5" />
@@ -174,8 +173,8 @@ export const DoctorsSection = () => {
                       <span>Video Consult</span>
                     </button>
 
-                    <Link 
-                      href="/doctors" 
+                    <Link
+                      href="/doctors"
                       className="p-3 rounded-xl border border-slate-200 hover:border-[#0b5d63] text-slate-600 hover:text-[#0b5d63] transition-colors"
                       title="View Full Profile"
                     >

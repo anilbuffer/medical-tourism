@@ -292,8 +292,8 @@ export const PatientPackageQuoteView: React.FC<PatientPackageQuoteViewProps> = (
               {refundTermsOpen && (
                 <div className="px-4 py-3 text-xs text-slate-600 space-y-2 border-t border-slate-100">
                   <p><strong className="text-slate-800">Stage 1 Deposit ($3,000):</strong> Fully refundable if cancelled ≥ 30 days before admission.</p>
-                  <p><strong className="text-slate-800">Stage 2 Advance ($15,000):</strong> 70% refundable if cancelled 15–30 days prior. Non-refundable &lt;15 days.</p>
-                  <p><strong className="text-slate-800">Stage 3 Final ($10,500):</strong> Payable at hospital check-in.</p>
+                  <p><strong className="text-slate-800">Stage 2 Advance ($1,500):</strong> 70% refundable if cancelled 15–30 days prior. Non-refundable &lt;15 days.</p>
+                  <p><strong className="text-slate-800">Stage 3 Final ($7,500):</strong> Payable at hospital check-in.</p>
                 </div>
               )}
             </div>

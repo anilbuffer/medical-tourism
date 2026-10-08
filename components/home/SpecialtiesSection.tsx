@@ -70,7 +70,7 @@ export const SpecialtiesSection = () => {
       tags: ["Joints", "Spine", "Robotic Knee", "Hip Replacement", "MAKO System"],
       image: "https://images.unsplash.com/photo-1597764690523-15bea4c581c9?auto=format&fit=crop&q=80&w=1200",
       featuredBadge: "Most Requested Quaternary Care",
-      stat: "15,000+ Surgeries",
+      stat: "11,00+ Surgeries",
       tech: "Robotic MAKO & NAVIO Navigation",
       savings: "Save 70% vs UK/US",
       stay: "7–14 Days",
@@ -170,15 +170,15 @@ export const SpecialtiesSection = () => {
     <section
       id="treatments"
       ref={sectionRef}
-      className="bg-[#f8fafb] text-[#1a2e30] border-t border-[#e2eaeb] relative w-full pt-8 sm:pt-10 pb-12 font-sans h-[350vh] lg:h-[400vh]"
+      className="bg-[#f8fafb] text-[#1a2e30] border-t border-[#e2eaeb] relative w-full pt-10 sm:pt-20 pb-12 h-[350vh] lg:h-[400vh]"
     >
       {/* Sticky Container pinned under Navbar */}
-      <div className="sticky top-16 lg:top-20 w-full z-20">
+      <div className="sticky top-16 lg:top-30 w-full z-20">
         {/* 1580px Expanded Container Matching Header and Hero */}
         <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
           {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-4 sm:mb-6 gap-3">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-4 sm:mb-8 gap-3">
             <div>
               <div className="flex items-center gap-2 mb-1.5">
                 <span className="h-2 w-2 rounded-full bg-[#e39b2d] animate-pulse"></span>

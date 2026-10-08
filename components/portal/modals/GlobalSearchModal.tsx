@@ -77,7 +77,7 @@ const MOCK_REQUESTS = [
   },
   {
     requestNo: "#REQ-8944",
-    title: "Milestone 2 Escrow Release - Surgical Admission Deposit ($15,000)",
+    title: "Milestone 2 Escrow Release - Surgical Admission Deposit ($11,00)",
     patientName: "Tariq Al-Mansoor",
     caseId: "PT-2026-089412",
     priority: "High",
@@ -595,8 +595,8 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
                     onClick={item.action}
                     onMouseEnter={() => setSelectedIndex(index)}
                     className={`w-full text-left p-3 rounded-2xl flex items-center justify-between gap-3 transition-all cursor-pointer border ${isSelected
-                        ? "bg-slate-100/90 border-slate-200/90 shadow-2xs"
-                        : "bg-transparent hover:bg-slate-50/80 border-transparent"
+                      ? "bg-slate-100/90 border-slate-200/90 shadow-2xs"
+                      : "bg-transparent hover:bg-slate-50/80 border-transparent"
                       }`}
                   >
                     <div className="flex items-center gap-3 min-w-0">
@@ -637,8 +637,8 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
                       )}
                       <ChevronRight
                         className={`w-4 h-4 transition-transform ${isSelected
-                            ? "text-[#3F4EB4] translate-x-0.5"
-                            : "text-slate-300 opacity-0 group-hover:opacity-100"
+                          ? "text-[#3F4EB4] translate-x-0.5"
+                          : "text-slate-300 opacity-0 group-hover:opacity-100"
                           }`}
                       />
                     </div>
