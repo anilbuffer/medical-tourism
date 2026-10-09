@@ -268,17 +268,17 @@ const SpecialtyStickyCard: React.FC<InteractiveCardProps> = ({
               }`}
           >
             {/* Accreditation Badge */}
-            <div className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-white/95 backdrop-blur-md border border-[#DCE6EB] shadow-sm">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#0B5D68] shrink-0" />
-              <span className="text-[10px] sm:text-[11px] font-heading font-bold tracking-wider uppercase text-[#0C2338]">
+            <div className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-white/95 backdrop-blur-md border border-[#14B8A6] shadow-sm">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#14B8A6] shrink-0" />
+              <span className="text-[10px] sm:text-[11px] font-heading font-semibold tracking-wider uppercase text-[#14B8A6]">
                 {specialty.badge}
               </span>
             </div>
 
             {/* Audited Clinical Stat Badge */}
-            <div className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-white/95 backdrop-blur-md border border-[#DCE6EB] shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#0B5D68] shrink-0" />
-              <span className="text-[10px] sm:text-[11px] font-heading font-bold text-[#0B5D68]">
+            <div className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-white/95 backdrop-blur-md border border-[#14B8A6] shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-[#14B8A6] shrink-0" />
+              <span className="text-[10px] sm:text-[11px] font-heading font-semibold text-[#14B8A6]">
                 {specialty.stat}
               </span>
             </div>
@@ -297,11 +297,11 @@ const SpecialtyStickyCard: React.FC<InteractiveCardProps> = ({
               } w-[calc(100%-2.5rem)] sm:w-[420px] lg:w-[450px]`}
           >
             {/* Dark Navy Rounded Card with vibrant #14B8A6 accents */}
-            <div className="bg-[#0C2338]/95 backdrop-blur-xl border border-white/15 rounded-3xl p-6 sm:p-8 lg:p-9 text-white shadow-[0_25px_60px_rgba(0,0,0,0.7)] hover:border-[#14B8A6]/40 transition-all">
+            <div className="bg-[#0C2338]/95 backdrop-blur-xl border border-white/15 rounded-3xl p-6 sm:p-8 lg:p-9 text-white shadow-[0_25px_60px_rgba(0,0,0,0.7)] hover:border-[#14B8A6]/60 transition-all">
 
               {/* Top Row: Square-Rounded Icon Box + Title */}
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 rounded-2xl bg-[#0B5D68]/40 border border-[#14B8A6]/40 flex items-center justify-center text-[#14B8A6] shrink-0 shadow-inner">
+                <div className="w-16 h-16 rounded-2xl bg-[#14B8A6]/30 border border-[#14B8A6]/60 flex items-center justify-center text-[#14B8A6] shrink-0 shadow-inner">
                   <IconComponent />
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold font-heading text-white tracking-tight leading-tight">
@@ -333,7 +333,7 @@ const SpecialtyStickyCard: React.FC<InteractiveCardProps> = ({
                 className="w-full py-3.5 px-6 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 transition-all cursor-pointer group"
               >
                 <span>CHECK CLINICAL FEASIBILITY</span>
-                <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.5] transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 text-[#ffffff] stroke-[2.5] transition-transform group-hover:translate-x-1" />
               </button>
 
               {/* Bottom Metadata Bar */}
@@ -385,9 +385,9 @@ export const SpecialtiesSection = () => {
                 QUATERNARY CLINICAL EXCELLENCE
               </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-[32px] xl:text-[40px] font-heading font-bold text-[#0C2338] leading-[1.15] tracking-tight">
               Specialised Treatments.{" "}
-              <span className="text-[#0B5D68] block sm:inline">
+              <span className="text-[#0e9d8d] block sm:inline">
                 Celebrated Specialists.
               </span>
             </h2>

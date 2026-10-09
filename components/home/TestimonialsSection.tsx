@@ -121,7 +121,7 @@ export const TestimonialsSection = () => {
 
   return (
     <section id="stories" className="w-full relative overflow-hidden font-sans border-t border-b border-[#DCE6EB] bg-[#0C2338]">
-      
+
       {/* 01. Desktop Edge-to-Edge Split Background */}
       <div className="hidden lg:grid absolute inset-0 grid-cols-12 pointer-events-none">
         {/* Left half: Deep Navy with subtle ambient teal radial glow */}
@@ -129,7 +129,7 @@ export const TestimonialsSection = () => {
           <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-[#0B5D68]/20 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-10 right-10 w-64 h-64 bg-[#14B8A6]/10 rounded-full blur-3xl pointer-events-none" />
         </div>
-        
+
         {/* Right half: clinical doctor photo to the edge */}
         <div className="col-span-5 xl:col-span-6 relative bg-slate-900 overflow-hidden">
           <Image
@@ -141,7 +141,7 @@ export const TestimonialsSection = () => {
             className="object-cover object-top"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20" />
-          
+
           {/* Bottom Review Ribbon on Photo */}
           <div className="absolute bottom-8 left-8 right-8 z-10 flex justify-center">
             <div className="w-full max-w-md px-6 py-3.5 rounded-full bg-[#0B5D68]/95 backdrop-blur-md text-white shadow-2xl border border-[#14B8A6]/40 flex items-center justify-center gap-3">
@@ -158,10 +158,10 @@ export const TestimonialsSection = () => {
       {/* 02. Content Layer: Aligned with the 1580px Container Grid */}
       <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[640px] xl:min-h-[720px]">
-          
+
           {/* Left Column: Aligned with Container */}
           <div className="lg:col-span-7 xl:col-span-6 py-16 sm:py-20 lg:py-24 pr-0 lg:pr-12 xl:pr-16 flex flex-col justify-between text-white">
-            
+
             {/* Header Area */}
             <div>
               {/* Badge with vibrant #14B8A6 pulse */}
@@ -278,15 +278,6 @@ export const TestimonialsSection = () => {
           className="object-cover object-top"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
-        <div className="absolute bottom-6 left-4 right-4 z-10 flex justify-center">
-          <div className="w-full max-w-md px-5 py-3 rounded-full bg-[#0B5D68]/95 backdrop-blur-md text-white shadow-2xl border border-[#14B8A6]/40 flex items-center justify-center gap-2.5">
-            <Sparkles className="w-4 h-4 text-[#F0A126] fill-[#F0A126] shrink-0" />
-            <span className="text-xs font-heading font-bold tracking-wide">
-              Rated 4.9 out of 5 based on 5K+ reviews
-            </span>
-            <Sparkles className="w-4 h-4 text-[#14B8A6] fill-[#14B8A6] shrink-0" />
-          </div>
-        </div>
       </div>
 
     </section>

@@ -230,7 +230,7 @@ export const HeroSection = () => {
       {/* 04. Big Impact Trust & Clinical Stats Bar - Soft Blue Background #ECF4F7 */}
       <section
         aria-label="Clinical statistics and patient credentials"
-        className="relative z-20 w-full bg-[#ECF4F7] border-y border-[#DCE6EB] py-8 sm:py-10"
+        className="relative z-20 w-full bg-[#ffffff] border-y border-[#DCE6EB] py-8 sm:py-10"
       >
         <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">

@@ -241,7 +241,7 @@ export const Navbar = () => {
               className="flex items-center gap-2 px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold text-[#0C2338] bg-gradient-to-r from-[#F0A126] to-[#FBBF24] hover:from-[#db8e18] hover:to-[#f0a126] active:scale-95 transition-all shadow-lg shadow-[#F0A126]/20 hover:shadow-xl hover:shadow-[#F0A126]/35 cursor-pointer uppercase tracking-wider font-heading"
             >
               <PhoneCall className="w-3.5 h-3.5 text-[#0C2338] stroke-[2.5]" />
-              <span>Book Consultation</span>
+              <span className="text-[#0C2338]">Book Consultation</span>
             </button>
           </div>
 

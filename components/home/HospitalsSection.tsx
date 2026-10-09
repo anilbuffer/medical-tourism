@@ -163,7 +163,7 @@ export const HospitalsSection = () => {
   return (
     <section
       id="hospitals"
-      className="py-16 sm:py-24 bg-[#F5F7F6] relative border-t border-[#DCE6EB] font-sans"
+      className="py-16 sm:py-24 bg-[#ffffff] relative border-t border-[#DCE6EB] font-sans"
     >
       {/* 1580px Expanded Container Matching Header, Hero, and Specialties */}
       <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -175,9 +175,9 @@ export const HospitalsSection = () => {
               <span className="h-2 w-2 rounded-full bg-[#14B8A6] animate-pulse" />
               <span>GLOBAL ACCREDITED HEALTHCARE NETWORK</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-[32px] xl:text-[40px] font-heading font-bold text-[#0C2338] leading-[1.15] tracking-tight">
               Featured Partner Hospitals.{" "}
-              <span className="text-[#0B5D68] block sm:inline">
+              <span className="text-[#0e9d8d] block sm:inline">
                 World-Class Clinical Institutions.
               </span>
             </h2>
@@ -213,7 +213,7 @@ export const HospitalsSection = () => {
                 disabled={!canScrollNext}
                 aria-label="Next hospital slide"
                 className={`w-10 h-10 rounded-full border border-transparent flex items-center justify-center transition-all cursor-pointer ${canScrollNext
-                  ? "bg-[#0B5D68] hover:bg-[#07434B] text-white shadow-sm active:scale-95"
+                  ? "bg-[#0e9d8d] hover:bg-[#0a8678] text-white shadow-sm active:scale-95"
                   : "bg-white/60 text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
                   }`}
               >
@@ -254,7 +254,7 @@ export const HospitalsSection = () => {
 
                       {/* Top-Left: Accreditation Badge */}
                       <div className="absolute top-3.5 left-3.5 z-10">
-                        <span className="px-2.5 py-1 rounded-full bg-black/30 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-heading font-medium uppercase tracking-wider shadow-sm flex items-center gap-1.5 border border-white/20">
+                        <span className="px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-heading font-medium uppercase tracking-wider shadow-sm flex items-center gap-1.5 border border-white/20">
                           <ShieldCheck className="w-3.5 h-3.5 text-white" />
                           <span className="text-white">{hosp.accreditation}</span>
                         </span>
@@ -270,11 +270,11 @@ export const HospitalsSection = () => {
 
                       {/* Bottom-Left Image Stats: Bed Capacity & OTs */}
                       <div className="absolute bottom-3 left-3 right-3 z-10 flex items-center justify-between">
-                        <span className="px-2.5 py-0.5 rounded-md bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium flex items-center gap-1">
+                        <span className="px-2.5 py-0.5 rounded-md bg-[#0e9d8d] backdrop-blur-sm text-white text-[11px] font-medium flex items-center gap-1">
                           <Bed className="w-3 h-3 text-slate-300" />
                           <span>{hosp.beds}</span>
                         </span>
-                        <span className="px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium flex items-center gap-1">
+                        <span className="px-2 py-0.5 rounded-md bg-[#0e9d8d] backdrop-blur-sm text-white text-[11px] font-medium flex items-center gap-1">
                           <Building2 className="w-3 h-3 text-slate-300" />
                           <span>{hosp.ots}</span>
                         </span>
@@ -285,7 +285,7 @@ export const HospitalsSection = () => {
                     <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between bg-white">
                       <div>
                         {/* Eyebrow Category */}
-                        <p className="text-[11px] font-heading font-extrabold uppercase tracking-wider text-[#0B5D68] mb-1">
+                        <p className="text-[11px] font-heading font-bold uppercase tracking-wider text-[#0e9d8d] mb-1">
                           {hosp.category}
                         </p>
 
@@ -316,10 +316,10 @@ export const HospitalsSection = () => {
 
                         {/* Technology & Airport Distance Box */}
                         <div className="bg-[#FCFDFD] rounded-xl p-3 border border-[#DCE6EB] space-y-1.5 mb-5 text-xs">
-                          <div className="flex items-start gap-2 text-[#0C2338]">
+                          {/* <div className="flex items-start gap-2 text-[#0C2338]">
                             <Sparkles className="w-3.5 h-3.5 text-[#0B5D68] shrink-0 mt-0.5" />
                             <span className="font-semibold line-clamp-1">{hosp.tech}</span>
-                          </div>
+                          </div> */}
                           <div className="flex items-center gap-2 text-[#6B7C88] text-[11px]">
                             <Plane className="w-3.5 h-3.5 text-[#0B5D68] shrink-0" />
                             <span className="truncate">{hosp.airportDistance}</span>
@@ -339,7 +339,7 @@ export const HospitalsSection = () => {
 
                         <Link
                           href="/hospitals"
-                          className="w-full py-1 text-center text-xs font-semibold text-[#0B5D68] hover:text-[#0C2338] hover:underline transition-colors flex items-center justify-center gap-1"
+                          className="w-full py-1 text-center text-xs font-semibold text-[#0e9d8d] hover:text-[#14B8A6] hover:underline transition-colors flex items-center justify-center gap-1"
                         >
                           <span>View Facilities & Profiles</span>
                           <ChevronRight className="w-3.5 h-3.5" />
