@@ -364,10 +364,10 @@ export const DoctorsSection = () => {
                       <div className="pt-3 border-t border-[#DCE6EB]/60 space-y-2">
                         <button
                           onClick={() => openIntake(doc.name)}
-                          className="w-full py-2.5 px-4 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] active:scale-[0.98] text-white font-heading font-bold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer group/btn"
+                          className="w-full py-2.5 px-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 transition-all cursor-pointer group/btn"
                         >
                           <span>Schedule Video Consult</span>
-                          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1" />
+                          <ArrowRight className="w-3.5 h-3.5 text-[#0C2338] stroke-[2.4] transition-transform group-hover/btn:translate-x-1" />
                         </button>
 
                         <Link

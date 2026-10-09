@@ -138,10 +138,10 @@ export const ConnectSection = () => {
               <div className="mt-6 pt-5 border-t border-[#DCE6EB] space-y-3">
                 <button
                   onClick={() => openIntake("Get a Free Treatment Opinion")}
-                  className="w-full py-4 rounded-xl bg-[#0B5D68] hover:bg-[#0C2338] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#0B5D68]/20 flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#F0A126]/25 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <span>Get a Free Treatment Opinion</span>
-                  <ArrowRight className="w-4 h-4 text-[#F0A126]" />
+                  <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.4]" />
                 </button>
 
                 <a

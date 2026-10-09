@@ -333,10 +333,10 @@ export const HospitalsSection = () => {
                       <div className="pt-3 border-t border-[#DCE6EB]/60 space-y-2">
                         <button
                           onClick={() => openIntake(hosp.name)}
-                          className="w-full py-2.5 px-4 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] active:scale-[0.98] text-white font-heading font-bold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer group/btn"
+                          className="w-full py-2.5 px-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 transition-all cursor-pointer group/btn"
                         >
                           <span>Check Hospital Availability</span>
-                          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1" />
+                          <ArrowRight className="w-3.5 h-3.5 text-[#0C2338] stroke-[2.4] transition-transform group-hover/btn:translate-x-1" />
                         </button>
 
                         <Link
@@ -431,10 +431,10 @@ export const HospitalsSection = () => {
             <div className="flex items-center gap-3 w-full sm:w-auto">
               <Link
                 href="/hospitals"
-                className="w-full sm:w-auto px-7 py-3 rounded-full bg-[#0b5d63] hover:bg-[#073f43] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-sm flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-7 py-3 rounded-full bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2"
               >
                 <span>Explore All 15+ Partner Hospitals</span>
-                <ArrowRight className="w-4 h-4 text-white" />
+                <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.4]" />
               </Link>
             </div>
           </div>

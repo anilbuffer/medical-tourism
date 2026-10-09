@@ -122,7 +122,7 @@ export const CostTransparency = () => {
             <div className="mt-8 pt-6 border-t border-[#DCE6EB]">
               <button 
                 onClick={() => openIntake("Essential Plan")}
-                className="w-full py-4 bg-white border-2 border-[#0B5D68] text-[#0B5D68] hover:bg-[#0B5D68] hover:text-white font-heading font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-sm cursor-pointer"
+                className="w-full py-4 bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md shadow-[#F0A126]/20 cursor-pointer"
               >
                 Get Written Quote for Essential
               </button>
@@ -189,7 +189,7 @@ export const CostTransparency = () => {
             <div className="mt-8 pt-6 border-t border-[#DCE6EB]">
               <button 
                 onClick={() => openIntake("Premium Plan")}
-                className="w-full py-4 bg-[#0B5D68] hover:bg-[#0C2338] text-white font-heading font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer"
+                className="w-full py-4 bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md shadow-[#F0A126]/20 cursor-pointer"
               >
                 Get Written Quote for Premium
               </button>
@@ -260,10 +260,10 @@ export const CostTransparency = () => {
             </p>
             <button
               onClick={() => openIntake("Cost Comparison Consultation")}
-              className="px-7 py-3 rounded-xl bg-[#0B5D68] hover:bg-[#0C2338] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2 cursor-pointer"
+              className="px-7 py-3 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#F0A126]/20 flex items-center gap-2 cursor-pointer"
             >
               <span>Get Itemised Written Quote</span>
-              <ArrowRight className="w-4 h-4 text-white" />
+              <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.4]" />
             </button>
           </div>
         </div>

@@ -4,17 +4,12 @@ import React from "react";
 import Image from "next/image";
 import { useCare } from "@/context/CareContext";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Headphones } from "lucide-react";
 
 export const HeroSection = () => {
   const { openIntake } = useCare();
 
   const stats = [
-    {
-      number: "99.2%",
-      label: "Clinical Success Rate",
-      color: "text-[#F0A126]",
-    },
     {
       number: "1,500+",
       label: "International Patients Treated",
@@ -78,7 +73,7 @@ export const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1 }}
-                className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-[4.15rem] font-extrabold text-white leading-[1.14] tracking-tight"
+                className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-[4rem] font-extrabold text-white leading-[1.14] tracking-tight"
               >
                 World-Class Surgical Care in India.{" "}
                 <span className="text-[#F0A126]">
@@ -96,20 +91,43 @@ export const HeroSection = () => {
                 Direct access to top quaternary hospital directors, transparent guaranteed pricing, and your dedicated English-speaking care coordinator from arrival to recovery.
               </motion.p>
 
-              {/* Hero CTA Button - Primary Teal */}
+              {/* Hero CTA Button + 24/7 Dedicated English Concierge */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3 }}
-                className="pt-2 flex items-center"
+                className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6"
               >
                 <button
                   onClick={() => openIntake()}
-                  className="inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-full bg-[#0B5D68] hover:bg-[#094b54] active:scale-95 text-white font-heading font-bold text-sm sm:text-base tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#0B5D68]/30 hover:shadow-2xl hover:shadow-[#0B5D68]/45 cursor-pointer group"
+                  className="inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-full bg-[#F0A126] hover:bg-[#db8e18] active:scale-95 text-[#0C2338] font-heading font-bold text-sm sm:text-base tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#F0A126]/25 hover:shadow-2xl hover:shadow-[#F0A126]/40 cursor-pointer group shrink-0"
                 >
                   <span>Book an Appointment</span>
-                  <ArrowRight className="w-5 h-5 text-white stroke-[2.2] transition-transform duration-300 group-hover:translate-x-1" />
+                  <ArrowRight className="w-5 h-5 text-[#0C2338] stroke-[2.4] transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
+
+                {/* 24 / 7 Dedicated English Concierge */}
+                <a
+                  href="https://wa.me/919876543210"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3.5 px-4.5 py-2.5 rounded-2xl bg-[#0C2338]/85 hover:bg-[#0C2338] border border-[#DCE6EB]/20 hover:border-[#0B8F83]/50 backdrop-blur-md shadow-lg transition-all duration-300 group cursor-pointer"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-[#0B8F83]/20 border border-[#0B8F83]/40 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                    <Headphones className="w-5 h-5 text-[#0B8F83]" />
+                  </div>
+                  <div className="text-left">
+                    <div className="flex items-center gap-2 leading-none">
+                      <span className="text-base sm:text-lg font-extrabold font-heading text-[#F0A126] tracking-tight">
+                        24 / 7
+                      </span>
+                      <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse" />
+                    </div>
+                    <div className="text-xs sm:text-[13px] font-heading font-semibold text-white group-hover:text-emerald-300 transition-colors leading-tight mt-1">
+                      Dedicated English Concierge
+                    </div>
+                  </div>
+                </a>
               </motion.div>
 
             </div>

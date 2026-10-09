@@ -8,7 +8,7 @@ interface BrandLogoProps {
 }
 
 export const BrandLogo: React.FC<BrandLogoProps> = ({
-  className = "h-10 sm:h-11 w-auto",
+  className = "h-10 sm:h-12 w-auto",
   variant = "white",
 }) => {
   const isWhite = variant === "white";
@@ -64,9 +64,9 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
           x="68"
           y="47"
           fontFamily="'Roboto', system-ui, -apple-system, sans-serif"
-          fontSize="7.5"
-          fontWeight="700"
-          letterSpacing="0.24em"
+          fontSize="10"
+          fontWeight="500"
+          letterSpacing="0.18em"
           fill={subtextColor}
         >
           YOUR MEDICAL TRAVEL COMPANY

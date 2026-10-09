@@ -380,9 +380,9 @@ export const PatientJourney = () => {
                                   <div className="text-xs sm:text-sm font-bold text-[#0C2338] mt-0.5">{step.withYou}</div>
                                 </div>
                               </div>
-                              <Button variant="outline" onClick={() => openIntake(step.title)} className="w-full bg-[#0B5D68] hover:bg-[#094b54] text-white border-0 font-heading font-bold rounded-xl mt-4 py-2.5 shadow-sm transition-all cursor-pointer">
+                              <Button variant="outline" onClick={() => openIntake(step.title)} className="w-full bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] border-0 font-heading font-bold rounded-xl mt-4 py-2.5 shadow-md shadow-[#F0A126]/20 transition-all cursor-pointer">
                                 <span>Inquire About This Stage</span>
-                                <ChevronRight className="w-4 h-4 ml-1" />
+                                <ChevronRight className="w-4 h-4 ml-1 stroke-[2.4]" />
                               </Button>
                             </div>
                           </div>

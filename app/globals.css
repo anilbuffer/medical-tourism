@@ -286,7 +286,7 @@ body {
 h1, h2, h3, h4, h5, h6, .font-heading, .font-serif, .font-display {
   font-family: Poppins, 'Poppins Fallback', sans-serif !important;
   letter-spacing: -0.015em;
-  color: #0C2338;
+  color: inherit;
 }
 
 ::selection {

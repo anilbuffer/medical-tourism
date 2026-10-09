@@ -91,18 +91,49 @@ export const Navbar = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 font-sans ${scrolled
-        ? "bg-[#0C2338]/95 backdrop-blur-xl shadow-md border-b border-[#DCE6EB]/15 text-white"
-        : "bg-transparent text-white"
+        ? "bg-[#0C2338]/95 backdrop-blur-2xl shadow-xl border-b border-white/15 text-white"
+        : "bg-[#0C2338]/85 backdrop-blur-xl shadow-md border-b border-white/10 text-white"
         }`}
     >
-      <div className="max-w-[1580px] mx-auto px-6 sm:px-10 lg:px-14 py-4">
+      {/* 01. Pre-Header Top Utility Bar - Trust & 24/7 Helpline */}
+      <div className="hidden lg:block bg-[#081827]/90 border-b border-white/10 py-1.5 text-xs text-slate-300">
+        <div className="max-w-[1580px] mx-auto px-6 sm:px-10 lg:px-14 flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse" />
+              <span className="font-semibold text-white/90">NABH & JCI Accredited Hospital Network</span>
+            </div>
+            <span className="text-white/20">•</span>
+            <div className="flex items-center gap-1.5 text-slate-300">
+              <Sparkles className="w-3.5 h-3.5 text-[#F0A126]" />
+              <span>Save Up to 70% vs US/UK &bull; Zero Waiting Lists</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-5">
+            <a
+              href="https://wa.me/919876543210"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors font-semibold"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span>24/7 International Desk: +91 98765 43210</span>
+            </a>
+            <span className="text-white/20">|</span>
+            <LanguageCountryPicker />
+          </div>
+        </div>
+      </div>
+
+      {/* 02. Main Navbar */}
+      <div className="max-w-[1580px] mx-auto px-6 sm:px-10 lg:px-14 py-3 sm:py-3.5">
         <div className="flex items-center justify-between gap-8">
-          {/* 01. Brand Logo - Vector HD Sharp */}
+          {/* Brand Logo - Vector HD Sharp */}
           <Link href="/" className="flex items-center gap-3 group shrink-0" aria-label="yourMedicareTrip Home">
             <BrandLogo variant="white" className="h-10 sm:h-12 w-auto" />
           </Link>
 
-          {/* 02. Clean Spacious Navigation Links */}
+          {/* Clean Spacious Navigation Links */}
           <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-sm font-medium">
             <a
               href="#treatments"
@@ -190,26 +221,26 @@ export const Navbar = () => {
             </div>
           </nav>
 
-          {/* 03. Right Action Utilities - Exact Two Buttons Matching User Screenshot */}
+          {/* 03. Right Action Utilities - High-Contrast Premium Buttons */}
           <div className="hidden lg:flex items-center gap-3 shrink-0">
             {/* Button 1: 24/7 WhatsApp Pill */}
             <a
               href="https://wa.me/919876543210"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-[#0B8F83] bg-[#0C2338]/90 hover:bg-[#0C2338] border border-[#0B8F83]/40 hover:border-[#0B8F83] transition-all shadow-sm"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 hover:border-emerald-500/60 transition-all shadow-sm group"
             >
-              <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse"></span>
-              <span>24/7 WhatsApp</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="group-hover:text-white transition-colors">24/7 WhatsApp</span>
             </a>
 
-            {/* Button 2: Primary CTA Button - Primary Teal */}
+            {/* Button 2: Radiant Primary CTA Button - Gold Accent for Maximum Conversion */}
             <button
               onClick={() => openIntake()}
-              className="flex items-center gap-2.5 px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-[#0B5D68] hover:bg-[#094b54] active:scale-95 transition-all shadow-md shadow-[#0B5D68]/25 cursor-pointer uppercase tracking-wider font-heading"
+              className="flex items-center gap-2 px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold text-[#0C2338] bg-gradient-to-r from-[#F0A126] to-[#FBBF24] hover:from-[#db8e18] hover:to-[#f0a126] active:scale-95 transition-all shadow-lg shadow-[#F0A126]/20 hover:shadow-xl hover:shadow-[#F0A126]/35 cursor-pointer uppercase tracking-wider font-heading"
             >
-              <PhoneCall className="w-4 h-4 text-white stroke-[2.2]" />
-              <span>Book an Appointment</span>
+              <PhoneCall className="w-3.5 h-3.5 text-[#0C2338] stroke-[2.5]" />
+              <span>Book Consultation</span>
             </button>
           </div>
 
@@ -217,7 +248,7 @@ export const Navbar = () => {
           <div className="flex items-center gap-2 lg:hidden">
             <button
               onClick={() => openIntake()}
-              className="px-3.5 py-1.5 rounded-full text-xs font-bold text-white bg-[#0B5D68] font-heading"
+              className="px-3.5 py-1.5 rounded-full text-xs font-bold text-[#0C2338] bg-[#F0A126] font-heading shadow-md"
             >
               Book Now
             </button>

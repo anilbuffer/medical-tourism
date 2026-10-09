@@ -320,10 +320,10 @@ export const SpecialtiesSection = () => {
 
                     <button
                       onClick={() => openIntake(current.title)}
-                      className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#0B5D68] hover:bg-[#094b54] active:scale-95 text-white font-heading font-bold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2.5 transition-all cursor-pointer group"
+                      className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#F0A126] hover:bg-[#db8e18] active:scale-95 text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2.5 transition-all cursor-pointer group"
                     >
                       <span>Check Clinical Feasibility</span>
-                      <ArrowRight className="w-4 h-4 text-white transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.4] transition-transform group-hover:translate-x-1" />
                     </button>
                   </div>
                 </div>

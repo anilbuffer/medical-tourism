@@ -150,7 +150,7 @@ export const Footer = () => {
               <div className="pt-2">
                 <a
                   href="/#assessment"
-                  className="block w-full py-2.5 px-3 rounded-xl bg-[#0B5D68] hover:bg-[#0C2338] text-white font-bold text-xs shadow-md transition-all text-center uppercase tracking-wider font-heading"
+                  className="block w-full py-2.5 px-3 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-bold text-xs shadow-md shadow-[#F0A126]/20 transition-all text-center uppercase tracking-wider font-heading"
                 >
                   Book an Appointment
                 </a>

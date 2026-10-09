@@ -433,7 +433,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
           <div className="shrink-0 p-6 pt-4 sm:p-8 sm:pt-4 md:p-10 md:pt-4 border-t border-slate-100 bg-white rounded-b-3xl relative z-10">
             <button
               type="submit"
-              className="w-full py-4 px-6 rounded-xl bg-[#0B5D68] hover:bg-[#0C2338] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#0B5D68]/25 hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all font-heading cursor-pointer"
+              className="w-full py-4 px-6 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#F0A126]/25 hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all font-heading cursor-pointer"
             >
               CONTINUE
             </button>
@@ -603,7 +603,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full md:w-auto md:flex-1 py-4 px-6 rounded-xl bg-[#0B5D68] hover:bg-[#0C2338] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#0B5D68]/25 hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-60 flex items-center justify-center gap-2 font-heading cursor-pointer"
+                className="w-full md:w-auto md:flex-1 py-4 px-6 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#F0A126]/25 hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-60 flex items-center justify-center gap-2 font-heading cursor-pointer"
               >
                 {isSubmitting ? (
                   <>
@@ -674,7 +674,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
           <div className="pt-2 flex flex-col gap-2.5 max-w-md mx-auto">
             <a
               href="/patient"
-              className="w-full py-3.5 px-5 rounded-xl bg-[#0B5D68] hover:bg-[#0C2338] text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 font-heading"
+              className="w-full py-3.5 px-5 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-extrabold text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 font-heading"
             >
               <Sparkles className="w-4 h-4 text-[#F0A126]" />
               <span>Open My Patient Portal Dashboard</span>
