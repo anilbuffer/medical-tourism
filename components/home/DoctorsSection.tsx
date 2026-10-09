@@ -450,19 +450,19 @@ export const DoctorsSection = () => {
                           {/* Primary High-Intent Button 1 (Gold Accent) */}
                           <button
                             onClick={() => openIntake(`Doctor Consult — ${doc.name}`)}
-                            className="px-7 py-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-[#F0A126]/20 transition-all cursor-pointer flex items-center justify-center gap-2 group/btn flex-1"
+                            className="px-4 sm:px-7 py-3.5 sm:py-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-[#F0A126]/20 transition-all cursor-pointer flex items-center justify-center gap-2 group/btn flex-1 text-center"
                           >
-                            <Calendar className="w-4 h-4 text-[#0C2338]" />
+                            <Calendar className="w-4 h-4 text-[#0C2338] shrink-0" />
                             <span>Schedule Video Consult with {doc.name.split(" ")[1]}</span>
-                            <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.4] transition-transform group-hover/btn:translate-x-1" />
+                            <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.4] transition-transform group-hover/btn:translate-x-1 shrink-0" />
                           </button>
 
                           {/* Secondary Action Button 2 (Medical Teal #0B5D68) */}
                           <button
                             onClick={() => handleWhatsAppConsult(doc)}
-                            className="px-6 py-4 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] active:scale-[0.98] text-white font-heading font-bold text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0 shadow-sm"
+                            className="px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] active:scale-[0.98] text-white font-heading font-bold text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0 shadow-sm"
                           >
-                            <MessageSquare className="w-4 h-4 text-[#fff]" />
+                            <MessageSquare className="w-4 h-4 text-[#fff] shrink-0" />
                             <span className="text-[#fff]">WhatsApp Care Desk</span>
                           </button>
                         </div>

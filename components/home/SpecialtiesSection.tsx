@@ -206,7 +206,7 @@ const SpecialtyStickyCard: React.FC<InteractiveCardProps> = ({
   return (
     <div
       id={`specialty-${specialty.id}`}
-      className="sticky w-full mb-16 sm:mb-28 lg:mb-44 last:mb-0"
+      className="sticky w-full mb-[45vh] sm:mb-[55vh] lg:mb-44 last:mb-0"
       style={{
         zIndex: 10 + index,
         // Fluid responsive sticky top offset prevents cards from clipping on shorter mobile screens

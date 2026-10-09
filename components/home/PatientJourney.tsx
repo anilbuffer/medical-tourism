@@ -199,7 +199,7 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
   return (
     <div
       id={`journey-step-${step.stepNumber}`}
-      className="sticky w-full mb-16 sm:mb-28 lg:mb-44 last:mb-0"
+      className="sticky w-full mb-[45vh] sm:mb-[55vh] lg:mb-44 last:mb-0"
       style={{
         zIndex: 10 + index,
         // Tactile stacked deck-of-cards animation with responsive sticky top
