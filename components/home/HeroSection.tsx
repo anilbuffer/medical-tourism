@@ -110,7 +110,7 @@ export const HeroSection = () => {
                 </button>
 
                 {/* 24 / 7 Dedicated English Concierge */}
-                <a
+                {/* <a
                   href="https://wa.me/919876543210"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -130,7 +130,7 @@ export const HeroSection = () => {
                       Dedicated English Concierge
                     </div>
                   </div>
-                </a>
+                </a> */}
               </motion.div>
 
             </div>
