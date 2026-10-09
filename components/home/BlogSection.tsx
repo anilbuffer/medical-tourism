@@ -131,9 +131,9 @@ export const BlogSection = () => {
               <BookOpen className="w-3.5 h-3.5 text-[#0B5D68]" />
               <span>CLINICAL GUIDES &amp; PATIENT EDUCATION</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-bold text-[#0C2338] leading-[1.15] tracking-tight">
               Latest Insights &amp;{" "}
-              <span className="text-[#0B5D68]">Preparation Guides.</span>
+              <span className="text-[#0e9d8d]">Preparation Guides.</span>
             </h2>
           </div>
 
@@ -230,11 +230,10 @@ export const BlogSection = () => {
 
                         {/* Floating Action Button */}
                         <div
-                          className={`w-13 h-13 sm:w-14 sm:h-14 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm group-hover:shadow-md ${
-                            idx % 2 === 0
-                              ? "bg-[#ECF4F7] text-[#0B5D68] border border-[#DCE6EB] group-hover:bg-[#F0A126] group-hover:text-[#0C2338] group-hover:border-[#F0A126]"
-                              : "bg-white text-[#0C2338] border border-[#DCE6EB] group-hover:bg-[#F0A126] group-hover:text-[#0C2338] group-hover:border-[#F0A126]"
-                          }`}
+                          className={`w-13 h-13 sm:w-14 sm:h-14 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm group-hover:shadow-md ${idx % 2 === 0
+                            ? "bg-[#ECF4F7] text-[#0B5D68] border border-[#DCE6EB] group-hover:bg-[#F0A126] group-hover:text-[#0C2338] group-hover:border-[#F0A126]"
+                            : "bg-white text-[#0C2338] border border-[#DCE6EB] group-hover:bg-[#F0A126] group-hover:text-[#0C2338] group-hover:border-[#F0A126]"
+                            }`}
                         >
                           <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                         </div>
@@ -285,11 +284,10 @@ export const BlogSection = () => {
                   key={idx}
                   onClick={() => api?.scrollTo(idx)}
                   aria-label={`Jump to guide slide ${idx + 1}`}
-                  className={`h-2.5 transition-all duration-300 rounded-full cursor-pointer ${
-                    currentSlide === idx
-                      ? "w-8 bg-[#0B5D68] shadow-xs"
-                      : "w-2.5 bg-[#DCE6EB] hover:bg-[#6B7C88]/50"
-                  }`}
+                  className={`h-2.5 transition-all duration-300 rounded-full cursor-pointer ${currentSlide === idx
+                    ? "w-8 bg-[#0B5D68] shadow-xs"
+                    : "w-2.5 bg-[#DCE6EB] hover:bg-[#6B7C88]/50"
+                    }`}
                 />
               ))}
             </div>

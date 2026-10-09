@@ -87,7 +87,7 @@ export const CareCoordination = () => {
 
           {/* LEFT COLUMN: Header & Stacked Concierge Service Cards */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            
+
             {/* Eyebrow Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-4 shadow-xs w-max">
               <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse" />
@@ -96,9 +96,9 @@ export const CareCoordination = () => {
             </div>
 
             {/* Main Headline */}
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-bold text-[#0C2338] leading-[1.15] tracking-tight mb-4">
               Care Doesn&apos;t Stop{" "}
-              <span className="text-[#0B5D68] block sm:inline">
+              <span className="text-[#0e9d8d] block sm:inline">
                 at the Hospital Door.
               </span>
             </h2>
@@ -140,7 +140,7 @@ export const CareCoordination = () => {
 
           {/* RIGHT COLUMN: Big Photography Canvas with Floating Specialist Card */}
           <div className="lg:col-span-5 relative w-full h-[480px] sm:h-[580px] lg:h-[660px] rounded-3xl overflow-hidden shadow-2xl border border-[#DCE6EB] bg-slate-100 group">
-            
+
             {/* Big High-Definition Photograph */}
             <Image
               src="/hero-doctor-patient.jpg"
@@ -165,7 +165,7 @@ export const CareCoordination = () => {
             {/* Floating Specialist / Coordinator Card Matching Reference Image */}
             <div className="absolute bottom-5 sm:bottom-6 left-5 sm:left-6 right-5 sm:right-6 z-20">
               <div className="bg-white rounded-2xl p-4 sm:p-4.5 shadow-2xl border border-white/60 flex items-center justify-between gap-3 sm:gap-4">
-                
+
                 {/* Avatar with Online Status Dot */}
                 <div className="flex items-center gap-3 min-w-0">
                   <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#0B5D68] shrink-0 bg-slate-100 shadow-sm">

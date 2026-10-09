@@ -219,7 +219,7 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
       >
         {/* Full-Bleed High-Definition Visual Canvas (1580px Full Container) */}
         <div className="relative w-full min-h-[560px] sm:min-h-[620px] lg:min-h-[680px] xl:min-h-[720px] overflow-hidden">
-          
+
           {/* Background Image with Smooth Parallax Movement */}
           <motion.div
             style={{
@@ -338,7 +338,7 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
                   onClick={() => onOpenIntake(`Patient Journey Step ${step.stepNumber} — ${step.title}`)}
                   className="py-3.5 px-6 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 transition-all cursor-pointer group/btn flex-1"
                 >
-                  <span>{step.primaryCta}</span>
+                  <span className="text-[#0C2338]">{step.primaryCta}</span>
                   <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.5] transition-transform group-hover/btn:translate-x-1" />
                 </button>
 
@@ -404,7 +404,7 @@ export const PatientJourney = () => {
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
               Four Simple Steps to Your{" "}
-              <span className="text-[#0B5D68] block sm:inline">
+              <span className="text-[#0e9d8d] block sm:inline">
                 World-Class Care in India.
               </span>
             </h2>
@@ -475,19 +475,17 @@ export const PatientJourney = () => {
               <span>Start Free 4-Step Review</span>
               <ArrowRight className="w-4 h-4 text-[#0C2338]" />
             </button>
-
             <a
               href="https://wa.me/919876543210?text=Hello%2C%20I%20have%20questions%20about%20the%204-step%20patient%20journey"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3.5 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] text-white border border-transparent font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-xs flex items-center justify-center gap-2 text-center"
             >
-              <MessageSquare className="w-4 h-4 text-[#14B8A6]" />
-              <span>WhatsApp Coordinator</span>
+              <MessageSquare className="w-4 h-4 text-[#ffffff]" />
+              <span className="text-[#ffffff]">WhatsApp Coordinator</span>
             </a>
           </div>
         </div>
-
       </div>
     </section>
   );

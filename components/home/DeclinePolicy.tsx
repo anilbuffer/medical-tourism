@@ -56,7 +56,7 @@ export const DeclinePolicy = () => {
                   onClick={() => openIntake("Clinical Integrity Consultation")}
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-xl transition-all cursor-pointer group shrink-0"
                 >
-                  <span>Learn About Clinical Feasibility</span>
+                  <span className="text-[#0C2338]">Learn About Clinical Feasibility</span>
                   <span className="text-[#0C2338] font-extrabold text-sm transition-transform group-hover:translate-x-1">→</span>
                 </button>
 
@@ -66,36 +66,20 @@ export const DeclinePolicy = () => {
                   className="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] active:scale-[0.98] border border-[#14B8A6]/30 text-white cursor-pointer transition-all group select-none shadow-lg shrink-0"
                   aria-label="Watch Clinical Protocol Video"
                 >
-                  <div className="w-8 h-8 rounded-full bg-white text-[#0C2338] flex items-center justify-center shadow-md group-hover:bg-[#F0A126] group-hover:text-[#0C2338] transition-all shrink-0">
-                    <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+                  <div className="w-5 h-5 rounded-full bg-white text-[#0B5D68] flex items-center justify-center shadow-md group-hover:bg-[#F0A126] group-hover:text-[#0C2338] transition-all shrink-0">
+                    <Play className="w-3 h-3 fill-current ml-0.5" />
                   </div>
                   <span className="font-heading font-bold text-xs tracking-wider uppercase text-white group-hover:text-[#F0A126] transition-colors whitespace-nowrap">
                     WATCH VIDEO
                   </span>
                 </button>
               </div>
-
-              {/* 3 Key Trust Pillars */}
-              <div className="flex flex-wrap items-center gap-2.5 text-xs sm:text-sm text-white/90">
-                <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#14B8A6]" />
-                  Independent Senior Specialist Review
-                </span>
-                <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#14B8A6]" />
-                  Zero Financial Pressure or Booking Quotas
-                </span>
-                <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#14B8A6]" />
-                  Direct Communication With Your Home Physician
-                </span>
-              </div>
             </div>
 
             {/* Right Column: Big Security Shield Badge Aligned with Left Content Height */}
             <div className="lg:col-span-5 flex items-center justify-center lg:justify-end">
               <div className="relative w-[320px] sm:w-[380px] lg:w-[420px] xl:w-[460px] h-[400px] sm:h-[460px] lg:h-[490px] xl:h-[510px] flex flex-col items-center justify-center select-none group transition-transform duration-500 hover:scale-[1.02]">
-                
+
                 {/* Custom Scaled SVG Shield Silhouette */}
                 <svg
                   viewBox="0 0 320 380"
@@ -128,7 +112,7 @@ export const DeclinePolicy = () => {
 
                 {/* Shield Content Layer (Centered & Proportional) */}
                 <div className="relative z-10 flex flex-col items-center justify-center px-6 pt-2 text-center">
-                  
+
                   {/* Row of Overlapping Doctor Avatars (Large & Impactful) */}
                   <div className="flex items-center justify-center mb-4 sm:mb-5 pt-2">
                     {/* Doctor 1 (Far Left) */}

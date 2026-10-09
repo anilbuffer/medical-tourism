@@ -131,7 +131,7 @@ export const ConnectSection = () => {
           {/* LEFT COLUMN: Heading, Protocol & Bedside Photo with Stamp */}
           {/* ======================================================== */}
           <div className="lg:col-span-6 flex flex-col justify-between">
-            
+
             {/* Header Area matching reference typography */}
             <div>
               {/* Badge */}
@@ -167,7 +167,7 @@ export const ConnectSection = () => {
                     key={step.num}
                     className="bg-[#ECF4F7] rounded-xl px-3.5 py-3 border border-[#DCE6EB] shadow-xs flex items-center gap-3 hover:border-[#0B5D68]/40 hover:bg-white transition-all group"
                   >
-                    <span className="w-7 h-7 rounded-lg bg-[#0B5D68] text-white flex items-center justify-center font-heading font-bold text-xs shrink-0 shadow-xs group-hover:bg-[#07434B] transition-colors">
+                    <span className="w-8 h-8 rounded-lg bg-[#ffffff] text-[#0B5D68] flex items-center justify-center font-heading font-bold text-xs shrink-0 shadow-xs group-hover:bg-[#07434B] transition-colors">
                       {step.num}
                     </span>
                     <h4 className="font-heading font-bold text-xs sm:text-[13px] text-[#0C2338] leading-snug">
@@ -203,7 +203,7 @@ export const ConnectSection = () => {
           {/* RIGHT COLUMN: Floating Form Card Over Surgeon Photo      */}
           {/* ======================================================== */}
           <div className="lg:col-span-6 flex justify-center lg:justify-end">
-            
+
             {/* Mobile-only background image block */}
             <div className="block lg:hidden relative w-full h-[280px] rounded-3xl overflow-hidden mb-6 shadow-md">
               <Image
@@ -218,7 +218,7 @@ export const ConnectSection = () => {
 
             {/* Floating White Form Card matching reference card */}
             <div className="w-full max-w-xl bg-white rounded-3xl p-6 sm:p-8 lg:p-9 shadow-[0_25px_60px_rgba(12,35,56,0.18)] border border-[#DCE6EB]/80 text-[#0C2338] relative z-20">
-              
+
               {/* Form Header */}
               <div className="mb-6">
                 <div className="flex items-center gap-2 mb-2">
@@ -237,7 +237,7 @@ export const ConnectSection = () => {
 
               {/* Form Body */}
               <form onSubmit={handleSubmit} className="space-y-4">
-                
+
                 {/* Name & Email Row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   <div>
@@ -316,11 +316,10 @@ export const ConnectSection = () => {
                       handleFiles(e.dataTransfer.files);
                     }}
                     onClick={() => fileInputRef.current?.click()}
-                    className={`border-2 border-dashed rounded-xl p-4 text-center cursor-pointer transition-all ${
-                      dragActive
-                        ? "border-[#0B5D68] bg-[#ECF4F7]"
-                        : "border-[#0B5D68]/30 hover:border-[#0B5D68] bg-[#F5F7F6] hover:bg-[#ECF4F7]/60"
-                    }`}
+                    className={`border-2 border-dashed rounded-xl p-4 text-center cursor-pointer transition-all ${dragActive
+                      ? "border-[#0B5D68] bg-[#ECF4F7]"
+                      : "border-[#0B5D68]/30 hover:border-[#0B5D68] bg-[#F5F7F6] hover:bg-[#ECF4F7]/60"
+                      }`}
                   >
                     <input
                       ref={fileInputRef}

@@ -201,7 +201,7 @@ export const DoctorsSection = () => {
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
               Meet Our Senior Medical Directors.{" "}
-              <span className="text-[#0B5D68] block sm:inline">
+              <span className="text-[#0e9d8d] block sm:inline">
                 Celebrated Surgical Leads.
               </span>
             </h2>
@@ -231,7 +231,7 @@ export const DoctorsSection = () => {
                 aria-label="Previous medical director"
                 className={`w-10 h-10 rounded-full border border-[#DCE6EB] flex items-center justify-center transition-all cursor-pointer ${canScrollPrev
                   ? "bg-white hover:bg-[#ECF4F7] text-[#0C2338] shadow-xs active:scale-95"
-                  : "bg-[#ECF4F7] text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
+                  : "bg-[#0e9d8d] text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
                   }`}
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -241,8 +241,8 @@ export const DoctorsSection = () => {
                 disabled={!canScrollNext}
                 aria-label="Next medical director"
                 className={`w-10 h-10 rounded-full border border-transparent flex items-center justify-center transition-all cursor-pointer ${canScrollNext
-                  ? "bg-[#0B5D68] hover:bg-[#07434B] text-white shadow-xs active:scale-95"
-                  : "bg-[#ECF4F7] text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
+                  ? "bg-[#0e9d8d] hover:bg-[#07434B] text-white shadow-xs active:scale-95"
+                  : "bg-[#0e9d8d] text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
                   }`}
               >
                 <ChevronRight className="w-5 h-5" />
@@ -424,14 +424,6 @@ export const DoctorsSection = () => {
 
                         {/* Technology & Credentials Box with Little Icons */}
                         <div className="bg-[#ECF4F7] rounded-2xl p-4 border border-[#DCE6EB] space-y-2.5 mb-6">
-                          {/* Technology with Sparkles Icon */}
-                          <div className="flex items-start gap-2.5 text-[#0C2338]">
-                            <Sparkles className="w-4 h-4 text-[#F0A126] shrink-0 mt-0.5" />
-                            <div className="text-xs sm:text-sm">
-                              <strong className="text-[#0C2338] mr-1">Advanced Technology:</strong>
-                              <span className="font-medium text-[#475467]">{doc.technology}</span>
-                            </div>
-                          </div>
 
                           {/* Education with GraduationCap Icon */}
                           <div className="flex items-start gap-2.5 text-[#6B7C88] pt-2 border-t border-[#DCE6EB]/60">
@@ -470,8 +462,8 @@ export const DoctorsSection = () => {
                             onClick={() => handleWhatsAppConsult(doc)}
                             className="px-6 py-4 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] active:scale-[0.98] text-white font-heading font-bold text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0 shadow-sm"
                           >
-                            <MessageSquare className="w-4 h-4 text-[#14B8A6]" />
-                            <span>WhatsApp Care Desk</span>
+                            <MessageSquare className="w-4 h-4 text-[#fff]" />
+                            <span className="text-[#fff]">WhatsApp Care Desk</span>
                           </button>
                         </div>
 
@@ -489,17 +481,13 @@ export const DoctorsSection = () => {
                           </Link>
                         </div>
                       </div>
-
                     </div>
-
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
           </Carousel>
-
         </div>
-
       </div>
     </section>
   );

@@ -282,7 +282,7 @@ export const Footer = () => {
               <div className="pt-2">
                 <button
                   onClick={() => openIntake("Footer Consultation")}
-                  className="w-full py-3 px-3 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.99] text-[#0C2338] font-heading font-extrabold text-xs shadow-md shadow-[#F0A126]/20 transition-all text-center uppercase tracking-wider cursor-pointer"
+                  className="w-full py-3 px-3 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.99] text-[#000000] font-heading font-bold text-xs shadow-md shadow-[#F0A126]/20 transition-all text-center uppercase tracking-wider cursor-pointer"
                 >
                   Book Free Consultation
                 </button>
@@ -309,15 +309,6 @@ export const Footer = () => {
             <span>·</span>
             <span>Apollo Hospitals</span>
           </div>
-        </div>
-
-        {/* Clinical & Legal Notice */}
-        <div className="py-8 text-[11px] text-slate-400 leading-relaxed space-y-2 border-b border-white/10">
-          <p className="font-semibold text-slate-300">Clinical &amp; Coordination Notice:</p>
-          <p>
-            {t.footer?.medicalDisclaimer ||
-              "Your Medicare Trip is an international patient healthcare concierge. We do not provide direct medical treatment or diagnosis; all surgical care, prescriptions, and clinical procedures are provided directly by independent, board-certified surgeons in JCI/NABH-accredited hospitals. Quotes are comprehensive, itemised, and subject to final clinical file review."}
-          </p>
         </div>
 
         {/* Bottom Bar */}

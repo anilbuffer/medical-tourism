@@ -227,7 +227,7 @@ export const CostTransparency = () => {
                 </th>
 
                 {/* Right Column: India Highlighted Header (Authoritative Medical Teal) */}
-                <th className="bg-[#0B5D68] py-4 sm:py-5 px-5 sm:px-8 font-heading font-bold text-sm sm:text-base text-white rounded-tr-2xl w-[18%] text-left">
+                <th className="bg-[#F0A126] py-4 sm:py-5 px-5 sm:px-8 font-heading font-bold text-sm sm:text-base text-white rounded-tr-2xl w-[18%] text-left">
                   India (Your Medicare Trip)
                 </th>
               </tr>
