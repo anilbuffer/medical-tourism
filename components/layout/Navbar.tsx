@@ -114,10 +114,11 @@ export const Navbar = () => {
               href="https://wa.me/919876543210"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors font-semibold"
+              className="flex items-center gap-1.5 transition-colors group"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              <span>24/7 International Desk: +91 98765 43210</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-white/90 font-medium">24/7 International Desk:</span>
+              <span className="text-emerald-400 group-hover:text-emerald-300 font-bold">+91 98765 43210</span>
             </a>
             <span className="text-white/20">|</span>
             <LanguageCountryPicker />

@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { useCare } from "@/context/CareContext";
 import { motion } from "framer-motion";
-import { ArrowRight, Headphones } from "lucide-react";
+import { ArrowRight, Headphones, Globe, BadgePercent } from "lucide-react";
 
 export const HeroSection = () => {
   const { openIntake } = useCare();
@@ -13,17 +13,20 @@ export const HeroSection = () => {
     {
       number: "1,500+",
       label: "International Patients Treated",
-      color: "text-[#F0A126]",
+      icon: Globe,
+      iconColor: "text-[#2C7FAF]",
     },
     {
       number: "70%",
       label: "Average Cost Savings vs UK/US",
-      color: "text-[#F0A126]",
+      icon: BadgePercent,
+      iconColor: "text-[#F0A126]",
     },
     {
       number: "24 / 7",
       label: "Dedicated English Concierge",
-      color: "text-[#F0A126]",
+      icon: Headphones,
+      iconColor: "text-[#0B8F83]",
     },
   ];
 
@@ -256,26 +259,37 @@ export const HeroSection = () => {
         className="relative z-20 w-full bg-[#ECF4F7] border-y border-[#DCE6EB] py-8 sm:py-10"
       >
         <div className="max-w-[1580px] mx-auto px-6 sm:px-12 lg:px-16 w-full">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
-            {stats.map((stat, idx) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="flex flex-col justify-center px-2 sm:px-4 lg:px-6 group transition-transform duration-300 hover:-translate-y-0.5"
-              >
-                <div
-                  className={`text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] font-bold font-heading ${stat.color} leading-none tracking-tight group-hover:scale-[1.02] transition-transform duration-300 origin-left`}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
+            {stats.map((stat, idx) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className="flex items-center gap-4 sm:gap-5 px-3 sm:px-6 py-2 group transition-transform duration-300 hover:-translate-y-0.5"
                 >
-                  {stat.number}
-                </div>
-                <div className="text-xs sm:text-sm font-heading font-semibold text-[#0C2338] leading-snug mt-2.5 sm:mt-3 max-w-[220px]">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+                  {/* Related Left Big Icon */}
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white border border-[#DCE6EB] shadow-sm flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:shadow-md group-hover:border-[#0B5D68]/30 transition-all">
+                    <Icon className={`w-7 h-7 sm:w-8 sm:h-8 ${stat.iconColor} stroke-[2.2]`} />
+                  </div>
+
+                  {/* Stat Metric & Label */}
+                  <div className="flex flex-col justify-center">
+                    <div
+                      className="text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] font-extrabold font-heading text-[#0C2338] leading-none tracking-tight group-hover:text-[#0B5D68] transition-colors"
+                    >
+                      {stat.number}
+                    </div>
+                    <div className="text-xs sm:text-sm font-heading font-semibold text-[#0C2338]/80 leading-snug mt-1.5 sm:mt-2">
+                      {stat.label}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
