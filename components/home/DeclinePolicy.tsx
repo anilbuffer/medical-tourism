@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Play, X, CheckCircle2, ShieldCheck, ArrowRight } from "lucide-react";
+import { Play, X, CheckCircle, ShieldCheck } from "lucide-react";
 import { useCare } from "@/context/CareContext";
 
 export const DeclinePolicy = () => {
@@ -12,143 +12,199 @@ export const DeclinePolicy = () => {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[#F8FAFC] py-20 sm:py-28 font-sans border-t border-[#DCE6EB]">
-        {/* Soft Ambient Radial Glow for Depth without Clutter */}
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#ECF4F7] rounded-full blur-3xl pointer-events-none opacity-60" />
-        <div className="absolute bottom-0 left-10 w-80 h-80 bg-[#F0A126]/5 rounded-full blur-3xl pointer-events-none" />
+      <section className="relative overflow-hidden bg-[#0A2540] text-white py-16 sm:py-20 lg:py-24 font-sans border-t border-[#DCE6EB]">
+        {/* 01. High-Resolution Clinical Photography Background */}
+        <div className="absolute inset-0 pointer-events-none select-none z-0">
+          <Image
+            src="/images/clinical-integrity-banner.jpg"
+            alt="Senior specialist surgeons evaluating medical case diagnostics"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          {/* Deep Navy/Blue Clinical Color Overlay matching reference style */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0C2338]/95 via-[#0A2E4E]/90 to-[#0C2338]/95 backdrop-blur-[0.5px]" />
+        </div>
 
-        <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        {/* 02. Section Content Layer */}
+        <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 
-            {/* Left Column: Short Copy, Airy Hierarchy & One Primary CTA */}
+            {/* Left Column: Clinical Integrity Guarantee Content & Action Buttons */}
             <div className="lg:col-span-7 flex flex-col justify-center">
-              {/* Refined Eyebrow */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-5 shadow-xs w-max">
-                <ShieldCheck className="w-4 h-4 text-[#0B5D68]" />
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#ECF4F7] font-heading text-xs uppercase tracking-wider font-bold mb-4 backdrop-blur-md w-max">
+                <span className="w-2 h-2 rounded-full bg-[#F0A126] animate-pulse" />
                 <span>CLINICAL INTEGRITY GUARANTEE</span>
               </div>
 
-              {/* Punchy Confident Headline */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-heading font-extrabold text-[#0C2338] leading-[1.15] mb-4 tracking-tight max-w-2xl">
-                If a procedure isn&apos;t right for you,{" "}
-                <span className="text-[#0B5D68]">we simply won&apos;t arrange it.</span>
+              {/* Main Headline */}
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-white leading-[1.15] mb-4 tracking-tight max-w-3xl">
+                If we believe a procedure isn&apos;t right for you, or cannot ensure the highest standard of care, we simply won&apos;t arrange it.
               </h2>
 
-              {/* Strict 1–2 Line Reassuring Description */}
-              <p className="text-base sm:text-lg text-[#6B7C88] leading-relaxed max-w-2xl mb-8 font-normal">
-                We are an independent clinical concierge, not a booking broker. Our surgical directors assess each case file strictly on clinical merit with zero sales quotas.
+              {/* Description Body */}
+              <p className="text-sm sm:text-base text-white/85 leading-relaxed max-w-2xl mb-8 font-normal">
+                We are not a booking agency or medical broker. We are an international clinical concierge. Our reputation rests entirely on your clinical outcome and long-term wellbeing.
               </p>
 
-              {/* Clear CTA Row: One Primary CTA + Subtle Video Trigger */}
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6 mb-8">
-                {/* One Primary CTA Button */}
+              {/* Action Buttons Row: [Learn About Clinical Feasibility] AND [Watch Video] Side-by-Side */}
+              <div className="flex flex-wrap items-center gap-4 sm:gap-5 mb-8">
+                {/* Primary Action Button */}
                 <button
-                  onClick={() => openIntake("Clinical Integrity Feasibility Review")}
-                  className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-[#F0A126]/20 transition-all cursor-pointer group"
+                  onClick={() => openIntake("Clinical Integrity Consultation")}
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-xl transition-all cursor-pointer group shrink-0"
                 >
-                  <span>Check Clinical Feasibility</span>
-                  <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.4] transition-transform group-hover:translate-x-1" />
+                  <span>Learn About Clinical Feasibility</span>
+                  <span className="text-[#0C2338] font-extrabold text-sm transition-transform group-hover:translate-x-1">→</span>
                 </button>
 
-                {/* Subtle Clean Video Trigger */}
+                {/* Watch Video Button moved immediately to the right */}
                 <button
                   onClick={() => setVideoOpen(true)}
-                  className="inline-flex items-center gap-3 px-5 py-3.5 rounded-xl bg-white hover:bg-slate-50 border border-[#DCE6EB] text-[#0C2338] shadow-xs cursor-pointer transition-all group"
+                  className="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 active:scale-[0.98] border border-white/25 text-white backdrop-blur-md cursor-pointer transition-all group select-none shadow-lg shrink-0"
                   aria-label="Watch Clinical Protocol Video"
                 >
-                  <div className="w-7 h-7 rounded-full bg-[#ECF4F7] text-[#0B5D68] flex items-center justify-center group-hover:bg-[#0B5D68] group-hover:text-white transition-colors shrink-0">
-                    <Play className="w-3 h-3 fill-current ml-0.5" />
+                  <div className="w-8 h-8 rounded-full bg-white text-[#0C2338] flex items-center justify-center shadow-md group-hover:bg-[#F0A126] group-hover:text-[#0C2338] transition-all shrink-0">
+                    <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
                   </div>
-                  <span className="font-heading font-bold text-xs tracking-wider uppercase text-[#0C2338]">
-                    Watch 2-Min Video
+                  <span className="font-heading font-bold text-xs tracking-wider uppercase text-white group-hover:text-[#F0A126] transition-colors whitespace-nowrap">
+                    WATCH VIDEO
                   </span>
                 </button>
               </div>
 
-              {/* 3 Clean Trust Tags (Single-Line Highlights) */}
-              <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-[#0C2338]">
-                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DCE6EB] font-medium text-xs text-[#0C2338] shadow-xs">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#0B5D68]" />
-                  Independent Specialist Review
+              {/* 3 Key Trust Pillars */}
+              <div className="flex flex-wrap items-center gap-2.5 text-xs sm:text-sm text-white/90">
+                <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-[#F0A126]" />
+                  Independent Senior Specialist Review
                 </span>
-                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DCE6EB] font-medium text-xs text-[#0C2338] shadow-xs">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#0B5D68]" />
-                  Zero Financial Quotas
+                <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-[#F0A126]" />
+                  Zero Financial Pressure or Booking Quotas
                 </span>
-                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DCE6EB] font-medium text-xs text-[#0C2338] shadow-xs">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#0B5D68]" />
-                  Home Doctor Continuity
+                <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-[#F0A126]" />
+                  Direct Communication With Your Home Physician
                 </span>
               </div>
             </div>
 
-            {/* Right Column: Clean, Airy Luxury Clinical Card with Doctor Portraits */}
+            {/* Right Column: Big Security Shield Badge Aligned with Left Content Height */}
             <div className="lg:col-span-5 flex items-center justify-center lg:justify-end">
-              <div className="relative w-full max-w-[460px] bg-white rounded-3xl border border-[#DCE6EB] p-8 sm:p-10 shadow-xl shadow-slate-200/50 flex flex-col items-center text-center">
+              <div className="relative w-[320px] sm:w-[380px] lg:w-[420px] xl:w-[460px] h-[400px] sm:h-[460px] lg:h-[490px] xl:h-[510px] flex flex-col items-center justify-center select-none group transition-transform duration-500 hover:scale-[1.02]">
+                
+                {/* Custom Scaled SVG Shield Silhouette */}
+                <svg
+                  viewBox="0 0 320 380"
+                  className="absolute inset-0 w-full h-full drop-shadow-[0_30px_60px_rgba(0,0,0,0.8)]"
+                >
+                  <defs>
+                    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#0A243A" stopOpacity="0.98" />
+                      <stop offset="50%" stopColor="#081D2F" stopOpacity="0.96" />
+                      <stop offset="100%" stopColor="#05131F" stopOpacity="0.98" />
+                    </linearGradient>
+                  </defs>
 
-                {/* Refined Overlapping Doctor Avatars */}
-                <div className="flex items-center justify-center mb-6 pt-2">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white -mr-3 shadow-md bg-slate-100 shrink-0">
-                    <Image
-                      src="/vikas-gupta.png"
-                      alt="Specialist"
-                      fill
-                      className="object-cover object-top"
-                    />
+                  {/* Outer Shield Path */}
+                  <path
+                    d="M 160, 12 C 200, 12 250, 22 296, 48 C 296, 150 280, 245 160, 368 C 40, 245 24, 150 24, 48 C 70, 22 120, 12 160, 12 Z"
+                    fill="url(#shieldGrad)"
+                    stroke="rgba(255, 255, 255, 0.55)"
+                    strokeWidth="4"
+                  />
+                  {/* Inner Accent Contour */}
+                  <path
+                    d="M 160, 24 C 196, 24 240, 33 282, 56 C 282, 146 268, 232 160, 348 C 52, 232 38, 146 38, 56 C 80, 33 124, 24 160, 24 Z"
+                    fill="none"
+                    stroke="#0B5D68"
+                    strokeWidth="2"
+                    strokeOpacity="0.8"
+                  />
+                </svg>
+
+                {/* Shield Content Layer (Centered & Proportional) */}
+                <div className="relative z-10 flex flex-col items-center justify-center px-6 pt-2 text-center">
+                  
+                  {/* Row of Overlapping Doctor Avatars (Large & Impactful) */}
+                  <div className="flex items-center justify-center mb-4 sm:mb-5 pt-2">
+                    {/* Doctor 1 (Far Left) */}
+                    <div className="relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full overflow-hidden border-2 border-white/60 -mr-3 sm:-mr-4 opacity-80 bg-slate-200 shrink-0 shadow-sm">
+                      <Image
+                        src="/vikas-gupta.png"
+                        alt="Specialist"
+                        fill
+                        className="object-cover object-top"
+                      />
+                    </div>
+
+                    {/* Doctor 2 (Mid Left) */}
+                    <div className="relative w-14 h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-full overflow-hidden border-2 border-white/85 -mr-3 sm:-mr-4 z-10 bg-slate-200 shrink-0 shadow-lg">
+                      <Image
+                        src="/jatinder-singla.png"
+                        alt="Specialist"
+                        fill
+                        className="object-cover object-top"
+                      />
+                    </div>
+
+                    {/* Doctor 3 (Center Featured Large) */}
+                    <div className="relative w-18 h-18 sm:w-22 sm:h-22 lg:w-24 lg:h-24 rounded-full overflow-hidden border-4 border-white z-20 bg-slate-200 shrink-0 shadow-2xl scale-105 ring-2 ring-[#0B5D68]/30">
+                      <Image
+                        src="/images/testimonials/doctor-portrait.jpg"
+                        alt="Chief Medical Director"
+                        fill
+                        className="object-cover object-top"
+                      />
+                    </div>
+
+                    {/* Doctor 4 (Mid Right) */}
+                    <div className="relative w-14 h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-full border-2 border-white/85 -ml-3 sm:-mr-4 z-10 bg-slate-200 shrink-0 shadow-lg overflow-hidden">
+                      <Image
+                        src="/images/hero/hero-doctor.jpg"
+                        alt="Specialist"
+                        fill
+                        className="object-cover object-top"
+                      />
+                    </div>
+
+                    {/* Doctor 5 (Far Right) */}
+                    <div className="relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full overflow-hidden border-2 border-white/60 -ml-3 sm:-ml-4 opacity-80 bg-slate-200 shrink-0 shadow-sm">
+                      <Image
+                        src="/ashish-ahuja.png"
+                        alt="Specialist"
+                        fill
+                        className="object-cover object-top"
+                      />
+                    </div>
                   </div>
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-white -mr-3 shadow-md z-10 bg-slate-100 shrink-0">
-                    <Image
-                      src="/jatinder-singla.png"
-                      alt="Specialist"
-                      fill
-                      className="object-cover object-top"
-                    />
+
+                  {/* Big Number "40+" */}
+                  <div className="font-heading font-extrabold text-5xl sm:text-6xl lg:text-[68px] text-white tracking-tight leading-none drop-shadow-xl">
+                    40+
                   </div>
-                  <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-xl z-20 bg-slate-100 shrink-0 ring-2 ring-[#0B5D68]/20">
-                    <Image
-                      src="/images/testimonials/doctor-portrait.jpg"
-                      alt="Chief Medical Director"
-                      fill
-                      className="object-cover object-top"
-                    />
+
+                  {/* Label: Chief Doctors */}
+                  <div className="font-heading font-bold text-lg sm:text-xl lg:text-2xl text-white mt-2 tracking-wide drop-shadow-md">
+                    Chief Doctors
                   </div>
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-white -ml-3 shadow-md z-10 bg-slate-100 shrink-0">
-                    <Image
-                      src="/priya-sharma.jpg"
-                      alt="Care Coordinator"
-                      fill
-                      className="object-cover object-top"
-                    />
+
+                  {/* Subtitle Pill */}
+                  <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs sm:text-sm font-heading font-bold uppercase tracking-wider text-[#F0A126] mt-3 backdrop-blur-md shadow-sm">
+                    <ShieldCheck className="w-4 h-4 text-[#F0A126]" />
+                    <span>Audited Senior Specialists</span>
                   </div>
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white -ml-3 shadow-md bg-slate-100 shrink-0">
-                    <Image
-                      src="/ashish-ahuja.png"
-                      alt="Specialist"
-                      fill
-                      className="object-cover object-top"
-                    />
-                  </div>
+
+                  {/* Secondary Reassurance */}
+                  <p className="text-xs sm:text-sm text-white/70 font-medium mt-2 max-w-[260px] leading-tight">
+                    UK, German &amp; US Board-Certified Specialists
+                  </p>
+
                 </div>
 
-                {/* Big Stat */}
-                <div className="font-heading font-extrabold text-5xl sm:text-6xl text-[#0C2338] tracking-tight leading-none mb-2">
-                  40+
-                </div>
-
-                {/* Label */}
-                <div className="font-heading font-bold text-xl text-[#0C2338] mb-1">
-                  Senior Surgical Directors
-                </div>
-
-                <p className="text-xs sm:text-sm text-[#6B7C88] max-w-[280px] leading-relaxed mb-5">
-                  UK, German, and US-fellowship trained department heads reviewing every case.
-                </p>
-
-                {/* Trust Badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-xs font-heading font-bold uppercase tracking-wider text-[#0B5D68]">
-                  <ShieldCheck className="w-4 h-4 text-[#0B5D68]" />
-                  <span>Audited Quaternary Specialists</span>
-                </div>
               </div>
             </div>
 

@@ -1,183 +1,430 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, ShieldCheck, Sparkles, Activity, Eye, Bone, Heart, Scissors } from "lucide-react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {
+  ArrowRight,
+  Clock,
+  ShieldCheck,
+  ChevronRight
+} from "lucide-react";
 import { useCare } from "@/context/CareContext";
 
-interface SpecialtyCardItem {
+// Bespoke Double-Tick Icon matching the brand palette
+const DoubleCheckIcon = () => (
+  <svg
+    className="w-4 h-4 text-[#F0A126] shrink-0"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.4"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M18 6L7 17l-4-4" />
+    <path d="M22 10l-7.5 7.5-2-2" />
+  </svg>
+);
+
+// Bespoke High-Precision Medical Icons matching brand palette
+const CardiologyIcon = () => (
+  <svg className="w-8 h-8 text-[#F0A126]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+    <path d="M12 5.5v4" />
+    <path d="M10 9h4" />
+  </svg>
+);
+
+const NeurologyIcon = () => (
+  <svg className="w-8 h-8 text-[#F0A126]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9.5 2A4.5 4.5 0 0 0 5 6.5c0 .6.1 1.2.3 1.7A4 4 0 0 0 4 12a4 4 0 0 0 2 3.5c-.3.6-.5 1.3-.5 2A4.5 4.5 0 0 0 10 22h.5" />
+    <path d="M14.5 2A4.5 4.5 0 0 1 19 6.5c0 .6-.1 1.2-.3 1.7A4 4 0 0 1 20 12a4 4 0 0 1-2 3.5c.3.6.5 1.3.5 2A4.5 4.5 0 0 1 14 22h-.5" />
+    <path d="M12 4v16" />
+    <path d="M9 10h6" />
+    <path d="M8 15h8" />
+  </svg>
+);
+
+const OrthopaedicsIcon = () => (
+  <svg className="w-8 h-8 text-[#F0A126]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M17 10c.7-.7 1.6-1 2.5-1a3.5 3.5 0 1 1 0 7c-.9 0-1.8-.3-2.5-1l-10-10C6.3 4.3 5.4 4 4.5 4a3.5 3.5 0 1 0 0 7c.9 0 1.8-.3 2.5-1Z" />
+    <circle cx="12" cy="12" r="2.5" />
+    <path d="M12 9v-2m0 10v-2m-3-3H7m10 0h-2" />
+  </svg>
+);
+
+const DentistryIcon = () => (
+  <svg className="w-6 h-6 text-[#F0A126]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2C8.5 2 6 4.5 6 8c0 3.5 1.5 6 3 10 1 2.5 1.5 4 3 4s2-1.5 3-4c1.5-4 3-6.5 3-10 0-3.5-2.5-6-6-6Z" />
+    <path d="M9 8c.5-1.5 1.5-2 3-2s2.5.5 3 2" />
+    <path d="M9 13h6" />
+    <path d="M10 16h4" />
+  </svg>
+);
+
+interface SpecialtyItem {
   id: string;
   title: string;
   subtitle: string;
-  description: string;
   image: string;
   badge: string;
   stat: string;
-  icon: React.ComponentType<{ className?: string }>;
+  stay: string;
+  bullets: string[];
+  icon: React.ComponentType;
+  cardSide?: "left" | "right";
 }
 
-const SPECIALTIES_DATA: SpecialtyCardItem[] = [
-  {
-    id: "orthopaedics",
-    title: "Robotic Joint Surgery",
-    subtitle: "Quaternary Orthopaedics",
-    description:
-      "Stryker Mako 3D computer-navigated knee and hip arthroplasty with muscle-sparing same-week ambulation.",
-    image: "/images/specialties/orthopaedics.jpg",
-    badge: "Mako 3D Navigation",
-    stat: "99.4% Joint Stability",
-    icon: Bone,
-  },
+const specialties: SpecialtyItem[] = [
   {
     id: "cardiology",
-    title: "Quaternary Cardiology",
-    subtitle: "Interventional & Structural",
-    description:
-      "Advanced valve repair, off-pump coronary bypass, and complex cardiac interventions in sterile cath labs.",
+    title: "Cardiology",
+    subtitle: "Advanced cardiac diagnostics, interventional procedures, and preventive heart wellness.",
     image: "/images/specialties/cardiology.jpg",
-    badge: "24/7 Cardiac Suite",
-    stat: "99.2% Surgical Success",
-    icon: Heart,
+    badge: "Quaternary Heart Center",
+    stat: "99.4% Surgical Success",
+    stay: "5–10 Days",
+    cardSide: "left",
+    bullets: [
+      "24/7 Cardiac Cath Lab",
+      "ECG, Echo & TMT",
+      "Top interventional cardiologists"
+    ],
+    icon: CardiologyIcon
   },
   {
-    id: "ophthalmology",
-    title: "Laser Eye Surgery & SMILE",
-    subtitle: "Refractive Ophthalmology",
-    description:
-      "Blade-free Contoura Vision LASIK, SMILE Pro, and custom trifocal cataract lenses for rapid 20/20 recovery.",
-    image: "/images/facilities/laser-ophthalmology.jpg",
-    badge: "Zeiss & Alcon Suite",
-    stat: "99.8% Visual Acuity",
-    icon: Eye,
+    id: "neurology",
+    title: "Neurology",
+    subtitle: "Comprehensive brain, spine & nerve care — stroke management, epilepsy surgery & rehab.",
+    image: "/images/specialties/neurology.jpg",
+    badge: "Advanced Neuro Suite",
+    stat: "12,500+ Procedures",
+    stay: "7–14 Days",
+    cardSide: "left",
+    bullets: [
+      "Advanced Neuro-Imaging",
+      "Stroke Recovery Unit",
+      "Robotic Neuro-Rehab"
+    ],
+    icon: NeurologyIcon
   },
   {
-    id: "cosmetics",
-    title: "Aesthetic & Plastic Surgery",
-    subtitle: "Body Contouring & Facial",
-    description:
-      "4D High-Definition VASER liposculpture, deep plane facelifts, and rhinoplasty with 100% confidential VIP care.",
-    image: "/images/facilities/cosmetic-surgery.jpg",
-    badge: "VASER Ultrasound",
-    stat: "VIP Private Suites",
-    icon: Sparkles,
+    id: "orthopaedics",
+    title: "Orthopaedics",
+    subtitle: "Move without pain. Walk independently on day one with robotic sub-millimeter precision.",
+    image: "/images/specialties/orthopaedics.jpg",
+    badge: "MAKO Robotic Center",
+    stat: "11,000+ Surgeries",
+    stay: "7–14 Days",
+    cardSide: "left",
+    bullets: [
+      "Mako Stryker 3D Navigation",
+      "Sub-Millimeter Alignment",
+      "FDA-Approved Stryker Implants"
+    ],
+    icon: OrthopaedicsIcon
   },
+  {
+    id: "dentistry",
+    title: "Dentistry",
+    subtitle: "Complete full-mouth restoration with Swiss titanium implants & 48-hour CAD/CAM zirconia.",
+    image: "/images/specialties/dentistry.jpg",
+    badge: "CAD/CAM Smile Studio",
+    stat: "99.8% Implant Success",
+    stay: "3–7 Days",
+    cardSide: "left",
+    bullets: [
+      "All-on-4 / All-on-6 Swiss Titanium",
+      "In-House 48h CAD/CAM Milling",
+      "Lifetime Implant Warranty"
+    ],
+    icon: DentistryIcon
+  }
 ];
+
+interface InteractiveCardProps {
+  specialty: SpecialtyItem;
+  index: number;
+  total: number;
+  onOpenIntake: (title: string) => void;
+}
+
+const SpecialtyStickyCard: React.FC<InteractiveCardProps> = ({
+  specialty,
+  index,
+  total,
+  onOpenIntake
+}) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  // Buttery-smooth spring physics for cursor parallax
+  const springConfig = { damping: 25, stiffness: 180, mass: 0.5 };
+  const mouseXSpring = useSpring(x, springConfig);
+  const mouseYSpring = useSpring(y, springConfig);
+
+  // 3D tilt angles for the full-width visual card
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], [3, -3]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], [-3, 3]);
+
+  // Subtle opposite parallax translation for the background photograph
+  const imageTranslateX = useTransform(mouseXSpring, [-0.5, 0.5], [12, -12]);
+  const imageTranslateY = useTransform(mouseYSpring, [-0.5, 0.5], [12, -12]);
+
+  // Forward parallax translation for the floating content card
+  const contentTranslateX = useTransform(mouseXSpring, [-0.5, 0.5], [-16, 16]);
+  const contentTranslateY = useTransform(mouseYSpring, [-0.5, 0.5], [-16, 16]);
+
+  // Interactive cursor spotlight coordinates
+  const [spotlight, setSpotlight] = useState({ x: 0, y: 0, opacity: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const relX = (e.clientX - rect.left) / rect.width - 0.5;
+    const relY = (e.clientY - rect.top) / rect.height - 0.5;
+    x.set(relX);
+    y.set(relY);
+    setSpotlight({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+      opacity: 1
+    });
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+    setSpotlight(prev => ({ ...prev, opacity: 0 }));
+  };
+
+  const isLeft = specialty.cardSide !== "right";
+  const IconComponent = specialty.icon;
+
+  return (
+    <div
+      id={`specialty-${specialty.id}`}
+      className="sticky w-full mb-24 sm:mb-36 lg:mb-44 last:mb-0"
+      style={{
+        zIndex: 10 + index,
+        // Cascading sticky top position creates a natural stacked deck of cards
+        top: `calc(5.5rem + ${index * 12}px)`
+      }}
+    >
+      <motion.div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          rotateX,
+          rotateY,
+          transformStyle: "preserve-3d"
+        }}
+        className="relative w-full rounded-[20px] sm:rounded-[20px] lg:rounded-[30px] overflow-hidden group transition-all duration-300"
+      >
+        {/* Full-Bleed High-Definition Visual Canvas (1580px Full Container) */}
+        <div className="relative w-full min-h-[540px] sm:min-h-[600px] lg:min-h-[640px] xl:min-h-[680px] overflow-hidden">
+          {/* Background Image with Smooth Parallax Movement */}
+          <motion.div
+            style={{
+              x: imageTranslateX,
+              y: imageTranslateY
+            }}
+            className="absolute -inset-6 w-[calc(100%+48px)] h-[calc(100%+48px)] pointer-events-none"
+          >
+            <Image
+              src={specialty.image}
+              alt={specialty.title}
+              fill
+              priority={index === 0}
+              sizes="(max-width: 1580px) 100vw, 1580px"
+              className="object-cover object-center scale-[1.04] transition-transform duration-700 group-hover:scale-[1.06]"
+            />
+          </motion.div>
+
+          {/* Gradients ensuring photographic vibrancy and crisp card readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none" />
+          <div
+            className={`absolute inset-0 pointer-events-none ${isLeft
+              ? "bg-gradient-to-r from-black/45 via-black/15 to-transparent"
+              : "bg-gradient-to-l from-black/45 via-black/15 to-transparent"
+              }`}
+          />
+
+          {/* Dynamic Cursor Spotlight Effect */}
+          <div
+            className="absolute inset-0 pointer-events-none transition-opacity duration-300"
+            style={{
+              opacity: spotlight.opacity,
+              background: `radial-gradient(650px circle at ${spotlight.x}px ${spotlight.y}px, rgba(255, 255, 255, 0.12), transparent 70%)`
+            }}
+          />
+
+          {/* Top Badges (Clinical Authority Pill & Stat Pill) */}
+          <div
+            className={`absolute top-5 sm:top-7 z-10 flex flex-wrap items-center gap-2.5 ${isLeft ? "right-5 sm:right-7" : "left-5 sm:left-7"
+              }`}
+          >
+            {/* Accreditation Badge */}
+            <div className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-white/95 backdrop-blur-md border border-[#DCE6EB] shadow-sm">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#0B5D68] shrink-0" />
+              <span className="text-[10px] sm:text-[11px] font-heading font-bold tracking-wider uppercase text-[#0C2338]">
+                {specialty.badge}
+              </span>
+            </div>
+
+            {/* Audited Clinical Stat Badge */}
+            <div className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-white/95 backdrop-blur-md border border-[#DCE6EB] shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-[#0B5D68] shrink-0" />
+              <span className="text-[10px] sm:text-[11px] font-heading font-bold text-[#0B5D68]">
+                {specialty.stat}
+              </span>
+            </div>
+          </div>
+
+          {/* Floating Content Card */}
+          <motion.div
+            style={{
+              x: contentTranslateX,
+              y: contentTranslateY,
+              transformStyle: "preserve-3d"
+            }}
+            className={`absolute z-20 ${isLeft
+              ? "left-5 sm:left-10 lg:left-16 bottom-5 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2"
+              : "right-5 sm:right-10 lg:right-16 bottom-5 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2"
+              } w-[calc(100%-2.5rem)] sm:w-[420px] lg:w-[450px]`}
+          >
+            {/* Dark Navy Rounded Card */}
+            <div className="bg-[#0C2338] backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-9 text-white shadow-[0_25px_60px_rgba(0,0,0,0.7)] hover:border-white/20 transition-all">
+
+              {/* Top Row: Square-Rounded Icon Box + Title */}
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-16 h-16 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-[#F0A126] shrink-0 shadow-inner">
+                  <IconComponent />
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-bold font-heading text-white tracking-tight leading-tight">
+                  {specialty.title}
+                </h3>
+              </div>
+
+              {/* Subtitle / Description */}
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-body mb-6">
+                {specialty.subtitle}
+              </p>
+
+              {/* Bullet Points with Gold Double-Ticks */}
+              <div className="space-y-3 mb-8">
+                {specialty.bullets.map((bullet, bIdx) => (
+                  <div
+                    key={bIdx}
+                    className="flex items-center gap-3 text-xs sm:text-sm text-slate-200 font-medium"
+                  >
+                    <DoubleCheckIcon />
+                    <span>{bullet}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Action Button: Brand standard #F0A126 */}
+              <button
+                onClick={() => onOpenIntake(specialty.title)}
+                className="w-full py-3.5 px-6 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 transition-all cursor-pointer group"
+              >
+                <span>CHECK CLINICAL FEASIBILITY</span>
+                <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.5] transition-transform group-hover:translate-x-1" />
+              </button>
+
+              {/* Bottom Metadata Bar */}
+              <div className="flex items-center justify-between pt-4 mt-5 border-t border-white/10 text-[11px] text-slate-400 font-medium font-body">
+                <div className="flex items-center gap-1.5">
+                  <Clock className="w-3.5 h-3.5 text-slate-400" />
+                  <span>
+                    Average Stay: <strong className="text-slate-200">{specialty.stay}</strong>
+                  </span>
+                </div>
+                <div className="flex items-center gap-1.5 text-slate-300">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#F0A126]" />
+                  <span className="font-semibold text-slate-200">Verified Pricing</span>
+                </div>
+              </div>
+
+            </div>
+          </motion.div>
+
+        </div>
+      </motion.div>
+    </div>
+  );
+};
 
 export const SpecialtiesSection = () => {
   const { openIntake } = useCare();
 
+  const scrollToSpecialty = (id: string) => {
+    const el = document.getElementById(`specialty-${id}`);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
+
   return (
     <section
-      id="specialties"
-      className="py-20 sm:py-28 lg:py-32 bg-[#FAFCFD] relative border-t border-[#DCE6EB] font-sans"
+      id="treatments"
+      className="bg-[#ffffff] text-[#0C2338] relative w-full pt-16 sm:pt-24 pb-20 sm:pb-28"
     >
-      <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header: Short Copy & Airy Spacing */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 sm:mb-18 gap-6">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-4 shadow-xs">
-              <Activity className="w-3.5 h-3.5 text-[#0B5D68]" />
-              <span>CLINICAL SPECIALTIES</span>
+      {/* 1580px Expanded Container matching Header and Hero */}
+      <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 sm:py-3.5 w-full">
+        {/* Section Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 sm:mb-12 gap-6">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] mb-3.5 shadow-xs">
+              <span className="h-2 w-2 rounded-full bg-[#0B5D68] animate-pulse"></span>
+              <p className="text-[#0B5D68] font-heading font-bold text-xs uppercase tracking-wider">
+                QUATERNARY CLINICAL EXCELLENCE
+              </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
-              Premier Surgical Disciplines.{" "}
-              <span className="text-[#0B5D68]">Audited Outcomes.</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
+              Specialised Treatments.{" "}
+              <span className="text-[#0B5D68] block sm:inline">
+                Celebrated Specialists.
+              </span>
             </h2>
-            <p className="text-[#6B7C88] text-base sm:text-lg leading-relaxed font-normal mt-3">
-              Chief surgeons performing advanced procedures in JCI-accredited tertiary medical centers.
-            </p>
           </div>
-
-          <Link
-            href="/treatments"
-            className="inline-flex items-center gap-2 text-xs uppercase font-heading font-bold tracking-wider text-[#0B5D68] hover:text-[#0C2338] hover:underline transition-colors group shrink-0"
-          >
-            <span>View All Medical Procedures</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </Link>
+          <p className="text-[#6B7C88] max-w-xl text-sm sm:text-base leading-relaxed font-normal">
+            All procedures are performed by Chief Surgeons in JCI &amp; NABH-accredited tertiary hospitals with US-FDA approved implants, transparent packages, and zero waitlist delays.
+          </p>
         </div>
 
-        {/* 4 Premium Visual Storytelling Cards (2x2 Clean Airy Grid) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 mb-16">
-          {SPECIALTIES_DATA.map((item) => {
-            const Icon = item.icon;
-
-            return (
-              <div
-                key={item.id}
-                onClick={() => openIntake(`${item.title} Consultation`)}
-                className="group relative bg-white rounded-3xl border border-[#DCE6EB] hover:border-[#0B5D68]/40 shadow-xs hover:shadow-xl transition-all duration-400 overflow-hidden cursor-pointer flex flex-col justify-between"
-              >
-                {/* Visual Image Banner with Subtle Hover Scale */}
-                <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                  {/* Subtle Top-Left Category Pill */}
-                  <div className="absolute top-4 left-4 z-10">
-                    <span className="px-3.5 py-1.5 rounded-full bg-[#0C2338]/85 backdrop-blur-md text-white text-[11px] font-heading font-medium tracking-wider uppercase shadow-sm border border-white/20">
-                      {item.badge}
-                    </span>
-                  </div>
-
-                  {/* Outcome Stat Pill Top-Right */}
-                  <div className="absolute top-4 right-4 z-10">
-                    <span className="px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-[#0C2338] text-[11px] font-heading font-bold shadow-sm border border-[#DCE6EB] flex items-center gap-1.5">
-                      <ShieldCheck className="w-3.5 h-3.5 text-[#0B5D68]" />
-                      <span>{item.stat}</span>
-                    </span>
-                  </div>
-                </div>
-
-                {/* Card Body with 1–2 Line Descriptions */}
-                <div className="p-7 sm:p-8 flex-1 flex flex-col justify-between bg-white">
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-7 h-7 rounded-lg bg-[#ECF4F7] text-[#0B5D68] flex items-center justify-center shrink-0">
-                        <Icon className="w-4 h-4 text-[#0B5D68]" />
-                      </div>
-                      <span className="text-xs font-heading font-bold uppercase tracking-wider text-[#0B5D68]">
-                        {item.subtitle}
-                      </span>
-                    </div>
-
-                    <h3 className="font-heading font-extrabold text-2xl sm:text-[26px] text-[#0C2338] group-hover:text-[#0B5D68] transition-colors mb-2.5 leading-snug">
-                      {item.title}
-                    </h3>
-
-                    {/* Strict 1–2 Line Description */}
-                    <p className="text-xs sm:text-sm text-[#6B7C88] leading-relaxed line-clamp-2 mb-6">
-                      {item.description}
-                    </p>
-                  </div>
-
-                  {/* Single Clean Interactive Trigger */}
-                  <div className="pt-4 border-t border-[#DCE6EB]/70 flex items-center justify-between text-xs font-heading font-bold uppercase tracking-wider text-[#0B5D68] group-hover:text-[#0C2338] transition-colors">
-                    <span>Inquire About Treatment</span>
-                    <div className="w-8 h-8 rounded-full bg-[#ECF4F7] text-[#0B5D68] group-hover:bg-[#0B5D68] group-hover:text-white flex items-center justify-center transition-all">
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+        {/* Specialty Quick Jump Bar */}
+        <div className="flex items-center gap-2.5 sm:gap-3 overflow-x-auto no-scrollbar pb-3 mb-8 sm:mb-12">
+          {specialties.map((spec, idx) => (
+            <button
+              key={spec.id}
+              onClick={() => scrollToSpecialty(spec.id)}
+              className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white hover:bg-[#ECF4F7] border border-[#DCE6EB] hover:border-[#0B5D68]/40 text-xs sm:text-sm text-[#0C2338] transition-all whitespace-nowrap cursor-pointer shadow-xs group"
+            >
+              <span className="w-8 h-8 rounded-full bg-[#ECF4F7] text-[#0B5D68] flex items-center justify-center text-[12px] font-bold group-hover:bg-[#0B5D68] group-hover:text-white transition-colors">
+                0{idx + 1}
+              </span>
+              <span className="font-heading font-semibold text-[#0C2338]">{spec.title}</span>
+              <ChevronRight className="w-3.5 h-3.5 text-[#6B7C88] group-hover:translate-x-0.5 transition-transform" />
+            </button>
+          ))}
         </div>
 
-        {/* One Primary Bottom Action */}
-        <div className="text-center">
-          <button
-            onClick={() => openIntake("Specialty Case Evaluation")}
-            className="inline-flex items-center gap-3 px-9 py-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-[#F0A126]/20 transition-all cursor-pointer group"
-          >
-            <span>Request Specialist Case Review</span>
-            <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.4] transition-transform group-hover:translate-x-1" />
-          </button>
+        {/* STICKY STACKING CARDS CONTAINER (1580px) */}
+        <div className="relative">
+          {specialties.map((specialty, index) => (
+            <SpecialtyStickyCard
+              key={specialty.id}
+              specialty={specialty}
+              index={index}
+              total={specialties.length}
+              onOpenIntake={openIntake}
+            />
+          ))}
         </div>
       </div>
     </section>
