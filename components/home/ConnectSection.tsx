@@ -15,6 +15,7 @@ import {
   Check
 } from "lucide-react";
 import { useCare } from "@/context/CareContext";
+import { BrandIcon } from "@/components/ui/BrandLogo";
 
 // Bespoke Circular Rotating Stamp Badge matching the reference design
 const CircularStampBadge = () => (
@@ -37,12 +38,9 @@ const CircularStampBadge = () => (
         </textPath>
       </text>
     </svg>
-    {/* Center Dark Circle with Accent Icon */}
+    {/* Center Dark Circle with Brand Icon */}
     <div className="absolute w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#0C2338] text-white flex items-center justify-center shadow-lg border-2 border-white">
-      <div className="flex flex-col items-center justify-center">
-        <span className="w-2 h-2 rounded-full bg-[#38BDF8] mb-0.5 animate-pulse" />
-        <span className="w-1.5 h-1.5 rounded-full bg-[#F0A126]" />
-      </div>
+      <BrandIcon variant="white" className="w-6 h-6 sm:w-7 sm:h-7" />
     </div>
   </div>
 );
@@ -86,22 +84,18 @@ export const ConnectSection = () => {
     {
       num: "1",
       title: "Within 4 Hours — Intake Confirmation",
-      desc: "A dedicated care manager acknowledges your files and verifies if additional MRI scans, X-rays, or blood work are required.",
     },
     {
       num: "2",
       title: "Within 24–48 Hours — Senior Specialist Opinion",
-      desc: "A Department Chief in your specific specialty personally evaluates your file and drafts a clinical feasibility opinion.",
     },
     {
       num: "3",
       title: "By Day Three — Guaranteed Price & Travel Blueprint",
-      desc: "You receive an itemised quote with implant brand specifications, in-country duration, and hospital visa invitation letter.",
     },
     {
       num: "4",
       title: "Surgeon Video Call & Family Q&A",
-      desc: "A direct 1-on-1 video call with your named operating surgeon. Bring your whole family into the room before you ever book a flight.",
     },
   ];
 
@@ -166,23 +160,18 @@ export const ConnectSection = () => {
                 </h3>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {intakeSteps.map((step) => (
                   <div
                     key={step.num}
-                    className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 sm:p-4.5 border border-[#DCE6EB] shadow-xs flex flex-col justify-between hover:border-[#0B5D68]/40 transition-colors"
+                    className="bg-white/95 backdrop-blur-sm rounded-xl px-3.5 py-3 border border-[#DCE6EB] shadow-xs flex items-center gap-3 hover:border-[#0B5D68]/40 hover:bg-white transition-all group"
                   >
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="w-7 h-7 rounded-lg bg-[#0B5D68] text-white flex items-center justify-center font-heading font-bold text-xs shrink-0 shadow-xs">
-                        {step.num}
-                      </span>
-                      <h4 className="font-heading font-bold text-xs sm:text-sm text-[#0C2338] leading-tight">
-                        {step.title}
-                      </h4>
-                    </div>
-                    <p className="text-xs text-[#6B7C88] leading-relaxed">
-                      {step.desc}
-                    </p>
+                    <span className="w-7 h-7 rounded-lg bg-[#0B5D68] text-white flex items-center justify-center font-heading font-bold text-xs shrink-0 shadow-xs group-hover:bg-[#07434B] transition-colors">
+                      {step.num}
+                    </span>
+                    <h4 className="font-heading font-bold text-xs sm:text-[13px] text-[#0C2338] leading-snug">
+                      {step.title}
+                    </h4>
                   </div>
                 ))}
               </div>

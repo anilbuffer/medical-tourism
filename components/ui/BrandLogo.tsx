@@ -75,3 +75,41 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
     </div>
   );
 };
+
+export interface BrandIconProps {
+  className?: string;
+  variant?: "white" | "color";
+}
+
+export const BrandIcon: React.FC<BrandIconProps> = ({
+  className = "w-6 h-6",
+  variant = "white",
+}) => {
+  const isWhite = variant === "white";
+  const crossColor = isWhite ? "#ffffff" : "#0B5D68";
+  const accentColor = "#F0A126";
+
+  return (
+    <svg
+      viewBox="-3 -3 52 52"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      {/* Medical Cross */}
+      <rect x="15" y="0" width="16" height="46" rx="5" fill={crossColor} />
+      <rect x="0" y="15" width="46" height="16" rx="5" fill={crossColor} />
+
+      {/* Golden Dynamic Swoosh Arrow */}
+      <path
+        d="M -2 46 C 10 46 25 34 37 10"
+        stroke={accentColor}
+        strokeWidth="3.75"
+        strokeLinecap="round"
+      />
+      {/* Arrowhead */}
+      <polygon points="37,4 42,16 31,12" fill={accentColor} />
+    </svg>
+  );
+};
