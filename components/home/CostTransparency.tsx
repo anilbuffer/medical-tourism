@@ -1,8 +1,188 @@
 "use client";
 
-import React, { useState } from "react";
-import { ArrowRight, Info, ShieldCheck, Check, Sparkles, Building, Car, Mountain } from "lucide-react";
+import React from "react";
+import { ArrowRight, ShieldCheck, Mountain } from "lucide-react";
 import { useCare } from "@/context/CareContext";
+
+// Medical SVG Outline Icons with green/teal duotone strokes matching reference image
+// Medical SVG Outline Icons with green/teal duotone strokes - Enlarged and precisely aligned
+const KneeIcon = () => (
+  <div className="w-12 h-12 rounded-xl bg-[#F0F7F6] border border-[#D2EAE6] flex items-center justify-center shrink-0 shadow-xs group-hover:bg-[#E0F2EE] group-hover:border-[#B4DFD5] transition-all">
+    <svg className="w-7 h-7" viewBox="0 0 28 28" fill="none">
+      {/* Femur (Upper thigh bone & condyles) */}
+      <path
+        d="M11 3H17C18 3 18.8 3.8 18.8 4.8V8C18.8 9.5 19.8 10.8 21.2 11.2C22.4 11.6 23 12.6 23 13.5C23 14.8 22 15.8 20.8 15.8H7.2C6 15.8 5 14.8 5 13.5C5 12.6 5.6 11.6 6.8 11.2C8.2 10.8 9.2 9.5 9.2 8V4.8C9.2 3.8 10 3 11 3Z"
+        stroke="#0B5D68"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+        fill="#E8F4F2"
+      />
+      {/* Robotic Articulation Bearing Plate */}
+      <rect x="7" y="15.8" width="14" height="2.8" rx="1.4" fill="#1B8755" stroke="#0B5D68" strokeWidth="1" />
+      {/* Tibia (Lower shin bone) */}
+      <path
+        d="M9 18.6H19C20 18.6 20.8 19.4 20.8 20.4V23C20.8 24.1 19.9 25 18.8 25H9.2C8.1 25 7.2 24.1 7.2 23V20.4C7.2 19.4 8 18.6 9 18.6Z"
+        stroke="#0B5D68"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+        fill="#E8F4F2"
+      />
+      {/* Sub-Millimeter Robotic Target Center */}
+      <circle cx="14" cy="17.2" r="0.9" fill="#FFFFFF" />
+    </svg>
+  </div>
+);
+
+const HipIcon = () => (
+  <div className="w-12 h-12 rounded-xl bg-[#F0F7F6] border border-[#D2EAE6] flex items-center justify-center shrink-0 shadow-xs group-hover:bg-[#E0F2EE] group-hover:border-[#B4DFD5] transition-all">
+    <svg className="w-7 h-7" viewBox="0 0 28 28" fill="none">
+      {/* Pelvic Wing & Acetabular Cup Socket */}
+      <path
+        d="M4.5 7.5C6.2 4.5 9.8 3.5 14 3.5C18.2 3.5 21.8 4.5 23.5 7.5C22.2 9.8 20 11 18.2 11C15.8 11 15.2 9.2 14 9.2C12.8 9.2 12.2 11 9.8 11C8 11 5.8 9.8 4.5 7.5Z"
+        stroke="#0B5D68"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="#E8F4F2"
+      />
+      {/* Femoral Head Ball (Ceramic/Titanium Implant) */}
+      <circle cx="14" cy="13.2" r="3.6" stroke="#0B5D68" strokeWidth="1.8" fill="#1B8755" />
+      {/* Direct Anterior Femoral Stem */}
+      <path
+        d="M14 16.8V20.2L11 24.5"
+        stroke="#0B5D68"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M14 20.2L17 24.5"
+        stroke="#0B5D68"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx="14" cy="13.2" r="1.3" fill="#FFFFFF" />
+    </svg>
+  </div>
+);
+
+const DentalIcon = () => (
+  <div className="w-12 h-12 rounded-xl bg-[#F0F7F6] border border-[#D2EAE6] flex items-center justify-center shrink-0 shadow-xs group-hover:bg-[#E0F2EE] group-hover:border-[#B4DFD5] transition-all">
+    <svg className="w-7 h-7" viewBox="0 0 28 28" fill="none">
+      {/* Molar Crown Contours */}
+      <path
+        d="M6 10C6 6 9 4.2 14 4.2C19 4.2 22 6 22 10C22 13.5 20.8 16 19.5 19.5C18.5 22.8 17.2 24 16 24C14.8 24 14.8 21.2 14 21.2C13.2 21.2 13.2 24 12 24C10.8 24 9.5 22.8 8.5 19.5C7.2 16 6 13.5 6 10Z"
+        stroke="#0B5D68"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+        fill="#E8F4F2"
+      />
+      {/* Crown Occlusal Surface Highlight */}
+      <path
+        d="M10 8C11.2 7 12.6 6.5 14 6.5C15.4 6.5 16.8 7 18 8"
+        stroke="#1B8755"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+      />
+      {/* Titanium Implant Abutment Screw Post */}
+      <path
+        d="M14 12.5V17M12 14.5H16"
+        stroke="#1B8755"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+    </svg>
+  </div>
+);
+
+const IvfIcon = () => (
+  <div className="w-12 h-12 rounded-xl bg-[#F0F7F6] border border-[#D2EAE6] flex items-center justify-center shrink-0 shadow-xs group-hover:bg-[#E0F2EE] group-hover:border-[#B4DFD5] transition-all">
+    <svg className="w-7 h-7" viewBox="0 0 28 28" fill="none">
+      {/* Ovum Outer Protective Membrane */}
+      <circle cx="14" cy="14" r="9.5" stroke="#0B5D68" strokeWidth="1.8" strokeDasharray="3.5 2" fill="#E8F4F2" />
+      {/* Cellular Blastocyst Inner Mass */}
+      <circle cx="12" cy="12" r="4.2" stroke="#1B8755" strokeWidth="1.7" fill="#D8EFE8" />
+      <circle cx="16.5" cy="15.5" r="3" stroke="#0B5D68" strokeWidth="1.5" fill="#C2E5DC" />
+      <circle cx="12" cy="12" r="1.5" fill="#1B8755" />
+      {/* ICSI Microinjection Pipette */}
+      <path d="M3 14H6.5M5.5 12.5L7 14L5.5 15.5" stroke="#1B8755" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  </div>
+);
+
+const VisionIcon = () => (
+  <div className="w-12 h-12 rounded-xl bg-[#F0F7F6] border border-[#D2EAE6] flex items-center justify-center shrink-0 shadow-xs group-hover:bg-[#E0F2EE] group-hover:border-[#B4DFD5] transition-all">
+    <svg className="w-7 h-7" viewBox="0 0 28 28" fill="none">
+      {/* Eye Contour */}
+      <path
+        d="M3 14C5.5 8.5 9.5 5.5 14 5.5C18.5 5.5 22.5 8.5 25 14C22.5 19.5 18.5 22.5 14 22.5C9.5 22.5 5.5 19.5 3 14Z"
+        stroke="#0B5D68"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+        fill="#E8F4F2"
+      />
+      {/* Iris */}
+      <circle cx="14" cy="14" r="5" stroke="#1B8755" strokeWidth="1.7" fill="#D8EFE8" />
+      {/* Pupil */}
+      <circle cx="14" cy="14" r="2.2" fill="#0B5D68" />
+      {/* Laser Topography Crosshair Markers */}
+      <path d="M14 3V5M14 23V25M3 14H5M23 14H25" stroke="#1B8755" strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  </div>
+);
+
+interface PriceRow {
+  id: string;
+  treatment: string;
+  icon: React.ComponentType;
+  ukUsPrice: string;
+  waitTime: string;
+  indiaPrice: string;
+}
+
+const PRICE_ROWS: PriceRow[] = [
+  {
+    id: "knee-replacement",
+    treatment: "Knee Replacement (Bilateral Robotic)",
+    icon: KneeIcon,
+    ukUsPrice: "$38,000 – $65,000",
+    waitTime: "12 – 18 Months Waiting",
+    indiaPrice: "$9,500 – $13,500",
+  },
+  {
+    id: "hip-replacement",
+    treatment: "Hip Replacement (Direct Anterior)",
+    icon: HipIcon,
+    ukUsPrice: "$32,000 – $52,000",
+    waitTime: "10 – 14 Months Waiting",
+    indiaPrice: "$8,200 – $11,500",
+  },
+  {
+    id: "full-arch-dental",
+    treatment: "Full-Arch Dental (All-on-4 / Zirconia)",
+    icon: DentalIcon,
+    ukUsPrice: "$22,000 – $38,000",
+    waitTime: "6 – 9 Months Waiting",
+    indiaPrice: "$4,800 – $7,200",
+  },
+  {
+    id: "ivf-cycle",
+    treatment: "IVF Cycle with ICSI & PGT-A",
+    icon: IvfIcon,
+    ukUsPrice: "$14,000 – $24,000",
+    waitTime: "Strict Age/NHS Caps",
+    indiaPrice: "$4,200 – $6,500",
+  },
+  {
+    id: "contoura-vision",
+    treatment: "Contoura Vision Lasik (Both Eyes)",
+    icon: VisionIcon,
+    ukUsPrice: "$5,500 – $8,000",
+    waitTime: "Not Covered by NHS",
+    indiaPrice: "$1,400 – $1,900",
+  },
+];
 
 export const CostTransparency = () => {
   const { openIntake } = useCare();
@@ -11,221 +191,96 @@ export const CostTransparency = () => {
     <section id="costs" className="py-16 sm:py-24 bg-[#ECF4F7] border-t border-[#DCE6EB] font-sans">
       <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header */}
-        <div className="max-w-4xl mb-12">
+        {/* Section Header */}
+        <div className="max-w-4xl mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
             <ShieldCheck className="w-3.5 h-3.5 text-[#0B5D68]" />
             <span>TRANSPARENT ALL-INCLUSIVE PRICING</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] mb-3 leading-[1.15] tracking-tight">
-            Choose How You Want to Stay.{" "}
-            <span className="text-[#0B5D68] block sm:inline">
-              Transparent All-In Packages.
-            </span>
+            All-Inclusive Cost Comparison
           </h2>
           <p className="text-[#6B7C88] text-sm sm:text-base leading-relaxed max-w-2xl font-normal">
-            Two distinct plans. They differ in where you sleep, how you travel, and what you do while you recover — never in who operates on you or the quality of care.
+            Direct comparison between an all-in medical travel journey to India vs private out-of-pocket costs at home.
           </p>
         </div>
 
-        {/* Side-by-Side Plans */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          {/* Essential Plan */}
-          <div className="bg-white rounded-3xl p-8 sm:p-10 border border-[#DCE6EB] shadow-md hover:shadow-xl transition-all flex flex-col">
-            <div className="inline-block px-3 py-1 bg-[#ECF4F7] text-[#0C2338] text-xs font-heading font-bold rounded-full mb-6 w-max">
-              Essential Stay
-            </div>
-            <h3 className="text-2xl font-heading font-extrabold text-[#0C2338] mb-2">
-              Everything you need, nothing you don&apos;t
-            </h3>
-            <p className="text-[#6B7C88] text-xs sm:text-sm mb-6 leading-relaxed">
-              Designed for patients who prefer a streamlined journey, resting in clean vetted 3–4 star suites close to the hospital.
-            </p>
-            
-            <div className="h-px bg-[#DCE6EB] w-full mb-6" />
-            
-            <p className="text-xs font-heading font-bold uppercase tracking-wider text-[#6B7C88] mb-5">Package Inclusions</p>
-            
-            <div className="space-y-4 flex-1 text-xs sm:text-sm text-[#0C2338]">
-              <div className="flex items-start gap-3">
-                <span className="text-[#0B5D68] font-bold mt-0.5">✓</span>
-                <div>
-                  <h4 className="font-bold text-[#0C2338]">Vetted Hotel Close to Hospital</h4>
-                  <p className="text-xs text-[#6B7C88] mt-0.5">Quiet 3–4 star suite with elevator, room service & sanitisation</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#0B5D68] font-bold mt-0.5">✓</span>
-                <div>
-                  <h4 className="font-bold text-[#0C2338]">Airport Pickup & Return Drop</h4>
-                  <p className="text-xs text-[#6B7C88] mt-0.5">Private AC vehicle, wheelchair accommodation available</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#0B5D68] font-bold mt-0.5">✓</span>
-                <div>
-                  <h4 className="font-bold text-[#0C2338]">All Clinical Transfers</h4>
-                  <p className="text-xs text-[#6B7C88] mt-0.5">Pre-op labs, surgeon visits, scans and checkups</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#0B5D68] font-bold mt-0.5">✓</span>
-                <div>
-                  <h4 className="font-bold text-[#0C2338]">One Family Companion Included</h4>
-                  <p className="text-xs text-[#6B7C88] mt-0.5">Companion bed in hospital room & meals during admission</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#0B5D68] font-bold mt-0.5">✓</span>
-                <div>
-                  <h4 className="font-bold text-[#0C2338]">Daily In-Person Concierge Visit</h4>
-                  <p className="text-xs text-[#6B7C88] mt-0.5">Your named coordinator handles all scheduling & questions</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="mt-8 pt-6 border-t border-[#DCE6EB]">
-              <button 
-                onClick={() => openIntake("Essential Plan")}
-                className="w-full py-3.5 bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md shadow-[#F0A126]/20 cursor-pointer"
-              >
-                Get Written Quote for Essential
-              </button>
-              <p className="text-center text-[11px] text-[#6B7C88] mt-3">No commitment or fees until your written plan is ready</p>
-            </div>
-          </div>
+        {/* Global Cost Comparison Table Styled Exactly Like Reference Image */}
+        <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-[#DCE6EB]">
 
-          {/* Premium Concierge Plan */}
-          <div className="bg-white rounded-3xl p-8 sm:p-10 border-2 border-[#0B5D68] shadow-xl flex flex-col relative">
-            <div className="flex items-center justify-between mb-6">
-              <div className="inline-block px-3.5 py-1 bg-[#ECF4F7] text-[#0B5D68] border border-[#DCE6EB] text-xs font-heading font-bold rounded-full">
-                Premium Concierge
-              </div>
-              <span className="px-3 py-1 rounded-full bg-[#F0A126] text-[#0C2338] text-[10px] font-heading font-bold tracking-wider uppercase shadow-xs">
-                Most Popular
-              </span>
-            </div>
-
-            <h3 className="text-2xl font-heading font-extrabold text-[#0C2338] mb-2">
-              Room to recover with complete luxury
-            </h3>
-            <p className="text-[#6B7C88] text-xs sm:text-sm mb-6 leading-relaxed">
-              For patients travelling with loved ones who prefer 5-star hospitality, dedicated private chauffeur, and restful post-op scenery.
-            </p>
-            
-            <div className="h-px bg-[#DCE6EB] w-full mb-6" />
-            
-            <p className="text-xs font-heading font-bold uppercase tracking-wider text-[#0B5D68] mb-5">Everything in Essential, plus</p>
-            
-            <div className="space-y-4 flex-1 text-xs sm:text-sm text-[#0C2338]">
-              <div className="bg-[#ECF4F7] border border-[#DCE6EB] rounded-2xl p-4 flex items-start gap-3">
-                <Mountain className="w-5 h-5 text-[#0B5D68] shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="font-bold text-[#0C2338] text-sm">Post-Recovery Himalayan Retreat Option</h4>
-                  <p className="text-xs text-[#6B7C88] mt-0.5">Shimla or Kasauli luxury resort stay once surgeon grants fit-to-travel clearance.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <span className="text-[#0B5D68] font-bold mt-0.5">✓</span>
-                <div>
-                  <h4 className="font-bold text-[#0C2338]">5-Star Luxury Hotel Accommodation</h4>
-                  <p className="text-xs text-[#6B7C88] mt-0.5">Hyatt, Taj or Marriott partner property for you & companion</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-3">
-                <span className="text-[#0B5D68] font-bold mt-0.5">✓</span>
-                <div>
-                  <h4 className="font-bold text-[#0C2338]">Dedicated Chauffeur & Luxury Vehicle On-Call</h4>
-                  <p className="text-xs text-[#6B7C88] mt-0.5">Exclusive private SUV on call throughout your entire stay</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <span className="text-[#0B5D68] font-bold mt-0.5">✓</span>
-                <div>
-                  <h4 className="font-bold text-[#0C2338]">VIP Fast-Track Airport Meet & Greet</h4>
-                  <p className="text-xs text-[#6B7C88] mt-0.5">Immigration escort and lounge access upon landing</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="mt-8 pt-6 border-t border-[#DCE6EB]">
-              <button 
-                onClick={() => openIntake("Premium Plan")}
-                className="w-full py-3.5 bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md shadow-[#F0A126]/20 cursor-pointer"
-              >
-                Get Written Quote for Premium
-              </button>
-              <p className="text-center text-[11px] text-[#6B7C88] mt-3">All quotes sent in your local currency (USD, GBP, AUD, CAD)</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Global Cost Comparison Table */}
-        <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-lg border border-[#DCE6EB]">
-          <div className="mb-8">
-            <h3 className="font-heading font-extrabold text-2xl text-[#0C2338] mb-2">
-              All-Inclusive Cost Comparison
-            </h3>
-            <p className="text-sm text-[#6B7C88]">
-              Direct comparison between an all-in medical travel journey to India vs private out-of-pocket costs at home.
-            </p>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs sm:text-sm">
+          <div className="overflow-x-auto rounded-2xl border border-[#DCE6EB] shadow-xs">
+            <table className="w-full text-left border-collapse min-w-[760px]">
               <thead>
-                <tr className="border-b border-[#DCE6EB] text-[#6B7C88] font-heading font-bold uppercase tracking-wider text-[11px]">
-                  <th className="pb-3.5 text-[#0C2338]">Treatment Procedure</th>
-                  <th className="pb-3.5 text-[#0B5D68]">India All-In Package *</th>
-                  <th className="pb-3.5 text-[#6B7C88]">UK / US Private Rate</th>
-                  <th className="pb-3.5 text-[#6B7C88]">NHS / Public Wait Times</th>
+                <tr className="border-b border-[#DCE6EB]">
+                  {/* Left Column: Treatment Procedure */}
+                  <th className="bg-[#EAF1F4] py-4 sm:py-5 px-5 sm:px-8 italic font-heading font-bold text-sm sm:text-base text-[#0C2338] rounded-tl-2xl w-[40%]">
+                    Treatment Procedure
+                  </th>
+
+                  {/* Middle Column 1: UK / US Private Rate */}
+                  <th className="bg-[#EAF1F4] py-4 sm:py-5 px-5 sm:px-6 italic font-heading font-bold text-sm sm:text-base text-[#0C2338] w-[22%]">
+                    UK / US Private Rate
+                  </th>
+
+                  {/* Middle Column 2: NHS Wait Times */}
+                  <th className="bg-[#EAF1F4] py-4 sm:py-5 px-5 sm:px-6 italic font-heading font-bold text-sm sm:text-base text-[#0C2338] w-[20%]">
+                    NHS / Public Wait Times
+                  </th>
+
+                  {/* Right Column: India Highlighted Header */}
+                  <th className="bg-[#0A3C46] py-4 sm:py-5 px-5 sm:px-8 italic font-heading font-bold text-sm sm:text-base text-[#F0A126] rounded-tr-2xl w-[18%] text-left">
+                    India (Your Medicare Trip)
+                  </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#DCE6EB]/60 text-[#0C2338]">
-                <tr className="hover:bg-[#ECF4F7]/40 transition-colors">
-                  <td className="py-4 font-bold text-[#0C2338]">🦴 Knee Replacement (Bilateral Robotic)</td>
-                  <td className="py-4 font-heading font-bold text-[#0B5D68] text-base tabular-nums">$9,500 – $13,500</td>
-                  <td className="py-4 text-[#6B7C88] font-medium tabular-nums">$38,000 – $65,000</td>
-                  <td className="py-4 text-[#6B7C88] font-medium">12 – 18 Months Waiting</td>
-                </tr>
-                <tr className="hover:bg-[#ECF4F7]/40 transition-colors">
-                  <td className="py-4 font-bold text-[#0C2338]">🦵 Hip Replacement (Direct Anterior)</td>
-                  <td className="py-4 font-heading font-bold text-[#0B5D68] text-base tabular-nums">$8,200 – $11,500</td>
-                  <td className="py-4 text-[#6B7C88] font-medium tabular-nums">$32,000 – $52,000</td>
-                  <td className="py-4 text-[#6B7C88] font-medium">10 – 14 Months Waiting</td>
-                </tr>
-                <tr className="hover:bg-[#ECF4F7]/40 transition-colors">
-                  <td className="py-4 font-bold text-[#0C2338]">🦷 Full-Arch Dental (All-on-4 / Zirconia)</td>
-                  <td className="py-4 font-heading font-bold text-[#0B5D68] text-base tabular-nums">$4,800 – $7,200</td>
-                  <td className="py-4 text-[#6B7C88] font-medium tabular-nums">$22,000 – $38,000</td>
-                  <td className="py-4 text-[#6B7C88] font-medium">6 – 9 Months Waiting</td>
-                </tr>
-                <tr className="hover:bg-[#ECF4F7]/40 transition-colors">
-                  <td className="py-4 font-bold text-[#0C2338]">👶 IVF Cycle with ICSI & PGT-A</td>
-                  <td className="py-4 font-heading font-bold text-[#0B5D68] text-base tabular-nums">$4,200 – $6,500</td>
-                  <td className="py-4 text-[#6B7C88] font-medium tabular-nums">$14,000 – $24,000</td>
-                  <td className="py-4 text-[#6B7C88] font-medium">Strict Age/NHS Caps</td>
-                </tr>
-                <tr className="hover:bg-[#ECF4F7]/40 transition-colors">
-                  <td className="py-4 font-bold text-[#0C2338]">👁️ Contoura Vision Lasik (Both Eyes)</td>
-                  <td className="py-4 font-heading font-bold text-[#0B5D68] text-base tabular-nums">$1,400 – $1,900</td>
-                  <td className="py-4 text-[#6B7C88] font-medium tabular-nums">$5,500 – $8,000</td>
-                  <td className="py-4 text-[#6B7C88] font-medium">Not Covered by NHS</td>
-                </tr>
+
+              <tbody className="divide-y divide-[#E2E8F0]">
+                {PRICE_ROWS.map((row) => {
+                  const Icon = row.icon;
+                  return (
+                    <tr
+                      key={row.id}
+                      className="group transition-colors hover:bg-slate-50/70"
+                    >
+                      {/* Treatment Column with Custom Medical Outline Icon */}
+                      <td className="py-5 sm:py-6 px-5 sm:px-8 bg-white group-hover:bg-slate-50/70 transition-colors">
+                        <div className="flex items-center gap-4">
+                          <Icon />
+                          <span className="font-heading font-bold text-[#0C2338] text-[15px] sm:text-base leading-snug">
+                            {row.treatment}
+                          </span>
+                        </div>
+                      </td>
+
+                      {/* UK / US Private Rate */}
+                      <td className="py-5 sm:py-6 px-5 sm:px-6 bg-white group-hover:bg-slate-50/70 transition-colors font-medium text-[#1E293B] text-sm sm:text-base tabular-nums">
+                        {row.ukUsPrice}
+                      </td>
+
+                      {/* NHS Wait Times */}
+                      <td className="py-5 sm:py-6 px-5 sm:px-6 bg-white group-hover:bg-slate-50/70 transition-colors font-medium text-[#64748B] text-xs sm:text-sm">
+                        {row.waitTime}
+                      </td>
+
+                      {/* India Column: Distinct Soft Tint Background running the full height */}
+                      <td className="py-5 sm:py-6 px-5 sm:px-8 bg-[#EEF5F8] group-hover:bg-[#E4EEF2] transition-colors border-l border-[#DCE6EB] font-heading font-extrabold text-[#0A3C46] text-base sm:text-lg tabular-nums text-left">
+                        {row.indiaPrice}
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
 
+          {/* Table Footer with Explanatory Asterisk and CTA */}
           <div className="mt-8 pt-5 border-t border-[#DCE6EB] flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-[#6B7C88] leading-relaxed max-w-2xl">
-              * "India All-In Package" includes surgeon fees, pre-op diagnostics, theatre fees, US-FDA implant costs, inpatient stay, attendant accommodation, and local transport.
+            <p className="text-xs sm:text-sm text-[#6B7C88] leading-relaxed max-w-2xl">
+              * &quot;India (Your Medicare Trip)&quot; includes surgeon fees, pre-op diagnostics, theatre fees, US-FDA implant costs, inpatient stay, attendant accommodation, and local transport.
             </p>
             <button
               onClick={() => openIntake("Cost Comparison Consultation")}
-              className="px-7 py-3 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#F0A126]/20 flex items-center gap-2 cursor-pointer"
+              className="px-7 py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#F0A126]/20 flex items-center gap-2 cursor-pointer shrink-0"
             >
               <span>Get Itemised Written Quote</span>
               <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.4]" />

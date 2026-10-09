@@ -7,6 +7,7 @@ import { HospitalsSection } from "@/components/home/HospitalsSection";
 import { DoctorsSection } from "@/components/home/DoctorsSection";
 import { PatientJourney } from "@/components/home/PatientJourney";
 import { DeclinePolicy } from "@/components/home/DeclinePolicy";
+import { StayPlansSection } from "@/components/home/StayPlansSection";
 import { CostTransparency } from "@/components/home/CostTransparency";
 import { CareCoordination } from "@/components/home/CareCoordination";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
@@ -28,6 +29,7 @@ export default function HomePage() {
       <DoctorsSection />
       <PatientJourney />
       <DeclinePolicy />
+      <StayPlansSection />
       <CostTransparency />
       <CareCoordination />
       <TestimonialsSection />

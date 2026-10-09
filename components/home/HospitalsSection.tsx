@@ -40,7 +40,7 @@ export const HospitalsSection = () => {
       category: "Quaternary & Robotic",
       location: "Mohali, Punjab — North India Hub",
       airportDistance: "15 Mins from Chandigarh Int'l Airport (IXC)",
-      image: "/fortis-image.png",
+      image: "/images/facilities/robotic-surgery.jpg",
       accreditation: "JCI & NABH Accredited",
       rating: 4.9,
       reviewsCount: "1,240+ Patients",
@@ -57,7 +57,7 @@ export const HospitalsSection = () => {
       category: "Quaternary & Robotic",
       location: "Mohali / Chandigarh Capital Region",
       airportDistance: "20 Mins from Chandigarh Int'l Airport (IXC)",
-      image: "/max-hospital.jpg",
+      image: "/images/facilities/mako-robotic-joint.jpg",
       accreditation: "NABH & NABL Accredited",
       rating: 4.8,
       reviewsCount: "980+ Patients",
@@ -74,7 +74,7 @@ export const HospitalsSection = () => {
       category: "Cosmetic & Plastic Surgery",
       location: "Ludhiana — Led by Dr. Vikas Gupta",
       airportDistance: "Chauffeured Airport Transit Available",
-      image: "/profileaestheticsurgery.png",
+      image: "/images/facilities/cosmetic-surgery.jpg",
       accreditation: "ISO & Quality Certified",
       rating: 4.9,
       reviewsCount: "520+ Patients",
@@ -91,7 +91,7 @@ export const HospitalsSection = () => {
       category: "Laser Ophthalmology",
       location: "Ajitgarh / Mohali, Punjab",
       airportDistance: "15 Mins from Chandigarh Int'l Airport (IXC)",
-      image: "/sangam-netralaya.webp",
+      image: "/images/facilities/laser-ophthalmology.jpg",
       accreditation: "NABH Eye Care Centre of Excellence",
       rating: 5.0,
       reviewsCount: "850+ Patients",
@@ -108,7 +108,7 @@ export const HospitalsSection = () => {
       category: "Quaternary & Robotic",
       location: "Sector 8C, Chandigarh City",
       airportDistance: "15 Mins from Chandigarh Int'l Airport (IXC)",
-      image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&q=80&w=800",
+      image: "/images/facilities/hybrid-cath-lab.jpg",
       accreditation: "JCI & NABH Certified",
       rating: 4.9,
       reviewsCount: "1,150+ Patients",
@@ -125,7 +125,7 @@ export const HospitalsSection = () => {
       category: "Quaternary & Robotic",
       location: "Sector 34, Chandigarh Central",
       airportDistance: "18 Mins from Chandigarh Int'l Airport (IXC)",
-      image: "https://images.unsplash.com/photo-1512678080530-7760d81faba6?auto=format&fit=crop&q=80&w=800",
+      image: "/images/facilities/neurosciences-suite.jpg",
       accreditation: "NABH Accredited Healthcare",
       rating: 4.7,
       reviewsCount: "720+ Patients",
@@ -254,17 +254,17 @@ export const HospitalsSection = () => {
 
                       {/* Top-Left: Accreditation Badge */}
                       <div className="absolute top-3.5 left-3.5 z-10">
-                        <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-heading font-medium uppercase tracking-wider shadow-sm flex items-center gap-1.5 border border-white/20">
-                          <ShieldCheck className="w-3.5 h-3.5 text-[#0B5D68]" />
-                          <span>{hosp.accreditation}</span>
+                        <span className="px-2.5 py-1 rounded-full bg-black/30 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-heading font-medium uppercase tracking-wider shadow-sm flex items-center gap-1.5 border border-white/20">
+                          <ShieldCheck className="w-3.5 h-3.5 text-white" />
+                          <span className="text-white">{hosp.accreditation}</span>
                         </span>
                       </div>
 
-                      {/* Top-Right: Rating Pill */}
+                      {/* Top-Right: Audited Facility Pill */}
                       <div className="absolute top-3.5 right-3.5 z-10">
-                        <span className="px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#0C2338] text-xs font-bold shadow-sm flex items-center gap-1">
-                          <Star className="w-3.5 h-3.5 fill-[#F0A126] text-[#F0A126]" />
-                          <span>{hosp.rating.toFixed(1)}</span>
+                        <span className="px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#0C2338] text-[11px] font-heading font-bold shadow-sm flex items-center gap-1 border border-white/40">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0B5D68]" />
+                          <span>Audited Center</span>
                         </span>
                       </div>
 
@@ -361,8 +361,8 @@ export const HospitalsSection = () => {
                   onClick={() => api?.scrollTo(idx)}
                   aria-label={`Go to slide ${idx + 1}`}
                   className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${currentSlide === idx
-                      ? "w-8 bg-[#0B5D68]"
-                      : "w-2 bg-slate-200 hover:bg-slate-300"
+                    ? "w-8 bg-[#0B5D68]"
+                    : "w-2 bg-slate-200 hover:bg-slate-300"
                     }`}
                 />
               ))}
