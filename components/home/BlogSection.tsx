@@ -127,6 +127,7 @@ export const BlogSection = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 gap-6">
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse" />
               <BookOpen className="w-3.5 h-3.5 text-[#0B5D68]" />
               <span>CLINICAL GUIDES &amp; PATIENT EDUCATION</span>
             </div>
@@ -231,8 +232,8 @@ export const BlogSection = () => {
                         <div
                           className={`w-13 h-13 sm:w-14 sm:h-14 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm group-hover:shadow-md ${
                             idx % 2 === 0
-                              ? "bg-[#ECF4F7] text-[#0B5D68] border border-[#DCE6EB] group-hover:bg-[#0B5D68] group-hover:text-white group-hover:border-[#0B5D68]"
-                              : "bg-white text-[#0C2338] border border-[#DCE6EB] group-hover:bg-[#0B5D68] group-hover:text-white group-hover:border-[#0B5D68]"
+                              ? "bg-[#ECF4F7] text-[#0B5D68] border border-[#DCE6EB] group-hover:bg-[#F0A126] group-hover:text-[#0C2338] group-hover:border-[#F0A126]"
+                              : "bg-white text-[#0C2338] border border-[#DCE6EB] group-hover:bg-[#F0A126] group-hover:text-[#0C2338] group-hover:border-[#F0A126]"
                           }`}
                         >
                           <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />

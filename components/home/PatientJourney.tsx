@@ -286,7 +286,7 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
                 <span className="w-8 h-8 rounded-lg bg-[#0B5D68] text-white flex items-center justify-center font-heading font-bold text-xs shadow-xs">
                   {step.stepNumber}
                 </span>
-                <span className="text-[11px] sm:text-xs font-heading font-bold uppercase tracking-wider text-[#ECF4F7]/80">
+                <span className="text-[11px] sm:text-xs font-heading font-bold uppercase tracking-wider text-[#14B8A6]">
                   {step.stepPhase}
                 </span>
               </div>
@@ -313,9 +313,9 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
                 {step.description}
               </p>
 
-              {/* Guarantees Checklist with Gold Checkmarks */}
+              {/* Guarantees Checklist with Cyan Checkmarks */}
               <div className="space-y-2.5 mb-6 pt-3 border-t border-white/10">
-                <p className="text-[11px] font-heading font-bold uppercase tracking-wider text-[#F0A126]">
+                <p className="text-[11px] font-heading font-bold uppercase tracking-wider text-[#14B8A6]">
                   Guaranteed Standards at this Stage:
                 </p>
                 {step.guarantees.map((item, gIdx) => (
@@ -323,8 +323,8 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
                     key={gIdx}
                     className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 font-medium"
                   >
-                    <span className="w-4 h-4 rounded-full bg-[#0B5D68]/40 border border-[#0B5D68] flex items-center justify-center shrink-0 mt-0.5">
-                      <CheckCircle2 className="w-3 h-3 text-[#F0A126]" />
+                    <span className="w-4 h-4 rounded-full bg-[#0B5D68]/40 border border-[#14B8A6]/40 flex items-center justify-center shrink-0 mt-0.5">
+                      <CheckCircle2 className="w-3 h-3 text-[#14B8A6]" />
                     </span>
                     <span className="leading-snug">{item}</span>
                   </div>
@@ -342,12 +342,12 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
                   <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.5] transition-transform group-hover/btn:translate-x-1" />
                 </button>
 
-                {/* Secondary WhatsApp CTA */}
+                {/* Secondary Action Button 2: bg-[#0B5D68] hover:bg-[#07434B] text-white */}
                 <button
                   onClick={handleWhatsApp}
-                  className="py-3.5 px-5 rounded-xl bg-white/10 hover:bg-white/20 active:scale-[0.98] text-white font-heading font-bold text-xs uppercase tracking-wider border border-white/20 flex items-center justify-center gap-2 transition-all cursor-pointer shrink-0"
+                  className="py-3.5 px-5 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] active:scale-[0.98] text-white font-heading font-bold text-xs uppercase tracking-wider border border-[#14B8A6]/30 flex items-center justify-center gap-2 transition-all cursor-pointer shrink-0 shadow-sm"
                 >
-                  <MessageSquare className="w-3.5 h-3.5 text-[#25D366]" />
+                  <MessageSquare className="w-3.5 h-3.5 text-[#14B8A6]" />
                   <span>WhatsApp Desk</span>
                 </button>
               </div>
@@ -480,9 +480,9 @@ export const PatientJourney = () => {
               href="https://wa.me/919876543210?text=Hello%2C%20I%20have%20questions%20about%20the%204-step%20patient%20journey"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3.5 rounded-xl bg-[#ECF4F7] hover:bg-[#DCE6EB] text-[#0B5D68] border border-[#DCE6EB] font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-xs flex items-center justify-center gap-2 text-center"
+              className="px-6 py-3.5 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] text-white border border-transparent font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-xs flex items-center justify-center gap-2 text-center"
             >
-              <MessageSquare className="w-4 h-4 text-[#0B5D68]" />
+              <MessageSquare className="w-4 h-4 text-[#14B8A6]" />
               <span>WhatsApp Coordinator</span>
             </a>
           </div>

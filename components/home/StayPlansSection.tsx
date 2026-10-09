@@ -39,6 +39,7 @@ export const StayPlansSection = () => {
             {/* Section Header */}
             <div className="max-w-2xl mb-10 sm:mb-12">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse" />
                 <Sparkles className="w-3.5 h-3.5 text-[#0B5D68]" />
                 <span>ACCOMMODATION &amp; RECOVERY PLANS</span>
               </div>
@@ -169,7 +170,7 @@ export const StayPlansSection = () => {
                   
                   <div className="space-y-3.5 text-xs sm:text-sm text-[#0C2338]">
                     {/* Special Highlight Box */}
-                    <div className="bg-[#ECF4F7] border border-[#CFE4DE] rounded-2xl p-3.5 flex items-start gap-3 shadow-xs">
+                    <div className="bg-[#ECF4F7] border border-[#DCE6EB] rounded-2xl p-3.5 flex items-start gap-3 shadow-xs">
                       <Mountain className="w-5 h-5 text-[#0B5D68] shrink-0 mt-0.5" />
                       <div>
                         <h4 className="font-bold text-[#0C2338] text-xs sm:text-sm">Post-Recovery Himalayan Retreat Option</h4>
@@ -206,7 +207,7 @@ export const StayPlansSection = () => {
                 <div className="mt-7 pt-5 border-t border-[#DCE6EB]">
                   <button 
                     onClick={() => openIntake("Premium Plan")}
-                    className="w-full py-3.5 bg-[#0B5D68] hover:bg-[#084851] active:scale-[0.99] text-white font-heading font-extrabold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md shadow-[#0B5D68]/30 cursor-pointer"
+                    className="w-full py-3.5 bg-[#0B5D68] hover:bg-[#07434B] active:scale-[0.99] text-white font-heading font-extrabold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md shadow-[#0B5D68]/30 cursor-pointer"
                   >
                     Get Written Quote for Premium
                   </button>

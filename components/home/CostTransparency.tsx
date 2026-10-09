@@ -188,12 +188,13 @@ export const CostTransparency = () => {
   const { openIntake } = useCare();
 
   return (
-    <section id="costs" className="py-16 sm:py-24 bg-[#ECF4F7] border-t border-[#DCE6EB] font-sans">
+    <section id="costs" className="py-16 sm:py-24 bg-[#F5F7F6] border-t border-[#DCE6EB] font-sans">
       <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
         <div className="max-w-4xl mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse" />
             <ShieldCheck className="w-3.5 h-3.5 text-[#0B5D68]" />
             <span>TRANSPARENT ALL-INCLUSIVE PRICING</span>
           </div>
@@ -211,28 +212,28 @@ export const CostTransparency = () => {
             <thead>
               <tr className="border-b border-[#DCE6EB]">
                 {/* Left Column: Treatment Procedure */}
-                <th className="bg-[#EAF1F4] py-4 sm:py-5 px-5 sm:px-8 italic font-heading font-bold text-sm sm:text-base text-[#0C2338] rounded-tl-2xl w-[40%]">
+                <th className="bg-[#ECF4F7] py-4 sm:py-5 px-5 sm:px-8 font-heading font-bold text-sm sm:text-base text-[#0C2338] rounded-tl-2xl w-[40%]">
                   Treatment Procedure
                 </th>
 
                 {/* Middle Column 1: UK / US Private Rate */}
-                <th className="bg-[#EAF1F4] py-4 sm:py-5 px-5 sm:px-6 italic font-heading font-bold text-sm sm:text-base text-[#0C2338] w-[22%]">
+                <th className="bg-[#ECF4F7] py-4 sm:py-5 px-5 sm:px-6 font-heading font-bold text-sm sm:text-base text-[#0C2338] w-[22%]">
                   UK / US Private Rate
                 </th>
 
                 {/* Middle Column 2: NHS Wait Times */}
-                <th className="bg-[#EAF1F4] py-4 sm:py-5 px-5 sm:px-6 italic font-heading font-bold text-sm sm:text-base text-[#0C2338] w-[20%]">
+                <th className="bg-[#ECF4F7] py-4 sm:py-5 px-5 sm:px-6 font-heading font-bold text-sm sm:text-base text-[#0C2338] w-[20%]">
                   NHS / Public Wait Times
                 </th>
 
-                {/* Right Column: India Highlighted Header */}
-                <th className="bg-[#F0A126] py-4 sm:py-5 px-5 sm:px-8 italic font-heading font-bold text-sm sm:text-base text-[#F0A126] rounded-tr-2xl w-[18%] text-left">
+                {/* Right Column: India Highlighted Header (Authoritative Medical Teal) */}
+                <th className="bg-[#0B5D68] py-4 sm:py-5 px-5 sm:px-8 font-heading font-bold text-sm sm:text-base text-white rounded-tr-2xl w-[18%] text-left">
                   India (Your Medicare Trip)
                 </th>
               </tr>
             </thead>
 
-            <tbody className="divide-y divide-[#E2E8F0]">
+            <tbody className="divide-y divide-[#DCE6EB]">
               {PRICE_ROWS.map((row) => {
                 const Icon = row.icon;
                 return (
@@ -256,12 +257,12 @@ export const CostTransparency = () => {
                     </td>
 
                     {/* NHS Wait Times */}
-                    <td className="py-5 sm:py-6 px-5 sm:px-6 bg-white group-hover:bg-slate-50/70 transition-colors font-medium text-[#64748B] text-xs sm:text-sm">
+                    <td className="py-5 sm:py-6 px-5 sm:px-6 bg-white group-hover:bg-slate-50/70 transition-colors font-medium text-[#6B7C88] text-xs sm:text-sm">
                       {row.waitTime}
                     </td>
 
                     {/* India Column: Distinct Soft Tint Background running the full height */}
-                    <td className="py-5 sm:py-6 px-5 sm:px-8 bg-[#EEF5F8] group-hover:bg-[#E4EEF2] transition-colors border-l border-[#DCE6EB] font-heading font-extrabold text-[#0A3C46] text-base sm:text-lg tabular-nums text-left">
+                    <td className="py-5 sm:py-6 px-5 sm:px-8 bg-[#ECF4F7] group-hover:bg-[#E0EEF3] transition-colors border-l border-[#DCE6EB] font-heading font-extrabold text-[#0B5D68] text-base sm:text-lg tabular-nums text-left">
                       {row.indiaPrice}
                     </td>
                   </tr>

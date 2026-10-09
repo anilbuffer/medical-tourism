@@ -163,7 +163,7 @@ export const HospitalsSection = () => {
   return (
     <section
       id="hospitals"
-      className="py-16 sm:py-24 bg-[#ECF4F7] relative border-t border-[#DCE6EB] font-sans"
+      className="py-16 sm:py-24 bg-[#F5F7F6] relative border-t border-[#DCE6EB] font-sans"
     >
       {/* 1580px Expanded Container Matching Header, Hero, and Specialties */}
       <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -171,8 +171,8 @@ export const HospitalsSection = () => {
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 sm:mb-10 gap-6">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
-              <span className="h-2 w-2 rounded-full bg-[#0B5D68] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
+              <span className="h-2 w-2 rounded-full bg-[#14B8A6] animate-pulse" />
               <span>GLOBAL ACCREDITED HEALTHCARE NETWORK</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
@@ -202,7 +202,7 @@ export const HospitalsSection = () => {
                 disabled={!canScrollPrev}
                 aria-label="Previous hospital slide"
                 className={`w-10 h-10 rounded-full border border-[#DCE6EB] flex items-center justify-center transition-all cursor-pointer ${canScrollPrev
-                  ? "bg-white hover:bg-slate-100 text-[#0C2338] shadow-sm"
+                  ? "bg-white hover:bg-[#ECF4F7] text-[#0C2338] shadow-sm active:scale-95"
                   : "bg-white/60 text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
                   }`}
               >
@@ -213,7 +213,7 @@ export const HospitalsSection = () => {
                 disabled={!canScrollNext}
                 aria-label="Next hospital slide"
                 className={`w-10 h-10 rounded-full border border-transparent flex items-center justify-center transition-all cursor-pointer ${canScrollNext
-                  ? "bg-[#0B5D68] hover:bg-[#07434B] text-white shadow-sm"
+                  ? "bg-[#0B5D68] hover:bg-[#07434B] text-white shadow-sm active:scale-95"
                   : "bg-white/60 text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
                   }`}
               >

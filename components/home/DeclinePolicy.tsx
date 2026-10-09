@@ -35,7 +35,7 @@ export const DeclinePolicy = () => {
             <div className="lg:col-span-7 flex flex-col justify-center">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#ECF4F7] font-heading text-xs uppercase tracking-wider font-bold mb-4 backdrop-blur-md w-max">
-                <span className="w-2 h-2 rounded-full bg-[#F0A126] animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse" />
                 <span>CLINICAL INTEGRITY GUARANTEE</span>
               </div>
 
@@ -51,7 +51,7 @@ export const DeclinePolicy = () => {
 
               {/* Action Buttons Row: [Learn About Clinical Feasibility] AND [Watch Video] Side-by-Side */}
               <div className="flex flex-wrap items-center gap-4 sm:gap-5 mb-8">
-                {/* Primary Action Button */}
+                {/* Primary Action Button 1: bg-[#F0A126] */}
                 <button
                   onClick={() => openIntake("Clinical Integrity Consultation")}
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-xl transition-all cursor-pointer group shrink-0"
@@ -60,10 +60,10 @@ export const DeclinePolicy = () => {
                   <span className="text-[#0C2338] font-extrabold text-sm transition-transform group-hover:translate-x-1">→</span>
                 </button>
 
-                {/* Watch Video Button moved immediately to the right */}
+                {/* Secondary Action Button 2: bg-[#0B5D68] hover:bg-[#07434B] text-white */}
                 <button
                   onClick={() => setVideoOpen(true)}
-                  className="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 active:scale-[0.98] border border-white/25 text-white backdrop-blur-md cursor-pointer transition-all group select-none shadow-lg shrink-0"
+                  className="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] active:scale-[0.98] border border-[#14B8A6]/30 text-white cursor-pointer transition-all group select-none shadow-lg shrink-0"
                   aria-label="Watch Clinical Protocol Video"
                 >
                   <div className="w-8 h-8 rounded-full bg-white text-[#0C2338] flex items-center justify-center shadow-md group-hover:bg-[#F0A126] group-hover:text-[#0C2338] transition-all shrink-0">
@@ -78,15 +78,15 @@ export const DeclinePolicy = () => {
               {/* 3 Key Trust Pillars */}
               <div className="flex flex-wrap items-center gap-2.5 text-xs sm:text-sm text-white/90">
                 <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#F0A126]" />
+                  <CheckCircle className="w-4 h-4 text-[#14B8A6]" />
                   Independent Senior Specialist Review
                 </span>
                 <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#F0A126]" />
+                  <CheckCircle className="w-4 h-4 text-[#14B8A6]" />
                   Zero Financial Pressure or Booking Quotas
                 </span>
                 <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#F0A126]" />
+                  <CheckCircle className="w-4 h-4 text-[#14B8A6]" />
                   Direct Communication With Your Home Physician
                 </span>
               </div>
@@ -120,7 +120,7 @@ export const DeclinePolicy = () => {
                   <path
                     d="M 160, 24 C 196, 24 240, 33 282, 56 C 282, 146 268, 232 160, 348 C 52, 232 38, 146 38, 56 C 80, 33 124, 24 160, 24 Z"
                     fill="none"
-                    stroke="#0B5D68"
+                    stroke="#14B8A6"
                     strokeWidth="2"
                     strokeOpacity="0.8"
                   />

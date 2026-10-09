@@ -64,7 +64,7 @@ export const HeroSection = () => {
                 transition={{ duration: 0.5 }}
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#ECF4F7] font-heading text-xs uppercase tracking-wider font-bold backdrop-blur-md"
               >
-                <span className="w-2 h-2 rounded-full bg-[#F0A126] animate-pulse"></span>
+                <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse"></span>
                 <span>Expert Medical Travel Care</span>
               </motion.div>
 

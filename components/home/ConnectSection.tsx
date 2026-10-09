@@ -135,7 +135,8 @@ export const ConnectSection = () => {
             {/* Header Area matching reference typography */}
             <div>
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-4 shadow-xs">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-4 shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse" />
                 <Lock className="w-3.5 h-3.5 text-[#0B5D68]" />
                 <span>CONFIDENTIAL SURGEON CASE REVIEW</span>
               </div>
@@ -164,7 +165,7 @@ export const ConnectSection = () => {
                 {intakeSteps.map((step) => (
                   <div
                     key={step.num}
-                    className="bg-white/95 backdrop-blur-sm rounded-xl px-3.5 py-3 border border-[#DCE6EB] shadow-xs flex items-center gap-3 hover:border-[#0B5D68]/40 hover:bg-white transition-all group"
+                    className="bg-[#ECF4F7] rounded-xl px-3.5 py-3 border border-[#DCE6EB] shadow-xs flex items-center gap-3 hover:border-[#0B5D68]/40 hover:bg-white transition-all group"
                   >
                     <span className="w-7 h-7 rounded-lg bg-[#0B5D68] text-white flex items-center justify-center font-heading font-bold text-xs shrink-0 shadow-xs group-hover:bg-[#07434B] transition-colors">
                       {step.num}
@@ -249,7 +250,7 @@ export const ConnectSection = () => {
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
                       placeholder="e.g. Robert Jenkins"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFC] border border-[#DCE6EB] text-sm text-[#0C2338] placeholder-slate-400 focus:outline-none focus:border-[#0B5D68] focus:bg-white transition-all shadow-2xs"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#F5F7F6] border border-[#DCE6EB] text-sm text-[#0C2338] placeholder-slate-400 focus:outline-none focus:border-[#0B5D68] focus:bg-white transition-all shadow-2xs"
                     />
                   </div>
 
@@ -263,7 +264,7 @@ export const ConnectSection = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="robert@example.com"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFC] border border-[#DCE6EB] text-sm text-[#0C2338] placeholder-slate-400 focus:outline-none focus:border-[#0B5D68] focus:bg-white transition-all shadow-2xs"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#F5F7F6] border border-[#DCE6EB] text-sm text-[#0C2338] placeholder-slate-400 focus:outline-none focus:border-[#0B5D68] focus:bg-white transition-all shadow-2xs"
                     />
                   </div>
                 </div>
@@ -280,7 +281,7 @@ export const ConnectSection = () => {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="+1 (555) 000-0000"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFC] border border-[#DCE6EB] text-sm text-[#0C2338] placeholder-slate-400 focus:outline-none focus:border-[#0B5D68] focus:bg-white transition-all shadow-2xs"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#F5F7F6] border border-[#DCE6EB] text-sm text-[#0C2338] placeholder-slate-400 focus:outline-none focus:border-[#0B5D68] focus:bg-white transition-all shadow-2xs"
                     />
                   </div>
 
@@ -293,7 +294,7 @@ export const ConnectSection = () => {
                       value={condition}
                       onChange={(e) => setCondition(e.target.value)}
                       placeholder="e.g. Knee, Cardiac, Spine..."
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFC] border border-[#DCE6EB] text-sm text-[#0C2338] placeholder-slate-400 focus:outline-none focus:border-[#0B5D68] focus:bg-white transition-all shadow-2xs"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#F5F7F6] border border-[#DCE6EB] text-sm text-[#0C2338] placeholder-slate-400 focus:outline-none focus:border-[#0B5D68] focus:bg-white transition-all shadow-2xs"
                     />
                   </div>
                 </div>
@@ -318,7 +319,7 @@ export const ConnectSection = () => {
                     className={`border-2 border-dashed rounded-xl p-4 text-center cursor-pointer transition-all ${
                       dragActive
                         ? "border-[#0B5D68] bg-[#ECF4F7]"
-                        : "border-[#0B5D68]/30 hover:border-[#0B5D68] bg-[#F8FAFC] hover:bg-[#ECF4F7]/50"
+                        : "border-[#0B5D68]/30 hover:border-[#0B5D68] bg-[#F5F7F6] hover:bg-[#ECF4F7]/60"
                     }`}
                   >
                     <input
@@ -387,7 +388,7 @@ export const ConnectSection = () => {
                   </span>
                 </label>
 
-                {/* Primary Action Button */}
+                {/* Primary Action Button 1 & Secondary Action Button 2 */}
                 <div className="pt-2 space-y-2.5">
                   <button
                     type="submit"
@@ -410,9 +411,9 @@ export const ConnectSection = () => {
                     href="https://wa.me/919876543210"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-2.5 px-4 rounded-xl border border-[#0B5D68]/40 text-[#0B5D68] hover:bg-[#ECF4F7] font-heading font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 text-center"
+                    className="w-full py-3 px-4 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-xs flex items-center justify-center gap-2 text-center"
                   >
-                    <MessageSquare className="w-3.5 h-3.5 text-[#0B5D68]" />
+                    <MessageSquare className="w-3.5 h-3.5 text-[#14B8A6]" />
                     <span>Prefer WhatsApp? Send Reports Directly</span>
                   </a>
                 </div>

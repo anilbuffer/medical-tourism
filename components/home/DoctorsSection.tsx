@@ -196,7 +196,7 @@ export const DoctorsSection = () => {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 sm:mb-12 gap-6">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
-              <span className="h-2 w-2 rounded-full bg-[#0B5D68] animate-pulse" />
+              <span className="h-2 w-2 rounded-full bg-[#14B8A6] animate-pulse" />
               <span>EXPERT SURGICAL DIRECTORS</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
@@ -230,7 +230,7 @@ export const DoctorsSection = () => {
                 disabled={!canScrollPrev}
                 aria-label="Previous medical director"
                 className={`w-10 h-10 rounded-full border border-[#DCE6EB] flex items-center justify-center transition-all cursor-pointer ${canScrollPrev
-                  ? "bg-white hover:bg-slate-100 text-[#0C2338] shadow-xs active:scale-95"
+                  ? "bg-white hover:bg-[#ECF4F7] text-[#0C2338] shadow-xs active:scale-95"
                   : "bg-[#ECF4F7] text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
                   }`}
               >
@@ -352,7 +352,7 @@ export const DoctorsSection = () => {
                         </div>
 
                         {/* 03 High-Impact Trust Metric Cards (Each with Little Icons) */}
-                        <div className="grid grid-cols-3 gap-2.5 sm:gap-4 p-4 rounded-2xl bg-[#FCFDFD] border border-[#DCE6EB] mb-6">
+                        <div className="grid grid-cols-3 gap-2.5 sm:gap-4 p-4 rounded-2xl bg-[#F5F7F6] border border-[#DCE6EB] mb-6">
 
                           {/* Metric 1: Surgeries with Activity Icon */}
                           <div>
@@ -364,7 +364,7 @@ export const DoctorsSection = () => {
                               {doc.surgeries}
                             </span>
                             <span className="text-[#0B5D68] text-[11px] sm:text-xs font-semibold flex items-center gap-1 mt-0.5 truncate">
-                              <CheckCircle2 className="w-3 h-3 text-[#0B5D68] shrink-0" />
+                              <CheckCircle2 className="w-3 h-3 text-[#14B8A6] shrink-0" />
                               <span>{doc.successRate}</span>
                             </span>
                           </div>
@@ -415,7 +415,7 @@ export const DoctorsSection = () => {
                                 key={sIdx}
                                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#ECF4F7] text-[#0B5D68] border border-[#DCE6EB] text-xs font-medium"
                               >
-                                <span className="w-1.5 h-1.5 rounded-full bg-[#0B5D68]" />
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#14B8A6]" />
                                 <span>{proc}</span>
                               </span>
                             ))}
@@ -423,7 +423,7 @@ export const DoctorsSection = () => {
                         </div>
 
                         {/* Technology & Credentials Box with Little Icons */}
-                        <div className="bg-[#FCFDFD] rounded-2xl p-4 border border-[#DCE6EB] space-y-2.5 mb-6">
+                        <div className="bg-[#ECF4F7] rounded-2xl p-4 border border-[#DCE6EB] space-y-2.5 mb-6">
                           {/* Technology with Sparkles Icon */}
                           <div className="flex items-start gap-2.5 text-[#0C2338]">
                             <Sparkles className="w-4 h-4 text-[#F0A126] shrink-0 mt-0.5" />
@@ -455,7 +455,7 @@ export const DoctorsSection = () => {
                       {/* Catchy Action Buttons Area */}
                       <div className="pt-4 border-t border-[#DCE6EB] space-y-3">
                         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                          {/* Primary High-Intent Button (Gold Accent) */}
+                          {/* Primary High-Intent Button 1 (Gold Accent) */}
                           <button
                             onClick={() => openIntake(`Doctor Consult — ${doc.name}`)}
                             className="px-7 py-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-[#F0A126]/20 transition-all cursor-pointer flex items-center justify-center gap-2 group/btn flex-1"
@@ -465,12 +465,12 @@ export const DoctorsSection = () => {
                             <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.4] transition-transform group-hover/btn:translate-x-1" />
                           </button>
 
-                          {/* Secondary WhatsApp Button */}
+                          {/* Secondary Action Button 2 (Medical Teal #0B5D68) */}
                           <button
                             onClick={() => handleWhatsAppConsult(doc)}
-                            className="px-6 py-4 rounded-xl bg-[#ECF4F7] hover:bg-[#DCE6EB] text-[#0B5D68] font-heading font-bold text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0 border border-[#DCE6EB]"
+                            className="px-6 py-4 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] active:scale-[0.98] text-white font-heading font-bold text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0 shadow-sm"
                           >
-                            <MessageSquare className="w-4 h-4 text-[#0B5D68]" />
+                            <MessageSquare className="w-4 h-4 text-[#14B8A6]" />
                             <span>WhatsApp Care Desk</span>
                           </button>
                         </div>

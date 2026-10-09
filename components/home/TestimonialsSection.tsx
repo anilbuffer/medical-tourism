@@ -7,7 +7,8 @@ import {
   Star,
   ArrowLeft,
   ArrowRight,
-  Sparkles
+  Sparkles,
+  ShieldCheck,
 } from "lucide-react";
 import { useCare } from "@/context/CareContext";
 
@@ -101,7 +102,7 @@ const testimonials: PatientTestimonial[] = [
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=300",
     savings: "Outpatient • 24h Recovery",
-  }
+  },
 ];
 
 export const TestimonialsSection = () => {
@@ -119,12 +120,15 @@ export const TestimonialsSection = () => {
   const current = testimonials[currentIndex];
 
   return (
-    <section id="stories" className="w-full relative overflow-hidden font-sans border-t border-b border-[#0C2338] bg-[#0C2338]">
+    <section id="stories" className="w-full relative overflow-hidden font-sans border-t border-b border-[#DCE6EB] bg-[#0C2338]">
       
       {/* 01. Desktop Edge-to-Edge Split Background */}
       <div className="hidden lg:grid absolute inset-0 grid-cols-12 pointer-events-none">
-        {/* Left half: solid deep navy to the edge */}
-        <div className="col-span-7 xl:col-span-6 bg-[#0C2338]" />
+        {/* Left half: Deep Navy with subtle ambient teal radial glow */}
+        <div className="col-span-7 xl:col-span-6 bg-gradient-to-br from-[#0C2338] via-[#091F33] to-[#061726] relative">
+          <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-[#0B5D68]/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-10 right-10 w-64 h-64 bg-[#14B8A6]/10 rounded-full blur-3xl pointer-events-none" />
+        </div>
         
         {/* Right half: clinical doctor photo to the edge */}
         <div className="col-span-5 xl:col-span-6 relative bg-slate-900 overflow-hidden">
@@ -136,16 +140,16 @@ export const TestimonialsSection = () => {
             sizes="50vw"
             className="object-cover object-top"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20" />
           
           {/* Bottom Review Ribbon on Photo */}
           <div className="absolute bottom-8 left-8 right-8 z-10 flex justify-center">
-            <div className="w-full max-w-md px-6 py-3.5 rounded-full bg-[#0B5D68] text-white shadow-2xl border border-white/20 flex items-center justify-center gap-3">
+            <div className="w-full max-w-md px-6 py-3.5 rounded-full bg-[#0B5D68]/95 backdrop-blur-md text-white shadow-2xl border border-[#14B8A6]/40 flex items-center justify-center gap-3">
               <Sparkles className="w-4 h-4 text-[#F0A126] fill-[#F0A126] shrink-0" />
               <span className="text-xs sm:text-sm font-heading font-bold tracking-wide">
-                Rated 4.9 out of 5 based on 5K+ reviews
+                Rated 4.9 out of 5 based on 5K+ global reviews
               </span>
-              <Sparkles className="w-4 h-4 text-[#F0A126] fill-[#F0A126] shrink-0" />
+              <Sparkles className="w-4 h-4 text-[#14B8A6] fill-[#14B8A6] shrink-0" />
             </div>
           </div>
         </div>
@@ -160,15 +164,16 @@ export const TestimonialsSection = () => {
             
             {/* Header Area */}
             <div>
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#ECF4F7] text-xs font-heading font-bold uppercase tracking-wider mb-4 backdrop-blur-md">
-                <span className="w-2 h-2 rounded-full bg-[#F0A126] animate-pulse" />
-                <span>REAL STORIES • REAL CARE</span>
+              {/* Badge with vibrant #14B8A6 pulse */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-[#14B8A6]/30 text-[#ECF4F7] text-xs font-heading font-bold uppercase tracking-wider mb-5 backdrop-blur-md shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse" />
+                <span>REAL STORIES • CLINICAL OUTCOMES</span>
               </div>
 
               {/* Headline */}
               <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-white leading-[1.15] mb-8 lg:mb-10 tracking-tight">
-                What Our Patients &amp; Families Say About Their Journey
+                What Our Patients &amp; Families Say About Their{" "}
+                <span className="text-[#14B8A6]">Journey.</span>
               </h2>
 
               {/* Quote Mark Icon + 5 Stars Row */}
@@ -195,7 +200,7 @@ export const TestimonialsSection = () => {
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
-                  <p className="text-slate-200 text-base sm:text-lg lg:text-[18px] leading-relaxed font-body font-normal max-w-2xl min-h-[110px]">
+                  <p className="text-slate-100 text-base sm:text-lg lg:text-[19px] leading-relaxed font-body font-normal max-w-2xl min-h-[110px]">
                     &ldquo;{current.quote}&rdquo;
                   </p>
                 </motion.div>
@@ -214,7 +219,7 @@ export const TestimonialsSection = () => {
                   transition={{ duration: 0.25 }}
                   className="flex items-center gap-4 sm:gap-5"
                 >
-                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-[#0B5D68] shrink-0 shadow-lg">
+                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-[#14B8A6] shrink-0 shadow-lg ring-2 ring-white/10">
                     <Image
                       src={current.avatar}
                       alt={current.name}
@@ -223,29 +228,34 @@ export const TestimonialsSection = () => {
                     />
                   </div>
                   <div>
-                    <h3 className="font-heading font-bold text-lg sm:text-xl text-white leading-tight">
-                      {current.name}
-                    </h3>
+                    <div className="flex items-center gap-2.5">
+                      <h3 className="font-heading font-bold text-lg sm:text-xl text-white leading-tight">
+                        {current.name}
+                      </h3>
+                      <span className="px-2.5 py-0.5 rounded-full bg-[#14B8A6]/20 border border-[#14B8A6]/40 text-[#14B8A6] text-[11px] font-heading font-bold">
+                        {current.savings}
+                      </span>
+                    </div>
                     <p className="text-xs sm:text-sm text-slate-300 font-medium font-body mt-1">
-                      {current.recoveryTag}
+                      {current.recoveryTag} · <span className="text-[#ECF4F7]">{current.country}</span>
                     </p>
                   </div>
                 </motion.div>
               </AnimatePresence>
 
-              {/* Navigation Controls */}
+              {/* Navigation Controls: Secondary Button 2 + Primary Button 1 styling */}
               <div className="flex items-center gap-3 self-end sm:self-center shrink-0">
                 <button
                   onClick={handlePrev}
                   aria-label="Previous testimonial"
-                  className="w-12 h-12 rounded-full bg-white/10 hover:bg-[#F0A126] hover:text-[#0C2338] text-white flex items-center justify-center transition-all duration-300 cursor-pointer border border-white/15 active:scale-95 shadow-sm group"
+                  className="w-12 h-12 rounded-full bg-white/10 hover:bg-[#0B5D68] text-white flex items-center justify-center transition-all duration-300 cursor-pointer border border-white/20 active:scale-95 shadow-sm group"
                 >
                   <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-0.5" />
                 </button>
                 <button
                   onClick={handleNext}
                   aria-label="Next testimonial"
-                  className="w-12 h-12 rounded-full bg-white/10 hover:bg-[#F0A126] hover:text-[#0C2338] text-white flex items-center justify-center transition-all duration-300 cursor-pointer border border-white/15 active:scale-95 shadow-sm group"
+                  className="w-12 h-12 rounded-full bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] flex items-center justify-center transition-all duration-300 cursor-pointer border border-[#F0A126] active:scale-95 shadow-md shadow-[#F0A126]/30 group"
                 >
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
                 </button>
@@ -267,14 +277,14 @@ export const TestimonialsSection = () => {
           sizes="100vw"
           className="object-cover object-top"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
         <div className="absolute bottom-6 left-4 right-4 z-10 flex justify-center">
-          <div className="w-full max-w-md px-5 py-3 rounded-full bg-[#0B5D68] text-white shadow-2xl border border-white/20 flex items-center justify-center gap-2.5">
+          <div className="w-full max-w-md px-5 py-3 rounded-full bg-[#0B5D68]/95 backdrop-blur-md text-white shadow-2xl border border-[#14B8A6]/40 flex items-center justify-center gap-2.5">
             <Sparkles className="w-4 h-4 text-[#F0A126] fill-[#F0A126] shrink-0" />
             <span className="text-xs font-heading font-bold tracking-wide">
               Rated 4.9 out of 5 based on 5K+ reviews
             </span>
-            <Sparkles className="w-4 h-4 text-[#F0A126] fill-[#F0A126] shrink-0" />
+            <Sparkles className="w-4 h-4 text-[#14B8A6] fill-[#14B8A6] shrink-0" />
           </div>
         </div>
       </div>

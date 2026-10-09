@@ -79,7 +79,7 @@ export const CareCoordination = () => {
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-[#FCFDFD] border-t border-[#DCE6EB] font-sans">
+    <section className="py-16 sm:py-24 bg-[#F5F7F6] border-t border-[#DCE6EB] font-sans">
       <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Full-Width 2-Column Layout Matching Reference Image */}
@@ -90,6 +90,7 @@ export const CareCoordination = () => {
             
             {/* Eyebrow Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-4 shadow-xs w-max">
+              <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse" />
               <Sparkles className="w-3.5 h-3.5 text-[#0B5D68]" />
               <span>END-TO-END CARE CONCIERGE</span>
             </div>
@@ -156,7 +157,7 @@ export const CareCoordination = () => {
             {/* Top Badge: Verified Concierge Standard */}
             <div className="absolute top-5 left-5 z-10">
               <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#0C2338]/85 backdrop-blur-md text-white text-[11px] font-heading font-bold uppercase tracking-wider border border-white/20 shadow-md">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#F0A126]" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#14B8A6]" />
                 <span>1-on-1 Dedicated Concierge</span>
               </span>
             </div>
@@ -175,7 +176,7 @@ export const CareCoordination = () => {
                       sizes="48px"
                       className="object-cover object-center"
                     />
-                    <span className="absolute bottom-0 right-0 w-3 h-3 bg-[#10B981] rounded-full border-2 border-white shadow-xs" />
+                    <span className="absolute bottom-0 right-0 w-3 h-3 bg-[#14B8A6] rounded-full border-2 border-white shadow-xs" />
                   </div>
 
                   <div className="min-w-0">
@@ -193,7 +194,7 @@ export const CareCoordination = () => {
                   onClick={handleWhatsAppDesk}
                   className="px-4 py-2.5 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] active:scale-95 text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-sm flex items-center gap-1.5 shrink-0 cursor-pointer"
                 >
-                  <MessageSquare className="w-3.5 h-3.5 text-[#25D366]" />
+                  <MessageSquare className="w-3.5 h-3.5 text-[#14B8A6]" />
                   <span>WhatsApp</span>
                 </button>
 
@@ -221,14 +222,16 @@ export const CareCoordination = () => {
           </div>
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
+            {/* Secondary Action Button 2 */}
             <button
               onClick={handleWhatsAppDesk}
-              className="px-6 py-3.5 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2 border border-white/10 cursor-pointer"
+              className="px-6 py-3.5 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2 border border-[#14B8A6]/30 cursor-pointer"
             >
-              <span className="w-2 h-2 rounded-full bg-[#F0A126] animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse"></span>
               <span>Chat on WhatsApp</span>
             </button>
 
+            {/* Primary Action Button 1 */}
             <button
               onClick={() => openIntake("Concierge Request")}
               className="px-6 py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#F0A126]/20 cursor-pointer"
