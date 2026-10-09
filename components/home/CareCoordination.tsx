@@ -35,19 +35,19 @@ export const CareCoordination = () => {
   ];
 
   return (
-    <section className="py-16 sm:py-24 bg-white border-t border-[#e2eaeb] font-sans">
+    <section className="py-16 sm:py-24 bg-[#FCFDFD] border-t border-[#DCE6EB] font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f0f8f9] border border-[#dbeff0] text-[#0b5d63] text-xs font-heading font-bold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-[#0b5d63]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3 shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#0B5D68]" />
             <span>END-TO-END CARE CONCIERGE</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-slate-900 mb-4 leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-[#0C2338] mb-4 leading-tight">
             Care Doesn&apos;t Stop at the Hospital Door.
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-normal">
+          <p className="text-base sm:text-lg text-[#6B7C88] max-w-2xl mx-auto font-normal">
             Your surgery is one part of the journey. Our concierge coordinates every single detail around it so you can focus 100% on healing.
           </p>
         </div>
@@ -55,17 +55,17 @@ export const CareCoordination = () => {
         {/* Side by Side Comparison Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           {/* Without Coordination */}
-          <div className="bg-slate-50 rounded-3xl p-6 sm:p-8 border border-slate-200">
-            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-slate-200">
-              <span className="w-6 h-6 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-bold text-xs shrink-0">✕</span>
-              <h3 className="font-heading font-bold text-lg text-slate-700">
+          <div className="bg-[#ECF4F7]/40 rounded-3xl p-6 sm:p-8 border border-[#DCE6EB]">
+            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-[#DCE6EB]">
+              <span className="w-6 h-6 rounded-full bg-[#DCE6EB] text-[#6B7C88] flex items-center justify-center font-bold text-xs shrink-0">✕</span>
+              <h3 className="font-heading font-bold text-lg text-[#6B7C88]">
                 Organising On Your Own (Stressful)
               </h3>
             </div>
             <div className="space-y-4">
               {comparison.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-200 text-xs sm:text-sm text-slate-600">
-                  <XCircle className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+                <div key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-[#DCE6EB] text-xs sm:text-sm text-[#6B7C88]">
+                  <XCircle className="w-4 h-4 text-[#6B7C88] shrink-0 mt-0.5" />
                   <p className="leading-relaxed">{item.bad}</p>
                 </div>
               ))}
@@ -73,17 +73,17 @@ export const CareCoordination = () => {
           </div>
 
           {/* With Your Medicare Trip */}
-          <div className="bg-white rounded-3xl p-6 sm:p-8 border-2 border-[#0b5d63] shadow-md">
-            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-[#dbeff0]">
-              <span className="w-6 h-6 rounded-full bg-[#0b5d63] text-white flex items-center justify-center font-bold text-xs shrink-0">✓</span>
-              <h3 className="font-heading font-bold text-lg text-[#073f43]">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border-2 border-[#0B5D68] shadow-md">
+            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-[#DCE6EB]">
+              <span className="w-6 h-6 rounded-full bg-[#0B5D68] text-white flex items-center justify-center font-bold text-xs shrink-0">✓</span>
+              <h3 className="font-heading font-bold text-lg text-[#0C2338]">
                 With Your Medicare Trip Concierge
               </h3>
             </div>
             <div className="space-y-4">
               {comparison.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-[#f8fafb] border border-slate-200/80 text-xs sm:text-sm text-slate-800 shadow-xs">
-                  <CheckCircle2 className="w-4 h-4 text-[#0b5d63] shrink-0 mt-0.5" />
+                <div key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-[#ECF4F7] border border-[#DCE6EB] text-xs sm:text-sm text-[#0C2338] shadow-xs">
+                  <CheckCircle2 className="w-4 h-4 text-[#0B8F83] shrink-0 mt-0.5" />
                   <p className="leading-relaxed font-medium">{item.good}</p>
                 </div>
               ))}
@@ -92,16 +92,16 @@ export const CareCoordination = () => {
         </div>
 
         {/* WhatsApp Assistance Banner */}
-        <div className="bg-[#04272a] text-white rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="bg-[#0C2338] text-white rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl border border-[#DCE6EB]/15">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#0b5d63] flex items-center justify-center text-white shrink-0">
+            <div className="w-12 h-12 rounded-2xl bg-[#0B5D68] flex items-center justify-center text-white shrink-0">
               <MessageSquare className="w-6 h-6 text-white" />
             </div>
             <div>
               <h4 className="font-heading font-bold text-xl text-white mb-1">
                 Have questions about visas, hotels or flights?
               </h4>
-              <p className="text-slate-300 text-xs sm:text-sm">
+              <p className="text-[#ECF4F7]/80 text-xs sm:text-sm">
                 Speak directly with an international care coordinator right now on WhatsApp.
               </p>
             </div>
@@ -112,7 +112,7 @@ export const CareCoordination = () => {
               href="https://wa.me/919876543210"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2"
+              className="px-6 py-3.5 rounded-xl bg-[#0B8F83] hover:bg-[#0B5D68] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2"
             >
               <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
               <span>Chat on WhatsApp</span>
@@ -120,7 +120,7 @@ export const CareCoordination = () => {
 
             <button
               onClick={() => openIntake("Concierge Request")}
-              className="px-6 py-3.5 rounded-xl bg-[#e39b2d] hover:bg-[#a35f0b] text-slate-950 hover:text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
+              className="px-6 py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#F0A126]/90 text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
             >
               Request Call Back
             </button>

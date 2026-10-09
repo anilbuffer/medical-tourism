@@ -13,28 +13,28 @@ export const HeroSection = () => {
     {
       number: "99.2%",
       label: "Clinical Success Rate",
-      color: "text-[#e39b2d]",
+      color: "text-[#F0A126]",
     },
     {
       number: "1,500+",
       label: "International Patients Treated",
-      color: "text-[#e39b2d]",
+      color: "text-[#F0A126]",
     },
     {
       number: "70%",
       label: "Average Cost Savings vs UK/US",
-      color: "text-[#e39b2d]",
+      color: "text-[#F0A126]",
     },
     {
       number: "24 / 7",
       label: "Dedicated English Concierge",
-      color: "text-[#e39b2d]",
+      color: "text-[#F0A126]",
     },
   ];
 
   return (
     <div className="w-full font-sans">
-      <section className="relative min-h-[92vh] lg:min-h-screen flex items-center pt-28 pb-16 lg:py-0 overflow-hidden bg-[#062c30] text-white">
+      <section className="relative min-h-[92vh] lg:min-h-screen flex items-center pt-28 pb-16 lg:py-0 overflow-hidden bg-[#0C2338] text-white">
         {/* 01. Full Section Background Banner Image - Senior Couple Airport Medical Trip */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -46,11 +46,11 @@ export const HeroSection = () => {
             className="object-cover object-[75%_center] lg:object-right"
           />
           {/* Deep Brand Gradient Overlay: Solid on left for pristine text readability, fading cleanly to reveal the senior couple on the right */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#062c30] via-[#062c30]/90 via-40% to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#062c30]/90 via-transparent to-transparent lg:hidden pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0C2338] via-[#0C2338]/90 via-40% to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0C2338]/90 via-transparent to-transparent lg:hidden pointer-events-none" />
         </div>
 
-        {/* Vertical "Scroll for more" on left margin - Matches Medixal Reference */}
+        {/* Vertical "Scroll for more" on left margin */}
         <div className="hidden xl:flex absolute left-8 bottom-16 items-center gap-2 text-xs text-white/75 tracking-widest font-heading font-medium -rotate-90 origin-left z-20 pointer-events-none select-none">
           <span>&larr; Scroll for more</span>
         </div>
@@ -59,7 +59,7 @@ export const HeroSection = () => {
         <div className="max-w-[1580px] mx-auto px-6 sm:px-12 lg:px-16 relative z-10 w-full h-full flex flex-col justify-center">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center min-h-[750px] lg:min-h-[820px]">
 
-            {/* 02. Left Column: Medixal-Style Pure & Spacious Typography */}
+            {/* 02. Left Column: Pure & Spacious Typography */}
             <div className="lg:col-span-7 xl:col-span-6 space-y-6 lg:space-y-8 py-8">
 
               {/* Small Eyebrow Label */}
@@ -67,12 +67,13 @@ export const HeroSection = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-teal-100/90 font-heading text-sm sm:text-base font-semibold tracking-wide"
+                className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0B5D68]/30 border border-[#0B5D68]/50 text-[#ECF4F7] font-heading text-xs sm:text-sm font-semibold tracking-wide backdrop-blur-sm"
               >
-                Expert Medical Treatment
+                <span className="w-1.5 h-1.5 rounded-full bg-[#0B8F83]"></span>
+                <span>Expert Medical Travel Care</span>
               </motion.div>
 
-              {/* Confident Headline Matching User Reference Image */}
+              {/* Confident Headline */}
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -80,22 +81,22 @@ export const HeroSection = () => {
                 className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-[4.15rem] font-extrabold text-white leading-[1.14] tracking-tight"
               >
                 World-Class Surgical Care in India.{" "}
-                <span className="text-[#e39b2d]">
+                <span className="text-[#F0A126]">
                   Save Up to 70%. Zero Waiting.
                 </span>
               </motion.h1>
 
-              {/* Subtitle Description Matching User Reference Image */}
+              {/* Subtitle Description */}
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                className="text-base sm:text-lg text-white/90 font-normal leading-relaxed max-w-2xl font-body"
+                className="text-base sm:text-lg text-slate-200 font-normal leading-relaxed max-w-2xl font-body"
               >
-                Direct patient access to India&apos;s most celebrated surgical directors, quaternary hospitals, fixed guaranteed pricing, and your personal 1-on-1 English-speaking clinical concierge from arrival to recovery.
+                Direct access to top quaternary hospital directors, transparent guaranteed pricing, and your dedicated English-speaking care coordinator from arrival to recovery.
               </motion.p>
 
-              {/* Hero CTA Button - Exactly matching user reference image */}
+              {/* Hero CTA Button - Primary Teal */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -104,19 +105,19 @@ export const HeroSection = () => {
               >
                 <button
                   onClick={() => openIntake()}
-                  className="inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-full bg-[#e39b2d] hover:bg-[#c7821e] active:scale-95 text-slate-950 font-heading font-black text-sm sm:text-base tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#e39b2d]/30 hover:shadow-2xl hover:shadow-[#e39b2d]/45 cursor-pointer group"
+                  className="inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-full bg-[#0B5D68] hover:bg-[#094b54] active:scale-95 text-white font-heading font-bold text-sm sm:text-base tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#0B5D68]/30 hover:shadow-2xl hover:shadow-[#0B5D68]/45 cursor-pointer group"
                 >
-                  <span>CHECK ELIGIBILITY &amp; GET QUOTE</span>
-                  <ArrowRight className="w-5 h-5 text-slate-950 stroke-[2.5] transition-transform duration-300 group-hover:translate-x-1" />
+                  <span>Book an Appointment</span>
+                  <ArrowRight className="w-5 h-5 text-white stroke-[2.2] transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
               </motion.div>
 
             </div>
 
-            {/* 03. Right Column: Floating Badges over the Full-Bleed Doctor Background */}
+            {/* 03. Right Column: Floating Badges */}
             <div className="lg:col-span-5 xl:col-span-6 relative h-[380px] sm:h-[480px] lg:h-[650px] flex items-center justify-center lg:justify-end pointer-events-none">
 
-              {/* FLOATING BADGE 1: Medixal Security Shield Crest (870+ Doctors) */}
+              {/* FLOATING BADGE 1: Security Shield Crest (40+ Doctors) */}
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -133,20 +134,20 @@ export const HeroSection = () => {
                   >
                     <defs>
                       <linearGradient id="shieldBg" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#083e42" stopOpacity="0.88" />
-                        <stop offset="100%" stopColor="#042023" stopOpacity="0.94" />
+                        <stop offset="0%" stopColor="#0C2338" stopOpacity="0.92" />
+                        <stop offset="100%" stopColor="#071624" stopOpacity="0.96" />
                       </linearGradient>
                     </defs>
                     <path
                       d="M 70,6 C 92,19 116,19 130,21 C 135,21.5 137,24 137,28 L 137,82 C 137,122 102,150 70,160 C 38,150 3,122 3,82 L 3,28 C 3,24 5,21.5 10,21 C 24,19 48,19 70,6 Z"
                       fill="url(#shieldBg)"
-                      stroke="#ffffff"
-                      strokeWidth="2.25"
-                      strokeOpacity="0.9"
+                      stroke="#DCE6EB"
+                      strokeWidth="2"
+                      strokeOpacity="0.6"
                     />
                   </svg>
 
-                  {/* Overlapping Doctor Avatars (5 Avatars matching reference image) */}
+                  {/* Overlapping Doctor Avatars */}
                   <div className="relative z-10 flex items-center justify-center -space-x-2.5 mb-1 pt-1">
                     <img
                       className="w-6 h-6 rounded-full ring-1 ring-white/70 object-cover opacity-80"
@@ -176,26 +177,26 @@ export const HeroSection = () => {
                     />
                   </div>
 
-                  {/* 870+ Bold Number */}
+                  {/* 40+ Bold Number */}
                   <div className="relative z-10 text-2xl sm:text-[26px] font-black font-heading text-white leading-none tracking-tight mt-1">
                     40+
                   </div>
 
                   {/* Doctors Subtext */}
                   <div className="relative z-10 text-xs sm:text-[13px] text-white/90 font-heading font-medium tracking-wide mt-0.5">
-                    Doctors
+                    Chief Doctors
                   </div>
                 </div>
               </motion.div>
 
-              {/* FLOATING BADGE 2: Medixal Pill (150K+ Satisfied Patients) */}
+              {/* FLOATING BADGE 2: Pill (150K+ Satisfied Patients) */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="absolute bottom-10 sm:bottom-14 right-2 sm:right-6 lg:right-4 xl:right-10 z-20 pointer-events-auto"
               >
-                <div className="bg-[#042023]/95 backdrop-blur-md border border-white/20 rounded-full px-5 py-2.5 sm:px-6 sm:py-3 shadow-2xl flex items-center gap-3.5">
+                <div className="bg-[#0C2338]/95 backdrop-blur-md border border-[#DCE6EB]/20 rounded-full px-5 py-2.5 sm:px-6 sm:py-3 shadow-2xl flex items-center gap-3.5">
                   {/* Patient Avatars */}
                   <div className="flex -space-x-2 shrink-0">
                     <img
@@ -218,7 +219,7 @@ export const HeroSection = () => {
                     <div className="text-xl sm:text-2xl font-extrabold font-heading text-white leading-tight">
                       150K+
                     </div>
-                    <div className="text-[14px] sm:text-[16px] text-white/75 font-body leading-tight">
+                    <div className="text-[14px] sm:text-[16px] text-[#ECF4F7]/80 font-body leading-tight">
                       Satisfied Patients
                     </div>
                   </div>
@@ -231,10 +232,10 @@ export const HeroSection = () => {
         </div>
       </section>
 
-      {/* 04. Big Impact Trust & Clinical Stats Bar Just Below Banner */}
+      {/* 04. Big Impact Trust & Clinical Stats Bar - Soft Blue Background #ECF4F7 */}
       <section
         aria-label="Clinical statistics and patient credentials"
-        className="relative z-20 w-full bg-[#fffdf9] bg-gradient-to-b from-[#fdfbf7] via-[#ffffff] to-[#faf8f4] py-8 sm:py-10 lg:py-10"
+        className="relative z-20 w-full bg-[#ECF4F7] border-y border-[#DCE6EB] py-8 sm:py-10"
       >
         <div className="max-w-[1580px] mx-auto px-6 sm:px-12 lg:px-16 w-full">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
@@ -248,11 +249,11 @@ export const HeroSection = () => {
                 className="flex flex-col justify-center px-2 sm:px-4 lg:px-6 group transition-transform duration-300 hover:-translate-y-0.5"
               >
                 <div
-                  className={`text-xl sm:text-2xl lg:text-3xl xl:text-[40px] font-bold font-heading ${stat.color} leading-none tracking-tight group-hover:scale-[1.02] transition-transform duration-300 origin-left`}
+                  className={`text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] font-bold font-heading ${stat.color} leading-none tracking-tight group-hover:scale-[1.02] transition-transform duration-300 origin-left`}
                 >
                   {stat.number}
                 </div>
-                <div className="text-[10px] sm:text-[12px] lg:text-[14px] font-heading font-semibold text-slate-700 leading-snug mt-2.5 sm:mt-3 max-w-[220px]">
+                <div className="text-xs sm:text-sm font-heading font-semibold text-[#0C2338] leading-snug mt-2.5 sm:mt-3 max-w-[220px]">
                   {stat.label}
                 </div>
               </motion.div>

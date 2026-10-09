@@ -19,10 +19,10 @@ export const Footer = () => {
   const { t, language, openIntake, openChat } = useCare();
 
   return (
-    <footer className="bg-gradient-to-b from-[#04272a] via-[#073f43] to-[#021618] text-white pt-20 pb-12 border-t border-[#0b5d63]/40 relative overflow-hidden font-sans">
+    <footer className="bg-[#0C2338] text-white pt-20 pb-12 border-t border-[#DCE6EB]/15 relative overflow-hidden font-sans">
       {/* Ambient background lighting */}
-      <div className="absolute top-0 left-1/3 w-[500px] h-[300px] bg-[#e39b2d]/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[300px] bg-[#0b5d63]/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 left-1/3 w-[500px] h-[300px] bg-[#0B5D68]/15 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[300px] bg-[#2C7FAF]/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Top 4-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-white/10">
@@ -38,7 +38,7 @@ export const Footer = () => {
               />
             </Link>
 
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">
+            <p className="text-xs sm:text-sm text-[#ECF4F7]/80 leading-relaxed max-w-sm">
               {t.footer.tagline}
             </p>
 
@@ -49,10 +49,10 @@ export const Footer = () => {
 
           {/* Col 1: Care Pathway */}
           <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-teal-200 font-heading">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#ECF4F7] font-heading">
               {t.footer.careHeader}
             </h4>
-            <ul className="space-y-2.5 text-xs text-slate-400 font-medium">
+            <ul className="space-y-2.5 text-xs text-slate-300 font-medium">
               <li>
                 <a href="#specialties" className="hover:text-white transition-colors">
                   {t.nav.specialties}
@@ -78,12 +78,12 @@ export const Footer = () => {
 
           {/* Col 2: Portals & Resources */}
           <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-teal-200 font-heading">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#ECF4F7] font-heading">
               Portals & Resources
             </h4>
-            <ul className="space-y-2.5 text-xs text-slate-400 font-medium">
+            <ul className="space-y-2.5 text-xs text-slate-300 font-medium">
               <li>
-                <Link href="/login?portal=patient" className="text-teal-300 hover:text-white transition-colors flex items-center gap-1 font-bold">
+                <Link href="/login?portal=patient" className="text-[#0B8F83] hover:text-white transition-colors flex items-center gap-1 font-bold">
                   <span>Patient Portal Login</span>
                   <span className="text-[10px]">→</span>
                 </Link>
@@ -123,36 +123,36 @@ export const Footer = () => {
 
           {/* Col 3: 24/7 International Desk */}
           <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-teal-200 font-heading">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#ECF4F7] font-heading">
               {t.footer.supportHeader}
             </h4>
-            <div className="space-y-3 text-xs text-slate-400">
+            <div className="space-y-3 text-xs text-slate-300">
               <a
                 href="https://wa.me/919876543210"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-teal-300 hover:underline font-semibold"
+                className="flex items-center gap-2 text-[#0B8F83] hover:underline font-semibold"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>WhatsApp: +91 98765 43210</span>
               </a>
 
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-teal-400 shrink-0" />
+                <Phone className="w-4 h-4 text-[#2C7FAF] shrink-0" />
                 <span>Desk: +91 98765 43210</span>
               </div>
 
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-teal-400 shrink-0" />
+                <Mail className="w-4 h-4 text-[#2C7FAF] shrink-0" />
                 <span>care@yourmedicaretrip.com</span>
               </div>
 
               <div className="pt-2">
                 <a
                   href="/#assessment"
-                  className="block w-full py-2.5 px-3 rounded-xl bg-[#0b5d63] hover:bg-[#0e757c] text-white font-bold text-xs shadow-md transition-all text-center uppercase tracking-wider font-heading"
+                  className="block w-full py-2.5 px-3 rounded-xl bg-[#0B5D68] hover:bg-[#0C2338] text-white font-bold text-xs shadow-md transition-all text-center uppercase tracking-wider font-heading"
                 >
-                  {t.nav.startJourney}
+                  Book an Appointment
                 </a>
               </div>
             </div>

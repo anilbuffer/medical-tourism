@@ -181,28 +181,28 @@ export const SpecialtiesSection = () => {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-4 sm:mb-8 gap-3">
             <div>
               <div className="flex items-center gap-2 mb-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#0b5d63]"></span>
-                <p className="text-[#0b5d63] font-heading font-semibold text-xs uppercase tracking-[0.2em]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#0B5D68]"></span>
+                <p className="text-[#0B5D68] font-heading font-semibold text-xs uppercase tracking-[0.2em]">
                   QUATERNARY CLINICAL EXCELLENCE
                 </p>
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-slate-900 leading-[1.12]">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-[#0C2338] leading-[1.12]">
                 Specialised Treatments.{" "}
-                <span className="text-[#0b5d63] block sm:inline">
+                <span className="text-[#0B5D68] block sm:inline">
                   Celebrated Specialists.
                 </span>
               </h2>
             </div>
-            <p className="text-slate-600 max-w-xl text-xs sm:text-sm leading-relaxed font-body">
+            <p className="text-[#6B7C88] max-w-xl text-xs sm:text-sm leading-relaxed font-body">
               All surgeries are performed by Chief Specialists in JCI &amp; NABH-accredited tertiary hospitals with US-FDA approved implants, transparent packages, and zero waiting times.
             </p>
           </div>
 
           {/* ONE UNIFIED CARD: Tabs + Content inside the same card */}
-          <div className="w-full rounded-xl bg-white border border-[#e2eaeb] shadow-sm overflow-hidden">
+          <div className="w-full rounded-xl bg-white border border-[#DCE6EB] shadow-sm overflow-hidden">
 
             {/* Top: Horizontal Tabs Bar Inside the Card */}
-            <div className="px-4 sm:px-6 lg:px-8 py-5 sm:py-6 border-b border-slate-100 bg-white">
+            <div className="px-4 sm:px-6 lg:px-8 py-5 sm:py-6 border-b border-[#DCE6EB]/60 bg-white">
               <div className="flex items-stretch gap-2.5 sm:gap-3.5 w-full overflow-x-auto no-scrollbar scroll-smooth">
                 {specialties.map((spec, idx) => {
                   const isSelected = activeStep === idx;
@@ -211,15 +211,15 @@ export const SpecialtiesSection = () => {
                       key={spec.id}
                       onClick={() => handleTabClick(idx)}
                       className={`flex-1 min-w-[200px] lg:min-w-0 flex items-center gap-3 sm:gap-3.5 px-3.5 sm:px-4 py-3 rounded-xl transition-all duration-300 text-left cursor-pointer border ${isSelected
-                        ? "bg-[#0b5d63] border-[#0b5d63] shadow-sm text-white"
-                        : "bg-white hover:bg-slate-50 border-slate-200/90 hover:border-slate-300"
+                        ? "bg-[#0B5D68] border-[#0B5D68] shadow-sm text-white"
+                        : "bg-white hover:bg-[#ECF4F7]/60 border-[#DCE6EB] hover:border-[#0B5D68]/40"
                         }`}
                     >
-                      {/* Number Circle Badge (Refined on Active) */}
+                      {/* Number Circle Badge */}
                       <div
                         className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-heading font-extrabold text-xs sm:text-sm shrink-0 transition-colors ${isSelected
                           ? "bg-white/20 text-white border border-white/30 backdrop-blur-sm shadow-sm"
-                          : "bg-slate-100 text-slate-600"
+                          : "bg-[#ECF4F7] text-[#0C2338]"
                           }`}
                       >
                         {idx + 1}
@@ -228,13 +228,13 @@ export const SpecialtiesSection = () => {
                       {/* 2-Line Text Content (Title + Savings Subtext) */}
                       <div className="flex flex-col min-w-0">
                         <span
-                          className={`font-heading font-extrabold text-sm sm:text-base leading-tight transition-colors whitespace-nowrap truncate ${isSelected ? "text-white" : "text-slate-800"
+                          className={`font-heading font-extrabold text-sm sm:text-base leading-tight transition-colors whitespace-nowrap truncate ${isSelected ? "text-white" : "text-[#0C2338]"
                             }`}
                         >
                           {spec.shortTitle}
                         </span>
                         <span
-                          className={`text-xs font-medium leading-tight mt-0.5 transition-colors whitespace-nowrap truncate ${isSelected ? "text-teal-100" : "text-slate-500"
+                          className={`text-xs font-medium leading-tight mt-0.5 transition-colors whitespace-nowrap truncate ${isSelected ? "text-teal-100" : "text-[#6B7C88]"
                             }`}
                         >
                           • {spec.savings}
@@ -277,7 +277,7 @@ export const SpecialtiesSection = () => {
 
                   {/* Bottom Right: Key Stat Pill */}
                   <div className="absolute bottom-6 right-6 z-10">
-                    <span className="px-3.5 py-1.5 rounded-xl bg-white/95 backdrop-blur-md text-slate-900 text-xs font-bold shadow-md">
+                    <span className="px-3.5 py-1.5 rounded-xl bg-white/95 backdrop-blur-md text-[#0C2338] text-xs font-bold shadow-md">
                       {current.stat}
                     </span>
                   </div>
@@ -287,13 +287,13 @@ export const SpecialtiesSection = () => {
                 <div className="lg:col-span-7 xl:col-span-6 p-6 sm:p-10 lg:p-12 xl:p-14 flex flex-col justify-between">
                   <div>
                     {/* Procedure Headline & Subtitle */}
-                    <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 mb-2 leading-tight">
+                    <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0C2338] mb-2 leading-tight">
                       {current.title}
                     </h3>
-                    <p className="text-[#0b5d63] text-sm sm:text-base font-bold mb-3 font-heading">
+                    <p className="text-[#0B5D68] text-sm sm:text-base font-bold mb-3 font-heading">
                       {current.subtitle}
                     </p>
-                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 font-normal font-body">
+                    <p className="text-[#6B7C88] text-sm sm:text-base leading-relaxed mb-6 font-normal font-body">
                       {current.quote}
                     </p>
 
@@ -302,9 +302,9 @@ export const SpecialtiesSection = () => {
                       {current.protocols.map((proto, pIdx) => (
                         <div
                           key={pIdx}
-                          className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-800 bg-[#f8fafb] p-3.5 rounded-xl border border-slate-200/80"
+                          className="flex items-start gap-2.5 text-xs sm:text-[13px] text-[#0C2338] bg-[#ECF4F7] p-3.5 rounded-xl border border-[#DCE6EB]"
                         >
-                          <CheckCircle2 className="w-4 h-4 text-[#0b5d63] shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-4 h-4 text-[#0B8F83] shrink-0 mt-0.5" />
                           <span className="font-medium leading-relaxed">{proto}</span>
                         </div>
                       ))}
@@ -312,15 +312,15 @@ export const SpecialtiesSection = () => {
                   </div>
 
                   {/* Procedure Bottom Bar: Stay Duration + Action Button */}
-                  <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-600">
-                      <Clock className="w-4 h-4 text-slate-400" />
-                      <span>Average In-Country Stay: <strong className="text-slate-900">{current.stay}</strong></span>
+                  <div className="pt-6 border-t border-[#DCE6EB]/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#6B7C88]">
+                      <Clock className="w-4 h-4 text-[#2C7FAF]" />
+                      <span>Average In-Country Stay: <strong className="text-[#0C2338]">{current.stay}</strong></span>
                     </div>
 
                     <button
                       onClick={() => openIntake(current.title)}
-                      className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#0b5d63] hover:bg-[#073f43] active:scale-95 text-white font-heading font-bold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2.5 transition-all cursor-pointer group"
+                      className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#0B5D68] hover:bg-[#094b54] active:scale-95 text-white font-heading font-bold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2.5 transition-all cursor-pointer group"
                     >
                       <span>Check Clinical Feasibility</span>
                       <ArrowRight className="w-4 h-4 text-white transition-transform group-hover:translate-x-1" />

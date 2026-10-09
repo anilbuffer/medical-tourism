@@ -358,12 +358,12 @@ const getPortalPathForRole = (role?: string) => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row bg-[#071321] text-white">
+    <div className="min-h-screen flex flex-col lg:flex-row bg-[#0C2338] text-white">
       {/* 01. Left Column: Feature Narrative & Role Selector Strip (Home Banner Style) */}
-      <div className="lg:w-3/5 xl:w-[62%] relative flex flex-col justify-between p-6 sm:p-10 lg:p-14 bg-gradient-to-b from-[#04272a] via-[#07383c] to-[#0b5d63] overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-800/80">
+      <div className="lg:w-3/5 xl:w-[62%] relative flex flex-col justify-between p-6 sm:p-10 lg:p-14 bg-gradient-to-b from-[#0C2338] via-[#082e4a] to-[#0B5D68] overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-800/80">
         {/* Ambient Lights & Texture */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0b5d63]/30 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-[#e39b2d]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0B5D68]/30 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-[#F0A126]/15 rounded-full blur-3xl pointer-events-none" />
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{
@@ -745,20 +745,20 @@ const getPortalPathForRole = (role?: string) => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#0b5d63] to-[#08454a] hover:from-[#08454a] hover:to-[#052e31] text-white font-bold text-[14px] shadow-lg shadow-[#0b5d63]/25 hover:shadow-xl hover:shadow-[#0b5d63]/30 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2.5 group cursor-pointer disabled:opacity-75 disabled:pointer-events-none font-heading"
+              className="w-full py-3.5 px-6 rounded-2xl bg-[#0B5D68] hover:bg-[#0C2338] text-white font-bold text-[14px] shadow-lg shadow-[#0B5D68]/25 hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2.5 group cursor-pointer disabled:opacity-75 disabled:pointer-events-none font-heading"
             >
               <span>{isSubmitting ? "Authenticating..." : `Sign in to ${currentRole.title}`}</span>
-              <ArrowRight className="w-4 h-4 text-[#e39b2d] group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 text-[#F0A126] group-hover:translate-x-1 transition-transform" />
             </button>
           </form>
 
           {/* Divider */}
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-slate-200" />
+              <div className="w-full border-t border-[#DCE6EB]" />
             </div>
             <div className="relative flex justify-center text-xs">
-              <span className="bg-white px-3 text-slate-400 font-medium">
+              <span className="bg-white px-3 text-[#6B7C88] font-medium">
                 New to yourMedicareTrip?
               </span>
             </div>
@@ -767,9 +767,9 @@ const getPortalPathForRole = (role?: string) => {
           {/* Create Account Button */}
           <Link
             href="/#assessment"
-            className="w-full py-3 rounded-2xl bg-[#0b5d63]/10 hover:bg-[#0b5d63]/20 text-[#0b5d63] border border-[#0b5d63]/30 font-bold text-xs flex items-center justify-center gap-2 transition-all font-heading"
+            className="w-full py-3 rounded-2xl bg-[#ECF4F7] hover:bg-[#0B5D68]/15 text-[#0B5D68] border border-[#DCE6EB] font-bold text-xs flex items-center justify-center gap-2 transition-all font-heading"
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#e39b2d]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#F0A126]" />
             <span>Create an account / Free Assessment</span>
           </Link>
         </div>

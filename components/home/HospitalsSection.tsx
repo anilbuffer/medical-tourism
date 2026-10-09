@@ -160,10 +160,9 @@ export const HospitalsSection = () => {
     };
   }, [api]);
 
-  return (
-    <section
+  retur    <section
       id="hospitals"
-      className="py-16 sm:py-24 bg-white relative border-t border-[#e2eaeb] font-sans"
+      className="py-16 sm:py-24 bg-[#ECF4F7] relative border-t border-[#DCE6EB] font-sans"
     >
       {/* 1580px Expanded Container Matching Header, Hero, and Specialties */}
       <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -172,18 +171,18 @@ export const HospitalsSection = () => {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 sm:mb-10 gap-6">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#0b5d63]" />
-              <p className="text-[#0b5d63] font-heading font-semibold text-xs uppercase tracking-[0.2em]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#0B5D68]" />
+              <p className="text-[#0B5D68] font-heading font-semibold text-xs uppercase tracking-[0.2em]">
                 GLOBAL ACCREDITED HEALTHCARE NETWORK
               </p>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-slate-900 leading-[1.14]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-[#0C2338] leading-[1.14]">
               Featured Partner Hospitals.{" "}
-              <span className="text-[#0b5d63] block sm:inline">
+              <span className="text-[#0B5D68] block sm:inline">
                 World-Class Clinical Institutions.
               </span>
             </h2>
-            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-body mt-2.5 max-w-2xl">
+            <p className="text-[#6B7C88] text-xs sm:text-sm leading-relaxed font-body mt-2.5 max-w-2xl">
               Audited quaternary institutions with JCI and NABH accreditations, cutting-edge robotic surgical theatres, dedicated international patient lounges, and priority direct admission.
             </p>
           </div>
@@ -192,7 +191,7 @@ export const HospitalsSection = () => {
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <Link
               href="/hospitals"
-              className="text-xs font-heading font-semibold text-[#0b5d63] hover:underline flex items-center gap-1.5 transition-colors mr-2"
+              className="text-xs font-heading font-semibold text-[#0B5D68] hover:underline flex items-center gap-1.5 transition-colors mr-2"
             >
               <span>Explore All 15+ Hospitals</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -203,9 +202,9 @@ export const HospitalsSection = () => {
                 onClick={() => api?.scrollPrev()}
                 disabled={!canScrollPrev}
                 aria-label="Previous hospital slide"
-                className={`w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center transition-all cursor-pointer ${canScrollPrev
-                  ? "bg-white hover:bg-slate-100 text-slate-800 shadow-sm"
-                  : "bg-slate-50 text-slate-300 border-slate-100 cursor-not-allowed opacity-50"
+                className={`w-10 h-10 rounded-full border border-[#DCE6EB] flex items-center justify-center transition-all cursor-pointer ${canScrollPrev
+                  ? "bg-white hover:bg-slate-100 text-[#0C2338] shadow-sm"
+                  : "bg-white/60 text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
                   }`}
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -214,9 +213,9 @@ export const HospitalsSection = () => {
                 onClick={() => api?.scrollNext()}
                 disabled={!canScrollNext}
                 aria-label="Next hospital slide"
-                className={`w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center transition-all cursor-pointer ${canScrollNext
-                  ? "bg-[#0b5d63] hover:bg-[#073f43] text-white shadow-sm"
-                  : "bg-slate-50 text-slate-300 border-slate-100 cursor-not-allowed opacity-50"
+                className={`w-10 h-10 rounded-full border border-transparent flex items-center justify-center transition-all cursor-pointer ${canScrollNext
+                  ? "bg-[#0B5D68] hover:bg-[#094b54] text-white shadow-sm"
+                  : "bg-white/60 text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
                   }`}
               >
                 <ChevronRight className="w-5 h-5" />
@@ -241,7 +240,7 @@ export const HospitalsSection = () => {
                   key={hosp.id}
                   className="pl-4 sm:pl-6 basis-full sm:basis-1/2 lg:basis-1/3"
                 >
-                  <div className="group relative bg-white rounded-2xl sm:rounded-3xl border border-[#e2eaeb] hover:border-[#0b5d63]/50 shadow-sm hover:shadow-xl transition-all duration-400 overflow-hidden flex flex-col justify-between h-full">
+                  <div className="group relative bg-white rounded-2xl sm:rounded-3xl border border-[#DCE6EB] hover:border-[#0B5D68]/40 shadow-sm hover:shadow-xl transition-all duration-400 overflow-hidden flex flex-col justify-between h-full">
                     {/* Media Top Container */}
                     <div className="relative h-60 sm:h-80 w-full overflow-hidden bg-slate-100 shrink-0">
                       <Image
@@ -252,20 +251,20 @@ export const HospitalsSection = () => {
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
                       />
                       {/* Subtle Dark Gradient Overlay for Badges & Text Contrast */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#04272a]/85 via-black/20 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0C2338]/85 via-black/20 to-transparent" />
 
                       {/* Top-Left: Accreditation Badge */}
                       <div className="absolute top-3.5 left-3.5 z-10">
                         <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-heading font-medium uppercase tracking-wider shadow-sm flex items-center gap-1.5 border border-white/20">
-                          <ShieldCheck className="w-3.5 h-3.5 text-teal-300" />
+                          <ShieldCheck className="w-3.5 h-3.5 text-[#0B8F83]" />
                           <span>{hosp.accreditation}</span>
                         </span>
                       </div>
 
                       {/* Top-Right: Rating Pill */}
                       <div className="absolute top-3.5 right-3.5 z-10">
-                        <span className="px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-slate-900 text-xs font-bold shadow-sm flex items-center gap-1">
-                          <Star className="w-3.5 h-3.5 fill-[#e39b2d] text-[#e39b2d]" />
+                        <span className="px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#0C2338] text-xs font-bold shadow-sm flex items-center gap-1">
+                          <Star className="w-3.5 h-3.5 fill-[#F0A126] text-[#F0A126]" />
                           <span>{hosp.rating.toFixed(1)}</span>
                         </span>
                       </div>
@@ -287,20 +286,20 @@ export const HospitalsSection = () => {
                     <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between bg-white">
                       <div>
                         {/* Eyebrow Category */}
-                        <p className="text-[11px] font-heading font-extrabold uppercase tracking-wider text-[#0b5d63] mb-1">
+                        <p className="text-[11px] font-heading font-extrabold uppercase tracking-wider text-[#0B5D68] mb-1">
                           {hosp.category}
                         </p>
 
                         {/* Hospital Name */}
                         <div className="h-14 flex items-center mb-1.5">
-                          <h3 className="font-heading font-extrabold text-lg sm:text-xl text-slate-900 group-hover:text-[#0b5d63] transition-colors leading-snug line-clamp-2">
+                          <h3 className="font-heading font-extrabold text-lg sm:text-xl text-[#0C2338] group-hover:text-[#0B5D68] transition-colors leading-snug line-clamp-2">
                             {hosp.name}
                           </h3>
                         </div>
 
                         {/* Location */}
-                        <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium mb-3">
-                          <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                        <div className="flex items-center gap-1.5 text-xs text-[#6B7C88] font-medium mb-3">
+                          <MapPin className="w-3.5 h-3.5 text-[#2C7FAF] shrink-0" />
                           <span className="truncate">{hosp.location}</span>
                         </div>
 
@@ -309,7 +308,7 @@ export const HospitalsSection = () => {
                           {hosp.specialties.slice(0, 3).map((spec, sIdx) => (
                             <span
                               key={sIdx}
-                              className="px-2.5 py-1 rounded-md bg-[#f0f8f9] text-[#0b5d63] border border-[#dbeff0] text-[11px] font-medium leading-none"
+                              className="px-2.5 py-1 rounded-md bg-[#ECF4F7] text-[#0B5D68] border border-[#DCE6EB] text-[11px] font-medium leading-none"
                             >
                               {spec}
                             </span>
@@ -317,23 +316,23 @@ export const HospitalsSection = () => {
                         </div>
 
                         {/* Technology & Airport Distance Box */}
-                        <div className="bg-[#f8fafb] rounded-xl p-3 border border-slate-100 space-y-1.5 mb-5 text-xs">
-                          <div className="flex items-start gap-2 text-slate-800">
-                            <Sparkles className="w-3.5 h-3.5 text-[#0b5d63] shrink-0 mt-0.5" />
+                        <div className="bg-[#FCFDFD] rounded-xl p-3 border border-[#DCE6EB] space-y-1.5 mb-5 text-xs">
+                          <div className="flex items-start gap-2 text-[#0C2338]">
+                            <Sparkles className="w-3.5 h-3.5 text-[#0B5D68] shrink-0 mt-0.5" />
                             <span className="font-semibold line-clamp-1">{hosp.tech}</span>
                           </div>
-                          <div className="flex items-center gap-2 text-slate-500 text-[11px]">
-                            <Plane className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                          <div className="flex items-center gap-2 text-[#6B7C88] text-[11px]">
+                            <Plane className="w-3.5 h-3.5 text-[#2C7FAF] shrink-0" />
                             <span className="truncate">{hosp.airportDistance}</span>
                           </div>
                         </div>
                       </div>
 
                       {/* Card Footer Actions */}
-                      <div className="pt-3 border-t border-slate-100 space-y-2">
+                      <div className="pt-3 border-t border-[#DCE6EB]/60 space-y-2">
                         <button
                           onClick={() => openIntake(hosp.name)}
-                          className="w-full py-2.5 px-4 rounded-xl bg-[#0b5d63] hover:bg-[#073f43] active:scale-[0.98] text-white font-heading font-bold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer group/btn"
+                          className="w-full py-2.5 px-4 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] active:scale-[0.98] text-white font-heading font-bold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer group/btn"
                         >
                           <span>Check Hospital Availability</span>
                           <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1" />
@@ -341,7 +340,7 @@ export const HospitalsSection = () => {
 
                         <Link
                           href="/hospitals"
-                          className="w-full py-1 text-center text-xs font-semibold text-slate-600 hover:text-[#0b5d63] transition-colors flex items-center justify-center gap-1"
+                          className="w-full py-1 text-center text-xs font-semibold text-[#6B7C88] hover:text-[#0B5D68] transition-colors flex items-center justify-center gap-1"
                         >
                           <span>View Facilities & Profiles</span>
                           <ChevronRight className="w-3.5 h-3.5" />
@@ -352,7 +351,7 @@ export const HospitalsSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-          </Carousel>
+          </Carousel>sel>
 
           {/* Slide Indicator Dots */}
           {totalSlides > 1 && (

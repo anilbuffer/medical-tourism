@@ -1,4 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+@font-face {
+  font-family: 'Poppins Fallback';
+  src: local('Arial'), local('Helvetica Neue'), local('sans-serif');
+  ascent-override: 105%;
+  descent-override: 35%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -7,87 +17,109 @@
 @source "..";
 
 @theme {
-  --color-primary: #0b5d63;
-  --color-primary-light: #0e757c;
-  --color-primary-dark: #073f43;
-  --color-primary-deep: #04272a;
-  --color-primary-hover: #084e53;
-  --color-primary-50: #f0f8f9;
-  --color-primary-100: #dbeff0;
+  --color-primary: #0C2338;
+  --color-primary-light: #163654;
+  --color-primary-dark: #071624;
+  --color-primary-deep: #0C2338;
+  --color-primary-hover: #102f4a;
+  --color-primary-50: #f2f6fa;
+  --color-primary-100: #e1ecf5;
 
-  --color-secondary: #e39b2d;
-  --color-secondary-hover: #f0a73b;
-  --color-secondary-muted: #a35f0b;
+  --color-teal: #0B5D68;
+  --color-teal-hover: #094b54;
+  --color-teal-light: #0d717e;
+
+  --color-blue: #2C7FAF;
+  --color-blue-light: #4497c7;
+  --color-blue-dark: #1f6187;
+
+  --color-green: #0B8F83;
+
+  --color-accent: #F0A126;
+  --color-accent-hover: #db8e18;
+  --color-accent-light: #fef7ec;
+
+  --color-surface: #FFFFFF;
+  --color-surface-soft: #ECF4F7;
+  --color-background: #FCFDFD;
+  --color-border: #DCE6EB;
+
+  --color-text-primary: #0C2338;
+  --color-text-secondary: #6B7C88;
+
+  --color-secondary: #F0A126;
+  --color-secondary-hover: #db8e18;
+  --color-secondary-muted: #c7821e;
   --color-secondary-light: #fef7ec;
 
-  --color-vedara-deep: #04272a;
-  --color-vedara-dark: #073f43;
-  --color-vedara-slate: #0b5d63;
-  --color-vedara-midnight: #073f43;
-  --color-vedara-navy: #0b5d63;
+  --color-vedara-deep: #0C2338;
+  --color-vedara-dark: #071624;
+  --color-vedara-slate: #0C2338;
+  --color-vedara-midnight: #0C2338;
+  --color-vedara-navy: #0C2338;
 
-  --color-vedara-gold: #e39b2d;
-  --color-vedara-gold-hover: #f0a73b;
-  --color-vedara-gold-muted: #a35f0b;
+  --color-vedara-gold: #F0A126;
+  --color-vedara-gold-hover: #db8e18;
+  --color-vedara-gold-muted: #c7821e;
   --color-vedara-gold-light: #fef7ec;
 
-  --color-vedara-blue: #0b5d63;
-  --color-vedara-blue-light: #0e757c;
-  --color-vedara-blue-dark: #073f43;
-  --color-vedara-blue-50: #f0f8f9;
+  --color-vedara-blue: #2C7FAF;
+  --color-vedara-blue-light: #4497c7;
+  --color-vedara-blue-dark: #1f6187;
+  --color-vedara-blue-50: #ECF4F7;
   --color-vedara-blue-100: #dbeff0;
   --color-vedara-blue-200: #bde0e3;
-  --color-vedara-blue-500: #0b5d63;
-  --color-vedara-blue-600: #094f54;
-  --color-vedara-blue-700: #073f43;
-  --color-vedara-blue-900: #04272a;
+  --color-vedara-blue-500: #0B5D68;
+  --color-vedara-blue-600: #094b54;
+  --color-vedara-blue-700: #0C2338;
+  --color-vedara-blue-900: #071624;
 
-  --color-vedara-cyan: #0b5d63;
-  --color-vedara-cyan-light: #14909a;
-  --color-vedara-cyan-dark: #073f43;
-  --color-vedara-teal-mid1: #0b5d63;
-  --color-vedara-teal-mid2: #0e757c;
+  --color-vedara-cyan: #0B5D68;
+  --color-vedara-cyan-light: #0ea395;
+  --color-vedara-cyan-dark: #084851;
+  --color-vedara-teal-mid1: #0B5D68;
+  --color-vedara-teal-mid2: #2C7FAF;
 
-  --color-vedara-cream: #f8fafb;
-  --color-vedara-platinum: #eef4f5;
+  --color-vedara-cream: #FCFDFD;
+  --color-vedara-platinum: #ECF4F7;
   --color-vedara-surface: #FFFFFF;
-  --color-vedara-muted: #5c7376;
-  --color-vedara-offwhite: #f8fafb;
-  --color-vedara-tint-blue: #f0f8f9;
+  --color-vedara-muted: #6B7C88;
+  --color-vedara-offwhite: #FCFDFD;
+  --color-vedara-tint-blue: #ECF4F7;
   --color-vedara-tint-red: #fff8f8;
 
-  --color-dark-1: #031126;
-  --color-dark-2: #06203D;
-  --color-dark-3: #0A2E50;
-  --color-dark-4: #041326;
-  --color-dark-5: #071321;
-  --color-dark-step: #1e4468;
+  --color-dark-1: #0C2338;
+  --color-dark-2: #071624;
+  --color-dark-3: #0B5D68;
+  --color-dark-4: #05111c;
+  --color-dark-5: #081a2b;
+  --color-dark-step: #163654;
 
-  --color-vedara-dark-1: #031126;
-  --color-vedara-dark-2: #06203D;
-  --color-vedara-dark-3: #0A2E50;
-  --color-vedara-dark-4: #041326;
-  --color-vedara-dark-5: #071321;
-  --color-vedara-dark-step: #1e4468;
+  --color-vedara-dark-1: #0C2338;
+  --color-vedara-dark-2: #071624;
+  --color-vedara-dark-3: #0B5D68;
+  --color-vedara-dark-4: #05111c;
+  --color-vedara-dark-5: #081a2b;
+  --color-vedara-dark-step: #163654;
 
-  --color-teal-600: #0D9488;
-  --color-teal-300: #5EEAD4;
-  --color-teal-mid1: #1d8983;
-  --color-teal-mid2: #1baba4;
-  --color-sky-600: #0284C7;
-  --color-sky-400: #38BDF8;
-  --color-whatsapp: #25D366;
-  --color-portal-green: #00A884;
-  --color-portal-green-hover: #008f70;
-  --color-portal-navy: #0E1F40;
+  --color-teal-600: #0B5D68;
+  --color-teal-300: #0ea395;
+  --color-teal-mid1: #0B5D68;
+  --color-teal-mid2: #2C7FAF;
+  --color-sky-600: #2C7FAF;
+  --color-sky-400: #4497c7;
+  --color-whatsapp: #0B8F83;
+  --color-portal-green: #0B8F83;
+  --color-portal-green-hover: #087369;
+  --color-portal-navy: #0C2338;
 
   --font-sans: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-serif: 'Jost', sans-serif;
-  --font-heading: 'Jost', sans-serif;
+  --font-serif: 'Poppins', 'Poppins Fallback', sans-serif;
+  --font-heading: 'Poppins', 'Poppins Fallback', sans-serif;
   --font-body: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-plus-jakarta: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-playfair: 'Jost', sans-serif;
-  --font-quicksand: 'Jost', sans-serif;
+  --font-playfair: 'Poppins', 'Poppins Fallback', sans-serif;
+  --font-quicksand: 'Poppins', 'Poppins Fallback', sans-serif;
 
   --shadow-luxury: 0 20px 40px -15px rgba(63, 78, 180, 0.12), 0 0 25px -5px rgba(40, 53, 147, 0.08);
   --shadow-luxury-hover: 0 25px 50px -12px rgba(63, 78, 180, 0.25), 0 0 30px -5px rgba(40, 53, 147, 0.15);
@@ -135,84 +167,94 @@
    ============================================================ */
 
 :root {
-  --font-heading: 'Jost', sans-serif;
+  --primary: #0C2338;
+  --teal: #0B5D68;
+  --blue: #2C7FAF;
+  --green: #0B8F83;
+  --accent: #F0A126;
+
+  --background: #FCFDFD;
+  --surface: #FFFFFF;
+  --surface-soft: #ECF4F7;
+
+  --text-primary: #0C2338;
+  --text-secondary: #6B7C88;
+  --border: #DCE6EB;
+
+  --font-heading: 'Poppins', 'Poppins Fallback', sans-serif;
   --font-body: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-sans: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-serif: 'Jost', sans-serif;
-  --font-display: 'Jost', sans-serif;
+  --font-serif: 'Poppins', 'Poppins Fallback', sans-serif;
+  --font-display: 'Poppins', 'Poppins Fallback', sans-serif;
   --font-plus-jakarta: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-playfair: 'Jost', sans-serif;
-  --font-quicksand: 'Jost', sans-serif;
+  --font-playfair: 'Poppins', 'Poppins Fallback', sans-serif;
+  --font-quicksand: 'Poppins', 'Poppins Fallback', sans-serif;
 
   /* Primary Brand Theme */
-  --color-primary: #0b5d63;
-  --color-primary-dark: #073f43;
-  --color-primary-deep: #04272a;
-  --color-primary-light: #0e757c;
-  --color-secondary-1: #e39b2d;
-  --color-secondary-2: #a35f0b;
+  --color-primary: #0C2338;
+  --color-primary-dark: #071624;
+  --color-primary-deep: #0C2338;
+  --color-primary-light: #163654;
+  --color-secondary-1: #F0A126;
+  --color-secondary-2: #0B5D68;
 
   /* Core surface */
-  --bg-primary:        #f8fafb;
-  --text-primary:      #072b2e;
+  --bg-primary:        #FCFDFD;
+  --text-primary:      #0C2338;
 
   /* Secondary 1 & 2 Accents */
-  --accent-gold:       #e39b2d;
-  --accent-gold-hover: #f0a73b;
-  --accent-gold-muted: #a35f0b;
+  --accent-gold:       #F0A126;
+  --accent-gold-hover: #db8e18;
+  --accent-gold-muted: #c7821e;
   --accent-gold-light: #fef7ec;
 
   /* Primary teal accents */
-  --accent-blue:       #0b5d63;
-  --accent-blue-light: #0e757c;
-  --accent-blue-dark:  #073f43;
+  --accent-blue:       #0B5D68;
+  --accent-blue-light: #0ea395;
+  --accent-blue-dark:  #084851;
 
   /* Warm accents */
-  --accent-cyan:       #e39b2d;
-  --accent-cyan-light: #5ADBD5;
-  --accent-cyan-dark:  #1DA89F;
+  --accent-cyan:       #2C7FAF;
+  --accent-cyan-light: #4497c7;
+  --accent-cyan-dark:  #1f6187;
 
   /* Deep navy base */
-  --color-navy:        #283593;
-  --color-navy-dark:   #1a2468;
-  --color-navy-deep:   #0F1340;
+  --color-navy:        #0C2338;
+  --color-navy-dark:   #071624;
+  --color-navy-deep:   #0C2338;
 
   /* Additional App Colors */
-  --color-dark-1: #031126;
-  --color-dark-2: #06203D;
-  --color-dark-3: #0A2E50;
-  --color-dark-4: #041326;
-  --color-dark-5: #071321;
-  --color-dark-step: #1e4468;
-  --color-teal-600: #0D9488;
-  --color-teal-300: #5EEAD4;
-  --color-teal-mid1: #1d8983;
-  --color-teal-mid2: #1baba4;
-  --color-sky-600: #0284C7;
-  --color-sky-400: #38BDF8;
-  --background: #F5F7FF;
-  --foreground: #0F1340;
+  --color-dark-1: #0C2338;
+  --color-dark-2: #071624;
+  --color-dark-3: #0B5D68;
+  --color-dark-4: #05111c;
+  --color-dark-5: #081a2b;
+  --color-dark-step: #163654;
+  --color-teal-600: #0B5D68;
+  --color-teal-300: #0ea395;
+  --color-teal-mid1: #0B5D68;
+  --color-teal-mid2: #2C7FAF;
+  --color-sky-600: #2C7FAF;
+  --color-sky-400: #4497c7;
+  --foreground: #0C2338;
   --card: #FFFFFF;
-  --card-foreground: #0F1340;
+  --card-foreground: #0C2338;
   --popover: #FFFFFF;
-  --popover-foreground: #0F1340;
-  --primary: #283593;
+  --popover-foreground: #0C2338;
   --primary-foreground: #FFFFFF;
-  --secondary: #EEF0FA;
-  --secondary-foreground: #283593;
-  --muted: #ECEEF9;
-  --muted-foreground: #6B7DB3;
-  --accent: #2ECDC5;
-  --accent-foreground: #0F1340;
+  --secondary: #ECF4F7;
+  --secondary-foreground: #0C2338;
+  --muted: #ECF4F7;
+  --muted-foreground: #6B7C88;
+  --accent-foreground: #0C2338;
   --destructive: #ef4444;
-  --border: #E2E8F0;
-  --input: #E2E8F0;
-  --ring: #2ECDC5;
-  --chart-1: #283593;
-  --chart-2: #2ECDC5;
-  --chart-3: #C9A24A;
-  --chart-4: #3F4EB4;
-  --chart-5: #0F1340;
+  --input: #DCE6EB;
+  --ring: #0B5D68;
+  --chart-1: #0C2338;
+  --chart-2: #0B5D68;
+  --chart-3: #F0A126;
+  --chart-4: #2C7FAF;
+  --chart-5: #0B8F83;
   --radius: 0.75rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
@@ -234,21 +276,22 @@ html[lang="ar"] {
 }
 
 body {
-  background-color: #f8fafb;
-  color: #1a2e30;
+  background-color: #FCFDFD;
+  color: #0C2338;
   font-family: 'Roboto', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6, .font-heading, .font-serif, .font-display {
-  font-family: 'Jost', sans-serif !important;
+  font-family: Poppins, 'Poppins Fallback', sans-serif !important;
   letter-spacing: -0.015em;
+  color: #0C2338;
 }
 
 ::selection {
-  background-color: rgba(227, 155, 45, 0.25);
-  color: #0b5d63;
+  background-color: rgba(240, 161, 38, 0.25);
+  color: #0C2338;
 }
 
 @layer utilities {
@@ -357,7 +400,7 @@ h1, h2, h3, h4, h5, h6, .font-heading, .font-serif, .font-display {
 }
 
 @theme inline {
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-heading);
   --font-sans: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);

@@ -12,10 +12,10 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   variant = "white",
 }) => {
   const isWhite = variant === "white";
-  const crossColor = isWhite ? "#ffffff" : "#0b5d63";
-  const textColor = isWhite ? "#ffffff" : "#0b5d63";
-  const accentColor = "#e39b2d";
-  const subtextColor = isWhite ? "rgba(255, 255, 255, 0.85)" : "#557a7d";
+  const crossColor = isWhite ? "#ffffff" : "#0B5D68";
+  const textColor = isWhite ? "#ffffff" : "#0C2338";
+  const accentColor = "#F0A126";
+  const subtextColor = isWhite ? "rgba(255, 255, 255, 0.85)" : "#6B7C88";
 
   return (
     <div className={`inline-flex items-center select-none ${className}`}>
@@ -46,11 +46,11 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
           />
         </g>
 
-        {/* Wordmark Text: Razor Sharp Vector Jost Typography */}
+        {/* Wordmark Text: Vector Poppins Typography */}
         <text
           x="66"
           y="33"
-          fontFamily="'Jost', system-ui, -apple-system, sans-serif"
+          fontFamily="Poppins, 'Poppins Fallback', system-ui, sans-serif"
           fontSize="29"
           fontWeight="400"
           fill={textColor}

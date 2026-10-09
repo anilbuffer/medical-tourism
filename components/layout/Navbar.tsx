@@ -91,7 +91,7 @@ export const Navbar = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 font-sans ${scrolled
-        ? "bg-[#062c30]/95 backdrop-blur-xl shadow-md border-b border-white/10 text-white"
+        ? "bg-[#0C2338]/95 backdrop-blur-xl shadow-md border-b border-[#DCE6EB]/15 text-white"
         : "bg-transparent text-white"
         }`}
     >
@@ -142,7 +142,7 @@ export const Navbar = () => {
               >
                 <span>{t.nav.explore}</span>
                 <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${exploreOpen ? "rotate-180 text-[#e39b2d]" : ""
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${exploreOpen ? "rotate-180 text-[#F0A126]" : ""
                     }`}
                 />
               </button>
@@ -151,7 +151,7 @@ export const Navbar = () => {
               {exploreOpen && (
                 <div
                   onMouseLeave={() => setExploreOpen(false)}
-                  className="absolute top-full left-0 mt-2 w-80 rounded-2xl bg-[#04272a]/95 backdrop-blur-2xl border border-white/15 shadow-2xl p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
+                  className="absolute top-full left-0 mt-2 w-80 rounded-2xl bg-[#0C2338]/95 backdrop-blur-2xl border border-[#DCE6EB]/20 shadow-2xl p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
                 >
                   <div className="space-y-1">
                     {exploreLinks.map((item, idx) => {
@@ -163,16 +163,16 @@ export const Navbar = () => {
                           onClick={() => setExploreOpen(false)}
                           className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/10 transition-colors group cursor-pointer"
                         >
-                          <div className="w-8 h-8 rounded-lg bg-[#0b5d63]/30 border border-[#0b5d63]/50 flex items-center justify-center text-[#e39b2d] group-hover:bg-[#e39b2d] group-hover:text-slate-950 transition-colors shrink-0 mt-0.5">
+                          <div className="w-8 h-8 rounded-lg bg-[#0B5D68]/25 border border-[#0B5D68]/40 flex items-center justify-center text-[#F0A126] group-hover:bg-[#0B5D68] group-hover:text-white transition-colors shrink-0 mt-0.5">
                             <Icon className="w-4 h-4" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between gap-1 mb-0.5">
-                              <span className="text-xs font-bold text-white group-hover:text-[#e39b2d] transition-colors">
+                              <span className="text-xs font-bold text-white group-hover:text-[#F0A126] transition-colors">
                                 {item.title}
                               </span>
                               {item.badge && (
-                                <Badge variant="outline" size="sm" className="text-[9px] font-bold px-1.5 py-0.5 border-[#e39b2d]/40 text-[#e39b2d]">
+                                <Badge variant="outline" size="sm" className="text-[9px] font-bold px-1.5 py-0.5 border-[#F0A126]/40 text-[#F0A126]">
                                   {item.badge}
                                 </Badge>
                               )}
@@ -197,19 +197,19 @@ export const Navbar = () => {
               href="https://wa.me/919876543210"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-[#00e676] bg-[#032629]/80 hover:bg-[#032629] border border-[#00e676]/40 hover:border-[#00e676] transition-all shadow-sm"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-[#0B8F83] bg-[#0C2338]/90 hover:bg-[#0C2338] border border-[#0B8F83]/40 hover:border-[#0B8F83] transition-all shadow-sm"
             >
-              <span className="w-2 h-2 rounded-full bg-[#00e676] animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse"></span>
               <span>24/7 WhatsApp</span>
             </a>
 
-            {/* Button 2: GET FREE QUOTE Pill Button */}
+            {/* Button 2: Primary CTA Button - Primary Teal */}
             <button
               onClick={() => openIntake()}
-              className="flex items-center gap-2.5 px-6 py-2.5 rounded-full text-xs sm:text-sm font-black text-slate-950 bg-[#e39b2d] hover:bg-[#c7821e] active:scale-95 transition-all shadow-md shadow-[#e39b2d]/25 cursor-pointer uppercase tracking-wider font-heading"
+              className="flex items-center gap-2.5 px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-[#0B5D68] hover:bg-[#094b54] active:scale-95 transition-all shadow-md shadow-[#0B5D68]/25 cursor-pointer uppercase tracking-wider font-heading"
             >
-              <PhoneCall className="w-4 h-4 text-slate-950 stroke-[2.5]" />
-              <span>GET FREE QUOTE</span>
+              <PhoneCall className="w-4 h-4 text-white stroke-[2.2]" />
+              <span>Book an Appointment</span>
             </button>
           </div>
 
@@ -217,9 +217,9 @@ export const Navbar = () => {
           <div className="flex items-center gap-2 lg:hidden">
             <button
               onClick={() => openIntake()}
-              className="px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-950 bg-[#e39b2d] font-heading"
+              className="px-3.5 py-1.5 rounded-full text-xs font-bold text-white bg-[#0B5D68] font-heading"
             >
-              Free Quote
+              Book Now
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -248,33 +248,33 @@ export const Navbar = () => {
             <a
               href="#treatments"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#0b5d63]/40"
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#0B5D68]/40"
             >
-              <Stethoscope className="w-4 h-4 text-[#e39b2d]" />
+              <Stethoscope className="w-4 h-4 text-[#F0A126]" />
               <span>Treatments</span>
             </a>
             <a
               href="#doctors"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#0b5d63]/40"
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#0B5D68]/40"
             >
-              <UserCheck className="w-4 h-4 text-[#e39b2d]" />
+              <UserCheck className="w-4 h-4 text-[#F0A126]" />
               <span>Doctors</span>
             </a>
             <a
               href="#hospitals"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#0b5d63]/40"
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#0B5D68]/40"
             >
-              <ShieldCheck className="w-4 h-4 text-[#e39b2d]" />
+              <ShieldCheck className="w-4 h-4 text-[#F0A126]" />
               <span>Hospitals</span>
             </a>
             <a
               href="#journey"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#0b5d63]/40"
+              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#0B5D68]/40"
             >
-              <Compass className="w-4 h-4 text-[#e39b2d]" />
+              <Compass className="w-4 h-4 text-[#F0A126]" />
               <span>How It Works</span>
             </a>
           </div>
@@ -290,7 +290,7 @@ export const Navbar = () => {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-2.5 py-2 rounded-lg text-xs text-slate-300 hover:bg-white/5 hover:text-vedara-cyan transition-colors"
+                  className="px-2.5 py-2 rounded-lg text-xs text-slate-300 hover:bg-white/5 hover:text-[#0B5D68] transition-colors"
                 >
                   {item.title}
                 </a>
@@ -303,10 +303,9 @@ export const Navbar = () => {
             <a
               href="/#assessment"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-teal-mid1 via-teal-mid2 to-teal-mid1 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-vedara-slate/40"
+              className="w-full py-3 rounded-xl bg-[#0B5D68] hover:bg-[#0C2338] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#0B5D68]/30 transition-all font-heading"
             >
-              {/* <Sparkles className="w-4 h-4 text-amber-300" /> */}
-              <span>{t.nav.startJourney}</span>
+              <span>Book an Appointment</span>
             </a>
           </div>
         </div>

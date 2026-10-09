@@ -299,10 +299,10 @@ export const LanguageCountryPicker: React.FC<LanguageCountryPickerProps> = ({
               }`}
           >
             <span className="flex items-center gap-1.5 text-slate-300">
-              <Sparkles className="w-3.5 h-3.5 text-teal-400" />
+              <Sparkles className="w-3.5 h-3.5 text-[#F0A126]" />
               <span>7 International Desks</span>
             </span>
-            <span className="font-mono text-vedara-cyan font-bold">24/7 Live Concierge</span>
+            <span className="font-mono text-[#F0A126] font-bold">24/7 Live Concierge</span>
           </div>
         </div>
       )}

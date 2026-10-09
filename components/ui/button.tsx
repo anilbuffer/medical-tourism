@@ -9,15 +9,17 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-[#0b5d63] text-white hover:bg-[#073f43] shadow-sm font-heading font-bold",
+          "bg-[#0B5D68] text-white hover:bg-[#094b54] shadow-sm font-heading font-bold",
         gold:
-          "bg-[#e39b2d] text-slate-950 hover:bg-[#a35f0b] hover:text-white shadow-md font-heading font-bold active:scale-[0.98]",
+          "bg-[#F0A126] text-[#0C2338] hover:bg-[#db8e18] shadow-md font-heading font-bold active:scale-[0.98]",
         cyan:
-          "bg-[#0b5d63] text-white hover:bg-[#073f43] shadow-md font-heading font-bold active:scale-[0.98]",
+          "bg-[#0B5D68] text-white hover:bg-[#094b54] shadow-md font-heading font-bold active:scale-[0.98]",
         outline:
-          "border border-border bg-background hover:bg-muted hover:text-foreground text-foreground",
+          "border border-[#DCE6EB] bg-white hover:bg-[#ECF4F7] hover:text-[#0C2338] text-[#0C2338]",
         outlineNavy:
-          "border border-[#0b5d63] text-[#0b5d63] hover:bg-[#0b5d63] hover:text-white transition-colors font-heading font-bold",
+          "border border-[#0C2338] text-[#0C2338] hover:bg-[#0C2338] hover:text-white transition-colors font-heading font-bold",
+        outlineTeal:
+          "border border-[#0B5D68] text-[#0B5D68] hover:bg-[#0B5D68] hover:text-white transition-colors font-heading font-bold",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80 font-medium",
         ghost:

@@ -168,15 +168,15 @@ export const DoctorsSection = () => {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 sm:mb-10 gap-6">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#0b5d63]" />
-              <p className="text-[#0b5d63] font-heading font-semibold text-xs uppercase tracking-[0.2em]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#0B5D68]" />
+              <p className="text-[#0B5D68] font-heading font-semibold text-xs uppercase tracking-[0.2em]">
                 EXPERT SURGICAL DIRECTORS
               </p>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-slate-900 leading-[1.14]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-[#0C2338] leading-[1.14]">
               Meet Our Senior Medical Directors
             </h2>
-            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-body mt-2 max-w-2xl">
+            <p className="text-[#6B7C88] text-xs sm:text-sm leading-relaxed font-body mt-2 max-w-2xl">
               Audited department heads and chief surgeons with international fellowships, documented high-volume success, and dedicated concierge coordination for overseas patients.
             </p>
           </div>
@@ -185,14 +185,14 @@ export const DoctorsSection = () => {
           <div className="flex items-center gap-3 shrink-0">
             <Link
               href="/doctors"
-              className="text-xs font-heading font-semibold text-[#0b5d63] hover:underline flex items-center gap-1.5 transition-colors mr-2"
+              className="text-xs font-heading font-semibold text-[#0B5D68] hover:underline flex items-center gap-1.5 transition-colors mr-2"
             >
               <span>Explore All Specialists</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
             {/* Slide Index Counter */}
-            <span className="text-xs font-semibold text-slate-500 mr-1">
+            <span className="text-xs font-semibold text-[#6B7C88] mr-1">
               {currentSlide + 1} / {totalSlides || doctors.length}
             </span>
 
@@ -201,10 +201,10 @@ export const DoctorsSection = () => {
                 onClick={() => api?.scrollPrev()}
                 disabled={!canScrollPrev}
                 aria-label="Previous medical director"
-                className={`w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center transition-all cursor-pointer ${
+                className={`w-10 h-10 rounded-full border border-[#DCE6EB] flex items-center justify-center transition-all cursor-pointer ${
                   canScrollPrev
-                    ? "bg-white hover:bg-slate-100 text-slate-800 shadow-sm"
-                    : "bg-slate-50 text-slate-300 border-slate-100 cursor-not-allowed opacity-50"
+                    ? "bg-white hover:bg-slate-100 text-[#0C2338] shadow-sm"
+                    : "bg-[#ECF4F7] text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
                 }`}
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -213,10 +213,10 @@ export const DoctorsSection = () => {
                 onClick={() => api?.scrollNext()}
                 disabled={!canScrollNext}
                 aria-label="Next medical director"
-                className={`w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center transition-all cursor-pointer ${
+                className={`w-10 h-10 rounded-full border border-transparent flex items-center justify-center transition-all cursor-pointer ${
                   canScrollNext
-                    ? "bg-[#0b5d63] hover:bg-[#073f43] text-white shadow-sm"
-                    : "bg-slate-50 text-slate-300 border-slate-100 cursor-not-allowed opacity-50"
+                    ? "bg-[#0B5D68] hover:bg-[#094b54] text-white shadow-sm"
+                    : "bg-[#ECF4F7] text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
                 }`}
               >
                 <ChevronRight className="w-5 h-5" />
@@ -238,7 +238,7 @@ export const DoctorsSection = () => {
             <CarouselContent>
               {doctors.map((doc, index) => (
                 <CarouselItem key={doc.id} className="basis-full">
-                  <div className="group relative bg-white rounded-2xl sm:rounded-3xl border border-[#e2eaeb] hover:border-[#0b5d63]/50 shadow-sm hover:shadow-xl transition-all duration-400 overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[520px] lg:min-h-[560px]">
+                  <div className="group relative bg-white rounded-2xl sm:rounded-3xl border border-[#DCE6EB] hover:border-[#0B5D68]/40 shadow-sm hover:shadow-xl transition-all duration-400 overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[520px] lg:min-h-[560px]">
 
                     {/* LEFT SIDE: Big Image in Full Section / Card Height */}
                     <div className="lg:col-span-5 relative w-full h-[380px] sm:h-[460px] lg:h-full min-h-[380px] lg:min-h-[560px] bg-slate-100 overflow-hidden">
@@ -252,20 +252,20 @@ export const DoctorsSection = () => {
                       />
 
                       {/* Subtle Dark Gradient Overlay matching hospital cards */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#04272a]/85 via-black/20 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0C2338]/85 via-black/20 to-transparent" />
 
                       {/* Top-Left: Accreditation Badge */}
                       <div className="absolute top-3.5 left-3.5 z-10">
                         <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-heading font-medium uppercase tracking-wider shadow-sm flex items-center gap-1.5 border border-white/20">
-                          <ShieldCheck className="w-3.5 h-3.5 text-teal-300" />
+                          <ShieldCheck className="w-3.5 h-3.5 text-[#0B8F83]" />
                           <span>SENIOR MEDICAL DIRECTOR</span>
                         </span>
                       </div>
 
                       {/* Top-Right: Rating Pill */}
                       <div className="absolute top-3.5 right-3.5 z-10">
-                        <span className="px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-slate-900 text-xs font-bold shadow-sm flex items-center gap-1">
-                          <Star className="w-3.5 h-3.5 fill-[#e39b2d] text-[#e39b2d]" />
+                        <span className="px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#0C2338] text-xs font-bold shadow-sm flex items-center gap-1">
+                          <Star className="w-3.5 h-3.5 fill-[#F0A126] text-[#F0A126]" />
                           <span>{doc.ratingText}</span>
                         </span>
                       </div>
@@ -287,46 +287,46 @@ export const DoctorsSection = () => {
                     <div className="lg:col-span-7 p-6 sm:p-7 lg:p-8 flex-1 flex flex-col justify-between bg-white">
                       <div>
                         {/* Eyebrow Category */}
-                        <p className="text-[11px] font-heading font-extrabold uppercase tracking-wider text-[#0b5d63] mb-1">
+                        <p className="text-[11px] font-heading font-extrabold uppercase tracking-wider text-[#0B5D68] mb-1">
                           {doc.category}
                         </p>
 
                         {/* Doctor Name */}
-                        <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-slate-900 group-hover:text-[#0b5d63] transition-colors leading-snug mb-1">
+                        <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-[#0C2338] group-hover:text-[#0B5D68] transition-colors leading-snug mb-1">
                           {doc.name}
                         </h3>
 
                         {/* Specialty Designation */}
-                        <p className="text-xs sm:text-sm font-semibold text-slate-600 mb-2">
+                        <p className="text-xs sm:text-sm font-semibold text-[#6B7C88] mb-2">
                           {doc.specialty}
                         </p>
 
                         {/* Location */}
-                        <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium mb-3.5">
-                          <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                        <div className="flex items-center gap-1.5 text-xs text-[#6B7C88] font-medium mb-3.5">
+                          <MapPin className="w-3.5 h-3.5 text-[#2C7FAF] shrink-0" />
                           <span className="truncate">{doc.hospital}</span>
                         </div>
 
-                        {/* Clean Subtle Metric Row — No Colored Boxes */}
-                        <div className="flex items-center gap-6 py-2.5 border-y border-slate-100 mb-4 text-xs">
+                        {/* Clean Metric Row */}
+                        <div className="flex items-center gap-6 py-2.5 border-y border-[#DCE6EB]/60 mb-4 text-xs">
                           <div>
-                            <span className="text-slate-400 font-heading font-bold text-[10px] uppercase tracking-wider block">Surgeries</span>
-                            <span className="text-slate-900 font-heading font-extrabold text-sm sm:text-base">{doc.surgeries}</span>
-                            <span className="text-[#0b5d63] text-[11px] font-semibold ml-1.5">({doc.successRate})</span>
+                            <span className="text-[#6B7C88] font-heading font-bold text-[10px] uppercase tracking-wider block">Surgeries</span>
+                            <span className="text-[#0C2338] font-heading font-extrabold text-sm sm:text-base">{doc.surgeries}</span>
+                            <span className="text-[#0B8F83] text-[11px] font-semibold ml-1.5">({doc.successRate})</span>
                           </div>
-                          <div className="h-6 w-px bg-slate-200" />
+                          <div className="h-6 w-px bg-[#DCE6EB]" />
                           <div>
-                            <span className="text-slate-400 font-heading font-bold text-[10px] uppercase tracking-wider block">Rating</span>
+                            <span className="text-[#6B7C88] font-heading font-bold text-[10px] uppercase tracking-wider block">Rating</span>
                             <div className="flex items-center gap-1">
-                              <span className="text-slate-900 font-heading font-extrabold text-sm sm:text-base">{doc.ratingText}</span>
-                              <Star className="w-3 h-3 fill-[#e39b2d] text-[#e39b2d]" />
-                              <span className="text-slate-500 text-[11px] font-medium">({doc.reviewsCount})</span>
+                              <span className="text-[#0C2338] font-heading font-extrabold text-sm sm:text-base">{doc.ratingText}</span>
+                              <Star className="w-3 h-3 fill-[#F0A126] text-[#F0A126]" />
+                              <span className="text-[#6B7C88] text-[11px] font-medium">({doc.reviewsCount})</span>
                             </div>
                           </div>
-                          <div className="h-6 w-px bg-slate-200" />
+                          <div className="h-6 w-px bg-[#DCE6EB]" />
                           <div>
-                            <span className="text-slate-400 font-heading font-bold text-[10px] uppercase tracking-wider block">Practice</span>
-                            <span className="text-slate-900 font-heading font-extrabold text-sm sm:text-base">{doc.experienceYears}+ Years</span>
+                            <span className="text-[#6B7C88] font-heading font-bold text-[10px] uppercase tracking-wider block">Practice</span>
+                            <span className="text-[#0C2338] font-heading font-extrabold text-sm sm:text-base">{doc.experienceYears}+ Years</span>
                           </div>
                         </div>
 
@@ -335,7 +335,7 @@ export const DoctorsSection = () => {
                           {doc.keyProcedures.map((proc, sIdx) => (
                             <span
                               key={sIdx}
-                              className="px-2.5 py-1 rounded-md bg-[#f0f8f9] text-[#0b5d63] border border-[#dbeff0] text-[11px] font-medium leading-none"
+                              className="px-2.5 py-1 rounded-md bg-[#ECF4F7] text-[#0B5D68] border border-[#DCE6EB] text-[11px] font-medium leading-none"
                             >
                               {proc}
                             </span>
@@ -343,28 +343,28 @@ export const DoctorsSection = () => {
                         </div>
 
                         {/* Bio Narrative */}
-                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-body mb-4">
+                        <p className="text-xs sm:text-sm text-[#6B7C88] leading-relaxed font-body mb-4">
                           {doc.bio}
                         </p>
 
-                        {/* Technology & Credentials Box (Matching Hospital Tech Box) */}
-                        <div className="bg-[#f8fafb] rounded-xl p-3 border border-slate-100 space-y-1.5 mb-5 text-xs text-slate-600">
-                          <div className="flex items-start gap-2 text-slate-800">
-                            <Sparkles className="w-3.5 h-3.5 text-[#0b5d63] shrink-0 mt-0.5" />
+                        {/* Technology & Credentials Box */}
+                        <div className="bg-[#FCFDFD] rounded-xl p-3 border border-[#DCE6EB] space-y-1.5 mb-5 text-xs text-[#6B7C88]">
+                          <div className="flex items-start gap-2 text-[#0C2338]">
+                            <Sparkles className="w-3.5 h-3.5 text-[#0B5D68] shrink-0 mt-0.5" />
                             <span className="font-semibold line-clamp-1">{doc.technology}</span>
                           </div>
-                          <div className="flex items-center gap-2 text-slate-500 text-[11px]">
-                            <GraduationCap className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                          <div className="flex items-center gap-2 text-[#6B7C88] text-[11px]">
+                            <GraduationCap className="w-3.5 h-3.5 text-[#2C7FAF] shrink-0" />
                             <span className="truncate">{doc.education} · {doc.fellowships}</span>
                           </div>
                         </div>
                       </div>
 
-                      {/* Card Footer Actions (Matching Hospital Section Action Buttons) */}
-                      <div className="pt-3 border-t border-slate-100 space-y-2">
+                      {/* Card Footer Actions */}
+                      <div className="pt-3 border-t border-[#DCE6EB]/60 space-y-2">
                         <button
                           onClick={() => openIntake(doc.name)}
-                          className="w-full py-2.5 px-4 rounded-xl bg-[#0b5d63] hover:bg-[#073f43] active:scale-[0.98] text-white font-heading font-bold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer group/btn"
+                          className="w-full py-2.5 px-4 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] active:scale-[0.98] text-white font-heading font-bold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer group/btn"
                         >
                           <span>Schedule Video Consult</span>
                           <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1" />
@@ -372,7 +372,7 @@ export const DoctorsSection = () => {
 
                         <Link
                           href="/doctors"
-                          className="w-full py-1 text-center text-xs font-semibold text-slate-600 hover:text-[#0b5d63] transition-colors flex items-center justify-center gap-1"
+                          className="w-full py-1 text-center text-xs font-semibold text-[#6B7C88] hover:text-[#0B5D68] transition-colors flex items-center justify-center gap-1"
                         >
                           <span>View Facilities & Profiles</span>
                           <ChevronRight className="w-3.5 h-3.5" />

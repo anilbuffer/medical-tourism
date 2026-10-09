@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div className="w-full bg-[#f8fafb] text-[#1a2e30] selection:bg-[#e39b2d]/30 selection:text-[#0b5d63] relative font-sans">
+    <div className="w-full bg-[#FCFDFD] text-[#0C2338] selection:bg-[#F0A126]/30 selection:text-[#0C2338] relative font-sans">
       <HeroSection />
       <SpecialtiesSection />
       <HospitalsSection />
