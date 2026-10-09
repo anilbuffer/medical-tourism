@@ -206,6 +206,15 @@ export const CostTransparency = () => {
           </p>
         </div>
 
+        {/* Mobile Swipe Hint */}
+        <div className="flex md:hidden items-center justify-between text-[11px] font-medium text-[#6B7C88] mb-2.5 px-1">
+          <span>← Swipe horizontally to view all columns</span>
+          <span className="text-[#0B5D68] font-bold flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#14B8A6] animate-pulse" />
+            India Column Highlighted
+          </span>
+        </div>
+
         {/* Global Cost Comparison Table Styled Exactly Like Reference Image */}
         <div className="overflow-x-auto rounded-2xl border border-[#DCE6EB] shadow-xs">
           <table className="w-full text-left border-collapse min-w-[760px]">
@@ -273,13 +282,13 @@ export const CostTransparency = () => {
         </div>
 
         {/* Table Footer with Explanatory Asterisk and CTA */}
-        <div className="mt-8 pt-5 border-t border-[#DCE6EB] flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-8 pt-5 border-t border-[#DCE6EB] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
           <p className="text-xs sm:text-sm text-[#6B7C88] leading-relaxed max-w-2xl">
             * &quot;India (Your Medicare Trip)&quot; includes surgeon fees, pre-op diagnostics, theatre fees, US-FDA implant costs, inpatient stay, attendant accommodation, and local transport.
           </p>
           <button
             onClick={() => openIntake("Cost Comparison Consultation")}
-            className="px-7 py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#F0A126]/20 flex items-center gap-2 cursor-pointer shrink-0"
+            className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 cursor-pointer shrink-0"
           >
             <span>Get Itemised Written Quote</span>
             <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.4]" />

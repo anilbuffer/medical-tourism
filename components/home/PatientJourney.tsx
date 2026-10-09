@@ -199,11 +199,11 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
   return (
     <div
       id={`journey-step-${step.stepNumber}`}
-      className="sticky w-full mb-24 sm:mb-36 lg:mb-44 last:mb-0"
+      className="sticky w-full mb-16 sm:mb-28 lg:mb-44 last:mb-0"
       style={{
         zIndex: 10 + index,
-        // Cascading sticky top position creates the tactile stacked deck-of-cards animation on scroll
-        top: `calc(5.5rem + ${index * 14}px)`,
+        // Tactile stacked deck-of-cards animation with responsive sticky top
+        top: `calc(clamp(4.25rem, 4rem + 1.5vw, 5.5rem) + ${index * 8}px)`,
       }}
     >
       <motion.div
@@ -218,7 +218,7 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
         className="relative w-full rounded-[20px] sm:rounded-[24px] lg:rounded-[32px] overflow-hidden group transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.25)] border border-white/20"
       >
         {/* Full-Bleed High-Definition Visual Canvas (1580px Full Container) */}
-        <div className="relative w-full min-h-[560px] sm:min-h-[620px] lg:min-h-[680px] xl:min-h-[720px] overflow-hidden">
+        <div className="relative w-full min-h-[500px] xs:min-h-[560px] sm:min-h-[620px] lg:min-h-[680px] xl:min-h-[720px] overflow-hidden">
 
           {/* Background Image with Smooth Parallax Movement */}
           <motion.div
@@ -239,8 +239,8 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
           </motion.div>
 
           {/* Gradients ensuring photographic depth and crisp card readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/30 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/30 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-transparent pointer-events-none" />
 
           {/* Dynamic Cursor Spotlight Effect */}
           <div
@@ -252,100 +252,100 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
           />
 
           {/* Top Badges (Clinical Milestone & Stat Pill) */}
-          <div className="absolute top-5 sm:top-7 right-5 sm:right-7 z-10 flex flex-wrap items-center gap-2.5">
+          <div className="absolute top-3 xs:top-4 sm:top-7 right-3 xs:right-4 sm:right-7 z-10 flex flex-wrap items-center gap-2 sm:gap-2.5 scale-90 sm:scale-100 origin-top-right">
             {/* Milestone Badge */}
-            <div className="inline-flex items-center gap-1.5 h-8 px-3.5 rounded-full bg-white/95 backdrop-blur-md border border-[#DCE6EB] shadow-sm">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#0B5D68] shrink-0" />
+            <div className="inline-flex items-center gap-1.5 h-7 sm:h-8 px-2.5 sm:px-3.5 rounded-full bg-white/95 backdrop-blur-md border border-[#DCE6EB] shadow-sm">
+              <ShieldCheck className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#0B5D68] shrink-0" />
               <span className="text-[10px] sm:text-[11px] font-heading font-bold tracking-wider uppercase text-[#0C2338]">
                 {step.badge}
               </span>
             </div>
 
             {/* Audited Timing / Stat Badge */}
-            <div className="inline-flex items-center gap-1.5 h-8 px-3.5 rounded-full bg-white/95 backdrop-blur-md border border-[#DCE6EB] shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#0B5D68] shrink-0" />
+            <div className="hidden xs:inline-flex items-center gap-1.5 h-7 sm:h-8 px-2.5 sm:px-3.5 rounded-full bg-white/95 backdrop-blur-md border border-[#DCE6EB] shadow-sm">
+              <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#0B5D68] shrink-0" />
               <span className="text-[10px] sm:text-[11px] font-heading font-bold text-[#0B5D68]">
                 {step.stat}
               </span>
             </div>
           </div>
 
-          {/* Floating Dark Navy Glassmorphism Content Card (Anchored on the left) */}
+          {/* Floating Dark Navy Glassmorphism Content Card */}
           <motion.div
             style={{
               x: contentTranslateX,
               y: contentTranslateY,
               transformStyle: "preserve-3d",
             }}
-            className="absolute z-20 left-5 sm:left-10 lg:left-14 bottom-5 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 w-[calc(100%-2.5rem)] sm:w-[480px] lg:w-[540px]"
+            className="absolute z-20 left-3 xs:left-4 sm:left-10 lg:left-14 bottom-3 xs:bottom-4 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 w-[calc(100%-1.5rem)] xs:w-[calc(100%-2rem)] sm:w-[480px] lg:w-[540px]"
           >
-            <div className="bg-[#0C2338]/95 backdrop-blur-xl border border-white/15 rounded-3xl p-6 sm:p-8 lg:p-9 text-white shadow-[0_25px_60px_rgba(0,0,0,0.7)] hover:border-white/25 transition-all">
+            <div className="bg-[#0C2338]/95 backdrop-blur-xl border border-white/15 rounded-2xl sm:rounded-3xl p-4.5 xs:p-5 sm:p-8 lg:p-9 text-white shadow-[0_25px_60px_rgba(0,0,0,0.7)] hover:border-white/25 transition-all">
 
               {/* Step Number Badge + Phase */}
-              <div className="flex items-center gap-2.5 mb-3.5">
-                <span className="w-8 h-8 rounded-lg bg-[#0B5D68] text-white flex items-center justify-center font-heading font-bold text-xs shadow-xs">
+              <div className="flex items-center gap-2 xs:gap-2.5 mb-2.5 sm:mb-3.5">
+                <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#0B5D68] text-white flex items-center justify-center font-heading font-bold text-xs shadow-xs">
                   {step.stepNumber}
                 </span>
-                <span className="text-[11px] sm:text-xs font-heading font-bold uppercase tracking-wider text-[#14B8A6]">
+                <span className="text-[10px] sm:text-xs font-heading font-bold uppercase tracking-wider text-[#14B8A6] truncate">
                   {step.stepPhase}
                 </span>
               </div>
 
               {/* Step Title Header with Icon */}
-              <div className="flex items-center gap-3.5 mb-3">
-                <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-[#F0A126] shrink-0 shadow-inner">
-                  <IconComponent className="w-6 h-6 text-[#F0A126]" />
+              <div className="flex items-center gap-3 sm:gap-3.5 mb-2 sm:mb-3">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-[#F0A126] shrink-0 shadow-inner">
+                  <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-[#F0A126]" />
                 </div>
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold font-heading text-white tracking-tight leading-tight">
+                  <h3 className="text-lg xs:text-xl sm:text-2xl font-bold font-heading text-white tracking-tight leading-tight">
                     {step.title}
                   </h3>
                 </div>
               </div>
 
               {/* Catchy Headline */}
-              <h4 className="text-sm sm:text-base font-semibold text-[#ECF4F7] leading-snug mb-3">
+              <h4 className="text-xs sm:text-base font-semibold text-[#ECF4F7] leading-snug mb-2 sm:mb-3 line-clamp-2">
                 {step.headline}
               </h4>
 
-              {/* Senior-Accessible Clear Description */}
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal mb-5">
+              {/* Description */}
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal mb-3 sm:mb-5 line-clamp-2 sm:line-clamp-3">
                 {step.description}
               </p>
 
               {/* Guarantees Checklist with Cyan Checkmarks */}
-              <div className="space-y-2.5 mb-6 pt-3 border-t border-white/10">
-                <p className="text-[11px] font-heading font-bold uppercase tracking-wider text-[#14B8A6]">
+              <div className="space-y-1.5 sm:space-y-2.5 mb-4 sm:mb-6 pt-2.5 sm:pt-3 border-t border-white/10">
+                <p className="text-[10px] sm:text-[11px] font-heading font-bold uppercase tracking-wider text-[#14B8A6]">
                   Guaranteed Standards at this Stage:
                 </p>
                 {step.guarantees.map((item, gIdx) => (
                   <div
                     key={gIdx}
-                    className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 font-medium"
+                    className="flex items-start gap-2 sm:gap-2.5 text-xs sm:text-sm text-slate-200 font-medium"
                   >
-                    <span className="w-4 h-4 rounded-full bg-[#0B5D68]/40 border border-[#14B8A6]/40 flex items-center justify-center shrink-0 mt-0.5">
-                      <CheckCircle2 className="w-3 h-3 text-[#14B8A6]" />
+                    <span className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-[#0B5D68]/40 border border-[#14B8A6]/40 flex items-center justify-center shrink-0 mt-0.5">
+                      <CheckCircle2 className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#14B8A6]" />
                     </span>
-                    <span className="leading-snug">{item}</span>
+                    <span className="leading-snug truncate xs:whitespace-normal">{item}</span>
                   </div>
                 ))}
               </div>
 
               {/* Actions Area */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-1">
                 {/* Primary CTA (Gold #F0A126) */}
                 <button
                   onClick={() => onOpenIntake(`Patient Journey Step ${step.stepNumber} — ${step.title}`)}
-                  className="py-3.5 px-6 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 transition-all cursor-pointer group/btn flex-1"
+                  className="py-3 sm:py-3.5 px-5 sm:px-6 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 transition-all cursor-pointer group/btn flex-1"
                 >
                   <span className="text-[#0C2338]">{step.primaryCta}</span>
-                  <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.5] transition-transform group-hover/btn:translate-x-1" />
+                  <ArrowRight className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-[#0C2338] stroke-[2.5] transition-transform group-hover/btn:translate-x-1" />
                 </button>
 
-                {/* Secondary Action Button 2: bg-[#0B5D68] hover:bg-[#07434B] text-white */}
+                {/* Secondary Action Button 2 */}
                 <button
                   onClick={handleWhatsApp}
-                  className="py-3.5 px-5 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] active:scale-[0.98] text-white font-heading font-bold text-xs uppercase tracking-wider border border-[#14B8A6]/30 flex items-center justify-center gap-2 transition-all cursor-pointer shrink-0 shadow-sm"
+                  className="py-3 sm:py-3.5 px-4 sm:px-5 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] active:scale-[0.98] text-white font-heading font-bold text-[11px] sm:text-xs uppercase tracking-wider border border-[#14B8A6]/30 flex items-center justify-center gap-2 transition-all cursor-pointer shrink-0 shadow-sm"
                 >
                   <MessageSquare className="w-3.5 h-3.5 text-[#14B8A6]" />
                   <span>WhatsApp Desk</span>
@@ -353,14 +353,14 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
               </div>
 
               {/* Bottom Metadata Bar */}
-              <div className="flex items-center justify-between pt-4 mt-4 border-t border-white/10 text-[11px] text-slate-400 font-medium">
-                <div className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                  <span className="truncate max-w-[200px]">{step.location}</span>
+              <div className="flex items-center justify-between pt-3 sm:pt-4 mt-3 sm:mt-4 border-t border-white/10 text-[10px] sm:text-[11px] text-slate-400 font-medium">
+                <div className="flex items-center gap-1 sm:gap-1.5">
+                  <MapPin className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-slate-400 shrink-0" />
+                  <span className="truncate max-w-[140px] sm:max-w-[200px]">{step.location}</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-slate-300">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#F0A126] shrink-0" />
-                  <span className="font-semibold text-slate-200 truncate max-w-[180px]">
+                <div className="flex items-center gap-1 sm:gap-1.5 text-slate-300">
+                  <ShieldCheck className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#F0A126] shrink-0" />
+                  <span className="font-semibold text-slate-200 truncate max-w-[140px] sm:max-w-[180px]">
                     {step.accompaniedBy}
                   </span>
                 </div>
@@ -420,14 +420,14 @@ export const PatientJourney = () => {
         </div>
 
         {/* 02. Step Quick Jump Bar */}
-        <div className="flex items-center gap-2.5 sm:gap-3 overflow-x-auto no-scrollbar pb-3 mb-8 sm:mb-12">
+        <div className="flex items-center gap-2.5 sm:gap-3 overflow-x-auto no-scrollbar pb-3 mb-8 sm:mb-12 -mx-4 px-4 sm:mx-0 sm:px-0">
           {JOURNEY_STEPS.map((step) => (
             <button
               key={step.id}
               onClick={() => scrollToStep(step.stepNumber)}
-              className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white hover:bg-[#ECF4F7] border border-[#DCE6EB] hover:border-[#0B5D68]/40 text-xs sm:text-sm text-[#0C2338] transition-all whitespace-nowrap cursor-pointer shadow-xs group"
+              className="flex items-center gap-2.5 px-3.5 sm:px-4 py-2 rounded-full bg-white hover:bg-[#ECF4F7] border border-[#DCE6EB] hover:border-[#0B5D68]/40 text-xs sm:text-sm text-[#0C2338] transition-all whitespace-nowrap cursor-pointer shadow-xs group shrink-0"
             >
-              <span className="w-8 h-8 rounded-full bg-[#ECF4F7] text-[#0B5D68] flex items-center justify-center text-[12px] font-bold group-hover:bg-[#0B5D68] group-hover:text-white transition-colors">
+              <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#ECF4F7] text-[#0B5D68] flex items-center justify-center text-[11px] sm:text-[12px] font-bold group-hover:bg-[#0B5D68] group-hover:text-white transition-colors">
                 {step.stepNumber}
               </span>
               <span className="font-heading font-semibold text-[#0C2338]">

@@ -127,11 +127,11 @@ export const Navbar = () => {
       </div>
 
       {/* 02. Main Navbar */}
-      <div className="max-w-[1580px] mx-auto px-6 sm:py-3.5">
-        <div className="flex items-center justify-between gap-8">
+      <div className="max-w-[1580px] mx-auto px-4 sm:px-6 py-2 sm:py-3.5">
+        <div className="flex items-center justify-between gap-4 sm:gap-8">
           {/* Brand Logo - Vector HD Sharp */}
           <Link href="/" className="flex items-center gap-3 group shrink-0" aria-label="yourMedicareTrip Home">
-            <BrandLogo variant="white" className="h-10 sm:h-12 w-auto" />
+            <BrandLogo variant="white" className="h-9 sm:h-12 w-auto" />
           </Link>
 
           {/* Clean Spacious Navigation Links */}
@@ -266,10 +266,10 @@ export const Navbar = () => {
 
       {/* 05. Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-dark-5/98 backdrop-blur-2xl border-b border-slate-800 px-4 pt-3 pb-6 text-white space-y-4 animate-in slide-in-from-top-2 duration-200">
-          <div className="flex items-center justify-between pb-2 border-b border-slate-800/80">
+        <div className="lg:hidden bg-[#0C2338]/98 backdrop-blur-2xl border-b border-white/10 px-4 pt-3 pb-6 text-white space-y-4 animate-in slide-in-from-top-2 duration-200">
+          <div className="flex items-center justify-between pb-2 border-b border-white/10">
             <div className="flex items-center gap-2 text-xs text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-vedara-cyan animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse"></span>
               <span>24/7 International Desk</span>
             </div>
             <LanguageCountryPicker />

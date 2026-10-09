@@ -206,11 +206,11 @@ const SpecialtyStickyCard: React.FC<InteractiveCardProps> = ({
   return (
     <div
       id={`specialty-${specialty.id}`}
-      className="sticky w-full mb-24 sm:mb-36 lg:mb-44 last:mb-0"
+      className="sticky w-full mb-16 sm:mb-28 lg:mb-44 last:mb-0"
       style={{
         zIndex: 10 + index,
-        // Cascading sticky top position creates a natural stacked deck of cards
-        top: `calc(5.5rem + ${index * 12}px)`
+        // Fluid responsive sticky top offset prevents cards from clipping on shorter mobile screens
+        top: `calc(clamp(4.25rem, 4rem + 1.5vw, 5.5rem) + ${index * 8}px)`
       }}
     >
       <motion.div
@@ -222,10 +222,10 @@ const SpecialtyStickyCard: React.FC<InteractiveCardProps> = ({
           rotateY,
           transformStyle: "preserve-3d"
         }}
-        className="relative w-full rounded-[20px] sm:rounded-[20px] lg:rounded-[30px] overflow-hidden group transition-all duration-300"
+        className="relative w-full rounded-[20px] sm:rounded-[24px] lg:rounded-[30px] overflow-hidden group transition-all duration-300"
       >
         {/* Full-Bleed High-Definition Visual Canvas (1580px Full Container) */}
-        <div className="relative w-full min-h-[540px] sm:min-h-[600px] lg:min-h-[640px] xl:min-h-[680px] overflow-hidden">
+        <div className="relative w-full min-h-[500px] xs:min-h-[540px] sm:min-h-[600px] lg:min-h-[640px] xl:min-h-[680px] overflow-hidden">
           {/* Background Image with Smooth Parallax Movement */}
           <motion.div
             style={{
@@ -245,11 +245,11 @@ const SpecialtyStickyCard: React.FC<InteractiveCardProps> = ({
           </motion.div>
 
           {/* Gradients ensuring photographic vibrancy and crisp card readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/20 pointer-events-none" />
           <div
             className={`absolute inset-0 pointer-events-none ${isLeft
-              ? "bg-gradient-to-r from-black/45 via-black/15 to-transparent"
-              : "bg-gradient-to-l from-black/45 via-black/15 to-transparent"
+              ? "bg-gradient-to-r from-black/55 via-black/25 to-transparent"
+              : "bg-gradient-to-l from-black/55 via-black/25 to-transparent"
               }`}
           />
 
@@ -262,29 +262,29 @@ const SpecialtyStickyCard: React.FC<InteractiveCardProps> = ({
             }}
           />
 
-          {/* Top Badges (Clinical Authority Pill & Stat Pill) */}
+          {/* Top Badges (Clinical Authority Pill & Stat Pill) with responsive positioning */}
           <div
-            className={`absolute top-5 sm:top-7 z-10 flex flex-wrap items-center gap-2.5 ${isLeft ? "right-5 sm:right-7" : "left-5 sm:left-7"
+            className={`absolute top-3 xs:top-4 sm:top-7 z-10 flex flex-wrap items-center gap-2 sm:gap-2.5 scale-90 sm:scale-100 origin-top ${isLeft ? "right-3 xs:right-4 sm:right-7 origin-top-right" : "left-3 xs:left-4 sm:left-7 origin-top-left"
               }`}
           >
             {/* Accreditation Badge */}
-            <div className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-white/95 backdrop-blur-md border border-[#14B8A6] shadow-sm">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#14B8A6] shrink-0" />
+            <div className="inline-flex items-center gap-1.5 h-7 sm:h-8 px-2.5 sm:px-3 rounded-full bg-white/95 backdrop-blur-md border border-[#14B8A6] shadow-sm">
+              <ShieldCheck className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#14B8A6] shrink-0" />
               <span className="text-[10px] sm:text-[11px] font-heading font-semibold tracking-wider uppercase text-[#14B8A6]">
                 {specialty.badge}
               </span>
             </div>
 
             {/* Audited Clinical Stat Badge */}
-            <div className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-white/95 backdrop-blur-md border border-[#14B8A6] shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#14B8A6] shrink-0" />
+            <div className="hidden xs:inline-flex items-center gap-1.5 h-7 sm:h-8 px-2.5 sm:px-3 rounded-full bg-white/95 backdrop-blur-md border border-[#14B8A6] shadow-sm">
+              <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#14B8A6] shrink-0" />
               <span className="text-[10px] sm:text-[11px] font-heading font-semibold text-[#14B8A6]">
                 {specialty.stat}
               </span>
             </div>
           </div>
 
-          {/* Floating Content Card */}
+          {/* Floating Content Card - Snug padding & fluid width on mobile screens */}
           <motion.div
             style={{
               x: contentTranslateX,
@@ -292,37 +292,37 @@ const SpecialtyStickyCard: React.FC<InteractiveCardProps> = ({
               transformStyle: "preserve-3d"
             }}
             className={`absolute z-20 ${isLeft
-              ? "left-5 sm:left-10 lg:left-16 bottom-5 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2"
-              : "right-5 sm:right-10 lg:right-16 bottom-5 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2"
-              } w-[calc(100%-2.5rem)] sm:w-[420px] lg:w-[450px]`}
+              ? "left-3 xs:left-4 sm:left-10 lg:left-16 bottom-3 xs:bottom-4 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2"
+              : "right-3 xs:right-4 sm:right-10 lg:right-16 bottom-3 xs:bottom-4 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2"
+              } w-[calc(100%-1.5rem)] xs:w-[calc(100%-2rem)] sm:w-[420px] lg:w-[450px]`}
           >
             {/* Dark Navy Rounded Card with vibrant #14B8A6 accents */}
-            <div className="bg-[#0C2338]/95 backdrop-blur-xl border border-white/15 rounded-3xl p-6 sm:p-8 lg:p-9 text-white shadow-[0_25px_60px_rgba(0,0,0,0.7)] hover:border-[#14B8A6]/60 transition-all">
+            <div className="bg-[#0C2338]/95 backdrop-blur-xl border border-white/15 rounded-2xl sm:rounded-3xl p-4.5 xs:p-5 sm:p-8 lg:p-9 text-white shadow-[0_25px_60px_rgba(0,0,0,0.7)] hover:border-[#14B8A6]/60 transition-all">
 
               {/* Top Row: Square-Rounded Icon Box + Title */}
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 rounded-2xl bg-[#14B8A6]/30 border border-[#14B8A6]/60 flex items-center justify-center text-[#14B8A6] shrink-0 shadow-inner">
+              <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+                <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-[#14B8A6]/30 border border-[#14B8A6]/60 flex items-center justify-center text-[#14B8A6] shrink-0 shadow-inner">
                   <IconComponent />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold font-heading text-white tracking-tight leading-tight">
+                <h3 className="text-xl xs:text-2xl sm:text-3xl font-bold font-heading text-white tracking-tight leading-tight">
                   {specialty.title}
                 </h3>
               </div>
 
               {/* Subtitle / Description */}
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-body mb-6">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-body mb-4 sm:mb-6 line-clamp-2 xs:line-clamp-3 sm:line-clamp-none">
                 {specialty.subtitle}
               </p>
 
               {/* Bullet Points with Gold Double-Ticks */}
-              <div className="space-y-3 mb-8">
+              <div className="space-y-2 sm:space-y-3 mb-5 sm:mb-8">
                 {specialty.bullets.map((bullet, bIdx) => (
                   <div
                     key={bIdx}
-                    className="flex items-center gap-3 text-xs sm:text-sm text-slate-200 font-medium"
+                    className="flex items-center gap-2.5 sm:gap-3 text-xs sm:text-sm text-slate-200 font-medium"
                   >
                     <DoubleCheckIcon />
-                    <span>{bullet}</span>
+                    <span className="truncate xs:whitespace-normal">{bullet}</span>
                   </div>
                 ))}
               </div>
@@ -330,22 +330,22 @@ const SpecialtyStickyCard: React.FC<InteractiveCardProps> = ({
               {/* Action Button: Primary Action Button 1 */}
               <button
                 onClick={() => onOpenIntake(specialty.title)}
-                className="w-full py-3.5 px-6 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 transition-all cursor-pointer group"
+                className="w-full py-3 sm:py-3.5 px-5 sm:px-6 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 transition-all cursor-pointer group"
               >
                 <span>CHECK CLINICAL FEASIBILITY</span>
-                <ArrowRight className="w-4 h-4 text-[#ffffff] stroke-[2.5] transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-[#ffffff] stroke-[2.5] transition-transform group-hover:translate-x-1" />
               </button>
 
               {/* Bottom Metadata Bar */}
-              <div className="flex items-center justify-between pt-4 mt-5 border-t border-white/10 text-[11px] text-slate-400 font-medium font-body">
-                <div className="flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-slate-400" />
+              <div className="flex items-center justify-between pt-3 sm:pt-4 mt-3 sm:mt-5 border-t border-white/10 text-[10px] sm:text-[11px] text-slate-400 font-medium font-body">
+                <div className="flex items-center gap-1 sm:gap-1.5">
+                  <Clock className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-slate-400" />
                   <span>
-                    Average Stay: <strong className="text-slate-200">{specialty.stay}</strong>
+                    Stay: <strong className="text-slate-200">{specialty.stay}</strong>
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5 text-slate-300">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#14B8A6]" />
+                <div className="flex items-center gap-1 sm:gap-1.5 text-slate-300">
+                  <ShieldCheck className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#14B8A6]" />
                   <span className="font-semibold text-slate-200">Verified Pricing</span>
                 </div>
               </div>
@@ -398,14 +398,14 @@ export const SpecialtiesSection = () => {
         </div>
 
         {/* Specialty Quick Jump Bar */}
-        <div className="flex items-center gap-2.5 sm:gap-3 overflow-x-auto no-scrollbar pb-3 mb-8 sm:mb-12">
+        <div className="flex items-center gap-2.5 sm:gap-3 overflow-x-auto no-scrollbar pb-3 mb-8 sm:mb-12 -mx-4 px-4 sm:mx-0 sm:px-0">
           {specialties.map((spec, idx) => (
             <button
               key={spec.id}
               onClick={() => scrollToSpecialty(spec.id)}
-              className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white hover:bg-[#ECF4F7] border border-[#DCE6EB] hover:border-[#0B5D68]/40 text-xs sm:text-sm text-[#0C2338] transition-all whitespace-nowrap cursor-pointer shadow-xs group"
+              className="flex items-center gap-2.5 px-3.5 sm:px-4 py-2 rounded-full bg-white hover:bg-[#ECF4F7] border border-[#DCE6EB] hover:border-[#0B5D68]/40 text-xs sm:text-sm text-[#0C2338] transition-all whitespace-nowrap cursor-pointer shadow-xs group shrink-0"
             >
-              <span className="w-8 h-8 rounded-full bg-[#ECF4F7] text-[#0B5D68] flex items-center justify-center text-[12px] font-bold group-hover:bg-[#0B5D68] group-hover:text-white transition-colors">
+              <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#ECF4F7] text-[#0B5D68] flex items-center justify-center text-[11px] sm:text-[12px] font-bold group-hover:bg-[#0B5D68] group-hover:text-white transition-colors">
                 0{idx + 1}
               </span>
               <span className="font-heading font-semibold text-[#0C2338]">{spec.title}</span>

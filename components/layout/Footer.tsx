@@ -37,8 +37,8 @@ export const Footer = () => {
       <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Pre-Footer: High-Trust Clinical Assurance Strip */}
-        <div className="bg-[#0C273E] rounded-3xl p-6 sm:p-8 border border-white/10 mb-16 shadow-2xl backdrop-blur-md">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
+        <div className="bg-[#0C273E] rounded-2xl sm:rounded-3xl p-5 xs:p-6 sm:p-8 border border-white/10 mb-12 sm:mb-16 shadow-2xl backdrop-blur-md">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 items-center">
 
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-2xl bg-[#0B5D68]/30 border border-[#0B5D68]/50 flex items-center justify-center shrink-0 text-[#14B8A6]">

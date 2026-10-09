@@ -187,10 +187,10 @@ export const HospitalsSection = () => {
           </div>
 
           {/* Header Right: Carousel Navigation & View All link */}
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto shrink-0">
             <Link
               href="/hospitals"
-              className="text-xs font-heading font-bold uppercase tracking-wider text-[#0B5D68] hover:text-[#0C2338] hover:underline flex items-center gap-1.5 transition-colors mr-2"
+              className="text-xs font-heading font-bold uppercase tracking-wider text-[#0B5D68] hover:text-[#0C2338] hover:underline flex items-center gap-1.5 transition-colors mr-1 sm:mr-2"
             >
               <span>Explore All 15+ Hospitals</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -241,7 +241,7 @@ export const HospitalsSection = () => {
                 >
                   <div className="group relative bg-white rounded-2xl sm:rounded-3xl border border-[#DCE6EB] hover:border-[#0B5D68]/40 shadow-sm hover:shadow-xl transition-all duration-400 overflow-hidden flex flex-col justify-between h-full">
                     {/* Media Top Container */}
-                    <div className="relative h-60 sm:h-80 w-full overflow-hidden bg-slate-100 shrink-0">
+                    <div className="relative h-56 xs:h-64 sm:h-80 w-full overflow-hidden bg-slate-100 shrink-0">
                       <Image
                         src={hosp.image}
                         alt={hosp.name}

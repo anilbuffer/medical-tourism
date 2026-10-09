@@ -51,11 +51,11 @@ export const HeroSection = () => {
         </div>
 
         {/* Main Expanded Container */}
-        <div className="max-w-[1580px] mx-auto px-6 sm:px-12 lg:px-16 relative z-10 w-full h-full flex flex-col justify-center">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center min-h-[750px] lg:min-h-[820px]">
+        <div className="max-w-[1580px] mx-auto px-4 sm:px-8 lg:px-16 relative z-10 w-full h-full flex flex-col justify-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center min-h-0 py-8 sm:py-12 lg:py-16 lg:min-h-[820px]">
 
             {/* 02. Left Column: Pure & Spacious Typography */}
-            <div className="lg:col-span-7 xl:col-span-6 space-y-6 lg:space-y-8 py-8">
+            <div className="lg:col-span-7 xl:col-span-6 space-y-5 sm:space-y-6 lg:space-y-8 py-2 sm:py-6 lg:py-8">
 
               {/* Small Eyebrow Label */}
               <motion.div
@@ -73,10 +73,10 @@ export const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1 }}
-                className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-[4rem] font-extrabold text-white leading-[1.14] tracking-tight"
+                className="font-heading text-[2rem] xs:text-[2.35rem] sm:text-5xl lg:text-6xl xl:text-[4rem] font-extrabold text-white leading-[1.14] tracking-tight"
               >
                 World-Class Surgical Care in India.{" "}
-                <span className="text-[#F0A126]">
+                <span className="text-[#F0A126] block sm:inline mt-1 sm:mt-0">
                   Save Up to 70%. Zero Waiting.
                 </span>
               </motion.h1>
@@ -86,7 +86,7 @@ export const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                className="text-base sm:text-lg text-slate-200 font-normal leading-relaxed max-w-2xl font-body"
+                className="text-sm sm:text-base lg:text-lg text-slate-200 font-normal leading-relaxed max-w-2xl font-body"
               >
                 Direct access to top quaternary hospital directors, transparent guaranteed pricing, and your dedicated English-speaking care coordinator from arrival to recovery.
               </motion.p>
@@ -96,11 +96,11 @@ export const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3 }}
-                className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6"
+                className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6"
               >
                 <button
                   onClick={() => openIntake()}
-                  className="inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-95 text-[#0C2338] font-heading font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#F0A126]/25 hover:shadow-2xl hover:shadow-[#F0A126]/40 cursor-pointer group shrink-0"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-95 text-[#0C2338] font-heading font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#F0A126]/25 hover:shadow-2xl hover:shadow-[#F0A126]/40 cursor-pointer group shrink-0"
                 >
                   <span>Book an Appointment</span>
                   <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.5] transition-transform duration-300 group-hover:translate-x-1" />
@@ -109,15 +109,15 @@ export const HeroSection = () => {
 
             </div>
 
-            {/* 03. Right Column: Floating Badges */}
-            <div className="lg:col-span-5 xl:col-span-6 relative h-[380px] sm:h-[480px] lg:h-[650px] flex items-center justify-center lg:justify-end pointer-events-none">
+            {/* 03. Right Column: Floating Badges with Mobile Scaling */}
+            <div className="lg:col-span-5 xl:col-span-6 relative h-[260px] xs:h-[300px] sm:h-[420px] lg:h-[650px] flex items-center justify-center lg:justify-end pointer-events-none">
 
               {/* FLOATING BADGE 1: Security Shield Crest (40+ Doctors) */}
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
-                className="absolute top-20 left-4 sm:left-8 lg:-left-6 xl:left-18 z-20 pointer-events-auto"
+                className="absolute top-4 xs:top-8 sm:top-16 lg:top-20 left-2 xs:left-4 sm:left-8 lg:-left-6 xl:left-18 z-20 pointer-events-auto scale-[0.82] xs:scale-90 sm:scale-100 origin-top-left"
               >
                 <div className="relative w-[124px] sm:w-[136px] h-[148px] sm:h-[162px] flex flex-col items-center justify-center pt-2 pb-5 px-3 select-none filter drop-shadow-2xl">
                   {/* SVG Security Shield Silhouette Outline & Background */}
@@ -189,32 +189,32 @@ export const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="absolute bottom-10 sm:bottom-14 right-2 sm:right-6 lg:right-4 xl:right-10 z-20 pointer-events-auto"
+                className="absolute bottom-4 xs:bottom-6 sm:bottom-12 right-2 xs:right-3 sm:right-6 lg:right-4 xl:right-10 z-20 pointer-events-auto scale-[0.8] xs:scale-[0.88] sm:scale-100 origin-bottom-right"
               >
-                <div className="bg-[#0C2338]/95 backdrop-blur-md border border-[#DCE6EB]/20 rounded-full px-5 py-2.5 sm:px-6 sm:py-3 shadow-2xl flex items-center gap-3.5">
+                <div className="bg-[#0C2338]/95 backdrop-blur-md border border-[#DCE6EB]/20 rounded-full px-4 py-2 sm:px-6 sm:py-3 shadow-2xl flex items-center gap-3 sm:gap-3.5">
                   {/* Patient Avatars */}
                   <div className="flex -space-x-2 shrink-0">
                     <img
-                      className="w-12 h-12 rounded-full ring-1.5 ring-white/60 object-cover"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full ring-1.5 ring-white/60 object-cover"
                       src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&auto=format&fit=crop&q=80"
                       alt="Patient"
                     />
                     <img
-                      className="w-12 h-12 rounded-full ring-1.5 ring-white/60 object-cover"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full ring-1.5 ring-white/60 object-cover"
                       src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=80"
                       alt="Patient"
                     />
                     <img
-                      className="w-12 h-12 rounded-full ring-1.5 ring-white/60 object-cover"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full ring-1.5 ring-white/60 object-cover"
                       src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&auto=format&fit=crop&q=80"
                       alt="Patient"
                     />
                   </div>
                   <div className="shrink-0 text-left">
-                    <div className="text-xl sm:text-2xl font-extrabold font-heading text-white leading-tight">
+                    <div className="text-lg sm:text-2xl font-extrabold font-heading text-white leading-tight">
                       150K+
                     </div>
-                    <div className="text-[14px] sm:text-[16px] text-[#ECF4F7]/80 font-body leading-tight">
+                    <div className="text-xs sm:text-[16px] text-[#ECF4F7]/80 font-body leading-tight">
                       Satisfied Patients
                     </div>
                   </div>

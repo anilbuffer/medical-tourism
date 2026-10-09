@@ -211,10 +211,10 @@ export const DoctorsSection = () => {
           </div>
 
           {/* Header Controls: Slide Counter & Carousel Arrows */}
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center justify-between sm:justify-end gap-2.5 sm:gap-3 w-full sm:w-auto shrink-0">
             <Link
               href="/doctors"
-              className="text-xs font-heading font-bold uppercase tracking-wider text-[#0B5D68] hover:text-[#0C2338] hover:underline flex items-center gap-1.5 transition-colors mr-2"
+              className="text-xs font-heading font-bold uppercase tracking-wider text-[#0B5D68] hover:text-[#0C2338] hover:underline flex items-center gap-1.5 transition-colors mr-1 sm:mr-2"
             >
               <span>Explore All Specialists</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -268,10 +268,10 @@ export const DoctorsSection = () => {
             <CarouselContent>
               {doctors.map((doc, index) => (
                 <CarouselItem key={doc.id} className="basis-full">
-                  <div className="bg-white rounded-3xl border border-[#DCE6EB] shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[580px] lg:min-h-[640px]">
+                  <div className="bg-white rounded-3xl border border-[#DCE6EB] shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-0 lg:min-h-[640px]">
 
                     {/* LEFT SIDE: Big Photographic Canvas */}
-                    <div className="lg:col-span-5 relative w-full h-[400px] sm:h-[480px] lg:h-full min-h-[400px] lg:min-h-[640px] bg-slate-900 overflow-hidden">
+                    <div className="lg:col-span-5 relative w-full h-[320px] xs:h-[380px] sm:h-[480px] lg:h-full min-h-[320px] xs:min-h-[380px] sm:min-h-[480px] lg:min-h-[640px] bg-slate-900 overflow-hidden">
                       <Image
                         src={doc.image}
                         alt={doc.name}
@@ -285,40 +285,40 @@ export const DoctorsSection = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0C2338]/95 via-[#0C2338]/25 to-transparent pointer-events-none" />
 
                       {/* Top-Left: Senior Accreditation Badge with Icon */}
-                      <div className="absolute top-4 sm:top-6 left-4 sm:left-6 z-10">
-                        <span className="px-3.5 py-1.5 rounded-full bg-[#0C2338]/85 backdrop-blur-md text-white text-[11px] font-heading font-bold uppercase tracking-wider shadow-md flex items-center gap-1.5 border border-white/20">
+                      <div className="absolute top-3.5 xs:top-4 sm:top-6 left-3.5 xs:left-4 sm:left-6 z-10">
+                        <span className="px-3 xs:px-3.5 py-1.5 rounded-full bg-[#0C2338]/85 backdrop-blur-md text-white text-[10px] xs:text-[11px] font-heading font-bold uppercase tracking-wider shadow-md flex items-center gap-1.5 border border-white/20">
                           <ShieldCheck className="w-3.5 h-3.5 text-white" />
                           <span className="text-white">SENIOR SURGICAL LEAD</span>
                         </span>
                       </div>
 
                       {/* Top-Right: Verified Experience Badge with Icon (No Ratings) */}
-                      <div className="absolute top-4 sm:top-6 right-4 sm:right-6 z-10">
-                        <span className="px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-[#0C2338] text-xs font-heading font-bold shadow-md flex items-center gap-1.5 border border-[#DCE6EB]">
+                      <div className="absolute top-3.5 xs:top-4 sm:top-6 right-3.5 xs:right-4 sm:right-6 z-10">
+                        <span className="px-2.5 xs:px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-[#0C2338] text-[11px] xs:text-xs font-heading font-bold shadow-md flex items-center gap-1.5 border border-[#DCE6EB]">
                           <Award className="w-3.5 h-3.5 text-[#F0A126]" />
                           <span>{doc.experience}</span>
                         </span>
                       </div>
 
                       {/* Bottom Image Info Card with Little Icons */}
-                      <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 z-10">
-                        <div className="p-4 rounded-2xl bg-[#0C2338]/90 backdrop-blur-md border border-white/15 text-white shadow-xl space-y-2">
+                      <div className="absolute bottom-3.5 xs:bottom-4 sm:bottom-6 left-3.5 xs:left-4 sm:left-6 right-3.5 xs:right-4 sm:right-6 z-10">
+                        <div className="p-3 xs:p-4 rounded-2xl bg-[#0C2338]/90 backdrop-blur-md border border-white/15 text-white shadow-xl space-y-1.5 xs:space-y-2">
                           <div className="flex items-center justify-between text-xs">
-                            <span className="text-[#ECF4F7]/70 uppercase tracking-wider font-heading font-semibold text-[10px] flex items-center gap-1">
+                            <span className="text-[#ECF4F7]/70 uppercase tracking-wider font-heading font-semibold text-[9px] xs:text-[10px] flex items-center gap-1">
                               <MapPin className="w-3 h-3 text-[#F0A126]" />
                               <span>QUATERNARY HUB</span>
                             </span>
-                            <span className="font-semibold text-white text-right truncate max-w-[220px]">
+                            <span className="font-semibold text-white text-right truncate max-w-[200px] text-[11px] xs:text-xs">
                               {doc.hospital}
                             </span>
                           </div>
                           <div className="flex items-center justify-between text-xs pt-1.5 border-t border-white/10">
-                            <span className="text-[#ECF4F7]/70 uppercase tracking-wider font-heading font-semibold text-[10px] flex items-center gap-1">
+                            <span className="text-[#ECF4F7]/70 uppercase tracking-wider font-heading font-semibold text-[9px] xs:text-[10px] flex items-center gap-1">
                               <Activity className="w-3 h-3 text-[#F0A126]" />
                               <span>SURGICAL VOLUME</span>
                             </span>
-                            <span className="font-semibold text-[#F0A126] text-right">
-                              {doc.surgeries} Documented Cases
+                            <span className="font-semibold text-[#F0A126] text-right text-[11px] xs:text-xs">
+                              {doc.surgeries} Cases
                             </span>
                           </div>
                         </div>
@@ -326,7 +326,7 @@ export const DoctorsSection = () => {
                     </div>
 
                     {/* RIGHT SIDE: Catchy Typography, Little Icons & Action Buttons */}
-                    <div className="lg:col-span-7 p-6 sm:p-8 lg:p-12 flex flex-col justify-between bg-white">
+                    <div className="lg:col-span-7 p-5 xs:p-6 sm:p-8 lg:p-12 flex flex-col justify-between bg-white">
                       <div>
                         {/* Eyebrow Specialty Category with Icon */}
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ECF4F7] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-2.5">
@@ -352,47 +352,47 @@ export const DoctorsSection = () => {
                         </div>
 
                         {/* 03 High-Impact Trust Metric Cards (Each with Little Icons) */}
-                        <div className="grid grid-cols-3 gap-2.5 sm:gap-4 p-4 rounded-2xl bg-[#F5F7F6] border border-[#DCE6EB] mb-6">
+                        <div className="grid grid-cols-3 gap-1.5 xs:gap-2.5 sm:gap-4 p-3 xs:p-3.5 sm:p-4 rounded-2xl bg-[#F5F7F6] border border-[#DCE6EB] mb-6">
 
                           {/* Metric 1: Surgeries with Activity Icon */}
                           <div>
-                            <span className="text-[#6B7C88] font-heading font-bold text-[10px] sm:text-xs uppercase tracking-wider flex items-center gap-1">
+                            <span className="text-[#6B7C88] font-heading font-bold text-[9px] xs:text-[10px] sm:text-xs uppercase tracking-wider flex items-center gap-1">
                               <Activity className="w-3 h-3 text-[#0B5D68]" />
                               <span>Procedures</span>
                             </span>
-                            <span className="text-[#0C2338] font-heading font-extrabold text-base sm:text-xl lg:text-2xl block mt-0.5">
+                            <span className="text-[#0C2338] font-heading font-extrabold text-sm xs:text-base sm:text-xl lg:text-2xl block mt-0.5">
                               {doc.surgeries}
                             </span>
-                            <span className="text-[#0B5D68] text-[11px] sm:text-xs font-semibold flex items-center gap-1 mt-0.5 truncate">
+                            <span className="text-[#0B5D68] text-[10px] xs:text-[11px] sm:text-xs font-semibold flex items-center gap-1 mt-0.5 truncate">
                               <CheckCircle2 className="w-3 h-3 text-[#14B8A6] shrink-0" />
                               <span>{doc.successRate}</span>
                             </span>
                           </div>
 
                           {/* Metric 2: Experience with Clock Icon */}
-                          <div className="border-x border-[#DCE6EB] px-2.5 sm:px-4">
-                            <span className="text-[#6B7C88] font-heading font-bold text-[10px] sm:text-xs uppercase tracking-wider flex items-center gap-1">
+                          <div className="border-x border-[#DCE6EB] px-1.5 xs:px-2.5 sm:px-4">
+                            <span className="text-[#6B7C88] font-heading font-bold text-[9px] xs:text-[10px] sm:text-xs uppercase tracking-wider flex items-center gap-1">
                               <Clock className="w-3 h-3 text-[#0B5D68]" />
                               <span>Experience</span>
                             </span>
-                            <span className="text-[#0C2338] font-heading font-extrabold text-base sm:text-xl lg:text-2xl block mt-0.5">
-                              {doc.experienceYears}+ Years
+                            <span className="text-[#0C2338] font-heading font-extrabold text-sm xs:text-base sm:text-xl lg:text-2xl block mt-0.5">
+                              {doc.experienceYears}+ Yrs
                             </span>
-                            <span className="text-[#0B5D68] text-[11px] sm:text-xs font-semibold block truncate mt-0.5">
-                              Senior Director
+                            <span className="text-[#0B5D68] text-[10px] xs:text-[11px] sm:text-xs font-semibold block truncate mt-0.5">
+                              Director
                             </span>
                           </div>
 
                           {/* Metric 3: Credentials with GraduationCap Icon */}
                           <div>
-                            <span className="text-[#6B7C88] font-heading font-bold text-[10px] sm:text-xs uppercase tracking-wider flex items-center gap-1">
+                            <span className="text-[#6B7C88] font-heading font-bold text-[9px] xs:text-[10px] sm:text-xs uppercase tracking-wider flex items-center gap-1">
                               <GraduationCap className="w-3 h-3 text-[#0B5D68]" />
                               <span>Credentials</span>
                             </span>
                             <span className="text-[#0C2338] font-heading font-extrabold text-xs sm:text-sm lg:text-base block mt-0.5 line-clamp-1">
                               International
                             </span>
-                            <span className="text-[#0B5D68] text-[11px] sm:text-xs font-semibold block truncate mt-0.5">
+                            <span className="text-[#0B5D68] text-[10px] xs:text-[11px] sm:text-xs font-semibold block truncate mt-0.5">
                               {doc.fellowships.split("(")[0].trim()}
                             </span>
                           </div>

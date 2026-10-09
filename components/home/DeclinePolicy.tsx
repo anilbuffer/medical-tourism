@@ -50,11 +50,11 @@ export const DeclinePolicy = () => {
               </p>
 
               {/* Action Buttons Row: [Learn About Clinical Feasibility] AND [Watch Video] Side-by-Side */}
-              <div className="flex flex-wrap items-center gap-4 sm:gap-5 mb-8">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 mb-8">
                 {/* Primary Action Button 1: bg-[#F0A126] */}
                 <button
                   onClick={() => openIntake("Clinical Integrity Consultation")}
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-xl transition-all cursor-pointer group shrink-0"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-xl transition-all cursor-pointer group shrink-0"
                 >
                   <span className="text-[#0C2338]">Learn About Clinical Feasibility</span>
                   <span className="text-[#0C2338] font-extrabold text-sm transition-transform group-hover:translate-x-1">→</span>
@@ -63,7 +63,7 @@ export const DeclinePolicy = () => {
                 {/* Secondary Action Button 2: bg-[#0B5D68] hover:bg-[#07434B] text-white */}
                 <button
                   onClick={() => setVideoOpen(true)}
-                  className="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] active:scale-[0.98] border border-[#14B8A6]/30 text-white cursor-pointer transition-all group select-none shadow-lg shrink-0"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] active:scale-[0.98] border border-[#14B8A6]/30 text-white cursor-pointer transition-all group select-none shadow-lg shrink-0"
                   aria-label="Watch Clinical Protocol Video"
                 >
                   <div className="w-5 h-5 rounded-full bg-white text-[#0B5D68] flex items-center justify-center shadow-md group-hover:bg-[#F0A126] group-hover:text-[#0C2338] transition-all shrink-0">
@@ -78,7 +78,7 @@ export const DeclinePolicy = () => {
 
             {/* Right Column: Big Security Shield Badge Aligned with Left Content Height */}
             <div className="lg:col-span-5 flex items-center justify-center lg:justify-end">
-              <div className="relative w-[320px] sm:w-[380px] lg:w-[420px] xl:w-[460px] h-[400px] sm:h-[460px] lg:h-[490px] xl:h-[510px] flex flex-col items-center justify-center select-none group transition-transform duration-500 hover:scale-[1.02]">
+              <div className="relative w-[270px] xs:w-[320px] sm:w-[380px] lg:w-[420px] xl:w-[460px] h-[330px] xs:h-[400px] sm:h-[460px] lg:h-[490px] xl:h-[510px] flex flex-col items-center justify-center select-none group transition-transform duration-500 hover:scale-[1.02]">
 
                 {/* Custom Scaled SVG Shield Silhouette */}
                 <svg
@@ -111,12 +111,12 @@ export const DeclinePolicy = () => {
                 </svg>
 
                 {/* Shield Content Layer (Centered & Proportional) */}
-                <div className="relative z-10 flex flex-col items-center justify-center px-6 pt-2 text-center">
+                <div className="relative z-10 flex flex-col items-center justify-center px-4 sm:px-6 pt-2 text-center">
 
                   {/* Row of Overlapping Doctor Avatars (Large & Impactful) */}
-                  <div className="flex items-center justify-center mb-4 sm:mb-5 pt-2">
+                  <div className="flex items-center justify-center mb-3 sm:mb-5 pt-1 sm:pt-2">
                     {/* Doctor 1 (Far Left) */}
-                    <div className="relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full overflow-hidden border-2 border-white/60 -mr-3 sm:-mr-4 opacity-80 bg-slate-200 shrink-0 shadow-sm">
+                    <div className="relative w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full overflow-hidden border-2 border-white/60 -mr-2.5 sm:-mr-4 opacity-80 bg-slate-200 shrink-0 shadow-sm">
                       <Image
                         src="/vikas-gupta.png"
                         alt="Specialist"
@@ -126,7 +126,7 @@ export const DeclinePolicy = () => {
                     </div>
 
                     {/* Doctor 2 (Mid Left) */}
-                    <div className="relative w-14 h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-full overflow-hidden border-2 border-white/85 -mr-3 sm:-mr-4 z-10 bg-slate-200 shrink-0 shadow-lg">
+                    <div className="relative w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-full overflow-hidden border-2 border-white/85 -mr-2.5 sm:-mr-4 z-10 bg-slate-200 shrink-0 shadow-lg">
                       <Image
                         src="/jatinder-singla.png"
                         alt="Specialist"
@@ -136,7 +136,7 @@ export const DeclinePolicy = () => {
                     </div>
 
                     {/* Doctor 3 (Center Featured Large) */}
-                    <div className="relative w-18 h-18 sm:w-22 sm:h-22 lg:w-24 lg:h-24 rounded-full overflow-hidden border-4 border-white z-20 bg-slate-200 shrink-0 shadow-2xl scale-105 ring-2 ring-[#0B5D68]/30">
+                    <div className="relative w-15 h-15 xs:w-18 xs:h-18 sm:w-22 sm:h-22 lg:w-24 lg:h-24 rounded-full overflow-hidden border-4 border-white z-20 bg-slate-200 shrink-0 shadow-2xl scale-105 ring-2 ring-[#0B5D68]/30">
                       <Image
                         src="/images/testimonials/doctor-portrait.jpg"
                         alt="Chief Medical Director"
@@ -146,7 +146,7 @@ export const DeclinePolicy = () => {
                     </div>
 
                     {/* Doctor 4 (Mid Right) */}
-                    <div className="relative w-14 h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-full border-2 border-white/85 -ml-3 sm:-mr-4 z-10 bg-slate-200 shrink-0 shadow-lg overflow-hidden">
+                    <div className="relative w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-full border-2 border-white/85 -ml-2.5 sm:-mr-4 z-10 bg-slate-200 shrink-0 shadow-lg overflow-hidden">
                       <Image
                         src="/images/hero/hero-doctor.jpg"
                         alt="Specialist"
@@ -156,7 +156,7 @@ export const DeclinePolicy = () => {
                     </div>
 
                     {/* Doctor 5 (Far Right) */}
-                    <div className="relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full overflow-hidden border-2 border-white/60 -ml-3 sm:-ml-4 opacity-80 bg-slate-200 shrink-0 shadow-sm">
+                    <div className="relative w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full overflow-hidden border-2 border-white/60 -ml-2.5 sm:-ml-4 opacity-80 bg-slate-200 shrink-0 shadow-sm">
                       <Image
                         src="/ashish-ahuja.png"
                         alt="Specialist"
@@ -167,23 +167,23 @@ export const DeclinePolicy = () => {
                   </div>
 
                   {/* Big Number "40+" */}
-                  <div className="font-heading font-extrabold text-5xl sm:text-6xl lg:text-[68px] text-white tracking-tight leading-none drop-shadow-xl">
+                  <div className="font-heading font-extrabold text-4xl xs:text-5xl sm:text-6xl lg:text-[68px] text-white tracking-tight leading-none drop-shadow-xl">
                     40+
                   </div>
 
                   {/* Label: Chief Doctors */}
-                  <div className="font-heading font-bold text-lg sm:text-xl lg:text-2xl text-white mt-2 tracking-wide drop-shadow-md">
+                  <div className="font-heading font-bold text-base xs:text-lg sm:text-xl lg:text-2xl text-white mt-1.5 sm:mt-2 tracking-wide drop-shadow-md">
                     Chief Doctors
                   </div>
 
                   {/* Subtitle Pill */}
-                  <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs sm:text-sm font-heading font-bold uppercase tracking-wider text-[#F0A126] mt-3 backdrop-blur-md shadow-sm">
-                    <ShieldCheck className="w-4 h-4 text-[#F0A126]" />
+                  <div className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white/10 border border-white/20 text-[11px] sm:text-sm font-heading font-bold uppercase tracking-wider text-[#F0A126] mt-2 sm:mt-3 backdrop-blur-md shadow-sm">
+                    <ShieldCheck className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-[#F0A126]" />
                     <span>Audited Senior Specialists</span>
                   </div>
 
                   {/* Secondary Reassurance */}
-                  <p className="text-xs sm:text-sm text-white/70 font-medium mt-2 max-w-[260px] leading-tight">
+                  <p className="text-[11px] sm:text-sm text-white/70 font-medium mt-1.5 sm:mt-2 max-w-[260px] leading-tight">
                     UK, German &amp; US Board-Certified Specialists
                   </p>
 

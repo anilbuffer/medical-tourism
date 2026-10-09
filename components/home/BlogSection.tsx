@@ -138,12 +138,12 @@ export const BlogSection = () => {
           </div>
 
           {/* Right Header: Link & Slider Navigation Arrows */}
-          <div className="flex items-center gap-4 sm:gap-6 shrink-0">
+          <div className="flex items-center justify-between md:justify-end gap-3 sm:gap-6 w-full md:w-auto shrink-0">
             <Link
               href="/guides"
               className="inline-flex items-center gap-2 text-xs uppercase font-heading font-bold tracking-wider text-[#0B5D68] hover:text-[#0C2338] hover:underline transition-colors group"
             >
-              <span>View All Guides &amp; Articles</span>
+              <span>View All Guides</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
 

@@ -160,7 +160,7 @@ export const TestimonialsSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[640px] xl:min-h-[720px]">
 
           {/* Left Column: Aligned with Container */}
-          <div className="lg:col-span-7 xl:col-span-6 py-16 sm:py-20 lg:py-24 pr-0 lg:pr-12 xl:pr-16 flex flex-col justify-between text-white">
+          <div className="lg:col-span-7 xl:col-span-6 py-12 xs:py-14 sm:py-20 lg:py-24 pr-0 lg:pr-12 xl:pr-16 flex flex-col justify-between text-white">
 
             {/* Header Area */}
             <div>
@@ -171,19 +171,19 @@ export const TestimonialsSection = () => {
               </div>
 
               {/* Headline */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-white leading-[1.15] mb-8 lg:mb-10 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-white leading-[1.15] mb-6 sm:mb-10 tracking-tight">
                 What Our Patients &amp; Families Say About Their{" "}
                 <span className="text-[#14B8A6]">Journey.</span>
               </h2>
 
               {/* Quote Mark Icon + 5 Stars Row */}
-              <div className="flex items-center justify-between mb-8 pb-1">
+              <div className="flex items-center justify-between mb-6 sm:mb-8 pb-1">
                 <QuoteIcon />
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-1 sm:gap-1.5">
                   {[...Array(current.rating)].map((_, i) => (
                     <Star
                       key={i}
-                      className="w-5 h-5 sm:w-6 sm:h-6 fill-[#F0A126] text-[#F0A126]"
+                      className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 fill-[#F0A126] text-[#F0A126]"
                     />
                   ))}
                 </div>
@@ -200,7 +200,7 @@ export const TestimonialsSection = () => {
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
-                  <p className="text-slate-100 text-base sm:text-lg lg:text-[19px] leading-relaxed font-body font-normal max-w-2xl min-h-[110px]">
+                  <p className="text-slate-100 text-sm xs:text-base sm:text-lg lg:text-[19px] leading-relaxed font-body font-normal max-w-2xl min-h-0 sm:min-h-[110px]">
                     &ldquo;{current.quote}&rdquo;
                   </p>
                 </motion.div>
@@ -208,7 +208,7 @@ export const TestimonialsSection = () => {
             </div>
 
             {/* Patient Details & Carousel Arrows Row */}
-            <div className="pt-8 sm:pt-10 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+            <div className="pt-6 sm:pt-10 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-5 sm:gap-6">
               {/* Patient Avatar + Info */}
               <AnimatePresence mode="wait">
                 <motion.div
@@ -217,9 +217,9 @@ export const TestimonialsSection = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 10 }}
                   transition={{ duration: 0.25 }}
-                  className="flex items-center gap-4 sm:gap-5"
+                  className="flex items-center gap-3.5 sm:gap-5"
                 >
-                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-[#14B8A6] shrink-0 shadow-lg ring-2 ring-white/10">
+                  <div className="relative w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-[#14B8A6] shrink-0 shadow-lg ring-2 ring-white/10">
                     <Image
                       src={current.avatar}
                       alt={current.name}
@@ -228,11 +228,11 @@ export const TestimonialsSection = () => {
                     />
                   </div>
                   <div>
-                    <div className="flex items-center gap-2.5">
-                      <h3 className="font-heading font-bold text-lg sm:text-xl text-white leading-tight">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+                      <h3 className="font-heading font-bold text-base xs:text-lg sm:text-xl text-white leading-tight">
                         {current.name}
                       </h3>
-                      <span className="px-2.5 py-0.5 rounded-full bg-[#14B8A6]/20 border border-[#14B8A6]/40 text-[#14B8A6] text-[11px] font-heading font-bold">
+                      <span className="px-2 xs:px-2.5 py-0.5 rounded-full bg-[#14B8A6]/20 border border-[#14B8A6]/40 text-[#14B8A6] text-[10px] xs:text-[11px] font-heading font-bold">
                         {current.savings}
                       </span>
                     </div>
@@ -243,21 +243,21 @@ export const TestimonialsSection = () => {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Navigation Controls: Secondary Button 2 + Primary Button 1 styling */}
+              {/* Navigation Controls */}
               <div className="flex items-center gap-3 self-end sm:self-center shrink-0">
                 <button
                   onClick={handlePrev}
                   aria-label="Previous testimonial"
-                  className="w-12 h-12 rounded-full bg-white/10 hover:bg-[#0B5D68] text-white flex items-center justify-center transition-all duration-300 cursor-pointer border border-white/20 active:scale-95 shadow-sm group"
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-[#0B5D68] text-white flex items-center justify-center transition-all duration-300 cursor-pointer border border-white/20 active:scale-95 shadow-sm group"
                 >
-                  <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-0.5" />
+                  <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-x-0.5" />
                 </button>
                 <button
                   onClick={handleNext}
                   aria-label="Next testimonial"
-                  className="w-12 h-12 rounded-full bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] flex items-center justify-center transition-all duration-300 cursor-pointer border border-[#F0A126] active:scale-95 shadow-md shadow-[#F0A126]/30 group"
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] flex items-center justify-center transition-all duration-300 cursor-pointer border border-[#F0A126] active:scale-95 shadow-md shadow-[#F0A126]/30 group"
                 >
-                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-0.5" />
                 </button>
               </div>
             </div>
@@ -269,7 +269,7 @@ export const TestimonialsSection = () => {
       </div>
 
       {/* 03. Mobile-Only Photo & Ribbon Block */}
-      <div className="block lg:hidden relative w-full h-[460px] bg-slate-900 overflow-hidden">
+      <div className="block lg:hidden relative w-full h-[260px] xs:h-[300px] sm:h-[360px] bg-slate-900 overflow-hidden">
         <Image
           src="/images/testimonials/doctor-portrait.jpg"
           alt="Chief Clinical Specialist reviewing patient case"
@@ -278,6 +278,15 @@ export const TestimonialsSection = () => {
           className="object-cover object-top"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+        <div className="absolute bottom-4 left-4 right-4 z-10 flex justify-center">
+          <div className="w-full max-w-sm px-4 py-2.5 rounded-full bg-[#0B5D68]/95 backdrop-blur-md text-white shadow-xl border border-[#14B8A6]/40 flex items-center justify-center gap-2 text-center">
+            <Sparkles className="w-3.5 h-3.5 text-[#F0A126] fill-[#F0A126] shrink-0" />
+            <span className="text-[11px] font-heading font-bold tracking-wide">
+              Rated 4.9/5 based on 5K+ global reviews
+            </span>
+            <Sparkles className="w-3.5 h-3.5 text-[#14B8A6] fill-[#14B8A6] shrink-0" />
+          </div>
+        </div>
       </div>
 
     </section>

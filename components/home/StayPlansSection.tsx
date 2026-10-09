@@ -20,9 +20,9 @@ export const StayPlansSection = () => {
           sizes="100vw"
           className="object-cover object-right"
         />
-        {/* Soft White Overlay: Solid on Left for Perfect Card Contrast, Fading to Transparent on Right so Hotel Room is Clearly Visible */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 via-50% to-transparent pointer-events-none" />
-        <div className="absolute inset-y-0 left-0 w-full lg:w-[68%] bg-gradient-to-r from-white via-white/95 to-transparent pointer-events-none" />
+        {/* Soft White Overlay: Solid on Mobile for pristine card contrast, Fading on Desktop so Hotel Room is Clearly Visible on the right */}
+        <div className="absolute inset-0 bg-white/92 lg:bg-transparent lg:bg-gradient-to-r lg:from-white lg:via-white/95 lg:via-50% lg:to-transparent pointer-events-none" />
+        <div className="hidden lg:block absolute inset-y-0 left-0 w-[68%] bg-gradient-to-r from-white via-white/95 to-transparent pointer-events-none" />
 
         {/* Subtle Top & Bottom Edge Blends */}
         <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white to-transparent pointer-events-none" />
@@ -37,7 +37,7 @@ export const StayPlansSection = () => {
           <div className="lg:col-span-8 xl:col-span-8 flex flex-col justify-center">
 
             {/* Section Header */}
-            <div className="max-w-2xl mb-10 sm:mb-12">
+            <div className="max-w-2xl mb-8 sm:mb-12">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
                 <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse" />
                 <Sparkles className="w-3.5 h-3.5 text-[#0B5D68]" />
@@ -60,7 +60,7 @@ export const StayPlansSection = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-7 items-stretch">
 
               {/* Card 1: Essential Stay */}
-              <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-7 border border-[#DCE6EB] shadow-xl hover:shadow-2xl transition-all flex flex-col justify-between group hover:-translate-y-1">
+              <div className="bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-3xl p-5 xs:p-6 sm:p-7 border border-[#DCE6EB] shadow-xl hover:shadow-2xl transition-all flex flex-col justify-between group hover:-translate-y-1">
                 <div>
                   <div className="flex items-center justify-between mb-5">
                     <span className="inline-block px-3 py-1 bg-[#ECF4F7] text-[#0C2338] text-xs font-heading font-bold rounded-full border border-[#DCE6EB]">
@@ -142,7 +142,7 @@ export const StayPlansSection = () => {
               </div>
 
               {/* Card 2: Premium Concierge */}
-              <div className="bg-white/98 backdrop-blur-md rounded-3xl p-6 sm:p-7 border-2 border-[#0e9d8d] shadow-2xl hover:shadow-[0_20px_50px_rgba(11,93,104,0.25)] transition-all flex flex-col justify-between relative group hover:-translate-y-1">
+              <div className="bg-white/98 backdrop-blur-md rounded-2xl sm:rounded-3xl p-5 xs:p-6 sm:p-7 border-2 border-[#0e9d8d] shadow-2xl hover:shadow-[0_20px_50px_rgba(11,93,104,0.25)] transition-all flex flex-col justify-between relative group hover:-translate-y-1">
 
                 <div>
                   <div className="flex items-center justify-between mb-5">

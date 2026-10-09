@@ -19,7 +19,7 @@ import { BrandIcon } from "@/components/ui/BrandLogo";
 
 // Bespoke Circular Rotating Stamp Badge matching the reference design
 const CircularStampBadge = () => (
-  <div className="relative w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center select-none pointer-events-none">
+  <div className="relative w-24 h-24 xs:w-28 xs:h-28 sm:w-32 sm:h-32 flex items-center justify-center select-none pointer-events-none">
     {/* Rotating SVG Curved Text */}
     <svg
       className="w-full h-full animate-[spin_20s_linear_infinite]"
@@ -39,8 +39,8 @@ const CircularStampBadge = () => (
       </text>
     </svg>
     {/* Center Dark Circle with Brand Icon */}
-    <div className="absolute w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#0C2338] text-white flex items-center justify-center shadow-lg border-2 border-white">
-      <BrandIcon variant="white" className="w-6 h-6 sm:w-7 sm:h-7" />
+    <div className="absolute w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 rounded-full bg-[#0C2338] text-white flex items-center justify-center shadow-lg border-2 border-white">
+      <BrandIcon variant="white" className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7" />
     </div>
   </div>
 );
@@ -180,7 +180,7 @@ export const ConnectSection = () => {
 
             {/* Lower Bedside Care Photo & Circular Stamp Badge */}
             <div className="relative mt-2">
-              <div className="relative w-full h-[260px] sm:h-[320px] rounded-3xl overflow-hidden shadow-xl border border-white bg-slate-100">
+              <div className="relative w-full h-[220px] xs:h-[260px] sm:h-[320px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-white bg-slate-100">
                 <Image
                   src="/images/connect/care-bedside.jpg"
                   alt="Compassionate nurse providing dedicated bedside care to patient"
@@ -192,7 +192,7 @@ export const ConnectSection = () => {
               </div>
 
               {/* Circular Rotating Stamp Badge Positioned at the top-right corner */}
-              <div className="absolute -top-10 sm:-top-12 -right-4 sm:-right-6 z-20">
+              <div className="absolute -top-7 xs:-top-9 sm:-top-12 -right-2 sm:-right-6 z-20 scale-90 xs:scale-95 sm:scale-100 origin-top-right">
                 <CircularStampBadge />
               </div>
             </div>
@@ -205,7 +205,7 @@ export const ConnectSection = () => {
           <div className="lg:col-span-6 flex justify-center lg:justify-end">
 
             {/* Mobile-only background image block */}
-            <div className="block lg:hidden relative w-full h-[280px] rounded-3xl overflow-hidden mb-6 shadow-md">
+            <div className="block lg:hidden relative w-full h-[200px] xs:h-[240px] sm:h-[280px] rounded-2xl sm:rounded-3xl overflow-hidden mb-6 shadow-md">
               <Image
                 src="/images/connect/surgeon-consultation.jpg"
                 alt="Chief surgeon consulting international patient"
@@ -217,7 +217,7 @@ export const ConnectSection = () => {
             </div>
 
             {/* Floating White Form Card matching reference card */}
-            <div className="w-full max-w-xl bg-white rounded-3xl p-6 sm:p-8 lg:p-9 shadow-[0_25px_60px_rgba(12,35,56,0.18)] border border-[#DCE6EB]/80 text-[#0C2338] relative z-20">
+            <div className="w-full max-w-xl bg-white rounded-2xl sm:rounded-3xl p-5 xs:p-6 sm:p-8 lg:p-9 shadow-[0_25px_60px_rgba(12,35,56,0.18)] border border-[#DCE6EB]/80 text-[#0C2338] relative z-20">
 
               {/* Form Header */}
               <div className="mb-6">
