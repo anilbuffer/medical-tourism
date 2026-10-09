@@ -3,18 +3,13 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Star,
-  ArrowLeft,
-  ArrowRight,
-  Sparkles
-} from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, Sparkles, ShieldCheck } from "lucide-react";
 import { useCare } from "@/context/CareContext";
 
-// Bespoke Large Double Quote Icon matching the reference layout
+// Bespoke Large Double Quote Icon
 const QuoteIcon = () => (
   <svg
-    className="w-12 h-12 sm:w-16 sm:h-16 text-[#F0A126]"
+    className="w-10 h-10 text-[#0B5D68]/20"
     viewBox="0 0 24 24"
     fill="currentColor"
     aria-hidden="true"
@@ -31,7 +26,6 @@ interface PatientTestimonial {
   procedure: string;
   hospital: string;
   quote: string;
-  rating: number;
   avatar: string;
   savings: string;
 }
@@ -45,8 +39,7 @@ const testimonials: PatientTestimonial[] = [
     procedure: "Minimally Invasive Cardiac Valve Repair",
     hospital: "Fortis Escorts Heart Institute",
     quote:
-      "The cardiology team didn't just treat my condition — they gave me back my confidence. From the first emergency call to post-surgery rehab, every moment was handled with genuine warmth and world-class expertise. I'm grateful beyond words.",
-    rating: 5,
+      "The cardiology team didn't just treat my condition — they gave me back my life. From the first video review to post-surgery rehab, every moment was handled with genuine warmth and world-class surgical expertise.",
     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=300",
     savings: "Saved $78,000 vs US",
   },
@@ -58,8 +51,7 @@ const testimonials: PatientTestimonial[] = [
     procedure: "Bilateral Robotic Knee Replacement",
     hospital: "Fortis Hospital Mohali",
     quote:
-      "The orthopaedic team didn't just treat my severe knee osteoarthritis — they gave me back my life and independent mobility. From the initial MRI review to our airport arrival and post-op physical rehabilitation, every single moment was handled with genuine warmth and world-class surgical expertise. I was walking independently within 10 days.",
-    rating: 5,
+      "Dr. Singla's Mako robotic knee replacement had me walking independently in days. My personal care coordinator stayed with our family every step of the way.",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300",
     savings: "Saved $24,000 vs UK Private",
   },
@@ -71,37 +63,10 @@ const testimonials: PatientTestimonial[] = [
     procedure: "Robotic Hip Arthroplasty (MAKO)",
     hospital: "Max Super Speciality Hospital",
     quote:
-      "Skipped an 18-month NHS surgical waitlist and saved over £14,000. My dedicated concierge met us at Delhi airport with an executive car, escorted us through hospital admissions, and visited my serviced apartment every morning. The Stryker titanium implant and muscle-sparing surgery let me return home fully pain-free.",
-    rating: 5,
+      "Skipped an 18-month NHS surgical waiting list and saved over £14,000. Executive chauffeured airport pickup, private hospital suite, and completely pain-free recovery.",
     avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=300",
     savings: "Saved £14,000 vs NHS Wait",
   },
-  {
-    id: "sarah",
-    name: "Sarah & David Mwangi",
-    recoveryTag: "Fertility & Embryology Care",
-    country: "Nairobi, Kenya 🇰🇪",
-    procedure: "IVF with ICSI & PGT-A Genetics",
-    hospital: "Healing Super Speciality Hospital",
-    quote:
-      "The embryology cleanrooms and advanced genetic testing protocols were far superior to anything available back home. Having a dedicated care coordinator organize all consultations, pharmacy protocols, and private hospital transfers took away 100% of the travel anxiety. We welcomed our healthy baby girl this spring.",
-    rating: 5,
-    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=300",
-    savings: "68% Success Rate on Cycle 1",
-  },
-  {
-    id: "lilian",
-    name: "Lilian Omondi",
-    recoveryTag: "Laser Refractive Vision Recovery",
-    country: "Mombasa, Kenya 🇰🇪",
-    procedure: "Contoura Vision Blade-Free LASIK",
-    hospital: "Sangam Netralaya Eye Hospital",
-    quote:
-      "Blade-free topography-guided surgery took just 10 minutes per eye and was completely painless. Dr. Ahuja tested my cornea with 22,000 elevation points. I woke up the very next morning with crystal-clear 20/20 vision without eyeglasses for the first time in 20 years.",
-    rating: 5,
-    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=300",
-    savings: "Outpatient • 24h Recovery",
-  }
 ];
 
 export const TestimonialsSection = () => {
@@ -119,166 +84,120 @@ export const TestimonialsSection = () => {
   const current = testimonials[currentIndex];
 
   return (
-    <section id="stories" className="w-full relative overflow-hidden font-sans border-t border-b border-[#0C2338] bg-[#0C2338]">
-      
-      {/* 01. Desktop Edge-to-Edge Split Background */}
-      <div className="hidden lg:grid absolute inset-0 grid-cols-12 pointer-events-none">
-        {/* Left half: solid deep navy to the edge */}
-        <div className="col-span-7 xl:col-span-6 bg-[#0C2338]" />
+    <section id="stories" className="w-full py-20 sm:py-28 lg:py-32 font-sans border-t border-[#DCE6EB] bg-[#FCFDFD]">
+      <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
         
-        {/* Right half: clinical doctor photo to the edge */}
-        <div className="col-span-5 xl:col-span-6 relative bg-slate-900 overflow-hidden">
-          <Image
-            src="/images/testimonials/doctor-portrait.jpg"
-            alt="Chief Clinical Specialist reviewing patient case"
-            fill
-            priority
-            sizes="50vw"
-            className="object-cover object-top"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-          
-          {/* Bottom Review Ribbon on Photo */}
-          <div className="absolute bottom-8 left-8 right-8 z-10 flex justify-center">
-            <div className="w-full max-w-md px-6 py-3.5 rounded-full bg-[#0B5D68] text-white shadow-2xl border border-white/20 flex items-center justify-center gap-3">
-              <Sparkles className="w-4 h-4 text-[#F0A126] fill-[#F0A126] shrink-0" />
-              <span className="text-xs sm:text-sm font-heading font-bold tracking-wide">
-                Rated 4.9 out of 5 based on 5K+ reviews
-              </span>
-              <Sparkles className="w-4 h-4 text-[#F0A126] fill-[#F0A126] shrink-0" />
+        {/* Header: Minimal & Breathable */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-4 shadow-xs">
+              <Sparkles className="w-3.5 h-3.5 text-[#0B5D68]" />
+              <span>PATIENT STORIES &amp; CLINICAL OUTCOMES</span>
             </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
+              Real Journeys.{" "}
+              <span className="text-[#0B5D68]">Documented Recoveries.</span>
+            </h2>
+            <p className="text-[#6B7C88] text-base sm:text-lg leading-relaxed font-normal mt-3">
+              Hear directly from international patients who chose India for life-changing quaternary surgeries.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2 self-start md:self-end">
+            <button
+              onClick={handlePrev}
+              aria-label="Previous story"
+              className="w-10 h-10 rounded-full bg-white hover:bg-slate-100 text-[#0C2338] border border-[#DCE6EB] flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-95"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={handleNext}
+              aria-label="Next story"
+              className="w-10 h-10 rounded-full bg-[#0B5D68] hover:bg-[#07434B] text-white flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-95"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
-      </div>
 
-      {/* 02. Content Layer: Aligned with the 1580px Container Grid */}
-      <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[640px] xl:min-h-[720px]">
+        {/* Story Card: Soft Light Background with Editorial Image & Short Quote */}
+        <div className="bg-white rounded-3xl border border-[#DCE6EB] p-8 sm:p-12 lg:p-14 shadow-xl shadow-slate-200/50 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Left Column: Aligned with Container */}
-          <div className="lg:col-span-7 xl:col-span-6 py-16 sm:py-20 lg:py-24 pr-0 lg:pr-12 xl:pr-16 flex flex-col justify-between text-white">
+          {/* Left Column: Visual Story Canvas */}
+          <div className="lg:col-span-5 relative w-full aspect-[4/3] sm:aspect-[16/11] rounded-2xl overflow-hidden bg-slate-100 border border-[#DCE6EB]">
+            <Image
+              src="/images/testimonials/doctor-portrait.jpg"
+              alt="Clinical Specialist reviewing patient case"
+              fill
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              className="object-cover object-top"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0C2338]/85 via-transparent to-transparent" />
             
-            {/* Header Area */}
+            <div className="absolute bottom-4 left-4 right-4 z-10 flex items-center justify-between text-white text-xs">
+              <span className="px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 font-heading font-medium">
+                {current.hospital}
+              </span>
+              <span className="px-3 py-1 rounded-full bg-[#F0A126] text-[#0C2338] font-heading font-bold">
+                {current.savings}
+              </span>
+            </div>
+          </div>
+
+          {/* Right Column: Short Quote & Verified Details */}
+          <div className="lg:col-span-7 flex flex-col justify-between">
             <div>
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#ECF4F7] text-xs font-heading font-bold uppercase tracking-wider mb-4 backdrop-blur-md">
-                <span className="w-2 h-2 rounded-full bg-[#F0A126] animate-pulse" />
-                <span>REAL STORIES • REAL CARE</span>
-              </div>
-
-              {/* Headline */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-white leading-[1.15] mb-8 lg:mb-10 tracking-tight">
-                What Our Patients &amp; Families Say About Their Journey
-              </h2>
-
-              {/* Quote Mark Icon + 5 Stars Row */}
-              <div className="flex items-center justify-between mb-8 pb-1">
+              <div className="flex items-center justify-between mb-6">
                 <QuoteIcon />
-                <div className="flex items-center gap-1.5">
-                  {[...Array(current.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 sm:w-6 sm:h-6 fill-[#F0A126] text-[#F0A126]"
-                    />
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-[#F0A126] text-[#F0A126]" />
                   ))}
                 </div>
               </div>
-            </div>
 
-            {/* Testimonial Quote with Smooth Motion */}
-            <div className="my-auto py-2">
+              {/* 1–2 Line Impactful Quote */}
               <AnimatePresence mode="wait">
                 <motion.div
                   key={current.id}
-                  initial={{ opacity: 0, y: 12 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <p className="text-slate-200 text-base sm:text-lg lg:text-[18px] leading-relaxed font-body font-normal max-w-2xl min-h-[110px]">
+                  <p className="text-xl sm:text-2xl lg:text-[25px] font-heading font-extrabold text-[#0C2338] leading-relaxed mb-6">
                     &ldquo;{current.quote}&rdquo;
                   </p>
                 </motion.div>
               </AnimatePresence>
             </div>
 
-            {/* Patient Details & Carousel Arrows Row */}
-            <div className="pt-8 sm:pt-10 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-              {/* Patient Avatar + Info */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={current.id}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 10 }}
-                  transition={{ duration: 0.25 }}
-                  className="flex items-center gap-4 sm:gap-5"
-                >
-                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-[#0B5D68] shrink-0 shadow-lg">
-                    <Image
-                      src={current.avatar}
-                      alt={current.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-lg sm:text-xl text-white leading-tight">
-                      {current.name}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-300 font-medium font-body mt-1">
-                      {current.recoveryTag}
-                    </p>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-
-              {/* Navigation Controls */}
-              <div className="flex items-center gap-3 self-end sm:self-center shrink-0">
-                <button
-                  onClick={handlePrev}
-                  aria-label="Previous testimonial"
-                  className="w-12 h-12 rounded-full bg-white/10 hover:bg-[#F0A126] hover:text-[#0C2338] text-white flex items-center justify-center transition-all duration-300 cursor-pointer border border-white/15 active:scale-95 shadow-sm group"
-                >
-                  <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-0.5" />
-                </button>
-                <button
-                  onClick={handleNext}
-                  aria-label="Next testimonial"
-                  className="w-12 h-12 rounded-full bg-white/10 hover:bg-[#F0A126] hover:text-[#0C2338] text-white flex items-center justify-center transition-all duration-300 cursor-pointer border border-white/15 active:scale-95 shadow-sm group"
-                >
-                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
-                </button>
+            {/* Patient Attribution */}
+            <div className="pt-6 border-t border-[#DCE6EB] flex items-center gap-4">
+              <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#0B5D68] shrink-0 bg-slate-100">
+                <Image
+                  src={current.avatar}
+                  alt={current.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <h3 className="font-heading font-extrabold text-base sm:text-lg text-[#0C2338] leading-tight">
+                  {current.name}
+                </h3>
+                <p className="text-xs text-[#6B7C88] mt-0.5 font-medium">
+                  {current.procedure} · <span className="text-[#0B5D68]">{current.country}</span>
+                </p>
               </div>
             </div>
+
           </div>
 
-          {/* Right Column Spacer for Desktop */}
-          <div className="hidden lg:block lg:col-span-5 xl:col-span-6 pointer-events-none" />
         </div>
-      </div>
 
-      {/* 03. Mobile-Only Photo & Ribbon Block */}
-      <div className="block lg:hidden relative w-full h-[460px] bg-slate-900 overflow-hidden">
-        <Image
-          src="/images/testimonials/doctor-portrait.jpg"
-          alt="Chief Clinical Specialist reviewing patient case"
-          fill
-          sizes="100vw"
-          className="object-cover object-top"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-        <div className="absolute bottom-6 left-4 right-4 z-10 flex justify-center">
-          <div className="w-full max-w-md px-5 py-3 rounded-full bg-[#0B5D68] text-white shadow-2xl border border-white/20 flex items-center justify-center gap-2.5">
-            <Sparkles className="w-4 h-4 text-[#F0A126] fill-[#F0A126] shrink-0" />
-            <span className="text-xs font-heading font-bold tracking-wide">
-              Rated 4.9 out of 5 based on 5K+ reviews
-            </span>
-            <Sparkles className="w-4 h-4 text-[#F0A126] fill-[#F0A126] shrink-0" />
-          </div>
-        </div>
       </div>
-
     </section>
   );
 };

@@ -121,19 +121,22 @@ export const BlogSection = () => {
   }, [api, isPaused]);
 
   return (
-    <section className="py-16 sm:py-24 bg-[#FCFDFD] border-t border-[#DCE6EB] font-sans">
+    <section className="py-20 sm:py-28 lg:py-32 bg-[#FAFCFD] border-t border-[#DCE6EB] font-sans">
       <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with Navigation Controls */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 gap-6">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-4 shadow-xs">
               <BookOpen className="w-3.5 h-3.5 text-[#0B5D68]" />
               <span>CLINICAL GUIDES &amp; PATIENT EDUCATION</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
               Latest Insights &amp;{" "}
               <span className="text-[#0B5D68]">Preparation Guides.</span>
             </h2>
+            <p className="text-[#6B7C88] text-base leading-relaxed font-normal mt-3">
+              Essential clinical advice, accreditation standards, and travel preparation from our surgical directors.
+            </p>
           </div>
 
           {/* Right Header: Link & Slider Navigation Arrows */}
