@@ -160,7 +160,8 @@ export const HospitalsSection = () => {
     };
   }, [api]);
 
-  retur    <section
+  return (
+    <section
       id="hospitals"
       className="py-16 sm:py-24 bg-[#ECF4F7] relative border-t border-[#DCE6EB] font-sans"
     >
@@ -351,7 +352,7 @@ export const HospitalsSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-          </Carousel>sel>
+          </Carousel>
 
           {/* Slide Indicator Dots */}
           {totalSlides > 1 && (
@@ -361,11 +362,10 @@ export const HospitalsSection = () => {
                   key={idx}
                   onClick={() => api?.scrollTo(idx)}
                   aria-label={`Go to slide ${idx + 1}`}
-                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                    currentSlide === idx
+                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${currentSlide === idx
                       ? "w-8 bg-[#0b5d63]"
                       : "w-2 bg-slate-200 hover:bg-slate-300"
-                  }`}
+                    }`}
                 />
               ))}
             </div>
