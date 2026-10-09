@@ -9,7 +9,7 @@ export const CostTransparency = () => {
 
   return (
     <section id="costs" className="py-16 sm:py-24 bg-[#ECF4F7] border-t border-[#DCE6EB] font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="max-w-4xl mb-12">

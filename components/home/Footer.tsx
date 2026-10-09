@@ -7,7 +7,7 @@ import { ArrowRight, Globe } from "lucide-react";
 export const Footer = () => {
   return (
     <footer className="bg-slate-900 text-slate-300 py-12 sm:py-16 border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           
           <div className="col-span-1 md:col-span-1">

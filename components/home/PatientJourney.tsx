@@ -227,7 +227,7 @@ export const PatientJourney = () => {
   return (
     <div ref={sectionRef} id="journey" className="relative w-full bg-[#FCFDFD] text-[#0C2338] border-t border-[#DCE6EB] font-sans">
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8 relative z-10">
+      <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <div className="flex items-center gap-2.5 mb-3">
@@ -248,7 +248,7 @@ export const PatientJourney = () => {
       </div>
 
       <div className="sticky top-16 lg:top-20 z-30 bg-white/95 backdrop-blur-md border-y border-[#DCE6EB] py-3.5 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative mb-3">
             <div className="h-1.5 bg-[#ECF4F7] rounded-full w-full relative overflow-hidden">
               <motion.div
@@ -302,7 +302,7 @@ export const PatientJourney = () => {
 
       <div className={`relative w-full pb-16 lg:pb-32 ${isDesktop ? "lg:h-[500vh]" : "h-auto"}`}>
         <div className={`${isDesktop ? "lg:sticky lg:top-40" : "relative"} w-full overflow-hidden z-10`}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 min-h-[50vh] lg:min-h-[60vh] flex items-center">
+          <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 min-h-[50vh] lg:min-h-[60vh] flex items-center">
             
             <div className="hidden lg:flex flex-col relative py-6 mr-10 xl:mr-16 shrink-0 h-[500px] justify-between">
               <div className="absolute left-[19px] top-6 bottom-6 w-[2px] bg-[#DCE6EB]" />
