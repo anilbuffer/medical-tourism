@@ -13,12 +13,15 @@ export const CostTransparency = () => {
         
         {/* Header */}
         <div className="max-w-4xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3 shadow-xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
             <ShieldCheck className="w-3.5 h-3.5 text-[#0B5D68]" />
             <span>TRANSPARENT ALL-INCLUSIVE PRICING</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-[#0C2338] mb-4 leading-tight">
-            Choose How You Want to Stay
+          <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] mb-3 leading-[1.15] tracking-tight">
+            Choose How You Want to Stay.{" "}
+            <span className="text-[#0B5D68] block sm:inline">
+              Transparent All-In Packages.
+            </span>
           </h2>
           <p className="text-[#6B7C88] text-sm sm:text-base leading-relaxed max-w-2xl font-normal">
             Two distinct plans. They differ in where you sleep, how you travel, and what you do while you recover — never in who operates on you or the quality of care.
@@ -45,35 +48,35 @@ export const CostTransparency = () => {
             
             <div className="space-y-4 flex-1 text-xs sm:text-sm text-[#0C2338]">
               <div className="flex items-start gap-3">
-                <span className="text-[#0B8F83] font-bold mt-0.5">✓</span>
+                <span className="text-[#0B5D68] font-bold mt-0.5">✓</span>
                 <div>
                   <h4 className="font-bold text-[#0C2338]">Vetted Hotel Close to Hospital</h4>
                   <p className="text-xs text-[#6B7C88] mt-0.5">Quiet 3–4 star suite with elevator, room service & sanitisation</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-[#0B8F83] font-bold mt-0.5">✓</span>
+                <span className="text-[#0B5D68] font-bold mt-0.5">✓</span>
                 <div>
                   <h4 className="font-bold text-[#0C2338]">Airport Pickup & Return Drop</h4>
                   <p className="text-xs text-[#6B7C88] mt-0.5">Private AC vehicle, wheelchair accommodation available</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-[#0B8F83] font-bold mt-0.5">✓</span>
+                <span className="text-[#0B5D68] font-bold mt-0.5">✓</span>
                 <div>
                   <h4 className="font-bold text-[#0C2338]">All Clinical Transfers</h4>
                   <p className="text-xs text-[#6B7C88] mt-0.5">Pre-op labs, surgeon visits, scans and checkups</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-[#0B8F83] font-bold mt-0.5">✓</span>
+                <span className="text-[#0B5D68] font-bold mt-0.5">✓</span>
                 <div>
                   <h4 className="font-bold text-[#0C2338]">One Family Companion Included</h4>
                   <p className="text-xs text-[#6B7C88] mt-0.5">Companion bed in hospital room & meals during admission</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-[#0B8F83] font-bold mt-0.5">✓</span>
+                <span className="text-[#0B5D68] font-bold mt-0.5">✓</span>
                 <div>
                   <h4 className="font-bold text-[#0C2338]">Daily In-Person Concierge Visit</h4>
                   <p className="text-xs text-[#6B7C88] mt-0.5">Your named coordinator handles all scheduling & questions</p>
@@ -84,7 +87,7 @@ export const CostTransparency = () => {
             <div className="mt-8 pt-6 border-t border-[#DCE6EB]">
               <button 
                 onClick={() => openIntake("Essential Plan")}
-                className="w-full py-4 bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md shadow-[#F0A126]/20 cursor-pointer"
+                className="w-full py-3.5 bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md shadow-[#F0A126]/20 cursor-pointer"
               >
                 Get Written Quote for Essential
               </button>
@@ -98,7 +101,7 @@ export const CostTransparency = () => {
               <div className="inline-block px-3.5 py-1 bg-[#ECF4F7] text-[#0B5D68] border border-[#DCE6EB] text-xs font-heading font-bold rounded-full">
                 Premium Concierge
               </div>
-              <span className="px-3 py-1 rounded-full bg-[#F0A126] text-white text-[10px] font-heading font-bold tracking-wider uppercase shadow-xs">
+              <span className="px-3 py-1 rounded-full bg-[#F0A126] text-[#0C2338] text-[10px] font-heading font-bold tracking-wider uppercase shadow-xs">
                 Most Popular
               </span>
             </div>
@@ -124,7 +127,7 @@ export const CostTransparency = () => {
               </div>
 
               <div className="flex items-start gap-3">
-                <span className="text-[#0B8F83] font-bold mt-0.5">✓</span>
+                <span className="text-[#0B5D68] font-bold mt-0.5">✓</span>
                 <div>
                   <h4 className="font-bold text-[#0C2338]">5-Star Luxury Hotel Accommodation</h4>
                   <p className="text-xs text-[#6B7C88] mt-0.5">Hyatt, Taj or Marriott partner property for you & companion</p>
@@ -132,7 +135,7 @@ export const CostTransparency = () => {
               </div>
               
               <div className="flex items-start gap-3">
-                <span className="text-[#0B8F83] font-bold mt-0.5">✓</span>
+                <span className="text-[#0B5D68] font-bold mt-0.5">✓</span>
                 <div>
                   <h4 className="font-bold text-[#0C2338]">Dedicated Chauffeur & Luxury Vehicle On-Call</h4>
                   <p className="text-xs text-[#6B7C88] mt-0.5">Exclusive private SUV on call throughout your entire stay</p>
@@ -140,7 +143,7 @@ export const CostTransparency = () => {
               </div>
 
               <div className="flex items-start gap-3">
-                <span className="text-[#0B8F83] font-bold mt-0.5">✓</span>
+                <span className="text-[#0B5D68] font-bold mt-0.5">✓</span>
                 <div>
                   <h4 className="font-bold text-[#0C2338]">VIP Fast-Track Airport Meet & Greet</h4>
                   <p className="text-xs text-[#6B7C88] mt-0.5">Immigration escort and lounge access upon landing</p>
@@ -151,7 +154,7 @@ export const CostTransparency = () => {
             <div className="mt-8 pt-6 border-t border-[#DCE6EB]">
               <button 
                 onClick={() => openIntake("Premium Plan")}
-                className="w-full py-4 bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md shadow-[#F0A126]/20 cursor-pointer"
+                className="w-full py-3.5 bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md shadow-[#F0A126]/20 cursor-pointer"
               >
                 Get Written Quote for Premium
               </button>

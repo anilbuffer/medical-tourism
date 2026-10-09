@@ -141,12 +141,12 @@ export const ConnectSection = () => {
               </div>
 
               {/* Main Headline */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] xl:text-[50px] font-heading font-extrabold text-[#0C2338] leading-[1.12] mb-4 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] mb-4 tracking-tight">
                 Send Us Your Reports. We&apos;ll Tell You Honestly Whether to Come.
               </h2>
 
               {/* Subtitle */}
-              <p className="text-sm sm:text-base text-[#5A6E7C] leading-relaxed max-w-xl mb-8 font-normal">
+              <p className="text-sm sm:text-base text-[#6B7C88] leading-relaxed max-w-xl mb-8 font-normal">
                 100% free and zero commitment. If travelling isn&apos;t clinically sound or advantageous for you, our chief medical director will tell you why and recommend what to ask your local doctor instead.
               </p>
             </div>
@@ -221,7 +221,7 @@ export const ConnectSection = () => {
               {/* Form Header */}
               <div className="mb-6">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#0B8F83] animate-pulse" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#0B5D68] animate-pulse" />
                   <span className="text-[11px] font-heading font-bold uppercase tracking-wider text-[#0B5D68]">
                     Direct Surgeon Evaluation
                   </span>
@@ -365,11 +365,11 @@ export const ConnectSection = () => {
                 {/* Security and HIPAA compliance info */}
                 <div className="space-y-1.5 pt-1 text-[11px] text-[#6B7C88]">
                   <div className="flex items-center gap-1.5">
-                    <ShieldCheck className="w-3.5 h-3.5 text-[#0B8F83] shrink-0" />
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#0B5D68] shrink-0" />
                     <span>256-Bit SSL Encrypted &amp; HIPAA Privacy Compliant</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#0B8F83] shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#0B5D68] shrink-0" />
                     <span>Only reviewed by licensed surgical specialists</span>
                   </div>
                 </div>
@@ -410,9 +410,9 @@ export const ConnectSection = () => {
                     href="https://wa.me/919876543210"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-2.5 px-4 rounded-xl border border-[#0B8F83]/40 text-[#0B8F83] hover:bg-[#ECF4F7] font-heading font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 text-center"
+                    className="w-full py-2.5 px-4 rounded-xl border border-[#0B5D68]/40 text-[#0B5D68] hover:bg-[#ECF4F7] font-heading font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 text-center"
                   >
-                    <MessageSquare className="w-3.5 h-3.5 text-[#0B8F83]" />
+                    <MessageSquare className="w-3.5 h-3.5 text-[#0B5D68]" />
                     <span>Prefer WhatsApp? Send Reports Directly</span>
                   </a>
                 </div>

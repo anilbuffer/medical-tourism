@@ -44,17 +44,17 @@ export const BlogSection = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3 shadow-xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
               <BookOpen className="w-3.5 h-3.5 text-[#0B5D68]" />
               <span>CLINICAL GUIDES & PATIENT EDUCATION</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-[#0C2338] leading-tight">
-              Latest Insights & Preparation Guides
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
+              Latest Insights &amp; <span className="text-[#0B5D68]">Preparation Guides.</span>
             </h2>
           </div>
           <Link
             href="/guides"
-            className="inline-flex items-center gap-2 text-xs uppercase font-heading font-bold tracking-wider text-[#0B5D68] hover:text-[#0C2338] transition-colors group"
+            className="inline-flex items-center gap-2 text-xs uppercase font-heading font-bold tracking-wider text-[#0B5D68] hover:text-[#0C2338] hover:underline transition-colors group"
           >
             <span>View All Guides & Articles</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

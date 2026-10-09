@@ -14,7 +14,7 @@ import { useCare } from "@/context/CareContext";
 // Bespoke Large Double Quote Icon matching the reference layout
 const QuoteIcon = () => (
   <svg
-    className="w-12 h-12 sm:w-16 sm:h-16 text-[#2C7FAF]"
+    className="w-12 h-12 sm:w-16 sm:h-16 text-[#F0A126]"
     viewBox="0 0 24 24"
     fill="currentColor"
     aria-hidden="true"
@@ -140,12 +140,12 @@ export const TestimonialsSection = () => {
           
           {/* Bottom Review Ribbon on Photo */}
           <div className="absolute bottom-8 left-8 right-8 z-10 flex justify-center">
-            <div className="w-full max-w-md px-6 py-3.5 rounded-full bg-[#1D72FE] text-white shadow-2xl border border-white/20 flex items-center justify-center gap-3">
-              <Sparkles className="w-4 h-4 text-white fill-white shrink-0" />
+            <div className="w-full max-w-md px-6 py-3.5 rounded-full bg-[#0B5D68] text-white shadow-2xl border border-white/20 flex items-center justify-center gap-3">
+              <Sparkles className="w-4 h-4 text-[#F0A126] fill-[#F0A126] shrink-0" />
               <span className="text-xs sm:text-sm font-heading font-bold tracking-wide">
                 Rated 4.9 out of 5 based on 5K+ reviews
               </span>
-              <Sparkles className="w-4 h-4 text-white fill-white shrink-0" />
+              <Sparkles className="w-4 h-4 text-[#F0A126] fill-[#F0A126] shrink-0" />
             </div>
           </div>
         </div>
@@ -160,16 +160,15 @@ export const TestimonialsSection = () => {
             
             {/* Header Area */}
             <div>
-              {/* Tagline matching reference `// REAL STORIES • REAL CARE` */}
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-[#38BDF8] font-heading font-medium text-xs sm:text-sm tracking-wider uppercase">
-                  // REAL STORIES • REAL CARE
-                </span>
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#ECF4F7] text-xs font-heading font-bold uppercase tracking-wider mb-4 backdrop-blur-md">
+                <span className="w-2 h-2 rounded-full bg-[#F0A126] animate-pulse" />
+                <span>REAL STORIES • REAL CARE</span>
               </div>
 
-              {/* Headline matching reference */}
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white leading-[1.14] mb-8 lg:mb-10 tracking-tight">
-                What Our Patients &amp; Their Families Say About The Hospil Experience
+              {/* Headline */}
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-white leading-[1.15] mb-8 lg:mb-10 tracking-tight">
+                What Our Patients &amp; Families Say About Their Journey
               </h2>
 
               {/* Quote Mark Icon + 5 Stars Row */}
@@ -215,7 +214,7 @@ export const TestimonialsSection = () => {
                   transition={{ duration: 0.25 }}
                   className="flex items-center gap-4 sm:gap-5"
                 >
-                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-[#2C7FAF]/70 shrink-0 shadow-lg">
+                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-[#0B5D68] shrink-0 shadow-lg">
                     <Image
                       src={current.avatar}
                       alt={current.name}
@@ -270,12 +269,12 @@ export const TestimonialsSection = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         <div className="absolute bottom-6 left-4 right-4 z-10 flex justify-center">
-          <div className="w-full max-w-md px-5 py-3 rounded-full bg-[#1D72FE] text-white shadow-2xl border border-white/20 flex items-center justify-center gap-2.5">
-            <Sparkles className="w-4 h-4 text-white fill-white shrink-0" />
+          <div className="w-full max-w-md px-5 py-3 rounded-full bg-[#0B5D68] text-white shadow-2xl border border-white/20 flex items-center justify-center gap-2.5">
+            <Sparkles className="w-4 h-4 text-[#F0A126] fill-[#F0A126] shrink-0" />
             <span className="text-xs font-heading font-bold tracking-wide">
               Rated 4.9 out of 5 based on 5K+ reviews
             </span>
-            <Sparkles className="w-4 h-4 text-white fill-white shrink-0" />
+            <Sparkles className="w-4 h-4 text-[#F0A126] fill-[#F0A126] shrink-0" />
           </div>
         </div>
       </div>

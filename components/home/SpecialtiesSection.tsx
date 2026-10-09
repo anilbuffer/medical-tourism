@@ -11,10 +11,10 @@ import {
 } from "lucide-react";
 import { useCare } from "@/context/CareContext";
 
-// Bespoke Double-Tick Icon matching the exact reference screenshot
+// Bespoke Double-Tick Icon matching the brand palette
 const DoubleCheckIcon = () => (
   <svg
-    className="w-4 h-4 text-[#10B981] shrink-0"
+    className="w-4 h-4 text-[#F0A126] shrink-0"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -27,9 +27,9 @@ const DoubleCheckIcon = () => (
   </svg>
 );
 
-// Bespoke High-Precision Medical Icons matching the exact aesthetic of the reference
+// Bespoke High-Precision Medical Icons matching brand palette
 const CardiologyIcon = () => (
-  <svg className="w-8 h-8 text-[#38BDF8]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+  <svg className="w-8 h-8 text-[#F0A126]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
     <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
     <path d="M12 5.5v4" />
     <path d="M10 9h4" />
@@ -37,7 +37,7 @@ const CardiologyIcon = () => (
 );
 
 const NeurologyIcon = () => (
-  <svg className="w-8 h-8 text-[#38BDF8]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+  <svg className="w-8 h-8 text-[#F0A126]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
     <path d="M9.5 2A4.5 4.5 0 0 0 5 6.5c0 .6.1 1.2.3 1.7A4 4 0 0 0 4 12a4 4 0 0 0 2 3.5c-.3.6-.5 1.3-.5 2A4.5 4.5 0 0 0 10 22h.5" />
     <path d="M14.5 2A4.5 4.5 0 0 1 19 6.5c0 .6-.1 1.2-.3 1.7A4 4 0 0 1 20 12a4 4 0 0 1-2 3.5c.3.6.5 1.3.5 2A4.5 4.5 0 0 1 14 22h-.5" />
     <path d="M12 4v16" />
@@ -47,7 +47,7 @@ const NeurologyIcon = () => (
 );
 
 const OrthopaedicsIcon = () => (
-  <svg className="w-8 h-8 text-[#38BDF8]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+  <svg className="w-8 h-8 text-[#F0A126]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
     <path d="M17 10c.7-.7 1.6-1 2.5-1a3.5 3.5 0 1 1 0 7c-.9 0-1.8-.3-2.5-1l-10-10C6.3 4.3 5.4 4 4.5 4a3.5 3.5 0 1 0 0 7c.9 0 1.8-.3 2.5-1Z" />
     <circle cx="12" cy="12" r="2.5" />
     <path d="M12 9v-2m0 10v-2m-3-3H7m10 0h-2" />
@@ -55,7 +55,7 @@ const OrthopaedicsIcon = () => (
 );
 
 const DentistryIcon = () => (
-  <svg className="w-6 h-6 text-[#38BDF8]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+  <svg className="w-6 h-6 text-[#F0A126]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
     <path d="M12 2C8.5 2 6 4.5 6 8c0 3.5 1.5 6 3 10 1 2.5 1.5 4 3 4s2-1.5 3-4c1.5-4 3-6.5 3-10 0-3.5-2.5-6-6-6Z" />
     <path d="M9 8c.5-1.5 1.5-2 3-2s2.5.5 3 2" />
     <path d="M9 13h6" />
@@ -277,14 +277,14 @@ const SpecialtyStickyCard: React.FC<InteractiveCardProps> = ({
 
             {/* Audited Clinical Stat Badge */}
             <div className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-white/95 backdrop-blur-md border border-[#DCE6EB] shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#0B8F83] shrink-0" />
+              <span className="w-2 h-2 rounded-full bg-[#0B5D68] shrink-0" />
               <span className="text-[10px] sm:text-[11px] font-heading font-bold text-[#0B5D68]">
                 {specialty.stat}
               </span>
             </div>
           </div>
 
-          {/* Floating Content Card: Exactly Matching the Reference Image */}
+          {/* Floating Content Card */}
           <motion.div
             style={{
               x: contentTranslateX,
@@ -296,12 +296,12 @@ const SpecialtyStickyCard: React.FC<InteractiveCardProps> = ({
               : "right-5 sm:right-10 lg:right-16 bottom-5 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2"
               } w-[calc(100%-2.5rem)] sm:w-[420px] lg:w-[450px]`}
           >
-            {/* Dark Navy Rounded Card matching Reference Screenshot */}
+            {/* Dark Navy Rounded Card */}
             <div className="bg-[#0C2338] backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-9 text-white shadow-[0_25px_60px_rgba(0,0,0,0.7)] hover:border-white/20 transition-all">
 
               {/* Top Row: Square-Rounded Icon Box + Title */}
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 rounded-2xl bg-[#132A4A] border border-[#234B80] flex items-center justify-center text-[#38BDF8] shrink-0 shadow-inner">
+                <div className="w-16 h-16 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-[#F0A126] shrink-0 shadow-inner">
                   <IconComponent />
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold font-heading text-white tracking-tight leading-tight">
@@ -309,12 +309,12 @@ const SpecialtyStickyCard: React.FC<InteractiveCardProps> = ({
                 </h3>
               </div>
 
-              {/* Subtitle / Description matching Reference */}
+              {/* Subtitle / Description */}
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-body mb-6">
                 {specialty.subtitle}
               </p>
 
-              {/* Bullet Points with Green Double-Ticks matching Reference */}
+              {/* Bullet Points with Gold Double-Ticks */}
               <div className="space-y-3 mb-8">
                 {specialty.bullets.map((bullet, bIdx) => (
                   <div
@@ -330,7 +330,7 @@ const SpecialtyStickyCard: React.FC<InteractiveCardProps> = ({
               {/* Action Button: Brand standard #F0A126 */}
               <button
                 onClick={() => onOpenIntake(specialty.title)}
-                className="w-full py-3.5 px-6 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-extrabold text-xs uppercase tracking-wider shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 transition-all cursor-pointer group"
+                className="w-full py-3.5 px-6 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 transition-all cursor-pointer group"
               >
                 <span>CHECK CLINICAL FEASIBILITY</span>
                 <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.5] transition-transform group-hover:translate-x-1" />
@@ -339,14 +339,14 @@ const SpecialtyStickyCard: React.FC<InteractiveCardProps> = ({
               {/* Bottom Metadata Bar */}
               <div className="flex items-center justify-between pt-4 mt-5 border-t border-white/10 text-[11px] text-slate-400 font-medium font-body">
                 <div className="flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-[#38BDF8]" />
+                  <Clock className="w-3.5 h-3.5 text-slate-400" />
                   <span>
                     Average Stay: <strong className="text-slate-200">{specialty.stay}</strong>
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5 text-[#10B981]">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  <span className="font-bold">Verified Pricing</span>
+                <div className="flex items-center gap-1.5 text-slate-300">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#F0A126]" />
+                  <span className="font-semibold text-slate-200">Verified Pricing</span>
                 </div>
               </div>
 
@@ -375,24 +375,24 @@ export const SpecialtiesSection = () => {
       className="bg-[#ffffff] text-[#0C2338] relative w-full pt-16 sm:pt-24 pb-20 sm:pb-28"
     >
       {/* 1580px Expanded Container matching Header and Hero */}
-      <div className="max-w-[1580px] mx-auto mx-auto px-4 sm:px-6 lg:px-8 sm:py-3.5 w-full">
+      <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 sm:py-3.5 w-full">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 sm:mb-12 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0B5D68]/10 border border-[#0B5D68]/20 mb-3.5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] mb-3.5 shadow-xs">
               <span className="h-2 w-2 rounded-full bg-[#0B5D68] animate-pulse"></span>
-              <p className="text-[#0B5D68] font-heading font-semibold text-xs uppercase tracking-[0.2em]">
+              <p className="text-[#0B5D68] font-heading font-bold text-xs uppercase tracking-wider">
                 QUATERNARY CLINICAL EXCELLENCE
               </p>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-heading font-extrabold text-[#0C2338] leading-[1.15]">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
               Specialised Treatments.{" "}
               <span className="text-[#0B5D68] block sm:inline">
                 Celebrated Specialists.
               </span>
             </h2>
           </div>
-          <p className="text-[#5A6E7C] max-w-xl text-xs sm:text-sm lg:text-base leading-relaxed font-body">
+          <p className="text-[#6B7C88] max-w-xl text-sm sm:text-base leading-relaxed font-normal">
             All procedures are performed by Chief Surgeons in JCI &amp; NABH-accredited tertiary hospitals with US-FDA approved implants, transparent packages, and zero waitlist delays.
           </p>
         </div>

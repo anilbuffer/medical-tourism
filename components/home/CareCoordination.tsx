@@ -40,14 +40,14 @@ export const CareCoordination = () => {
         
         {/* Header */}
         <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3 shadow-xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-[#0B5D68]" />
             <span>END-TO-END CARE CONCIERGE</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-[#0C2338] mb-4 leading-tight">
-            Care Doesn&apos;t Stop at the Hospital Door.
+          <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] mb-3 leading-[1.15] tracking-tight">
+            <span className="text-[#0B5D68]">Care Doesn&apos;t Stop</span> at the Hospital Door.
           </h2>
-          <p className="text-base sm:text-lg text-[#6B7C88] max-w-2xl mx-auto font-normal">
+          <p className="text-[#6B7C88] text-sm sm:text-base max-w-2xl mx-auto font-normal leading-relaxed">
             Your surgery is one part of the journey. Our concierge coordinates every single detail around it so you can focus 100% on healing.
           </p>
         </div>
@@ -83,7 +83,7 @@ export const CareCoordination = () => {
             <div className="space-y-4">
               {comparison.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-[#ECF4F7] border border-[#DCE6EB] text-xs sm:text-sm text-[#0C2338] shadow-xs">
-                  <CheckCircle2 className="w-4 h-4 text-[#0B8F83] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-[#0B5D68] shrink-0 mt-0.5" />
                   <p className="leading-relaxed font-medium">{item.good}</p>
                 </div>
               ))}
@@ -92,7 +92,7 @@ export const CareCoordination = () => {
         </div>
 
         {/* WhatsApp Assistance Banner */}
-        <div className="bg-[#0C2338] text-white rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl border border-[#DCE6EB]/15">
+        <div className="bg-[#0C2338] text-white rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl border border-white/10">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-[#0B5D68] flex items-center justify-center text-white shrink-0">
               <MessageSquare className="w-6 h-6 text-white" />
@@ -101,7 +101,7 @@ export const CareCoordination = () => {
               <h4 className="font-heading font-bold text-xl text-white mb-1">
                 Have questions about visas, hotels or flights?
               </h4>
-              <p className="text-[#ECF4F7]/80 text-xs sm:text-sm">
+              <p className="text-slate-300 text-xs sm:text-sm">
                 Speak directly with an international care coordinator right now on WhatsApp.
               </p>
             </div>
@@ -112,15 +112,15 @@ export const CareCoordination = () => {
               href="https://wa.me/919876543210"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3.5 rounded-xl bg-[#0B8F83] hover:bg-[#0B5D68] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2"
+              className="px-6 py-3.5 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2 border border-white/10"
             >
-              <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-[#F0A126] animate-pulse"></span>
               <span>Chat on WhatsApp</span>
             </a>
 
             <button
               onClick={() => openIntake("Concierge Request")}
-              className="px-6 py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#F0A126]/90 text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
+              className="px-6 py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#F0A126]/20 cursor-pointer"
             >
               Request Call Back
             </button>

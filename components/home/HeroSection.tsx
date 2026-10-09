@@ -14,19 +14,16 @@ export const HeroSection = () => {
       number: "1,500+",
       label: "International Patients Treated",
       icon: Globe,
-      iconColor: "text-[#2C7FAF]",
     },
     {
       number: "70%",
       label: "Average Cost Savings vs UK/US",
       icon: BadgePercent,
-      iconColor: "text-[#F0A126]",
     },
     {
       number: "24 / 7",
       label: "Dedicated English Concierge",
       icon: Headphones,
-      iconColor: "text-[#0B8F83]",
     },
   ];
 
@@ -65,9 +62,9 @@ export const HeroSection = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0B5D68]/30 border border-[#0B5D68]/50 text-[#ECF4F7] font-heading text-xs sm:text-sm font-semibold tracking-wide backdrop-blur-sm"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#ECF4F7] font-heading text-xs uppercase tracking-wider font-bold backdrop-blur-md"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#0B8F83]"></span>
+                <span className="w-2 h-2 rounded-full bg-[#F0A126] animate-pulse"></span>
                 <span>Expert Medical Travel Care</span>
               </motion.div>
 
@@ -94,7 +91,7 @@ export const HeroSection = () => {
                 Direct access to top quaternary hospital directors, transparent guaranteed pricing, and your dedicated English-speaking care coordinator from arrival to recovery.
               </motion.p>
 
-              {/* Hero CTA Button + 24/7 Dedicated English Concierge */}
+              {/* Hero CTA Button */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -103,34 +100,11 @@ export const HeroSection = () => {
               >
                 <button
                   onClick={() => openIntake()}
-                  className="inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-full bg-[#F0A126] hover:bg-[#db8e18] active:scale-95 text-[#0C2338] font-heading font-bold text-sm sm:text-base tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#F0A126]/25 hover:shadow-2xl hover:shadow-[#F0A126]/40 cursor-pointer group shrink-0"
+                  className="inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-95 text-[#0C2338] font-heading font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#F0A126]/25 hover:shadow-2xl hover:shadow-[#F0A126]/40 cursor-pointer group shrink-0"
                 >
                   <span>Book an Appointment</span>
-                  <ArrowRight className="w-5 h-5 text-[#0C2338] stroke-[2.4] transition-transform duration-300 group-hover:translate-x-1" />
+                  <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.5] transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
-
-                {/* 24 / 7 Dedicated English Concierge */}
-                {/* <a
-                  href="https://wa.me/919876543210"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3.5 px-4.5 py-2.5 rounded-2xl bg-[#0C2338]/85 hover:bg-[#0C2338] border border-[#DCE6EB]/20 hover:border-[#0B8F83]/50 backdrop-blur-md shadow-lg transition-all duration-300 group cursor-pointer"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-[#0B8F83]/20 border border-[#0B8F83]/40 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                    <Headphones className="w-5 h-5 text-[#0B8F83]" />
-                  </div>
-                  <div className="text-left">
-                    <div className="flex items-center gap-2 leading-none">
-                      <span className="text-base sm:text-lg font-extrabold font-heading text-[#F0A126] tracking-tight">
-                        24 / 7
-                      </span>
-                      <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse" />
-                    </div>
-                    <div className="text-xs sm:text-[13px] font-heading font-semibold text-white group-hover:text-emerald-300 transition-colors leading-tight mt-1">
-                      Dedicated English Concierge
-                    </div>
-                  </div>
-                </a> */}
               </motion.div>
 
             </div>
@@ -155,8 +129,8 @@ export const HeroSection = () => {
                   >
                     <defs>
                       <linearGradient id="shieldBg" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#0C2338" stopOpacity="0.92" />
-                        <stop offset="100%" stopColor="#071624" stopOpacity="0.96" />
+                        <stop offset="0%" stopColor="#0C2338" stopOpacity="0.94" />
+                        <stop offset="100%" stopColor="#071624" stopOpacity="0.98" />
                       </linearGradient>
                     </defs>
                     <path
@@ -258,7 +232,7 @@ export const HeroSection = () => {
         aria-label="Clinical statistics and patient credentials"
         className="relative z-20 w-full bg-[#ECF4F7] border-y border-[#DCE6EB] py-8 sm:py-10"
       >
-        <div className="max-w-[1580px] mx-auto mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
             {stats.map((stat, idx) => {
               const Icon = stat.icon;
@@ -272,8 +246,8 @@ export const HeroSection = () => {
                   className="flex items-center gap-4 sm:gap-6 group transition-transform duration-300 hover:-translate-y-0.5"
                 >
                   {/* Related Left Big Icon */}
-                  <div className="w-14 h-14 sm:w-18 sm:h-18 rounded-2xl bg-white border border-[#DCE6EB] flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:shadow-sm group-hover:border-[#0B5D68]/30 transition-all">
-                    <Icon className={`w-7 h-7 sm:w-8 sm:h-8 ${stat.iconColor} stroke-[2.2]`} />
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white border border-[#DCE6EB] flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:shadow-sm group-hover:border-[#0B5D68]/40 transition-all shadow-xs">
+                    <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-[#0B5D68] stroke-[2.2]" />
                   </div>
 
                   {/* Stat Metric & Label */}
@@ -283,7 +257,7 @@ export const HeroSection = () => {
                     >
                       {stat.number}
                     </div>
-                    <div className="text-xs sm:text-sm font-heading font-normal text-[#0C2338]/80 leading-snug mt-1.5 sm:mt-2">
+                    <div className="text-xs sm:text-sm font-heading font-normal text-[#6B7C88] leading-snug mt-1.5 sm:mt-2">
                       {stat.label}
                     </div>
                   </div>

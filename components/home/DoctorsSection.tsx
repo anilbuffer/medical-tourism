@@ -167,16 +167,17 @@ export const DoctorsSection = () => {
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 sm:mb-10 gap-6">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#0B5D68]" />
-              <p className="text-[#0B5D68] font-heading font-semibold text-xs uppercase tracking-[0.2em]">
-                EXPERT SURGICAL DIRECTORS
-              </p>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
+              <span className="h-2 w-2 rounded-full bg-[#0B5D68] animate-pulse" />
+              <span>EXPERT SURGICAL DIRECTORS</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-[#0C2338] leading-[1.14]">
-              Meet Our Senior Medical Directors
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
+              Meet Our Senior Medical Directors.{" "}
+              <span className="text-[#0B5D68] block sm:inline">
+                Celebrated Surgical Leads.
+              </span>
             </h2>
-            <p className="text-[#6B7C88] text-xs sm:text-sm leading-relaxed font-body mt-2 max-w-2xl">
+            <p className="text-[#6B7C88] text-sm sm:text-base leading-relaxed font-normal mt-2.5 max-w-2xl">
               Audited department heads and chief surgeons with international fellowships, documented high-volume success, and dedicated concierge coordination for overseas patients.
             </p>
           </div>
@@ -185,7 +186,7 @@ export const DoctorsSection = () => {
           <div className="flex items-center gap-3 shrink-0">
             <Link
               href="/doctors"
-              className="text-xs font-heading font-semibold text-[#0B5D68] hover:underline flex items-center gap-1.5 transition-colors mr-2"
+              className="text-xs font-heading font-bold uppercase tracking-wider text-[#0B5D68] hover:text-[#0C2338] hover:underline flex items-center gap-1.5 transition-colors mr-2"
             >
               <span>Explore All Specialists</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -215,7 +216,7 @@ export const DoctorsSection = () => {
                 aria-label="Next medical director"
                 className={`w-10 h-10 rounded-full border border-transparent flex items-center justify-center transition-all cursor-pointer ${
                   canScrollNext
-                    ? "bg-[#0B5D68] hover:bg-[#094b54] text-white shadow-sm"
+                    ? "bg-[#0B5D68] hover:bg-[#07434B] text-white shadow-sm"
                     : "bg-[#ECF4F7] text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
                 }`}
               >
@@ -257,7 +258,7 @@ export const DoctorsSection = () => {
                       {/* Top-Left: Accreditation Badge */}
                       <div className="absolute top-3.5 left-3.5 z-10">
                         <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-heading font-medium uppercase tracking-wider shadow-sm flex items-center gap-1.5 border border-white/20">
-                          <ShieldCheck className="w-3.5 h-3.5 text-[#0B8F83]" />
+                          <ShieldCheck className="w-3.5 h-3.5 text-[#0B5D68]" />
                           <span>SENIOR MEDICAL DIRECTOR</span>
                         </span>
                       </div>
@@ -303,7 +304,7 @@ export const DoctorsSection = () => {
 
                         {/* Location */}
                         <div className="flex items-center gap-1.5 text-xs text-[#6B7C88] font-medium mb-3.5">
-                          <MapPin className="w-3.5 h-3.5 text-[#2C7FAF] shrink-0" />
+                          <MapPin className="w-3.5 h-3.5 text-[#0B5D68] shrink-0" />
                           <span className="truncate">{doc.hospital}</span>
                         </div>
 
@@ -312,7 +313,7 @@ export const DoctorsSection = () => {
                           <div>
                             <span className="text-[#6B7C88] font-heading font-bold text-[10px] uppercase tracking-wider block">Surgeries</span>
                             <span className="text-[#0C2338] font-heading font-extrabold text-sm sm:text-base">{doc.surgeries}</span>
-                            <span className="text-[#0B8F83] text-[11px] font-semibold ml-1.5">({doc.successRate})</span>
+                            <span className="text-[#0B5D68] text-[11px] font-semibold ml-1.5">({doc.successRate})</span>
                           </div>
                           <div className="h-6 w-px bg-[#DCE6EB]" />
                           <div>
@@ -354,7 +355,7 @@ export const DoctorsSection = () => {
                             <span className="font-semibold line-clamp-1">{doc.technology}</span>
                           </div>
                           <div className="flex items-center gap-2 text-[#6B7C88] text-[11px]">
-                            <GraduationCap className="w-3.5 h-3.5 text-[#2C7FAF] shrink-0" />
+                            <GraduationCap className="w-3.5 h-3.5 text-[#0B5D68] shrink-0" />
                             <span className="truncate">{doc.education} · {doc.fellowships}</span>
                           </div>
                         </div>
@@ -364,7 +365,7 @@ export const DoctorsSection = () => {
                       <div className="pt-3 border-t border-[#DCE6EB]/60 space-y-2">
                         <button
                           onClick={() => openIntake(doc.name)}
-                          className="w-full py-2.5 px-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 transition-all cursor-pointer group/btn"
+                          className="w-full py-3 px-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 transition-all cursor-pointer group/btn"
                         >
                           <span>Schedule Video Consult</span>
                           <ArrowRight className="w-3.5 h-3.5 text-[#0C2338] stroke-[2.4] transition-transform group-hover/btn:translate-x-1" />
@@ -372,7 +373,7 @@ export const DoctorsSection = () => {
 
                         <Link
                           href="/doctors"
-                          className="w-full py-1 text-center text-xs font-semibold text-[#6B7C88] hover:text-[#0B5D68] transition-colors flex items-center justify-center gap-1"
+                          className="w-full py-1 text-center text-xs font-semibold text-[#0B5D68] hover:text-[#0C2338] hover:underline transition-colors flex items-center justify-center gap-1"
                         >
                           <span>View Facilities & Profiles</span>
                           <ChevronRight className="w-3.5 h-3.5" />

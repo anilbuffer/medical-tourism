@@ -230,19 +230,19 @@ export const PatientJourney = () => {
       <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <div className="flex items-center gap-2.5 mb-3">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#0B5D68]"></span>
-              <p className="text-[#0B5D68] font-heading font-semibold text-xs uppercase tracking-[0.2em] flex items-center gap-2">
-                <Compass className="w-4 h-4 text-[#0B5D68]" />
-                <span>PATIENT JOURNEY — STEP-BY-STEP CONCIERGE CARE</span>
-              </p>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
+              <Compass className="w-3.5 h-3.5 text-[#0B5D68]" />
+              <span>PATIENT JOURNEY — STEP-BY-STEP CONCIERGE CARE</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-[#0C2338] leading-[1.12]">
-              From Your First Report Review to Your <br className="hidden sm:inline" />
-              <span className="text-[#0B5D68]">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
+              From Your First Report Review to Your{" "}
+              <span className="text-[#0B5D68] block sm:inline">
                 Safe Return Home.
               </span>
             </h2>
+            <p className="text-[#6B7C88] text-sm sm:text-base leading-relaxed font-normal mt-2.5 max-w-2xl">
+              A transparent, structured timeline from your initial diagnostic review at home to in-person bedside hospital coordination and your safe return.
+            </p>
           </div>
         </div>
       </div>
@@ -347,8 +347,8 @@ export const PatientJourney = () => {
                                 <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-[#0C2338] mb-3 leading-tight">{step.title}</h3>
                                 <p className="text-[#6B7C88] text-sm sm:text-base font-normal leading-relaxed mb-6">{step.description}</p>
                               </div>
-                              <div className="pt-3 border-t border-[#DCE6EB] flex items-center gap-2.5 text-xs text-slate-700 font-semibold">
-                                <CheckCircle2 className="w-4 h-4 text-[#0B8F83] shrink-0" />
+                              <div className="pt-3 border-t border-[#DCE6EB] flex items-center gap-2.5 text-xs text-[#0C2338] font-semibold">
+                                <CheckCircle2 className="w-4 h-4 text-[#0B5D68] shrink-0" />
                                 <span>Clinical protocol verified before patient departure</span>
                               </div>
                             </div>
@@ -367,23 +367,26 @@ export const PatientJourney = () => {
 
                             <div className="space-y-3.5 pt-4 border-t border-[#DCE6EB]">
                               <div className="flex items-start gap-3.5">
-                                <div className="w-9 h-9 rounded-xl bg-white border border-[#DCE6EB] flex items-center justify-center text-[#0B5D68] shrink-0 shadow-sm"><MapPin className="w-4 h-4 text-[#2C7FAF]" /></div>
+                                <div className="w-9 h-9 rounded-xl bg-white border border-[#DCE6EB] flex items-center justify-center text-[#0B5D68] shrink-0 shadow-sm"><MapPin className="w-4 h-4 text-[#0B5D68]" /></div>
                                 <div>
                                   <div className="text-[9.5px] font-bold tracking-widest text-[#6B7C88] uppercase font-heading">WHERE</div>
                                   <div className="text-xs sm:text-sm font-bold text-[#0C2338] mt-0.5">{step.where}</div>
                                 </div>
                               </div>
                               <div className="flex items-start gap-3.5">
-                                <div className="w-9 h-9 rounded-xl bg-white border border-[#DCE6EB] flex items-center justify-center text-[#0B5D68] shrink-0 shadow-sm"><Users className="w-4 h-4 text-[#2C7FAF]" /></div>
+                                <div className="w-9 h-9 rounded-xl bg-white border border-[#DCE6EB] flex items-center justify-center text-[#0B5D68] shrink-0 shadow-sm"><Users className="w-4 h-4 text-[#0B5D68]" /></div>
                                 <div>
                                   <div className="text-[9.5px] font-bold tracking-widest text-[#6B7C88] uppercase font-heading">WITH YOU</div>
                                   <div className="text-xs sm:text-sm font-bold text-[#0C2338] mt-0.5">{step.withYou}</div>
                                 </div>
                               </div>
-                              <Button variant="outline" onClick={() => openIntake(step.title)} className="w-full bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] border-0 font-heading font-bold rounded-xl mt-4 py-2.5 shadow-md shadow-[#F0A126]/20 transition-all cursor-pointer">
+                              <button
+                                onClick={() => openIntake(step.title)}
+                                className="w-full bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider rounded-xl mt-4 py-3.5 shadow-md shadow-[#F0A126]/20 transition-all cursor-pointer flex items-center justify-center gap-2 border-0"
+                              >
                                 <span>Inquire About This Stage</span>
-                                <ChevronRight className="w-4 h-4 ml-1 stroke-[2.4]" />
-                              </Button>
+                                <ChevronRight className="w-4 h-4 stroke-[2.4]" />
+                              </button>
                             </div>
                           </div>
 

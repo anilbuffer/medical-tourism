@@ -171,19 +171,17 @@ export const HospitalsSection = () => {
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 sm:mb-10 gap-6">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#0B5D68]" />
-              <p className="text-[#0B5D68] font-heading font-semibold text-xs uppercase tracking-[0.2em]">
-                GLOBAL ACCREDITED HEALTHCARE NETWORK
-              </p>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
+              <span className="h-2 w-2 rounded-full bg-[#0B5D68] animate-pulse" />
+              <span>GLOBAL ACCREDITED HEALTHCARE NETWORK</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-[#0C2338] leading-[1.14]">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
               Featured Partner Hospitals.{" "}
               <span className="text-[#0B5D68] block sm:inline">
                 World-Class Clinical Institutions.
               </span>
             </h2>
-            <p className="text-[#6B7C88] text-xs sm:text-sm leading-relaxed font-body mt-2.5 max-w-2xl">
+            <p className="text-[#6B7C88] text-sm sm:text-base leading-relaxed font-normal mt-2.5 max-w-2xl">
               Audited quaternary institutions with JCI and NABH accreditations, cutting-edge robotic surgical theatres, dedicated international patient lounges, and priority direct admission.
             </p>
           </div>
@@ -192,7 +190,7 @@ export const HospitalsSection = () => {
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <Link
               href="/hospitals"
-              className="text-xs font-heading font-semibold text-[#0B5D68] hover:underline flex items-center gap-1.5 transition-colors mr-2"
+              className="text-xs font-heading font-bold uppercase tracking-wider text-[#0B5D68] hover:text-[#0C2338] hover:underline flex items-center gap-1.5 transition-colors mr-2"
             >
               <span>Explore All 15+ Hospitals</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -215,7 +213,7 @@ export const HospitalsSection = () => {
                 disabled={!canScrollNext}
                 aria-label="Next hospital slide"
                 className={`w-10 h-10 rounded-full border border-transparent flex items-center justify-center transition-all cursor-pointer ${canScrollNext
-                  ? "bg-[#0B5D68] hover:bg-[#094b54] text-white shadow-sm"
+                  ? "bg-[#0B5D68] hover:bg-[#07434B] text-white shadow-sm"
                   : "bg-white/60 text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
                   }`}
               >
@@ -257,7 +255,7 @@ export const HospitalsSection = () => {
                       {/* Top-Left: Accreditation Badge */}
                       <div className="absolute top-3.5 left-3.5 z-10">
                         <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-heading font-medium uppercase tracking-wider shadow-sm flex items-center gap-1.5 border border-white/20">
-                          <ShieldCheck className="w-3.5 h-3.5 text-[#0B8F83]" />
+                          <ShieldCheck className="w-3.5 h-3.5 text-[#0B5D68]" />
                           <span>{hosp.accreditation}</span>
                         </span>
                       </div>
@@ -300,7 +298,7 @@ export const HospitalsSection = () => {
 
                         {/* Location */}
                         <div className="flex items-center gap-1.5 text-xs text-[#6B7C88] font-medium mb-3">
-                          <MapPin className="w-3.5 h-3.5 text-[#2C7FAF] shrink-0" />
+                          <MapPin className="w-3.5 h-3.5 text-[#0B5D68] shrink-0" />
                           <span className="truncate">{hosp.location}</span>
                         </div>
 
@@ -323,7 +321,7 @@ export const HospitalsSection = () => {
                             <span className="font-semibold line-clamp-1">{hosp.tech}</span>
                           </div>
                           <div className="flex items-center gap-2 text-[#6B7C88] text-[11px]">
-                            <Plane className="w-3.5 h-3.5 text-[#2C7FAF] shrink-0" />
+                            <Plane className="w-3.5 h-3.5 text-[#0B5D68] shrink-0" />
                             <span className="truncate">{hosp.airportDistance}</span>
                           </div>
                         </div>
@@ -333,7 +331,7 @@ export const HospitalsSection = () => {
                       <div className="pt-3 border-t border-[#DCE6EB]/60 space-y-2">
                         <button
                           onClick={() => openIntake(hosp.name)}
-                          className="w-full py-2.5 px-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 transition-all cursor-pointer group/btn"
+                          className="w-full py-3 px-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 transition-all cursor-pointer group/btn"
                         >
                           <span>Check Hospital Availability</span>
                           <ArrowRight className="w-3.5 h-3.5 text-[#0C2338] stroke-[2.4] transition-transform group-hover/btn:translate-x-1" />
@@ -341,7 +339,7 @@ export const HospitalsSection = () => {
 
                         <Link
                           href="/hospitals"
-                          className="w-full py-1 text-center text-xs font-semibold text-[#6B7C88] hover:text-[#0B5D68] transition-colors flex items-center justify-center gap-1"
+                          className="w-full py-1 text-center text-xs font-semibold text-[#0B5D68] hover:text-[#0C2338] hover:underline transition-colors flex items-center justify-center gap-1"
                         >
                           <span>View Facilities & Profiles</span>
                           <ChevronRight className="w-3.5 h-3.5" />
@@ -363,7 +361,7 @@ export const HospitalsSection = () => {
                   onClick={() => api?.scrollTo(idx)}
                   aria-label={`Go to slide ${idx + 1}`}
                   className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${currentSlide === idx
-                      ? "w-8 bg-[#0b5d63]"
+                      ? "w-8 bg-[#0B5D68]"
                       : "w-2 bg-slate-200 hover:bg-slate-300"
                     }`}
                 />
@@ -373,65 +371,65 @@ export const HospitalsSection = () => {
         </div>
 
         {/* Global Hospital Partnership Standards Banner */}
-        <div className="mt-12 sm:mt-16 rounded-2xl sm:rounded-3xl bg-[#f8fafb] border border-slate-200/80 p-6 sm:p-8 lg:p-10">
+        <div className="mt-12 sm:mt-16 rounded-2xl sm:rounded-3xl bg-white border border-[#DCE6EB] p-6 sm:p-8 lg:p-10 shadow-xs">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-[#f0f8f9] text-[#0b5d63] flex items-center justify-center shrink-0 border border-[#dbeff0]">
-                <ShieldCheck className="w-5 h-5 text-[#0b5d63]" />
+              <div className="w-10 h-10 rounded-xl bg-[#ECF4F7] text-[#0B5D68] flex items-center justify-center shrink-0 border border-[#DCE6EB]">
+                <ShieldCheck className="w-5 h-5 text-[#0B5D68]" />
               </div>
               <div>
-                <h4 className="font-heading font-bold text-sm text-slate-900">JCI & NABH Audited</h4>
-                <p className="text-xs text-slate-600 leading-relaxed mt-1">
+                <h4 className="font-heading font-bold text-sm text-[#0C2338]">JCI & NABH Audited</h4>
+                <p className="text-xs text-[#6B7C88] leading-relaxed mt-1">
                   Surgeries conducted strictly in certified sterile modular OTs with zero infection compromises.
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-[#f0f8f9] text-[#0b5d63] flex items-center justify-center shrink-0 border border-[#dbeff0]">
-                <CheckCircle2 className="w-5 h-5 text-[#0b5d63]" />
+              <div className="w-10 h-10 rounded-xl bg-[#ECF4F7] text-[#0B5D68] flex items-center justify-center shrink-0 border border-[#DCE6EB]">
+                <CheckCircle2 className="w-5 h-5 text-[#0B5D68]" />
               </div>
               <div>
-                <h4 className="font-heading font-bold text-sm text-slate-900">Zero Waiting Lists</h4>
-                <p className="text-xs text-slate-600 leading-relaxed mt-1">
+                <h4 className="font-heading font-bold text-sm text-[#0C2338]">Zero Waiting Lists</h4>
+                <p className="text-xs text-[#6B7C88] leading-relaxed mt-1">
                   Priority admission and reserved surgical dates guaranteed within 24–48 hours of flight arrival.
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-[#f0f8f9] text-[#0b5d63] flex items-center justify-center shrink-0 border border-[#dbeff0]">
-                <Award className="w-5 h-5 text-[#0b5d63]" />
+              <div className="w-10 h-10 rounded-xl bg-[#ECF4F7] text-[#0B5D68] flex items-center justify-center shrink-0 border border-[#DCE6EB]">
+                <Award className="w-5 h-5 text-[#0B5D68]" />
               </div>
               <div>
-                <h4 className="font-heading font-bold text-sm text-slate-900">US-FDA Hardware</h4>
-                <p className="text-xs text-slate-600 leading-relaxed mt-1">
+                <h4 className="font-heading font-bold text-sm text-[#0C2338]">US-FDA Hardware</h4>
+                <p className="text-xs text-[#6B7C88] leading-relaxed mt-1">
                   Only authentic Stryker, Zimmer Biomet, Da Vinci, and Zeiss navigation systems utilized.
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-[#f0f8f9] text-[#0b5d63] flex items-center justify-center shrink-0 border border-[#dbeff0]">
-                <Building2 className="w-5 h-5 text-[#0b5d63]" />
+              <div className="w-10 h-10 rounded-xl bg-[#ECF4F7] text-[#0B5D68] flex items-center justify-center shrink-0 border border-[#DCE6EB]">
+                <Building2 className="w-5 h-5 text-[#0B5D68]" />
               </div>
               <div>
-                <h4 className="font-heading font-bold text-sm text-slate-900">Dedicated Global Desks</h4>
-                <p className="text-xs text-slate-600 leading-relaxed mt-1">
+                <h4 className="font-heading font-bold text-sm text-[#0C2338]">Dedicated Global Desks</h4>
+                <p className="text-xs text-[#6B7C88] leading-relaxed mt-1">
                   Private lounges, airport limousine pickup, currency exchange, and medical visa facilitation.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-xs sm:text-sm text-slate-700 font-medium text-center sm:text-left">
+          <div className="mt-8 pt-6 border-t border-[#DCE6EB] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-xs sm:text-sm text-[#0C2338] font-medium text-center sm:text-left">
               Looking for specialized hospital centers across North India, Delhi NCR, or Mumbai?
             </div>
             <div className="flex items-center gap-3 w-full sm:w-auto">
               <Link
                 href="/hospitals"
-                className="w-full sm:w-auto px-7 py-3 rounded-full bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-7 py-3 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>Explore All 15+ Partner Hospitals</span>
                 <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.4]" />
