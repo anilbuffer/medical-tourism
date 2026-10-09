@@ -190,7 +190,7 @@ export const CostTransparency = () => {
   return (
     <section id="costs" className="py-16 sm:py-24 bg-[#ECF4F7] border-t border-[#DCE6EB] font-sans">
       <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="max-w-4xl mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
@@ -206,88 +206,84 @@ export const CostTransparency = () => {
         </div>
 
         {/* Global Cost Comparison Table Styled Exactly Like Reference Image */}
-        <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-[#DCE6EB]">
+        <div className="overflow-x-auto rounded-2xl border border-[#DCE6EB] shadow-xs">
+          <table className="w-full text-left border-collapse min-w-[760px]">
+            <thead>
+              <tr className="border-b border-[#DCE6EB]">
+                {/* Left Column: Treatment Procedure */}
+                <th className="bg-[#EAF1F4] py-4 sm:py-5 px-5 sm:px-8 italic font-heading font-bold text-sm sm:text-base text-[#0C2338] rounded-tl-2xl w-[40%]">
+                  Treatment Procedure
+                </th>
 
-          <div className="overflow-x-auto rounded-2xl border border-[#DCE6EB] shadow-xs">
-            <table className="w-full text-left border-collapse min-w-[760px]">
-              <thead>
-                <tr className="border-b border-[#DCE6EB]">
-                  {/* Left Column: Treatment Procedure */}
-                  <th className="bg-[#EAF1F4] py-4 sm:py-5 px-5 sm:px-8 italic font-heading font-bold text-sm sm:text-base text-[#0C2338] rounded-tl-2xl w-[40%]">
-                    Treatment Procedure
-                  </th>
+                {/* Middle Column 1: UK / US Private Rate */}
+                <th className="bg-[#EAF1F4] py-4 sm:py-5 px-5 sm:px-6 italic font-heading font-bold text-sm sm:text-base text-[#0C2338] w-[22%]">
+                  UK / US Private Rate
+                </th>
 
-                  {/* Middle Column 1: UK / US Private Rate */}
-                  <th className="bg-[#EAF1F4] py-4 sm:py-5 px-5 sm:px-6 italic font-heading font-bold text-sm sm:text-base text-[#0C2338] w-[22%]">
-                    UK / US Private Rate
-                  </th>
+                {/* Middle Column 2: NHS Wait Times */}
+                <th className="bg-[#EAF1F4] py-4 sm:py-5 px-5 sm:px-6 italic font-heading font-bold text-sm sm:text-base text-[#0C2338] w-[20%]">
+                  NHS / Public Wait Times
+                </th>
 
-                  {/* Middle Column 2: NHS Wait Times */}
-                  <th className="bg-[#EAF1F4] py-4 sm:py-5 px-5 sm:px-6 italic font-heading font-bold text-sm sm:text-base text-[#0C2338] w-[20%]">
-                    NHS / Public Wait Times
-                  </th>
+                {/* Right Column: India Highlighted Header */}
+                <th className="bg-[#F0A126] py-4 sm:py-5 px-5 sm:px-8 italic font-heading font-bold text-sm sm:text-base text-[#F0A126] rounded-tr-2xl w-[18%] text-left">
+                  India (Your Medicare Trip)
+                </th>
+              </tr>
+            </thead>
 
-                  {/* Right Column: India Highlighted Header */}
-                  <th className="bg-[#0A3C46] py-4 sm:py-5 px-5 sm:px-8 italic font-heading font-bold text-sm sm:text-base text-[#F0A126] rounded-tr-2xl w-[18%] text-left">
-                    India (Your Medicare Trip)
-                  </th>
-                </tr>
-              </thead>
+            <tbody className="divide-y divide-[#E2E8F0]">
+              {PRICE_ROWS.map((row) => {
+                const Icon = row.icon;
+                return (
+                  <tr
+                    key={row.id}
+                    className="group transition-colors hover:bg-slate-50/70"
+                  >
+                    {/* Treatment Column with Custom Medical Outline Icon */}
+                    <td className="py-5 sm:py-6 px-5 sm:px-8 bg-white group-hover:bg-slate-50/70 transition-colors">
+                      <div className="flex items-center gap-4">
+                        <Icon />
+                        <span className="font-heading font-bold text-[#0C2338] text-[15px] sm:text-base leading-snug">
+                          {row.treatment}
+                        </span>
+                      </div>
+                    </td>
 
-              <tbody className="divide-y divide-[#E2E8F0]">
-                {PRICE_ROWS.map((row) => {
-                  const Icon = row.icon;
-                  return (
-                    <tr
-                      key={row.id}
-                      className="group transition-colors hover:bg-slate-50/70"
-                    >
-                      {/* Treatment Column with Custom Medical Outline Icon */}
-                      <td className="py-5 sm:py-6 px-5 sm:px-8 bg-white group-hover:bg-slate-50/70 transition-colors">
-                        <div className="flex items-center gap-4">
-                          <Icon />
-                          <span className="font-heading font-bold text-[#0C2338] text-[15px] sm:text-base leading-snug">
-                            {row.treatment}
-                          </span>
-                        </div>
-                      </td>
+                    {/* UK / US Private Rate */}
+                    <td className="py-5 sm:py-6 px-5 sm:px-6 bg-white group-hover:bg-slate-50/70 transition-colors font-medium text-[#1E293B] text-sm sm:text-base tabular-nums">
+                      {row.ukUsPrice}
+                    </td>
 
-                      {/* UK / US Private Rate */}
-                      <td className="py-5 sm:py-6 px-5 sm:px-6 bg-white group-hover:bg-slate-50/70 transition-colors font-medium text-[#1E293B] text-sm sm:text-base tabular-nums">
-                        {row.ukUsPrice}
-                      </td>
+                    {/* NHS Wait Times */}
+                    <td className="py-5 sm:py-6 px-5 sm:px-6 bg-white group-hover:bg-slate-50/70 transition-colors font-medium text-[#64748B] text-xs sm:text-sm">
+                      {row.waitTime}
+                    </td>
 
-                      {/* NHS Wait Times */}
-                      <td className="py-5 sm:py-6 px-5 sm:px-6 bg-white group-hover:bg-slate-50/70 transition-colors font-medium text-[#64748B] text-xs sm:text-sm">
-                        {row.waitTime}
-                      </td>
-
-                      {/* India Column: Distinct Soft Tint Background running the full height */}
-                      <td className="py-5 sm:py-6 px-5 sm:px-8 bg-[#EEF5F8] group-hover:bg-[#E4EEF2] transition-colors border-l border-[#DCE6EB] font-heading font-extrabold text-[#0A3C46] text-base sm:text-lg tabular-nums text-left">
-                        {row.indiaPrice}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Table Footer with Explanatory Asterisk and CTA */}
-          <div className="mt-8 pt-5 border-t border-[#DCE6EB] flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-xs sm:text-sm text-[#6B7C88] leading-relaxed max-w-2xl">
-              * &quot;India (Your Medicare Trip)&quot; includes surgeon fees, pre-op diagnostics, theatre fees, US-FDA implant costs, inpatient stay, attendant accommodation, and local transport.
-            </p>
-            <button
-              onClick={() => openIntake("Cost Comparison Consultation")}
-              className="px-7 py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#F0A126]/20 flex items-center gap-2 cursor-pointer shrink-0"
-            >
-              <span>Get Itemised Written Quote</span>
-              <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.4]" />
-            </button>
-          </div>
+                    {/* India Column: Distinct Soft Tint Background running the full height */}
+                    <td className="py-5 sm:py-6 px-5 sm:px-8 bg-[#EEF5F8] group-hover:bg-[#E4EEF2] transition-colors border-l border-[#DCE6EB] font-heading font-extrabold text-[#0A3C46] text-base sm:text-lg tabular-nums text-left">
+                      {row.indiaPrice}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
 
+        {/* Table Footer with Explanatory Asterisk and CTA */}
+        <div className="mt-8 pt-5 border-t border-[#DCE6EB] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs sm:text-sm text-[#6B7C88] leading-relaxed max-w-2xl">
+            * &quot;India (Your Medicare Trip)&quot; includes surgeon fees, pre-op diagnostics, theatre fees, US-FDA implant costs, inpatient stay, attendant accommodation, and local transport.
+          </p>
+          <button
+            onClick={() => openIntake("Cost Comparison Consultation")}
+            className="px-7 py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#F0A126]/20 flex items-center gap-2 cursor-pointer shrink-0"
+          >
+            <span>Get Itemised Written Quote</span>
+            <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.4]" />
+          </button>
+        </div>
       </div>
     </section>
   );
