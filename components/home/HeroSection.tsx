@@ -31,7 +31,7 @@ export const HeroSection = () => {
   ];
 
   return (
-    <div className="w-full font-sans">
+    <div className="w-full">
       <section className="relative min-h-[92vh] lg:min-h-screen flex items-center pt-28 pb-16 lg:py-0 overflow-hidden bg-[#0C2338] text-white">
         {/* 01. Full Section Background Banner Image - Senior Couple Airport Medical Trip */}
         <div className="absolute inset-0 z-0">
@@ -258,7 +258,7 @@ export const HeroSection = () => {
         aria-label="Clinical statistics and patient credentials"
         className="relative z-20 w-full bg-[#ECF4F7] border-y border-[#DCE6EB] py-8 sm:py-10"
       >
-        <div className="max-w-[1580px] mx-auto px-6 sm:px-12 lg:px-16 w-full">
+        <div className="max-w-[1580px] mx-auto mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
             {stats.map((stat, idx) => {
               const Icon = stat.icon;
@@ -269,21 +269,21 @@ export const HeroSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="flex items-center gap-4 sm:gap-5 px-3 sm:px-6 py-2 group transition-transform duration-300 hover:-translate-y-0.5"
+                  className="flex items-center gap-4 sm:gap-6 group transition-transform duration-300 hover:-translate-y-0.5"
                 >
                   {/* Related Left Big Icon */}
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white border border-[#DCE6EB] shadow-sm flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:shadow-md group-hover:border-[#0B5D68]/30 transition-all">
+                  <div className="w-14 h-14 sm:w-18 sm:h-18 rounded-2xl bg-white border border-[#DCE6EB] flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:shadow-sm group-hover:border-[#0B5D68]/30 transition-all">
                     <Icon className={`w-7 h-7 sm:w-8 sm:h-8 ${stat.iconColor} stroke-[2.2]`} />
                   </div>
 
                   {/* Stat Metric & Label */}
                   <div className="flex flex-col justify-center">
                     <div
-                      className="text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] font-extrabold font-heading text-[#0C2338] leading-none tracking-tight group-hover:text-[#0B5D68] transition-colors"
+                      className="text-2xl sm:text-3xl lg:text-4xl xl:text-[38px] font-bold font-heading text-[#0C2338] leading-none tracking-tight group-hover:text-[#0B5D68] transition-colors"
                     >
                       {stat.number}
                     </div>
-                    <div className="text-xs sm:text-sm font-heading font-semibold text-[#0C2338]/80 leading-snug mt-1.5 sm:mt-2">
+                    <div className="text-xs sm:text-sm font-heading font-normal text-[#0C2338]/80 leading-snug mt-1.5 sm:mt-2">
                       {stat.label}
                     </div>
                   </div>

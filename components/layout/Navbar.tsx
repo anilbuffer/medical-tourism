@@ -97,7 +97,7 @@ export const Navbar = () => {
     >
       {/* 01. Pre-Header Top Utility Bar - Trust & 24/7 Helpline */}
       <div className="hidden lg:block bg-[#081827]/90 border-b border-white/10 py-1.5 text-xs text-slate-300">
-        <div className="max-w-[1580px] mx-auto px-6 sm:px-10 lg:px-14 flex items-center justify-between">
+        <div className="max-w-[1580px] mx-auto mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse" />
@@ -127,7 +127,7 @@ export const Navbar = () => {
       </div>
 
       {/* 02. Main Navbar */}
-      <div className="max-w-[1580px] mx-auto px-6 sm:px-10 lg:px-14 py-3 sm:py-3.5">
+      <div className="max-w-[1580px] mx-auto px-6 sm:py-3.5">
         <div className="flex items-center justify-between gap-8">
           {/* Brand Logo - Vector HD Sharp */}
           <Link href="/" className="flex items-center gap-3 group shrink-0" aria-label="yourMedicareTrip Home">
