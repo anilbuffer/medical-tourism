@@ -219,7 +219,7 @@ export const TestimonialsSection = () => {
                       <h3 className="font-heading font-bold text-base xs:text-lg sm:text-xl text-white leading-tight">
                         {current.name}
                       </h3>
-                      <span className="px-2 xs:px-2.5 py-0.5 rounded-full bg-[#0B8F83]/20 border border-[#0B8F83]/40 text-[#2ECDC5] text-[10px] xs:text-[11px] font-heading font-bold">
+                      <span className="px-2 xs:px-2.5 py-0.5 rounded-full bg-[#0B8F83]/20 border border-[#0B8F83]/40 text-[#2ECDC5] text-[10px] xs:text-[11px] font-heading font-semibold">
                         {current.savings}
                       </span>
                     </div>

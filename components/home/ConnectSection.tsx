@@ -167,10 +167,10 @@ export const ConnectSection = () => {
                     key={step.num}
                     className="bg-[#ECF4F7] rounded-xl px-3.5 py-3 border border-[#DCE6EB] shadow-xs flex items-center gap-3 hover:border-[#0B5D68]/40 hover:bg-white transition-all group"
                   >
-                    <span className="w-8 h-8 rounded-lg bg-[#ffffff] text-[#0B5D68] flex items-center justify-center font-heading font-bold text-xs shrink-0 shadow-xs group-hover:bg-[#0B5D68] group-hover:text-white transition-colors">
+                    <span className="w-8 h-8 rounded-lg bg-[#ffffff] text-[#0B5D68] flex items-center justify-center font-bold text-xs shrink-0 shadow-xs group-hover:bg-[#0B5D68] group-hover:text-white transition-colors">
                       {step.num}
                     </span>
-                    <h4 className="font-heading font-bold text-xs sm:text-[13px] text-[#0C2338] leading-snug">
+                    <h4 className="font-heading font-semibold text-xs sm:text-[13px] text-[#0C2338] leading-snug">
                       {step.title}
                     </h4>
                   </div>
@@ -236,12 +236,12 @@ export const ConnectSection = () => {
               </div>
 
               {/* Form Body */}
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-6">
 
                 {/* Name & Email Row */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-[11px] font-heading font-semibold uppercase tracking-wider text-[#0C2338] mb-1">
+                    <label className="block text-[11px] font-heading font-semibold uppercase tracking-wider text-[#0C2338] mb-1.5">
                       Full Name <span className="text-[#0B5D68]">*</span>
                     </label>
                     <input
@@ -250,12 +250,12 @@ export const ConnectSection = () => {
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
                       placeholder="e.g. Robert Jenkins"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#F5F7F6] border border-[#DCE6EB] text-sm text-[#0C2338] placeholder-slate-400 focus:outline-none focus:border-[#0B5D68] focus:bg-white transition-all shadow-2xs"
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#F5F7F6] border border-[#DCE6EB] text-sm text-[#0C2338] placeholder-slate-400 focus:outline-none focus:border-[#0B5D68] focus:bg-white transition-all"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-heading font-semibold uppercase tracking-wider text-[#0C2338] mb-1">
+                    <label className="block text-[11px] font-heading font-semibold uppercase tracking-wider text-[#0C2338] mb-1.5">
                       Email Address <span className="text-[#0B5D68]">*</span>
                     </label>
                     <input
@@ -264,15 +264,15 @@ export const ConnectSection = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="robert@example.com"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#F5F7F6] border border-[#DCE6EB] text-sm text-[#0C2338] placeholder-slate-400 focus:outline-none focus:border-[#0B5D68] focus:bg-white transition-all shadow-2xs"
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#F5F7F6] border border-[#DCE6EB] text-sm text-[#0C2338] placeholder-slate-400 focus:outline-none focus:border-[#0B5D68] focus:bg-white transition-all"
                     />
                   </div>
                 </div>
 
                 {/* Telephone & Subject/Condition Row */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-[11px] font-heading font-semibold uppercase tracking-wider text-[#0C2338] mb-1">
+                    <label className="block text-[11px] font-heading font-semibold uppercase tracking-wider text-[#0C2338] mb-1.5">
                       Telephone / WhatsApp <span className="text-[#0B5D68]">*</span>
                     </label>
                     <input
@@ -281,12 +281,12 @@ export const ConnectSection = () => {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="+1 (555) 000-0000"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#F5F7F6] border border-[#DCE6EB] text-sm text-[#0C2338] placeholder-slate-400 focus:outline-none focus:border-[#0B5D68] focus:bg-white transition-all shadow-2xs"
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#F5F7F6] border border-[#DCE6EB] text-sm text-[#0C2338] placeholder-slate-400 focus:outline-none focus:border-[#0B5D68] focus:bg-white transition-all"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-heading font-semibold uppercase tracking-wider text-[#0C2338] mb-1">
+                    <label className="block text-[11px] font-heading font-semibold uppercase tracking-wider text-[#0C2338] mb-1.5">
                       Treatment / Condition
                     </label>
                     <input
@@ -294,14 +294,14 @@ export const ConnectSection = () => {
                       value={condition}
                       onChange={(e) => setCondition(e.target.value)}
                       placeholder="e.g. Knee, Cardiac, Spine..."
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#F5F7F6] border border-[#DCE6EB] text-sm text-[#0C2338] placeholder-slate-400 focus:outline-none focus:border-[#0B5D68] focus:bg-white transition-all shadow-2xs"
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#F5F7F6] border border-[#DCE6EB] text-sm text-[#0C2338] placeholder-slate-400 focus:outline-none focus:border-[#0B5D68] focus:bg-white transition-all"
                     />
                   </div>
                 </div>
 
                 {/* Drag & Drop File Upload Zone */}
                 <div>
-                  <label className="block text-[11px] font-heading font-semibold uppercase tracking-wider text-[#0C2338] mb-1">
+                  <label className="block text-[11px] font-heading font-semibold uppercase tracking-wider text-[#0C2338] mb-1.5">
                     Attach Medical Reports &amp; Imaging
                   </label>
                   <div
