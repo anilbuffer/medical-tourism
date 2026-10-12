@@ -38,7 +38,7 @@ export default function HospitalsPage() {
   });
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-28 pb-20">
+    <div className="min-h-screen bg-slate-50 pt-20 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="mb-6">
@@ -57,12 +57,12 @@ export default function HospitalsPage() {
             <Badge
               variant="outline"
               size="lg"
-              className="gap-2 px-3 py-1 font-bold uppercase tracking-wider backdrop-blur-md bg-white/10 border-[#F0A126]/40 text-[#F0A126] font-heading"
+              className="gap-2 px-3 py-1 font-semibold backdrop-blur-md bg-white/10 border-[#F0A126]/40 text-[#F0A126]"
             >
               <Sparkles className="w-3.5 h-3.5 text-[#F0A126]" />
               <span>Chandigarh City · Multi-Class Hospital Network</span>
             </Badge>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white font-heading">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
               Multi-Class Hospitals & Super-Specialty Centers in Chandigarh
             </h1>
             <p className="text-teal-100/90 text-sm sm:text-base leading-relaxed font-body">
@@ -85,7 +85,7 @@ export default function HospitalsPage() {
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="text-xs font-bold text-slate-500 font-heading">Hospital Institute:</span>
+            <span className="text-xs font-semibold text-slate-500 font-heading">Hospital Institute:</span>
             <select
               value={selectedHub}
               onChange={(e) => setSelectedHub(e.target.value)}
@@ -123,9 +123,9 @@ export default function HospitalsPage() {
                         key={i}
                         variant="outline"
                         size="sm"
-                        className="gap-1 bg-slate-900/85 backdrop-blur-md border-white/20 text-[#F0A126] text-[10px] font-bold font-heading"
+                        className="gap-1 bg-slate-900/85 backdrop-blur-md border-white/20 text-[#ffffff] text-[10px] font-medium"
                       >
-                        <ShieldCheck className="w-3 h-3 text-[#F0A126]" />
+                        <ShieldCheck className="w-3 h-3 text-[#ffffff]" />
                         <span>{acc}</span>
                       </Badge>
                     ))}
@@ -138,7 +138,7 @@ export default function HospitalsPage() {
                 </div>
 
                 <CardContent className="p-6 space-y-4">
-                  <h3 className="text-2xl font-extrabold text-slate-900 group-hover:text-[#0B5D68] transition-colors font-heading">
+                  <h3 className="text-2xl font-semibold text-slate-900 group-hover:text-[#0B5D68] transition-colors">
                     {language === "ar" ? hosp.nameAr : hosp.name}
                   </h3>
 
@@ -152,7 +152,7 @@ export default function HospitalsPage() {
                         key={i}
                         variant="secondary"
                         size="default"
-                        className="rounded-lg text-xs font-semibold px-2.5 py-1 bg-[#0B5D68]/10 text-[#0B5D68] hover:bg-[#0B5D68]/20"
+                        className="rounded-lg text-xs font-medium px-2.5 py-1 bg-[#0B5D68]/10 text-[#0B5D68] hover:bg-[#0B5D68]/20"
                       >
                         {spec}
                       </Badge>
@@ -179,7 +179,7 @@ export default function HospitalsPage() {
                   onClick={() => openIntake(hosp.name)}
                   className="w-full text-xs font-bold gap-2 rounded-xl font-heading uppercase tracking-wider"
                 >
-                  <span>Coordinate Admission at {hosp.name}</span>
+                  <span>{language === "ar" ? "تنسيق الدخول" : "Coordinate Admission"}</span>
                   <ArrowRight className="w-4 h-4 rtl:rotate-180" />
                 </Button>
               </CardFooter>
