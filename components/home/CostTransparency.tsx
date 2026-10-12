@@ -198,7 +198,7 @@ export const CostTransparency = () => {
             <ShieldCheck className="w-3.5 h-3.5 text-[#0B5D68]" />
             <span>TRANSPARENT ALL-INCLUSIVE PRICING</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] mb-3 leading-[1.15] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[45px] font-heading font-bold text-[#0C2338] mb-3 leading-[1.15] tracking-tight">
             All-Inclusive Cost Comparison
           </h2>
           <p className="text-[#6B7C88] text-sm sm:text-base leading-relaxed max-w-2xl font-normal">

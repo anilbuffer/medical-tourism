@@ -32,14 +32,14 @@ const CircularStampBadge = () => (
           d="M 60, 60 m -44, 0 a 44,44 0 1,1 88,0 a 44,44 0 1,1 -88,0"
         />
       </defs>
-      <text className="text-[9.5px] uppercase font-bold tracking-[0.24em] fill-[#0C2338]">
+      <text className="text-[12px] uppercase font-bold tracking-[0.24em] fill-[#0C2338]">
         <textPath href="#stampCirclePath">
           GET IN TOUCH • 24/7 MEDICAL DESK •
         </textPath>
       </text>
     </svg>
     {/* Center Dark Circle with Brand Icon */}
-    <div className="absolute w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 rounded-full bg-[#0C2338] text-white flex items-center justify-center shadow-lg border-2 border-white">
+    <div className="absolute w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 rounded-full bg-[#0B5D68] text-white flex items-center justify-center shadow-lg border-2 border-white">
       <BrandIcon variant="white" className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7" />
     </div>
   </div>
@@ -142,7 +142,7 @@ export const ConnectSection = () => {
               </div>
 
               {/* Main Headline */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] mb-4 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[45px] font-heading font-bold text-[#0C2338] leading-[1.15] mb-4 tracking-tight">
                 Send Us Your Reports. We&apos;ll Tell You Honestly Whether to Come.
               </h2>
 
@@ -156,7 +156,7 @@ export const ConnectSection = () => {
             <div className="mb-10">
               <div className="flex items-center gap-2 mb-4">
                 <Sparkles className="w-4 h-4 text-[#0B5D68]" />
-                <h3 className="font-heading font-extrabold text-sm sm:text-base text-[#0C2338] uppercase tracking-wide">
+                <h3 className="font-heading font-semibold text-sm sm:text-base text-[#0C2338] uppercase tracking-wide">
                   Our 4-Step Intake Protocol
                 </h3>
               </div>
@@ -223,11 +223,11 @@ export const ConnectSection = () => {
               <div className="mb-6">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-[#0B5D68] animate-pulse" />
-                  <span className="text-[11px] font-heading font-bold uppercase tracking-wider text-[#0B5D68]">
+                  <span className="text-[11px] font-heading font-semibold uppercase tracking-wider text-[#0B5D68]">
                     Direct Surgeon Evaluation
                   </span>
                 </div>
-                <h3 className="font-heading font-extrabold text-2xl sm:text-3xl text-[#0C2338] tracking-tight leading-tight">
+                <h3 className="font-heading font-semibold text-2xl sm:text-3xl text-[#0C2338] tracking-tight leading-tight">
                   Upload Your Reports Online
                 </h3>
                 <p className="text-xs text-[#6B7C88] mt-1.5 leading-relaxed">
@@ -241,8 +241,8 @@ export const ConnectSection = () => {
                 {/* Name & Email Row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   <div>
-                    <label className="block text-[11px] font-heading font-bold uppercase tracking-wider text-[#0C2338] mb-1">
-                      Full Name *
+                    <label className="block text-[11px] font-heading font-semibold uppercase tracking-wider text-[#0C2338] mb-1">
+                      Full Name <span className="text-[#0B5D68]">*</span>
                     </label>
                     <input
                       type="text"
@@ -255,8 +255,8 @@ export const ConnectSection = () => {
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-heading font-bold uppercase tracking-wider text-[#0C2338] mb-1">
-                      Email Address *
+                    <label className="block text-[11px] font-heading font-semibold uppercase tracking-wider text-[#0C2338] mb-1">
+                      Email Address <span className="text-[#0B5D68]">*</span>
                     </label>
                     <input
                       type="email"
@@ -272,8 +272,8 @@ export const ConnectSection = () => {
                 {/* Telephone & Subject/Condition Row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   <div>
-                    <label className="block text-[11px] font-heading font-bold uppercase tracking-wider text-[#0C2338] mb-1">
-                      Telephone / WhatsApp *
+                    <label className="block text-[11px] font-heading font-semibold uppercase tracking-wider text-[#0C2338] mb-1">
+                      Telephone / WhatsApp <span className="text-[#0B5D68]">*</span>
                     </label>
                     <input
                       type="tel"
@@ -286,7 +286,7 @@ export const ConnectSection = () => {
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-heading font-bold uppercase tracking-wider text-[#0C2338] mb-1">
+                    <label className="block text-[11px] font-heading font-semibold uppercase tracking-wider text-[#0C2338] mb-1">
                       Treatment / Condition
                     </label>
                     <input
@@ -301,7 +301,7 @@ export const ConnectSection = () => {
 
                 {/* Drag & Drop File Upload Zone */}
                 <div>
-                  <label className="block text-[11px] font-heading font-bold uppercase tracking-wider text-[#0C2338] mb-1">
+                  <label className="block text-[11px] font-heading font-semibold uppercase tracking-wider text-[#0C2338] mb-1">
                     Attach Medical Reports &amp; Imaging
                   </label>
                   <div
@@ -329,7 +329,7 @@ export const ConnectSection = () => {
                       onChange={(e) => handleFiles(e.target.files)}
                     />
                     <UploadCloud className="w-6 h-6 text-[#0B5D68] mx-auto mb-1.5" />
-                    <div className="font-heading font-bold text-xs text-[#0C2338]">
+                    <div className="font-heading font-semibold text-xs text-[#0C2338]">
                       Click here to attach medical reports &amp; imaging
                     </div>
                     <div className="text-[11px] text-[#6B7C88] mt-0.5">
@@ -391,7 +391,7 @@ export const ConnectSection = () => {
                 <div className="pt-2 space-y-2.5">
                   <button
                     type="submit"
-                    className="w-full py-3.5 px-6 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-extrabold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
+                    className="w-full py-3.5 px-6 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-semibold text-xs uppercase tracking-wider transition-all shadow-sm shadow-[#F0A126]/20 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
                   >
                     {submitted ? (
                       <span className="flex items-center gap-2">
@@ -410,7 +410,7 @@ export const ConnectSection = () => {
                     href="https://wa.me/919876543210"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3 px-4 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-xs flex items-center justify-center gap-2 text-center"
+                    className="w-full py-3 px-4 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] text-white font-heading font-semibold text-xs uppercase tracking-wider transition-all shadow-xs flex items-center justify-center gap-2 text-center"
                   >
                     <MessageSquare className="w-3.5 h-3.5 text-white" />
                     <span className="text-white">Prefer WhatsApp? Send Reports Directly</span>

@@ -96,7 +96,7 @@ export const CareCoordination = () => {
             </div>
 
             {/* Main Headline */}
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-bold text-[#0C2338] leading-[1.15] tracking-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[45px] font-heading font-semibold text-[#0C2338] leading-[1.15] tracking-tight mb-4">
               Care Doesn&apos;t Stop{" "}
               <span className="text-[#0B5D68] block sm:inline">
                 at the Hospital Door.
@@ -158,7 +158,7 @@ export const CareCoordination = () => {
             <div className="absolute top-3.5 xs:top-4 sm:top-5 left-3.5 xs:left-4 sm:left-5 z-10">
               <span className="inline-flex items-center gap-1.5 px-3 xs:px-3.5 py-1.5 rounded-full bg-[#0C2338]/85 backdrop-blur-md text-white text-[10px] xs:text-[11px] font-heading font-bold uppercase tracking-wider border border-white/20 shadow-md">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#0B8F83]" />
-                <span>1-on-1 Dedicated Concierge</span>
+                <span className="text-white">1-on-1 Dedicated Concierge</span>
               </span>
             </div>
 
@@ -195,7 +195,7 @@ export const CareCoordination = () => {
                   className="px-3.5 xs:px-4 py-2 xs:py-2.5 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] active:scale-95 text-white font-heading font-bold text-[11px] xs:text-xs uppercase tracking-wider transition-all shadow-sm flex items-center gap-1.5 shrink-0 cursor-pointer"
                 >
                   <MessageSquare className="w-3.5 h-3.5 text-[#25D366]" />
-                  <span>WhatsApp</span>
+                  <span className="text-white">WhatsApp</span>
                 </button>
 
               </div>

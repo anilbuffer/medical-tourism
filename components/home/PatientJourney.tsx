@@ -304,7 +304,7 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
               </div>
 
               {/* Catchy Headline */}
-              <h4 className="text-xs sm:text-base font-semibold text-[#ECF4F7] leading-snug mb-2 sm:mb-3 line-clamp-2">
+              <h4 className="text-xs sm:text-base font-medium text-[#ECF4F7] leading-snug mb-2 sm:mb-3 line-clamp-2">
                 {step.headline}
               </h4>
 
@@ -315,16 +315,16 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
 
               {/* Guarantees Checklist with Cyan Checkmarks */}
               <div className="space-y-1.5 sm:space-y-2.5 mb-4 sm:mb-6 pt-2.5 sm:pt-3 border-t border-white/10">
-                <p className="text-[10px] sm:text-[11px] font-heading font-bold uppercase tracking-wider text-[#2ECDC5]">
+                <p className="text-[10px] sm:text-[11px] font-heading font-semibold uppercase tracking-wider text-[#2ECDC5]">
                   Guaranteed Standards at this Stage:
                 </p>
                 {step.guarantees.map((item, gIdx) => (
                   <div
                     key={gIdx}
-                    className="flex items-start gap-2 sm:gap-2.5 text-xs sm:text-sm text-slate-200 font-medium"
+                    className="flex items-start gap-2 sm:gap-2.5 text-xs sm:text-sm text-slate-200 font-normal"
                   >
-                    <span className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-[#0B5D68]/40 border border-[#0B8F83]/40 flex items-center justify-center shrink-0 mt-0.5">
-                      <CheckCircle2 className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#0B8F83]" />
+                    <span className="w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-[#0B5D68]/40 border border-[#0B8F83]/40 flex items-center justify-center shrink-0 mt-0.5">
+                      <CheckCircle2 className="w-2.5 h-2.5 sm:w-4 sm:h-4 text-[#0B8F83]" />
                     </span>
                     <span className="leading-snug truncate xs:whitespace-normal">{item}</span>
                   </div>
@@ -402,7 +402,7 @@ export const PatientJourney = () => {
                 PATIENT JOURNEY — STEP-BY-STEP CONCIERGE CARE
               </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[45px] font-heading font-bold text-[#0C2338] leading-[1.15] tracking-tight">
               Four Simple Steps to Your{" "}
               <span className="text-[#0B5D68] block sm:inline">
                 World-Class Care in India.
@@ -452,7 +452,7 @@ export const PatientJourney = () => {
         </div>
 
         {/* 04. Bottom Master Reassurance & Contact Ribbon */}
-        <div className="mt-14 sm:mt-18 p-6 sm:p-8 rounded-3xl bg-white border border-[#DCE6EB] shadow-lg flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div className="mt-14 sm:mt-18 p-6 sm:p-8 rounded-3xl bg-white border border-[#DCE6EB] shadow-sm flex flex-col lg:flex-row items-center justify-between gap-6">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-2xl bg-[#ECF4F7] border border-[#DCE6EB] flex items-center justify-center text-[#0B5D68] shrink-0 shadow-xs">
               <ShieldCheck className="w-6 h-6 text-[#0B5D68]" />

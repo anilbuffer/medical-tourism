@@ -73,7 +73,7 @@ export const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1 }}
-                className="font-heading text-[1.85rem] xs:text-[2.25rem] sm:text-5xl lg:text-6xl xl:text-[4rem] font-extrabold text-white leading-[1.14] tracking-tight"
+                className="font-heading text-[1.85rem] xs:text-[2.25rem] sm:text-5xl lg:text-6xl xl:text-[4rem] font-bold text-white leading-[1.14] tracking-tight"
               >
                 World-Class Surgical Care in India.{" "}
                 <span className="text-[#F0A126] block sm:inline mt-1 sm:mt-0">

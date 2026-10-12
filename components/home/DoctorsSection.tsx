@@ -199,7 +199,7 @@ export const DoctorsSection = () => {
               <span className="h-2 w-2 rounded-full bg-[#0B8F83] animate-pulse" />
               <span>EXPERT SURGICAL DIRECTORS</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[45px] font-heading font-bold text-[#0C2338] leading-[1.15] tracking-tight">
               Meet Our Senior Medical Directors.{" "}
               <span className="text-[#0B5D68] block sm:inline">
                 Celebrated Surgical Leads.
@@ -335,7 +335,7 @@ export const DoctorsSection = () => {
                         </div>
 
                         {/* Doctor Name */}
-                        <h3 className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-[34px] text-[#0C2338] leading-[1.2] tracking-tight mb-1.5">
+                        <h3 className="font-heading font-bold text-2xl sm:text-3xl lg:text-[34px] text-[#0C2338] leading-[1.2] tracking-tight mb-1.5">
                           {doc.name}
                         </h3>
 
@@ -360,7 +360,7 @@ export const DoctorsSection = () => {
                               <Activity className="w-3 h-3 text-[#0B5D68]" />
                               <span>Procedures</span>
                             </span>
-                            <span className="text-[#0C2338] font-heading font-extrabold text-sm xs:text-base sm:text-xl lg:text-2xl block mt-0.5">
+                            <span className="text-[#0C2338] font-heading font-bold text-sm xs:text-base sm:text-xl lg:text-2xl block mt-0.5">
                               {doc.surgeries}
                             </span>
                             <span className="text-[#0B5D68] text-[10px] xs:text-[11px] sm:text-xs font-semibold flex items-center gap-1 mt-0.5 truncate">
@@ -450,7 +450,7 @@ export const DoctorsSection = () => {
                           {/* Primary High-Intent Button 1 (Gold Accent) */}
                           <button
                             onClick={() => openIntake(`Doctor Consult — ${doc.name}`)}
-                            className="px-4 sm:px-7 py-3.5 sm:py-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-[#F0A126]/20 transition-all cursor-pointer flex items-center justify-center gap-2 group/btn flex-1 text-center"
+                            className="px-4 sm:px-7 py-3.5 sm:py-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-semibold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-[#F0A126]/20 transition-all cursor-pointer flex items-center justify-center gap-2 group/btn flex-1 text-center"
                           >
                             <Calendar className="w-4 h-4 text-[#0C2338] shrink-0" />
                             <span>Schedule Video Consult with {doc.name.split(" ")[1]}</span>
@@ -460,7 +460,7 @@ export const DoctorsSection = () => {
                           {/* Secondary Action Button 2 (Medical Teal #0B5D68) */}
                           <button
                             onClick={() => handleWhatsAppConsult(doc)}
-                            className="px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] active:scale-[0.98] text-white font-heading font-bold text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0 shadow-sm"
+                            className="px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] active:scale-[0.98] text-white font-heading font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0 shadow-sm"
                           >
                             <MessageSquare className="w-4 h-4 text-[#25D366] shrink-0" />
                             <span className="text-[#fff]">WhatsApp Care Desk</span>

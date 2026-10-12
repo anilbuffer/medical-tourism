@@ -282,7 +282,7 @@ export const Footer = () => {
               <div className="pt-2">
                 <button
                   onClick={() => openIntake("Footer Consultation")}
-                  className="w-full py-3 px-3 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.99] text-[#0C2338] font-heading font-bold text-xs shadow-md shadow-[#F0A126]/20 transition-all text-center uppercase tracking-wider cursor-pointer"
+                  className="w-full py-3 px-3 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.99] text-[#0C2338] font-semibold text-sm shadow-md shadow-[#F0A126]/20 transition-all text-center cursor-pointer"
                 >
                   Book Free Consultation
                 </button>
