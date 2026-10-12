@@ -38,13 +38,13 @@ export const StayPlansSection = () => {
 
             {/* Section Header */}
             <div className="max-w-2xl mb-8 sm:mb-12">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-semibold uppercase tracking-wider mb-3.5 shadow-xs">
                 <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse" />
                 <Sparkles className="w-3.5 h-3.5 text-[#0B5D68]" />
                 <span>ACCOMMODATION &amp; RECOVERY PLANS</span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl lg:text-[36px] xl:text-[42px] font-heading font-bold text-[#0C2338] mb-3 leading-[1.15] tracking-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-[36px] xl:text-[42px] font-heading font-semibold text-[#0C2338] mb-3 leading-[1.15] tracking-tight">
                 Choose How You Want to Stay.{" "}
                 <span className="text-[#0B8F83] block sm:inline">
                   Transparent All-In Packages.
@@ -63,7 +63,7 @@ export const StayPlansSection = () => {
               <div className="bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-3xl p-5 xs:p-6 sm:p-7 border border-[#DCE6EB] shadow-xl hover:shadow-2xl transition-all flex flex-col justify-between group hover:-translate-y-1">
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    <span className="inline-block px-3 py-1 bg-[#ECF4F7] text-[#0C2338] text-xs font-heading font-bold rounded-full border border-[#DCE6EB]">
+                    <span className="inline-block px-3 py-1 bg-[#ECF4F7] text-[#0C2338] text-xs font-heading font-semibold rounded-full border border-[#DCE6EB]">
                       Essential Stay
                     </span>
                     <span className="text-xs font-heading font-semibold text-[#6B7C88]">
@@ -89,7 +89,7 @@ export const StayPlansSection = () => {
                     <div className="flex items-start gap-3">
                       <span className="text-[#0B5D68] font-bold text-base leading-none mt-0.5">✓</span>
                       <div>
-                        <h4 className="font-bold text-[#0C2338]">Vetted Hotel Close to Hospital</h4>
+                        <h4 className="font-semibold text-[#0C2338]">Vetted Hotel Close to Hospital</h4>
                         <p className="text-xs text-[#6B7C88] mt-0.5">Quiet 3–4 star suite with elevator, room service &amp; sanitisation</p>
                       </div>
                     </div>
@@ -97,7 +97,7 @@ export const StayPlansSection = () => {
                     <div className="flex items-start gap-3">
                       <span className="text-[#0B5D68] font-bold text-base leading-none mt-0.5">✓</span>
                       <div>
-                        <h4 className="font-bold text-[#0C2338]">Airport Pickup &amp; Return Drop</h4>
+                        <h4 className="font-semibold text-[#0C2338]">Airport Pickup &amp; Return Drop</h4>
                         <p className="text-xs text-[#6B7C88] mt-0.5">Private AC vehicle, wheelchair accommodation available</p>
                       </div>
                     </div>
@@ -105,7 +105,7 @@ export const StayPlansSection = () => {
                     <div className="flex items-start gap-3">
                       <span className="text-[#0B5D68] font-bold text-base leading-none mt-0.5">✓</span>
                       <div>
-                        <h4 className="font-bold text-[#0C2338]">All Clinical Transfers</h4>
+                        <h4 className="font-semibold text-[#0C2338]">All Clinical Transfers</h4>
                         <p className="text-xs text-[#6B7C88] mt-0.5">Pre-op labs, surgeon visits, scans and checkups</p>
                       </div>
                     </div>
@@ -113,7 +113,7 @@ export const StayPlansSection = () => {
                     <div className="flex items-start gap-3">
                       <span className="text-[#0B5D68] font-bold text-base leading-none mt-0.5">✓</span>
                       <div>
-                        <h4 className="font-bold text-[#0C2338]">One Family Companion Included</h4>
+                        <h4 className="font-semibold text-[#0C2338]">One Family Companion Included</h4>
                         <p className="text-xs text-[#6B7C88] mt-0.5">Companion bed in hospital room &amp; meals during admission</p>
                       </div>
                     </div>
@@ -121,7 +121,7 @@ export const StayPlansSection = () => {
                     <div className="flex items-start gap-3">
                       <span className="text-[#0B5D68] font-bold text-base leading-none mt-0.5">✓</span>
                       <div>
-                        <h4 className="font-bold text-[#0C2338]">Daily In-Person Concierge Visit</h4>
+                        <h4 className="font-semibold text-[#0C2338]">Daily In-Person Concierge Visit</h4>
                         <p className="text-xs text-[#6B7C88] mt-0.5">Your named coordinator handles all scheduling &amp; questions</p>
                       </div>
                     </div>
@@ -131,7 +131,7 @@ export const StayPlansSection = () => {
                 <div className="mt-7 pt-5 border-t border-[#DCE6EB]">
                   <button
                     onClick={() => openIntake("Essential Plan")}
-                    className="w-full py-3.5 bg-white hover:bg-[#ECF4F7] text-[#0C2338] border border-[#0B5D68] font-heading font-extrabold text-xs uppercase tracking-wider rounded-xl transition-all shadow-xs cursor-pointer active:scale-[0.99]"
+                    className="w-full py-3.5 bg-white hover:bg-[#ECF4F7] text-[#0C2338] border border-[#0B5D68] font-heading font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-xs cursor-pointer active:scale-[0.99]"
                   >
                     Get Written Quote for Essential
                   </button>
@@ -146,7 +146,7 @@ export const StayPlansSection = () => {
 
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    <div className="inline-block px-3 py-1 bg-[#0B5D68] text-white text-xs font-bold rounded-full shadow-xs">
+                    <div className="inline-block px-3 py-1 bg-[#0B5D68] text-white text-xs font-semibold rounded-full shadow-xs">
                       Premium Concierge
                     </div>
                     <span className="px-3 py-1 rounded-full bg-[#F0A126] text-[#0C2338] text-[10px] font-heading font-bold tracking-wider uppercase shadow-xs">
@@ -173,7 +173,7 @@ export const StayPlansSection = () => {
                     <div className="bg-[#ECF4F7] border border-[#DCE6EB] rounded-2xl p-3.5 flex items-start gap-3 shadow-xs">
                       <Mountain className="w-5 h-5 text-[#0B5D68] shrink-0 mt-0.5" />
                       <div>
-                        <h4 className="font-bold text-[#0C2338] text-xs sm:text-sm">Post-Recovery Himalayan Retreat Option</h4>
+                        <h4 className="font-semibold text-[#0C2338] text-xs sm:text-sm">Post-Recovery Himalayan Retreat Option</h4>
                         <p className="text-[11px] sm:text-xs text-[#6B7C88] mt-0.5">Shimla or Kasauli luxury resort stay once surgeon grants fit-to-travel clearance.</p>
                       </div>
                     </div>
@@ -181,7 +181,7 @@ export const StayPlansSection = () => {
                     <div className="flex items-start gap-3">
                       <span className="text-[#0B5D68] font-bold text-base leading-none mt-0.5">✓</span>
                       <div>
-                        <h4 className="font-bold text-[#0C2338]">5-Star Luxury Hotel Accommodation</h4>
+                        <h4 className="font-semibold text-[#0C2338]">5-Star Luxury Hotel Accommodation</h4>
                         <p className="text-xs text-[#6B7C88] mt-0.5">Hyatt, Taj or Marriott partner property for you &amp; companion</p>
                       </div>
                     </div>
@@ -189,7 +189,7 @@ export const StayPlansSection = () => {
                     <div className="flex items-start gap-3">
                       <span className="text-[#0B5D68] font-bold text-base leading-none mt-0.5">✓</span>
                       <div>
-                        <h4 className="font-bold text-[#0C2338]">Dedicated Chauffeur &amp; Luxury Vehicle On-Call</h4>
+                        <h4 className="font-semibold text-[#0C2338]">Dedicated Chauffeur &amp; Luxury Vehicle On-Call</h4>
                         <p className="text-xs text-[#6B7C88] mt-0.5">Exclusive private SUV on call throughout your entire stay</p>
                       </div>
                     </div>
@@ -197,7 +197,7 @@ export const StayPlansSection = () => {
                     <div className="flex items-start gap-3">
                       <span className="text-[#0B5D68] font-bold text-base leading-none mt-0.5">✓</span>
                       <div>
-                        <h4 className="font-bold text-[#0C2338]">VIP Fast-Track Airport Meet &amp; Greet</h4>
+                        <h4 className="font-semibold text-[#0C2338]">VIP Fast-Track Airport Meet &amp; Greet</h4>
                         <p className="text-xs text-[#6B7C88] mt-0.5">Immigration escort and lounge access upon landing</p>
                       </div>
                     </div>
@@ -207,7 +207,7 @@ export const StayPlansSection = () => {
                 <div className="mt-7 pt-5 border-t border-[#DCE6EB]">
                   <button
                     onClick={() => openIntake("Premium Plan")}
-                    className="w-full py-3.5 bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-extrabold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md shadow-[#F0A126]/25 cursor-pointer active:scale-[0.99]"
+                    className="w-full py-3.5 bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md shadow-[#F0A126]/25 cursor-pointer active:scale-[0.99]"
                   >
                     Get Written Quote for Premium
                   </button>
@@ -228,10 +228,10 @@ export const StayPlansSection = () => {
                 <Sparkles className="w-3.5 h-3.5 text-[#F0A126]" />
                 <span>5-Star Partner Hospitality</span>
               </div>
-              <p className="text-xs text-[#0C2338] font-semibold leading-relaxed mb-3">
+              <p className="text-xs text-[#0C2338] font-normal leading-relaxed mb-3">
                 Handpicked luxury recovery suites from Taj, Hyatt &amp; Marriott with sanitized clinical protocols and peaceful garden terraces.
               </p>
-              <div className="flex items-center gap-3 pt-2.5 border-t border-[#DCE6EB] text-[11px] font-heading font-bold text-[#6B7C88]">
+              <div className="flex items-center gap-3 pt-2.5 border-t border-[#DCE6EB] text-[11px] font-heading font-semibold text-[#6B7C88]">
                 <span>TAJ HOTELS</span>
                 <span>·</span>
                 <span>HYATT</span>

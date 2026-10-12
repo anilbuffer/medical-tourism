@@ -429,10 +429,10 @@ export const HospitalsSection = () => {
             <div className="flex items-center gap-3 w-full sm:w-auto">
               <Link
                 href="/hospitals"
-                className="w-full sm:w-auto px-7 py-3 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full sm:w-auto px-7 py-3 rounded-xl bg-[#0b8f83] hover:bg-[#094b54] text-[#ffffff] font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#0b8f83]/20 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>Explore All 15+ Partner Hospitals</span>
-                <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.4]" />
+                <ArrowRight className="w-4 h-4 text-[#ffffff] stroke-[2.4]" />
               </Link>
             </div>
           </div>

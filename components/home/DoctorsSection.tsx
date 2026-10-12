@@ -286,7 +286,7 @@ export const DoctorsSection = () => {
 
                       {/* Top Badges Container: Responsive flex-wrap so badges never collide */}
                       <div className="absolute top-2.5 xs:top-3.5 sm:top-6 left-2.5 xs:left-3.5 sm:left-6 right-2.5 xs:right-3.5 sm:right-6 z-10 flex flex-wrap items-center justify-between gap-1.5 xs:gap-2 pointer-events-none">
-                        <span className="px-2 xs:px-2.5 sm:px-3 py-1 xs:py-1.5 rounded-full bg-[#0C2338]/90 backdrop-blur-md text-white text-[9px] xs:text-[10px] sm:text-[11px] font-heading font-bold uppercase tracking-wider shadow-md flex items-center gap-1 xs:gap-1.5 border border-white/20 shrink-0">
+                        <span className="px-2 xs:px-2.5 sm:px-3 py-1 xs:py-1.5 rounded-full bg-[#0C2338]/90 backdrop-blur-md text-white text-[9px] xs:text-[10px] sm:text-[11px] font-bold uppercase tracking-wider shadow-md flex items-center gap-1 xs:gap-1.5 border border-white/20 shrink-0">
                           <ShieldCheck className="w-3 h-3 xs:w-3.5 xs:h-3.5 text-[#2ECDC5]" />
                           <span>Senior Surgical Lead</span>
                         </span>
