@@ -188,7 +188,30 @@ export const PortalProvider = ({ children }: { children: ReactNode }) => {
       if (typeof window !== "undefined") {
         const storedCases = localStorage.getItem(LOCAL_STORAGE_KEY_CASES);
         if (storedCases) {
-          setAllCases(JSON.parse(storedCases));
+          const parsed = JSON.parse(storedCases);
+          if (Array.isArray(parsed)) {
+            const seenIds = new Set<string>();
+            let hasDuplicates = false;
+            const sanitizedCases = parsed.map((c: PatientCase) => {
+              if (seenIds.has(c.id)) {
+                hasDuplicates = true;
+                const newId = c.id === "PT-2026-007711" ? "PT-2026-007722" : `${c.id}_alt`;
+                return {
+                  ...c,
+                  id: newId,
+                  auditLogs: c.auditLogs?.map((l) => (l.caseId === c.id ? { ...l, caseId: newId } : l)),
+                };
+              }
+              seenIds.add(c.id);
+              return c;
+            });
+            setAllCases(sanitizedCases);
+            if (hasDuplicates) {
+              localStorage.setItem(LOCAL_STORAGE_KEY_CASES, JSON.stringify(sanitizedCases));
+            }
+          } else {
+            setAllCases(INITIAL_PATIENT_CASES);
+          }
         } else {
           localStorage.setItem(LOCAL_STORAGE_KEY_CASES, JSON.stringify(INITIAL_PATIENT_CASES));
         }

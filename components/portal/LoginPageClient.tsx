@@ -296,21 +296,21 @@ const LoginPageContent: React.FC = () => {
     }
   }, [searchParams]);
 
-const getPortalPathForRole = (role?: string) => {
-  switch (role) {
-    case "customer_support":
-      return "/customer";
-    case "hospital_doctor":
-      return "/hospital";
-    case "finance_accounts":
-      return "/finance";
-    case "super_admin":
-      return "/superadmin";
-    case "patient":
-    default:
-      return "/patient";
-  }
-};
+  const getPortalPathForRole = (role?: string) => {
+    switch (role) {
+      case "customer_support":
+        return "/customer";
+      case "hospital_doctor":
+        return "/hospital";
+      case "finance_accounts":
+        return "/finance";
+      case "super_admin":
+        return "/superadmin";
+      case "patient":
+      default:
+        return "/patient";
+    }
+  };
 
   const handleSelectRole = (index: number) => {
     setSelectedRoleIndex(index);
@@ -745,10 +745,10 @@ const getPortalPathForRole = (role?: string) => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 px-6 rounded-2xl bg-[#0B5D68] hover:bg-[#0C2338] text-white font-bold text-[14px] shadow-lg shadow-[#0B5D68]/25 hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2.5 group cursor-pointer disabled:opacity-75 disabled:pointer-events-none font-heading"
+              className="w-full py-3.5 px-6 rounded-2xl bg-[#0B5D68] hover:bg-[#0C2338] text-white font-bold text-[14px] shadow-lg shadow-[#0B5D68]/25 hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2.5 group cursor-pointer disabled:opacity-75 disabled:pointer-events-none"
             >
               <span>{isSubmitting ? "Authenticating..." : `Sign in to ${currentRole.title}`}</span>
-              <ArrowRight className="w-4 h-4 text-[#F0A126] group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </form>
 

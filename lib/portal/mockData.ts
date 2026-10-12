@@ -1705,7 +1705,7 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
 
   // Nurture case — declined by hospital, paused
   {
-    id: "PT-2026-007711",
+    id: "PT-2026-007722",
     patientName: "Mei Lin",
     patientEmail: "mei.lin@outlook.cn",
     patientPhone: "+86 138 0013 8000",
@@ -1808,7 +1808,7 @@ export const INITIAL_PATIENT_CASES: PatientCase[] = [
     auditLogs: [
       {
         id: "aud_m01",
-        caseId: "PT-2026-007711",
+        caseId: "PT-2026-007722",
         action: "CASE_DECLINED_BY_HOSPITAL",
         actorName: "Dr. Naresh Trehan",
         actorRole: "hospital_doctor",

@@ -780,7 +780,7 @@ export const CSQueueView: React.FC<CSQueueViewProps> = ({
                               </span>
                             ) : (
                               <span className="px-2.5 py-0.5 rounded-lg bg-blue-100 text-blue-900 border border-blue-200 text-[11px] font-black tracking-wide">
-                                🔵 {patientCase.stage.replace("_", " ").toUpperCase()}
+                                🔵 {patientCase.stage?.replace("_", " ").toUpperCase() || "INTAKE"}
                               </span>
                             )}
                           </div>
