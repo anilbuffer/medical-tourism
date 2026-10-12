@@ -293,42 +293,41 @@ export const Footer = () => {
         </div>
 
         {/* Network Accreditation Strip */}
-        <div className="py-6 border-b border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400">
-          <div className="flex items-center gap-2 font-heading font-semibold text-slate-300">
+        <div className="py-6 border-b border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-slate-400">
+          <div className="flex items-center gap-2 font-heading font-semibold text-slate-300 shrink-0">
             <Building2 className="w-4 h-4 text-[#0B8F83]" />
             <span>Audited Partner Hospital Network:</span>
           </div>
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-slate-400">
-            <span>Fortis Hospital Mohali</span>
-            <span>·</span>
-            <span>Max Super Speciality Hospital</span>
-            <span>·</span>
-            <span>Profile Cosmetic Surgery Institute</span>
-            <span>·</span>
-            <span>Sangam Netralaya Eye Centre</span>
-            <span>·</span>
-            <span>Apollo Hospitals</span>
+          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs text-slate-300">
+            {["Fortis Hospital Mohali", "Max Super Speciality Hospital", "Profile Cosmetic Surgery Institute", "Sangam Netralaya Eye Centre", "Apollo Hospitals"].map((hosp) => (
+              <span
+                key={hosp}
+                className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] sm:text-xs text-slate-300 hover:border-white/20 transition-all"
+              >
+                {hosp}
+              </span>
+            ))}
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 text-center sm:text-left">
           <div>
             © {new Date().getFullYear()} Your Medicare Trip. All rights reserved.
           </div>
-          <div className="flex flex-wrap items-center gap-4 sm:gap-5 text-xs">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-3 gap-y-1.5 sm:gap-x-4 text-xs">
             <Link href="/privacy" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>
-            <span>·</span>
+            <span className="text-slate-600">·</span>
             <Link href="/patient-rights" className="hover:text-white transition-colors">
               Patient Rights
             </Link>
-            <span>·</span>
+            <span className="text-slate-600">·</span>
             <Link href="/terms" className="hover:text-white transition-colors">
               Terms of Service
             </Link>
-            <span>·</span>
+            <span className="text-slate-600">·</span>
             <span className="text-slate-500">HIPAA &amp; NABH Protocol</span>
           </div>
         </div>

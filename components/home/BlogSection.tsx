@@ -203,16 +203,16 @@ export const BlogSection = () => {
 
                       {/* Category Pill on Top-Left */}
                       <div className="absolute top-4 left-4 z-10">
-                        <span className="px-3.5 py-1.5 rounded-full bg-[#0C2338]/85 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-heading font-medium tracking-wider uppercase shadow-sm border border-white/20">
+                        <span className="px-3.5 py-1.5 rounded-full bg-[#0C2338]/85 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-medium tracking-wider uppercase shadow-sm border border-white/20">
                           {blog.category}
                         </span>
                       </div>
 
                       {/* Signature Bottom-Right Corner Notch with Circular Arrow Button */}
-                      <div className="absolute -bottom-1 -right-1 bg-[#FCFDFD] pt-3 pl-3 rounded-tl-[28px] z-10">
+                      <div className="absolute -bottom-1 -right-1 bg-[#0B8F83] px-3 py-2 rounded-tl-[24px] z-10">
                         {/* Top Concave Inverted Fillet */}
                         <svg
-                          className="absolute -top-6 right-0 w-6 h-6 text-[#FCFDFD] pointer-events-none"
+                          className="absolute -top-6 right-0 w-6 h-6 text-[#0B8F83] pointer-events-none"
                           viewBox="0 0 24 24"
                           fill="currentColor"
                         >
@@ -221,7 +221,7 @@ export const BlogSection = () => {
 
                         {/* Left Concave Inverted Fillet */}
                         <svg
-                          className="absolute bottom-0 -left-6 w-6 h-6 text-[#FCFDFD] pointer-events-none"
+                          className="absolute bottom-0 -left-6 w-6 h-6 text-[#0B8F83] pointer-events-none"
                           viewBox="0 0 24 24"
                           fill="currentColor"
                         >

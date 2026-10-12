@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { useCare } from "@/context/CareContext";
 import { motion } from "framer-motion";
-import { ArrowRight, Headphones, Globe, BadgePercent } from "lucide-react";
+import { ArrowRight, Headphones, Globe, BadgePercent, ShieldCheck, Star } from "lucide-react";
 
 export const HeroSection = () => {
   const { openIntake } = useCare();
@@ -107,10 +107,86 @@ export const HeroSection = () => {
                 </button>
               </motion.div>
 
+              {/* Mobile & Tablet Cohesive Social Proof Cards (< lg) */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.4 }}
+                className="pt-3 sm:pt-5 grid grid-cols-2 gap-2.5 xs:gap-3.5 sm:gap-4 max-w-lg lg:hidden"
+              >
+                {/* Card 1: 4+ Chief Doctors */}
+                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0C2338]/95 via-[#0C2338]/85 to-[#071624]/95 backdrop-blur-md border border-[#DCE6EB]/20 p-3 xs:p-3.5 sm:p-4 shadow-xl flex flex-col justify-between group hover:border-[#F0A126]/40 transition-all">
+                  <div className="flex items-center justify-between mb-2 xs:mb-2.5">
+                    <div className="flex -space-x-1.5 xs:-space-x-2">
+                      <img
+                        className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 rounded-full ring-1.5 ring-white/90 object-cover"
+                        src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=100"
+                        alt="Doctor"
+                      />
+                      <img
+                        className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 rounded-full ring-1.5 ring-white/90 object-cover z-1"
+                        src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=100"
+                        alt="Doctor"
+                      />
+                      <img
+                        className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 rounded-full ring-1.5 ring-white object-cover z-2"
+                        src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=100"
+                        alt="Doctor"
+                      />
+                    </div>
+                    <div className="w-6 h-6 xs:w-7 xs:h-7 rounded-full bg-[#F0A126]/15 border border-[#F0A126]/30 flex items-center justify-center shrink-0">
+                      <ShieldCheck className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-[#F0A126]" />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-xl xs:text-2xl font-black font-heading text-white leading-tight">
+                      4+
+                    </div>
+                    <div className="text-[11px] xs:text-xs sm:text-[13px] text-[#ECF4F7]/85 font-heading font-medium tracking-wide mt-0.5 leading-snug">
+                      Chief Doctors
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 2: 150 Satisfied Patients */}
+                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0C2338]/95 via-[#0C2338]/85 to-[#071624]/95 backdrop-blur-md border border-[#DCE6EB]/20 p-3 xs:p-3.5 sm:p-4 shadow-xl flex flex-col justify-between group hover:border-[#0B8F83]/40 transition-all">
+                  <div className="flex items-center justify-between mb-2 xs:mb-2.5">
+                    <div className="flex -space-x-1.5 xs:-space-x-2">
+                      <img
+                        className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 rounded-full ring-1.5 ring-white/90 object-cover"
+                        src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&auto=format&fit=crop&q=80"
+                        alt="Patient"
+                      />
+                      <img
+                        className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 rounded-full ring-1.5 ring-white/90 object-cover z-1"
+                        src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&auto=format&fit=crop&q=80"
+                        alt="Patient"
+                      />
+                      <img
+                        className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 rounded-full ring-1.5 ring-white object-cover z-2"
+                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&auto=format&fit=crop&q=80"
+                        alt="Patient"
+                      />
+                    </div>
+                    <div className="flex items-center gap-1 px-1.5 xs:px-2 py-0.5 rounded-full bg-white/10 border border-white/15 text-[10px] xs:text-[11px] font-bold text-[#F0A126]">
+                      <Star className="w-2.5 h-2.5 xs:w-3 xs:h-3 fill-[#F0A126] text-[#F0A126]" />
+                      <span>4.9</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-xl xs:text-2xl font-black font-heading text-white leading-tight">
+                      150K+
+                    </div>
+                    <div className="text-[11px] xs:text-xs sm:text-[13px] text-[#ECF4F7]/85 font-heading font-medium tracking-wide mt-0.5 leading-snug">
+                      Satisfied Patients
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             </div>
 
-            {/* 03. Right Column: Floating Badges with Mobile Scaling */}
-            <div className="lg:col-span-5 xl:col-span-6 relative h-[260px] xs:h-[300px] sm:h-[420px] lg:h-[650px] flex items-center justify-center lg:justify-end pointer-events-none overflow-hidden lg:overflow-visible">
+            {/* 03. Right Column: Floating Badges (Desktop lg+ only) */}
+            <div className="hidden lg:flex lg:col-span-5 xl:col-span-6 relative lg:h-[650px] items-center justify-end pointer-events-none overflow-visible">
 
               {/* FLOATING BADGE 1: Security Shield Crest (4+ Doctors) */}
               <motion.div
@@ -173,7 +249,7 @@ export const HeroSection = () => {
                   </div>
 
                   {/* 4+ Bold Number */}
-                  <div className="relative z-10 text-2xl sm:text-[26px] font-black font-heading text-white leading-none tracking-tight mt-1">
+                  <div className="relative z-10 text-2xl sm:text-[26px] font-bold font-heading text-white leading-none tracking-tight mt-1">
                     4+
                   </div>
 
@@ -211,7 +287,7 @@ export const HeroSection = () => {
                     />
                   </div>
                   <div className="shrink-0 text-left">
-                    <div className="text-lg sm:text-2xl font-extrabold font-heading text-white leading-tight">
+                    <div className="text-lg sm:text-2xl font-bold font-heading text-white leading-tight">
                       150K+
                     </div>
                     <div className="text-xs sm:text-[16px] text-[#ECF4F7]/80 font-body leading-tight">

@@ -202,7 +202,7 @@ export const ConnectSection = () => {
           {/* ======================================================== */}
           {/* RIGHT COLUMN: Floating Form Card Over Surgeon Photo      */}
           {/* ======================================================== */}
-          <div className="lg:col-span-6 flex justify-center lg:justify-end">
+          <div className="lg:col-span-6 flex flex-col items-center lg:items-end w-full">
 
             {/* Mobile-only background image block */}
             <div className="block lg:hidden relative w-full h-[200px] xs:h-[240px] sm:h-[280px] rounded-2xl sm:rounded-3xl overflow-hidden mb-6 shadow-md">

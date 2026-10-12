@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ArrowRight, ShieldCheck, Mountain } from "lucide-react";
+import { ArrowRight, ShieldCheck, Mountain, CheckCircle2 } from "lucide-react";
 import { useCare } from "@/context/CareContext";
 
 // Medical SVG Outline Icons with green/teal duotone strokes matching reference image
@@ -206,17 +206,63 @@ export const CostTransparency = () => {
           </p>
         </div>
 
-        {/* Mobile Swipe Hint */}
-        <div className="flex md:hidden items-center justify-between text-[11px] font-medium text-[#6B7C88] mb-2.5 px-1">
-          <span>← Swipe horizontally to view all columns</span>
-          <span className="text-[#0B5D68] font-bold flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#0B8F83] animate-pulse" />
-            India Column Highlighted
-          </span>
+        {/* Mobile View: High-Impact Responsive Comparison Cards (< md) */}
+        <div className="md:hidden space-y-3.5">
+          {PRICE_ROWS.map((row) => {
+            const Icon = row.icon;
+            return (
+              <div
+                key={row.id}
+                className="bg-white rounded-2xl border border-[#DCE6EB] p-4 shadow-xs space-y-3"
+              >
+                {/* Header: Medical Icon + Procedure Name */}
+                <div className="flex items-center gap-3">
+                  <Icon />
+                  <h3 className="font-heading font-bold text-[#0C2338] text-sm xs:text-base leading-snug">
+                    {row.treatment}
+                  </h3>
+                </div>
+
+                {/* Comparison Duo: India (Highlighted) vs UK/US */}
+                <div className="grid grid-cols-2 gap-2.5 pt-1">
+                  {/* India Package */}
+                  <div className="bg-[#ECF4F7] rounded-xl p-3 border border-[#0B5D68]/20 flex flex-col justify-between">
+                    <div>
+                      <span className="text-[10px] font-heading font-bold uppercase tracking-wider text-[#0B5D68] block">
+                        India (All-Inclusive)
+                      </span>
+                      <div className="text-base xs:text-lg font-black font-heading text-[#0B5D68] mt-1">
+                        {row.indiaPrice}
+                      </div>
+                    </div>
+                    <div className="text-[10px] font-semibold text-[#0B8F83] mt-2 flex items-center gap-1">
+                      <CheckCircle2 className="w-3 h-3 shrink-0" />
+                      <span>Zero Wait Time</span>
+                    </div>
+                  </div>
+
+                  {/* UK / US Private Rate */}
+                  <div className="bg-[#F5F7F6] rounded-xl p-3 border border-[#DCE6EB] flex flex-col justify-between">
+                    <div>
+                      <span className="text-[10px] font-heading font-semibold uppercase tracking-wider text-[#6B7C88] block">
+                        UK / US Private
+                      </span>
+                      <div className="text-sm xs:text-base font-bold font-heading text-[#1E293B] mt-1">
+                        {row.ukUsPrice}
+                      </div>
+                    </div>
+                    <div className="text-[10px] text-[#6B7C88] mt-2 leading-tight">
+                      NHS: {row.waitTime}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        {/* Global Cost Comparison Table Styled Exactly Like Reference Image */}
-        <div className="overflow-x-auto rounded-2xl border border-[#DCE6EB] shadow-xs">
+        {/* Desktop & Tablet View: Global Comparison Table (md+) */}
+        <div className="hidden md:block overflow-x-auto rounded-2xl border border-[#DCE6EB] shadow-xs">
           <table className="w-full text-left border-collapse min-w-[760px]">
             <thead>
               <tr className="border-b border-[#DCE6EB]">

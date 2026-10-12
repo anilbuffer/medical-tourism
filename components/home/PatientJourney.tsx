@@ -218,7 +218,7 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
         className="relative w-full rounded-[20px] sm:rounded-[24px] lg:rounded-[32px] overflow-hidden group transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.25)] border border-white/20"
       >
         {/* Full-Bleed High-Definition Visual Canvas (1580px Full Container) */}
-        <div className="relative w-full min-h-[500px] xs:min-h-[560px] sm:min-h-[620px] lg:min-h-[680px] xl:min-h-[720px] overflow-hidden">
+        <div className="relative w-full min-h-[590px] xs:min-h-[610px] sm:min-h-[620px] lg:min-h-[680px] xl:min-h-[720px] overflow-hidden">
 
           {/* Background Image with Smooth Parallax Movement */}
           <motion.div
@@ -279,7 +279,7 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
             }}
             className="absolute z-20 left-3 xs:left-4 sm:left-10 lg:left-14 bottom-3 xs:bottom-4 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 w-[calc(100%-1.5rem)] xs:w-[calc(100%-2rem)] sm:w-[480px] lg:w-[540px]"
           >
-            <div className="bg-[#0C2338]/95 backdrop-blur-xl border border-white/15 rounded-2xl sm:rounded-3xl p-4 xs:p-5 sm:p-8 lg:p-9 text-white shadow-[0_25px_60px_rgba(0,0,0,0.7)] hover:border-white/25 transition-all">
+            <div className="bg-[#0C2338]/95 backdrop-blur-xl border border-white/15 rounded-2xl sm:rounded-3xl p-3.5 xs:p-4.5 sm:p-8 lg:p-9 text-white shadow-[0_25px_60px_rgba(0,0,0,0.7)] hover:border-white/25 transition-all">
 
               {/* Step Number Badge + Phase */}
               <div className="flex items-center gap-2 xs:gap-2.5 mb-2.5 sm:mb-3.5">
