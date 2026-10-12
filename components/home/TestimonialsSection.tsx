@@ -158,7 +158,7 @@ export const TestimonialsSection = () => {
               </div>
 
               {/* Headline */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[45px] font-heading font-bold text-white leading-[1.15] mb-6 sm:mb-10 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-[36px] xl:text-[42px] font-heading font-bold text-white leading-[1.15] mb-6 sm:mb-10 tracking-tight">
                 What Our Patients &amp; Families Say About Their{" "}
                 <span className="text-[#0B8F83]">Journey.</span>
               </h2>

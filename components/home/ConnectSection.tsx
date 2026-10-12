@@ -142,7 +142,7 @@ export const ConnectSection = () => {
               </div>
 
               {/* Main Headline */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[45px] font-heading font-bold text-[#0C2338] leading-[1.15] mb-4 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-[36px] xl:text-[42px] font-heading font-bold text-[#0C2338] leading-[1.15] mb-4 tracking-tight">
                 Send Us Your Reports. We&apos;ll Tell You Honestly Whether to Come.
               </h2>
 
@@ -192,7 +192,7 @@ export const ConnectSection = () => {
               </div>
 
               {/* Circular Rotating Stamp Badge Positioned at the top-right corner */}
-              <div className="absolute -top-7 xs:-top-9 sm:-top-12 -right-2 sm:-right-6 z-20 scale-[0.8] xs:scale-90 sm:scale-100 origin-top-right">
+              <div className="absolute top-20 xs:top-9 sm:-top-12 left-12 sm:-left-6 z-20 scale-[0.8] xs:scale-90 sm:scale-100 origin-top-left">
                 <CircularStampBadge />
               </div>
             </div>

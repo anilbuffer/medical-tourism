@@ -177,7 +177,7 @@ export const HeroSection = () => {
                     <div className="text-xl xs:text-2xl font-black font-heading text-white leading-tight">
                       150K+
                     </div>
-                    <div className="text-[11px] xs:text-xs sm:text-[13px] text-[#ECF4F7]/85 font-heading font-medium tracking-wide mt-0.5 leading-snug">
+                    <div className="text-[10px] xs:text-xs sm:text-[12px] text-[#ECF4F7]/85 font-heading font-medium tracking-wide mt-0.5 leading-snug">
                       Satisfied Patients
                     </div>
                   </div>
@@ -290,7 +290,7 @@ export const HeroSection = () => {
                     <div className="text-lg sm:text-2xl font-bold font-heading text-white leading-tight">
                       150K+
                     </div>
-                    <div className="text-xs sm:text-[16px] text-[#ECF4F7]/80 font-body leading-tight">
+                    <div className="text-xs sm:text-[14px] text-[#ECF4F7]/80 font-body leading-tight">
                       Satisfied Patients
                     </div>
                   </div>

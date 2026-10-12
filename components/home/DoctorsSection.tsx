@@ -199,9 +199,9 @@ export const DoctorsSection = () => {
               <span className="h-2 w-2 rounded-full bg-[#0B8F83] animate-pulse" />
               <span>EXPERT SURGICAL DIRECTORS</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[45px] font-heading font-bold text-[#0C2338] leading-[1.15] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-[36px] xl:text-[42px] font-heading font-bold text-[#0C2338] leading-[1.15] tracking-tight">
               Meet Our Senior Medical Directors.{" "}
-              <span className="text-[#0B5D68] block sm:inline">
+              <span className="text-[#0B8F83] block sm:inline">
                 Celebrated Surgical Leads.
               </span>
             </h2>

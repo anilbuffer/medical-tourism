@@ -304,7 +304,7 @@ const SpecialtyStickyCard: React.FC<InteractiveCardProps> = ({
                 <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-[#0B5D68]/40 border border-[#0B5D68]/60 flex items-center justify-center text-white shrink-0 shadow-inner">
                   <IconComponent />
                 </div>
-                <h3 className="text-xl xs:text-2xl sm:text-3xl font-bold font-heading text-white tracking-tight leading-tight">
+                <h3 className="text-xl xs:text-2xl sm:text-3xl font-semibold font-heading text-white tracking-tight leading-tight">
                   {specialty.title}
                 </h3>
               </div>
@@ -387,7 +387,7 @@ export const SpecialtiesSection = () => {
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-[32px] xl:text-[40px] font-heading font-bold text-[#0C2338] leading-[1.15] tracking-tight">
               Specialised Treatments.{" "}
-              <span className="text-[#0B5D68] block sm:inline">
+              <span className="text-[#0B8F83] block sm:inline">
                 Celebrated Specialists.
               </span>
             </h2>

@@ -177,7 +177,7 @@ export const HospitalsSection = () => {
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-[32px] xl:text-[40px] font-heading font-bold text-[#0C2338] leading-[1.15] tracking-tight">
               Featured Partner Hospitals.{" "}
-              <span className="text-[#0B5D68] block sm:inline">
+              <span className="text-[#0B8F83] block sm:inline">
                 World-Class Clinical Institutions.
               </span>
             </h2>
@@ -291,7 +291,7 @@ export const HospitalsSection = () => {
 
                         {/* Hospital Name */}
                         <div className="h-14 flex items-center mb-1.5">
-                          <h3 className="font-heading font-extrabold text-lg sm:text-xl text-[#0C2338] group-hover:text-[#0B5D68] transition-colors leading-snug line-clamp-2">
+                          <h3 className="font-heading font-bold text-lg sm:text-xl text-[#0C2338] group-hover:text-[#0B5D68] transition-colors leading-snug line-clamp-2">
                             {hosp.name}
                           </h3>
                         </div>

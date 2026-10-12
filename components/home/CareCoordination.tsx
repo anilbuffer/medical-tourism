@@ -96,9 +96,9 @@ export const CareCoordination = () => {
             </div>
 
             {/* Main Headline */}
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[45px] font-heading font-semibold text-[#0C2338] leading-[1.15] tracking-tight mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-[36px] xl:text-[42px] font-heading font-semibold text-[#0C2338] leading-[1.15] tracking-tight mb-4">
               Care Doesn&apos;t Stop{" "}
-              <span className="text-[#0B5D68] block sm:inline">
+              <span className="text-[#0B8F83] block sm:inline">
                 at the Hospital Door.
               </span>
             </h2>

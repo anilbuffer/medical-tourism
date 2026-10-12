@@ -26,19 +26,26 @@ import {
 } from "lucide-react";
 import { useCare } from "@/context/CareContext";
 
+export interface JourneyStepHighlight {
+  label: string;
+  detail: string;
+}
+
 export interface JourneyStepItem {
   id: string;
   stepNumber: string;
   stepPhase: string;
+  navTitle: string;
   title: string;
   headline: string;
   description: string;
   image: string;
+  imagePosition?: string;
   badge: string;
   stat: string;
   location: string;
   accompaniedBy: string;
-  guarantees: string[];
+  highlights: JourneyStepHighlight[];
   primaryCta: string;
   icon: React.ComponentType<{ className?: string }>;
 }
@@ -47,85 +54,129 @@ const JOURNEY_STEPS: JourneyStepItem[] = [
   {
     id: "step-1",
     stepNumber: "01",
-    stepPhase: "PHASE 1 · BEFORE YOU FLY · 100% FREE",
-    title: "Free Case Review & Video Consult",
-    headline: "Send Your Reports. Meet Your Chief Surgeon on Video Before Booking Anything.",
+    stepPhase: "STAGE 01 · BEFORE YOU FLY",
+    navTitle: "01 Case Review & Video Consult",
+    title: "Meet Your Surgeon Before You Book",
+    headline: "Free second opinion & direct video consultation from home.",
     description:
-      "Share your existing scans or paper records from your living room. Our quaternary medical director evaluates your file, provides an honest second opinion, and joins you and your family on a live video consultation with a guaranteed, fixed-price quote.",
+      "Share your medical scans from the comfort of home. Our medical director reviews your case and connects your family directly with your chief operating specialist, alongside a locked written quote.",
     image: "/images/connect/surgeon-consultation.jpg",
-    badge: "100% Free · No Upfront Fees",
+    imagePosition: "object-[75%_center]",
+    badge: "100% Free · Zero Commitment",
     stat: "24–48h Specialist Review",
-    location: "From the Comfort of Your Home",
+    location: "From Home (Pre-Travel)",
     accompaniedBy: "Quaternary Medical Director",
-    guarantees: [
-      "100% Free Second Opinion — Zero deposit or booking commitment required",
-      "Fixed All-Inclusive Written Quote — Surgery, stay, implants & concierge locked",
-      "Live Family Video Call — Direct face-to-face consult with your operating surgeon",
+    highlights: [
+      {
+        label: "Zero-Cost Review",
+        detail: "Free expert second opinion with no deposit or commitment",
+      },
+      {
+        label: "Direct Video Consult",
+        detail: "Live face-to-face consultation with your operating surgeon",
+      },
+      {
+        label: "Locked Written Quote",
+        detail: "Guaranteed all-inclusive surgery & hospital pricing",
+      },
     ],
-    primaryCta: "Send Reports for Free Review",
+    primaryCta: "Free Review",
     icon: Video,
   },
   {
     id: "step-2",
     stepNumber: "02",
-    stepPhase: "PHASE 2 · TRAVEL & VISA BLUEPRINT · ZERO PAPERWORK",
-    title: "Visa, Travel & Companion Concierge",
-    headline: "We Handle Your Medical Visa, Companion Stay & Travel Logistics.",
+    stepPhase: "STAGE 02 · TRAVEL & VISA",
+    navTitle: "02 Travel & Visa Concierge",
+    title: "Zero Paperwork. Complete Travel Concierge.",
+    headline: "We handle your medical visa, flight dates & companion stay.",
     description:
-      "Your official hospital invitation letter is issued within 24 hours. Your personal coordinator helps complete your Indian e-Medical Visa, organizes your attendant's permit alongside it, coordinates flight dates around surgery, and reserves vetted recovery suites.",
+      "Your hospital invitation is issued within 24 hours. Your personal coordinator assists with e-Medical visas for you and your companion, plans travel dates, and books handpicked recovery suites.",
     image: "/images/hero/senior-couple-medical-trip.jpg",
-    badge: "48h Fast-Track Visa Support",
+    imagePosition: "object-[60%_center]",
+    badge: "Fast-Track Visa Support",
     stat: "Companion Stay Included",
-    location: "Global Admissions & Travel Desk",
+    location: "Global Admissions Desk",
     accompaniedBy: "International Travel Concierge",
-    guarantees: [
-      "Hospital Invitation Issued in 24 Hours — Ensuring fast-track e-Visa approval",
-      "Family Companion Included — Dedicated hospital room bed & meals for your attendant",
-      "Handpicked 4 & 5-Star Suites — Elevator access, sanitized kitchens & room service",
+    highlights: [
+      {
+        label: "24h Hospital Invitation",
+        detail: "Accelerates expedited e-Medical visa approval",
+      },
+      {
+        label: "Companion Included",
+        detail: "Dedicated in-room attendant bed & daily meals",
+      },
+      {
+        label: "Vetted 4 & 5-Star Suites",
+        detail: "Sanitized recovery apartments close to your hospital",
+      },
     ],
-    primaryCta: "Request Travel Blueprint",
+    primaryCta: "Plan Travel",
     icon: Plane,
   },
   {
     id: "step-3",
     stepNumber: "03",
-    stepPhase: "PHASE 3 · ARRIVAL & SURGERY · ZERO WAITING LISTS",
+    stepPhase: "STAGE 03 · HOSPITAL CARE",
+    navTitle: "03 VIP Arrival & Surgery",
     title: "VIP Arrival & Quaternary Surgery",
-    headline: "Met at the Gate by Your Private Chauffeur & Personal Care Coordinator.",
+    headline: "Chauffeured transit, zero waiting lists & JCI-accredited care.",
     description:
-      "No navigating unfamiliar airports alone. Your chauffeur transfers you directly to your accommodation in a private air-conditioned vehicle. Day two covers pre-op diagnostics. Day three is surgery in JCI-accredited sterile modular theatres with authentic US-FDA implants.",
+      "Met at arrivals by your private chauffeur and care coordinator. Settle in smoothly with priority hospital admission and surgery in world-class modular theatres with authentic US-FDA implants.",
     image: "/images/clinical-integrity-banner.jpg",
-    badge: "JCI & NABH Quaternary Care",
-    stat: "Priority 24–48h Admission",
-    location: "Premier Quaternary Hospital, New Delhi NCR",
-    accompaniedBy: "In-Person Bedside Concierge",
-    guarantees: [
-      "Gate-to-Bed Executive Transit — Met inside arrivals with wheelchair assistance if needed",
-      "In-Person Named Coordinator — Sits with your family in the hospital and updates relatives back home",
-      "Zero Waiting Lists — Reserved surgical date guaranteed within 24–48 hours of flight arrival",
+    imagePosition: "object-[75%_center]",
+    badge: "JCI & NABH Accredited",
+    stat: "Priority 24–48h Surgery",
+    location: "Premier Hospital, New Delhi NCR",
+    accompaniedBy: "Bedside Care Coordinator",
+    highlights: [
+      {
+        label: "Gate-to-Bed Transit",
+        detail: "Private airport pickup with wheelchair assistance if needed",
+      },
+      {
+        label: "Dedicated Bedside Concierge",
+        detail: "Stays with you and keeps family back home updated",
+      },
+      {
+        label: "Zero Waiting Lists",
+        detail: "Guaranteed surgical slot within 24–48 hours of landing",
+      },
     ],
-    primaryCta: "Explore Hospital Facilities",
+    primaryCta: "Explore Care",
     icon: HeartPulse,
   },
   {
     id: "step-4",
     stepNumber: "04",
-    stepPhase: "PHASE 4 · RECOVERY & RETURNING HOME · LIFETIME CARE",
-    title: "Assisted Recovery & Safe Journey Home",
-    headline: "Supervised Physical Therapy, Restful Recovery & Safe Flight Home.",
+    stepPhase: "STAGE 04 · RECOVERY & HOME",
+    navTitle: "04 Recovery & Safe Return",
+    title: "Supervised Rehab & Lifelong Continuity",
+    headline: "Guided physiotherapy, fit-to-fly clearance & continuous support.",
     description:
-      "Begin physical therapy right away with daily concierge visits. Recover in a peaceful serviced apartment or scenic luxury Himalayan retreat. Receive comprehensive fit-to-fly clearance, digital surgical records, and scheduled video follow-up consultations back home.",
+      "Structured mobility rehab starts right away with daily concierge visits. Return home safely with fit-to-fly clearance, complete digital records, and lifetime access to your surgical team.",
     image: "/images/connect/care-bedside.jpg",
-    badge: "Lifetime Follow-Up Guarantee",
-    stat: "Fit-to-Fly Certification Included",
-    location: "Recovery Suite & Flight Clearance Home",
+    imagePosition: "object-[70%_center]",
+    badge: "Lifetime Care Guarantee",
+    stat: "Fit-to-Fly Clearance Included",
+    location: "Recovery Suite & Safe Return",
     accompaniedBy: "Physiotherapist & Local GP Desk",
-    guarantees: [
-      "Supervised Physiotherapy — Structured mobility program ensuring day-one independent walking",
-      "Digital Continuity Care Pack — Translated surgical notes & radiology drives sent to your home doctor",
-      "Lifetime Video Follow-Up — Direct access to your surgical team whenever you need advice at home",
+    highlights: [
+      {
+        label: "Supervised Physiotherapy",
+        detail: "Guided mobility program for confident walking",
+      },
+      {
+        label: "Continuity Care Pack",
+        detail: "Digital records and scans shared with your home doctor",
+      },
+      {
+        label: "Lifetime Video Follow-Up",
+        detail: "Direct surgeon contact whenever you need advice at home",
+      },
     ],
-    primaryCta: "Inquire About Recovery Packages",
+    primaryCta: "Plan Recovery",
     icon: Home,
   },
 ];
@@ -215,10 +266,10 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
           rotateY,
           transformStyle: "preserve-3d",
         }}
-        className="relative w-full rounded-[20px] sm:rounded-[24px] lg:rounded-[32px] overflow-hidden group transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.25)] border border-white/20"
+        className="relative w-full rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] overflow-hidden group transition-all duration-300 shadow-[0_25px_60px_rgba(0,0,0,0.3)] border border-white/20 bg-[#0C2338]"
       >
         {/* Full-Bleed High-Definition Visual Canvas (1580px Full Container) */}
-        <div className="relative w-full min-h-[590px] xs:min-h-[610px] sm:min-h-[620px] lg:min-h-[680px] xl:min-h-[720px] overflow-hidden">
+        <div className="relative w-full min-h-[540px] sm:min-h-[620px] lg:min-h-[660px] xl:min-h-[700px] overflow-hidden flex items-center p-3 sm:p-0">
 
           {/* Background Image with Smooth Parallax Movement */}
           <motion.div
@@ -232,15 +283,15 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
               src={step.image}
               alt={step.title}
               fill
-              priority={index === 0}
+              priority
               sizes="(max-width: 1580px) 100vw, 1580px"
-              className="object-cover object-center scale-[1.04] transition-transform duration-700 group-hover:scale-[1.06]"
+              className={`object-cover ${step.imagePosition || "object-center"} scale-[1.03] transition-transform duration-700 group-hover:scale-[1.05]`}
             />
           </motion.div>
 
-          {/* Gradients ensuring photographic depth and crisp card readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/30 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-transparent pointer-events-none" />
+          {/* Cinematic Gradients for depth and crisp card readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/45 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0C2338]/95 via-[#0C2338]/70 via-50% to-transparent pointer-events-none" />
 
           {/* Dynamic Cursor Spotlight Effect */}
           <div
@@ -251,116 +302,130 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
             }}
           />
 
-          {/* Top Badges (Clinical Milestone & Stat Pill) */}
-          <div className="absolute top-3 xs:top-4 sm:top-7 right-3 xs:right-4 sm:right-7 z-10 flex flex-wrap items-center gap-2 sm:gap-2.5 scale-90 sm:scale-100 origin-top-right">
+          {/* Top Badges (Clinical Milestone & Stat Pill) - Visible on sm screens and up */}
+          <div className="hidden sm:flex absolute top-6 right-7 z-10 items-center gap-2.5 origin-top-right">
             {/* Milestone Badge */}
-            <div className="inline-flex items-center gap-1.5 h-7 sm:h-8 px-2.5 sm:px-3.5 rounded-full bg-white/95 backdrop-blur-md border border-[#DCE6EB] shadow-sm">
-              <ShieldCheck className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#0B5D68] shrink-0" />
-              <span className="text-[10px] sm:text-[11px] font-heading font-bold tracking-wider uppercase text-[#0C2338]">
+            <div className="inline-flex items-center gap-1.5 h-8 px-3.5 rounded-full bg-white/95 backdrop-blur-md border border-[#DCE6EB] shadow-sm">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#0B5D68] shrink-0" />
+              <span className="text-[11px] font-heading font-semibold tracking-wider uppercase text-[#0C2338]">
                 {step.badge}
               </span>
             </div>
 
-            {/* Audited Timing / Stat Badge */}
-            <div className="hidden xs:inline-flex items-center gap-1.5 h-7 sm:h-8 px-2.5 sm:px-3.5 rounded-full bg-white/95 backdrop-blur-md border border-[#DCE6EB] shadow-sm">
-              <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#0B5D68] shrink-0" />
-              <span className="text-[10px] sm:text-[11px] font-heading font-bold text-[#0B5D68]">
+            {/* Timing / Stat Badge */}
+            <div className="inline-flex items-center gap-1.5 h-8 px-3.5 rounded-full bg-white/95 backdrop-blur-md border border-[#DCE6EB] shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-[#0B5D68] shrink-0 animate-pulse" />
+              <span className="text-[11px] font-heading font-semibold text-[#0B5D68]">
                 {step.stat}
               </span>
             </div>
           </div>
 
-          {/* Floating Dark Navy Glassmorphism Content Card */}
+          {/* Floating Dark Navy Glassmorphism Story Card */}
           <motion.div
             style={{
               x: contentTranslateX,
               y: contentTranslateY,
               transformStyle: "preserve-3d",
             }}
-            className="absolute z-20 left-3 xs:left-4 sm:left-10 lg:left-14 bottom-3 xs:bottom-4 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 w-[calc(100%-1.5rem)] xs:w-[calc(100%-2rem)] sm:w-[480px] lg:w-[540px]"
+            className="relative z-20 w-full sm:w-[420px] lg:w-[460px] xl:w-[500px] sm:absolute sm:left-8 lg:left-12 sm:top-1/2 sm:-translate-y-1/2"
           >
-            <div className="bg-[#0C2338]/95 backdrop-blur-xl border border-white/15 rounded-2xl sm:rounded-3xl p-3.5 xs:p-4.5 sm:p-8 lg:p-9 text-white shadow-[0_25px_60px_rgba(0,0,0,0.7)] hover:border-white/25 transition-all">
+            <div className="relative bg-[#0C2338]/92 backdrop-blur-2xl border border-white/20 rounded-2xl sm:rounded-3xl p-4 xs:p-5 sm:p-7 lg:p-8 text-white shadow-[0_30px_70px_rgba(0,0,0,0.65)] hover:border-white/30 transition-all overflow-hidden">
 
-              {/* Step Number Badge + Phase */}
-              <div className="flex items-center gap-2 xs:gap-2.5 mb-2.5 sm:mb-3.5">
-                <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#0B5D68] text-white flex items-center justify-center font-heading font-bold text-xs shadow-xs">
-                  {step.stepNumber}
-                </span>
-                <span className="text-[10px] sm:text-xs font-heading font-bold uppercase tracking-wider text-[#2ECDC5] truncate">
-                  {step.stepPhase}
-                </span>
+              {/* Subtle Top Cyan Glow Line */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#2ECDC5] to-transparent opacity-80" />
+
+              {/* Step Chapter Eyebrow & Progress Indicator */}
+              <div className="flex items-center justify-between gap-2 mb-2.5 sm:mb-4">
+                <div className="flex items-center gap-2 sm:gap-2.5">
+                  <span className="w-6.5 h-6.5 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#0B5D68] to-[#084851] text-[#2ECDC5] border border-[#2ECDC5]/30 flex items-center justify-center font-heading font-bold text-[11px] sm:text-sm shadow-sm">
+                    {step.stepNumber}
+                  </span>
+                  <span className="text-[11px] sm:text-[12px] font-heading font-medium tracking-wider text-[#2ECDC5]">
+                    {step.stepPhase}
+                  </span>
+                </div>
+
+                {/* 4-Step Narrative Progress Indicator */}
+                <div className="flex items-center gap-1.5 px-2.5 py-0.5 sm:py-1 rounded-full bg-white/10 border border-white/15 text-[10px] sm:text-[11px] font-heading font-semibold text-slate-300">
+                  <span>Step {index + 1} of {total}</span>
+                </div>
               </div>
 
               {/* Step Title Header with Icon */}
-              <div className="flex items-center gap-3 sm:gap-3.5 mb-2 sm:mb-3">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-[#F0A126] shrink-0 shadow-inner">
-                  <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-[#F0A126]" />
+              <div className="flex items-center gap-2.5 sm:gap-3.5 mb-1.5 sm:mb-4">
+                <div className="w-8 h-8 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-[#F0A126] shrink-0 shadow-inner">
+                  <IconComponent className="w-4 h-4 sm:w-5.5 sm:h-5.5 text-[#F0A126]" />
                 </div>
-                <div>
-                  <h3 className="text-lg xs:text-xl sm:text-2xl font-bold font-heading text-white tracking-tight leading-tight">
-                    {step.title}
-                  </h3>
-                </div>
+                <h3 className="text-lg xs:text-base sm:text-xl lg:text-2xl font-heading font-semibold text-white">
+                  {step.title}
+                </h3>
               </div>
 
-              {/* Catchy Headline */}
-              <h4 className="text-xs sm:text-base font-medium text-[#ECF4F7] leading-snug mb-2 sm:mb-3 line-clamp-2">
+              {/* Narrative Value Hook */}
+              <h4 className="text-xs sm:text-sm font-medium text-[#F0A126] leading-snug mb-2 sm:mb-2.5">
                 {step.headline}
               </h4>
 
-              {/* Description */}
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal mb-3 sm:mb-5 line-clamp-2 sm:line-clamp-3">
+              {/* Short & Human Story Narrative */}
+              <p className="text-xs sm:text-sm text-slate-200/90 leading-relaxed font-normal mb-3.5 sm:mb-5">
                 {step.description}
               </p>
 
-              {/* Guarantees Checklist with Cyan Checkmarks */}
-              <div className="space-y-1.5 sm:space-y-2.5 mb-4 sm:mb-6 pt-2.5 sm:pt-3 border-t border-white/10">
-                <p className="text-[10px] sm:text-[11px] font-heading font-semibold uppercase tracking-wider text-[#2ECDC5]">
-                  Guaranteed Standards at this Stage:
-                </p>
-                {step.guarantees.map((item, gIdx) => (
+              {/* Visual Story Milestones (Clean, Scannable 2-Row Format) */}
+              <div className="space-y-1.5 sm:space-y-2.5 mb-4 sm:mb-6 pt-2.5 sm:pt-4 border-t border-white/10">
+                {step.highlights.map((item, hIdx) => (
                   <div
-                    key={gIdx}
-                    className="flex items-start gap-2 sm:gap-2.5 text-xs sm:text-sm text-slate-200 font-normal"
+                    key={hIdx}
+                    className="flex items-start gap-2 sm:gap-3 group/item"
                   >
-                    <span className="w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-[#0B5D68]/40 border border-[#0B8F83]/40 flex items-center justify-center shrink-0 mt-0.5">
-                      <CheckCircle2 className="w-2.5 h-2.5 sm:w-4 sm:h-4 text-[#0B8F83]" />
+                    <span className="w-4.5 h-4.5 sm:w-5.5 sm:h-5.5 rounded-full bg-[#0B5D68]/50 border border-[#2ECDC5]/40 flex items-center justify-center shrink-0 mt-0.5 text-[#2ECDC5] shadow-xs group-hover/item:border-[#2ECDC5] group-hover/item:bg-[#0B5D68]/80 transition-colors">
+                      <CheckCircle2 className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#2ECDC5]" />
                     </span>
-                    <span className="leading-snug truncate xs:whitespace-normal">{item}</span>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5">
+                        <span className="font-heading font-semibold text-xs sm:text-sm text-white tracking-tight">
+                          {item.label}
+                        </span>
+                        <span className="text-slate-300 text-[11px] sm:text-[13px] font-normal">
+                          — {item.detail}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
 
-              {/* Actions Area */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-1">
-                {/* Primary CTA (Gold #F0A126) */}
+              {/* Primary & Secondary Actions */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 pt-1">
+                {/* Primary CTA */}
                 <button
                   onClick={() => onOpenIntake(`Patient Journey Step ${step.stepNumber} — ${step.title}`)}
-                  className="py-3 sm:py-3.5 px-5 sm:px-6 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-md shadow-[#F0A126]/20 flex items-center justify-center gap-2 transition-all cursor-pointer group/btn flex-1"
+                  className="py-2.5 sm:py-3.5 px-4 sm:px-6 rounded-xl bg-gradient-to-r from-[#F0A126] to-[#e59518] hover:from-[#e59518] hover:to-[#d08210] active:scale-[0.98] text-[#0C2338] font-bold text-xs sm:text-[13px] uppercase tracking-wider shadow-lg shadow-[#F0A126]/20 flex items-center justify-center gap-2 transition-all cursor-pointer group/btn flex-1 whitespace-nowrap"
                 >
-                  <span className="text-[#0C2338]">{step.primaryCta}</span>
-                  <ArrowRight className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-[#0C2338] stroke-[2.5] transition-transform group-hover/btn:translate-x-1" />
+                  <span className="whitespace-nowrap">{step.primaryCta}</span>
+                  <ArrowRight className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-[#0C2338] stroke-[2.5] transition-transform group-hover/btn:translate-x-1 shrink-0" />
                 </button>
 
-                {/* Secondary Action Button 2 */}
+                {/* Secondary CTA (WhatsApp) */}
                 <button
                   onClick={handleWhatsApp}
-                  className="py-3 sm:py-3.5 px-4 sm:px-5 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] active:scale-[0.98] text-white font-heading font-bold text-[11px] sm:text-xs uppercase tracking-wider border border-white/15 flex items-center justify-center gap-2 transition-all cursor-pointer shrink-0 shadow-sm"
+                  className="py-2.5 sm:py-3.5 px-3.5 sm:px-5 rounded-xl bg-white/10 hover:bg-white/15 active:scale-[0.98] text-white font-bold text-xs sm:text-[13px] uppercase tracking-wider border border-white/20 flex items-center justify-center gap-2 transition-all cursor-pointer shrink-0 shadow-sm backdrop-blur-md whitespace-nowrap"
                 >
-                  <MessageSquare className="w-3.5 h-3.5 text-[#25D366]" />
-                  <span>WhatsApp Desk</span>
+                  <MessageSquare className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-[#25D366] shrink-0" />
+                  <span className="whitespace-nowrap">WhatsApp</span>
                 </button>
               </div>
 
               {/* Bottom Metadata Bar */}
-              <div className="flex items-center justify-between pt-3 sm:pt-4 mt-3 sm:mt-4 border-t border-white/10 text-[10px] sm:text-[11px] text-slate-400 font-medium">
+              <div className="flex items-center justify-between pt-2.5 sm:pt-4 mt-2.5 sm:mt-4 border-t border-white/10 text-[10px] sm:text-xs text-slate-300 font-medium">
                 <div className="flex items-center gap-1 sm:gap-1.5">
-                  <MapPin className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-slate-400 shrink-0" />
-                  <span className="truncate max-w-[140px] sm:max-w-[200px]">{step.location}</span>
+                  <MapPin className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#2ECDC5] shrink-0" />
+                  <span className="truncate max-w-[130px] sm:max-w-[220px]">{step.location}</span>
                 </div>
-                <div className="flex items-center gap-1 sm:gap-1.5 text-slate-300">
+                <div className="flex items-center gap-1 sm:gap-1.5">
                   <ShieldCheck className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#F0A126] shrink-0" />
-                  <span className="font-semibold text-slate-200 truncate max-w-[140px] sm:max-w-[180px]">
+                  <span className="font-semibold text-slate-200 truncate max-w-[140px] sm:max-w-[200px]">
                     {step.accompaniedBy}
                   </span>
                 </div>
@@ -402,9 +467,9 @@ export const PatientJourney = () => {
                 PATIENT JOURNEY — STEP-BY-STEP CONCIERGE CARE
               </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[45px] font-heading font-bold text-[#0C2338] leading-[1.15] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-[36px] xl:text-[42px] font-heading font-bold text-[#0C2338] leading-[1.15] tracking-tight">
               Four Simple Steps to Your{" "}
-              <span className="text-[#0B5D68] block sm:inline">
+              <span className="text-[#0B8F83] block sm:inline">
                 World-Class Care in India.
               </span>
             </h2>
@@ -431,7 +496,7 @@ export const PatientJourney = () => {
                 {step.stepNumber}
               </span>
               <span className="font-heading font-semibold text-[#0C2338]">
-                {step.title}
+                {step.navTitle || step.title}
               </span>
               <ChevronRight className="w-3.5 h-3.5 text-[#6B7C88] group-hover:translate-x-0.5 transition-transform" />
             </button>

@@ -40,7 +40,7 @@ export const DeclinePolicy = () => {
               </div>
 
               {/* Main Headline */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[45px] font-heading font-semibold text-white leading-[1.15] mb-4 tracking-tight max-w-3xl">
+              <h2 className="text-2xl sm:text-3xl lg:text-[36px] xl:text-[42px] font-heading font-semibold text-white leading-[1.15] mb-4 tracking-tight max-w-3xl">
                 If we believe a procedure isn&apos;t right for you, or cannot ensure the highest standard of care, we simply won&apos;t arrange it.
               </h2>
 

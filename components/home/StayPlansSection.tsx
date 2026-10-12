@@ -44,9 +44,9 @@ export const StayPlansSection = () => {
                 <span>ACCOMMODATION &amp; RECOVERY PLANS</span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[45px] font-heading font-bold text-[#0C2338] mb-3 leading-[1.15] tracking-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-[36px] xl:text-[42px] font-heading font-bold text-[#0C2338] mb-3 leading-[1.15] tracking-tight">
                 Choose How You Want to Stay.{" "}
-                <span className="text-[#0B5D68] block sm:inline">
+                <span className="text-[#0B8F83] block sm:inline">
                   Transparent All-In Packages.
                 </span>
               </h2>
