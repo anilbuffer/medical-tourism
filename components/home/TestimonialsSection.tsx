@@ -7,8 +7,6 @@ import {
   Star,
   ArrowLeft,
   ArrowRight,
-  Sparkles,
-  ShieldCheck,
 } from "lucide-react";
 import { useCare } from "@/context/CareContext";
 
@@ -140,18 +138,7 @@ export const TestimonialsSection = () => {
             sizes="50vw"
             className="object-cover object-top"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20" />
-
-          {/* Bottom Review Ribbon on Photo */}
-          <div className="absolute bottom-8 left-8 right-8 z-10 flex justify-center">
-            <div className="w-full max-w-md px-6 py-3.5 rounded-full bg-[#0B5D68]/95 backdrop-blur-md text-white shadow-2xl border border-[#0B8F83]/40 flex items-center justify-center gap-3">
-              <Sparkles className="w-4 h-4 text-[#F0A126] fill-[#F0A126] shrink-0" />
-              <span className="text-xs sm:text-sm font-heading font-bold tracking-wide">
-                Rated 4.9 out of 5 based on 5K+ global reviews
-              </span>
-              <Sparkles className="w-4 h-4 text-[#0B8F83] fill-[#0B8F83] shrink-0" />
-            </div>
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
         </div>
       </div>
 
@@ -268,7 +255,7 @@ export const TestimonialsSection = () => {
         </div>
       </div>
 
-      {/* 03. Mobile-Only Photo & Ribbon Block */}
+      {/* 03. Mobile-Only Photo Block */}
       <div className="block lg:hidden relative w-full h-[260px] xs:h-[300px] sm:h-[360px] bg-slate-900 overflow-hidden">
         <Image
           src="/images/testimonials/doctor-portrait.jpg"
@@ -277,16 +264,7 @@ export const TestimonialsSection = () => {
           sizes="100vw"
           className="object-cover object-top"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
-        <div className="absolute bottom-4 left-4 right-4 z-10 flex justify-center">
-          <div className="w-full max-w-sm px-4 py-2.5 rounded-full bg-[#0B5D68]/95 backdrop-blur-md text-white shadow-xl border border-[#0B8F83]/40 flex items-center justify-center gap-2 text-center">
-            <Sparkles className="w-3.5 h-3.5 text-[#F0A126] fill-[#F0A126] shrink-0" />
-            <span className="text-[11px] font-heading font-bold tracking-wide">
-              Rated 4.9/5 based on 5K+ global reviews
-            </span>
-            <Sparkles className="w-3.5 h-3.5 text-[#0B8F83] fill-[#0B8F83] shrink-0" />
-          </div>
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
       </div>
 
     </section>

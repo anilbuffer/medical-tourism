@@ -412,8 +412,8 @@ export const ConnectSection = () => {
                     rel="noopener noreferrer"
                     className="w-full py-3 px-4 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-xs flex items-center justify-center gap-2 text-center"
                   >
-                    <MessageSquare className="w-3.5 h-3.5 text-[#25D366]" />
-                    <span>Prefer WhatsApp? Send Reports Directly</span>
+                    <MessageSquare className="w-3.5 h-3.5 text-white" />
+                    <span className="text-white">Prefer WhatsApp? Send Reports Directly</span>
                   </a>
                 </div>
 

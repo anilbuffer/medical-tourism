@@ -166,9 +166,9 @@ export const DeclinePolicy = () => {
                     </div>
                   </div>
 
-                  {/* Big Number "40+" */}
+                  {/* Big Number "4+" */}
                   <div className="font-heading font-extrabold text-4xl xs:text-5xl sm:text-6xl lg:text-[68px] text-white tracking-tight leading-none drop-shadow-xl">
-                    40+
+                    4+
                   </div>
 
                   {/* Label: Chief Doctors */}

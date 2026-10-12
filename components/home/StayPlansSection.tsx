@@ -146,7 +146,7 @@ export const StayPlansSection = () => {
 
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    <div className="inline-block px-3 py-1 bg-[#0B5D68] text-[#ffffff] text-xs font-heading font-bold rounded-full shadow-xs">
+                    <div className="inline-block px-3 py-1 bg-[#0B5D68] text-white text-xs font-bold rounded-full shadow-xs">
                       Premium Concierge
                     </div>
                     <span className="px-3 py-1 rounded-full bg-[#F0A126] text-[#0C2338] text-[10px] font-heading font-bold tracking-wider uppercase shadow-xs">

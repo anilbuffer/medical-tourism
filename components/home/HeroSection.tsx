@@ -102,7 +102,7 @@ export const HeroSection = () => {
                   onClick={() => openIntake()}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-95 text-[#0C2338] font-heading font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#F0A126]/25 hover:shadow-2xl hover:shadow-[#F0A126]/40 cursor-pointer group shrink-0"
                 >
-                  <span>Book an Appointment</span>
+                  <span className="text-[#0C2338]">Book an Appointment</span>
                   <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.5] transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
               </motion.div>
@@ -112,7 +112,7 @@ export const HeroSection = () => {
             {/* 03. Right Column: Floating Badges with Mobile Scaling */}
             <div className="lg:col-span-5 xl:col-span-6 relative h-[260px] xs:h-[300px] sm:h-[420px] lg:h-[650px] flex items-center justify-center lg:justify-end pointer-events-none overflow-hidden lg:overflow-visible">
 
-              {/* FLOATING BADGE 1: Security Shield Crest (40+ Doctors) */}
+              {/* FLOATING BADGE 1: Security Shield Crest (4+ Doctors) */}
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -172,9 +172,9 @@ export const HeroSection = () => {
                     />
                   </div>
 
-                  {/* 40+ Bold Number */}
+                  {/* 4+ Bold Number */}
                   <div className="relative z-10 text-2xl sm:text-[26px] font-black font-heading text-white leading-none tracking-tight mt-1">
-                    40+
+                    4+
                   </div>
 
                   {/* Doctors Subtext */}
