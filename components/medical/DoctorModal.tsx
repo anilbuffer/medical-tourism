@@ -154,7 +154,7 @@ export const DoctorModal = () => {
                       <Video className="w-4 h-4" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-[#0C2338] font-heading">Schedule Video Consultation</h4>
+                      <h4 className="text-sm font-semibold text-[#0C2338] font-heading">Schedule Video Consultation</h4>
                       <p className="text-[11px] text-[#6B7C88]">30-min direct clinical discussion with Senior Specialist</p>
                     </div>
                   </div>
@@ -205,10 +205,10 @@ export const DoctorModal = () => {
                 <div className="pt-2">
                   <button
                     onClick={handleConfirm}
-                    className="w-full py-3.5 rounded-xl bg-[#0B5D68] hover:bg-[#0C2338] text-white font-extrabold text-sm shadow-xl shadow-[#0B5D68]/20 transition-all flex items-center justify-center gap-2 tracking-wide font-heading uppercase cursor-pointer"
+                    className="w-full py-3.5 rounded-xl bg-[#0B5D68] hover:bg-[#0C2338] text-white font-semibold text-sm shadow-xl shadow-[#0B5D68]/20 transition-all flex items-center justify-center gap-2 tracking-wide font-heading uppercase cursor-pointer"
                   >
-                    <Calendar className="w-4 h-4 text-[#F0A126]" />
-                    <span>Confirm Video Consultation Slot</span>
+                    <Calendar className="w-4 h-4 text-[#fff]" />
+                    <span className="text-[#fff]">Confirm Video Consultation Slot</span>
                   </button>
                 </div>
               </div>

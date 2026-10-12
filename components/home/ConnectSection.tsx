@@ -39,8 +39,8 @@ const CircularStampBadge = () => (
       </text>
     </svg>
     {/* Center Dark Circle with Brand Icon */}
-    <div className="absolute w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 rounded-full bg-[#0B5D68] text-white flex items-center justify-center shadow-lg border-2 border-white">
-      <BrandIcon variant="white" className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7" />
+    <div className="absolute w-14 h-14 xs:w-18 xs:h-18 sm:w-22 sm:h-22 rounded-full bg-[#0B5D68] text-white flex items-center justify-center shadow-lg border-2 border-white">
+      <BrandIcon variant="white" className="w-6 h-6 xs:w-7 xs:h-7 sm:w-12 sm:h-12" />
     </div>
   </div>
 );

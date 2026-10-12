@@ -60,7 +60,7 @@ export default function TreatmentsPage() {
               <Sparkles className="w-3.5 h-3.5 text-[#F0A126]" />
               <span>Verified Hospital Pricing Guide</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white font-heading">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white font-heading">
               Popular Treatments & Cost Estimates
             </h1>
             <p className="text-sm sm:text-base text-teal-100/90 leading-relaxed font-body">

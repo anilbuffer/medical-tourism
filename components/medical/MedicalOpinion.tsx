@@ -39,7 +39,7 @@ export const MedicalOpinion = () => {
                 <span>{t.opinion.eyebrow}</span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight font-sans">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight font-sans">
                 {t.opinion.heading}
               </h2>
 

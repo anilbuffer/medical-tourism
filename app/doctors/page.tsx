@@ -67,7 +67,7 @@ export default function DoctorsPage() {
               <Sparkles className="w-3.5 h-3.5 text-[#F0A126]" />
               <span>Chandigarh City · Verified Senior Clinicians</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white font-heading">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white font-heading">
               Top Specialist Consultants & Surgeons in Chandigarh
             </h1>
             <p className="text-teal-100/90 text-sm sm:text-base leading-relaxed font-body">
@@ -91,7 +91,7 @@ export default function DoctorsPage() {
 
           <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-slate-500 font-heading">Specialty:</span>
+              <span className="text-xs font-medium text-slate-500 font-heading">Specialty:</span>
               <select
                 value={selectedSpecialty}
                 onChange={(e) => setSelectedSpecialty(e.target.value)}
@@ -106,7 +106,7 @@ export default function DoctorsPage() {
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-slate-500 font-heading">Hospital:</span>
+              <span className="text-xs font-medium text-slate-500 font-heading">Hospital:</span>
               <select
                 value={selectedHospital}
                 onChange={(e) => setSelectedHospital(e.target.value)}
@@ -140,12 +140,12 @@ export default function DoctorsPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
 
-                  <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-900/85 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold flex items-center gap-1 font-heading">
+                  <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-900/85 backdrop-blur-md border border-white/20 text-white text-[11px] font-semibold flex items-center gap-1">
                     <Star className="w-3 h-3 fill-[#F0A126] text-[#F0A126]" />
                     <span>{doc.rating}</span>
                   </div>
 
-                  <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-[#0B5D68]/90 backdrop-blur-md border border-[#F0A126]/30 text-[#F0A126] text-[11px] font-bold font-heading">
+                  <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-[#0B5D68]/90 backdrop-blur-md border border-[#F0A126]/30 text-[#fff] text-[11px] font-semibold">
                     {doc.experienceYears}+ Years Experience
                   </div>
                 </div>
@@ -153,7 +153,7 @@ export default function DoctorsPage() {
                 {/* Body */}
                 <div className="p-6 space-y-4">
                   <div>
-                    <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-[#0B5D68] transition-colors font-heading">
+                    <h3 className="text-xl font-semibold text-slate-900 group-hover:text-[#0B5D68] transition-colors">
                       {language === "ar" ? doc.nameAr : doc.name}
                     </h3>
                     <p className="text-xs font-semibold text-[#0B5D68]">
@@ -185,7 +185,7 @@ export default function DoctorsPage() {
 
               {/* Action Strip */}
               <div className="p-6 pt-0 space-y-2">
-                <div className="text-[11px] font-bold text-[#0B5D68] bg-[#0B5D68]/10 px-2.5 py-1 rounded-lg flex items-center gap-1.5 mb-2 font-heading">
+                <div className="text-[11px] font-semibold text-[#0B5D68] bg-[#0B5D68]/10 px-2.5 py-1 rounded-lg flex items-center gap-1.5 mb-2">
                   <Video className="w-3 h-3 text-[#F0A126]" />
                   <span>Next Video Slot: {doc.nextAvailable}</span>
                 </div>
@@ -193,13 +193,13 @@ export default function DoctorsPage() {
                 <div className="grid grid-cols-2 gap-2">
                   <button
                     onClick={() => openDoctorModal(doc)}
-                    className="py-2.5 rounded-xl border border-slate-200 hover:border-[#0B5D68] hover:text-[#0B5D68] text-xs font-bold text-slate-700 text-center transition-colors font-heading cursor-pointer"
+                    className="py-2.5 rounded-xl border border-slate-200 hover:border-[#0B5D68] hover:text-[#0B5D68] text-xs font-semibold text-slate-700 text-center transition-colors cursor-pointer"
                   >
                     View Bio & Slots
                   </button>
                   <button
                     onClick={() => openDoctorModal(doc)}
-                    className="py-2.5 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] text-white text-xs font-bold text-center shadow-xs transition-all font-heading cursor-pointer"
+                    className="py-2.5 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] text-white text-xs font-semibold text-center shadow-xs transition-all cursor-pointer"
                   >
                     Book Video Call
                   </button>
