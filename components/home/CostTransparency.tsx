@@ -221,22 +221,22 @@ export const CostTransparency = () => {
             <thead>
               <tr className="border-b border-[#DCE6EB]">
                 {/* Left Column: Treatment Procedure */}
-                <th className="bg-[#ECF4F7] py-4 sm:py-5 px-5 sm:px-8 font-heading font-bold text-sm sm:text-base text-[#0C2338] rounded-tl-2xl w-[40%]">
+                <th className="bg-[#ECF4F7] py-4 sm:py-5 px-4 sm:px-8 font-heading font-bold text-xs sm:text-base text-[#0C2338] rounded-tl-2xl w-[40%] sticky left-0 sm:static z-20 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.06)] sm:shadow-none">
                   Treatment Procedure
                 </th>
 
                 {/* Middle Column 1: UK / US Private Rate */}
-                <th className="bg-[#ECF4F7] py-4 sm:py-5 px-5 sm:px-6 font-heading font-bold text-sm sm:text-base text-[#0C2338] w-[22%]">
+                <th className="bg-[#ECF4F7] py-4 sm:py-5 px-4 sm:px-6 font-heading font-bold text-xs sm:text-base text-[#0C2338] w-[22%]">
                   UK / US Private Rate
                 </th>
 
                 {/* Middle Column 2: NHS Wait Times */}
-                <th className="bg-[#ECF4F7] py-4 sm:py-5 px-5 sm:px-6 font-heading font-bold text-sm sm:text-base text-[#0C2338] w-[20%]">
+                <th className="bg-[#ECF4F7] py-4 sm:py-5 px-4 sm:px-6 font-heading font-bold text-xs sm:text-base text-[#0C2338] w-[20%]">
                   NHS / Public Wait Times
                 </th>
 
                 {/* Right Column: India Highlighted Header (Authoritative Gold with AAA Navy Text) */}
-                <th className="bg-[#F0A126] py-4 sm:py-5 px-5 sm:px-8 font-heading font-extrabold text-sm sm:text-base text-[#0C2338] rounded-tr-2xl w-[18%] text-left">
+                <th className="bg-[#F0A126] py-4 sm:py-5 px-4 sm:px-8 font-heading font-extrabold text-xs sm:text-base text-[#0C2338] rounded-tr-2xl w-[18%] text-left">
                   India (Your Medicare Trip)
                 </th>
               </tr>
@@ -251,10 +251,10 @@ export const CostTransparency = () => {
                     className="group transition-colors hover:bg-slate-50/70"
                   >
                     {/* Treatment Column with Custom Medical Outline Icon */}
-                    <td className="py-5 sm:py-6 px-5 sm:px-8 bg-white group-hover:bg-slate-50/70 transition-colors">
-                      <div className="flex items-center gap-4">
+                    <td className="py-4 sm:py-6 px-4 sm:px-8 bg-white group-hover:bg-slate-50/70 transition-colors sticky left-0 sm:static z-10 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.06)] sm:shadow-none">
+                      <div className="flex items-center gap-3 sm:gap-4">
                         <Icon />
-                        <span className="font-heading font-bold text-[#0C2338] text-[15px] sm:text-base leading-snug">
+                        <span className="font-heading font-bold text-[#0C2338] text-sm sm:text-base leading-snug">
                           {row.treatment}
                         </span>
                       </div>

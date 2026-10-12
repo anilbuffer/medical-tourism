@@ -146,7 +146,7 @@ export const DeclinePolicy = () => {
                     </div>
 
                     {/* Doctor 4 (Mid Right) */}
-                    <div className="relative w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-full border-2 border-white/85 -ml-2.5 sm:-mr-4 z-10 bg-slate-200 shrink-0 shadow-lg overflow-hidden">
+                    <div className="relative w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-full border-2 border-white/85 -ml-2.5 sm:-ml-4 z-10 bg-slate-200 shrink-0 shadow-lg overflow-hidden">
                       <Image
                         src="/images/hero/hero-doctor.jpg"
                         alt="Specialist"

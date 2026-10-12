@@ -279,7 +279,7 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
             }}
             className="absolute z-20 left-3 xs:left-4 sm:left-10 lg:left-14 bottom-3 xs:bottom-4 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 w-[calc(100%-1.5rem)] xs:w-[calc(100%-2rem)] sm:w-[480px] lg:w-[540px]"
           >
-            <div className="bg-[#0C2338]/95 backdrop-blur-xl border border-white/15 rounded-2xl sm:rounded-3xl p-4.5 xs:p-5 sm:p-8 lg:p-9 text-white shadow-[0_25px_60px_rgba(0,0,0,0.7)] hover:border-white/25 transition-all">
+            <div className="bg-[#0C2338]/95 backdrop-blur-xl border border-white/15 rounded-2xl sm:rounded-3xl p-4 xs:p-5 sm:p-8 lg:p-9 text-white shadow-[0_25px_60px_rgba(0,0,0,0.7)] hover:border-white/25 transition-all">
 
               {/* Step Number Badge + Phase */}
               <div className="flex items-center gap-2 xs:gap-2.5 mb-2.5 sm:mb-3.5">

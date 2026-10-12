@@ -192,7 +192,7 @@ export const ConnectSection = () => {
               </div>
 
               {/* Circular Rotating Stamp Badge Positioned at the top-right corner */}
-              <div className="absolute -top-7 xs:-top-9 sm:-top-12 -right-2 sm:-right-6 z-20 scale-90 xs:scale-95 sm:scale-100 origin-top-right">
+              <div className="absolute -top-7 xs:-top-9 sm:-top-12 -right-2 sm:-right-6 z-20 scale-[0.8] xs:scale-90 sm:scale-100 origin-top-right">
                 <CircularStampBadge />
               </div>
             </div>

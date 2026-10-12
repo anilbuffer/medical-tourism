@@ -467,14 +467,14 @@ export const DoctorsSection = () => {
                           </button>
                         </div>
 
-                        <div className="flex items-center justify-between text-xs text-[#6B7C88] px-1">
+                        <div className="flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2 text-xs text-[#6B7C88] px-1">
                           <span className="flex items-center gap-1.5">
-                            <Clock className="w-3.5 h-3.5 text-[#0B5D68]" />
+                            <Clock className="w-3.5 h-3.5 text-[#0B5D68] shrink-0" />
                             <span>Zero upfront fee · Response within 24 hours</span>
                           </span>
                           <Link
                             href="/doctors"
-                            className="font-semibold text-[#0B5D68] hover:text-[#0C2338] hover:underline flex items-center gap-1 transition-colors"
+                            className="font-semibold text-[#0B5D68] hover:text-[#0C2338] hover:underline flex items-center gap-1 transition-colors self-end xs:self-auto"
                           >
                             <span>View Full Profile</span>
                             <ChevronRight className="w-3.5 h-3.5" />

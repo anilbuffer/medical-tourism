@@ -73,7 +73,7 @@ export const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1 }}
-                className="font-heading text-[2rem] xs:text-[2.35rem] sm:text-5xl lg:text-6xl xl:text-[4rem] font-extrabold text-white leading-[1.14] tracking-tight"
+                className="font-heading text-[1.85rem] xs:text-[2.25rem] sm:text-5xl lg:text-6xl xl:text-[4rem] font-extrabold text-white leading-[1.14] tracking-tight"
               >
                 World-Class Surgical Care in India.{" "}
                 <span className="text-[#F0A126] block sm:inline mt-1 sm:mt-0">
@@ -110,14 +110,14 @@ export const HeroSection = () => {
             </div>
 
             {/* 03. Right Column: Floating Badges with Mobile Scaling */}
-            <div className="lg:col-span-5 xl:col-span-6 relative h-[260px] xs:h-[300px] sm:h-[420px] lg:h-[650px] flex items-center justify-center lg:justify-end pointer-events-none">
+            <div className="lg:col-span-5 xl:col-span-6 relative h-[260px] xs:h-[300px] sm:h-[420px] lg:h-[650px] flex items-center justify-center lg:justify-end pointer-events-none overflow-hidden lg:overflow-visible">
 
               {/* FLOATING BADGE 1: Security Shield Crest (40+ Doctors) */}
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
-                className="absolute top-4 xs:top-8 sm:top-16 lg:top-20 left-2 xs:left-4 sm:left-8 lg:-left-6 xl:left-18 z-20 pointer-events-auto scale-[0.82] xs:scale-90 sm:scale-100 origin-top-left"
+                className="absolute top-3 xs:top-8 sm:top-16 lg:top-20 left-1 xs:left-4 sm:left-8 lg:-left-6 xl:left-18 z-20 pointer-events-auto scale-[0.76] xs:scale-[0.86] sm:scale-100 origin-top-left"
               >
                 <div className="relative w-[124px] sm:w-[136px] h-[148px] sm:h-[162px] flex flex-col items-center justify-center pt-2 pb-5 px-3 select-none filter drop-shadow-2xl">
                   {/* SVG Security Shield Silhouette Outline & Background */}
@@ -189,7 +189,7 @@ export const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="absolute bottom-4 xs:bottom-6 sm:bottom-12 right-2 xs:right-3 sm:right-6 lg:right-4 xl:right-10 z-20 pointer-events-auto scale-[0.8] xs:scale-[0.88] sm:scale-100 origin-bottom-right"
+                className="absolute bottom-3 xs:bottom-6 sm:bottom-12 right-1 xs:right-3 sm:right-6 lg:right-4 xl:right-10 z-20 pointer-events-auto scale-[0.74] xs:scale-[0.84] sm:scale-100 origin-bottom-right"
               >
                 <div className="bg-[#0C2338]/95 backdrop-blur-md border border-[#DCE6EB]/20 rounded-full px-4 py-2 sm:px-6 sm:py-3 shadow-2xl flex items-center gap-3 sm:gap-3.5">
                   {/* Patient Avatars */}

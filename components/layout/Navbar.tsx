@@ -97,7 +97,7 @@ export const Navbar = () => {
     >
       {/* 01. Pre-Header Top Utility Bar - Trust & 24/7 Helpline */}
       <div className="hidden lg:block bg-[#081827]/90 border-b border-white/10 py-1.5 text-xs text-slate-300">
-        <div className="max-w-[1580px] mx-auto mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse" />
@@ -131,7 +131,7 @@ export const Navbar = () => {
         <div className="flex items-center justify-between gap-4 sm:gap-8">
           {/* Brand Logo - Vector HD Sharp */}
           <Link href="/" className="flex items-center gap-3 group shrink-0" aria-label="yourMedicareTrip Home">
-            <BrandLogo variant="white" className="h-9 sm:h-12 w-auto" />
+            <BrandLogo variant="white" className="h-8 xs:h-9 sm:h-11 md:h-12 w-auto" />
           </Link>
 
           {/* Clean Spacious Navigation Links */}
@@ -266,7 +266,7 @@ export const Navbar = () => {
 
       {/* 05. Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#0C2338]/98 backdrop-blur-2xl border-b border-white/10 px-4 pt-3 pb-6 text-white space-y-4 animate-in slide-in-from-top-2 duration-200">
+        <div className="lg:hidden bg-[#0C2338]/98 backdrop-blur-2xl border-b border-white/10 px-4 pt-3 pb-6 text-white space-y-4 animate-in slide-in-from-top-2 duration-200 max-h-[calc(100vh-4.5rem)] overflow-y-auto overscroll-contain shadow-2xl">
           <div className="flex items-center justify-between pb-2 border-b border-white/10">
             <div className="flex items-center gap-2 text-xs text-slate-300">
               <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse"></span>
@@ -280,34 +280,34 @@ export const Navbar = () => {
             <a
               href="#treatments"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#0B5D68]/40"
+              className="flex items-center gap-2 p-2 xs:p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-[11px] xs:text-xs font-semibold hover:border-[#0B5D68]/40"
             >
-              <Stethoscope className="w-4 h-4 text-[#F0A126]" />
-              <span>Treatments</span>
+              <Stethoscope className="w-4 h-4 text-[#F0A126] shrink-0" />
+              <span className="truncate">Treatments</span>
             </a>
             <a
               href="#doctors"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#0B5D68]/40"
+              className="flex items-center gap-2 p-2 xs:p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-[11px] xs:text-xs font-semibold hover:border-[#0B5D68]/40"
             >
-              <UserCheck className="w-4 h-4 text-[#F0A126]" />
-              <span>Doctors</span>
+              <UserCheck className="w-4 h-4 text-[#F0A126] shrink-0" />
+              <span className="truncate">Doctors</span>
             </a>
             <a
               href="#hospitals"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#0B5D68]/40"
+              className="flex items-center gap-2 p-2 xs:p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-[11px] xs:text-xs font-semibold hover:border-[#0B5D68]/40"
             >
-              <ShieldCheck className="w-4 h-4 text-[#F0A126]" />
-              <span>Hospitals</span>
+              <ShieldCheck className="w-4 h-4 text-[#F0A126] shrink-0" />
+              <span className="truncate">Hospitals</span>
             </a>
             <a
               href="#journey"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-xs font-semibold hover:border-[#0B5D68]/40"
+              className="flex items-center gap-2 p-2 xs:p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-200 text-[11px] xs:text-xs font-semibold hover:border-[#0B5D68]/40"
             >
-              <Compass className="w-4 h-4 text-[#F0A126]" />
-              <span>How It Works</span>
+              <Compass className="w-4 h-4 text-[#F0A126] shrink-0" />
+              <span className="truncate">How It Works</span>
             </a>
           </div>
 
@@ -322,7 +322,7 @@ export const Navbar = () => {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-2.5 py-2 rounded-lg text-xs text-slate-300 hover:bg-white/5 hover:text-[#0B5D68] transition-colors"
+                  className="px-2.5 py-2 rounded-lg text-xs text-slate-300 hover:bg-white/5 hover:text-[#F0A126] transition-colors"
                 >
                   {item.title}
                 </a>

@@ -297,7 +297,7 @@ const SpecialtyStickyCard: React.FC<InteractiveCardProps> = ({
               } w-[calc(100%-1.5rem)] xs:w-[calc(100%-2rem)] sm:w-[420px] lg:w-[450px]`}
           >
             {/* Dark Navy Rounded Card with vibrant #0B5D68 accents */}
-            <div className="bg-[#0C2338]/95 backdrop-blur-xl border border-white/15 rounded-2xl sm:rounded-3xl p-4.5 xs:p-5 sm:p-8 lg:p-9 text-white shadow-[0_25px_60px_rgba(0,0,0,0.7)] hover:border-[#0B5D68]/60 transition-all">
+            <div className="bg-[#0C2338]/95 backdrop-blur-xl border border-white/15 rounded-2xl sm:rounded-3xl p-4 xs:p-5 sm:p-8 lg:p-9 text-white shadow-[0_25px_60px_rgba(0,0,0,0.7)] hover:border-[#0B5D68]/60 transition-all">
 
               {/* Top Row: Square-Rounded Icon Box + Title */}
               <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">

@@ -230,12 +230,12 @@ export const BlogSection = () => {
 
                         {/* Floating Action Button */}
                         <div
-                          className={`w-13 h-13 sm:w-14 sm:h-14 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm group-hover:shadow-md ${idx % 2 === 0
+                          className={`w-12 h-12 xs:w-14 xs:h-14 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm group-hover:shadow-md ${idx % 2 === 0
                             ? "bg-[#ECF4F7] text-[#0B5D68] border border-[#DCE6EB] group-hover:bg-[#F0A126] group-hover:text-[#0C2338] group-hover:border-[#F0A126]"
                             : "bg-white text-[#0C2338] border border-[#DCE6EB] group-hover:bg-[#F0A126] group-hover:text-[#0C2338] group-hover:border-[#F0A126]"
                             }`}
                         >
-                          <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                          <ArrowRight className="w-4 h-4 xs:w-5 xs:h-5 transition-transform duration-300 group-hover:translate-x-1" />
                         </div>
                       </div>
                     </div>

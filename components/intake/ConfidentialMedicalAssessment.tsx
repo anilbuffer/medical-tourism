@@ -225,7 +225,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
   return (
     <div className={`w-full bg-white rounded-3xl shadow-xl border border-slate-100 flex flex-col relative ${isModal ? 'max-h-[90vh]' : ''}`}>
       {/* Sticky Header */}
-      <div className="shrink-0 p-6 pb-4 sm:p-8 sm:pb-4 md:p-10 md:pb-4 border-b border-slate-100 relative z-10 bg-white rounded-t-3xl">
+      <div className="shrink-0 p-5 pb-3 sm:p-8 sm:pb-4 md:p-10 md:pb-4 border-b border-slate-100 relative z-10 bg-white rounded-t-3xl">
         {/* Optional Close Button for Modals */}
         {onClose && (
           <button
@@ -265,7 +265,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
       {/* ================= STEP 1: INITIAL ENQUIRY ================= */}
       {step === 1 && (
         <form onSubmit={handleContinue} className="flex flex-col flex-1 min-h-0 animate-in fade-in duration-200">
-          <div className={`flex-1 p-6 sm:p-8 md:p-10 pt-4 sm:pt-4 md:pt-4 space-y-5 ${isModal ? 'overflow-y-auto custom-scrollbar' : ''}`}>
+          <div className={`flex-1 p-5 sm:p-8 md:p-10 pt-3 sm:pt-4 md:pt-4 space-y-4 sm:space-y-5 ${isModal ? 'overflow-y-auto custom-scrollbar' : ''}`}>
 
           {/* Full Name */}
           <div className="space-y-1.5">
@@ -430,7 +430,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
 
           </div>
           {/* Submit Button Sticky Footer */}
-          <div className="shrink-0 p-6 pt-4 sm:p-8 sm:pt-4 md:p-10 md:pt-4 border-t border-slate-100 bg-white rounded-b-3xl relative z-10">
+          <div className="shrink-0 p-5 pt-3 sm:p-8 sm:pt-4 md:p-10 md:pt-4 border-t border-slate-100 bg-white rounded-b-3xl relative z-10">
             <button
               type="submit"
               className="w-full py-4 px-6 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#F0A126]/25 hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all font-heading cursor-pointer"
@@ -444,7 +444,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
       {/* ================= STEP 2: HOSPITAL QUESTIONS ================= */}
       {step === 2 && (
         <form onSubmit={handleSubmit} className="flex flex-col flex-1 min-h-0 animate-in fade-in duration-200">
-          <div className={`flex-1 p-6 sm:p-8 md:p-10 pt-4 sm:pt-4 md:pt-4 space-y-6 ${isModal ? 'overflow-y-auto custom-scrollbar' : ''}`}>
+          <div className={`flex-1 p-5 sm:p-8 md:p-10 pt-3 sm:pt-4 md:pt-4 space-y-5 sm:space-y-6 ${isModal ? 'overflow-y-auto custom-scrollbar' : ''}`}>
 
           {/* Patient's age or date of birth */}
           <div className="space-y-1.5">
@@ -587,7 +587,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
 
           </div>
           {/* Action Buttons: Back + SUBMIT Sticky Footer */}
-          <div className="shrink-0 p-6 pt-4 sm:p-8 sm:pt-4 md:p-10 md:pt-4 border-t border-slate-100 bg-white rounded-b-3xl relative z-10">
+          <div className="shrink-0 p-5 pt-3 sm:p-8 sm:pt-4 md:p-10 md:pt-4 border-t border-slate-100 bg-white rounded-b-3xl relative z-10">
             <div className="space-y-3 md:flex justify-between items-center md:space-y-0 gap-3">
               <button
                 type="button"
@@ -621,7 +621,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
 
       {/* ================= STEP 3: CONFIRMATION ================= */}
       {step === 3 && (
-        <div className={`flex-1 p-6 sm:p-8 md:p-10 text-center space-y-6 animate-in zoom-in-95 duration-300 ${isModal ? 'overflow-y-auto custom-scrollbar' : ''}`}>
+        <div className={`flex-1 p-5 sm:p-8 md:p-10 text-center space-y-5 sm:space-y-6 animate-in zoom-in-95 duration-300 ${isModal ? 'overflow-y-auto custom-scrollbar' : ''}`}>
           {/* Green Checkmark Circle */}
           <div className="w-16 h-16 rounded-full bg-[#0B8F83]/15 text-[#0B8F83] flex items-center justify-center mx-auto shadow-inner">
             <svg

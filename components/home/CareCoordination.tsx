@@ -164,7 +164,7 @@ export const CareCoordination = () => {
 
             {/* Floating Specialist / Coordinator Card */}
             <div className="absolute bottom-3 xs:bottom-4 sm:bottom-6 left-3 xs:left-4 sm:left-6 right-3 xs:right-4 sm:right-6 z-20">
-              <div className="bg-white rounded-2xl p-3 xs:p-4 sm:p-4.5 shadow-2xl border border-white/60 flex items-center justify-between gap-3 sm:gap-4">
+              <div className="bg-white rounded-2xl p-3 xs:p-4 sm:p-5 shadow-2xl border border-white/60 flex items-center justify-between gap-3 sm:gap-4">
 
                 {/* Avatar with Online Status Dot */}
                 <div className="flex items-center gap-2.5 xs:gap-3 min-w-0">
