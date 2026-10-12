@@ -12,7 +12,7 @@ export const Footer = () => {
           
           <div className="col-span-1 md:col-span-1">
             <Link href="/" className="flex items-center gap-3 group shrink-0 mb-6">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0b5d63] flex items-center justify-center shadow-md transition-transform">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0B5D68] flex items-center justify-center shadow-md transition-transform">
                 <span className="text-white font-black text-lg font-serif">Y</span>
               </div>
               <div className="flex flex-col">

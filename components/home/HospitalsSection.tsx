@@ -172,12 +172,12 @@ export const HospitalsSection = () => {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 sm:mb-10 gap-6">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
-              <span className="h-2 w-2 rounded-full bg-[#14B8A6] animate-pulse" />
+              <span className="h-2 w-2 rounded-full bg-[#0B8F83] animate-pulse" />
               <span>GLOBAL ACCREDITED HEALTHCARE NETWORK</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-[32px] xl:text-[40px] font-heading font-bold text-[#0C2338] leading-[1.15] tracking-tight">
               Featured Partner Hospitals.{" "}
-              <span className="text-[#0e9d8d] block sm:inline">
+              <span className="text-[#0B5D68] block sm:inline">
                 World-Class Clinical Institutions.
               </span>
             </h2>
@@ -213,7 +213,7 @@ export const HospitalsSection = () => {
                 disabled={!canScrollNext}
                 aria-label="Next hospital slide"
                 className={`w-10 h-10 rounded-full border border-transparent flex items-center justify-center transition-all cursor-pointer ${canScrollNext
-                  ? "bg-[#0e9d8d] hover:bg-[#0a8678] text-white shadow-sm active:scale-95"
+                  ? "bg-[#0B5D68] hover:bg-[#094b54] text-white shadow-sm active:scale-95"
                   : "bg-white/60 text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
                   }`}
               >
@@ -263,18 +263,18 @@ export const HospitalsSection = () => {
                       {/* Top-Right: Audited Facility Pill */}
                       <div className="absolute top-3.5 right-3.5 z-10">
                         <span className="px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#0C2338] text-[11px] font-heading font-bold shadow-sm flex items-center gap-1 border border-white/40">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0B5D68]" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0B8F83]" />
                           <span>Audited Center</span>
                         </span>
                       </div>
 
                       {/* Bottom-Left Image Stats: Bed Capacity & OTs */}
                       <div className="absolute bottom-3 left-3 right-3 z-10 flex items-center justify-between">
-                        <span className="px-2.5 py-0.5 rounded-md bg-[#0e9d8d] backdrop-blur-sm text-white text-[11px] font-medium flex items-center gap-1">
+                        <span className="px-2.5 py-0.5 rounded-md bg-[#0C2338]/90 backdrop-blur-sm text-white text-[11px] font-medium flex items-center gap-1 border border-white/10">
                           <Bed className="w-3 h-3 text-slate-300" />
                           <span>{hosp.beds}</span>
                         </span>
-                        <span className="px-2 py-0.5 rounded-md bg-[#0e9d8d] backdrop-blur-sm text-white text-[11px] font-medium flex items-center gap-1">
+                        <span className="px-2 py-0.5 rounded-md bg-[#0C2338]/90 backdrop-blur-sm text-white text-[11px] font-medium flex items-center gap-1 border border-white/10">
                           <Building2 className="w-3 h-3 text-slate-300" />
                           <span>{hosp.ots}</span>
                         </span>
@@ -285,7 +285,7 @@ export const HospitalsSection = () => {
                     <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between bg-white">
                       <div>
                         {/* Eyebrow Category */}
-                        <p className="text-[11px] font-heading font-bold uppercase tracking-wider text-[#0e9d8d] mb-1">
+                        <p className="text-[11px] font-heading font-bold uppercase tracking-wider text-[#0B5D68] mb-1">
                           {hosp.category}
                         </p>
 
@@ -339,7 +339,7 @@ export const HospitalsSection = () => {
 
                         <Link
                           href="/hospitals"
-                          className="w-full py-1 text-center text-xs font-semibold text-[#0e9d8d] hover:text-[#14B8A6] hover:underline transition-colors flex items-center justify-center gap-1"
+                          className="w-full py-1 text-center text-xs font-semibold text-[#0B5D68] hover:text-[#0C2338] hover:underline transition-colors flex items-center justify-center gap-1"
                         >
                           <span>View Facilities & Profiles</span>
                           <ChevronRight className="w-3.5 h-3.5" />

@@ -46,7 +46,7 @@ export default function TreatmentsPage() {
         <div className="mb-6">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0b5d63] hover:text-[#04272a] transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0B5D68] hover:text-[#0C2338] transition-colors"
           >
             <ArrowLeft className="w-4 h-4 rtl:rotate-180" />
             <span>Back to Main Overview</span>
@@ -54,10 +54,10 @@ export default function TreatmentsPage() {
         </div>
 
         {/* Page Header */}
-        <div className="bg-gradient-to-br from-[#04272a] via-[#0b5d63] to-[#073c40] text-white rounded-3xl p-8 sm:p-12 mb-10 shadow-xl border border-[#0b5d63]/40">
+        <div className="bg-gradient-to-br from-[#0C2338] via-[#0B5D68] to-[#08454D] text-white rounded-3xl p-8 sm:p-12 mb-10 shadow-xl border border-[#0B5D68]/40">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-[#e39b2d]/40 text-[#e39b2d] text-xs font-bold uppercase tracking-wider backdrop-blur-md font-heading">
-              <Sparkles className="w-3.5 h-3.5 text-[#e39b2d]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-[#F0A126]/40 text-[#F0A126] text-xs font-bold uppercase tracking-wider backdrop-blur-md font-heading">
+              <Sparkles className="w-3.5 h-3.5 text-[#F0A126]" />
               <span>Verified Hospital Pricing Guide</span>
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white font-heading">
@@ -79,7 +79,7 @@ export default function TreatmentsPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search treatments (e.g. bypass, knee, IVF)..."
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0b5d63]"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0B5D68]"
             />
           </div>
 
@@ -89,7 +89,7 @@ export default function TreatmentsPage() {
             <select
               value={selectedSpecialty}
               onChange={(e) => setSelectedSpecialty(e.target.value)}
-              className="px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-[#0b5d63]"
+              className="px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-[#0B5D68]"
             >
               {categories.map((c) => (
                 <option key={c} value={c}>
@@ -109,13 +109,13 @@ export default function TreatmentsPage() {
           {filtered.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 hover:border-[#0b5d63]/40 shadow-sm hover:shadow-xl transition-all duration-300"
+              className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 hover:border-[#0B5D68]/40 shadow-sm hover:shadow-xl transition-all duration-300"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 {/* Left: Info */}
                 <div className="lg:col-span-6 space-y-4">
                   <div className="flex items-center gap-2">
-                    <span className="px-3 py-1 rounded-full bg-[#0b5d63]/10 text-[#0b5d63] text-xs font-bold">
+                    <span className="px-3 py-1 rounded-full bg-[#0B5D68]/10 text-[#0B5D68] text-xs font-bold">
                       {language === "ar" ? item.specialtyAr : item.specialty}
                     </span>
                     {item.popular && (
@@ -148,7 +148,7 @@ export default function TreatmentsPage() {
                     <ul className="space-y-1.5">
                       {(language === "ar" ? item.inclusionsAr : item.inclusions).slice(0, 3).map((inc, i) => (
                         <li key={i} className="flex items-start gap-2 text-xs text-slate-600">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0b5d63] shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0B8F83] shrink-0 mt-0.5" />
                           <span>{inc}</span>
                         </li>
                       ))}
@@ -157,18 +157,18 @@ export default function TreatmentsPage() {
                 </div>
 
                 {/* Right: Comparative Cost Box & Action */}
-                <div className="lg:col-span-6 bg-gradient-to-br from-[#04272a] via-[#07383c] to-[#0b5d63] text-white rounded-2xl p-6 border border-[#0b5d63]/50 shadow-xl space-y-4">
+                <div className="lg:col-span-6 bg-gradient-to-br from-[#0C2338] via-[#083844] to-[#0B5D68] text-white rounded-2xl p-6 border border-[#0B5D68]/50 shadow-xl space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="text-[11px] font-bold text-[#e39b2d] uppercase tracking-wider font-heading">
+                      <div className="text-[11px] font-bold text-[#F0A126] uppercase tracking-wider font-heading">
                         Indicative India Package
                       </div>
-                      <div className="text-2xl sm:text-3xl font-extrabold text-[#e39b2d] font-heading mt-0.5">
+                      <div className="text-2xl sm:text-3xl font-extrabold text-[#F0A126] font-heading mt-0.5">
                         {formatPriceRange(item.indiaCostUsd.min, item.indiaCostUsd.max)}
                       </div>
                     </div>
-                    <div className="px-3 py-1 bg-[#e39b2d]/20 text-[#e39b2d] border border-[#e39b2d]/30 rounded-full text-xs font-bold flex items-center gap-1 font-heading">
-                      <TrendingDown className="w-3.5 h-3.5 text-[#e39b2d]" />
+                    <div className="px-3 py-1 bg-[#F0A126]/20 text-[#F0A126] border border-[#F0A126]/30 rounded-full text-xs font-bold flex items-center gap-1 font-heading">
+                      <TrendingDown className="w-3.5 h-3.5 text-[#F0A126]" />
                       <span>70%+ Savings</span>
                     </div>
                   </div>
@@ -191,7 +191,7 @@ export default function TreatmentsPage() {
 
                   <button
                     onClick={() => openIntake(item.name)}
-                    className="w-full py-3.5 bg-gradient-to-r from-[#e39b2d] to-[#c7821e] hover:from-[#c7821e] hover:to-[#a35f0b] text-slate-950 font-extrabold text-xs rounded-xl shadow-lg shadow-[#e39b2d]/25 transition-all flex items-center justify-center gap-2 font-heading uppercase tracking-wider"
+                    className="w-full py-3.5 bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-extrabold text-xs rounded-xl shadow-md shadow-[#F0A126]/25 transition-all flex items-center justify-center gap-2 font-heading uppercase tracking-wider cursor-pointer active:scale-[0.99]"
                   >
                     <span>Request Exact Hospital Quotation</span>
                     <ArrowRight className="w-4 h-4 rtl:rotate-180" />

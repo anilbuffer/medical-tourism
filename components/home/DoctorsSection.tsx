@@ -196,12 +196,12 @@ export const DoctorsSection = () => {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 sm:mb-12 gap-6">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
-              <span className="h-2 w-2 rounded-full bg-[#14B8A6] animate-pulse" />
+              <span className="h-2 w-2 rounded-full bg-[#0B8F83] animate-pulse" />
               <span>EXPERT SURGICAL DIRECTORS</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
               Meet Our Senior Medical Directors.{" "}
-              <span className="text-[#0e9d8d] block sm:inline">
+              <span className="text-[#0B5D68] block sm:inline">
                 Celebrated Surgical Leads.
               </span>
             </h2>
@@ -231,7 +231,7 @@ export const DoctorsSection = () => {
                 aria-label="Previous medical director"
                 className={`w-10 h-10 rounded-full border border-[#DCE6EB] flex items-center justify-center transition-all cursor-pointer ${canScrollPrev
                   ? "bg-white hover:bg-[#ECF4F7] text-[#0C2338] shadow-xs active:scale-95"
-                  : "bg-[#0e9d8d] text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
+                  : "bg-slate-100 text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
                   }`}
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -241,8 +241,8 @@ export const DoctorsSection = () => {
                 disabled={!canScrollNext}
                 aria-label="Next medical director"
                 className={`w-10 h-10 rounded-full border border-transparent flex items-center justify-center transition-all cursor-pointer ${canScrollNext
-                  ? "bg-[#0e9d8d] hover:bg-[#07434B] text-white shadow-xs active:scale-95"
-                  : "bg-[#0e9d8d] text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
+                  ? "bg-[#0B5D68] hover:bg-[#094b54] text-white shadow-xs active:scale-95"
+                  : "bg-slate-100 text-slate-300 border-[#DCE6EB]/60 cursor-not-allowed opacity-50"
                   }`}
               >
                 <ChevronRight className="w-5 h-5" />
@@ -364,7 +364,7 @@ export const DoctorsSection = () => {
                               {doc.surgeries}
                             </span>
                             <span className="text-[#0B5D68] text-[10px] xs:text-[11px] sm:text-xs font-semibold flex items-center gap-1 mt-0.5 truncate">
-                              <CheckCircle2 className="w-3 h-3 text-[#14B8A6] shrink-0" />
+                              <CheckCircle2 className="w-3 h-3 text-[#0B8F83] shrink-0" />
                               <span>{doc.successRate}</span>
                             </span>
                           </div>
@@ -415,7 +415,7 @@ export const DoctorsSection = () => {
                                 key={sIdx}
                                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#ECF4F7] text-[#0B5D68] border border-[#DCE6EB] text-xs font-medium"
                               >
-                                <span className="w-1.5 h-1.5 rounded-full bg-[#14B8A6]" />
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#0B8F83]" />
                                 <span>{proc}</span>
                               </span>
                             ))}
@@ -460,9 +460,9 @@ export const DoctorsSection = () => {
                           {/* Secondary Action Button 2 (Medical Teal #0B5D68) */}
                           <button
                             onClick={() => handleWhatsAppConsult(doc)}
-                            className="px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] active:scale-[0.98] text-white font-heading font-bold text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0 shadow-sm"
+                            className="px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] active:scale-[0.98] text-white font-heading font-bold text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0 shadow-sm"
                           >
-                            <MessageSquare className="w-4 h-4 text-[#fff] shrink-0" />
+                            <MessageSquare className="w-4 h-4 text-[#25D366] shrink-0" />
                             <span className="text-[#fff]">WhatsApp Care Desk</span>
                           </button>
                         </div>

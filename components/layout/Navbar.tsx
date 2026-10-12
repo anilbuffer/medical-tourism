@@ -116,9 +116,9 @@ export const Navbar = () => {
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 transition-colors group"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0B8F83] animate-pulse" />
               <span className="text-white/90 font-medium">24/7 International Desk:</span>
-              <span className="text-emerald-400 group-hover:text-emerald-300 font-bold">+91 98765 43210</span>
+              <span className="text-[#2ECDC5] group-hover:text-white font-bold">+91 98765 43210</span>
             </a>
             <span className="text-white/20">|</span>
             <LanguageCountryPicker />
@@ -229,9 +229,9 @@ export const Navbar = () => {
               href="https://wa.me/919876543210"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 hover:border-emerald-500/60 transition-all shadow-sm group"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-[#2ECDC5] bg-[#0B8F83]/15 hover:bg-[#0B8F83]/25 border border-[#0B8F83]/40 hover:border-[#0B8F83]/70 transition-all shadow-sm group"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse"></span>
               <span className="group-hover:text-white transition-colors">24/7 WhatsApp</span>
             </a>
 
@@ -269,7 +269,7 @@ export const Navbar = () => {
         <div className="lg:hidden bg-[#0C2338]/98 backdrop-blur-2xl border-b border-white/10 px-4 pt-3 pb-6 text-white space-y-4 animate-in slide-in-from-top-2 duration-200">
           <div className="flex items-center justify-between pb-2 border-b border-white/10">
             <div className="flex items-center gap-2 text-xs text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse"></span>
               <span>24/7 International Desk</span>
             </div>
             <LanguageCountryPicker />
@@ -332,13 +332,16 @@ export const Navbar = () => {
 
           {/* Mobile Action CTA */}
           <div className="pt-2">
-            <a
-              href="/#assessment"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-3 rounded-xl bg-[#0B5D68] hover:bg-[#0C2338] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#0B5D68]/30 transition-all font-heading"
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openIntake("Mobile Navbar CTA");
+              }}
+              className="w-full py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-[#F0A126]/25 transition-all font-heading cursor-pointer active:scale-[0.98]"
             >
+              <PhoneCall className="w-4 h-4 text-[#0C2338] stroke-[2.4]" />
               <span>Book an Appointment</span>
-            </a>
+            </button>
           </div>
         </div>
       )}

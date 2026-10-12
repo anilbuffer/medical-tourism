@@ -9,27 +9,33 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-[#0B5D68] text-white hover:bg-[#094b54] shadow-sm font-heading font-bold",
+          "bg-[#F0A126] text-[#0C2338] hover:bg-[#db8e18] shadow-md shadow-[#F0A126]/20 font-heading font-bold active:scale-[0.98]",
+        primary:
+          "bg-[#F0A126] text-[#0C2338] hover:bg-[#db8e18] shadow-md shadow-[#F0A126]/20 font-heading font-bold active:scale-[0.98]",
+        teal:
+          "bg-[#0B5D68] text-white hover:bg-[#094b54] shadow-sm font-heading font-bold active:scale-[0.98]",
+        navy:
+          "bg-[#0C2338] text-white hover:bg-[#163654] shadow-sm font-heading font-bold active:scale-[0.98]",
         gold:
-          "bg-[#F0A126] text-[#0C2338] hover:bg-[#db8e18] shadow-md font-heading font-bold active:scale-[0.98]",
+          "bg-[#F0A126] text-[#0C2338] hover:bg-[#db8e18] shadow-md shadow-[#F0A126]/20 font-heading font-bold active:scale-[0.98]",
         cyan:
-          "bg-[#0B5D68] text-white hover:bg-[#094b54] shadow-md font-heading font-bold active:scale-[0.98]",
+          "bg-[#0B5D68] text-white hover:bg-[#094b54] shadow-sm font-heading font-bold active:scale-[0.98]",
         outline:
-          "border border-[#DCE6EB] bg-white hover:bg-[#ECF4F7] hover:text-[#0C2338] text-[#0C2338]",
+          "border border-[#DCE6EB] bg-white hover:bg-[#ECF4F7] hover:text-[#0C2338] text-[#0C2338] font-heading font-bold",
         outlineNavy:
           "border border-[#0C2338] text-[#0C2338] hover:bg-[#0C2338] hover:text-white transition-colors font-heading font-bold",
         outlineTeal:
           "border border-[#0B5D68] text-[#0B5D68] hover:bg-[#0B5D68] hover:text-white transition-colors font-heading font-bold",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80 font-medium",
+          "bg-[#ECF4F7] text-[#0C2338] hover:bg-[#dbebf2] border border-[#DCE6EB] font-heading font-bold",
         ghost:
-          "hover:bg-muted hover:text-foreground text-foreground/80",
+          "hover:bg-[#ECF4F7] hover:text-[#0C2338] text-[#6B7C88] font-medium",
         glass:
-          "bg-white/10 text-white hover:bg-white/20 border border-white/15 backdrop-blur-md transition-all",
+          "bg-white/10 text-white hover:bg-white/20 border border-white/15 backdrop-blur-md transition-all font-heading font-bold",
         destructive:
-          "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20",
+          "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 font-heading font-semibold",
         link:
-          "text-primary underline-offset-4 hover:underline font-semibold p-0 h-auto",
+          "text-[#0B5D68] underline-offset-4 hover:underline font-semibold p-0 h-auto",
       },
       size: {
         default: "h-10 gap-2 px-4 py-2 rounded-xl text-sm",

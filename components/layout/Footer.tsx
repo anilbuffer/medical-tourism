@@ -41,8 +41,8 @@ export const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 items-center">
 
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#0B5D68]/30 border border-[#0B5D68]/50 flex items-center justify-center shrink-0 text-[#14B8A6]">
-                <ShieldCheck className="w-6 h-6 text-[#14B8A6]" />
+              <div className="w-12 h-12 rounded-2xl bg-[#0B5D68]/30 border border-[#0B5D68]/50 flex items-center justify-center shrink-0 text-[#0B8F83]">
+                <ShieldCheck className="w-6 h-6 text-[#0B8F83]" />
               </div>
               <div>
                 <h4 className="font-heading font-bold text-sm text-white">JCI &amp; NABH Certified</h4>
@@ -51,8 +51,8 @@ export const Footer = () => {
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#0B5D68]/30 border border-[#0B5D68]/50 flex items-center justify-center shrink-0 text-[#14B8A6]">
-                <Award className="w-6 h-6 text-[#14B8A6]" />
+              <div className="w-12 h-12 rounded-2xl bg-[#0B5D68]/30 border border-[#0B5D68]/50 flex items-center justify-center shrink-0 text-[#0B8F83]">
+                <Award className="w-6 h-6 text-[#0B8F83]" />
               </div>
               <div>
                 <h4 className="font-heading font-bold text-sm text-white">Zero Upfront Booking</h4>
@@ -61,8 +61,8 @@ export const Footer = () => {
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#0B5D68]/30 border border-[#0B5D68]/50 flex items-center justify-center shrink-0 text-[#14B8A6]">
-                <Clock className="w-6 h-6 text-[#14B8A6]" />
+              <div className="w-12 h-12 rounded-2xl bg-[#0B5D68]/30 border border-[#0B5D68]/50 flex items-center justify-center shrink-0 text-[#0B8F83]">
+                <Clock className="w-6 h-6 text-[#0B8F83]" />
               </div>
               <div>
                 <h4 className="font-heading font-bold text-sm text-white">24h Visa Invitation</h4>
@@ -71,8 +71,8 @@ export const Footer = () => {
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#0B5D68]/30 border border-[#0B5D68]/50 flex items-center justify-center shrink-0 text-[#14B8A6]">
-                <Lock className="w-6 h-6 text-[#14B8A6]" />
+              <div className="w-12 h-12 rounded-2xl bg-[#0B5D68]/30 border border-[#0B5D68]/50 flex items-center justify-center shrink-0 text-[#0B8F83]">
+                <Lock className="w-6 h-6 text-[#0B8F83]" />
               </div>
               <div>
                 <h4 className="font-heading font-bold text-sm text-white">HIPAA 256-Bit Encrypted</h4>
@@ -105,15 +105,15 @@ export const Footer = () => {
             {/* Key Trust Pill Badges */}
             <div className="flex flex-wrap gap-2 pt-1">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-medium text-slate-300">
-                <CheckCircle2 className="w-3 h-3 text-[#14B8A6]" />
+                <CheckCircle2 className="w-3 h-3 text-[#0B8F83]" />
                 <span>UK &amp; US Standards</span>
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-medium text-slate-300">
-                <CheckCircle2 className="w-3 h-3 text-[#14B8A6]" />
+                <CheckCircle2 className="w-3 h-3 text-[#0B8F83]" />
                 <span>Zero Hidden Fees</span>
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-medium text-slate-300">
-                <CheckCircle2 className="w-3 h-3 text-[#14B8A6]" />
+                <CheckCircle2 className="w-3 h-3 text-[#0B8F83]" />
                 <span>Direct Hospital Invoicing</span>
               </span>
             </div>
@@ -121,7 +121,7 @@ export const Footer = () => {
 
           {/* Col 2: Quaternary Specialties (2 Cols on LG) */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#ECF4F7] font-heading border-l-2 border-[#14B8A6] pl-2.5">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#ECF4F7] font-heading border-l-2 border-[#0B8F83] pl-2.5">
               Specialised Care
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-300 font-medium">
@@ -165,7 +165,7 @@ export const Footer = () => {
 
           {/* Col 3: Concierge & Patient Journey (2 Cols on LG) */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#ECF4F7] font-heading border-l-2 border-[#14B8A6] pl-2.5">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#ECF4F7] font-heading border-l-2 border-[#0B8F83] pl-2.5">
               Patient Journey
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-300 font-medium">
@@ -209,14 +209,14 @@ export const Footer = () => {
 
           {/* Col 4: Secure Portals & Governance (2 Cols on LG) */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#ECF4F7] font-heading border-l-2 border-[#14B8A6] pl-2.5">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#ECF4F7] font-heading border-l-2 border-[#0B8F83] pl-2.5">
               Portals &amp; Hubs
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-300 font-medium">
               <li>
                 <Link
                   href="/login?portal=patient"
-                  className="text-[#14B8A6] hover:text-white transition-colors flex items-center gap-1.5 font-bold"
+                  className="text-[#2ECDC5] hover:text-white transition-colors flex items-center gap-1.5 font-bold"
                 >
                   <span>Patient Portal Login</span>
                   <ArrowRight className="w-3 h-3" />
@@ -266,14 +266,14 @@ export const Footer = () => {
               </button>
 
               <div className="flex items-center gap-2.5 text-xs text-slate-200">
-                <Phone className="w-4 h-4 text-[#14B8A6] shrink-0" />
+                <Phone className="w-4 h-4 text-[#0B8F83] shrink-0" />
                 <a href="tel:+919876543210" className="hover:text-white transition-colors">
                   +91 98765 43210
                 </a>
               </div>
 
               <div className="flex items-center gap-2.5 text-xs text-slate-200">
-                <Mail className="w-4 h-4 text-[#14B8A6] shrink-0" />
+                <Mail className="w-4 h-4 text-[#0B8F83] shrink-0" />
                 <a href="mailto:care@yourmedicaretrip.com" className="hover:text-white transition-colors truncate">
                   care@yourmedicaretrip.com
                 </a>
@@ -282,7 +282,7 @@ export const Footer = () => {
               <div className="pt-2">
                 <button
                   onClick={() => openIntake("Footer Consultation")}
-                  className="w-full py-3 px-3 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.99] text-[#000000] font-heading font-bold text-xs shadow-md shadow-[#F0A126]/20 transition-all text-center uppercase tracking-wider cursor-pointer"
+                  className="w-full py-3 px-3 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.99] text-[#0C2338] font-heading font-bold text-xs shadow-md shadow-[#F0A126]/20 transition-all text-center uppercase tracking-wider cursor-pointer"
                 >
                   Book Free Consultation
                 </button>
@@ -295,7 +295,7 @@ export const Footer = () => {
         {/* Network Accreditation Strip */}
         <div className="py-6 border-b border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400">
           <div className="flex items-center gap-2 font-heading font-semibold text-slate-300">
-            <Building2 className="w-4 h-4 text-[#14B8A6]" />
+            <Building2 className="w-4 h-4 text-[#0B8F83]" />
             <span>Audited Partner Hospital Network:</span>
           </div>
           <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-slate-400">

@@ -8,18 +8,20 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground",
-        gold: "bg-amber-950/70 text-vedara-gold-light border-vedara-gold/40 shadow-xs font-semibold",
-        teal: "bg-teal-950/80 text-vedara-cyan border-vedara-cyan/30 shadow-xs font-semibold",
-        tealSubtle: "bg-teal-50 text-teal-800 border-teal-200/80 font-semibold",
-        navy: "bg-vedara-blue/10 text-vedara-slate border-vedara-blue/20 font-semibold",
-        secondary: "bg-secondary text-secondary-foreground border-border/50",
-        destructive:
-          "bg-destructive/10 text-destructive border-destructive/20",
-        outline: "border-border text-foreground",
-        glass: "bg-white/10 text-white border-white/20 backdrop-blur-md",
-        ghost: "hover:bg-muted hover:text-muted-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        default: "bg-[#0C2338] text-white border-transparent font-semibold shadow-xs",
+        gold: "bg-[#FEF7EC] text-[#9A6208] border-[#F0A126]/40 shadow-xs font-semibold",
+        goldDark: "bg-[#F0A126]/15 text-[#F0A126] border-[#F0A126]/30 shadow-xs font-semibold",
+        teal: "bg-[#ECF4F7] text-[#0B5D68] border-[#DCE6EB] shadow-xs font-semibold",
+        tealDark: "bg-[#0B5D68]/20 text-[#2ECDC5] border-[#0B5D68]/40 shadow-xs font-semibold",
+        green: "bg-[#F0FAF9] text-[#0B8F83] border-[#0B8F83]/30 shadow-xs font-semibold",
+        tealSubtle: "bg-[#ECF4F7] text-[#0B5D68] border-[#DCE6EB] font-semibold",
+        navy: "bg-[#0C2338]/10 text-[#0C2338] border-[#0C2338]/20 font-semibold",
+        secondary: "bg-[#ECF4F7] text-[#0C2338] border-[#DCE6EB] font-semibold",
+        destructive: "bg-destructive/10 text-destructive border-destructive/20 font-semibold",
+        outline: "border-[#DCE6EB] text-[#0C2338] bg-white font-medium",
+        glass: "bg-white/10 text-white border-white/20 backdrop-blur-md font-semibold",
+        ghost: "hover:bg-[#ECF4F7] hover:text-[#0C2338] text-[#6B7C88]",
+        link: "text-[#0B5D68] underline-offset-4 hover:underline",
       },
       size: {
         default: "h-5.5 px-2.5 py-0.5 text-xs",

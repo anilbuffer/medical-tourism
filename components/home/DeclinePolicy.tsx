@@ -35,7 +35,7 @@ export const DeclinePolicy = () => {
             <div className="lg:col-span-7 flex flex-col justify-center">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#ECF4F7] font-heading text-xs uppercase tracking-wider font-bold mb-4 backdrop-blur-md w-max">
-                <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse" />
                 <span>CLINICAL INTEGRITY GUARANTEE</span>
               </div>
 
@@ -60,10 +60,10 @@ export const DeclinePolicy = () => {
                   <span className="text-[#0C2338] font-extrabold text-sm transition-transform group-hover:translate-x-1">→</span>
                 </button>
 
-                {/* Secondary Action Button 2: bg-[#0B5D68] hover:bg-[#07434B] text-white */}
+                {/* Secondary Action Button 2: bg-[#0B5D68] hover:bg-[#094b54] text-white */}
                 <button
                   onClick={() => setVideoOpen(true)}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] active:scale-[0.98] border border-[#14B8A6]/30 text-white cursor-pointer transition-all group select-none shadow-lg shrink-0"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] active:scale-[0.98] border border-white/20 text-white cursor-pointer transition-all group select-none shadow-lg shrink-0"
                   aria-label="Watch Clinical Protocol Video"
                 >
                   <div className="w-5 h-5 rounded-full bg-white text-[#0B5D68] flex items-center justify-center shadow-md group-hover:bg-[#F0A126] group-hover:text-[#0C2338] transition-all shrink-0">
@@ -104,7 +104,7 @@ export const DeclinePolicy = () => {
                   <path
                     d="M 160, 24 C 196, 24 240, 33 282, 56 C 282, 146 268, 232 160, 348 C 52, 232 38, 146 38, 56 C 80, 33 124, 24 160, 24 Z"
                     fill="none"
-                    stroke="#14B8A6"
+                    stroke="#0B8F83"
                     strokeWidth="2"
                     strokeOpacity="0.8"
                   />

@@ -10,14 +10,14 @@
     <!-- Ascending Dynamic Golden Swoosh Arrow -->
     <path
       d="M 4 44 C 14 44 26 34 34 14"
-      stroke="#e39b2d"
+      stroke="#F0A126"
       stroke-width="3.5"
       stroke-linecap="round"
     />
     <!-- Arrowhead -->
     <polygon
       points="34,8 39,18 29,15"
-      fill="#e39b2d"
+      fill="#F0A126"
     />
   </g>
 
@@ -31,7 +31,7 @@
     fill="#ffffff"
     letter-spacing="-0.02em"
   >
-    your<tspan font-weight="700" fill="#ffffff">Medicare</tspan><tspan font-weight="700" fill="#e39b2d">Trip</tspan>
+    your<tspan font-weight="700" fill="#ffffff">Medicare</tspan><tspan font-weight="700" fill="#F0A126">Trip</tspan>
   </text>
 
   <!-- Subtitle: Crisp Tracking Text -->

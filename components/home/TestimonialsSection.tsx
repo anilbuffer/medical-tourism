@@ -127,7 +127,7 @@ export const TestimonialsSection = () => {
         {/* Left half: Deep Navy with subtle ambient teal radial glow */}
         <div className="col-span-7 xl:col-span-6 bg-gradient-to-br from-[#0C2338] via-[#091F33] to-[#061726] relative">
           <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-[#0B5D68]/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-10 right-10 w-64 h-64 bg-[#14B8A6]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-10 right-10 w-64 h-64 bg-[#0B8F83]/10 rounded-full blur-3xl pointer-events-none" />
         </div>
 
         {/* Right half: clinical doctor photo to the edge */}
@@ -144,12 +144,12 @@ export const TestimonialsSection = () => {
 
           {/* Bottom Review Ribbon on Photo */}
           <div className="absolute bottom-8 left-8 right-8 z-10 flex justify-center">
-            <div className="w-full max-w-md px-6 py-3.5 rounded-full bg-[#0B5D68]/95 backdrop-blur-md text-white shadow-2xl border border-[#14B8A6]/40 flex items-center justify-center gap-3">
+            <div className="w-full max-w-md px-6 py-3.5 rounded-full bg-[#0B5D68]/95 backdrop-blur-md text-white shadow-2xl border border-[#0B8F83]/40 flex items-center justify-center gap-3">
               <Sparkles className="w-4 h-4 text-[#F0A126] fill-[#F0A126] shrink-0" />
               <span className="text-xs sm:text-sm font-heading font-bold tracking-wide">
                 Rated 4.9 out of 5 based on 5K+ global reviews
               </span>
-              <Sparkles className="w-4 h-4 text-[#14B8A6] fill-[#14B8A6] shrink-0" />
+              <Sparkles className="w-4 h-4 text-[#0B8F83] fill-[#0B8F83] shrink-0" />
             </div>
           </div>
         </div>
@@ -164,16 +164,16 @@ export const TestimonialsSection = () => {
 
             {/* Header Area */}
             <div>
-              {/* Badge with vibrant #14B8A6 pulse */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-[#14B8A6]/30 text-[#ECF4F7] text-xs font-heading font-bold uppercase tracking-wider mb-5 backdrop-blur-md shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse" />
+              {/* Badge with vibrant #0B8F83 pulse */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-[#0B8F83]/30 text-[#ECF4F7] text-xs font-heading font-bold uppercase tracking-wider mb-5 backdrop-blur-md shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse" />
                 <span>REAL STORIES • CLINICAL OUTCOMES</span>
               </div>
 
               {/* Headline */}
               <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-white leading-[1.15] mb-6 sm:mb-10 tracking-tight">
                 What Our Patients &amp; Families Say About Their{" "}
-                <span className="text-[#14B8A6]">Journey.</span>
+                <span className="text-[#0B8F83]">Journey.</span>
               </h2>
 
               {/* Quote Mark Icon + 5 Stars Row */}
@@ -219,7 +219,7 @@ export const TestimonialsSection = () => {
                   transition={{ duration: 0.25 }}
                   className="flex items-center gap-3.5 sm:gap-5"
                 >
-                  <div className="relative w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-[#14B8A6] shrink-0 shadow-lg ring-2 ring-white/10">
+                  <div className="relative w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-[#0B8F83] shrink-0 shadow-lg ring-2 ring-white/10">
                     <Image
                       src={current.avatar}
                       alt={current.name}
@@ -232,7 +232,7 @@ export const TestimonialsSection = () => {
                       <h3 className="font-heading font-bold text-base xs:text-lg sm:text-xl text-white leading-tight">
                         {current.name}
                       </h3>
-                      <span className="px-2 xs:px-2.5 py-0.5 rounded-full bg-[#14B8A6]/20 border border-[#14B8A6]/40 text-[#14B8A6] text-[10px] xs:text-[11px] font-heading font-bold">
+                      <span className="px-2 xs:px-2.5 py-0.5 rounded-full bg-[#0B8F83]/20 border border-[#0B8F83]/40 text-[#2ECDC5] text-[10px] xs:text-[11px] font-heading font-bold">
                         {current.savings}
                       </span>
                     </div>
@@ -279,12 +279,12 @@ export const TestimonialsSection = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
         <div className="absolute bottom-4 left-4 right-4 z-10 flex justify-center">
-          <div className="w-full max-w-sm px-4 py-2.5 rounded-full bg-[#0B5D68]/95 backdrop-blur-md text-white shadow-xl border border-[#14B8A6]/40 flex items-center justify-center gap-2 text-center">
+          <div className="w-full max-w-sm px-4 py-2.5 rounded-full bg-[#0B5D68]/95 backdrop-blur-md text-white shadow-xl border border-[#0B8F83]/40 flex items-center justify-center gap-2 text-center">
             <Sparkles className="w-3.5 h-3.5 text-[#F0A126] fill-[#F0A126] shrink-0" />
             <span className="text-[11px] font-heading font-bold tracking-wide">
               Rated 4.9/5 based on 5K+ global reviews
             </span>
-            <Sparkles className="w-3.5 h-3.5 text-[#14B8A6] fill-[#14B8A6] shrink-0" />
+            <Sparkles className="w-3.5 h-3.5 text-[#0B8F83] fill-[#0B8F83] shrink-0" />
           </div>
         </div>
       </div>

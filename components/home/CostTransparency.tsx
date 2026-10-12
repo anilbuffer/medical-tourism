@@ -18,7 +18,7 @@ const KneeIcon = () => (
         fill="#E8F4F2"
       />
       {/* Robotic Articulation Bearing Plate */}
-      <rect x="7" y="15.8" width="14" height="2.8" rx="1.4" fill="#1B8755" stroke="#0B5D68" strokeWidth="1" />
+      <rect x="7" y="15.8" width="14" height="2.8" rx="1.4" fill="#0B8F83" stroke="#0B5D68" strokeWidth="1" />
       {/* Tibia (Lower shin bone) */}
       <path
         d="M9 18.6H19C20 18.6 20.8 19.4 20.8 20.4V23C20.8 24.1 19.9 25 18.8 25H9.2C8.1 25 7.2 24.1 7.2 23V20.4C7.2 19.4 8 18.6 9 18.6Z"
@@ -46,7 +46,7 @@ const HipIcon = () => (
         fill="#E8F4F2"
       />
       {/* Femoral Head Ball (Ceramic/Titanium Implant) */}
-      <circle cx="14" cy="13.2" r="3.6" stroke="#0B5D68" strokeWidth="1.8" fill="#1B8755" />
+      <circle cx="14" cy="13.2" r="3.6" stroke="#0B5D68" strokeWidth="1.8" fill="#0B8F83" />
       {/* Direct Anterior Femoral Stem */}
       <path
         d="M14 16.8V20.2L11 24.5"
@@ -81,14 +81,14 @@ const DentalIcon = () => (
       {/* Crown Occlusal Surface Highlight */}
       <path
         d="M10 8C11.2 7 12.6 6.5 14 6.5C15.4 6.5 16.8 7 18 8"
-        stroke="#1B8755"
+        stroke="#0B8F83"
         strokeWidth="1.7"
         strokeLinecap="round"
       />
       {/* Titanium Implant Abutment Screw Post */}
       <path
         d="M14 12.5V17M12 14.5H16"
-        stroke="#1B8755"
+        stroke="#0B8F83"
         strokeWidth="1.8"
         strokeLinecap="round"
       />
@@ -102,11 +102,11 @@ const IvfIcon = () => (
       {/* Ovum Outer Protective Membrane */}
       <circle cx="14" cy="14" r="9.5" stroke="#0B5D68" strokeWidth="1.8" strokeDasharray="3.5 2" fill="#E8F4F2" />
       {/* Cellular Blastocyst Inner Mass */}
-      <circle cx="12" cy="12" r="4.2" stroke="#1B8755" strokeWidth="1.7" fill="#D8EFE8" />
+      <circle cx="12" cy="12" r="4.2" stroke="#0B8F83" strokeWidth="1.7" fill="#D8EFE8" />
       <circle cx="16.5" cy="15.5" r="3" stroke="#0B5D68" strokeWidth="1.5" fill="#C2E5DC" />
-      <circle cx="12" cy="12" r="1.5" fill="#1B8755" />
+      <circle cx="12" cy="12" r="1.5" fill="#0B8F83" />
       {/* ICSI Microinjection Pipette */}
-      <path d="M3 14H6.5M5.5 12.5L7 14L5.5 15.5" stroke="#1B8755" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M3 14H6.5M5.5 12.5L7 14L5.5 15.5" stroke="#0B8F83" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   </div>
 );
@@ -123,11 +123,11 @@ const VisionIcon = () => (
         fill="#E8F4F2"
       />
       {/* Iris */}
-      <circle cx="14" cy="14" r="5" stroke="#1B8755" strokeWidth="1.7" fill="#D8EFE8" />
+      <circle cx="14" cy="14" r="5" stroke="#0B8F83" strokeWidth="1.7" fill="#D8EFE8" />
       {/* Pupil */}
       <circle cx="14" cy="14" r="2.2" fill="#0B5D68" />
       {/* Laser Topography Crosshair Markers */}
-      <path d="M14 3V5M14 23V25M3 14H5M23 14H25" stroke="#1B8755" strokeWidth="1.6" strokeLinecap="round" />
+      <path d="M14 3V5M14 23V25M3 14H5M23 14H25" stroke="#0B8F83" strokeWidth="1.6" strokeLinecap="round" />
     </svg>
   </div>
 );
@@ -194,7 +194,7 @@ export const CostTransparency = () => {
         {/* Section Header */}
         <div className="max-w-4xl mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-3.5 shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse" />
             <ShieldCheck className="w-3.5 h-3.5 text-[#0B5D68]" />
             <span>TRANSPARENT ALL-INCLUSIVE PRICING</span>
           </div>
@@ -210,7 +210,7 @@ export const CostTransparency = () => {
         <div className="flex md:hidden items-center justify-between text-[11px] font-medium text-[#6B7C88] mb-2.5 px-1">
           <span>← Swipe horizontally to view all columns</span>
           <span className="text-[#0B5D68] font-bold flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#14B8A6] animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#0B8F83] animate-pulse" />
             India Column Highlighted
           </span>
         </div>
@@ -235,8 +235,8 @@ export const CostTransparency = () => {
                   NHS / Public Wait Times
                 </th>
 
-                {/* Right Column: India Highlighted Header (Authoritative Medical Teal) */}
-                <th className="bg-[#F0A126] py-4 sm:py-5 px-5 sm:px-8 font-heading font-bold text-sm sm:text-base text-white rounded-tr-2xl w-[18%] text-left">
+                {/* Right Column: India Highlighted Header (Authoritative Gold with AAA Navy Text) */}
+                <th className="bg-[#F0A126] py-4 sm:py-5 px-5 sm:px-8 font-heading font-extrabold text-sm sm:text-base text-[#0C2338] rounded-tr-2xl w-[18%] text-left">
                   India (Your Medicare Trip)
                 </th>
               </tr>

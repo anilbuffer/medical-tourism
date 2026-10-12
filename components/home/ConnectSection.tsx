@@ -136,7 +136,7 @@ export const ConnectSection = () => {
             <div>
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-4 shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse" />
                 <Lock className="w-3.5 h-3.5 text-[#0B5D68]" />
                 <span>CONFIDENTIAL SURGEON CASE REVIEW</span>
               </div>
@@ -167,7 +167,7 @@ export const ConnectSection = () => {
                     key={step.num}
                     className="bg-[#ECF4F7] rounded-xl px-3.5 py-3 border border-[#DCE6EB] shadow-xs flex items-center gap-3 hover:border-[#0B5D68]/40 hover:bg-white transition-all group"
                   >
-                    <span className="w-8 h-8 rounded-lg bg-[#ffffff] text-[#0B5D68] flex items-center justify-center font-heading font-bold text-xs shrink-0 shadow-xs group-hover:bg-[#07434B] transition-colors">
+                    <span className="w-8 h-8 rounded-lg bg-[#ffffff] text-[#0B5D68] flex items-center justify-center font-heading font-bold text-xs shrink-0 shadow-xs group-hover:bg-[#0B5D68] group-hover:text-white transition-colors">
                       {step.num}
                     </span>
                     <h4 className="font-heading font-bold text-xs sm:text-[13px] text-[#0C2338] leading-snug">
@@ -369,7 +369,7 @@ export const ConnectSection = () => {
                     <span>256-Bit SSL Encrypted &amp; HIPAA Privacy Compliant</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#0B5D68] shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#0B8F83] shrink-0" />
                     <span>Only reviewed by licensed surgical specialists</span>
                   </div>
                 </div>
@@ -410,9 +410,9 @@ export const ConnectSection = () => {
                     href="https://wa.me/919876543210"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3 px-4 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-xs flex items-center justify-center gap-2 text-center"
+                    className="w-full py-3 px-4 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-xs flex items-center justify-center gap-2 text-center"
                   >
-                    <MessageSquare className="w-3.5 h-3.5 text-[#14B8A6]" />
+                    <MessageSquare className="w-3.5 h-3.5 text-[#25D366]" />
                     <span>Prefer WhatsApp? Send Reports Directly</span>
                   </a>
                 </div>

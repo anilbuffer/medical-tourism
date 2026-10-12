@@ -199,7 +199,7 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
   return (
     <div
       id={`journey-step-${step.stepNumber}`}
-      className="sticky w-full mb-[45vh] sm:mb-[55vh] lg:mb-44 last:mb-0"
+      className="sticky w-full mb-[30vh] sm:mb-[42vh] lg:mb-40 last:mb-0"
       style={{
         zIndex: 10 + index,
         // Tactile stacked deck-of-cards animation with responsive sticky top
@@ -286,7 +286,7 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
                 <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#0B5D68] text-white flex items-center justify-center font-heading font-bold text-xs shadow-xs">
                   {step.stepNumber}
                 </span>
-                <span className="text-[10px] sm:text-xs font-heading font-bold uppercase tracking-wider text-[#14B8A6] truncate">
+                <span className="text-[10px] sm:text-xs font-heading font-bold uppercase tracking-wider text-[#2ECDC5] truncate">
                   {step.stepPhase}
                 </span>
               </div>
@@ -315,7 +315,7 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
 
               {/* Guarantees Checklist with Cyan Checkmarks */}
               <div className="space-y-1.5 sm:space-y-2.5 mb-4 sm:mb-6 pt-2.5 sm:pt-3 border-t border-white/10">
-                <p className="text-[10px] sm:text-[11px] font-heading font-bold uppercase tracking-wider text-[#14B8A6]">
+                <p className="text-[10px] sm:text-[11px] font-heading font-bold uppercase tracking-wider text-[#2ECDC5]">
                   Guaranteed Standards at this Stage:
                 </p>
                 {step.guarantees.map((item, gIdx) => (
@@ -323,8 +323,8 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
                     key={gIdx}
                     className="flex items-start gap-2 sm:gap-2.5 text-xs sm:text-sm text-slate-200 font-medium"
                   >
-                    <span className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-[#0B5D68]/40 border border-[#14B8A6]/40 flex items-center justify-center shrink-0 mt-0.5">
-                      <CheckCircle2 className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#14B8A6]" />
+                    <span className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-[#0B5D68]/40 border border-[#0B8F83]/40 flex items-center justify-center shrink-0 mt-0.5">
+                      <CheckCircle2 className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#0B8F83]" />
                     </span>
                     <span className="leading-snug truncate xs:whitespace-normal">{item}</span>
                   </div>
@@ -345,9 +345,9 @@ const JourneyStickyCard: React.FC<JourneyStickyCardProps> = ({
                 {/* Secondary Action Button 2 */}
                 <button
                   onClick={handleWhatsApp}
-                  className="py-3 sm:py-3.5 px-4 sm:px-5 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] active:scale-[0.98] text-white font-heading font-bold text-[11px] sm:text-xs uppercase tracking-wider border border-[#14B8A6]/30 flex items-center justify-center gap-2 transition-all cursor-pointer shrink-0 shadow-sm"
+                  className="py-3 sm:py-3.5 px-4 sm:px-5 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] active:scale-[0.98] text-white font-heading font-bold text-[11px] sm:text-xs uppercase tracking-wider border border-white/15 flex items-center justify-center gap-2 transition-all cursor-pointer shrink-0 shadow-sm"
                 >
-                  <MessageSquare className="w-3.5 h-3.5 text-[#14B8A6]" />
+                  <MessageSquare className="w-3.5 h-3.5 text-[#25D366]" />
                   <span>WhatsApp Desk</span>
                 </button>
               </div>
@@ -404,7 +404,7 @@ export const PatientJourney = () => {
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-heading font-extrabold text-[#0C2338] leading-[1.15] tracking-tight">
               Four Simple Steps to Your{" "}
-              <span className="text-[#0e9d8d] block sm:inline">
+              <span className="text-[#0B5D68] block sm:inline">
                 World-Class Care in India.
               </span>
             </h2>
@@ -479,7 +479,7 @@ export const PatientJourney = () => {
               href="https://wa.me/919876543210?text=Hello%2C%20I%20have%20questions%20about%20the%204-step%20patient%20journey"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3.5 rounded-xl bg-[#0B5D68] hover:bg-[#07434B] text-white border border-transparent font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-xs flex items-center justify-center gap-2 text-center"
+              className="px-6 py-3.5 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] text-white border border-transparent font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-xs flex items-center justify-center gap-2 text-center"
             >
               <MessageSquare className="w-4 h-4 text-[#ffffff]" />
               <span className="text-[#ffffff]">WhatsApp Coordinator</span>
