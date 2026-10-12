@@ -231,7 +231,7 @@ export const CostTransparency = () => {
                       <span className="text-[10px] font-heading font-bold uppercase tracking-wider text-[#0B5D68] block">
                         India (All-Inclusive)
                       </span>
-                      <div className="text-base xs:text-lg font-black font-heading text-[#0B5D68] mt-1">
+                      <div className="text-base xs:text-lg font-semibold font-heading text-[#0B5D68] mt-1">
                         {row.indiaPrice}
                       </div>
                     </div>

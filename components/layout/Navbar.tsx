@@ -249,7 +249,7 @@ export const Navbar = () => {
           <div className="flex items-center gap-2 lg:hidden">
             <button
               onClick={() => openIntake()}
-              className="px-3.5 py-1.5 rounded-full text-xs font-bold text-[#0C2338] bg-[#F0A126] font-heading shadow-md"
+              className="px-3.5 py-1.5 rounded-full text-xs font-bold text-[#0C2338] bg-[#F0A126] shadow-md"
             >
               Book Now
             </button>
@@ -337,7 +337,7 @@ export const Navbar = () => {
                 setMobileMenuOpen(false);
                 openIntake("Mobile Navbar CTA");
               }}
-              className="w-full py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-[#F0A126]/25 transition-all font-heading cursor-pointer active:scale-[0.98]"
+              className="w-full py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-[#F0A126]/25 transition-all cursor-pointer active:scale-[0.98]"
             >
               <PhoneCall className="w-4 h-4 text-[#0C2338] stroke-[2.4]" />
               <span>Book an Appointment</span>
