@@ -10,16 +10,16 @@ export const HeroSection: React.FC = () => {
   const { openIntake } = useCare();
 
   return (
-    <section className="relative w-full overflow-hidden min-h-[580px] sm:min-h-[640px] lg:min-h-[700px] flex items-center border-b border-[#DCE5EB] py-16 sm:py-20 lg:py-24">
-      {/* Blurred Airport Background Image */}
+    <section className="relative w-full overflow-hidden min-h-[680px] sm:min-h-[760px] lg:min-h-[820px] xl:min-h-[860px] flex items-center border-b border-[#DCE5EB] py-20 sm:py-28 lg:py-32 xl:py-36">
+      {/* Indian Medical Care Floor Scenario Background with Atmospheric Blur */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <Image
-          src="/images/hero/airport-terminal-hero.jpg"
-          alt="International airport terminal departure lounge"
+          src="/images/connect/indian-medical-care-floor.jpg"
+          alt="Modern Indian medical care hospital floor scenario with doctors, patient suites, and caring clinical staff"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-right sm:object-center scale-105 filter blur-[3px] sm:blur-[4px]"
+          className="object-cover object-center lg:object-[65%_35%] scale-105 filter blur-[3px] sm:blur-[4px]"
         />
 
         {/* Ambient Gradient Overlay for Readability & Depth */}

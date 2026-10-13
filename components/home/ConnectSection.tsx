@@ -10,20 +10,20 @@ export const ConnectSection: React.FC = () => {
   const { openIntake } = useCare();
 
   return (
-    <section className="relative w-full overflow-hidden min-h-[560px] sm:min-h-[600px] lg:min-h-[640px] flex items-center bg-white border-t border-[#DCE5EB] py-14 sm:py-20 lg:py-24">
+    <section className="relative w-full overflow-hidden min-h-[660px] sm:min-h-[720px] lg:min-h-[780px] xl:min-h-[820px] flex items-center bg-white border-t border-[#DCE5EB] py-20 sm:py-26 lg:py-32 xl:py-36">
       {/* ========================================================
-          FULL-WIDTH BACKGROUND BEDSIDE PHOTOGRAPH & GRADIENTS
+          FULL-WIDTH BACKGROUND INDIAN MEDICAL CARE FLOOR & GRADIENTS
          ======================================================== */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* On desktop (lg+), the photo is anchored on the right half so the nurse & patient are clearly visible and unobstructed */}
-        <div className="absolute top-0 bottom-0 right-0 w-full lg:w-[58%] xl:w-[55%] overflow-hidden">
+        {/* On desktop (lg+), the photo is anchored on the right half showcasing the Indian doctor & care team in the patient suite */}
+        <div className="absolute top-0 bottom-0 right-0 w-full lg:w-[60%] xl:w-[58%] overflow-hidden">
           <Image
-            src="/images/connect/care-bedside.jpg"
-            alt="Compassionate healthcare coordinator supporting patient at hospital bedside"
+            src="/images/connect/indian-medical-care-floor.jpg"
+            alt="Modern Indian quaternary hospital inpatient care floor scenario with doctors and patient coordinator"
             fill
             priority
-            sizes="(max-width: 1024px) 100vw, 55vw"
-            className="object-cover object-[70%_25%] sm:object-[65%_25%] lg:object-[45%_25%]"
+            sizes="(max-width: 1024px) 100vw, 58vw"
+            className="object-cover object-[75%_35%] lg:object-[82%_35%] scale-105 filter blur-[2px] sm:blur-[2.5px]"
           />
 
           {/* Smooth Horizontal White Gradient Fade from Left Edge of Photo */}
@@ -31,10 +31,10 @@ export const ConnectSection: React.FC = () => {
         </div>
 
         {/* Mobile & Tablet Soft White Shade Overlay */}
-        <div className="lg:hidden absolute inset-0 bg-gradient-to-b from-white/92 via-white/85 to-white/90 backdrop-blur-xs z-10" />
+        <div className="lg:hidden absolute inset-0 bg-gradient-to-b from-white/95 via-white/88 to-white/92 backdrop-blur-xs z-10" />
 
         {/* Solid White Left Canvas for Desktop Typography */}
-        <div className="hidden lg:block absolute inset-y-0 left-0 w-[45%] bg-white z-0" />
+        <div className="hidden lg:block absolute inset-y-0 left-0 w-[42%] bg-white z-0" />
 
         {/* Ambient Subtle Brand Teal Glow for Added Depth */}
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] lg:w-[700px] h-[500px] lg:h-[700px] bg-[#087F79]/5 rounded-full blur-3xl pointer-events-none z-1" />
