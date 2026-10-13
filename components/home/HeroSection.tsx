@@ -67,87 +67,147 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Right Column (5 cols): Blurry Frosted Glass Card with the 3 Key Assurances */}
+          {/* Right Column (5 cols): Highly Highlighted Luminous Luxury Stepper Card */}
           <div className="lg:col-span-5 w-full flex justify-center lg:justify-end">
-            <div className="w-full max-w-md bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 sm:p-7 shadow-2xl text-white relative overflow-hidden group hover:border-white/30 transition-all duration-300">
+            <div className="w-full max-w-md bg-white/95 backdrop-blur-2xl border-2 border-white rounded-3xl p-6 sm:p-7 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.4)] text-[#102B46] relative overflow-hidden group hover:shadow-[0_28px_70px_-10px_rgba(8,127,121,0.3)] transition-all duration-300">
 
-              {/* Soft Ambient Inner Glow */}
-              <div className="absolute top-0 right-0 w-48 h-48 bg-teal-400/10 rounded-full blur-2xl pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#F0A126]/10 rounded-full blur-2xl pointer-events-none" />
+              {/* Ambient Highlighting Glow Orbs */}
+              <div className="absolute top-0 right-0 w-48 h-48 bg-[#087F79]/15 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#F0A126]/15 rounded-full blur-2xl pointer-events-none" />
 
-              {/* Card Header */}
-              <div className="relative z-10 flex items-center justify-between pb-4 mb-5 border-b border-white/15">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-teal-300 animate-pulse" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-teal-200">
+              {/* Card Header Bar */}
+              <div className="relative z-10 flex items-center justify-between pb-4 mb-4 border-b border-[#DCE5EB]">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#EAF5F4] border border-[#087F79]/30 shadow-2xs">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#087F79] animate-pulse" />
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-[#087F79]">
                     CARE ASSURANCE &amp; STANDARDS
                   </span>
                 </div>
-                <span className="text-[11px] font-semibold text-slate-200 bg-white/10 px-2.5 py-0.5 rounded-full border border-white/15">
-                  Verified
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#087F79] text-white text-[11px] font-bold shadow-xs">
+                  <ShieldCheck className="w-3.5 h-3.5 text-white" />
+                  <span>Verified</span>
                 </span>
               </div>
 
-              {/* 3 Well-Designed Assurance Items */}
-              <div className="relative z-10 space-y-4">
+              {/* Connected Visual Assurance Steps */}
+              <div className="relative z-10 space-y-3.5">
 
-                {/* Item 1: JCI & NABH Accredited Network */}
-                <div className="flex items-start gap-3.5 p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                  <div className="w-11 h-11 rounded-xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center text-teal-300 shrink-0 shadow-xs">
-                    <ShieldCheck className="w-5 h-5 text-teal-300" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm sm:text-base font-bold text-white leading-snug">
-                      JCI &amp; NABH Accredited Network
-                    </h3>
-                    <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                      International clinical protocols, modular robotic operating suites &amp; certified patient safety.
-                    </p>
+                {/* Vertical Continuous Connecting Timeline Rail */}
+                <div className="absolute left-[23px] top-6 bottom-6 w-0.5 bg-gradient-to-b from-[#087F79] via-[#F0A126] to-[#087F79] z-0 opacity-40 pointer-events-none" />
+
+                {/* Step 01: JCI & NABH Accredited Network */}
+                <div className="relative z-10 p-3.5 sm:p-4 rounded-2xl bg-white hover:bg-[#EAF5F4]/60 border border-[#DCE5EB] hover:border-[#087F79] shadow-xs hover:shadow-md transition-all duration-200 group/step">
+                  <div className="flex items-start gap-3.5">
+                    {/* Stepper Node & Icon */}
+                    <div className="relative shrink-0">
+                      <div className="w-11 h-11 rounded-2xl bg-[#EAF5F4] border-2 border-white flex items-center justify-center text-[#087F79] shadow-sm group-hover/step:scale-105 group-hover/step:bg-[#087F79] group-hover/step:text-white transition-all duration-200">
+                        <ShieldCheck className="w-5 h-5 transition-colors" />
+                      </div>
+                      <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#087F79] text-white text-[9px] font-extrabold flex items-center justify-center shadow-xs">
+                        1
+                      </span>
+                    </div>
+
+                    {/* Step Content */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-1.5 mb-0.5">
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#087F79]">
+                          STEP 01 &bull; ACCREDITATION
+                        </span>
+                        <span className="text-[10px] font-bold text-[#087F79] bg-[#EAF5F4] px-2 py-0.5 rounded-full border border-[#087F79]/20">
+                          Top Tier
+                        </span>
+                      </div>
+                      <h3 className="text-sm sm:text-base font-bold text-[#102B46] leading-snug group-hover/step:text-[#087F79] transition-colors">
+                        JCI &amp; NABH Accredited Network
+                      </h3>
+                      <p className="text-xs text-[#627486] mt-1 leading-relaxed font-normal">
+                        International clinical protocols, modular robotic operating suites &amp; certified patient safety.
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                {/* Item 2: VIP Airport Meet & Direct Transfer */}
-                <div className="flex items-start gap-3.5 p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                  <div className="w-11 h-11 rounded-xl bg-amber-500/20 border border-amber-400/30 flex items-center justify-center text-[#F0A126] shrink-0 shadow-xs">
-                    <Plane className="w-5 h-5 text-[#F0A126]" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm sm:text-base font-bold text-white leading-snug">
-                      VIP Airport Meet &amp; Direct Transfer
-                    </h3>
-                    <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                      Dedicated AC vehicle, baggage coordination &amp; personal care coordinator greeting you at the gate.
-                    </p>
+                {/* Step 02: VIP Airport Meet & Direct Transfer */}
+                <div className="relative z-10 p-3.5 sm:p-4 rounded-2xl bg-white hover:bg-amber-50/60 border border-[#DCE5EB] hover:border-[#F0A126] shadow-xs hover:shadow-md transition-all duration-200 group/step">
+                  <div className="flex items-start gap-3.5">
+                    {/* Stepper Node & Icon */}
+                    <div className="relative shrink-0">
+                      <div className="w-11 h-11 rounded-2xl bg-amber-50 border-2 border-white flex items-center justify-center text-[#D97706] shadow-sm group-hover/step:scale-105 group-hover/step:bg-[#D97706] group-hover/step:text-white transition-all duration-200">
+                        <Plane className="w-5 h-5 transition-colors" />
+                      </div>
+                      <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#D97706] text-white text-[9px] font-extrabold flex items-center justify-center shadow-xs">
+                        2
+                      </span>
+                    </div>
+
+                    {/* Step Content */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-1.5 mb-0.5">
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#D97706]">
+                          STEP 02 &bull; ARRIVAL &amp; TRANSIT
+                        </span>
+                        <span className="text-[10px] font-bold text-[#D97706] bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
+                          15–20m Corridor
+                        </span>
+                      </div>
+                      <h3 className="text-sm sm:text-base font-bold text-[#102B46] leading-snug group-hover/step:text-[#D97706] transition-colors">
+                        VIP Airport Meet &amp; Direct Transfer
+                      </h3>
+                      <p className="text-xs text-[#627486] mt-1 leading-relaxed font-normal">
+                        Dedicated AC vehicle, baggage coordination &amp; personal care coordinator greeting you at the gate.
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                {/* Item 3: Zero Waitlists • Immediate Scheduling */}
-                <div className="flex items-start gap-3.5 p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                  <div className="w-11 h-11 rounded-xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center text-teal-300 shrink-0 shadow-xs">
-                    <Clock className="w-5 h-5 text-teal-300" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm sm:text-base font-bold text-white leading-snug">
-                      Zero Waitlists &bull; Immediate Scheduling
-                    </h3>
-                    <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                      Direct surgical queue slots led exclusively by senior department heads upon arrival.
-                    </p>
+                {/* Step 03: Zero Waitlists • Immediate Scheduling */}
+                <div className="relative z-10 p-3.5 sm:p-4 rounded-2xl bg-white hover:bg-teal-50/60 border border-[#DCE5EB] hover:border-[#087F79] shadow-xs hover:shadow-md transition-all duration-200 group/step">
+                  <div className="flex items-start gap-3.5">
+                    {/* Stepper Node & Icon */}
+                    <div className="relative shrink-0">
+                      <div className="w-11 h-11 rounded-2xl bg-teal-50 border-2 border-white flex items-center justify-center text-[#087F79] shadow-sm group-hover/step:scale-105 group-hover/step:bg-[#087F79] group-hover/step:text-white transition-all duration-200">
+                        <Clock className="w-5 h-5 transition-colors" />
+                      </div>
+                      <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#087F79] text-white text-[9px] font-extrabold flex items-center justify-center shadow-xs">
+                        3
+                      </span>
+                    </div>
+
+                    {/* Step Content */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-1.5 mb-0.5">
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#087F79]">
+                          STEP 03 &bull; FAST-TRACK ACCESS
+                        </span>
+                        <span className="text-[10px] font-bold text-[#087F79] bg-teal-50 px-2 py-0.5 rounded-full border border-[#087F79]/20">
+                          Priority Slot
+                        </span>
+                      </div>
+                      <h3 className="text-sm sm:text-base font-bold text-[#102B46] leading-snug group-hover/step:text-[#087F79] transition-colors">
+                        Zero Waitlists &bull; Immediate Scheduling
+                      </h3>
+                      <p className="text-xs text-[#627486] mt-1 leading-relaxed font-normal">
+                        Direct surgical queue slots led exclusively by senior department heads upon arrival.
+                      </p>
+                    </div>
                   </div>
                 </div>
 
               </div>
 
-              {/* Card Footer Microcopy */}
-              <div className="relative z-10 mt-5 pt-4 border-t border-white/15 flex items-center justify-between text-xs text-slate-300">
-                <span className="flex items-center gap-1.5 font-medium text-[11px] sm:text-xs">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-teal-300" /> 100% Itemised Hospital Billing
+              {/* Card Footer Strip */}
+              <div className="relative z-10 mt-4 pt-3.5 border-t border-[#DCE5EB] flex items-center justify-between text-xs">
+                <span className="flex items-center gap-1.5 font-semibold text-[#102B46] text-[11px] sm:text-xs">
+                  <CheckCircle2 className="w-4 h-4 text-[#087F79] shrink-0" />
+                  <span>100% Itemised Hospital Billing</span>
                 </span>
                 <Link
                   href="/#why-us"
-                  className="text-teal-300 hover:text-white font-semibold text-xs inline-flex items-center gap-1 transition-colors"
+                  className="text-[#087F79] hover:text-[#066f6a] font-bold text-xs inline-flex items-center gap-1 transition-colors px-2 py-1 rounded-md hover:bg-[#EAF5F4]"
                 >
                   <span>Learn More</span>
-                  <ArrowRight className="w-3 h-3" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
 
