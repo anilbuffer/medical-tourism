@@ -241,38 +241,7 @@ export const DoctorsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Trust & Clinical Assurance Horizontal Strip */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-8 sm:mb-10">
-          <div className="bg-white/80 backdrop-blur-xs rounded-xl p-3.5 border border-[#DCE5EB] flex items-center gap-3 shadow-2xs">
-            <div className="w-8 h-8 rounded-lg bg-[#EAF5F4] flex items-center justify-center shrink-0">
-              <CheckCircle2 className="w-4 h-4 text-[#087F79]" />
-            </div>
-            <div>
-              <h4 className="text-xs sm:text-sm font-bold text-[#102B46] leading-tight">Direct Chief Surgeon Care</h4>
-              <p className="text-[11px] text-[#627486] mt-0.5">Senior directors perform every scheduled surgery.</p>
-            </div>
-          </div>
 
-          <div className="bg-white/80 backdrop-blur-xs rounded-xl p-3.5 border border-[#DCE5EB] flex items-center gap-3 shadow-2xs">
-            <div className="w-8 h-8 rounded-lg bg-[#EAF5F4] flex items-center justify-center shrink-0">
-              <CheckCircle2 className="w-4 h-4 text-[#087F79]" />
-            </div>
-            <div>
-              <h4 className="text-xs sm:text-sm font-bold text-[#102B46] leading-tight">Pre-Travel Video Assessment</h4>
-              <p className="text-[11px] text-[#627486] mt-0.5">Review MRI scans &amp; clinical plans before departure.</p>
-            </div>
-          </div>
-
-          <div className="bg-white/80 backdrop-blur-xs rounded-xl p-3.5 border border-[#DCE5EB] flex items-center gap-3 shadow-2xs">
-            <div className="w-8 h-8 rounded-lg bg-[#EAF5F4] flex items-center justify-center shrink-0">
-              <CheckCircle2 className="w-4 h-4 text-[#087F79]" />
-            </div>
-            <div>
-              <h4 className="text-xs sm:text-sm font-bold text-[#102B46] leading-tight">Zero Surgical Waitlists</h4>
-              <p className="text-[11px] text-[#627486] mt-0.5">Priority hospital admission slots upon arrival.</p>
-            </div>
-          </div>
-        </div>
 
         {/* ========================================================
             ROW 02: FEATURED SPECIALIST CARD (SEPARATE ROW AUTO SLIDER)
