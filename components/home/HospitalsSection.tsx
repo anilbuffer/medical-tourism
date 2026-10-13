@@ -54,8 +54,8 @@ const NETWORK_HOSPITALS: HospitalNode[] = [
     description:
       "A flagship quaternary care facility featuring 11 modular laminar-flow surgical suites, advanced Da Vinci robotic platform, and round-the-clock emergency medical teams.",
     href: "/hospitals",
-    x: 46,
-    y: 38,
+    x: 25,
+    y: 28,
   },
   {
     id: "max-mohali",
@@ -72,8 +72,8 @@ const NETWORK_HOSPITALS: HospitalNode[] = [
     description:
       "Premier multi-speciality medical institute equipped with cutting-edge cancer care suites, bone marrow transplant unit, and specialized post-operative care units.",
     href: "/hospitals",
-    x: 34,
-    y: 52,
+    x: 18,
+    y: 64,
   },
   {
     id: "apollo-chandigarh",
@@ -90,8 +90,8 @@ const NETWORK_HOSPITALS: HospitalNode[] = [
     description:
       "A prestigious medical institution offering high-precision diagnostic and interventional suites, expedited consultation pathways, and dedicated international liaisons.",
     href: "/hospitals",
-    x: 62,
-    y: 32,
+    x: 78,
+    y: 24,
   },
   {
     id: "healing-hospital",
@@ -108,8 +108,8 @@ const NETWORK_HOSPITALS: HospitalNode[] = [
     description:
       "Modern boutique hospital known for rapid post-operative mobilization protocols, tailored international patient suites, and personalized nursing care.",
     href: "/hospitals",
-    x: 58,
-    y: 65,
+    x: 50,
+    y: 46,
   },
   {
     id: "eden-hospital",
@@ -126,8 +126,8 @@ const NETWORK_HOSPITALS: HospitalNode[] = [
     description:
       "Equipped with advanced multi-slice CT, MRI, and dedicated isolation suites providing seamless intensive care management for international medical transfers.",
     href: "/hospitals",
-    x: 74,
-    y: 54,
+    x: 82,
+    y: 60,
   },
 ];
 
@@ -205,53 +205,90 @@ export const HospitalsSection: React.FC = () => {
 
         {/* Interactive Main Canvas & Focus Showcase */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-          {/* Left: Creative Interactive Visual Network Map (7 cols) - Light Background */}
-          <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 text-[#102B46] relative overflow-hidden flex flex-col justify-between shadow-lg border border-[#DCE5EB] min-h-[440px] sm:min-h-[520px]">
-            {/* Tech Blueprint & Grid Background */}
+          {/* Left: Creative Interactive Visual Network Map (7 cols) - Ultra Modern Light Tech Canvas */}
+          <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 text-[#102B46] relative overflow-hidden flex flex-col justify-between shadow-xl border border-[#DCE5EB] min-h-[500px] sm:min-h-[560px]">
+            
+            {/* Ultra-Fine Tech Dot Matrix Pattern */}
             <div
-              className="absolute inset-0 opacity-[0.06] pointer-events-none"
+              className="absolute inset-0 opacity-[0.08] pointer-events-none"
               style={{
-                backgroundImage:
-                  "radial-gradient(#087F79 1.5px, transparent 1.5px), linear-gradient(to right, #087F79 1px, transparent 1px), linear-gradient(to bottom, #087F79 1px, transparent 1px)",
-                backgroundSize: "28px 28px, 56px 56px, 56px 56px",
+                backgroundImage: "radial-gradient(#087F79 1.5px, transparent 1.5px)",
+                backgroundSize: "24px 24px",
               }}
             />
 
-            {/* Glowing Accent Glows */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#087F79]/5 rounded-full blur-[90px] pointer-events-none" />
-            <div className="absolute bottom-10 right-10 w-72 h-72 bg-[#102B46]/5 rounded-full blur-[80px] pointer-events-none" />
+            {/* Ambient Radial Illumination */}
+            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] bg-gradient-to-tr from-[#087F79]/10 via-[#2ECDC5]/5 to-transparent rounded-full blur-[80px] pointer-events-none" />
+            <div className="absolute bottom-6 right-6 w-64 h-64 bg-[#102B46]/5 rounded-full blur-[70px] pointer-events-none" />
 
             {/* Canvas Header Bar */}
-            <div className="relative z-10 flex items-center justify-between pb-4 border-b border-[#DCE5EB]">
-              <div className="flex items-center gap-2">
-                <div className="w-2.5 h-2.5 rounded-full bg-[#087F79] animate-ping" />
+            <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[#DCE5EB] gap-2">
+              <div className="flex items-center gap-2.5">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#087F79] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#087F79]" />
+                </span>
                 <span className="text-xs font-bold text-[#102B46] tracking-wider uppercase">
                   Chandigarh Tricity Healthcare Corridor · Live Network
                 </span>
               </div>
-              <span className="text-[11px] font-semibold text-[#627486] bg-[#F8FAFC] border border-[#DCE5EB] px-2.5 py-1 rounded-full">
-                5 Premier Partner Centers
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] font-semibold text-[#087F79] bg-[#EAF5F4] border border-[#087F79]/20 px-2.5 py-1 rounded-full">
+                  5 Premier Partner Centers
+                </span>
+              </div>
             </div>
 
-            {/* Interactive Map Surface with SVG Network Grid & Coordinates */}
-            <div className="relative z-10 flex-1 my-6 min-h-[300px] flex items-center justify-center">
-              {/* SVG Connecting Corridors & Radar Rings */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-                {/* Connecting Transit Lines */}
-                <line x1="46%" y1="38%" x2="34%" y2="52%" stroke="#087F79" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.45" />
-                <line x1="46%" y1="38%" x2="62%" y2="32%" stroke="#087F79" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.55" />
-                <line x1="62%" y1="32%" x2="58%" y2="65%" stroke="#087F79" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.45" />
-                <line x1="58%" y1="65%" x2="74%" y2="54%" stroke="#087F79" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.45" />
-                <line x1="34%" y1="52%" x2="58%" y2="65%" stroke="#087F79" strokeWidth="1" strokeDasharray="2 4" strokeOpacity="0.3" />
+            {/* Interactive Map Surface with Bezier Transit Curves & Spacious Coordinates */}
+            <div className="relative z-10 flex-1 my-4 min-h-[360px] sm:min-h-[390px]">
+              
+              {/* SVG Connecting Corridors, Transit Arcs & Concentric Transit Rings */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="corridorTeal" x1="0%" y1="100%" x2="0%" y2="0%">
+                    <stop offset="0%" stopColor="#087F79" stopOpacity="0.6" />
+                    <stop offset="100%" stopColor="#2ECDC5" stopOpacity="0.2" />
+                  </linearGradient>
+                </defs>
 
-                {/* Radar Orbit Concentric Circles centered around Tricity */}
-                <circle cx="50%" cy="45%" r="80" stroke="#087F79" strokeWidth="1" strokeOpacity="0.15" fill="none" />
-                <circle cx="50%" cy="45%" r="140" stroke="#087F79" strokeWidth="1" strokeOpacity="0.1" fill="none" strokeDasharray="6 6" />
-                <circle cx="50%" cy="45%" r="200" stroke="#087F79" strokeWidth="1" strokeOpacity="0.06" fill="none" />
+                {/* Concentric Corridor Transit Zones centered around Chandigarh Tricity (50%, 50%) */}
+                <circle cx="50" cy="50" r="18" stroke="#087F79" strokeWidth="0.4" strokeOpacity="0.18" fill="none" />
+                <circle cx="50" cy="50" r="32" stroke="#087F79" strokeWidth="0.4" strokeOpacity="0.14" fill="none" strokeDasharray="1.5 1.5" />
+                <circle cx="50" cy="50" r="44" stroke="#087F79" strokeWidth="0.3" strokeOpacity="0.08" fill="none" />
+
+                {/* Curved High-Speed Airport Arteries (from Airport [50, 88] to each Hospital) */}
+                <path d="M 50 88 Q 32 64 25 28" stroke="url(#corridorTeal)" strokeWidth="0.6" strokeDasharray="1.5 1.5" fill="none" />
+                <path d="M 50 88 Q 30 78 18 64" stroke="url(#corridorTeal)" strokeWidth="0.6" strokeDasharray="1.5 1.5" fill="none" />
+                <path d="M 50 88 Q 50 67 50 46" stroke="#087F79" strokeWidth="0.8" strokeDasharray="2 1.5" strokeOpacity="0.5" fill="none" />
+                <path d="M 50 88 Q 68 62 78 24" stroke="url(#corridorTeal)" strokeWidth="0.6" strokeDasharray="1.5 1.5" fill="none" />
+                <path d="M 50 88 Q 72 76 82 60" stroke="url(#corridorTeal)" strokeWidth="0.6" strokeDasharray="1.5 1.5" fill="none" />
+
+                {/* Inter-Hospital Clinical Liaison Arteries */}
+                <path d="M 25 28 Q 38 35 50 46" stroke="#102B46" strokeWidth="0.4" strokeDasharray="1 1" strokeOpacity="0.25" fill="none" />
+                <path d="M 50 46 Q 64 33 78 24" stroke="#102B46" strokeWidth="0.4" strokeDasharray="1 1" strokeOpacity="0.25" fill="none" />
+                <path d="M 18 64 Q 34 54 50 46" stroke="#102B46" strokeWidth="0.4" strokeDasharray="1 1" strokeOpacity="0.2" fill="none" />
+                <path d="M 50 46 Q 66 54 82 60" stroke="#102B46" strokeWidth="0.4" strokeDasharray="1 1" strokeOpacity="0.2" fill="none" />
               </svg>
 
-              {/* Interactive Hospital Pins */}
+              {/* Central Airport Gateway Hub (Anchor Origin at 50%, 88%) */}
+              <div
+                className="absolute -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none"
+                style={{ left: "50%", top: "88%" }}
+              >
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#102B46] text-white shadow-md border border-white/20">
+                  <span className="w-2 h-2 rounded-full bg-[#F0A126] animate-pulse" />
+                  <Plane className="w-3.5 h-3.5 text-[#F0A126]" />
+                  <span className="text-[11px] font-bold tracking-tight">Chandigarh Int’l Airport (IXC)</span>
+                  <span className="text-[10px] text-teal-300 font-medium hidden sm:inline">&bull; 15m Corridor</span>
+                </div>
+              </div>
+
+              {/* Transit Ring Zone Labels */}
+              <div className="absolute top-[34%] left-[50%] -translate-x-1/2 pointer-events-none text-[9px] font-bold text-[#087F79]/60 uppercase tracking-widest bg-white/70 px-2 py-0.5 rounded-full">
+                15-Min Surgical Corridor
+              </div>
+
+              {/* Interactive Hospital Pins — Spread Across Canvas with Zero Collisions */}
               {NETWORK_HOSPITALS.map((hospital) => {
                 const isActive = hospital.id === activeHospitalId;
                 const isMatchingFilter = filteredHospitals.some((h) => h.id === hospital.id);
@@ -261,62 +298,52 @@ export const HospitalsSection: React.FC = () => {
                     key={hospital.id}
                     type="button"
                     onClick={() => setActiveHospitalId(hospital.id)}
-                    className={`absolute -translate-x-1/2 -translate-y-1/2 z-20 group text-left cursor-pointer transition-all duration-300 ${isMatchingFilter ? "opacity-100 scale-100" : "opacity-40 scale-90"
+                    className={`absolute -translate-x-1/2 -translate-y-1/2 z-30 group text-left cursor-pointer transition-all duration-300 ${isMatchingFilter ? "opacity-100 scale-100" : "opacity-45 scale-90"
                       }`}
                     style={{ left: `${hospital.x}%`, top: `${hospital.y}%` }}
                     aria-label={`Select ${hospital.name}`}
                   >
                     {/* Pulsing Beacon Ring for Active Pin */}
                     {isActive && (
-                      <span className="absolute -inset-3 rounded-full bg-[#087F79]/25 animate-ping pointer-events-none" />
+                      <span className="absolute -inset-3 rounded-2xl bg-[#087F79]/20 animate-ping pointer-events-none" />
                     )}
 
+                    {/* Modern Interactive Beacon Card Pin */}
                     <div
-                      className={`relative flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all duration-300 shadow-md ${isActive
-                          ? "bg-[#087F79] border-[#087F79] text-white scale-110 shadow-teal-600/25 ring-4 ring-[#087F79]/20"
-                          : "bg-white border-[#DCE5EB] text-[#102B46] hover:border-[#087F79] hover:bg-[#EAF5F4]"
+                      className={`relative flex items-center gap-2.5 px-3.5 py-2 rounded-2xl border transition-all duration-300 ${isActive
+                          ? "bg-[#087F79] border-white text-white shadow-xl shadow-[#087F79]/30 ring-4 ring-[#087F79]/25 scale-105"
+                          : "bg-white/95 backdrop-blur-md border-[#DCE5EB] text-[#102B46] hover:border-[#087F79] hover:bg-[#EAF5F4] shadow-md hover:shadow-lg"
                         }`}
                     >
-                      <MapPin
-                        className={`w-4 h-4 shrink-0 transition-colors ${isActive ? "text-white" : "text-[#087F79]"
+                      <div
+                        className={`w-7 h-7 rounded-xl flex items-center justify-center shrink-0 transition-colors ${isActive ? "bg-white/20 text-white" : "bg-[#EAF5F4] text-[#087F79]"
                           }`}
-                      />
-                      <span className="text-xs font-semibold whitespace-nowrap hidden sm:inline">
-                        {hospital.shortName}
-                      </span>
-                    </div>
+                      >
+                        <Building2 className="w-4 h-4" />
+                      </div>
 
-                    {/* Popover Mini Tooltip on Hover */}
-                    <div
-                      className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 pointer-events-none transition-all duration-200 ${isActive
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0"
-                        }`}
-                    >
-                      <div className="bg-[#102B46] text-white text-[10px] font-semibold px-2 py-1 rounded shadow-xl whitespace-nowrap">
-                        {hospital.accreditation}
+                      <div className="text-left">
+                        <div className="flex items-center gap-1.5">
+                          <p className={`text-xs font-bold leading-tight whitespace-nowrap ${isActive ? "text-white" : "text-[#102B46]"}`}>
+                            {hospital.shortName}
+                          </p>
+                          {isActive && (
+                            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                          )}
+                        </div>
+                        <p className={`text-[10px] font-medium leading-tight whitespace-nowrap ${isActive ? "text-teal-100" : "text-[#627486]"}`}>
+                          {hospital.airportTime.replace(" to Airport (IXC)", "")} &bull; {hospital.beds}
+                        </p>
                       </div>
                     </div>
                   </button>
                 );
               })}
-
-              {/* Central Map Legend Overlay */}
-              <div className="absolute bottom-2 left-2 bg-white/95 backdrop-blur-md border border-[#DCE5EB] rounded-xl p-3 text-[11px] text-[#627486] space-y-1.5 shadow-xs hidden sm:block">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#087F79]" />
-                  <span className="text-[#102B46] font-medium">JCI & NABH Verified Partner</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Plane className="w-3 h-3 text-[#F0A126]" />
-                  <span>15–20 Mins from Chandigarh Int&apos;l (IXC)</span>
-                </div>
-              </div>
             </div>
 
             {/* Bottom Quick Hub Switcher Bar */}
-            <div className="relative z-10 pt-3 border-t border-[#DCE5EB] flex items-center gap-2 overflow-x-auto scrollbar-none">
-              <span className="text-[11px] font-semibold text-[#627486] shrink-0 mr-1">
+            <div className="relative z-10 pt-3.5 border-t border-[#DCE5EB] flex items-center gap-2 overflow-x-auto scrollbar-none">
+              <span className="text-[11px] font-bold text-[#627486] uppercase tracking-wider shrink-0 mr-1">
                 Select Partner:
               </span>
               {NETWORK_HOSPITALS.map((h) => (
@@ -324,15 +351,17 @@ export const HospitalsSection: React.FC = () => {
                   key={h.id}
                   type="button"
                   onClick={() => setActiveHospitalId(h.id)}
-                  className={`text-xs px-2.5 py-1 rounded-lg shrink-0 transition-colors cursor-pointer ${h.id === activeHospitalId
-                      ? "bg-[#087F79] text-white font-semibold shadow-2xs"
+                  className={`text-xs px-3 py-1.5 rounded-lg shrink-0 transition-all cursor-pointer flex items-center gap-1.5 shadow-2xs ${h.id === activeHospitalId
+                      ? "bg-[#087F79] text-white font-semibold"
                       : "bg-[#F8FAFC] border border-[#DCE5EB] text-[#627486] hover:text-[#102B46] hover:bg-slate-100"
                     }`}
                 >
-                  {h.shortName}
+                  <span className={`w-1.5 h-1.5 rounded-full ${h.id === activeHospitalId ? "bg-white" : "bg-[#087F79]"}`} />
+                  <span>{h.shortName}</span>
                 </button>
               ))}
             </div>
+
           </div>
 
           {/* Right: Focused Active Hospital Showcase Card (5 cols) */}
