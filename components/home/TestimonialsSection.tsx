@@ -12,13 +12,16 @@ export const TestimonialsSection: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div className="max-w-2xl">
-            <span className="text-[#087F79] text-xs font-bold uppercase tracking-wider block mb-2">
-              PATIENT TESTIMONIALS
-            </span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF5F4] border border-[#087F79]/20 shadow-2xs mb-3.5">
+              <span className="w-2 h-2 rounded-full bg-[#087F79] animate-pulse" />
+              <span className="text-[#087F79] text-xs font-bold uppercase tracking-wider">
+                PATIENT STORIES
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#102B46] tracking-tight leading-tight">
               Real Experiences. Personal Journeys.
             </h2>
-            <p className="text-[#627486] text-sm sm:text-base mt-2.5 leading-relaxed font-normal">
+            <p className="text-[#627486] text-sm sm:text-base mt-2.5 sm:mt-3 leading-relaxed font-normal">
               Listen to international patients who traveled with Your Medicare Trip for complex surgeries and personal hospital advocacy.
             </p>
           </div>

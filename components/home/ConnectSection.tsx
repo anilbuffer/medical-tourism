@@ -26,13 +26,13 @@ export const ConnectSection: React.FC = () => {
             <div className="lg:col-span-7 space-y-5 sm:space-y-6">
 
               {/* Eyebrow Badge */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#EAF5F4] text-xs font-semibold tracking-wider uppercase">
-                <Lock className="w-3.5 h-3.5 text-[#DDA34A]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#EAF5F4] text-xs font-bold tracking-wider uppercase shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-[#2ECDC5] animate-pulse" />
                 <span>START YOUR JOURNEY TODAY</span>
               </div>
 
               {/* Headline */}
-              <h2 className="text-2xl sm:text-3xl lg:text-[2.6rem] font-bold text-white tracking-tight leading-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-tight">
                 Start the First Step on Your Medical Journey
               </h2>
 

@@ -184,7 +184,7 @@ export const DoctorsSection: React.FC = () => {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 sm:mb-10">
           <div className="max-w-2xl">
             {/* Section Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#087F79]/20 shadow-2xs mb-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#087F79]/20 shadow-2xs mb-3.5">
               <span className="w-2 h-2 rounded-full bg-[#087F79] animate-pulse" />
               <span className="text-[#087F79] text-xs font-bold uppercase tracking-wider">
                 OUR MEDICAL NETWORK

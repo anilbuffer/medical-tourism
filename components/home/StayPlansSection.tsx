@@ -71,21 +71,25 @@ export const StayPlansSection: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-6">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF5F4] border border-[#DCE5EB] text-xs font-semibold text-[#087F79] mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#087F79]" />
-              <Sparkles className="w-3.5 h-3.5 text-[#087F79]" />
-              <span className="uppercase tracking-wider font-bold">Accommodation &amp; Recovery Plans</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF5F4] border border-[#087F79]/20 shadow-2xs mb-3.5">
+              <span className="w-2 h-2 rounded-full bg-[#087F79] animate-pulse" />
+              <span className="text-[#087F79] text-xs font-bold uppercase tracking-wider">
+                ACCOMMODATION &amp; RECOVERY
+              </span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#102B46] tracking-tight leading-tight">
-              Choose How You Want to Stay.
+              Choose How You Want to Stay &amp; Recover
             </h2>
+            <p className="text-[#627486] text-sm sm:text-base mt-2.5 sm:mt-3 leading-relaxed font-normal">
+              Sanitized partner suites near hospital surgical hubs, private airport transfers, and dedicated concierge care for you and your companion.
+            </p>
           </div>
 
           {/* Action: Explore Stay Options */}
           <Link
             href="/getting-here"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#102B46] hover:text-[#087F79] transition-colors group shrink-0 py-2.5 px-5 rounded-lg bg-white hover:bg-[#EAF5F4] border border-[#DCE5EB] hover:border-[#087F79]/40 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
+            className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-white hover:bg-[#EAF5F4] text-[#102B46] hover:text-[#087F79] border border-[#DCE5EB] hover:border-[#087F79]/40 font-semibold text-sm transition-all duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
           >
             <span>Explore Stay Options</span>
             <ArrowRight className="w-4 h-4 text-[#087F79] transition-transform group-hover:translate-x-1" />

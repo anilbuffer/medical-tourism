@@ -58,15 +58,20 @@ export const CostTransparency: React.FC = () => {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
-        <div className="max-w-3xl mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF5F4] border border-[#DCE5EB] text-xs font-semibold text-[#087F79] mb-4">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#087F79]" />
-            <span className="uppercase tracking-wider font-bold">Transparent All-Inclusive Pricing</span>
+        <div className="max-w-2xl mb-10 sm:mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF5F4] border border-[#087F79]/20 shadow-2xs mb-3.5">
+            <span className="w-2 h-2 rounded-full bg-[#087F79] animate-pulse" />
+            <span className="text-[#087F79] text-xs font-bold uppercase tracking-wider">
+              TRANSPARENT PRICING
+            </span>
           </div>
 
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#102B46] tracking-tight leading-tight">
             All-Inclusive <span className="text-[#087F79]">Cost Comparison</span>
           </h2>
+          <p className="text-[#627486] text-sm sm:text-base mt-2.5 sm:mt-3 leading-relaxed font-normal">
+            Save up to 70–80% compared to US and UK private hospitals with direct itemized hospital billing and zero hidden agency markups.
+          </p>
         </div>
 
         {/* Master Comparison Table Card */}

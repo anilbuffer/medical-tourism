@@ -39,20 +39,26 @@ export const BlogSection: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div className="max-w-2xl">
-            <span className="text-[#087F79] text-xs font-bold uppercase tracking-wider block mb-2">
-              PATIENT GUIDES &amp; INSIGHTS
-            </span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#087F79]/20 shadow-2xs mb-3.5">
+              <span className="w-2 h-2 rounded-full bg-[#087F79] animate-pulse" />
+              <span className="text-[#087F79] text-xs font-bold uppercase tracking-wider">
+                PATIENT GUIDES &amp; INSIGHTS
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#102B46] tracking-tight leading-tight">
               Prepare for Your Medical Journey
             </h2>
+            <p className="text-[#627486] text-sm sm:text-base mt-2.5 sm:mt-3 leading-relaxed font-normal">
+              Essential clinical advice on Indian e-medical visas, evaluating hospital accreditations, and safe international recovery timelines.
+            </p>
           </div>
 
           <Link
             href="/guides"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#087F79] hover:text-[#102B46] transition-colors group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79] rounded p-1"
+            className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-white hover:bg-[#EAF5F4] text-[#102B46] hover:text-[#087F79] border border-[#DCE5EB] hover:border-[#087F79]/40 font-semibold text-sm transition-all duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
           >
             <span>Read All Guides</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="w-4 h-4 text-[#087F79] transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
 

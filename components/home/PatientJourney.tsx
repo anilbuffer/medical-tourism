@@ -35,15 +35,19 @@ export const PatientJourney: React.FC = () => {
 
         {/* Top Header Row: Left Eyebrow + Headline, Right Action Button */}
         <div className="flex flex-col md:flex-row md:items-start justify-between mb-16 sm:mb-20 gap-6">
-          <div>
-            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#087F79] mb-3">
-              <span className="w-2 h-2 rounded-full bg-[#087F79]" />
-              <span>HOW IT WORK</span>
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF5F4] border border-[#087F79]/20 shadow-2xs mb-3.5">
+              <span className="w-2 h-2 rounded-full bg-[#087F79] animate-pulse" />
+              <span className="text-[#087F79] text-xs font-bold uppercase tracking-wider">
+                HOW IT WORKS
+              </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#102B46] tracking-tight leading-[1.18] max-w-xl">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#102B46] tracking-tight leading-tight">
               Guiding You Through Your Treatment Journey
             </h2>
-            <div className="w-2 h-2 rounded-full bg-[#087F79]/50 mt-4" />
+            <p className="text-[#627486] text-sm sm:text-base mt-2.5 sm:mt-3 leading-relaxed font-normal">
+              From confidential medical review to hospital discharge and safe travel home—a coordinated roadmap designed for peace of mind.
+            </p>
           </div>
 
           <div className="shrink-0 pt-2">

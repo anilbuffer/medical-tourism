@@ -158,24 +158,27 @@ export const HospitalsSection: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 gap-6">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EAF5F4] border border-[#087F79]/20 mb-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF5F4] border border-[#087F79]/20 shadow-2xs mb-3.5">
               <span className="w-2 h-2 rounded-full bg-[#087F79] animate-pulse" />
               <span className="text-[#087F79] text-xs font-bold uppercase tracking-wider">
-                OUR MEDICAL NETWORK
+                ACCREDITED HOSPITALS
               </span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#102B46] tracking-tight leading-tight">
-              Accredited Hospital Network & Surgical Hubs
+              Accredited Hospital Network &amp; Surgical Hubs
             </h2>
+            <p className="text-[#627486] text-sm sm:text-base mt-2.5 sm:mt-3 leading-relaxed font-normal">
+              JCI and NABH accredited quaternary centers with cutting-edge robotic surgical suites, international patient lounges, and zero waitlists.
+            </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <Link
               href="/hospitals"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-[#087F79] hover:bg-[#066661] transition-all px-5 py-2.5 rounded-lg shadow-sm hover:shadow-md group"
+              className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-white hover:bg-[#EAF5F4] text-[#102B46] hover:text-[#087F79] border border-[#DCE5EB] hover:border-[#087F79]/40 font-semibold text-sm transition-all duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
             >
               <span>Explore All Hospitals</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 text-[#087F79] transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </div>

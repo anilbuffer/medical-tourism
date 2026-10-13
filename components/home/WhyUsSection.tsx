@@ -43,12 +43,12 @@ export const WhyUsSection: React.FC = () => {
     <section id="why-us" className="py-16 sm:py-20 lg:py-24 bg-[#EAF5F4] border-b border-[#DCE5EB] w-full">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Centered Header */}
-        <div className="text-left mb-12 sm:mb-14">
+        {/* Header */}
+        <div className="text-left mb-12 sm:mb-14 max-w-2xl">
           {/* Pill Tag */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DCE5EB] text-xs font-semibold text-[#087F79] mb-4 shadow-2xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#087F79]" />
-            <span>The YourMedicareTrip Difference</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#087F79]/20 text-xs font-bold uppercase tracking-wider text-[#087F79] mb-3.5 shadow-2xs">
+            <span className="w-2 h-2 rounded-full bg-[#087F79] animate-pulse" />
+            <span>THE YOURMEDICARETRIP DIFFERENCE</span>
           </div>
 
           {/* Main Headline */}
@@ -56,6 +56,9 @@ export const WhyUsSection: React.FC = () => {
             More Than Medical Travel.
             <span className="block mt-1 text-[#087F79]">Personal Care Coordination.</span>
           </h2>
+          <p className="text-[#627486] text-sm sm:text-base mt-2.5 sm:mt-3 leading-relaxed font-normal">
+            Direct hospital pricing, dedicated personal bedside advocacy, and seamless continuity from admission to full recovery.
+          </p>
         </div>
 
         {/* 4 Cards Grid */}

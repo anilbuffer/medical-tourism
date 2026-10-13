@@ -72,17 +72,19 @@ export const CareCoordination: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF5F4] border border-[#087F79]/20 text-xs font-bold text-[#087F79] mb-4 shadow-2xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF5F4] border border-[#087F79]/20 shadow-2xs mb-3.5">
             <span className="w-2 h-2 rounded-full bg-[#087F79] animate-pulse" />
-            <span className="uppercase tracking-wider">Aftercare &amp; Continuity</span>
+            <span className="text-[#087F79] text-xs font-bold uppercase tracking-wider">
+              AFTERCARE &amp; CONTINUITY
+            </span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#102B46] tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#102B46] tracking-tight leading-tight">
             The Right Choice for Your
-            <span className="block mt-1.5 text-[#087F79]">Healthcare &amp; Recovery Needs</span>
+            <span className="block mt-1 text-[#087F79]">Healthcare &amp; Recovery Needs</span>
           </h2>
 
-          <p className="text-[#627486] text-sm sm:text-base mt-4 leading-relaxed font-normal">
+          <p className="text-[#627486] text-sm sm:text-base mt-2.5 sm:mt-3 leading-relaxed font-normal">
             From daily bedside advocacy in India to follow-up video consultations back in your home country, our medical continuity team protects your healing journey every step of the way.
           </p>
         </div>
