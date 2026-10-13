@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, MessageSquare } from "lucide-react";
 import { useCare } from "@/context/CareContext";
 
@@ -65,9 +66,15 @@ export const Footer: React.FC = () => {
             <div className="lg:col-span-8 space-y-6">
 
               {/* Logo */}
-              <Link href="/" className="inline-flex items-center gap-2.5 group">
-                <div className="w-8 h-8 rounded-xl bg-[#087F79] flex items-center justify-center text-white font-bold text-base shadow-sm">
-                  <span>Y</span>
+              <Link href="/" className="inline-flex items-center gap-3 group">
+                <div className="relative w-9 h-9 shrink-0 transition-transform group-hover:scale-105">
+                  <Image
+                    src="/logo-icon.png"
+                    alt="YourMedicareTrip Logo"
+                    width={36}
+                    height={36}
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <span className="font-heading font-extrabold text-xl text-white tracking-tight">
                   YourMedicare<span className="text-[#087F79]">Trip</span>

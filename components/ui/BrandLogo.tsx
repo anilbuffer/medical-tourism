@@ -12,10 +12,11 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   variant = "white",
 }) => {
   const isWhite = variant === "white";
-  const crossColor = isWhite ? "#ffffff" : "#0B5D68";
+  const crossColor = isWhite ? "#ffffff" : "#087F79";
   const textColor = isWhite ? "#ffffff" : "#0C2338";
   const accentColor = "#F0A126";
   const subtextColor = isWhite ? "rgba(255, 255, 255, 0.85)" : "#6B7C88";
+  const maskId = React.useId();
 
   return (
     <div className={`inline-flex items-center select-none ${className}`}>
@@ -26,11 +27,26 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
         className="h-full w-auto block"
         style={{ imageRendering: "crisp-edges" }}
       >
+        <defs>
+          <mask id={maskId}>
+            <rect x="-10" y="-10" width="74" height="74" fill="white" />
+            <path
+              d="M -2 46 C 10 46 25 34 37 10"
+              stroke="black"
+              strokeWidth="7"
+              strokeLinecap="round"
+            />
+            <polygon points="36,2 44,18 29,14" fill="black" />
+          </mask>
+        </defs>
+
         {/* Cross + Ascending Swoosh Group */}
         <g transform="translate(4, 4)">
-          {/* Medical Cross */}
-          <rect x="15" y="0" width="16" height="46" rx="5" fill={crossColor} />
-          <rect x="0" y="15" width="46" height="16" rx="5" fill={crossColor} />
+          {/* Medical Cross with Gap Mask */}
+          <g mask={`url(#${maskId})`}>
+            <rect x="15" y="0" width="16" height="46" rx="5" fill={crossColor} />
+            <rect x="0" y="15" width="46" height="16" rx="5" fill={crossColor} />
+          </g>
 
           {/* Golden Dynamic Swoosh Arrow */}
           <path
@@ -82,24 +98,40 @@ export interface BrandIconProps {
 }
 
 export const BrandIcon: React.FC<BrandIconProps> = ({
-  className = "w-6 h-6",
-  variant = "white",
+  className = "w-8 h-8",
+  variant = "color",
 }) => {
   const isWhite = variant === "white";
-  const crossColor = isWhite ? "#ffffff" : "#0B5D68";
+  const crossColor = isWhite ? "#ffffff" : "#087F79";
   const accentColor = "#F0A126";
+  const maskId = React.useId();
 
   return (
     <svg
-      viewBox="-3 -3 52 52"
+      viewBox="-4 -4 54 54"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       aria-hidden="true"
     >
-      {/* Medical Cross */}
-      <rect x="15" y="0" width="16" height="46" rx="5" fill={crossColor} />
-      <rect x="0" y="15" width="46" height="16" rx="5" fill={crossColor} />
+      <defs>
+        <mask id={maskId}>
+          <rect x="-10" y="-10" width="74" height="74" fill="white" />
+          <path
+            d="M -2 46 C 10 46 25 34 37 10"
+            stroke="black"
+            strokeWidth="7"
+            strokeLinecap="round"
+          />
+          <polygon points="36,2 44,18 29,14" fill="black" />
+        </mask>
+      </defs>
+
+      {/* Medical Cross with Swoosh Gap Mask */}
+      <g mask={`url(#${maskId})`}>
+        <rect x="15" y="0" width="16" height="46" rx="5" fill={crossColor} />
+        <rect x="0" y="15" width="46" height="16" rx="5" fill={crossColor} />
+      </g>
 
       {/* Golden Dynamic Swoosh Arrow */}
       <path

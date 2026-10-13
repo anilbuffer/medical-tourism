@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useCare } from "@/context/CareContext";
 import { LanguageCountryPicker } from "@/components/ui/LanguageCountryPicker";
 import { Button } from "@/components/ui/button";
@@ -45,12 +46,22 @@ export const Header = () => {
         <div className="flex items-center justify-between gap-6">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0B5D68] flex items-center justify-center shadow-md transition-transform">
-              <span className="text-white font-black text-lg font-serif">Y</span>
+            <div className="relative w-9 h-9 sm:w-10 sm:h-10 shrink-0 transition-transform group-hover:scale-105">
+              <Image
+                src="/logo-icon.png"
+                alt="Your Medicare Trip Logo"
+                width={40}
+                height={40}
+                className="w-full h-full object-contain"
+                priority
+              />
             </div>
             <div className="flex flex-col">
-              <span className="font-extrabold tracking-widest text-base sm:text-lg text-[#0C2338]">
-                Your Medicare Trip
+              <span className="font-heading font-extrabold text-base sm:text-lg text-[#0C2338] tracking-tight leading-none">
+                YourMedicare<span className="text-[#087F79]">Trip</span>
+              </span>
+              <span className="text-[10px] text-[#627486] font-medium tracking-wider uppercase mt-0.5">
+                Medical Travel Concierge
               </span>
             </div>
           </Link>

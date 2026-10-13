@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useCare } from "@/context/CareContext";
 import { Menu, X, ArrowRight } from "lucide-react";
@@ -61,8 +62,15 @@ export const Navbar: React.FC = () => {
             className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79] rounded-lg p-1"
             aria-label="YourMedicareTrip Home"
           >
-            <div className="w-9 h-9 rounded-xl bg-[#087F79] flex items-center justify-center text-white font-bold text-lg shadow-sm">
-              <span className="font-heading tracking-tight">Y</span>
+            <div className="relative w-9 h-9 sm:w-10 sm:h-10 shrink-0 transition-transform group-hover:scale-105">
+              <Image
+                src="/logo-icon.png"
+                alt="YourMedicareTrip Logo"
+                width={40}
+                height={40}
+                className="w-full h-full object-contain"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-heading font-extrabold text-lg sm:text-xl text-[#102B46] tracking-tight leading-none">
