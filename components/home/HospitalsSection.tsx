@@ -54,7 +54,7 @@ const NETWORK_HOSPITALS: HospitalNode[] = [
     description:
       "A flagship quaternary care facility featuring 11 modular laminar-flow surgical suites, advanced Da Vinci robotic platform, and round-the-clock emergency medical teams.",
     href: "/hospitals",
-    x: 25,
+    x: 27,
     y: 28,
   },
   {
@@ -72,7 +72,7 @@ const NETWORK_HOSPITALS: HospitalNode[] = [
     description:
       "Premier multi-speciality medical institute equipped with cutting-edge cancer care suites, bone marrow transplant unit, and specialized post-operative care units.",
     href: "/hospitals",
-    x: 18,
+    x: 23,
     y: 64,
   },
   {
@@ -90,7 +90,7 @@ const NETWORK_HOSPITALS: HospitalNode[] = [
     description:
       "A prestigious medical institution offering high-precision diagnostic and interventional suites, expedited consultation pathways, and dedicated international liaisons.",
     href: "/hospitals",
-    x: 78,
+    x: 73,
     y: 24,
   },
   {
@@ -126,8 +126,8 @@ const NETWORK_HOSPITALS: HospitalNode[] = [
     description:
       "Equipped with advanced multi-slice CT, MRI, and dedicated isolation suites providing seamless intensive care management for international medical transfers.",
     href: "/hospitals",
-    x: 82,
-    y: 60,
+    x: 75,
+    y: 62,
   },
 ];
 
@@ -257,17 +257,17 @@ export const HospitalsSection: React.FC = () => {
                 <circle cx="50" cy="50" r="44" stroke="#087F79" strokeWidth="0.3" strokeOpacity="0.08" fill="none" />
 
                 {/* Curved High-Speed Airport Arteries (from Airport [50, 88] to each Hospital) */}
-                <path d="M 50 88 Q 32 64 25 28" stroke="url(#corridorTeal)" strokeWidth="0.6" strokeDasharray="1.5 1.5" fill="none" />
-                <path d="M 50 88 Q 30 78 18 64" stroke="url(#corridorTeal)" strokeWidth="0.6" strokeDasharray="1.5 1.5" fill="none" />
+                <path d="M 50 88 Q 34 64 27 28" stroke="url(#corridorTeal)" strokeWidth="0.6" strokeDasharray="1.5 1.5" fill="none" />
+                <path d="M 50 88 Q 32 78 23 64" stroke="url(#corridorTeal)" strokeWidth="0.6" strokeDasharray="1.5 1.5" fill="none" />
                 <path d="M 50 88 Q 50 67 50 46" stroke="#087F79" strokeWidth="0.8" strokeDasharray="2 1.5" strokeOpacity="0.5" fill="none" />
-                <path d="M 50 88 Q 68 62 78 24" stroke="url(#corridorTeal)" strokeWidth="0.6" strokeDasharray="1.5 1.5" fill="none" />
-                <path d="M 50 88 Q 72 76 82 60" stroke="url(#corridorTeal)" strokeWidth="0.6" strokeDasharray="1.5 1.5" fill="none" />
+                <path d="M 50 88 Q 66 62 73 24" stroke="url(#corridorTeal)" strokeWidth="0.6" strokeDasharray="1.5 1.5" fill="none" />
+                <path d="M 50 88 Q 68 76 75 62" stroke="url(#corridorTeal)" strokeWidth="0.6" strokeDasharray="1.5 1.5" fill="none" />
 
                 {/* Inter-Hospital Clinical Liaison Arteries */}
-                <path d="M 25 28 Q 38 35 50 46" stroke="#102B46" strokeWidth="0.4" strokeDasharray="1 1" strokeOpacity="0.25" fill="none" />
-                <path d="M 50 46 Q 64 33 78 24" stroke="#102B46" strokeWidth="0.4" strokeDasharray="1 1" strokeOpacity="0.25" fill="none" />
-                <path d="M 18 64 Q 34 54 50 46" stroke="#102B46" strokeWidth="0.4" strokeDasharray="1 1" strokeOpacity="0.2" fill="none" />
-                <path d="M 50 46 Q 66 54 82 60" stroke="#102B46" strokeWidth="0.4" strokeDasharray="1 1" strokeOpacity="0.2" fill="none" />
+                <path d="M 27 28 Q 38 35 50 46" stroke="#102B46" strokeWidth="0.4" strokeDasharray="1 1" strokeOpacity="0.25" fill="none" />
+                <path d="M 50 46 Q 62 33 73 24" stroke="#102B46" strokeWidth="0.4" strokeDasharray="1 1" strokeOpacity="0.25" fill="none" />
+                <path d="M 23 64 Q 36 54 50 46" stroke="#102B46" strokeWidth="0.4" strokeDasharray="1 1" strokeOpacity="0.2" fill="none" />
+                <path d="M 50 46 Q 64 54 75 62" stroke="#102B46" strokeWidth="0.4" strokeDasharray="1 1" strokeOpacity="0.2" fill="none" />
               </svg>
 
               {/* Central Airport Gateway Hub (Anchor Origin at 50%, 88%) */}
@@ -275,10 +275,10 @@ export const HospitalsSection: React.FC = () => {
                 className="absolute -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none"
                 style={{ left: "50%", top: "88%" }}
               >
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#102B46] text-white shadow-md border border-white/20">
+                <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-[#102B46] text-white shadow-md border border-white/20">
                   <span className="w-2 h-2 rounded-full bg-[#F0A126] animate-pulse" />
                   <Plane className="w-3.5 h-3.5 text-[#F0A126]" />
-                  <span className="text-[11px] font-bold tracking-tight">Chandigarh Int’l Airport (IXC)</span>
+                  <span className="text-[10px] sm:text-[11px] font-bold tracking-tight">Chandigarh Int’l Airport (IXC)</span>
                   <span className="text-[10px] text-teal-300 font-medium hidden sm:inline">&bull; 15m Corridor</span>
                 </div>
               </div>
@@ -305,34 +305,35 @@ export const HospitalsSection: React.FC = () => {
                   >
                     {/* Pulsing Beacon Ring for Active Pin */}
                     {isActive && (
-                      <span className="absolute -inset-3 rounded-2xl bg-[#087F79]/20 animate-ping pointer-events-none" />
+                      <span className="absolute -inset-2.5 sm:-inset-3 rounded-2xl bg-[#087F79]/20 animate-ping pointer-events-none" />
                     )}
 
                     {/* Modern Interactive Beacon Card Pin */}
                     <div
-                      className={`relative flex items-center gap-2.5 px-3.5 py-2 rounded-2xl border transition-all duration-300 ${isActive
-                          ? "bg-[#087F79] border-white text-white shadow-xl shadow-[#087F79]/30 ring-4 ring-[#087F79]/25 scale-105"
+                      className={`relative flex items-center gap-1.5 sm:gap-2.5 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-xl sm:rounded-2xl border transition-all duration-300 ${isActive
+                          ? "bg-[#087F79] border-white text-white shadow-xl shadow-[#087F79]/30 ring-2 sm:ring-4 ring-[#087F79]/25 scale-105"
                           : "bg-white/95 backdrop-blur-md border-[#DCE5EB] text-[#102B46] hover:border-[#087F79] hover:bg-[#EAF5F4] shadow-md hover:shadow-lg"
                         }`}
                     >
                       <div
-                        className={`w-7 h-7 rounded-xl flex items-center justify-center shrink-0 transition-colors ${isActive ? "bg-white/20 text-white" : "bg-[#EAF5F4] text-[#087F79]"
+                        className={`w-6 h-6 sm:w-7 sm:h-7 rounded-lg sm:rounded-xl flex items-center justify-center shrink-0 transition-colors ${isActive ? "bg-white/20 text-white" : "bg-[#EAF5F4] text-[#087F79]"
                           }`}
                       >
-                        <Building2 className="w-4 h-4" />
+                        <Building2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                       </div>
 
                       <div className="text-left">
-                        <div className="flex items-center gap-1.5">
-                          <p className={`text-xs font-bold leading-tight whitespace-nowrap ${isActive ? "text-white" : "text-[#102B46]"}`}>
+                        <div className="flex items-center gap-1 sm:gap-1.5">
+                          <p className={`text-[11px] sm:text-xs font-bold leading-tight whitespace-nowrap ${isActive ? "text-white" : "text-[#102B46]"}`}>
                             {hospital.shortName}
                           </p>
                           {isActive && (
                             <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                           )}
                         </div>
-                        <p className={`text-[10px] font-medium leading-tight whitespace-nowrap ${isActive ? "text-teal-100" : "text-[#627486]"}`}>
-                          {hospital.airportTime.replace(" to Airport (IXC)", "")} &bull; {hospital.beds}
+                        <p className={`text-[9px] sm:text-[10px] font-medium leading-tight whitespace-nowrap ${isActive ? "text-teal-100" : "text-[#627486]"}`}>
+                          {hospital.airportTime.replace(" to Airport (IXC)", "")}
+                          <span className="hidden sm:inline"> &bull; {hospital.beds}</span>
                         </p>
                       </div>
                     </div>

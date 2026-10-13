@@ -2,12 +2,12 @@
 
 import React from "react";
 import Image from "next/image";
-import { 
-  Building2, 
-  ClipboardCheck, 
-  Plane, 
-  Video, 
-  Pill, 
+import {
+  Building2,
+  ClipboardCheck,
+  Plane,
+  Video,
+  Pill,
   HeartHandshake,
   ShieldCheck,
   CheckCircle2,
@@ -69,9 +69,9 @@ export const CareCoordination: React.FC = () => {
       <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-[#102B46]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <div className="text-left max-w-full mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF5F4] border border-[#087F79]/20 shadow-2xs mb-3.5">
             <span className="w-2 h-2 rounded-full bg-[#087F79] animate-pulse" />
             <span className="text-[#087F79] text-xs font-bold uppercase tracking-wider">
@@ -91,7 +91,7 @@ export const CareCoordination: React.FC = () => {
 
         {/* 3-Column Master Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-          
+
           {/* ========================================================
               LEFT COLUMN: PHASE 01 — IN-HOSPITAL CARE (3 CARDS)
              ======================================================== */}
@@ -137,7 +137,7 @@ export const CareCoordination: React.FC = () => {
              ======================================================== */}
           <div className="lg:col-span-4 flex flex-col">
             <div className="relative rounded-3xl overflow-hidden border border-[#DCE5EB] bg-gradient-to-b from-[#EAF5F4] via-white to-[#F8FAFC] shadow-xl hover:shadow-2xl transition-all duration-300 flex-1 flex flex-col justify-between group min-h-[480px] lg:min-h-full">
-              
+
               {/* Top Floating Badge */}
               <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-[#102B46] text-xs font-bold shadow-sm border border-[#DCE5EB]">

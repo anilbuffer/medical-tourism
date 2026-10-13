@@ -196,9 +196,9 @@ export const Footer: React.FC = () => {
               <Link href="/" className="hover:text-white transition-colors">
                 Home
               </Link>
-              <Link href="/about" className="hover:text-white transition-colors">
+              {/* <Link href="/about" className="hover:text-white transition-colors">
                 About Us
-              </Link>
+              </Link> */}
               <Link href="/treatments" className="hover:text-white transition-colors">
                 Treatments
               </Link>
@@ -208,17 +208,15 @@ export const Footer: React.FC = () => {
               <Link href="/#journey" className="hover:text-white transition-colors">
                 How It Works
               </Link>
-              <Link href="/contact" className="hover:text-white transition-colors">
+              {/* <Link href="/contact" className="hover:text-white transition-colors">
                 Contact Us
-              </Link>
+              </Link> */}
             </div>
-
             {/* Right: Copyright */}
             <div>
               Copyright &copy; {currentYear} YourMedicareTrip. All Rights Reserved.
             </div>
           </div>
-
         </div>
       </div>
     </footer>

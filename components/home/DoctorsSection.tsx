@@ -144,8 +144,10 @@ export const DoctorsSection: React.FC = () => {
   const { openIntake } = useCare();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
-  // Auto Slider Timer (slides every 6 seconds, pauses on mouse hover)
+  // Auto Slider Timer (slides every 6 seconds, pauses on mouse hover / touch)
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
@@ -164,12 +166,40 @@ export const DoctorsSection: React.FC = () => {
     setCurrentIndex((prev) => (prev + 1) % FEATURED_DOCTORS.length);
   };
 
+  // Touch Swipe Gesture Handlers for Ultra Smooth Mobile Navigation
+  const minSwipeDistance = 45;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setIsPaused(true);
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    setIsPaused(false);
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      handleNext();
+    } else if (isRightSwipe) {
+      handlePrev();
+    }
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
   const currentDoctor = FEATURED_DOCTORS[currentIndex];
 
   return (
     <section
       id="doctors"
-      className="py-16 sm:py-20 lg:py-24 bg-[#EAF5F4] border-b border-[#DCE5EB] relative overflow-hidden"
+      className="py-14 sm:py-20 lg:py-24 bg-[#EAF5F4] border-b border-[#DCE5EB] relative overflow-hidden"
     >
       {/* Soft Background Ambient Illumination */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#087F79]/5 rounded-full blur-3xl pointer-events-none" />
@@ -202,35 +232,35 @@ export const DoctorsSection: React.FC = () => {
           </div>
 
           {/* Right Header Utilities: Meet All Specialists CTA + Slider Controls */}
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <div className="flex items-center justify-between sm:justify-end gap-3 shrink-0 w-full lg:w-auto">
             {/* Primary Action Button */}
             <Link
               href="/doctors"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-white hover:bg-[#EAF5F4] text-[#102B46] hover:text-[#087F79] border border-[#DCE5EB] hover:border-[#087F79]/40 font-semibold text-sm transition-all duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-lg bg-white hover:bg-[#EAF5F4] text-[#102B46] hover:text-[#087F79] border border-[#DCE5EB] hover:border-[#087F79]/40 font-semibold text-xs sm:text-sm transition-all duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
             >
               <span>Meet All 45+ Specialists</span>
               <ArrowRight className="w-4 h-4 text-[#087F79] transition-transform group-hover:translate-x-1" />
             </Link>
 
             {/* Auto Slider Prev / Next Controls */}
-            <div className="flex items-center gap-1.5 bg-white p-1 rounded-lg border border-[#DCE5EB] shadow-xs">
+            <div className="flex items-center gap-1 sm:gap-1.5 bg-white p-1 rounded-lg border border-[#DCE5EB] shadow-xs shrink-0">
               <button
                 type="button"
                 onClick={handlePrev}
-                className="p-2 rounded-md text-[#102B46] hover:text-[#087F79] hover:bg-[#EAF5F4] transition-colors cursor-pointer"
+                className="p-1.5 sm:p-2 rounded-md text-[#102B46] hover:text-[#087F79] hover:bg-[#EAF5F4] transition-colors cursor-pointer"
                 title="Previous specialist"
                 aria-label="Previous specialist"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="text-xs font-bold text-[#102B46] px-1.5 select-none font-mono">
+              <span className="text-xs font-bold text-[#102B46] px-1 sm:px-1.5 select-none font-mono">
                 0{currentIndex + 1}
                 <span className="text-[#627486] font-normal font-sans"> / 0{FEATURED_DOCTORS.length}</span>
               </span>
               <button
                 type="button"
                 onClick={handleNext}
-                className="p-2 rounded-md text-[#102B46] hover:text-[#087F79] hover:bg-[#EAF5F4] transition-colors cursor-pointer"
+                className="p-1.5 sm:p-2 rounded-md text-[#102B46] hover:text-[#087F79] hover:bg-[#EAF5F4] transition-colors cursor-pointer"
                 title="Next specialist"
                 aria-label="Next specialist"
               >
@@ -240,8 +270,6 @@ export const DoctorsSection: React.FC = () => {
           </div>
         </div>
 
-
-
         {/* ========================================================
             ROW 02: FEATURED SPECIALIST CARD (SEPARATE ROW AUTO SLIDER)
            ======================================================== */}
@@ -249,88 +277,81 @@ export const DoctorsSection: React.FC = () => {
           className="w-full relative"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
-          {/* Main Card Container */}
-          <div className="bg-white rounded-3xl border border-[#DCE5EB] shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col lg:flex-row items-stretch group">
+          {/* Main Card Container (Responsive: Column on Mobile, Side-by-Side on Tablet & Desktop) */}
+          <div className="bg-white rounded-3xl border border-[#DCE5EB] shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col md:flex-row items-stretch group">
 
             {/* Left Column: Doctor Portrait Photo */}
-            <div className="relative w-full lg:w-[380px] xl:w-[420px] min-h-[360px] sm:min-h-[440px] lg:min-h-[500px] bg-gradient-to-br from-[#087F79]/10 via-slate-100 to-[#102B46]/10 shrink-0 overflow-hidden">
+            <div className="relative w-full md:w-[320px] lg:w-[380px] xl:w-[420px] h-[340px] sm:h-[400px] md:h-auto md:min-h-[500px] bg-gradient-to-br from-[#087F79]/10 via-slate-100 to-[#102B46]/10 shrink-0 overflow-hidden">
               <Image
                 key={currentDoctor.id}
                 src={currentDoctor.image}
                 alt={`${currentDoctor.name} - ${currentDoctor.title}`}
                 fill
-                sizes="(max-width: 1024px) 100vw, 420px"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 380px, 420px"
                 className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 priority
               />
-
-              {/* Gradient Overlay for Mobile Depth */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#102B46]/85 via-transparent to-black/10 lg:hidden" />
-
-              {/* Mobile Bottom Name & Hospital Tag */}
-              <div className="absolute bottom-4 left-4 right-4 z-10 text-white lg:hidden">
-                <span className="text-xs text-teal-300 font-semibold block">{currentDoctor.hospital}</span>
-                <h3 className="text-xl font-bold">{currentDoctor.name}</h3>
-                <p className="text-xs text-slate-200 mt-0.5">{currentDoctor.department}</p>
-              </div>
             </div>
 
             {/* Right Column: Doctor Details, Stats, Credentials & CTAs */}
-            <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-between flex-1 bg-white">
+            <div className="p-5 sm:p-7 lg:p-9 xl:p-10 flex flex-col justify-between flex-1 bg-white">
               <div>
-                {/* Header Strip with Badge, Experience & Slide Counter */}
+                {/* Header Strip with Badge & Experience */}
                 <div className="flex flex-wrap items-center justify-between gap-2.5">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EAF5F4] text-[#087F79] text-xs font-bold border border-[#087F79]/20">
-                    <ShieldCheck className="w-4 h-4 text-[#087F79]" />
+                  <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 rounded-full bg-[#EAF5F4] text-[#087F79] text-[11px] sm:text-xs font-bold border border-[#087F79]/20">
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#087F79]" />
                     <span>FEATURED SPECIALIST · CHIEF SURGEON</span>
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F8FAFC] text-[#102B46] text-xs font-bold border border-[#DCE5EB] shadow-2xs">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-[#F8FAFC] text-[#102B46] text-[11px] sm:text-xs font-bold border border-[#DCE5EB] shadow-2xs">
                       <Star className="w-3.5 h-3.5 text-[#F0A126] fill-[#F0A126]" />
                       <span>{currentDoctor.experience}</span>
                     </span>
 
-                    <span className="text-xs font-bold text-[#627486] bg-slate-100 px-2.5 py-1 rounded-md hidden sm:inline-block">
+                    <span className="text-xs font-bold text-[#627486] bg-slate-100 px-2.5 py-1 rounded-md hidden lg:inline-block">
                       Specialist {currentIndex + 1} of {FEATURED_DOCTORS.length}
                     </span>
                   </div>
                 </div>
 
-                {/* Doctor Name & Department */}
-                <h3 className="text-2xl sm:text-3xl font-bold text-[#102B46] mt-3 leading-tight hidden lg:block">
+                {/* Doctor Name & Department (Always Clearly Visible on ALL viewports) */}
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#102B46] mt-3 leading-tight">
                   {currentDoctor.name}
                 </h3>
 
-                <p className="text-xs sm:text-sm font-semibold text-[#087F79] mt-1.5 leading-snug">
+                <p className="text-xs sm:text-sm font-semibold text-[#087F79] mt-1 sm:mt-1.5 leading-snug">
                   {currentDoctor.title} &bull; {currentDoctor.department}
                 </p>
 
-                {/* 3-Column Surgery Stats Strip */}
-                <div className="grid grid-cols-3 gap-2 my-5 p-3.5 rounded-2xl bg-[#F8FAFC] border border-[#DCE5EB] text-center">
+                {/* 3-Column Surgery Stats Strip (Fluid Responsive Sizing) */}
+                <div className="grid grid-cols-3 gap-2 my-4 sm:my-5 p-3 sm:p-3.5 rounded-2xl bg-[#F8FAFC] border border-[#DCE5EB] text-center">
                   <div>
-                    <p className="text-base sm:text-xl font-extrabold text-[#102B46]">
+                    <p className="text-sm sm:text-lg lg:text-xl font-extrabold text-[#102B46] leading-tight">
                       {currentDoctor.stats.surgeries}
                     </p>
-                    <p className="text-[10px] sm:text-xs font-medium text-[#627486]">Surgeries Done</p>
+                    <p className="text-[10px] sm:text-xs font-medium text-[#627486] mt-0.5">Surgeries Done</p>
                   </div>
                   <div className="border-x border-[#DCE5EB]">
-                    <p className="text-base sm:text-xl font-extrabold text-[#087F79]">
+                    <p className="text-sm sm:text-lg lg:text-xl font-extrabold text-[#087F79] leading-tight">
                       {currentDoctor.stats.successRate}
                     </p>
-                    <p className="text-[10px] sm:text-xs font-medium text-[#627486]">Clinical Success</p>
+                    <p className="text-[10px] sm:text-xs font-medium text-[#627486] mt-0.5">Clinical Success</p>
                   </div>
                   <div>
-                    <p className="text-base sm:text-xl font-extrabold text-[#102B46]">
+                    <p className="text-sm sm:text-lg lg:text-xl font-extrabold text-[#102B46] leading-tight truncate px-0.5" title={currentDoctor.stats.fellowshipLocale}>
                       {currentDoctor.stats.fellowshipLocale}
                     </p>
-                    <p className="text-[10px] sm:text-xs font-medium text-[#627486]">Training &amp; Fellowships</p>
+                    <p className="text-[10px] sm:text-xs font-medium text-[#627486] mt-0.5">Fellowships</p>
                   </div>
                 </div>
 
                 {/* Credentials & Institutional Badges */}
-                <div className="space-y-2.5 text-xs text-[#627486]">
+                <div className="space-y-2 sm:space-y-2.5 text-xs text-[#627486]">
                   <div className="flex items-center gap-2.5">
                     <div className="w-5 h-5 rounded-md bg-[#EAF5F4] flex items-center justify-center shrink-0">
                       <Building2 className="w-3.5 h-3.5 text-[#087F79]" />
@@ -345,19 +366,19 @@ export const DoctorsSection: React.FC = () => {
                     <div className="w-5 h-5 rounded-md bg-[#EAF5F4] flex items-center justify-center shrink-0">
                       <GraduationCap className="w-3.5 h-3.5 text-[#087F79]" />
                     </div>
-                    <span>{currentDoctor.degrees}</span>
+                    <span className="line-clamp-1">{currentDoctor.degrees}</span>
                   </div>
 
                   <div className="flex items-center gap-2.5">
                     <div className="w-5 h-5 rounded-md bg-[#EAF5F4] flex items-center justify-center shrink-0">
                       <Award className="w-3.5 h-3.5 text-[#087F79]" />
                     </div>
-                    <span>{currentDoctor.fellowships}</span>
+                    <span className="line-clamp-1">{currentDoctor.fellowships}</span>
                   </div>
                 </div>
 
                 {/* Clinical Focus Tags */}
-                <div className="mt-5 pt-4 border-t border-[#DCE5EB]">
+                <div className="mt-4 sm:mt-5 pt-3.5 sm:pt-4 border-t border-[#DCE5EB]">
                   <p className="text-[11px] uppercase tracking-wider font-semibold text-[#627486] mb-2">
                     Primary Clinical Specialties:
                   </p>
@@ -375,12 +396,12 @@ export const DoctorsSection: React.FC = () => {
               </div>
 
               {/* Bottom Action CTAs + Pagination Controls */}
-              <div className="mt-7 pt-5 border-t border-[#DCE5EB] flex flex-col sm:flex-row items-center justify-between gap-3">
-                <div className="flex items-center gap-2.5 w-full sm:w-auto">
+              <div className="mt-6 pt-5 border-t border-[#DCE5EB] flex flex-col sm:flex-row items-center justify-between gap-3.5">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full sm:w-auto">
                   <button
                     type="button"
                     onClick={() => openIntake(`${currentDoctor.name} - ${currentDoctor.department}`)}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#087F79] hover:bg-[#066f6a] text-white text-xs sm:text-sm font-semibold transition-all shadow-sm hover:shadow-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#087F79] hover:bg-[#066f6a] text-white text-xs sm:text-sm font-semibold transition-all shadow-sm hover:shadow-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79] active:scale-[0.99]"
                   >
                     <span>Request Case Review</span>
                     <ArrowRight className="w-4 h-4" />
@@ -388,7 +409,7 @@ export const DoctorsSection: React.FC = () => {
 
                   <Link
                     href="/doctors"
-                    className="text-xs font-bold text-[#087F79] hover:text-[#102B46] transition-colors inline-flex items-center gap-1.5 px-3 py-2 rounded-lg hover:bg-[#EAF5F4]"
+                    className="text-xs font-bold text-[#087F79] hover:text-[#102B46] transition-colors inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg hover:bg-[#EAF5F4]"
                   >
                     <span>View Profile</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -418,8 +439,8 @@ export const DoctorsSection: React.FC = () => {
           </div>
 
           {/* Quick Specialist Switcher Tabs & Auto-slide Badge */}
-          <div className="mt-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-1">
-            <div className="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-1 scrollbar-none">
+          <div className="mt-4 sm:mt-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-1">
+            <div className="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-1 scrollbar-none snap-x">
               <span className="text-[11px] font-semibold text-[#627486] uppercase tracking-wider shrink-0 mr-1">
                 Featured Specialists:
               </span>
@@ -428,7 +449,7 @@ export const DoctorsSection: React.FC = () => {
                   key={doc.id}
                   type="button"
                   onClick={() => setCurrentIndex(idx)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all shrink-0 cursor-pointer flex items-center gap-1.5 shadow-2xs ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all shrink-0 cursor-pointer flex items-center gap-1.5 shadow-2xs snap-start ${
                     idx === currentIndex
                       ? "bg-[#087F79] text-white font-semibold"
                       : "bg-white text-[#627486] hover:text-[#102B46] border border-[#DCE5EB] hover:bg-slate-50"
@@ -452,7 +473,7 @@ export const DoctorsSection: React.FC = () => {
                 }`}
               />
               <span className="text-[11px] font-medium">
-                {isPaused ? "Auto-slider paused on hover" : "Auto-sliding (6s interval)"}
+                {isPaused ? "Auto-slider paused on touch/hover" : "Auto-sliding (6s interval)"}
               </span>
             </div>
           </div>
