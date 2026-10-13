@@ -62,12 +62,12 @@ export const Navbar: React.FC = () => {
             className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79] rounded-lg p-1"
             aria-label="YourMedicareTrip Home"
           >
-            <div className="relative w-9 h-9 sm:w-10 sm:h-10 shrink-0 transition-transform group-hover:scale-105">
+            <div className="relative w-10 h-10 sm:w-12 sm:h-12 shrink-0 transition-transform group-hover:scale-105">
               <Image
                 src="/logo-icon.png"
                 alt="YourMedicareTrip Logo"
-                width={40}
-                height={40}
+                width={50}
+                height={50}
                 className="w-full h-full object-contain"
                 priority
               />
