@@ -206,31 +206,31 @@ export const HospitalsSection: React.FC = () => {
 
         {/* Interactive Main Canvas & Focus Showcase */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-          {/* Left: Creative Interactive Visual Network Map (7 cols) */}
-          <div className="lg:col-span-7 bg-[#0C1F33] rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden flex flex-col justify-between shadow-xl border border-[#1A3A5A] min-h-[440px] sm:min-h-[520px]">
+          {/* Left: Creative Interactive Visual Network Map (7 cols) - Light Background */}
+          <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 text-[#102B46] relative overflow-hidden flex flex-col justify-between shadow-lg border border-[#DCE5EB] min-h-[440px] sm:min-h-[520px]">
             {/* Tech Blueprint & Grid Background */}
             <div
-              className="absolute inset-0 opacity-15 pointer-events-none"
+              className="absolute inset-0 opacity-[0.06] pointer-events-none"
               style={{
                 backgroundImage:
-                  "radial-gradient(#087F79 1px, transparent 1px), linear-gradient(to right, #1A3A5A 1px, transparent 1px), linear-gradient(to bottom, #1A3A5A 1px, transparent 1px)",
+                  "radial-gradient(#087F79 1.5px, transparent 1.5px), linear-gradient(to right, #087F79 1px, transparent 1px), linear-gradient(to bottom, #087F79 1px, transparent 1px)",
                 backgroundSize: "28px 28px, 56px 56px, 56px 56px",
               }}
             />
 
             {/* Glowing Accent Glows */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#087F79]/20 rounded-full blur-[90px] pointer-events-none" />
-            <div className="absolute bottom-10 right-10 w-60 h-60 bg-[#F0A126]/10 rounded-full blur-[80px] pointer-events-none" />
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#087F79]/5 rounded-full blur-[90px] pointer-events-none" />
+            <div className="absolute bottom-10 right-10 w-72 h-72 bg-[#102B46]/5 rounded-full blur-[80px] pointer-events-none" />
 
             {/* Canvas Header Bar */}
-            <div className="relative z-10 flex items-center justify-between pb-4 border-b border-white/10">
+            <div className="relative z-10 flex items-center justify-between pb-4 border-b border-[#DCE5EB]">
               <div className="flex items-center gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-[#087F79] animate-ping" />
-                <span className="text-xs font-bold text-teal-300 tracking-wider uppercase">
+                <span className="text-xs font-bold text-[#102B46] tracking-wider uppercase">
                   Chandigarh Tricity Healthcare Corridor · Live Network
                 </span>
               </div>
-              <span className="text-[11px] font-medium text-slate-400 bg-white/5 border border-white/10 px-2.5 py-1 rounded-full">
+              <span className="text-[11px] font-semibold text-[#627486] bg-[#F8FAFC] border border-[#DCE5EB] px-2.5 py-1 rounded-full">
                 5 Premier Partner Centers
               </span>
             </div>
@@ -240,16 +240,16 @@ export const HospitalsSection: React.FC = () => {
               {/* SVG Connecting Corridors & Radar Rings */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
                 {/* Connecting Transit Lines */}
-                <line x1="46%" y1="38%" x2="34%" y2="52%" stroke="#087F79" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.4" />
-                <line x1="46%" y1="38%" x2="62%" y2="32%" stroke="#087F79" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.5" />
-                <line x1="62%" y1="32%" x2="58%" y2="65%" stroke="#087F79" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.4" />
-                <line x1="58%" y1="65%" x2="74%" y2="54%" stroke="#087F79" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.4" />
-                <line x1="34%" y1="52%" x2="58%" y2="65%" stroke="#087F79" strokeWidth="1" strokeDasharray="2 4" strokeOpacity="0.25" />
+                <line x1="46%" y1="38%" x2="34%" y2="52%" stroke="#087F79" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.45" />
+                <line x1="46%" y1="38%" x2="62%" y2="32%" stroke="#087F79" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.55" />
+                <line x1="62%" y1="32%" x2="58%" y2="65%" stroke="#087F79" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.45" />
+                <line x1="58%" y1="65%" x2="74%" y2="54%" stroke="#087F79" strokeWidth="1.5" strokeDasharray="4 4" strokeOpacity="0.45" />
+                <line x1="34%" y1="52%" x2="58%" y2="65%" stroke="#087F79" strokeWidth="1" strokeDasharray="2 4" strokeOpacity="0.3" />
 
                 {/* Radar Orbit Concentric Circles centered around Tricity */}
                 <circle cx="50%" cy="45%" r="80" stroke="#087F79" strokeWidth="1" strokeOpacity="0.15" fill="none" />
                 <circle cx="50%" cy="45%" r="140" stroke="#087F79" strokeWidth="1" strokeOpacity="0.1" fill="none" strokeDasharray="6 6" />
-                <circle cx="50%" cy="45%" r="200" stroke="#087F79" strokeWidth="1" strokeOpacity="0.05" fill="none" />
+                <circle cx="50%" cy="45%" r="200" stroke="#087F79" strokeWidth="1" strokeOpacity="0.06" fill="none" />
               </svg>
 
               {/* Interactive Hospital Pins */}
@@ -270,19 +270,19 @@ export const HospitalsSection: React.FC = () => {
                   >
                     {/* Pulsing Beacon Ring for Active Pin */}
                     {isActive && (
-                      <span className="absolute -inset-3 rounded-full bg-[#087F79]/40 animate-ping pointer-events-none" />
+                      <span className="absolute -inset-3 rounded-full bg-[#087F79]/25 animate-ping pointer-events-none" />
                     )}
 
                     <div
-                      className={`relative flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all duration-300 shadow-lg ${
+                      className={`relative flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all duration-300 shadow-md ${
                         isActive
-                          ? "bg-[#087F79] border-teal-300 text-white scale-110 shadow-teal-500/30 ring-4 ring-[#087F79]/30"
-                          : "bg-[#102B46]/95 border-white/20 text-slate-200 hover:border-teal-400 hover:bg-[#163659]"
+                          ? "bg-[#087F79] border-[#087F79] text-white scale-110 shadow-teal-600/25 ring-4 ring-[#087F79]/20"
+                          : "bg-white border-[#DCE5EB] text-[#102B46] hover:border-[#087F79] hover:bg-[#EAF5F4]"
                       }`}
                     >
                       <MapPin
                         className={`w-4 h-4 shrink-0 transition-colors ${
-                          isActive ? "text-white" : "text-teal-400 group-hover:text-teal-300"
+                          isActive ? "text-white" : "text-[#087F79]"
                         }`}
                       />
                       <span className="text-xs font-semibold whitespace-nowrap hidden sm:inline">
@@ -298,7 +298,7 @@ export const HospitalsSection: React.FC = () => {
                           : "opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0"
                       }`}
                     >
-                      <div className="bg-[#081524] border border-teal-500/40 text-teal-200 text-[10px] font-semibold px-2 py-1 rounded shadow-xl whitespace-nowrap">
+                      <div className="bg-[#102B46] text-white text-[10px] font-semibold px-2 py-1 rounded shadow-xl whitespace-nowrap">
                         {hospital.accreditation}
                       </div>
                     </div>
@@ -307,10 +307,10 @@ export const HospitalsSection: React.FC = () => {
               })}
 
               {/* Central Map Legend Overlay */}
-              <div className="absolute bottom-2 left-2 bg-[#081524]/90 backdrop-blur-md border border-white/10 rounded-xl p-3 text-[11px] text-slate-300 space-y-1.5 hidden sm:block">
+              <div className="absolute bottom-2 left-2 bg-white/95 backdrop-blur-md border border-[#DCE5EB] rounded-xl p-3 text-[11px] text-[#627486] space-y-1.5 shadow-xs hidden sm:block">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-[#087F79]" />
-                  <span>JCI & NABH Verified Partner</span>
+                  <span className="text-[#102B46] font-medium">JCI & NABH Verified Partner</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Plane className="w-3 h-3 text-[#F0A126]" />
@@ -320,8 +320,8 @@ export const HospitalsSection: React.FC = () => {
             </div>
 
             {/* Bottom Quick Hub Switcher Bar */}
-            <div className="relative z-10 pt-3 border-t border-white/10 flex items-center gap-2 overflow-x-auto scrollbar-none">
-              <span className="text-[11px] font-semibold text-slate-400 shrink-0 mr-1">
+            <div className="relative z-10 pt-3 border-t border-[#DCE5EB] flex items-center gap-2 overflow-x-auto scrollbar-none">
+              <span className="text-[11px] font-semibold text-[#627486] shrink-0 mr-1">
                 Select Partner:
               </span>
               {NETWORK_HOSPITALS.map((h) => (
@@ -331,8 +331,8 @@ export const HospitalsSection: React.FC = () => {
                   onClick={() => setActiveHospitalId(h.id)}
                   className={`text-xs px-2.5 py-1 rounded-lg shrink-0 transition-colors cursor-pointer ${
                     h.id === activeHospitalId
-                      ? "bg-[#087F79] text-white font-semibold"
-                      : "bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white"
+                      ? "bg-[#087F79] text-white font-semibold shadow-2xs"
+                      : "bg-[#F8FAFC] border border-[#DCE5EB] text-[#627486] hover:text-[#102B46] hover:bg-slate-100"
                   }`}
                 >
                   {h.shortName}
