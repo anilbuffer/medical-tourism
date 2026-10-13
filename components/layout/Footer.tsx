@@ -2,336 +2,217 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { Phone, MessageSquare } from "lucide-react";
 import { useCare } from "@/context/CareContext";
-import { LanguageCountryPicker } from "@/components/ui/LanguageCountryPicker";
-import {
-  Phone,
-  Mail,
-  MessageSquare,
-  ShieldCheck,
-  ArrowRight,
-  CheckCircle2,
-  Lock,
-  Clock,
-  Award,
-  Building2,
-} from "lucide-react";
 
-export const Footer = () => {
-  const { t, openIntake } = useCare();
+export const Footer: React.FC = () => {
+  const { openIntake } = useCare();
+  const currentYear = new Date().getFullYear();
 
   const handleWhatsApp = () => {
     const text = encodeURIComponent(
-      "Hello, I am inquiring about medical treatment and concierge care in India with Your Medicare Trip."
+      "Hello, I would like to inquire about care coordination and treatment options with YourMedicareTrip."
     );
     window.open(`https://wa.me/919876543210?text=${text}`, "_blank");
   };
 
   return (
-    <footer className="bg-[#0A1E30] text-white pt-16 sm:pt-20 pb-12 border-t border-[#DCE6EB]/15 relative overflow-hidden font-sans">
-      {/* Ambient background lighting */}
-      <div className="absolute top-0 left-1/4 w-[600px] h-[350px] bg-[#0B5D68]/15 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-10 right-1/4 w-[500px] h-[350px] bg-[#2C7FAF]/10 rounded-full blur-[140px] pointer-events-none" />
+    <footer className="w-full bg-[#102B46] text-white">
+      {/* 01. Top Consultation Bar */}
+      <div className="bg-[#0A1C2E] border-t border-b border-white/10 py-5 sm:py-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
 
-      <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-        {/* Pre-Footer: High-Trust Clinical Assurance Strip */}
-        <div className="bg-[#0C273E] rounded-2xl sm:rounded-3xl p-5 xs:p-6 sm:p-8 border border-white/10 mb-12 sm:mb-16 shadow-2xl backdrop-blur-md">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 items-center">
-
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#0B5D68]/30 border border-[#0B5D68]/50 flex items-center justify-center shrink-0 text-[#0B8F83]">
-                <ShieldCheck className="w-6 h-6 text-[#0B8F83]" />
-              </div>
-              <div>
-                <h4 className="font-heading font-bold text-sm text-white">JCI &amp; NABH Certified</h4>
-                <p className="text-xs text-slate-300">Audited quaternary hospitals in North India</p>
-              </div>
+            {/* Left: Dot + Heading */}
+            <div className="flex items-center gap-3">
+              <span className="w-2 h-2 rounded-full bg-[#087F79]" />
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight">
+                Get a free consultation
+              </h3>
             </div>
 
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#0B5D68]/30 border border-[#0B5D68]/50 flex items-center justify-center shrink-0 text-[#0B8F83]">
-                <Award className="w-6 h-6 text-[#0B8F83]" />
-              </div>
-              <div>
-                <h4 className="font-heading font-bold text-sm text-white">Zero Upfront Booking</h4>
-                <p className="text-xs text-slate-300">Guaranteed fixed quote before travel</p>
-              </div>
-            </div>
+            {/* Right: Phone pill + Free Consultation pill */}
+            <div className="flex flex-wrap items-center gap-3 shrink-0">
+              {/* Phone pill */}
+              <a
+                href="tel:+919876543210"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs sm:text-sm font-semibold transition-all"
+              >
+                <Phone className="w-3.5 h-3.5 text-[#2ECDC5]" />
+                <span>+91 98765 43210</span>
+              </a>
 
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#0B5D68]/30 border border-[#0B5D68]/50 flex items-center justify-center shrink-0 text-[#0B8F83]">
-                <Clock className="w-6 h-6 text-[#0B8F83]" />
-              </div>
-              <div>
-                <h4 className="font-heading font-bold text-sm text-white">24h Visa Invitation</h4>
-                <p className="text-xs text-slate-300">Fast-track official Indian e-Med visa</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#0B5D68]/30 border border-[#0B5D68]/50 flex items-center justify-center shrink-0 text-[#0B8F83]">
-                <Lock className="w-6 h-6 text-[#0B8F83]" />
-              </div>
-              <div>
-                <h4 className="font-heading font-bold text-sm text-white">HIPAA 256-Bit Encrypted</h4>
-                <p className="text-xs text-slate-300">100% confidential health data privacy</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Main 5-Column Navigation Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-16 border-b border-white/10">
-
-          {/* Brand & Authority Column (4 Cols on LG) */}
-          <div className="lg:col-span-4 space-y-6">
-            <Link href="/" className="inline-block group">
-              <Image
-                src="/images/logo/logo-white.png"
-                alt="yourMedicareTrip - Your Medical Travel Company"
-                width={230}
-                height={46}
-                className="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-              />
-            </Link>
-
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-sm">
-              An elevated international medical travel concierge helping global patients access world-class surgical directors, accredited Indian hospital admissions, and end-to-end 1-on-1 care coordination.
-            </p>
-
-            {/* Key Trust Pill Badges */}
-            <div className="flex flex-wrap gap-2 pt-1">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-medium text-slate-300">
-                <CheckCircle2 className="w-3 h-3 text-[#0B8F83]" />
-                <span>UK &amp; US Standards</span>
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-medium text-slate-300">
-                <CheckCircle2 className="w-3 h-3 text-[#0B8F83]" />
-                <span>Zero Hidden Fees</span>
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-medium text-slate-300">
-                <CheckCircle2 className="w-3 h-3 text-[#0B8F83]" />
-                <span>Direct Hospital Invoicing</span>
-              </span>
-            </div>
-          </div>
-
-          {/* Col 2: Quaternary Specialties (2 Cols on LG) */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#ECF4F7] font-heading border-l-2 border-[#0B8F83] pl-2.5">
-              Specialised Care
-            </h4>
-            <ul className="space-y-2.5 text-xs text-slate-300 font-medium">
-              <li>
-                <a href="#specialties" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  Robotic Joint Replacement
-                </a>
-              </li>
-              <li>
-                <a href="#specialties" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  Quaternary Cardiology
-                </a>
-              </li>
-              <li>
-                <a href="#specialties" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  Contoura Vision &amp; SMILE
-                </a>
-              </li>
-              <li>
-                <a href="#specialties" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  Cosmetic &amp; VASER Surgery
-                </a>
-              </li>
-              <li>
-                <a href="#specialties" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  IVF &amp; Advanced Fertility
-                </a>
-              </li>
-              <li>
-                <a href="#specialties" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  Full-Arch Dental Implants
-                </a>
-              </li>
-              <li>
-                <a href="#specialties" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  Neurosciences &amp; Spine
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 3: Concierge & Patient Journey (2 Cols on LG) */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#ECF4F7] font-heading border-l-2 border-[#0B8F83] pl-2.5">
-              Patient Journey
-            </h4>
-            <ul className="space-y-2.5 text-xs text-slate-300 font-medium">
-              <li>
-                <a href="#journey" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  Step-by-Step Concierge
-                </a>
-              </li>
-              <li>
-                <a href="#costs" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  All-Inclusive Cost Comparison
-                </a>
-              </li>
-              <li>
-                <a href="#stay" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  Accommodation &amp; Hotel Stay
-                </a>
-              </li>
-              <li>
-                <a href="#doctors" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  Expert Surgical Directors
-                </a>
-              </li>
-              <li>
-                <a href="#hospitals" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  Accredited Hospital Network
-                </a>
-              </li>
-              <li>
-                <a href="#safety" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  Clinical Feasibility Policy
-                </a>
-              </li>
-              <li>
-                <Link href="/guides" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  Clinical Guides &amp; Insights
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 4: Secure Portals & Governance (2 Cols on LG) */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#ECF4F7] font-heading border-l-2 border-[#0B8F83] pl-2.5">
-              Portals &amp; Hubs
-            </h4>
-            <ul className="space-y-2.5 text-xs text-slate-300 font-medium">
-              <li>
-                <Link
-                  href="/login?portal=patient"
-                  className="text-[#2ECDC5] hover:text-white transition-colors flex items-center gap-1.5 font-bold"
-                >
-                  <span>Patient Portal Login</span>
-                  <ArrowRight className="w-3 h-3" />
-                </Link>
-              </li>
-              <li>
-                <Link href="/login?portal=doctor" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  Surgeon &amp; Doctor Hub
-                </Link>
-              </li>
-              <li>
-                <Link href="/login?portal=coordinator" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  Care Coordinator Desk
-                </Link>
-              </li>
-              <li>
-                <Link href="/login?portal=finance" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  Finance &amp; Escrow Security
-                </Link>
-              </li>
-              <li>
-                <Link href="/login?portal=admin" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  Super Admin Governance
-                </Link>
-              </li>
-              <li>
-                <Link href="/hospitals" className="hover:text-white hover:translate-x-0.5 inline-block transition-all">
-                  Hospital Accreditation Registry
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 5: 24/7 International Care Desk (2 Cols on LG) */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#ECF4F7] font-heading border-l-2 border-[#F0A126] pl-2.5">
-              24/7 International Desk
-            </h4>
-
-            <div className="space-y-3 text-xs text-slate-300">
+              {/* Free Consultation Pill */}
               <button
-                onClick={handleWhatsApp}
-                className="w-full py-2.5 px-3 rounded-xl bg-[#0B5D68]/40 hover:bg-[#0B5D68] border border-[#0B5D68] text-white flex items-center justify-center gap-2 font-heading font-bold text-xs transition-all shadow-sm group cursor-pointer"
+                onClick={() => openIntake("Footer Top Strip - Free Consultation")}
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#087F79] hover:bg-[#066f6a] text-white text-xs sm:text-sm font-semibold transition-all shadow-sm cursor-pointer"
               >
-                <MessageSquare className="w-4 h-4 text-[#25D366] transition-transform group-hover:scale-110" />
-                <span>WhatsApp Coordinator</span>
+                <span>Free Consultation</span>
               </button>
+            </div>
 
-              <div className="flex items-center gap-2.5 text-xs text-slate-200">
-                <Phone className="w-4 h-4 text-[#0B8F83] shrink-0" />
-                <a href="tel:+919876543210" className="hover:text-white transition-colors">
-                  +91 98765 43210
-                </a>
+          </div>
+        </div>
+      </div>
+
+      {/* 02. Main Footer Body */}
+      <div className="py-14 sm:py-16 lg:py-20">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+
+            {/* Left Column (8 cols): Logo, Headline & 3 Contact Fields */}
+            <div className="lg:col-span-8 space-y-6">
+
+              {/* Logo */}
+              <Link href="/" className="inline-flex items-center gap-2.5 group">
+                <div className="w-8 h-8 rounded-xl bg-[#087F79] flex items-center justify-center text-white font-bold text-base shadow-sm">
+                  <span>Y</span>
+                </div>
+                <span className="font-heading font-extrabold text-xl text-white tracking-tight">
+                  YourMedicare<span className="text-[#087F79]">Trip</span>
+                </span>
+              </Link>
+
+              {/* Big Editorial Headline */}
+              <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white tracking-tight leading-tight">
+                We&apos;re Here When You&apos;re Ready.
+              </h2>
+
+              {/* 3 Contact Columns */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 border-t border-white/10">
+                <div>
+                  <p className="text-xs text-slate-400 font-medium uppercase tracking-wider">
+                    Phone Number
+                  </p>
+                  <p className="text-sm font-bold text-white mt-1">
+                    <a href="tel:+919876543210" className="hover:text-[#2ECDC5] transition-colors">
+                      +91 98765 43210
+                    </a>
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-xs text-slate-400 font-medium uppercase tracking-wider">
+                    Email Address
+                  </p>
+                  <p className="text-sm font-bold text-white mt-1">
+                    <a href="mailto:care@yourmedicaretrip.com" className="hover:text-[#2ECDC5] transition-colors">
+                      care@yourmedicaretrip.com
+                    </a>
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-xs text-slate-400 font-medium uppercase tracking-wider">
+                    Location
+                  </p>
+                  <p className="text-sm font-bold text-white mt-1">
+                    Delhi NCR &amp; Mohali, India
+                  </p>
+                </div>
               </div>
 
-              <div className="flex items-center gap-2.5 text-xs text-slate-200">
-                <Mail className="w-4 h-4 text-[#0B8F83] shrink-0" />
-                <a href="mailto:care@yourmedicaretrip.com" className="hover:text-white transition-colors truncate">
-                  care@yourmedicaretrip.com
-                </a>
-              </div>
+            </div>
 
-              <div className="pt-2">
+            {/* Right Column (4 cols): Join Our Community + Social Icons */}
+            <div className="lg:col-span-4 space-y-4 lg:pl-6">
+              <h3 className="text-base font-bold text-white">
+                Join Our Community
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                Join us today for resources, clinical insights &amp; patient coordination guides.
+              </p>
+
+              {/* Social Media Circular Buttons */}
+              <div className="flex items-center gap-3 pt-2">
+                {/* WhatsApp */}
                 <button
-                  onClick={() => openIntake("Footer Consultation")}
-                  className="w-full py-3 px-3 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.99] text-[#0C2338] font-semibold text-sm shadow-md shadow-[#F0A126]/20 transition-all text-center cursor-pointer"
+                  onClick={handleWhatsApp}
+                  aria-label="WhatsApp"
+                  className="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:bg-[#087F79] hover:border-[#087F79] text-white flex items-center justify-center transition-all cursor-pointer"
                 >
-                  Book Free Consultation
+                  <MessageSquare className="w-4 h-4" />
                 </button>
+                {/* LinkedIn */}
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
+                  className="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:bg-[#087F79] hover:border-[#087F79] text-white flex items-center justify-center transition-all"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
+                </a>
+                {/* X / Twitter */}
+                <a
+                  href="https://x.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="X"
+                  className="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:bg-[#087F79] hover:border-[#087F79] text-white flex items-center justify-center transition-all"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                </a>
+                {/* Facebook */}
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Facebook"
+                  className="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:bg-[#087F79] hover:border-[#087F79] text-white flex items-center justify-center transition-all"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" /></svg>
+                </a>
+                {/* Instagram */}
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Instagram"
+                  className="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:bg-[#087F79] hover:border-[#087F79] text-white flex items-center justify-center transition-all"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>
+                </a>
               </div>
+            </div>
+
+          </div>
+
+          {/* Divider */}
+          <div className="border-t border-white/10 my-8 sm:my-10" />
+
+          {/* Bottom Bar: Left Nav Links, Right Copyright */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+            {/* Left: Navigation Links */}
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-medium">
+              <Link href="/" className="hover:text-white transition-colors">
+                Home
+              </Link>
+              <Link href="/about" className="hover:text-white transition-colors">
+                About Us
+              </Link>
+              <Link href="/treatments" className="hover:text-white transition-colors">
+                Treatments
+              </Link>
+              <Link href="/hospitals" className="hover:text-white transition-colors">
+                Hospitals
+              </Link>
+              <Link href="/#journey" className="hover:text-white transition-colors">
+                How It Works
+              </Link>
+              <Link href="/contact" className="hover:text-white transition-colors">
+                Contact Us
+              </Link>
+            </div>
+
+            {/* Right: Copyright */}
+            <div>
+              Copyright &copy; {currentYear} YourMedicareTrip. All Rights Reserved.
             </div>
           </div>
 
         </div>
-
-        {/* Network Accreditation Strip */}
-        <div className="py-6 border-b border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-slate-400">
-          <div className="flex items-center gap-2 font-heading font-semibold text-slate-300 shrink-0">
-            <Building2 className="w-4 h-4 text-[#0B8F83]" />
-            <span>Audited Partner Hospital Network:</span>
-          </div>
-          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs text-slate-300">
-            {["Fortis Hospital Mohali", "Max Super Speciality Hospital", "Profile Cosmetic Surgery Institute", "Sangam Netralaya Eye Centre", "Apollo Hospitals"].map((hosp) => (
-              <span
-                key={hosp}
-                className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] sm:text-xs text-slate-300 hover:border-white/20 transition-all"
-              >
-                {hosp}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 text-center sm:text-left">
-          <div>
-            © {new Date().getFullYear()} Your Medicare Trip. All rights reserved.
-          </div>
-          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-3 gap-y-1.5 sm:gap-x-4 text-xs">
-            <Link href="/privacy" className="hover:text-white transition-colors">
-              Privacy Policy
-            </Link>
-            <span className="text-slate-600">·</span>
-            <Link href="/patient-rights" className="hover:text-white transition-colors">
-              Patient Rights
-            </Link>
-            <span className="text-slate-600">·</span>
-            <Link href="/terms" className="hover:text-white transition-colors">
-              Terms of Service
-            </Link>
-            <span className="text-slate-600">·</span>
-            <span className="text-slate-500">HIPAA &amp; NABH Protocol</span>
-          </div>
-        </div>
-
       </div>
     </footer>
   );

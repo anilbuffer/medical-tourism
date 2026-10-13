@@ -1,135 +1,173 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import {
-  Sparkles,
-  FileText,
-  Car,
-  Building2,
-  UserCheck,
-  MessageSquare,
-  ShieldCheck,
-  ArrowRight,
-  PhoneCall,
-  CheckCircle2,
+import { 
+  Building2, 
+  ClipboardCheck, 
+  Plane, 
+  Video, 
+  Pill, 
+  HeartHandshake 
 } from "lucide-react";
-import { useCare } from "@/context/CareContext";
 
-interface ConciergeService {
-  id: string;
-  title: string;
-  description: string;
-  icon: React.ComponentType<{ className?: string }>;
-}
+export const CareCoordination: React.FC = () => {
+  const [processedDoctorSrc, setProcessedDoctorSrc] = useState<string | null>(null);
 
-const CONCIERGE_SERVICES: ConciergeService[] = [
-  {
-    id: "visa",
-    title: "Fast-Track Hospital Visa Letter",
-    description:
-      "Official medical visa invitation letter issued within 24 hours directly from the hospital medical directorate.",
-    icon: FileText,
-  },
-  {
-    id: "chauffeur",
-    title: "Private Chauffeur Airport Transit",
-    description:
-      "Personal chauffeur with air-conditioned private vehicle meets you at arrivals, transferring you directly to your hotel.",
-    icon: Car,
-  },
-  {
-    id: "suites",
-    title: "Handpicked Sanitized Recovery Suites",
-    description:
-      "Clean, vetted 4 or 5-star patient-recovery suites handpicked for hygiene, elevator access, and hospital proximity.",
-    icon: Building2,
-  },
-  {
-    id: "bedside",
-    title: "In-Person Consultation Accompaniment",
-    description:
-      "Dedicated English-speaking coordinator accompanies you into clinical consultations ensuring complete clarity.",
-    icon: UserCheck,
-  },
-  {
-    id: "coordinator",
-    title: "24/7 Named WhatsApp Coordinator",
-    description:
-      "One named coordinator who knows your case file inside-out, reachable 24/7 before, during, and after your stay.",
-    icon: MessageSquare,
-  },
-  {
-    id: "continuity",
-    title: "Complete Digital Continuity Care Pack",
-    description:
-      "Translated digital records, surgical notes, imaging on drive, and medication timetable delivered to your home doctor.",
-    icon: ShieldCheck,
-  },
-];
+  // Client-side canvas floodfill to make pure white background transparent
+  useEffect(() => {
+    const img = new window.Image();
+    img.crossOrigin = "anonymous";
+    img.src = "/doctor-center-portrait.jpg";
+    img.onload = () => {
+      try {
+        const canvas = document.createElement("canvas");
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+        ctx.drawImage(img, 0, 0);
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imgData.data;
+        const w = canvas.width;
+        const h = canvas.height;
+        const visited = new Uint8Array(w * h);
+        const queue: number[] = [0, w - 1, (h - 1) * w, (h - 1) * w + (w - 1)];
 
-export const CareCoordination = () => {
-  const { openIntake } = useCare();
+        while (queue.length > 0) {
+          const idx = queue.pop()!;
+          if (visited[idx]) continue;
+          visited[idx] = 1;
+          const p = idx * 4;
+          const r = data[p];
+          const g = data[p + 1];
+          const b = data[p + 2];
+          // Flood fill near-white studio background
+          if (r > 215 && g > 215 && b > 215) {
+            data[p + 3] = 0; // Make transparent
+            const x = idx % w;
+            const y = Math.floor(idx / w);
+            if (x > 0 && !visited[idx - 1]) queue.push(idx - 1);
+            if (x < w - 1 && !visited[idx + 1]) queue.push(idx + 1);
+            if (y > 0 && !visited[idx - w]) queue.push(idx - w);
+            if (y < h - 1 && !visited[idx + w]) queue.push(idx + w);
+          }
+        }
+        ctx.putImageData(imgData, 0, 0);
+        setProcessedDoctorSrc(canvas.toDataURL("image/png"));
+      } catch {
+        // Fallback to original image if canvas is restricted
+        setProcessedDoctorSrc("/doctor-center-portrait.jpg");
+      }
+    };
+    img.onerror = () => {
+      setProcessedDoctorSrc("/doctor-center-portrait.jpg");
+    };
+  }, []);
 
-  const handleWhatsAppDesk = () => {
-    const text = encodeURIComponent(
-      "Hello, I would like to inquire about Your Medicare Trip's End-to-End Concierge services. Can you help me?"
-    );
-    window.open(`https://wa.me/919876543210?text=${text}`, "_blank");
-  };
+  const leftFeatures = [
+    {
+      title: "In-Hospital Bedside Liaison",
+      desc: "Daily visits and direct communication with your treating doctors and surgical unit.",
+      icon: Building2,
+    },
+    {
+      title: "Pre-Departure Evaluation",
+      desc: "Comprehensive clinical review and recovery checks before discharging to your recovery suite.",
+      icon: ClipboardCheck,
+    },
+    {
+      title: "Fit-to-Fly Certification",
+      desc: "Official medical clearances and documentation required by international airlines.",
+      icon: Plane,
+    },
+  ];
+
+  const rightFeatures = [
+    {
+      title: "Scheduled Teleconsultations",
+      desc: "Follow-up video consultations with your operating surgeon after returning home.",
+      icon: Video,
+    },
+    {
+      title: "Prescription Handover",
+      desc: "Full supply of post-op medications with international equivalents and dosages.",
+      icon: Pill,
+    },
+    {
+      title: "24/7 Dedicated Coordinator",
+      desc: "Direct WhatsApp and phone liaison for recovery questions and local doctor handover.",
+      icon: HeartHandshake,
+    },
+  ];
 
   return (
-    <section className="py-16 sm:py-24 bg-[#F5F7F6] border-t border-[#DCE6EB] font-sans">
-      <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="aftercare" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-[#DCE5EB]">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Top Header */}
+        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF5F4] border border-[#DCE5EB] text-xs font-semibold text-[#087F79] mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#087F79]" />
+            <span>Aftercare &amp; Continuity</span>
+          </div>
 
-        {/* Full-Width 2-Column Layout Matching Reference Image */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center mb-16">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#102B46] tracking-tight leading-tight">
+            The Right Choice for Your
+            <span className="block mt-1 text-[#087F79]">Healthcare &amp; Recovery Needs</span>
+          </h2>
+        </div>
 
-          {/* LEFT COLUMN: Header & Stacked Concierge Service Cards */}
-          <div className="lg:col-span-7 flex flex-col justify-center">
-
-            {/* Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ECF4F7] border border-[#DCE6EB] text-[#0B5D68] text-xs font-heading font-bold uppercase tracking-wider mb-4 shadow-xs w-max">
-              <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse" />
-              <Sparkles className="w-3.5 h-3.5 text-[#0B5D68]" />
-              <span>END-TO-END CARE CONCIERGE</span>
-            </div>
-
-            {/* Main Headline */}
-            <h2 className="text-2xl sm:text-3xl lg:text-[36px] xl:text-[42px] font-heading font-semibold text-[#0C2338] leading-[1.15] tracking-tight mb-4">
-              Care Doesn&apos;t Stop{" "}
-              <span className="text-[#0B8F83] block sm:inline">
-                at the Hospital Door.
-              </span>
-            </h2>
-
-            {/* Subtitle Description */}
-            <p className="text-[#6B7C88] text-sm sm:text-base leading-relaxed font-normal mb-8 max-w-2xl">
-              Your surgery is one part of the journey. Our concierge coordinates every single detail around it so you and your loved ones can focus 100% on healing.
-            </p>
-
-            {/* Stacked Concierge Cards (With Your Medicare Trip Concierge) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
-              {CONCIERGE_SERVICES.map((service) => {
-                const IconComponent = service.icon;
+        {/* Master Split Card with Overlapping Center Doctor */}
+        <div className="relative rounded-3xl overflow-visible border border-[#DCE5EB] shadow-xl">
+          
+          {/* 2-Panel Background Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 rounded-3xl overflow-hidden items-stretch">
+            
+            {/* Left Panel: Light Mint (6 Cols) */}
+            <div className="lg:col-span-6 bg-[#EAF5F4] p-8 sm:p-10 lg:p-12 xl:p-14 lg:pr-36 xl:pr-48 flex flex-col justify-center space-y-7 sm:space-y-9">
+              {leftFeatures.map((item) => {
+                const Icon = item.icon;
                 return (
-                  <div
-                    key={service.id}
-                    className="p-4 sm:p-5 rounded-2xl bg-white border border-[#DCE6EB] hover:border-[#0B5D68]/40 shadow-sm hover:shadow-md transition-all flex items-start gap-3.5 group"
-                  >
-                    {/* Icon Box with Soft Clinical Tint */}
-                    <div className="w-11 h-11 rounded-xl bg-[#ECF4F7] border border-[#DCE6EB] flex items-center justify-center text-[#0B5D68] shrink-0 group-hover:bg-[#0B5D68] group-hover:text-white transition-colors">
-                      <IconComponent className="w-5 h-5 transition-colors" />
+                  <div key={item.title} className="flex items-start gap-4 sm:gap-5">
+                    {/* Icon on Left */}
+                    <div className="w-12 h-12 rounded-2xl bg-white border border-[#DCE5EB] flex items-center justify-center text-[#087F79] shrink-0 shadow-2xs mt-0.5">
+                      <Icon className="w-5 h-5 text-[#087F79]" />
                     </div>
 
-                    {/* Content */}
-                    <div className="min-w-0 flex-1">
-                      <h3 className="font-heading font-bold text-sm sm:text-base text-[#0C2338] leading-snug mb-1 group-hover:text-[#0B5D68] transition-colors">
-                        {service.title}
+                    {/* Text on Right */}
+                    <div>
+                      <h3 className="text-base sm:text-lg font-bold text-[#102B46] leading-snug">
+                        {item.title}
                       </h3>
-                      <p className="text-xs text-[#6B7C88] leading-relaxed font-normal">
-                        {service.description}
+                      <p className="text-xs sm:text-sm text-[#627486] mt-1.5 leading-relaxed font-normal">
+                        {item.desc}
                       </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Right Panel: Deep Navy (6 Cols) */}
+            <div className="lg:col-span-6 bg-[#102B46] text-white p-8 sm:p-10 lg:p-12 xl:p-14 lg:pl-36 xl:pl-48 flex flex-col justify-center space-y-7 sm:space-y-9">
+              {rightFeatures.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.title} className="flex items-start justify-between lg:justify-end gap-4 sm:gap-5">
+                    {/* Text on Left (Right-aligned on desktop) */}
+                    <div className="flex-1 text-left lg:text-right">
+                      <h3 className="text-base sm:text-lg font-bold text-white leading-snug">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-300 mt-1.5 leading-relaxed font-normal">
+                        {item.desc}
+                      </p>
+                    </div>
+
+                    {/* Icon on Right */}
+                    <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-[#2ECDC5] shrink-0 shadow-2xs mt-0.5">
+                      <Icon className="w-5 h-5 text-[#2ECDC5]" />
                     </div>
                   </div>
                 );
@@ -138,107 +176,23 @@ export const CareCoordination = () => {
 
           </div>
 
-          {/* RIGHT COLUMN: Big Photography Canvas with Floating Specialist Card */}
-          <div className="lg:col-span-5 relative w-full h-[340px] xs:h-[400px] sm:h-[520px] lg:h-[660px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-[#DCE6EB] bg-slate-100 group">
-
-            {/* Big High-Definition Photograph */}
-            <Image
-              src="/hero-doctor-patient.jpg"
-              alt="Medical Concierge Care"
-              fill
-              sizes="(max-width: 1024px) 100vw, 42vw"
-              className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-              priority
-            />
-
-            {/* Subtle Gradient Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0C2338]/85 via-transparent to-black/10 pointer-events-none" />
-
-            {/* Top Badge: Verified Concierge Standard */}
-            <div className="absolute top-3.5 xs:top-4 sm:top-5 left-3.5 xs:left-4 sm:left-5 z-10">
-              <span className="inline-flex items-center gap-1.5 px-3 xs:px-3.5 py-1.5 rounded-full bg-[#0C2338]/85 backdrop-blur-md text-white text-[10px] xs:text-[11px] font-heading font-bold uppercase tracking-wider border border-white/20 shadow-md">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#0B8F83]" />
-                <span className="text-white">1-on-1 Dedicated Concierge</span>
-              </span>
-            </div>
-
-            {/* Floating Specialist / Coordinator Card */}
-            <div className="absolute bottom-3 xs:bottom-4 sm:bottom-6 left-3 xs:left-4 sm:left-6 right-3 xs:right-4 sm:right-6 z-20">
-              <div className="bg-white rounded-2xl p-3 xs:p-4 sm:p-5 shadow-2xl border border-white/60 flex items-center justify-between gap-3 sm:gap-4">
-
-                {/* Avatar with Online Status Dot */}
-                <div className="flex items-center gap-2.5 xs:gap-3 min-w-0">
-                  <div className="relative w-10 h-10 xs:w-12 xs:h-12 rounded-full overflow-hidden border-2 border-[#0B5D68] shrink-0 bg-slate-100 shadow-sm">
-                    <Image
-                      src="/priya-sharma.jpg"
-                      alt="Priya Sharma - Senior Care Coordinator"
-                      fill
-                      sizes="48px"
-                      className="object-cover object-center"
-                    />
-                    <span className="absolute bottom-0 right-0 w-2.5 xs:w-3 h-2.5 xs:h-3 bg-[#0B8F83] rounded-full border-2 border-white shadow-xs" />
-                  </div>
-
-                  <div className="min-w-0">
-                    <h4 className="font-heading font-bold text-xs xs:text-sm text-[#0C2338] truncate">
-                      Priya Sharma
-                    </h4>
-                    <p className="text-[11px] xs:text-xs text-[#0B5D68] font-medium truncate">
-                      Senior Care Coordinator
-                    </p>
-                  </div>
-                </div>
-
-                {/* Quick Action Button */}
-                <button
-                  onClick={handleWhatsAppDesk}
-                  className="px-3.5 xs:px-4 py-2 xs:py-2.5 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] active:scale-95 text-white font-heading font-bold text-[11px] xs:text-xs uppercase tracking-wider transition-all shadow-sm flex items-center gap-1.5 shrink-0 cursor-pointer"
-                >
-                  <MessageSquare className="w-3.5 h-3.5 text-[#25D366]" />
-                  <span className="text-white">WhatsApp</span>
-                </button>
-
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-        {/* WhatsApp Assistance Banner */}
-        <div className="bg-[#0C2338] text-white rounded-2xl sm:rounded-3xl p-5 xs:p-6 sm:p-8 lg:p-10 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6 shadow-xl border border-white/10">
-          <div className="flex items-start sm:items-center gap-3.5 sm:gap-4">
-            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#0B5D68] flex items-center justify-center text-white shrink-0">
-              <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-            </div>
-            <div>
-              <h4 className="font-heading font-bold text-lg sm:text-xl text-white mb-1">
-                Have questions about visas, hotels or flights?
-              </h4>
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                Speak directly with an international care coordinator right now on WhatsApp.
-              </p>
+          {/* Desktop Center Doctor Figure (Standing in middle seam) */}
+          <div className="hidden lg:flex absolute inset-y-0 left-1/2 -translate-x-1/2 -top-12 bottom-0 w-[340px] xl:w-[370px] items-end justify-center pointer-events-none z-20">
+            <div className="relative w-full h-[520px]">
+              {processedDoctorSrc && (
+                <Image
+                  src={processedDoctorSrc}
+                  alt="Medical specialist and care coordinator"
+                  fill
+                  sizes="(max-width: 1280px) 340px, 370px"
+                  className="object-contain object-bottom drop-shadow-2xl transition-opacity duration-300"
+                  priority
+                  unoptimized
+                />
+              )}
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto shrink-0">
-            {/* Secondary Action Button 2 */}
-            <button
-              onClick={handleWhatsAppDesk}
-              className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 border border-white/15 cursor-pointer"
-            >
-              <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse"></span>
-              <span>Chat on WhatsApp</span>
-            </button>
-
-            {/* Primary Action Button 1 */}
-            <button
-              onClick={() => openIntake("Concierge Request")}
-              className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#F0A126]/20 flex items-center justify-center cursor-pointer"
-            >
-              Request Call Back
-            </button>
-          </div>
         </div>
 
       </div>

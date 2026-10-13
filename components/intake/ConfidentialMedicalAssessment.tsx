@@ -239,23 +239,23 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
 
         {/* Top 2-Step Progress Indicator */}
         <div className={`grid grid-cols-2 gap-2 ${step !== 3 ? 'mb-4' : ''}`}>
-          <div className={`h-1.5 rounded-full transition-all duration-300 ${step >= 1 ? "bg-gradient-to-r from-[#0B5D68] to-[#F0A126]" : "bg-[#DCE6EB]"}`}></div>
-          <div className={`h-1.5 rounded-full transition-all duration-300 ${step >= 2 ? "bg-gradient-to-r from-[#F0A126] to-[#0B5D68]" : "bg-[#DCE6EB]"}`}></div>
+          <div className={`h-1.5 rounded-full transition-all duration-300 ${step >= 1 ? "bg-[#087F79]" : "bg-[#DCE5EB]"}`}></div>
+          <div className={`h-1.5 rounded-full transition-all duration-300 ${step >= 2 ? "bg-[#087F79]" : "bg-[#DCE5EB]"}`}></div>
         </div>
 
         {step === 1 && (
           <div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0C2338] tracking-tight pr-8 font-heading">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#102B46] tracking-tight pr-8 font-heading">
               Get a Free Treatment Opinion
             </h2>
-            <p className="mt-1 text-sm text-[#6B7C88] leading-relaxed font-body">
+            <p className="mt-1 text-sm text-[#627486] leading-relaxed font-body">
               Tell us about your treatment needs — our care team will reach out within 24 hours.
             </p>
           </div>
         )}
         {step === 2 && (
           <div>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-[#0C2338] tracking-tight pr-8 font-heading">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-[#102B46] tracking-tight pr-8 font-heading">
               Thank you. A few more questions for the hospital:
             </h2>
           </div>
@@ -433,7 +433,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
           <div className="shrink-0 p-5 pt-3 sm:p-8 sm:pt-4 md:p-10 md:pt-4 border-t border-slate-100 bg-white rounded-b-3xl relative z-10">
             <button
               type="submit"
-              className="w-full py-4 px-6 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#F0A126]/25 hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all font-heading cursor-pointer"
+              className="w-full py-4 px-6 rounded-xl bg-[#087F79] hover:bg-[#066f6a] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#087F79]/25 hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all font-heading cursor-pointer"
             >
               CONTINUE
             </button>
@@ -603,7 +603,7 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full md:w-auto md:flex-1 py-4 px-6 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#F0A126]/25 hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-60 flex items-center justify-center gap-2 font-heading cursor-pointer"
+                className="w-full md:w-auto md:flex-1 py-4 px-6 rounded-xl bg-[#087F79] hover:bg-[#066f6a] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#087F79]/25 hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-60 flex items-center justify-center gap-2 font-heading cursor-pointer"
               >
                 {isSubmitting ? (
                   <>

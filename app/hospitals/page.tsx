@@ -62,7 +62,7 @@ export default function HospitalsPage() {
               <Sparkles className="w-3.5 h-3.5 text-[#F0A126]" />
               <span>Chandigarh City · Multi-Class Hospital Network</span>
             </Badge>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white">
               Multi-Class Hospitals & Super-Specialty Centers in Chandigarh
             </h1>
             <p className="text-teal-100/90 text-sm sm:text-base leading-relaxed font-body">

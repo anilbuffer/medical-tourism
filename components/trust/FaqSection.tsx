@@ -35,7 +35,7 @@ export const FaqSection = () => {
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/70 text-teal-600 text-xs font-bold uppercase tracking-wider mb-3">
             {t.faq.eyebrow}
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
             {t.faq.heading}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto">
@@ -76,9 +76,8 @@ export const FaqSection = () => {
                     <span>{language === "ar" ? faq.questionAr : faq.question}</span>
                   </span>
                   <ChevronDown
-                    className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200 ${
-                      isOpen ? "rotate-180 text-teal-600" : ""
-                    }`}
+                    className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180 text-teal-600" : ""
+                      }`}
                   />
                 </button>
 

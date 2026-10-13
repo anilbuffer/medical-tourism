@@ -446,7 +446,7 @@ const LoginPageContent: React.FC = () => {
           </div>
 
           {/* Main Title (Dynamic per role) */}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15] text-white">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-[1.15] text-white">
             {currentRole.titleLine1} <br className="hidden sm:inline" />
             <span className="bg-gradient-to-r from-[#2ECDC5] via-[#5ADBD5] to-[#2ECDC5] bg-clip-text text-transparent">
               {currentRole.titleLine2}

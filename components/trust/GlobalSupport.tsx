@@ -27,7 +27,7 @@ export const GlobalSupport = () => {
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/70 text-teal-600 text-xs font-bold uppercase tracking-wider mb-3">
             {t.support.eyebrow}
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
             {t.support.heading}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto">
@@ -116,11 +116,10 @@ export const GlobalSupport = () => {
               <button
                 key={desk.code}
                 onClick={() => setSelectedDesk(desk)}
-                className={`p-4 rounded-2xl border text-left rtl:text-right transition-all flex flex-col justify-between ${
-                  selectedDesk.code === desk.code
+                className={`p-4 rounded-2xl border text-left rtl:text-right transition-all flex flex-col justify-between ${selectedDesk.code === desk.code
                     ? "bg-vedara-blue/10 border-vedara-blue ring-2 ring-vedara-blue/20"
                     : "bg-slate-50/70 border-slate-200/80 hover:bg-slate-100"
-                }`}
+                  }`}
               >
                 <div>
                   <div className="text-2xl mb-2">{desk.flag}</div>

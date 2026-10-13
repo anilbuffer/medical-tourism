@@ -1,272 +1,156 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Star,
-  ArrowLeft,
-  ArrowRight,
-} from "lucide-react";
-import { useCare } from "@/context/CareContext";
+import Link from "next/link";
+import { ArrowRight, Star, Quote, MapPin } from "lucide-react";
 
-// Bespoke Large Double Quote Icon matching the reference layout
-const QuoteIcon = () => (
-  <svg
-    className="w-12 h-12 sm:w-16 sm:h-16 text-[#F0A126]"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    aria-hidden="true"
-  >
-    <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-.808 0-1.89-.319-2.748-1.179Zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-.808 0-1.89-.319-2.748-1.179Z" />
-  </svg>
-);
-
-interface PatientTestimonial {
-  id: string;
-  name: string;
-  recoveryTag: string;
-  country: string;
-  procedure: string;
-  hospital: string;
-  quote: string;
-  rating: number;
-  avatar: string;
-  savings: string;
-}
-
-const testimonials: PatientTestimonial[] = [
-  {
-    id: "arnulfo",
-    name: "Arnulfo Seibert",
-    recoveryTag: "Cardiac Recovery",
-    country: "United States 🇺🇸",
-    procedure: "Minimally Invasive Cardiac Valve Repair",
-    hospital: "Fortis Escorts Heart Institute",
-    quote:
-      "The cardiology team didn't just treat my condition — they gave me back my confidence. From the first emergency call to post-surgery rehab, every moment was handled with genuine warmth and world-class expertise. I'm grateful beyond words.",
-    rating: 5,
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=300",
-    savings: "Saved $78,000 vs US",
-  },
-  {
-    id: "kane",
-    name: "Kane Wilson",
-    recoveryTag: "Orthopaedic Recovery",
-    country: "Accra, Ghana 🇬🇭",
-    procedure: "Bilateral Robotic Knee Replacement",
-    hospital: "Fortis Hospital Mohali",
-    quote:
-      "The orthopaedic team didn't just treat my severe knee osteoarthritis — they gave me back my life and independent mobility. From the initial MRI review to our airport arrival and post-op physical rehabilitation, every single moment was handled with genuine warmth and world-class surgical expertise. I was walking independently within 10 days.",
-    rating: 5,
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300",
-    savings: "Saved $24,000 vs UK Private",
-  },
-  {
-    id: "daniel",
-    name: "Daniel Okafor",
-    recoveryTag: "Joint Arthroplasty Recovery",
-    country: "London, United Kingdom 🇬🇧",
-    procedure: "Robotic Hip Arthroplasty (MAKO)",
-    hospital: "Max Super Speciality Hospital",
-    quote:
-      "Skipped an 18-month NHS surgical waitlist and saved over £14,000. My dedicated concierge met us at Delhi airport with an executive car, escorted us through hospital admissions, and visited my serviced apartment every morning. The Stryker titanium implant and muscle-sparing surgery let me return home fully pain-free.",
-    rating: 5,
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=300",
-    savings: "Saved £14,000 vs NHS Wait",
-  },
-  {
-    id: "sarah",
-    name: "Sarah & David Mwangi",
-    recoveryTag: "Fertility & Embryology Care",
-    country: "Nairobi, Kenya 🇰🇪",
-    procedure: "IVF with ICSI & PGT-A Genetics",
-    hospital: "Healing Super Speciality Hospital",
-    quote:
-      "The embryology cleanrooms and advanced genetic testing protocols were far superior to anything available back home. Having a dedicated care coordinator organize all consultations, pharmacy protocols, and private hospital transfers took away 100% of the travel anxiety. We welcomed our healthy baby girl this spring.",
-    rating: 5,
-    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=300",
-    savings: "68% Success Rate on Cycle 1",
-  },
-  {
-    id: "lilian",
-    name: "Lilian Omondi",
-    recoveryTag: "Laser Refractive Vision Recovery",
-    country: "Mombasa, Kenya 🇰🇪",
-    procedure: "Contoura Vision Blade-Free LASIK",
-    hospital: "Sangam Netralaya Eye Hospital",
-    quote:
-      "Blade-free topography-guided surgery took just 10 minutes per eye and was completely painless. Dr. Ahuja tested my cornea with 22,000 elevation points. I woke up the very next morning with crystal-clear 20/20 vision without eyeglasses for the first time in 20 years.",
-    rating: 5,
-    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=300",
-    savings: "Outpatient • 24h Recovery",
-  },
-];
-
-export const TestimonialsSection = () => {
-  const { openIntake } = useCare();
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-  };
-
-  const current = testimonials[currentIndex];
-
+export const TestimonialsSection: React.FC = () => {
   return (
-    <section id="stories" className="w-full relative overflow-hidden font-sans border-t border-b border-[#DCE6EB] bg-[#0C2338]">
+    <section id="stories" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-[#DCE5EB]">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
+          <div className="max-w-2xl">
+            <span className="text-[#087F79] text-xs font-bold uppercase tracking-wider block mb-2">
+              PATIENT TESTIMONIALS
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#102B46] tracking-tight leading-tight">
+              Real Experiences. Personal Journeys.
+            </h2>
+            <p className="text-[#627486] text-sm sm:text-base mt-2.5 leading-relaxed">
+              Hear from international patients who chose India for their surgical care and guided recovery.
+            </p>
+          </div>
 
-      {/* 01. Desktop Edge-to-Edge Split Background */}
-      <div className="hidden lg:grid absolute inset-0 grid-cols-12 pointer-events-none">
-        {/* Left half: Deep Navy with subtle ambient teal radial glow */}
-        <div className="col-span-7 xl:col-span-6 bg-gradient-to-br from-[#0C2338] via-[#091F33] to-[#061726] relative">
-          <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-[#0B5D68]/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-10 right-10 w-64 h-64 bg-[#0B8F83]/10 rounded-full blur-3xl pointer-events-none" />
+          <Link
+            href="/stories"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#087F79] hover:text-[#102B46] transition-colors group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79] rounded p-1"
+          >
+            <span>Read All Stories</span>
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
 
-        {/* Right half: clinical doctor photo to the edge */}
-        <div className="col-span-5 xl:col-span-6 relative bg-slate-900 overflow-hidden">
-          <Image
-            src="/images/testimonials/doctor-portrait.jpg"
-            alt="Chief Clinical Specialist reviewing patient case"
-            fill
-            priority
-            sizes="50vw"
-            className="object-cover object-top"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
-        </div>
-      </div>
+        {/* 1 Split Primary Card + 2 Clean Story Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-stretch">
 
-      {/* 02. Content Layer: Aligned with the 1580px Container Grid */}
-      <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[640px] xl:min-h-[720px]">
+          {/* Left Column (7 Cols): Primary Featured Story Split Card */}
+          <div className="lg:col-span-7 bg-white rounded-2xl border border-[#DCE5EB] shadow-sm overflow-hidden flex flex-col sm:flex-row">
 
-          {/* Left Column: Aligned with Container */}
-          <div className="lg:col-span-7 xl:col-span-6 py-12 xs:py-14 sm:py-20 lg:py-24 pr-0 lg:pr-12 xl:pr-16 flex flex-col justify-between text-white">
+            {/* Patient Portrait Photo */}
+            <div className="relative w-full sm:w-1/2 min-h-[260px] sm:min-h-full bg-slate-100 overflow-hidden shrink-0">
+              <Image
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=700"
+                alt="Michael K. - Bilateral Knee Replacement Patient"
+                fill
+                sizes="(max-width: 640px) 100vw, 350px"
+                className="object-cover object-center"
+              />
+            </div>
 
-            {/* Header Area */}
-            <div>
-              {/* Badge with vibrant #0B8F83 pulse */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-[#0B8F83]/30 text-[#ECF4F7] text-xs font-heading font-bold uppercase tracking-wider mb-5 backdrop-blur-md shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse" />
-                <span>REAL STORIES • CLINICAL OUTCOMES</span>
-              </div>
-
-              {/* Headline */}
-              <h2 className="text-2xl sm:text-3xl lg:text-[36px] xl:text-[42px] font-heading font-bold text-white leading-[1.15] mb-6 sm:mb-10 tracking-tight">
-                What Our Patients &amp; Families Say About Their{" "}
-                <span className="text-[#0B8F83]">Journey.</span>
-              </h2>
-
-              {/* Quote Mark Icon + 5 Stars Row */}
-              <div className="flex items-center justify-between mb-6 sm:mb-8 pb-1">
-                <QuoteIcon />
-                <div className="flex items-center gap-1 sm:gap-1.5">
-                  {[...Array(current.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 fill-[#F0A126] text-[#F0A126]"
-                    />
+            {/* Dark Navy Quote Box */}
+            <div className="w-full sm:w-1/2 bg-[#102B46] p-6 sm:p-7 text-white flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-1 text-[#DDA34A] mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-current" />
                   ))}
                 </div>
+
+                <blockquote className="text-sm sm:text-base text-slate-100 italic leading-relaxed">
+                  &ldquo;The care coordination was beyond my expectations. Having a dedicated coordinator meet me at Delhi airport and stay with me throughout made all the difference.&rdquo;
+                </blockquote>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-white/20">
+                <p className="font-bold text-white text-base">
+                  Michael K.
+                </p>
+                <p className="text-xs text-slate-300 mt-0.5">
+                  United Kingdom &bull; Bilateral Knee Replacement
+                </p>
+                <p className="text-[11px] text-[#2ECDC5] mt-1 font-medium">
+                  Fortis Hospital Mohali
+                </p>
               </div>
             </div>
 
-            {/* Testimonial Quote with Smooth Motion */}
-            <div className="my-auto pb-6">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={current.id}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
+          </div>
+
+          {/* Right Column (5 Cols): 2 Story Cards */}
+          <div className="lg:col-span-5 flex flex-col gap-5 justify-between">
+            {/* Story 1 */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#DCE5EB] shadow-2xs hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[11px] font-bold text-[#087F79] uppercase tracking-wider">
+                    CARDIAC CARE
+                  </span>
+                  <div className="flex items-center gap-1 text-[#DDA34A]">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-current" />
+                    ))}
+                  </div>
+                </div>
+
+                <h3 className="font-bold text-base text-[#102B46] leading-snug">
+                  Fatima Al-Mansoor &bull; Dubai, UAE
+                </h3>
+                <p className="text-xs sm:text-sm text-[#627486] mt-2 leading-relaxed">
+                  &ldquo;From medical visa paperwork to direct admission at the cardiac unit, our personal manager handled everything seamlessly.&rdquo;
+                </p>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-[#DCE5EB] flex items-center justify-between">
+                <span className="text-xs text-[#627486]">Minimally Invasive CABG</span>
+                <Link
+                  href="/stories"
+                  className="text-xs font-semibold text-[#087F79] hover:text-[#102B46] inline-flex items-center gap-1"
                 >
-                  <p className="text-slate-100 text-sm xs:text-base sm:text-lg lg:text-[19px] leading-relaxed font-body font-normal max-w-2xl min-h-0 sm:min-h-[110px]">
-                    &ldquo;{current.quote}&rdquo;
-                  </p>
-                </motion.div>
-              </AnimatePresence>
+                  <span>Read story</span>
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+              </div>
             </div>
 
-            {/* Patient Details & Carousel Arrows Row */}
-            <div className="pt-6 sm:pt-10 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-5 sm:gap-6">
-              {/* Patient Avatar + Info */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={current.id}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 10 }}
-                  transition={{ duration: 0.25 }}
-                  className="flex items-center gap-3.5 sm:gap-5"
-                >
-                  <div className="relative w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-[#0B8F83] shrink-0 shadow-lg ring-2 ring-white/10">
-                    <Image
-                      src={current.avatar}
-                      alt={current.name}
-                      fill
-                      className="object-cover"
-                    />
+            {/* Story 2 */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#DCE5EB] shadow-2xs hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[11px] font-bold text-[#087F79] uppercase tracking-wider">
+                    SPINE SURGERY
+                  </span>
+                  <div className="flex items-center gap-1 text-[#DDA34A]">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-current" />
+                    ))}
                   </div>
-                  <div>
-                    <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
-                      <h3 className="font-heading font-bold text-base xs:text-lg sm:text-xl text-white leading-tight">
-                        {current.name}
-                      </h3>
-                      <span className="px-2 xs:px-2.5 py-0.5 rounded-full bg-[#0B8F83]/20 border border-[#0B8F83]/40 text-[#2ECDC5] text-[10px] xs:text-[11px] font-heading font-semibold">
-                        {current.savings}
-                      </span>
-                    </div>
-                    <p className="text-xs sm:text-sm text-slate-300 font-medium font-body mt-1">
-                      {current.recoveryTag} · <span className="text-[#ECF4F7]">{current.country}</span>
-                    </p>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+                </div>
 
-              {/* Navigation Controls */}
-              <div className="flex items-center gap-3 self-end sm:self-center shrink-0">
-                <button
-                  onClick={handlePrev}
-                  aria-label="Previous testimonial"
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-[#0B5D68] text-white flex items-center justify-center transition-all duration-300 cursor-pointer border border-white/20 active:scale-95 shadow-sm group"
+                <h3 className="font-bold text-base text-[#102B46] leading-snug">
+                  David Miller &bull; California, USA
+                </h3>
+                <p className="text-xs sm:text-sm text-[#627486] mt-2 leading-relaxed">
+                  &ldquo;Saved more than $50,000 compared to private quotes in the US, with world-class surgical facilities and outstanding recovery staff.&rdquo;
+                </p>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-[#DCE5EB] flex items-center justify-between">
+                <span className="text-xs text-[#627486]">Robotic Spinal Decompression</span>
+                <Link
+                  href="/stories"
+                  className="text-xs font-semibold text-[#087F79] hover:text-[#102B46] inline-flex items-center gap-1"
                 >
-                  <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-x-0.5" />
-                </button>
-                <button
-                  onClick={handleNext}
-                  aria-label="Next testimonial"
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#F0A126] hover:bg-[#db8e18] text-[#0C2338] flex items-center justify-center transition-all duration-300 cursor-pointer border border-[#F0A126] active:scale-95 shadow-md shadow-[#F0A126]/30 group"
-                >
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-0.5" />
-                </button>
+                  <span>Read story</span>
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
               </div>
             </div>
           </div>
 
-          {/* Right Column Spacer for Desktop */}
-          <div className="hidden lg:block lg:col-span-5 xl:col-span-6 pointer-events-none" />
         </div>
       </div>
-
-      {/* 03. Mobile-Only Photo Block */}
-      <div className="block lg:hidden relative w-full h-[260px] xs:h-[300px] sm:h-[360px] bg-slate-900 overflow-hidden">
-        <Image
-          src="/images/testimonials/doctor-portrait.jpg"
-          alt="Chief Clinical Specialist reviewing patient case"
-          fill
-          sizes="100vw"
-          className="object-cover object-top"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-      </div>
-
     </section>
   );
 };

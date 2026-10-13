@@ -28,13 +28,20 @@ export default function DoctorsPage() {
 
   const specialties = [
     "All",
+    "General & Laparoscopic Surgery",
     "Dental Implants",
     "Cosmetic & Aesthetic",
     "Ophthalmology / Eye Care",
     "Orthopedic Procedures",
     "Fertility / IVF",
   ];
-  const hospitals = ["All", "Fortis Hospital", "Max Super Speciality", "Paras Health"];
+  const hospitals = [
+    "All",
+    "Punjab State Healthcare Network",
+    "Fortis Hospital",
+    "Max Super Speciality",
+    "Paras Health",
+  ];
 
   const filteredDoctors = DOCTORS.filter((doc) => {
     const matchesSpecialty = selectedSpecialty === "All" || doc.specialty === selectedSpecialty;
@@ -67,7 +74,7 @@ export default function DoctorsPage() {
               <Sparkles className="w-3.5 h-3.5 text-[#F0A126]" />
               <span>Chandigarh City · Verified Senior Clinicians</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white font-heading">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white font-heading">
               Top Specialist Consultants & Surgeons in Chandigarh
             </h1>
             <p className="text-teal-100/90 text-sm sm:text-base leading-relaxed font-body">

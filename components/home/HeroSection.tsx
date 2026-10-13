@@ -2,337 +2,85 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useCare } from "@/context/CareContext";
-import { motion } from "framer-motion";
-import { ArrowRight, Headphones, Globe, BadgePercent, ShieldCheck, Star } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-export const HeroSection = () => {
+export const HeroSection: React.FC = () => {
   const { openIntake } = useCare();
 
-  const stats = [
-    {
-      number: "1,500+",
-      label: "International Patients Treated",
-      icon: Globe,
-    },
-    {
-      number: "70%",
-      label: "Average Cost Savings vs UK/US",
-      icon: BadgePercent,
-    },
-    {
-      number: "24 / 7",
-      label: "Dedicated English Concierge",
-      icon: Headphones,
-    },
-  ];
-
   return (
-    <div className="w-full">
-      <section className="relative min-h-[92vh] lg:min-h-screen flex items-center pt-28 pb-16 lg:py-0 overflow-hidden bg-[#0C2338] text-white">
-        {/* 01. Full Section Background Banner Image - Senior Couple Airport Medical Trip */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/hero/banner.jpg"
-            alt="Mature senior couple arriving in India airport for medical travel with masks and trolley luggage"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[75%_center] lg:object-right"
-          />
-          {/* Deep Brand Gradient Overlay: Solid on left for pristine text readability, fading cleanly to reveal the senior couple on the right */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0C2338] via-[#0C2338]/90 via-40% to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0C2338]/90 via-transparent to-transparent lg:hidden pointer-events-none" />
-        </div>
+    <section className="relative w-full overflow-hidden bg-[#EAF5F4] text-[#102B46] pt-14 pb-16 sm:pt-18 sm:pb-20 lg:pt-20 lg:pb-24 border-b border-[#DCE5EB]">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-center">
 
-        {/* Vertical "Scroll for more" on left margin */}
-        <div className="hidden xl:flex absolute left-8 bottom-16 items-center gap-2 text-xs text-white/75 tracking-widest font-heading font-medium -rotate-90 origin-left z-20 pointer-events-none select-none">
-          <span>&larr; Scroll for more</span>
-        </div>
+          {/* Left Column: Eyebrow, Headline, Copy, CTAs, Microcopy */}
+          <div className="lg:col-span-7 space-y-6 sm:space-y-7">
 
-        {/* Main Expanded Container */}
-        <div className="max-w-[1580px] mx-auto px-4 sm:px-8 lg:px-16 relative z-10 w-full h-full flex flex-col justify-center">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center min-h-0 py-8 sm:py-12 lg:py-16 lg:min-h-[820px]">
-
-            {/* 02. Left Column: Pure & Spacious Typography */}
-            <div className="lg:col-span-7 xl:col-span-6 space-y-5 sm:space-y-6 lg:space-y-8 py-2 sm:py-6 lg:py-8">
-
-              {/* Confident Headline */}
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-                className="font-heading text-[1.4rem] xs:text-[1.6rem] sm:text-3xl lg:text-4xl xl:text-[3.3rem] font-bold text-white leading-[1.14] tracking-tight"
-              >
-                World-Class Surgical Care in India.{" "}
-                <span className="text-[#F0A126] block sm:inline mt-1 sm:mt-0">
-                  Save Up to 70%. Zero Waiting.
-                </span>
-              </motion.h1>
-
-              {/* Subtitle Description */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="text-sm sm:text-base lg:text-lg text-slate-200 font-normal leading-relaxed max-w-2xl font-body"
-              >
-                Direct access to top quaternary hospital directors, transparent guaranteed pricing, and your dedicated English-speaking care coordinator from arrival to recovery.
-              </motion.p>
-
-              {/* Hero CTA Button */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
-                className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6"
-              >
-                <button
-                  onClick={() => openIntake()}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-95 text-[#0C2338] font-heading font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#F0A126]/25 hover:shadow-2xl hover:shadow-[#F0A126]/40 cursor-pointer group shrink-0"
-                >
-                  <span className="text-[#0C2338]">Book an Appointment</span>
-                  <ArrowRight className="w-4 h-4 text-[#0C2338] stroke-[2.5] transition-transform duration-300 group-hover:translate-x-1" />
-                </button>
-              </motion.div>
-
-              {/* Mobile & Tablet Cohesive Social Proof Cards (< lg) */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.4 }}
-                className="pt-3 sm:pt-5 grid grid-cols-2 gap-2.5 xs:gap-3.5 sm:gap-4 max-w-lg lg:hidden"
-              >
-                {/* Card 1: 4+ Chief Doctors */}
-                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0C2338]/95 via-[#0C2338]/85 to-[#071624]/95 backdrop-blur-md border border-[#DCE6EB]/20 p-3 xs:p-3.5 sm:p-4 shadow-xl flex flex-col justify-between group hover:border-[#F0A126]/40 transition-all">
-                  <div className="flex items-center justify-between mb-2 xs:mb-2.5">
-                    <div className="flex -space-x-1.5 xs:-space-x-2">
-                      <img
-                        className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 rounded-full ring-1.5 ring-white/90 object-cover"
-                        src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=100"
-                        alt="Doctor"
-                      />
-                      <img
-                        className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 rounded-full ring-1.5 ring-white/90 object-cover z-1"
-                        src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=100"
-                        alt="Doctor"
-                      />
-                      <img
-                        className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 rounded-full ring-1.5 ring-white object-cover z-2"
-                        src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=100"
-                        alt="Doctor"
-                      />
-                    </div>
-                    <div className="w-6 h-6 xs:w-7 xs:h-7 rounded-full bg-[#F0A126]/15 border border-[#F0A126]/30 flex items-center justify-center shrink-0">
-                      <ShieldCheck className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-[#F0A126]" />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xl xs:text-2xl font-black font-heading text-white leading-tight">
-                      4+
-                    </div>
-                    <div className="text-[11px] xs:text-xs sm:text-[13px] text-[#ECF4F7]/85 font-heading font-medium tracking-wide mt-0.5 leading-snug">
-                      Chief Doctors
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 2: 150 Satisfied Patients */}
-                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0C2338]/95 via-[#0C2338]/85 to-[#071624]/95 backdrop-blur-md border border-[#DCE6EB]/20 p-3 xs:p-3.5 sm:p-4 shadow-xl flex flex-col justify-between group hover:border-[#0B8F83]/40 transition-all">
-                  <div className="flex items-center justify-between mb-2 xs:mb-2.5">
-                    <div className="flex -space-x-1.5 xs:-space-x-2">
-                      <img
-                        className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 rounded-full ring-1.5 ring-white/90 object-cover"
-                        src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&auto=format&fit=crop&q=80"
-                        alt="Patient"
-                      />
-                      <img
-                        className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 rounded-full ring-1.5 ring-white/90 object-cover z-1"
-                        src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&auto=format&fit=crop&q=80"
-                        alt="Patient"
-                      />
-                      <img
-                        className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 rounded-full ring-1.5 ring-white object-cover z-2"
-                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&auto=format&fit=crop&q=80"
-                        alt="Patient"
-                      />
-                    </div>
-                    <div className="flex items-center gap-1 px-1.5 xs:px-2 py-0.5 rounded-full bg-white/10 border border-white/15 text-[10px] xs:text-[11px] font-bold text-[#F0A126]">
-                      <Star className="w-2.5 h-2.5 xs:w-3 xs:h-3 fill-[#F0A126] text-[#F0A126]" />
-                      <span>4.9</span>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xl xs:text-2xl font-black font-heading text-white leading-tight">
-                      150K+
-                    </div>
-                    <div className="text-[10px] xs:text-xs sm:text-[12px] text-[#ECF4F7]/85 font-heading font-medium tracking-wide mt-0.5 leading-snug">
-                      Satisfied Patients
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+            {/* Eyebrow */}
+            <div className="text-[#087F79] text-xs font-bold tracking-wider uppercase">
+              YOUR HEALTH JOURNEY, PERSONALLY GUIDED
             </div>
 
-            {/* 03. Right Column: Floating Badges (Desktop lg+ only) */}
-            <div className="hidden lg:flex lg:col-span-5 xl:col-span-6 relative lg:h-[650px] items-center justify-end pointer-events-none overflow-visible">
+            {/* Main Headline */}
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-[3.35rem] font-bold text-[#102B46] leading-[1.14] tracking-tight">
+              World-Class Medical Care in India.{" "}
+              <span className="text-[#087F79] block mt-1">
+                Personally Guided.
+              </span>
+            </h1>
 
-              {/* FLOATING BADGE 1: Security Shield Crest (4+ Doctors) */}
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="absolute top-3 xs:top-8 sm:top-16 lg:top-20 left-1 xs:left-4 sm:left-8 lg:-left-6 xl:left-18 z-20 pointer-events-auto scale-[0.76] xs:scale-[0.86] sm:scale-100 origin-top-left"
+            {/* Supporting Copy */}
+            <p className="text-base sm:text-lg text-[#627486] font-normal leading-relaxed max-w-xl">
+              Access experienced specialists and leading hospitals in India, with personalized coordination from your first medical review through treatment and recovery.
+            </p>
+
+            {/* CTAs */}
+            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5">
+              {/* Primary CTA Pill */}
+              <button
+                onClick={() => openIntake("Hero Get a Free Medical Opinion")}
+                className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 sm:py-4 rounded-full bg-[#087F79] hover:bg-[#066f6a] active:scale-95 text-white font-semibold text-sm sm:text-base tracking-wide transition-all duration-300 shadow-md shadow-[#087F79]/20 hover:shadow-lg hover:shadow-[#087F79]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79] cursor-pointer group"
               >
-                <div className="relative w-[124px] sm:w-[136px] h-[148px] sm:h-[162px] flex flex-col items-center justify-center pt-2 pb-5 px-3 select-none filter drop-shadow-2xl">
-                  {/* SVG Security Shield Silhouette Outline & Background */}
-                  <svg
-                    viewBox="0 0 140 165"
-                    className="absolute inset-0 w-full h-full"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <defs>
-                      <linearGradient id="shieldBg" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#0C2338" stopOpacity="0.94" />
-                        <stop offset="100%" stopColor="#071624" stopOpacity="0.98" />
-                      </linearGradient>
-                    </defs>
-                    <path
-                      d="M 70,6 C 92,19 116,19 130,21 C 135,21.5 137,24 137,28 L 137,82 C 137,122 102,150 70,160 C 38,150 3,122 3,82 L 3,28 C 3,24 5,21.5 10,21 C 24,19 48,19 70,6 Z"
-                      fill="url(#shieldBg)"
-                      stroke="#DCE6EB"
-                      strokeWidth="2"
-                      strokeOpacity="0.6"
-                    />
-                  </svg>
+                <span>Get a Free Medical Opinion</span>
+                <ArrowRight className="w-4 h-4 text-white stroke-[2.5] transition-transform duration-300 group-hover:translate-x-1" />
+              </button>
 
-                  {/* Overlapping Doctor Avatars */}
-                  <div className="relative z-10 flex items-center justify-center -space-x-2.5 mb-1 pt-1">
-                    <img
-                      className="w-6 h-6 rounded-full ring-1 ring-white/70 object-cover opacity-80"
-                      src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=100"
-                      alt="Doctor"
-                    />
-                    <img
-                      className="w-7 h-7 rounded-full ring-1.5 ring-white/90 object-cover z-1"
-                      src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=100"
-                      alt="Doctor"
-                    />
-                    {/* Center Prominent Avatar */}
-                    <img
-                      className="w-9 h-9 rounded-full ring-2 ring-white object-cover z-10 shadow-md"
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=120"
-                      alt="Doctor"
-                    />
-                    <img
-                      className="w-7 h-7 rounded-full ring-1.5 ring-white/90 object-cover z-1"
-                      src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=100"
-                      alt="Doctor"
-                    />
-                    <img
-                      className="w-6 h-6 rounded-full ring-1 ring-white/70 object-cover opacity-80"
-                      src="https://images.unsplash.com/photo-1594824813689-53744be65e08?auto=format&fit=crop&q=80&w=100"
-                      alt="Doctor"
-                    />
-                  </div>
-
-                  {/* 4+ Bold Number */}
-                  <div className="relative z-10 text-2xl sm:text-[26px] font-bold font-heading text-white leading-none tracking-tight mt-1">
-                    4+
-                  </div>
-
-                  {/* Doctors Subtext */}
-                  <div className="relative z-10 text-xs sm:text-[13px] text-white/90 font-heading font-medium tracking-wide mt-0.5">
-                    Chief Doctors
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* FLOATING BADGE 2: Pill (150K+ Satisfied Patients) */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="absolute bottom-3 xs:bottom-6 sm:bottom-12 right-1 xs:right-3 sm:right-6 lg:right-4 xl:right-10 z-20 pointer-events-auto scale-[0.74] xs:scale-[0.84] sm:scale-100 origin-bottom-right"
+              {/* Secondary CTA */}
+              <Link
+                href="/#treatments"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:py-4 rounded-full bg-white hover:bg-white/80 active:scale-95 text-[#102B46] border border-[#DCE5EB] font-semibold text-sm sm:text-base tracking-wide transition-all duration-300 shadow-2xs hover:border-[#087F79]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
               >
-                <div className="bg-[#0C2338]/95 backdrop-blur-md border border-[#DCE6EB]/20 rounded-full px-4 py-2 sm:px-6 sm:py-3 shadow-2xl flex items-center gap-3 sm:gap-3.5">
-                  {/* Patient Avatars */}
-                  <div className="flex -space-x-2 shrink-0">
-                    <img
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full ring-1.5 ring-white/60 object-cover"
-                      src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&auto=format&fit=crop&q=80"
-                      alt="Patient"
-                    />
-                    <img
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full ring-1.5 ring-white/60 object-cover"
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=80"
-                      alt="Patient"
-                    />
-                    <img
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full ring-1.5 ring-white/60 object-cover"
-                      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&auto=format&fit=crop&q=80"
-                      alt="Patient"
-                    />
-                  </div>
-                  <div className="shrink-0 text-left">
-                    <div className="text-lg sm:text-2xl font-bold font-heading text-white leading-tight">
-                      150K+
-                    </div>
-                    <div className="text-xs sm:text-[14px] text-[#ECF4F7]/80 font-body leading-tight">
-                      Satisfied Patients
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+                <span>Explore Treatments</span>
+              </Link>
+            </div>
 
+            {/* Trust Microcopy */}
+            <div className="pt-2">
+              <p className="text-xs sm:text-sm text-[#627486] font-medium flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#087F79]" />
+                <span>Personal guidance. Clear next steps. Support throughout your journey.</span>
+              </p>
             </div>
 
           </div>
-        </div>
-      </section>
 
-      {/* 04. Big Impact Trust & Clinical Stats Bar - Soft Blue Background #ECF4F7 */}
-      <section
-        aria-label="Clinical statistics and patient credentials"
-        className="relative z-20 w-full bg-[#ffffff] border-y border-[#DCE6EB] py-8 sm:py-10"
-      >
-        <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
-            {stats.map((stat, idx) => {
-              const Icon = stat.icon;
-              return (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="flex items-center gap-4 sm:gap-6 group transition-transform duration-300 hover:-translate-y-0.5"
-                >
-                  {/* Related Left Big Icon */}
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white border border-[#DCE6EB] flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:shadow-sm group-hover:border-[#0B5D68]/40 transition-all shadow-xs">
-                    <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-[#0B5D68] stroke-[2.2]" />
-                  </div>
-
-                  {/* Stat Metric & Label */}
-                  <div className="flex flex-col justify-center">
-                    <div
-                      className="text-2xl sm:text-3xl lg:text-4xl xl:text-[38px] font-bold font-heading text-[#0C2338] leading-none tracking-tight group-hover:text-[#0B5D68] transition-colors"
-                    >
-                      {stat.number}
-                    </div>
-                    <div className="text-xs sm:text-sm font-heading font-normal text-[#6B7C88] leading-snug mt-1.5 sm:mt-2">
-                      {stat.label}
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+          {/* Right Column: Authentic Healthcare Photograph */}
+          <div className="lg:col-span-5 relative">
+            <div className="relative w-full h-[360px] xs:h-[420px] sm:h-[460px] lg:h-[500px] rounded-3xl overflow-hidden shadow-lg border border-[#DCE5EB] bg-slate-100">
+              <Image
+                src="/hero-doctor-patient.jpg"
+                alt="Compassionate healthcare specialist consulting with patient in modern hospital"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover object-center"
+              />
+            </div>
           </div>
+
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
-

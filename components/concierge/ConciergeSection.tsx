@@ -62,7 +62,7 @@ export const ConciergeSection = () => {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#0D9488]/20 to-[#0284C7]/20 border border-[#2ECDC5]/40 text-[#2ECDC5] text-xs font-bold uppercase tracking-wider mb-3 backdrop-blur-md">
             {t.concierge.eyebrow}
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white font-sans">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white font-sans">
             {t.concierge.heading}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-200/90 leading-relaxed max-w-2xl mx-auto">

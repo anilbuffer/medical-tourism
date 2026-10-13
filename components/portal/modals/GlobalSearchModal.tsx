@@ -143,6 +143,13 @@ const MOCK_REQUESTS = [
 // Preset Doctors
 const MOCK_DOCTORS = [
   {
+    id: "doc_jaswant",
+    name: "Dr. Jaswant Singh",
+    role: "Surgeon, MS, SMO (Retd.) — VVIP Medical Team to Chief Minister Punjab",
+    hospital: "Punjab State Healthcare Network & PCMS Mohali",
+    department: "General & Laparoscopic Surgery",
+  },
+  {
     id: "doc_gupta",
     name: "Dr. Subhash Gupta",
     role: "Chief Liver Transplant Surgeon",
