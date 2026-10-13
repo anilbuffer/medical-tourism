@@ -45,9 +45,6 @@ export const BlogSection: React.FC = () => {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#102B46] tracking-tight leading-tight">
               Prepare for Your Medical Journey
             </h2>
-            <p className="text-[#627486] text-sm sm:text-base mt-2.5 leading-relaxed">
-              Helpful resources, medical visa checklists, and travel advice for international patients.
-            </p>
           </div>
 
           <Link
@@ -120,7 +117,7 @@ export const BlogSection: React.FC = () => {
         <div className="mt-12 text-center">
           <Link
             href="/guides"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-white hover:bg-white/80 text-[#102B46] border border-[#DCE5EB] font-semibold text-sm transition-all duration-200 shadow-2xs hover:border-[#087F79]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
+            className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-white hover:bg-[#EAF5F4] text-[#102B46] hover:text-[#087F79] border border-[#DCE5EB] hover:border-[#087F79]/40 font-semibold text-sm transition-all duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
           >
             <span>Explore All Guides &amp; Insights</span>
             <ArrowRight className="w-4 h-4 text-[#087F79]" />

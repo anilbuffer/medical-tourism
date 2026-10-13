@@ -34,19 +34,19 @@ export const Footer: React.FC = () => {
 
             {/* Right: Phone pill + Free Consultation pill */}
             <div className="flex flex-wrap items-center gap-3 shrink-0">
-              {/* Phone pill */}
+              {/* Phone button */}
               <a
                 href="tel:+919876543210"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs sm:text-sm font-semibold transition-all"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs sm:text-sm font-semibold transition-all shadow-xs hover:shadow-sm"
               >
                 <Phone className="w-3.5 h-3.5 text-[#2ECDC5]" />
                 <span>+91 98765 43210</span>
               </a>
 
-              {/* Free Consultation Pill */}
+              {/* Free Consultation Button */}
               <button
                 onClick={() => openIntake("Footer Top Strip - Free Consultation")}
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#087F79] hover:bg-[#066f6a] text-white text-xs sm:text-sm font-semibold transition-all shadow-sm cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#087F79] hover:bg-[#066f6a] text-white text-xs sm:text-sm font-semibold transition-all shadow-sm hover:shadow-md cursor-pointer"
               >
                 <span>Free Consultation</span>
               </button>

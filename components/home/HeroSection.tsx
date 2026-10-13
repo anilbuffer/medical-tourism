@@ -52,60 +52,16 @@ export const HeroSection: React.FC = () => {
               </span>
             </h1>
 
-            {/* Supporting Copy */}
-            <p className="text-base sm:text-lg lg:text-xl text-slate-200 font-normal leading-relaxed max-w-xl">
-              Access renowned specialists and accredited hospital suites in India, with personalized concierge coordination from your first medical review through flight transit, treatment, and recovery.
-            </p>
-
             {/* Action Row: CTA Button + Social Proof Avatars */}
             <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7">
               {/* Primary CTA Button */}
               <button
                 onClick={() => openIntake("Hero Get a Free Medical Opinion")}
-                className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-[#087F79] hover:bg-[#066f6a] active:scale-95 text-white font-bold text-sm sm:text-base tracking-wide transition-all duration-300 shadow-lg shadow-[#087F79]/30 hover:shadow-xl hover:shadow-[#087F79]/40 cursor-pointer group shrink-0"
+                className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-lg bg-[#087F79] hover:bg-[#066f6a] active:scale-[0.98] text-white font-bold text-sm sm:text-base tracking-wide transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer group shrink-0"
               >
                 <span>Get a Free Medical Opinion</span>
-                <ArrowRight className="w-4 h-4 text-white stroke-[2.5] transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 text-white stroke-[2.2] transition-transform duration-200 group-hover:translate-x-1" />
               </button>
-
-              {/* Social Proof: Avatars + Reviews Tag */}
-              <div className="flex items-center gap-3">
-                <div className="flex items-center -space-x-2.5 shrink-0">
-                  <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-md bg-slate-200">
-                    <Image
-                      src="/priya-sharma.jpg"
-                      alt="Patient"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-md bg-slate-200">
-                    <Image
-                      src="/doctor-center-portrait.jpg"
-                      alt="Care Specialist"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="w-10 h-10 rounded-full bg-[#102B46] border-2 border-white flex items-center justify-center text-white text-xs font-bold shadow-md">
-                    5k+
-                  </div>
-                </div>
-
-                <div className="text-xs sm:text-sm text-slate-200 font-medium leading-tight">
-                  <div className="flex items-center gap-1.5 text-amber-400 font-bold text-xs">
-                    <div className="flex">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />
-                      ))}
-                    </div>
-                    <span className="text-white text-xs font-bold">4.9 / 5</span>
-                  </div>
-                  <span className="text-slate-300 text-xs block mt-0.5">
-                    Over 5,000+ Patient Reviews
-                  </span>
-                </div>
-              </div>
             </div>
 
           </div>
@@ -113,7 +69,7 @@ export const HeroSection: React.FC = () => {
           {/* Right Column (5 cols): Blurry Frosted Glass Card with the 3 Key Assurances */}
           <div className="lg:col-span-5 w-full flex justify-center lg:justify-end">
             <div className="w-full max-w-md bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 sm:p-7 shadow-2xl text-white relative overflow-hidden group hover:border-white/30 transition-all duration-300">
-              
+
               {/* Soft Ambient Inner Glow */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-teal-400/10 rounded-full blur-2xl pointer-events-none" />
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#F0A126]/10 rounded-full blur-2xl pointer-events-none" />

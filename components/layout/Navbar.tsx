@@ -108,7 +108,7 @@ export const Navbar: React.FC = () => {
           <div className="hidden md:flex items-center gap-3 shrink-0">
             <button
               onClick={() => openIntake("Header Free Medical Opinion")}
-              className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#087F79] hover:bg-[#066f6a] active:scale-95 text-white font-semibold text-xs sm:text-sm transition-all duration-200 shadow-sm shadow-[#087F79]/20 hover:shadow-md hover:shadow-[#087F79]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79] cursor-pointer group"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-[#087F79] hover:bg-[#066f6a] active:scale-95 text-white font-semibold text-xs sm:text-sm transition-all duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79] cursor-pointer group"
             >
               <span>Get a Free Medical Opinion</span>
               <ArrowRight className="w-4 h-4 text-white stroke-[2.2] transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -125,7 +125,7 @@ export const Navbar: React.FC = () => {
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-[#102B46] hover:bg-[#F6F8FB] border border-[#DCE5EB] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
+              className="p-2 rounded-lg text-[#102B46] hover:bg-[#F6F8FB] border border-[#DCE5EB] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
             >
@@ -146,7 +146,7 @@ export const Navbar: React.FC = () => {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 rounded-xl text-sm font-semibold text-[#102B46] hover:bg-[#EAF5F4] hover:text-[#087F79] transition-colors"
+                  className="px-4 py-3 rounded-lg text-sm font-semibold text-[#102B46] hover:bg-[#EAF5F4] hover:text-[#087F79] transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -159,7 +159,7 @@ export const Navbar: React.FC = () => {
                   setMobileMenuOpen(false);
                   openIntake("Mobile Drawer Free Medical Opinion");
                 }}
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-[#087F79] hover:bg-[#066f6a] text-white font-semibold text-sm shadow-md transition-all active:scale-[0.98] cursor-pointer"
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-lg bg-[#087F79] hover:bg-[#066f6a] text-white font-semibold text-sm shadow-sm hover:shadow-md transition-all active:scale-[0.98] cursor-pointer"
               >
                 <span>Get a Free Medical Opinion</span>
                 <ArrowRight className="w-4 h-4 text-white" />

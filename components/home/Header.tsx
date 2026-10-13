@@ -86,7 +86,7 @@ export const Header = () => {
           <div className="hidden lg:flex items-center gap-4 shrink-0">
             <button
               onClick={() => openIntake("Book an Appointment")}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold shadow-sm bg-[#0B5D68] hover:bg-[#0C2338] text-white transition-colors cursor-pointer"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold shadow-sm hover:shadow-md bg-[#087F79] hover:bg-[#066f6a] text-white transition-all cursor-pointer"
             >
               <PhoneCall className="w-4 h-4" />
               <span>Book an Appointment</span>

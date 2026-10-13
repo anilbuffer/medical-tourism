@@ -145,8 +145,8 @@ export const HospitalsSection: React.FC = () => {
     filterSpecialty === "All"
       ? NETWORK_HOSPITALS
       : NETWORK_HOSPITALS.filter((h) =>
-          h.specialties.some((s) => s.toLowerCase().includes(filterSpecialty.toLowerCase()))
-        );
+        h.specialties.some((s) => s.toLowerCase().includes(filterSpecialty.toLowerCase()))
+      );
 
   return (
     <section id="hospitals" className="py-16 sm:py-20 lg:py-24 bg-[#F8FAFC] border-b border-[#DCE5EB] relative overflow-hidden">
@@ -167,15 +167,12 @@ export const HospitalsSection: React.FC = () => {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#102B46] tracking-tight leading-tight">
               Accredited Hospital Network & Surgical Hubs
             </h2>
-            <p className="text-[#627486] text-sm sm:text-base mt-2.5 leading-relaxed">
-              Explore premier JCI & NABH accredited partner facilities in India. Interact with the medical network hub below to view surgical infrastructure, certifications, and international amenities.
-            </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <Link
               href="/hospitals"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-[#087F79] hover:bg-[#066661] transition-all px-5 py-2.5 rounded-xl shadow-xs group"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-[#087F79] hover:bg-[#066661] transition-all px-5 py-2.5 rounded-lg shadow-sm hover:shadow-md group"
             >
               <span>Explore All Hospitals</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -193,11 +190,10 @@ export const HospitalsSection: React.FC = () => {
               key={opt}
               type="button"
               onClick={() => setFilterSpecialty(opt)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all shrink-0 cursor-pointer ${
-                filterSpecialty === opt
+              className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all shrink-0 cursor-pointer ${filterSpecialty === opt
                   ? "bg-[#102B46] text-white shadow-xs"
                   : "bg-white text-[#627486] hover:text-[#102B46] border border-[#DCE5EB] hover:border-[#102B46]/30"
-              }`}
+                }`}
             >
               {opt}
             </button>
@@ -262,9 +258,8 @@ export const HospitalsSection: React.FC = () => {
                     key={hospital.id}
                     type="button"
                     onClick={() => setActiveHospitalId(hospital.id)}
-                    className={`absolute -translate-x-1/2 -translate-y-1/2 z-20 group text-left cursor-pointer transition-all duration-300 ${
-                      isMatchingFilter ? "opacity-100 scale-100" : "opacity-40 scale-90"
-                    }`}
+                    className={`absolute -translate-x-1/2 -translate-y-1/2 z-20 group text-left cursor-pointer transition-all duration-300 ${isMatchingFilter ? "opacity-100 scale-100" : "opacity-40 scale-90"
+                      }`}
                     style={{ left: `${hospital.x}%`, top: `${hospital.y}%` }}
                     aria-label={`Select ${hospital.name}`}
                   >
@@ -274,16 +269,14 @@ export const HospitalsSection: React.FC = () => {
                     )}
 
                     <div
-                      className={`relative flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all duration-300 shadow-md ${
-                        isActive
+                      className={`relative flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all duration-300 shadow-md ${isActive
                           ? "bg-[#087F79] border-[#087F79] text-white scale-110 shadow-teal-600/25 ring-4 ring-[#087F79]/20"
                           : "bg-white border-[#DCE5EB] text-[#102B46] hover:border-[#087F79] hover:bg-[#EAF5F4]"
-                      }`}
+                        }`}
                     >
                       <MapPin
-                        className={`w-4 h-4 shrink-0 transition-colors ${
-                          isActive ? "text-white" : "text-[#087F79]"
-                        }`}
+                        className={`w-4 h-4 shrink-0 transition-colors ${isActive ? "text-white" : "text-[#087F79]"
+                          }`}
                       />
                       <span className="text-xs font-semibold whitespace-nowrap hidden sm:inline">
                         {hospital.shortName}
@@ -292,11 +285,10 @@ export const HospitalsSection: React.FC = () => {
 
                     {/* Popover Mini Tooltip on Hover */}
                     <div
-                      className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 pointer-events-none transition-all duration-200 ${
-                        isActive
+                      className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 pointer-events-none transition-all duration-200 ${isActive
                           ? "opacity-100 translate-y-0"
                           : "opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0"
-                      }`}
+                        }`}
                     >
                       <div className="bg-[#102B46] text-white text-[10px] font-semibold px-2 py-1 rounded shadow-xl whitespace-nowrap">
                         {hospital.accreditation}
@@ -329,11 +321,10 @@ export const HospitalsSection: React.FC = () => {
                   key={h.id}
                   type="button"
                   onClick={() => setActiveHospitalId(h.id)}
-                  className={`text-xs px-2.5 py-1 rounded-lg shrink-0 transition-colors cursor-pointer ${
-                    h.id === activeHospitalId
+                  className={`text-xs px-2.5 py-1 rounded-lg shrink-0 transition-colors cursor-pointer ${h.id === activeHospitalId
                       ? "bg-[#087F79] text-white font-semibold shadow-2xs"
                       : "bg-[#F8FAFC] border border-[#DCE5EB] text-[#627486] hover:text-[#102B46] hover:bg-slate-100"
-                  }`}
+                    }`}
                 >
                   {h.shortName}
                 </button>
@@ -437,7 +428,7 @@ export const HospitalsSection: React.FC = () => {
               <button
                 type="button"
                 onClick={() => openIntake(activeHospital.name)}
-                className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#087F79] hover:bg-[#066661] text-white text-xs font-bold transition-colors cursor-pointer shadow-xs"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#087F79] hover:bg-[#066661] text-white text-xs font-bold transition-all cursor-pointer shadow-sm hover:shadow-md"
               >
                 <span>Request Case Review</span>
                 <ChevronRight className="w-4 h-4" />
@@ -445,7 +436,7 @@ export const HospitalsSection: React.FC = () => {
 
               <Link
                 href={activeHospital.href}
-                className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl border border-[#DCE5EB] hover:border-[#102B46] text-[#102B46] text-xs font-semibold transition-colors"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg border border-[#DCE5EB] hover:border-[#087F79]/40 bg-white hover:bg-[#EAF5F4] text-[#102B46] hover:text-[#087F79] text-xs font-semibold transition-all shadow-xs hover:shadow-sm"
               >
                 <span>View Full Profile</span>
                 <ArrowRight className="w-3.5 h-3.5" />

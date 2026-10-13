@@ -80,19 +80,15 @@ export const StayPlansSection: React.FC = () => {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#102B46] tracking-tight leading-tight">
               Choose How You Want to Stay.
             </h2>
-
-            <p className="text-sm sm:text-base text-[#627486] mt-3.5 leading-relaxed">
-              Two distinct plans. They differ in where you sleep, how you travel, and what you do while you recover — never in who operates on you or the quality of surgical care.
-            </p>
           </div>
 
           {/* Action: Explore Stay Options */}
           <Link
             href="/getting-here"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#087F79] hover:text-[#102B46] transition-colors group shrink-0 py-2.5 px-5 rounded-full bg-white/90 backdrop-blur-xs border border-[#DCE5EB] shadow-2xs hover:shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#102B46] hover:text-[#087F79] transition-colors group shrink-0 py-2.5 px-5 rounded-lg bg-white hover:bg-[#EAF5F4] border border-[#DCE5EB] hover:border-[#087F79]/40 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
           >
             <span>Explore Stay Options</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="w-4 h-4 text-[#087F79] transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
 
@@ -150,7 +146,7 @@ export const StayPlansSection: React.FC = () => {
                 <div className="mt-8 pt-4 border-t border-[#DCE5EB]/60">
                   <button
                     onClick={() => openIntake("Essential Stay Package Quote")}
-                    className="w-full py-3.5 px-4 rounded-full border-2 border-[#102B46] text-[#102B46] hover:bg-[#102B46] hover:text-white font-bold text-xs tracking-wider uppercase transition-all duration-200 cursor-pointer shadow-2xs"
+                    className="w-full py-3 px-4 rounded-lg border border-[#DCE5EB] hover:border-[#087F79]/50 bg-white hover:bg-[#EAF5F4] text-[#102B46] hover:text-[#087F79] font-semibold text-xs tracking-wider uppercase transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
                   >
                     Get Written Quote for Essential
                   </button>
@@ -224,7 +220,7 @@ export const StayPlansSection: React.FC = () => {
                 <div className="mt-8 pt-4 border-t border-[#DCE5EB]/60">
                   <button
                     onClick={() => openIntake("Premium Concierge Package Quote")}
-                    className="w-full py-3.5 px-4 rounded-full bg-[#087F79] hover:bg-[#066f6a] text-white font-bold text-xs tracking-wider uppercase transition-all duration-200 cursor-pointer shadow-md hover:shadow-lg"
+                    className="w-full py-3 px-4 rounded-lg bg-[#087F79] hover:bg-[#066f6a] text-white font-semibold text-xs tracking-wider uppercase transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
                   >
                     Get Written Quote for Premium
                   </button>

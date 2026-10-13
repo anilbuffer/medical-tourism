@@ -54,16 +54,16 @@ export const DeclinePolicy = () => {
                 {/* Primary Action Button 1: bg-[#F0A126] */}
                 <button
                   onClick={() => openIntake("Clinical Integrity Consultation")}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-[#F0A126] hover:bg-[#db8e18] active:scale-[0.98] text-[#0C2338] font-heading font-bold text-xs uppercase tracking-wider shadow-xl transition-all cursor-pointer group shrink-0"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#087F79] hover:bg-[#066f6a] active:scale-[0.98] text-white font-heading font-bold text-xs uppercase tracking-wider shadow-sm hover:shadow-md transition-all cursor-pointer group shrink-0"
                 >
-                  <span className="text-[#0C2338]">Learn About Clinical Feasibility</span>
-                  <span className="text-[#0C2338] font-extrabold text-sm transition-transform group-hover:translate-x-1">→</span>
+                  <span className="text-white">Learn About Clinical Feasibility</span>
+                  <span className="text-white font-extrabold text-sm transition-transform group-hover:translate-x-1">→</span>
                 </button>
 
-                {/* Secondary Action Button 2: bg-[#0B5D68] hover:bg-[#094b54] text-white */}
+                {/* Secondary Action Button 2 */}
                 <button
                   onClick={() => setVideoOpen(true)}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl bg-[#0B5D68] hover:bg-[#094b54] active:scale-[0.98] border border-white/20 text-white cursor-pointer transition-all group select-none shadow-lg shrink-0"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 active:scale-[0.98] border border-white/20 text-white cursor-pointer transition-all group select-none shadow-sm hover:shadow-md shrink-0"
                   aria-label="Watch Clinical Protocol Video"
                 >
                   <div className="w-5 h-5 rounded-full bg-white text-[#0B5D68] flex items-center justify-center shadow-md group-hover:bg-[#F0A126] group-hover:text-[#0C2338] transition-all shrink-0">

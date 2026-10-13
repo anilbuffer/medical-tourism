@@ -39,23 +39,23 @@ export const SpecialtiesSection: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div className="max-w-2xl">
-            <span className="text-[#087F79] text-xs font-bold uppercase tracking-wider block mb-2">
-              EXPLORE TREATMENT OPTIONS
-            </span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EAF5F4] border border-[#087F79]/20 mb-3">
+              <span className="w-2 h-2 rounded-full bg-[#087F79] animate-pulse" />
+              <span className="text-[#087F79] text-xs font-bold uppercase tracking-wider">
+                EXPLORE TREATMENT OPTIONS
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#102B46] tracking-tight leading-tight">
               Specialized Treatment. A More Personal Approach.
             </h2>
-            <p className="text-[#627486] text-sm sm:text-base mt-2.5 leading-relaxed">
-              Explore treatment options and receive guidance tailored to your medical needs.
-            </p>
           </div>
 
           <Link
             href="/treatments"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#087F79] hover:text-[#102B46] transition-colors group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79] rounded p-1"
+            className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-white hover:bg-[#EAF5F4] text-[#102B46] hover:text-[#087F79] border border-[#DCE5EB] font-semibold text-sm transition-all duration-200 shadow-sm hover:shadow-md hover:border-[#087F79]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
           >
             <span>Explore All Treatments</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="w-4 h-4 text-[#087F79]" />
           </Link>
         </div>
 
@@ -100,17 +100,6 @@ export const SpecialtiesSection: React.FC = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Section Level CTA */}
-        <div className="mt-12 text-center">
-          <Link
-            href="/treatments"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-white hover:bg-[#EAF5F4] text-[#102B46] border border-[#DCE5EB] font-semibold text-sm transition-all duration-200 shadow-2xs hover:border-[#087F79]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
-          >
-            <span>Explore All Treatments</span>
-            <ArrowRight className="w-4 h-4 text-[#087F79]" />
-          </Link>
         </div>
       </div>
     </section>

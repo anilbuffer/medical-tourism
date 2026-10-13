@@ -81,10 +81,10 @@ export const DoctorsSection: React.FC = () => {
             <div className="pt-3">
               <Link
                 href="/doctors"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-[#087F79] hover:text-[#102B46] transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79] rounded py-1"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-white hover:bg-[#EAF5F4] text-[#102B46] hover:text-[#087F79] border border-[#DCE5EB] hover:border-[#087F79]/40 font-semibold text-sm transition-all duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
               >
                 <span>Meet All 45+ Specialists</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 text-[#087F79] transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
           </div>
@@ -209,7 +209,7 @@ export const DoctorsSection: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => openIntake("Dr. Jatinder Singla - Orthopaedics")}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#087F79] hover:bg-[#066f6a] text-white text-xs sm:text-sm font-bold transition-all shadow-md hover:shadow-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#087F79] hover:bg-[#066f6a] text-white text-xs sm:text-sm font-semibold transition-all shadow-sm hover:shadow-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
                   >
                     <span>Request Case Review</span>
                     <ArrowRight className="w-4 h-4" />

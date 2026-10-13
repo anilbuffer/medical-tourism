@@ -60,7 +60,6 @@ export const CostTransparency: React.FC = () => {
         {/* Section Header */}
         <div className="max-w-3xl mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF5F4] border border-[#DCE5EB] text-xs font-semibold text-[#087F79] mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#087F79]" />
             <ShieldCheck className="w-3.5 h-3.5 text-[#087F79]" />
             <span className="uppercase tracking-wider font-bold">Transparent All-Inclusive Pricing</span>
           </div>
@@ -68,10 +67,6 @@ export const CostTransparency: React.FC = () => {
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#102B46] tracking-tight leading-tight">
             All-Inclusive <span className="text-[#087F79]">Cost Comparison</span>
           </h2>
-
-          <p className="text-sm sm:text-base text-[#627486] mt-3 leading-relaxed">
-            Direct comparison between an all-in medical travel journey to India vs private out-of-pocket costs at home.
-          </p>
         </div>
 
         {/* Master Comparison Table Card */}
@@ -141,7 +136,7 @@ export const CostTransparency: React.FC = () => {
 
           <button
             onClick={() => openIntake("Get Itemised Written Quote")}
-            className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-[#087F79] hover:bg-[#066f6a] text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all shadow-sm hover:shadow-md cursor-pointer shrink-0"
+            className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-[#087F79] hover:bg-[#066f6a] text-white font-semibold text-xs sm:text-sm tracking-wide transition-all shadow-sm hover:shadow-md cursor-pointer shrink-0"
           >
             <span>Get Itemised Written Quote</span>
             <ArrowRight className="w-4 h-4 text-white" />

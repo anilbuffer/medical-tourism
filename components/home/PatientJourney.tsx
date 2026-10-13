@@ -49,7 +49,7 @@ export const PatientJourney: React.FC = () => {
           <div className="shrink-0 pt-2">
             <button
               onClick={() => openIntake("How It Works - Contact Us")}
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#087F79] hover:bg-[#066f6a] text-white font-semibold text-sm tracking-wide transition-all duration-200 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79] cursor-pointer"
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-[#087F79] hover:bg-[#066f6a] text-white font-semibold text-sm tracking-wide transition-all duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79] cursor-pointer"
             >
               <span>Contact Us</span>
             </button>

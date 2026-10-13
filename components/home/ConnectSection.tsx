@@ -43,19 +43,19 @@ export const ConnectSection: React.FC = () => {
 
               {/* Action Buttons */}
               <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
-                {/* Primary CTA Pill */}
+                {/* Primary CTA Button */}
                 <button
                   onClick={() => openIntake("Final Conversion CTA")}
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-white hover:bg-slate-100 text-[#102B46] font-bold text-sm tracking-wide transition-all shadow-lg cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg bg-white hover:bg-[#EAF5F4] text-[#102B46] font-bold text-sm tracking-wide transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
                   <span>Get a Free Medical Opinion</span>
                   <ArrowRight className="w-4 h-4 text-[#087F79] stroke-[2.5] transition-transform duration-200 group-hover:translate-x-1" />
                 </button>
 
-                {/* Secondary CTA Pill */}
+                {/* Secondary CTA Button */}
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/25 backdrop-blur-md font-semibold text-sm tracking-wide transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/25 backdrop-blur-md font-semibold text-sm tracking-wide transition-all duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
                   <Mail className="w-4 h-4 text-white/90" />
                   <span>Contact Our Care Team</span>

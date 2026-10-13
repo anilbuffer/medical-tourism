@@ -44,7 +44,7 @@ export const WhyUsSection: React.FC = () => {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Centered Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-14">
+        <div className="text-left mb-12 sm:mb-14">
           {/* Pill Tag */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DCE5EB] text-xs font-semibold text-[#087F79] mb-4 shadow-2xs">
             <span className="w-1.5 h-1.5 rounded-full bg-[#087F79]" />
@@ -52,7 +52,7 @@ export const WhyUsSection: React.FC = () => {
           </div>
 
           {/* Main Headline */}
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-[2.65rem] font-bold text-[#102B46] tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#102B46] tracking-tight leading-tight">
             More Than Medical Travel.
             <span className="block mt-1 text-[#087F79]">Personal Care Coordination.</span>
           </h2>
