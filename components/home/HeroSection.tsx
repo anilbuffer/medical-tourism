@@ -19,11 +19,11 @@ export const HeroSection: React.FC = () => {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center lg:object-[65%_35%] scale-105 filter blur-[3px] sm:blur-[4px]"
+          className="object-cover object-center lg:object-[65%_35%] scale-105 filter blur-[2px] sm:blur-[3px]"
         />
 
         {/* Ambient Gradient Overlay for Readability & Depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2338]/95 via-[#0C2338]/85 to-[#0C2338]/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2338]/80 via-[#0C2338]/60 to-[#0C2338]/40" />
       </div>
 
       {/* Main Content Layer - 2 Column Split Layout */}
@@ -43,7 +43,7 @@ export const HeroSection: React.FC = () => {
 
             {/* Main Headline */}
             <h1
-              className="text-3xl xs:text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[3.85rem] font-extrabold !text-white leading-[1.12] tracking-tight"
+              className="text-3xl xs:text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[3.85rem] font-bold !text-white leading-[1.12] tracking-tight"
               style={{ color: "#ffffff" }}
             >
               World-Class Medical Care in India.{" "}
