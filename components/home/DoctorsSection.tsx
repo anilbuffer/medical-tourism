@@ -300,22 +300,6 @@ export const DoctorsSection: React.FC = () => {
               {/* Gradient Overlay for Mobile Depth */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#102B46]/85 via-transparent to-black/10 lg:hidden" />
 
-              {/* Top Badge: Seniority / Experience Tag */}
-              <div className="absolute top-4 left-4 z-10">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#102B46]/90 backdrop-blur-md text-white text-[11px] font-bold shadow-md border border-white/20">
-                  <Star className="w-3.5 h-3.5 text-[#F0A126] fill-[#F0A126]" />
-                  <span>{currentDoctor.experience}</span>
-                </span>
-              </div>
-
-              {/* Hospital Affiliation Badge (Top Right) */}
-              <div className="absolute top-4 right-4 z-10 hidden sm:block">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-[#102B46] text-[11px] font-bold shadow-md border border-[#DCE5EB]">
-                  <Building2 className="w-3.5 h-3.5 text-[#087F79]" />
-                  <span>{currentDoctor.hospital}</span>
-                </span>
-              </div>
-
               {/* Mobile Bottom Name & Hospital Tag */}
               <div className="absolute bottom-4 left-4 right-4 z-10 text-white lg:hidden">
                 <span className="text-xs text-teal-300 font-semibold block">{currentDoctor.hospital}</span>
@@ -327,16 +311,23 @@ export const DoctorsSection: React.FC = () => {
             {/* Right Column: Doctor Details, Stats, Credentials & CTAs */}
             <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-between flex-1 bg-white">
               <div>
-                {/* Header Strip with Badge and Slide Counter */}
-                <div className="flex items-center justify-between gap-3">
+                {/* Header Strip with Badge, Experience & Slide Counter */}
+                <div className="flex flex-wrap items-center justify-between gap-2.5">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EAF5F4] text-[#087F79] text-xs font-bold border border-[#087F79]/20">
                     <ShieldCheck className="w-4 h-4 text-[#087F79]" />
                     <span>FEATURED SPECIALIST · CHIEF SURGEON</span>
                   </div>
 
-                  <span className="text-xs font-bold text-[#627486] bg-slate-100 px-2.5 py-1 rounded-md hidden sm:inline-block">
-                    Specialist {currentIndex + 1} of {FEATURED_DOCTORS.length}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F8FAFC] text-[#102B46] text-xs font-bold border border-[#DCE5EB] shadow-2xs">
+                      <Star className="w-3.5 h-3.5 text-[#F0A126] fill-[#F0A126]" />
+                      <span>{currentDoctor.experience}</span>
+                    </span>
+
+                    <span className="text-xs font-bold text-[#627486] bg-slate-100 px-2.5 py-1 rounded-md hidden sm:inline-block">
+                      Specialist {currentIndex + 1} of {FEATURED_DOCTORS.length}
+                    </span>
+                  </div>
                 </div>
 
                 {/* Doctor Name & Department */}
