@@ -13,7 +13,6 @@ import {
   ShieldCheck,
   Star,
   CheckCircle2,
-  Sparkles,
 } from "lucide-react";
 import { useCare } from "@/context/CareContext";
 
@@ -354,13 +353,6 @@ export const DoctorsSection: React.FC = () => {
                       <Award className="w-3.5 h-3.5 text-[#087F79]" />
                     </div>
                     <span>{currentDoctor.fellowships}</span>
-                  </div>
-
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-5 h-5 rounded-md bg-[#EAF5F4] flex items-center justify-center shrink-0">
-                      <Sparkles className="w-3.5 h-3.5 text-[#087F79]" />
-                    </div>
-                    <span className="text-[#087F79] font-medium">{currentDoctor.highlight}</span>
                   </div>
                 </div>
 
