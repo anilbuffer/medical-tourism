@@ -57,23 +57,12 @@ export const HeroSection = () => {
             {/* 02. Left Column: Pure & Spacious Typography */}
             <div className="lg:col-span-7 xl:col-span-6 space-y-5 sm:space-y-6 lg:space-y-8 py-2 sm:py-6 lg:py-8">
 
-              {/* Small Eyebrow Label */}
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#ECF4F7] font-heading text-xs uppercase tracking-wider font-bold backdrop-blur-md"
-              >
-                <span className="w-2 h-2 rounded-full bg-[#0B8F83] animate-pulse"></span>
-                <span>Expert Medical Travel Care</span>
-              </motion.div>
-
               {/* Confident Headline */}
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1 }}
-                className="font-heading text-[1.85rem] xs:text-[2.25rem] sm:text-5xl lg:text-6xl xl:text-[4rem] font-bold text-white leading-[1.14] tracking-tight"
+                className="font-heading text-[1.4rem] xs:text-[1.6rem] sm:text-3xl lg:text-4xl xl:text-[3.3rem] font-bold text-white leading-[1.14] tracking-tight"
               >
                 World-Class Surgical Care in India.{" "}
                 <span className="text-[#F0A126] block sm:inline mt-1 sm:mt-0">
