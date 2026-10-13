@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { 
   Building2, 
@@ -8,194 +8,267 @@ import {
   Plane, 
   Video, 
   Pill, 
-  HeartHandshake 
+  HeartHandshake,
+  ShieldCheck,
+  CheckCircle2,
+  ArrowRight,
+  Sparkles,
+  PhoneCall
 } from "lucide-react";
+import { useCare } from "@/context/CareContext";
 
 export const CareCoordination: React.FC = () => {
-  const [processedDoctorSrc, setProcessedDoctorSrc] = useState<string | null>(null);
+  const { openIntake } = useCare();
 
-  // Client-side canvas floodfill to make pure white background transparent
-  useEffect(() => {
-    const img = new window.Image();
-    img.crossOrigin = "anonymous";
-    img.src = "/doctor-center-portrait.jpg";
-    img.onload = () => {
-      try {
-        const canvas = document.createElement("canvas");
-        canvas.width = img.naturalWidth;
-        canvas.height = img.naturalHeight;
-        const ctx = canvas.getContext("2d");
-        if (!ctx) return;
-        ctx.drawImage(img, 0, 0);
-        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        const data = imgData.data;
-        const w = canvas.width;
-        const h = canvas.height;
-        const visited = new Uint8Array(w * h);
-        const queue: number[] = [0, w - 1, (h - 1) * w, (h - 1) * w + (w - 1)];
-
-        while (queue.length > 0) {
-          const idx = queue.pop()!;
-          if (visited[idx]) continue;
-          visited[idx] = 1;
-          const p = idx * 4;
-          const r = data[p];
-          const g = data[p + 1];
-          const b = data[p + 2];
-          // Flood fill near-white studio background
-          if (r > 215 && g > 215 && b > 215) {
-            data[p + 3] = 0; // Make transparent
-            const x = idx % w;
-            const y = Math.floor(idx / w);
-            if (x > 0 && !visited[idx - 1]) queue.push(idx - 1);
-            if (x < w - 1 && !visited[idx + 1]) queue.push(idx + 1);
-            if (y > 0 && !visited[idx - w]) queue.push(idx - w);
-            if (y < h - 1 && !visited[idx + w]) queue.push(idx + w);
-          }
-        }
-        ctx.putImageData(imgData, 0, 0);
-        setProcessedDoctorSrc(canvas.toDataURL("image/png"));
-      } catch {
-        // Fallback to original image if canvas is restricted
-        setProcessedDoctorSrc("/doctor-center-portrait.jpg");
-      }
-    };
-    img.onerror = () => {
-      setProcessedDoctorSrc("/doctor-center-portrait.jpg");
-    };
-  }, []);
-
-  const leftFeatures = [
+  const inHospitalFeatures = [
     {
       title: "In-Hospital Bedside Liaison",
-      desc: "Daily visits and direct communication with your treating doctors and surgical unit.",
+      desc: "Daily in-person bedside visits, translating medical consultations and communicating directly with your treating surgical unit.",
       icon: Building2,
+      badge: "On-Ground",
     },
     {
       title: "Pre-Departure Evaluation",
-      desc: "Comprehensive clinical review and recovery checks before discharging to your recovery suite.",
+      desc: "Comprehensive clinical review, wound checks, and specialist clearance before discharging from hospital to your recovery suite.",
       icon: ClipboardCheck,
+      badge: "Clinical Check",
     },
     {
       title: "Fit-to-Fly Certification",
-      desc: "Official medical clearances and documentation required by international airlines.",
+      desc: "Official medical clearances, flight safety documentation, and airline medical desk approvals secured for a worry-free return.",
       icon: Plane,
+      badge: "Travel Clearance",
     },
   ];
 
-  const rightFeatures = [
+  const homeContinuityFeatures = [
     {
       title: "Scheduled Teleconsultations",
-      desc: "Follow-up video consultations with your operating surgeon after returning home.",
+      desc: "Structured follow-up video consultations with your operating chief surgeon after returning to your home country.",
       icon: Video,
+      badge: "Surgeon Video",
     },
     {
-      title: "Prescription Handover",
-      desc: "Full supply of post-op medications with international equivalents and dosages.",
+      title: "Prescription & Dossier Handover",
+      desc: "Full supply of post-op medications with international brand equivalents, translated medical records, and digital scans.",
       icon: Pill,
+      badge: "Full Supply",
     },
     {
       title: "24/7 Dedicated Coordinator",
-      desc: "Direct WhatsApp and phone liaison for recovery questions and local doctor handover.",
+      desc: "Direct WhatsApp and phone hotline for ongoing recovery questions, symptom monitoring, and local GP handover assistance.",
       icon: HeartHandshake,
+      badge: "24/7 Hotline",
     },
   ];
 
   return (
-    <section id="aftercare" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-[#DCE5EB]">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="aftercare" className="py-16 sm:py-20 lg:py-24 bg-[#F8FAFC] border-b border-[#DCE5EB] relative overflow-hidden">
+      {/* Subtle Background Ambiance */}
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#087F79]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-[#102B46]/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Top Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF5F4] border border-[#DCE5EB] text-xs font-semibold text-[#087F79] mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#087F79]" />
-            <span>Aftercare &amp; Continuity</span>
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF5F4] border border-[#087F79]/20 text-xs font-bold text-[#087F79] mb-4 shadow-2xs">
+            <span className="w-2 h-2 rounded-full bg-[#087F79] animate-pulse" />
+            <span className="uppercase tracking-wider">Aftercare &amp; Continuity</span>
           </div>
 
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#102B46] tracking-tight leading-tight">
             The Right Choice for Your
-            <span className="block mt-1 text-[#087F79]">Healthcare &amp; Recovery Needs</span>
+            <span className="block mt-1.5 text-[#087F79]">Healthcare &amp; Recovery Needs</span>
           </h2>
+
+          <p className="text-[#627486] text-sm sm:text-base mt-4 leading-relaxed font-normal">
+            From daily bedside advocacy in India to follow-up video consultations back in your home country, our medical continuity team protects your healing journey every step of the way.
+          </p>
         </div>
 
-        {/* Master Split Card with Overlapping Center Doctor */}
-        <div className="relative rounded-3xl overflow-visible border border-[#DCE5EB] shadow-xl">
+        {/* 3-Column Master Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           
-          {/* 2-Panel Background Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 rounded-3xl overflow-hidden items-stretch">
-            
-            {/* Left Panel: Light Mint (6 Cols) */}
-            <div className="lg:col-span-6 bg-[#EAF5F4] p-8 sm:p-10 lg:p-12 xl:p-14 lg:pr-36 xl:pr-48 flex flex-col justify-center space-y-7 sm:space-y-9">
-              {leftFeatures.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div key={item.title} className="flex items-start gap-4 sm:gap-5">
-                    {/* Icon on Left */}
-                    <div className="w-12 h-12 rounded-2xl bg-white border border-[#DCE5EB] flex items-center justify-center text-[#087F79] shrink-0 shadow-2xs mt-0.5">
-                      <Icon className="w-5 h-5 text-[#087F79]" />
-                    </div>
-
-                    {/* Text on Right */}
-                    <div>
-                      <h3 className="text-base sm:text-lg font-bold text-[#102B46] leading-snug">
-                        {item.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-[#627486] mt-1.5 leading-relaxed font-normal">
-                        {item.desc}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
+          {/* ========================================================
+              LEFT COLUMN: PHASE 01 — IN-HOSPITAL CARE (3 CARDS)
+             ======================================================== */}
+          <div className="lg:col-span-4 flex flex-col justify-between space-y-4">
+            <div className="flex items-center justify-between pb-2 border-b border-[#DCE5EB]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#087F79]">
+                Phase 01 &bull; In-Hospital Support
+              </span>
+              <span className="text-[11px] font-semibold text-[#627486] bg-white px-2 py-0.5 rounded-full border border-[#DCE5EB]">
+                On-Ground
+              </span>
             </div>
 
-            {/* Right Panel: Deep Navy (6 Cols) */}
-            <div className="lg:col-span-6 bg-[#102B46] text-white p-8 sm:p-10 lg:p-12 xl:p-14 lg:pl-36 xl:pl-48 flex flex-col justify-center space-y-7 sm:space-y-9">
-              {rightFeatures.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div key={item.title} className="flex items-start justify-between lg:justify-end gap-4 sm:gap-5">
-                    {/* Text on Left (Right-aligned on desktop) */}
-                    <div className="flex-1 text-left lg:text-right">
-                      <h3 className="text-base sm:text-lg font-bold text-white leading-snug">
-                        {item.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-slate-300 mt-1.5 leading-relaxed font-normal">
-                        {item.desc}
-                      </p>
+            {inHospitalFeatures.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.title}
+                  className="bg-white rounded-2xl p-5 sm:p-6 border border-[#DCE5EB] hover:border-[#087F79]/40 hover:shadow-md transition-all duration-200 flex-1 flex flex-col justify-center group"
+                >
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <div className="w-11 h-11 rounded-xl bg-[#EAF5F4] border border-[#087F79]/15 flex items-center justify-center text-[#087F79] group-hover:bg-[#087F79] group-hover:text-white transition-colors duration-200 shrink-0">
+                      <Icon className="w-5 h-5 transition-transform group-hover:scale-110" />
                     </div>
-
-                    {/* Icon on Right */}
-                    <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-[#2ECDC5] shrink-0 shadow-2xs mt-0.5">
-                      <Icon className="w-5 h-5 text-[#2ECDC5]" />
-                    </div>
+                    <span className="text-[11px] font-semibold text-[#087F79] bg-[#EAF5F4] px-2.5 py-1 rounded-full">
+                      {item.badge}
+                    </span>
                   </div>
-                );
-              })}
-            </div>
 
+                  <h3 className="text-base font-bold text-[#102B46] group-hover:text-[#087F79] transition-colors leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#627486] mt-2 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
-          {/* Desktop Center Doctor Figure (Standing in middle seam) */}
-          <div className="hidden lg:flex absolute inset-y-0 left-1/2 -translate-x-1/2 -top-12 bottom-0 w-[340px] xl:w-[370px] items-end justify-center pointer-events-none z-20">
-            <div className="relative w-full h-[520px]">
-              {processedDoctorSrc && (
+          {/* ========================================================
+              CENTER COLUMN: DEDICATED CARE COORDINATOR SHOWCASE
+             ======================================================== */}
+          <div className="lg:col-span-4 flex flex-col">
+            <div className="relative rounded-3xl overflow-hidden border border-[#DCE5EB] bg-gradient-to-b from-[#EAF5F4] via-white to-[#F8FAFC] shadow-xl hover:shadow-2xl transition-all duration-300 flex-1 flex flex-col justify-between group min-h-[480px] lg:min-h-full">
+              
+              {/* Top Floating Badge */}
+              <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-[#102B46] text-xs font-bold shadow-sm border border-[#DCE5EB]">
+                  <span className="w-2 h-2 rounded-full bg-[#087F79] animate-pulse" />
+                  <span>Personal Care Liaison</span>
+                </span>
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#102B46]/90 backdrop-blur-md text-white text-[11px] font-semibold shadow-sm">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#2ECDC5]" />
+                  <span>100% Dedicated</span>
+                </span>
+              </div>
+
+              {/* Portrait Doctor Image */}
+              <div className="relative w-full h-[360px] sm:h-[400px] lg:h-[440px] mt-10">
                 <Image
-                  src={processedDoctorSrc}
-                  alt="Medical specialist and care coordinator"
+                  src="/doctor-care-coordinator.jpg"
+                  alt="Doctor Care Coordinator & Continuity Lead"
                   fill
-                  sizes="(max-width: 1280px) 340px, 370px"
-                  className="object-contain object-bottom drop-shadow-2xl transition-opacity duration-300"
+                  sizes="(max-width: 1024px) 100vw, 400px"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   priority
-                  unoptimized
                 />
-              )}
+                {/* Soft gradient blend at bottom of image */}
+                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/80 to-transparent" />
+              </div>
+
+              {/* Bottom Information Card */}
+              <div className="p-6 relative z-10 bg-white border-t border-[#DCE5EB] -mt-6 rounded-b-3xl">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Sparkles className="w-4 h-4 text-[#087F79]" />
+                  <span className="text-xs font-bold text-[#087F79] uppercase tracking-wider">
+                    Continuity of Care Director
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-[#102B46] leading-tight">
+                  Dr. Ananya Sharma
+                </h3>
+                <p className="text-xs text-[#627486] mt-1 leading-relaxed">
+                  Direct medical liaison accompanying you from bedside discharge in India to your full recovery back home.
+                </p>
+
+                {/* Micro tags */}
+                <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-[#DCE5EB]">
+                  <span className="inline-flex items-center gap-1 text-[11px] font-medium text-[#102B46] bg-[#EAF5F4] px-2.5 py-1 rounded-md">
+                    <CheckCircle2 className="w-3 h-3 text-[#087F79]" />
+                    Bedside Visits
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-[11px] font-medium text-[#102B46] bg-[#EAF5F4] px-2.5 py-1 rounded-md">
+                    <CheckCircle2 className="w-3 h-3 text-[#087F79]" />
+                    Fit-to-Fly Lead
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-[11px] font-medium text-[#102B46] bg-[#EAF5F4] px-2.5 py-1 rounded-md">
+                    <CheckCircle2 className="w-3 h-3 text-[#087F79]" />
+                    Home Video Consults
+                  </span>
+                </div>
+              </div>
+
             </div>
           </div>
 
+          {/* ========================================================
+              RIGHT COLUMN: PHASE 02 — HOME CONTINUITY (3 CARDS)
+             ======================================================== */}
+          <div className="lg:col-span-4 flex flex-col justify-between space-y-4">
+            <div className="flex items-center justify-between pb-2 border-b border-[#DCE5EB]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#087F79]">
+                Phase 02 &bull; Home Recovery &amp; Video
+              </span>
+              <span className="text-[11px] font-semibold text-[#627486] bg-white px-2 py-0.5 rounded-full border border-[#DCE5EB]">
+                Global Care
+              </span>
+            </div>
+
+            {homeContinuityFeatures.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.title}
+                  className="bg-white rounded-2xl p-5 sm:p-6 border border-[#DCE5EB] hover:border-[#087F79]/40 hover:shadow-md transition-all duration-200 flex-1 flex flex-col justify-center group"
+                >
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <div className="w-11 h-11 rounded-xl bg-[#EAF5F4] border border-[#087F79]/15 flex items-center justify-center text-[#087F79] group-hover:bg-[#087F79] group-hover:text-white transition-colors duration-200 shrink-0">
+                      <Icon className="w-5 h-5 transition-transform group-hover:scale-110" />
+                    </div>
+                    <span className="text-[11px] font-semibold text-[#087F79] bg-[#EAF5F4] px-2.5 py-1 rounded-full">
+                      {item.badge}
+                    </span>
+                  </div>
+
+                  <h3 className="text-base font-bold text-[#102B46] group-hover:text-[#087F79] transition-colors leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#627486] mt-2 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+        </div>
+
+        {/* Bottom Assurance Action Bar */}
+        <div className="mt-10 sm:mt-12 bg-white rounded-2xl p-5 sm:p-6 border border-[#DCE5EB] shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-[#102B46]">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#087F79] shrink-0" />
+              <span className="font-semibold">Zero Communication Gap</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#087F79] shrink-0" />
+              <span className="font-semibold">Complete Medical Record Pack</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#087F79] shrink-0" />
+              <span className="font-semibold">Surgeon Follow-up Guaranteed</span>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => openIntake("Care Coordination & Aftercare Inquiry")}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-[#087F79] hover:bg-[#066f6a] text-white text-xs sm:text-sm font-semibold transition-all shadow-sm hover:shadow-md cursor-pointer shrink-0"
+          >
+            <PhoneCall className="w-4 h-4" />
+            <span>Connect with Care Team</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
 
       </div>
     </section>
   );
 };
+
