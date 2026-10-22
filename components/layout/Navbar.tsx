@@ -12,6 +12,7 @@ export const Navbar: React.FC = () => {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentHash, setCurrentHash] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +21,17 @@ export const Navbar: React.FC = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const updateHash = () => {
+      setCurrentHash(window.location.hash || "");
+    };
+    // Sync hash after mount to avoid server/client hydration mismatch
+    updateHash();
+
+    window.addEventListener("hashchange", updateHash);
+    return () => window.removeEventListener("hashchange", updateHash);
+  }, [pathname]);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -42,8 +54,8 @@ export const Navbar: React.FC = () => {
   ];
 
   const isLinkActive = (href: string) => {
-    if (href === "/") return pathname === "/";
-    if (href.startsWith("/#")) return pathname === "/" && typeof window !== "undefined" && window.location.hash === href.replace("/", "");
+    if (href === "/") return pathname === "/" && !currentHash;
+    if (href.startsWith("/#")) return pathname === "/" && currentHash === href.replace("/", "");
     return pathname === href;
   };
 
@@ -58,6 +70,7 @@ export const Navbar: React.FC = () => {
           {/* Brand Logo Wordmark */}
           <Link
             href="/"
+            onClick={() => setCurrentHash("")}
             className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79] rounded-lg p-1"
             aria-label="YourMedicareTrip Home"
           >
@@ -92,6 +105,13 @@ export const Navbar: React.FC = () => {
                 <Link
                   key={link.label}
                   href={link.href}
+                  onClick={() => {
+                    if (link.href.startsWith("/#")) {
+                      setCurrentHash(link.href.replace("/", ""));
+                    } else if (link.href === "/") {
+                      setCurrentHash("");
+                    }
+                  }}
                   className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79] ${active
                     ? "text-[#087F79] bg-[#EAF5F4]"
                     : "text-[#102B46] hover:text-[#087F79] hover:bg-[#F6F8FB]"
@@ -144,7 +164,14 @@ export const Navbar: React.FC = () => {
                 <Link
                   key={link.label}
                   href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (link.href.startsWith("/#")) {
+                      setCurrentHash(link.href.replace("/", ""));
+                    } else if (link.href === "/") {
+                      setCurrentHash("");
+                    }
+                  }}
                   className="px-4 py-3 rounded-lg text-sm font-semibold text-[#102B46] hover:bg-[#EAF5F4] hover:text-[#087F79] transition-colors"
                 >
                   {link.label}
