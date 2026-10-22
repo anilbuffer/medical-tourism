@@ -5,8 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  ChevronLeft,
-  ChevronRight,
   GraduationCap,
   Award,
   Building2,
@@ -206,42 +204,21 @@ export const DoctorsSection: React.FC = () => {
             </p>
           </div>
 
-          {/* Right Header Utilities: Meet All Specialists CTA + Slider Controls */}
-          <div className="flex items-center justify-between sm:justify-end gap-3 shrink-0 w-full lg:w-auto">
-            {/* Primary Action Button */}
-            <Link
-              href="/doctors"
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-lg bg-white hover:bg-[#EAF5F4] text-[#102B46] hover:text-[#087F79] border border-[#DCE5EB] hover:border-[#087F79]/40 font-semibold text-xs sm:text-sm transition-all duration-200 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087F79]"
-            >
-              <span>Meet All 45+ Specialists</span>
-              <ArrowRight className="w-4 h-4 text-[#087F79] transition-transform group-hover:translate-x-1" />
-            </Link>
-
-            {/* Auto Slider Prev / Next Controls */}
-            <div className="flex items-center gap-1 sm:gap-1.5 bg-white p-1 rounded-lg border border-[#DCE5EB] shadow-xs shrink-0">
+          {/* Auto Slider Indicator Dots */}
+          <div className="flex items-center gap-2 shrink-0">
+            {FEATURED_DOCTORS.map((_, idx) => (
               <button
+                key={idx}
                 type="button"
-                onClick={handlePrev}
-                className="p-1.5 sm:p-2 rounded-md text-[#102B46] hover:text-[#087F79] hover:bg-[#EAF5F4] transition-colors cursor-pointer"
-                title="Previous specialist"
-                aria-label="Previous specialist"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <span className="text-xs font-bold text-[#102B46] px-1 sm:px-1.5 select-none font-mono">
-                0{currentIndex + 1}
-                <span className="text-[#627486] font-normal font-sans"> / 0{FEATURED_DOCTORS.length}</span>
-              </span>
-              <button
-                type="button"
-                onClick={handleNext}
-                className="p-1.5 sm:p-2 rounded-md text-[#102B46] hover:text-[#087F79] hover:bg-[#EAF5F4] transition-colors cursor-pointer"
-                title="Next specialist"
-                aria-label="Next specialist"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
+                onClick={() => setCurrentIndex(idx)}
+                aria-label={`Go to specialist ${idx + 1}`}
+                className={`transition-all duration-300 rounded-full cursor-pointer ${
+                  idx === currentIndex
+                    ? "w-8 h-2.5 bg-[#087F79]"
+                    : "w-2.5 h-2.5 bg-[#DCE5EB] hover:bg-[#087F79]/40"
+                }`}
+              />
+            ))}
           </div>
         </div>
 

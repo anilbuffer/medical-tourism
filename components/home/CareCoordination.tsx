@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import {
   Building2,
   ClipboardCheck,
@@ -13,7 +12,9 @@ import {
   CheckCircle2,
   ArrowRight,
   Sparkles,
-  PhoneCall
+  PhoneCall,
+  Lock,
+  Shield,
 } from "lucide-react";
 import { useCare } from "@/context/CareContext";
 
@@ -133,7 +134,7 @@ export const CareCoordination: React.FC = () => {
           </div>
 
           {/* ========================================================
-              CENTER COLUMN: DEDICATED CARE COORDINATOR SHOWCASE
+              CENTER COLUMN: HEALTH SECURITY & CONTINUITY HUB
              ======================================================== */}
           <div className="lg:col-span-4 flex flex-col">
             <div className="relative rounded-3xl overflow-hidden border border-[#DCE5EB] bg-gradient-to-b from-[#EAF5F4] via-white to-[#F8FAFC] shadow-xl hover:shadow-2xl transition-all duration-300 flex-1 flex flex-col justify-between group min-h-[480px] lg:min-h-full">
@@ -142,56 +143,69 @@ export const CareCoordination: React.FC = () => {
               <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-[#102B46] text-xs font-bold shadow-sm border border-[#DCE5EB]">
                   <span className="w-2 h-2 rounded-full bg-[#087F79] animate-pulse" />
-                  <span>Personal Care Liaison</span>
+                  <span>Health Security Standard</span>
                 </span>
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#102B46]/90 backdrop-blur-md text-white text-[11px] font-semibold shadow-sm">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#2ECDC5]" />
-                  <span>100% Dedicated</span>
+                  <span>100% Protected</span>
                 </span>
               </div>
 
-              {/* Portrait Doctor Image */}
-              <div className="relative w-full h-[360px] sm:h-[400px] lg:h-[440px] mt-10">
-                <Image
-                  src="/doctor-care-coordinator.jpg"
-                  alt="Doctor Care Coordinator & Continuity Lead"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 400px"
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  priority
-                />
-                {/* Soft gradient blend at bottom of image */}
-                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/80 to-transparent" />
+              {/* Central Health Security Icon & Shield Visual Showcase */}
+              <div className="relative w-full h-[320px] sm:h-[360px] lg:h-[390px] flex items-center justify-center mt-8 px-6">
+                {/* Concentric Ambient Radar Pulse Rings */}
+                <div className="absolute w-64 h-64 sm:w-72 sm:h-72 rounded-full bg-[#087F79]/5 border border-[#087F79]/15 animate-ping opacity-75 pointer-events-none" />
+                <div className="absolute w-52 h-52 sm:w-60 sm:h-60 rounded-full bg-[#087F79]/10 border border-[#087F79]/20 pointer-events-none" />
+                <div className="absolute w-40 h-40 sm:w-44 sm:h-44 rounded-full bg-white shadow-lg border border-[#DCE5EB] flex items-center justify-center pointer-events-none" />
+
+                {/* Primary Health Security Icon Emblem */}
+                <div className="relative z-10 flex flex-col items-center">
+                  <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-3xl bg-gradient-to-br from-[#102B46] via-[#0B5D68] to-[#087F79] flex items-center justify-center text-white shadow-2xl border-4 border-white group-hover:scale-105 transition-transform duration-500">
+                    <ShieldCheck className="w-14 h-14 sm:w-16 sm:h-16 text-[#2ECDC5] stroke-[1.8]" />
+                  </div>
+
+                  {/* Floating Micro Trust Badges */}
+                  <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white text-[#102B46] text-[11px] font-bold shadow-xs border border-[#DCE5EB]">
+                      <CheckCircle2 className="w-3 h-3 text-[#087F79]" />
+                      JCI &amp; NABH Verified
+                    </span>
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white text-[#102B46] text-[11px] font-bold shadow-xs border border-[#DCE5EB]">
+                      <Lock className="w-3 h-3 text-[#087F79]" />
+                      Encrypted Records
+                    </span>
+                  </div>
+                </div>
               </div>
 
               {/* Bottom Information Card */}
-              <div className="p-6 relative z-10 bg-white border-t border-[#DCE5EB] -mt-6 rounded-b-3xl">
+              <div className="p-6 relative z-10 bg-white border-t border-[#DCE5EB] rounded-b-3xl">
                 <div className="flex items-center gap-2 mb-1.5">
                   <Sparkles className="w-4 h-4 text-[#087F79]" />
                   <span className="text-xs font-bold text-[#087F79] uppercase tracking-wider">
-                    Continuity of Care Director
+                    Health Security &amp; Safety
                   </span>
                 </div>
                 <h3 className="text-xl font-bold text-[#102B46] leading-tight">
-                  Dr. Ananya Sharma
+                  Certified Care Continuity
                 </h3>
                 <p className="text-xs text-[#627486] mt-1 leading-relaxed">
-                  Direct medical liaison accompanying you from bedside discharge in India to your full recovery back home.
+                  Verified clinical protocols and multi-tier patient protection accompanying you from bedside discharge in India to full recovery back home.
                 </p>
 
                 {/* Micro tags */}
                 <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-[#DCE5EB]">
                   <span className="inline-flex items-center gap-1 text-[11px] font-medium text-[#102B46] bg-[#EAF5F4] px-2.5 py-1 rounded-md">
                     <CheckCircle2 className="w-3 h-3 text-[#087F79]" />
-                    Bedside Visits
+                    Bedside Discharge Protocol
                   </span>
                   <span className="inline-flex items-center gap-1 text-[11px] font-medium text-[#102B46] bg-[#EAF5F4] px-2.5 py-1 rounded-md">
                     <CheckCircle2 className="w-3 h-3 text-[#087F79]" />
-                    Fit-to-Fly Lead
+                    Fit-to-Fly Clearance
                   </span>
                   <span className="inline-flex items-center gap-1 text-[11px] font-medium text-[#102B46] bg-[#EAF5F4] px-2.5 py-1 rounded-md">
                     <CheckCircle2 className="w-3 h-3 text-[#087F79]" />
-                    Home Video Consults
+                    Direct Surgeon Follow-up
                   </span>
                 </div>
               </div>
