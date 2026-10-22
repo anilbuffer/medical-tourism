@@ -11,12 +11,11 @@ import { PatientJourney } from "@/components/home/PatientJourney";
 import { StayPlansSection } from "@/components/home/StayPlansSection";
 import { CostTransparency } from "@/components/home/CostTransparency";
 import { CareCoordination } from "@/components/home/CareCoordination";
-import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { BlogSection } from "@/components/home/BlogSection";
 import { ConnectSection } from "@/components/home/ConnectSection";
 
 export const metadata: Metadata = {
-  title: "World-Class Medical Care in India. Personally Guided | Your Medicare Trip",
+  title: "Your Journey to Better Health Starts Here | Your Medicare Trip",
   description:
     "Access experienced specialists and leading hospitals in India, with personalized coordination from your first medical review through treatment and recovery.",
 };
@@ -54,10 +53,7 @@ export default function HomePage() {
       {/* SECTION 10 · AFTERCARE */}
       <CareCoordination />
 
-      {/* SECTION 11 · PATIENT STORIES */}
-      <TestimonialsSection />
-
-      {/* SECTION 12 · INSIGHTS */}
+      {/* SECTION 11 · INSIGHTS */}
       <BlogSection />
 
       {/* SECTION 13 · FINAL CONVERSION */}

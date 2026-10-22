@@ -38,8 +38,7 @@ export const Navbar: React.FC = () => {
     // { label: "About Us", href: "/about" },
     { label: "Treatments", href: "/#treatments" },
     { label: "Hospitals", href: "/#hospitals" },
-    { label: "Patient Stories", href: "/#stories" },
-    // { label: "Contact", href: "/contact" },
+    { label: "Blogs", href: "/#guides" },
   ];
 
   const isLinkActive = (href: string) => {

@@ -43,13 +43,13 @@ export const HeroSection: React.FC = () => {
 
             {/* Main Headline */}
             <h1
-              className="text-3xl xs:text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[3.85rem] font-bold !text-white leading-[1.12] tracking-tight"
+              className="text-3xl xs:text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[3.85rem] font-semibold !text-white leading-[1.12] tracking-tight"
               style={{ color: "#ffffff" }}
             >
-              World-Class Medical Care in India.{" "}
+              Your Journey to  {" "}
               <span className="text-teal-300 block mt-1.5 sm:mt-1" style={{ color: "#5eead4" }}>
-                Personally Guided.
-              </span>
+                Better Health
+              </span>Starts Here
             </h1>
 
             {/* Action Row: CTA Button + Social Proof Avatars */}

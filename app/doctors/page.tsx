@@ -37,7 +37,6 @@ export default function DoctorsPage() {
   ];
   const hospitals = [
     "All",
-    "Punjab State Healthcare Network",
     "Fortis Hospital",
     "Max Super Speciality",
     "Paras Health",
