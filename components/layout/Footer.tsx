@@ -115,7 +115,7 @@ export const Footer: React.FC = () => {
                     Location
                   </p>
                   <p className="text-sm font-bold text-white mt-1">
-                    Mohali Fortis, India
+                    Mohali, Punjab, India
                   </p>
                 </div>
               </div>
