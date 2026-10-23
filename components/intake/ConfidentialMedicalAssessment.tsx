@@ -267,173 +267,173 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
         <form onSubmit={handleContinue} className="flex flex-col flex-1 min-h-0 animate-in fade-in duration-200">
           <div className={`flex-1 p-5 sm:p-8 md:p-10 pt-3 sm:pt-4 md:pt-4 space-y-4 sm:space-y-5 ${isModal ? 'overflow-y-auto custom-scrollbar' : ''}`}>
 
-          {/* Full Name */}
-          <div className="space-y-1.5">
-            <label className="block text-xs sm:text-sm font-semibold text-slate-800">
-              Full name
-            </label>
-            <input
-              type="text"
-              placeholder="Jane Smith"
-              value={fullName}
-              onChange={(e) => {
-                setFullName(e.target.value);
-                if (errors.fullName) setErrors({ ...errors, fullName: "" });
-              }}
-              className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all ${errors.fullName
-                ? "border-red-400 focus:ring-red-300 bg-red-50/20"
-                : "border-slate-300 focus:ring-teal-500 focus:border-teal-500"
-                }`}
-            />
-            {errors.fullName && <p className="text-xs text-red-600 font-medium">{errors.fullName}</p>}
-          </div>
-
-          {/* Country & Phone */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Country */}
+            {/* Full Name */}
             <div className="space-y-1.5">
               <label className="block text-xs sm:text-sm font-semibold text-slate-800">
-                Country
+                Full name
               </label>
-              <select
-                value={country}
+              <input
+                type="text"
+                placeholder="Jane Smith"
+                value={fullName}
                 onChange={(e) => {
-                  setCountry(e.target.value);
-                  if (errors.country) setErrors({ ...errors, country: "" });
+                  setFullName(e.target.value);
+                  if (errors.fullName) setErrors({ ...errors, fullName: "" });
                 }}
-                className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 transition-all ${errors.country
+                className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all ${errors.fullName
                   ? "border-red-400 focus:ring-red-300 bg-red-50/20"
                   : "border-slate-300 focus:ring-teal-500 focus:border-teal-500"
+                  }`}
+              />
+              {errors.fullName && <p className="text-xs text-red-600 font-medium">{errors.fullName}</p>}
+            </div>
+
+            {/* Country & Phone */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Country */}
+              <div className="space-y-1.5">
+                <label className="block text-xs sm:text-sm font-semibold text-slate-800">
+                  Country
+                </label>
+                <select
+                  value={country}
+                  onChange={(e) => {
+                    setCountry(e.target.value);
+                    if (errors.country) setErrors({ ...errors, country: "" });
+                  }}
+                  className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 transition-all ${errors.country
+                    ? "border-red-400 focus:ring-red-300 bg-red-50/20"
+                    : "border-slate-300 focus:ring-teal-500 focus:border-teal-500"
+                    }`}
+                >
+                  <option value="">Select</option>
+                  <option value="United Kingdom">GB UK</option>
+                  <option value="Canada">CA Canada</option>
+                  <option value="Australia">AU Australia</option>
+                  <option value="United Arab Emirates">AE UAE</option>
+                  <option value="Saudi Arabia">SA Saudi Arabia</option>
+                  <option value="Qatar">QA Qatar</option>
+                  <option value="Oman">OM Oman</option>
+                  <option value="Other">Other Country</option>
+                </select>
+                {errors.country && <p className="text-xs text-red-600 font-medium">{errors.country}</p>}
+              </div>
+
+              {/* Phone / WhatsApp */}
+              <div className="space-y-1.5">
+                <label className="block text-xs sm:text-sm font-semibold text-slate-800">
+                  Phone / WhatsApp
+                </label>
+                <input
+                  type="tel"
+                  placeholder="+44 7700 900123"
+                  value={phone}
+                  onChange={(e) => {
+                    setPhone(e.target.value);
+                    if (errors.phone) setErrors({ ...errors, phone: "" });
+                  }}
+                  className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all ${errors.phone
+                    ? "border-red-400 focus:ring-red-300 bg-red-50/20"
+                    : "border-slate-300 focus:ring-teal-500 focus:border-teal-500"
+                    }`}
+                />
+                {errors.phone && <p className="text-xs text-red-600 font-medium">{errors.phone}</p>}
+              </div>
+            </div>
+
+            {/* Email */}
+            <div className="space-y-1.5">
+              <label className="block text-xs sm:text-sm font-semibold text-slate-800">
+                Email
+              </label>
+              <input
+                type="email"
+                placeholder="jane@email.com"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (errors.email) setErrors({ ...errors, email: "" });
+                }}
+                className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all ${errors.email
+                  ? "border-red-400 focus:ring-red-300 bg-red-50/20"
+                  : "border-slate-300 focus:ring-[#0B5D68] focus:border-[#0B5D68]"
+                  }`}
+              />
+              {errors.email && <p className="text-xs text-red-600 font-medium">{errors.email}</p>}
+            </div>
+
+            {/* Treatment interested in */}
+            <div className="space-y-1.5">
+              <label className="block text-xs sm:text-sm font-semibold text-slate-800">
+                Treatment interested in
+              </label>
+              <select
+                value={treatment}
+                onChange={(e) => {
+                  setTreatment(e.target.value);
+                  if (errors.treatment) setErrors({ ...errors, treatment: "" });
+                }}
+                className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 transition-all ${errors.treatment
+                  ? "border-red-400 focus:ring-red-300 bg-red-50/20"
+                  : "border-slate-300 focus:ring-[#0B5D68] focus:border-[#0B5D68]"
                   }`}
               >
                 <option value="">Select</option>
-                <option value="United Kingdom">GB UK</option>
-                <option value="Canada">CA Canada</option>
-                <option value="Australia">AU Australia</option>
-                <option value="United Arab Emirates">AE UAE</option>
-                <option value="Saudi Arabia">SA Saudi Arabia</option>
-                <option value="Qatar">QA Qatar</option>
-                <option value="Oman">OM Oman</option>
-                <option value="Other">Other Country</option>
+                <option value="Dental Implants">Dental Implants</option>
+                <option value="Cosmetic & Aesthetic">Cosmetic & Aesthetic</option>
+                <option value="Ophthalmology / Eye Care">Ophthalmology / Eye Care</option>
+                <option value="Orthopedic Procedures">Orthopedic Procedures</option>
+                <option value="Fertility / IVF">Fertility / IVF</option>
+                <option value="Cardiac Surgery">Cardiac Surgery & Interventions</option>
+                <option value="Oncology Care">Oncology & Cancer Therapy</option>
+                <option value="Neurosurgery & Spine">Neurosurgery & Spine</option>
+                <option value="Organ Transplant">Organ Transplant</option>
+                <option value="Other">Other Specialist Care</option>
               </select>
-              {errors.country && <p className="text-xs text-red-600 font-medium">{errors.country}</p>}
+              {errors.treatment && <p className="text-xs text-red-600 font-medium">{errors.treatment}</p>}
             </div>
 
-            {/* Phone / WhatsApp */}
+            {/* Tell us more (optional) */}
             <div className="space-y-1.5">
               <label className="block text-xs sm:text-sm font-semibold text-slate-800">
-                Phone / WhatsApp
+                Tell us more (optional)
               </label>
-              <input
-                type="tel"
-                placeholder="+44 7700 900123"
-                value={phone}
-                onChange={(e) => {
-                  setPhone(e.target.value);
-                  if (errors.phone) setErrors({ ...errors, phone: "" });
-                }}
-                className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all ${errors.phone
-                  ? "border-red-400 focus:ring-red-300 bg-red-50/20"
-                  : "border-slate-300 focus:ring-teal-500 focus:border-teal-500"
-                  }`}
+              <textarea
+                rows={3}
+                placeholder="Any details about your condition or requirements"
+                value={details}
+                onChange={(e) => setDetails(e.target.value)}
+                className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0B5D68] focus:border-[#0B5D68] transition-all resize-none"
               />
-              {errors.phone && <p className="text-xs text-red-600 font-medium">{errors.phone}</p>}
             </div>
-          </div>
 
-          {/* Email */}
-          <div className="space-y-1.5">
-            <label className="block text-xs sm:text-sm font-semibold text-slate-800">
-              Email
-            </label>
-            <input
-              type="email"
-              placeholder="jane@email.com"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                if (errors.email) setErrors({ ...errors, email: "" });
-              }}
-              className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all ${errors.email
-                ? "border-red-400 focus:ring-red-300 bg-red-50/20"
-                : "border-slate-300 focus:ring-[#0B5D68] focus:border-[#0B5D68]"
-                }`}
-            />
-            {errors.email && <p className="text-xs text-red-600 font-medium">{errors.email}</p>}
-          </div>
-
-          {/* Treatment interested in */}
-          <div className="space-y-1.5">
-            <label className="block text-xs sm:text-sm font-semibold text-slate-800">
-              Treatment interested in
-            </label>
-            <select
-              value={treatment}
-              onChange={(e) => {
-                setTreatment(e.target.value);
-                if (errors.treatment) setErrors({ ...errors, treatment: "" });
-              }}
-              className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 transition-all ${errors.treatment
-                ? "border-red-400 focus:ring-red-300 bg-red-50/20"
-                : "border-slate-300 focus:ring-[#0B5D68] focus:border-[#0B5D68]"
-                }`}
-            >
-              <option value="">Select</option>
-              <option value="Dental Implants">Dental Implants</option>
-              <option value="Cosmetic & Aesthetic">Cosmetic & Aesthetic</option>
-              <option value="Ophthalmology / Eye Care">Ophthalmology / Eye Care</option>
-              <option value="Orthopedic Procedures">Orthopedic Procedures</option>
-              <option value="Fertility / IVF">Fertility / IVF</option>
-              <option value="Cardiac Surgery">Cardiac Surgery & Interventions</option>
-              <option value="Oncology Care">Oncology & Cancer Therapy</option>
-              <option value="Neurosurgery & Spine">Neurosurgery & Spine</option>
-              <option value="Organ Transplant">Organ Transplant</option>
-              <option value="Other">Other Specialist Care</option>
-            </select>
-            {errors.treatment && <p className="text-xs text-red-600 font-medium">{errors.treatment}</p>}
-          </div>
-
-          {/* Tell us more (optional) */}
-          <div className="space-y-1.5">
-            <label className="block text-xs sm:text-sm font-semibold text-slate-800">
-              Tell us more (optional)
-            </label>
-            <textarea
-              rows={3}
-              placeholder="Any details about your condition or requirements"
-              value={details}
-              onChange={(e) => setDetails(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0B5D68] focus:border-[#0B5D68] transition-all resize-none"
-            />
-          </div>
-
-          {/* Privacy Agreement Checkbox */}
-          <div className="space-y-1">
-            <label className="flex items-start gap-2.5 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={agreedToPrivacy}
-                onChange={(e) => {
-                  setAgreedToPrivacy(e.target.checked);
-                  if (errors.agreedToPrivacy) setErrors({ ...errors, agreedToPrivacy: "" });
-                }}
-                className="mt-0.5 w-4 h-4 rounded text-[#0B5D68] focus:ring-[#0B5D68] border-slate-300"
-              />
-              <span className="text-xs text-slate-600 leading-normal">
-                I agree to the privacy policy and consent to being contacted about my enquiry.
-              </span>
-            </label>
-            {errors.agreedToPrivacy && (
-              <p className="text-xs text-red-600 font-medium pl-6.5">{errors.agreedToPrivacy}</p>
-            )}
-          </div>
+            {/* Privacy Agreement Checkbox */}
+            <div className="space-y-1">
+              <label className="flex items-start gap-2.5 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={agreedToPrivacy}
+                  onChange={(e) => {
+                    setAgreedToPrivacy(e.target.checked);
+                    if (errors.agreedToPrivacy) setErrors({ ...errors, agreedToPrivacy: "" });
+                  }}
+                  className="mt-0.5 w-4 h-4 rounded text-[#0B5D68] focus:ring-[#0B5D68] border-slate-300"
+                />
+                <span className="text-xs text-slate-600 leading-normal">
+                  I agree to the privacy policy and consent to being contacted about my enquiry.
+                </span>
+              </label>
+              {errors.agreedToPrivacy && (
+                <p className="text-xs text-red-600 font-medium pl-6.5">{errors.agreedToPrivacy}</p>
+              )}
+            </div>
 
           </div>
           {/* Submit Button Sticky Footer */}
           <div className="shrink-0 p-5 pt-3 sm:p-8 sm:pt-4 md:p-10 md:pt-4 border-t border-slate-100 bg-white rounded-b-3xl relative z-10">
             <button
               type="submit"
-              className="w-full py-4 px-6 rounded-xl bg-[#087F79] hover:bg-[#066f6a] text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#087F79]/25 hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all font-heading cursor-pointer"
+              className="w-full py-4 px-6 rounded-xl bg-[#087F79] hover:bg-[#066f6a] !text-white font-extrabold text-sm tracking-wider uppercase shadow-lg shadow-[#087F79]/25 hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all font-heading cursor-pointer"
             >
               CONTINUE
             </button>
@@ -446,144 +446,144 @@ export const ConfidentialMedicalAssessment: React.FC<ConfidentialAssessmentProps
         <form onSubmit={handleSubmit} className="flex flex-col flex-1 min-h-0 animate-in fade-in duration-200">
           <div className={`flex-1 p-5 sm:p-8 md:p-10 pt-3 sm:pt-4 md:pt-4 space-y-5 sm:space-y-6 ${isModal ? 'overflow-y-auto custom-scrollbar' : ''}`}>
 
-          {/* Patient's age or date of birth */}
-          <div className="space-y-1.5">
-            <label className="block text-xs sm:text-sm font-semibold text-slate-800">
-              Patient&apos;s age or date of birth <span className="text-[#3F4EB4]">*</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Example: 30 yrs or 29-05-1985"
-              value={patientAgeOrDob}
-              onChange={(e) => {
-                setPatientAgeOrDob(e.target.value);
-                if (errors.patientAgeOrDob) setErrors({ ...errors, patientAgeOrDob: "" });
-              }}
-              className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all ${errors.patientAgeOrDob
-                ? "border-red-400 focus:ring-red-300 bg-red-50/20"
-                : "border-slate-300 focus:ring-[#3F4EB4] focus:border-[#3F4EB4]"
-                }`}
-            />
-            {errors.patientAgeOrDob && (
-              <p className="text-xs text-red-600 font-medium">{errors.patientAgeOrDob}</p>
-            )}
-          </div>
-
-          {/* Question 1: Doctor recommendation preference */}
-          <div className="space-y-2.5 pt-2">
-            <label className="block text-xs sm:text-sm font-semibold text-slate-800 font-heading">
-              1. What kind of doctors shall we recommend you? <span className="text-[#F0A126]">*</span>
-            </label>
-            <div className="space-y-2">
-              {[
-                {
-                  id: "budget",
-                  label: "I am looking for the cheapest option, I have a very strict budget.",
-                },
-                {
-                  id: "value",
-                  label: "I am somewhat flexible with my budget. I am looking for value for money — good doctor and decent price.",
-                },
-                {
-                  id: "premium",
-                  label: "I want the best doctor available. I want 5-star services for myself.",
-                },
-                {
-                  id: "other_doc",
-                  label: "Other",
-                },
-              ].map((opt) => (
-                <label
-                  key={opt.id}
-                  className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${doctorPreference === opt.label
-                    ? "border-[#0B5D68] bg-[#0B5D68]/5 text-[#0C2338] font-medium ring-1 ring-[#0B5D68]/20"
-                    : "border-slate-200 hover:bg-slate-50 text-slate-700"
-                    }`}
-                >
-                  <input
-                    type="radio"
-                    name="doctorPreference"
-                    value={opt.label}
-                    checked={doctorPreference === opt.label}
-                    onChange={() => {
-                      setDoctorPreference(opt.label);
-                      if (errors.doctorPreference) setErrors({ ...errors, doctorPreference: "" });
-                    }}
-                    className="mt-1 w-4 h-4 text-[#0B5D68] focus:ring-[#0B5D68]"
-                  />
-                  <span className="text-xs sm:text-sm leading-relaxed">{opt.label}</span>
-                </label>
-              ))}
+            {/* Patient's age or date of birth */}
+            <div className="space-y-1.5">
+              <label className="block text-xs sm:text-sm font-semibold text-slate-800">
+                Patient&apos;s age or date of birth <span className="text-[#3F4EB4]">*</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Example: 30 yrs or 29-05-1985"
+                value={patientAgeOrDob}
+                onChange={(e) => {
+                  setPatientAgeOrDob(e.target.value);
+                  if (errors.patientAgeOrDob) setErrors({ ...errors, patientAgeOrDob: "" });
+                }}
+                className={`w-full px-4 py-3 rounded-xl border text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all ${errors.patientAgeOrDob
+                  ? "border-red-400 focus:ring-red-300 bg-red-50/20"
+                  : "border-slate-300 focus:ring-[#3F4EB4] focus:border-[#3F4EB4]"
+                  }`}
+              />
+              {errors.patientAgeOrDob && (
+                <p className="text-xs text-red-600 font-medium">{errors.patientAgeOrDob}</p>
+              )}
             </div>
-            {errors.doctorPreference && (
-              <p className="text-xs text-red-600 font-medium">{errors.doctorPreference}</p>
-            )}
-          </div>
 
-          {/* Question 2: Treatment Timeline */}
-          <div className="space-y-2.5 pt-2">
-            <label className="block text-xs sm:text-sm font-semibold text-slate-800 font-heading">
-              2. How soon do you plan for this treatment? <span className="text-[#F0A126]">*</span>
-            </label>
-            <div className="space-y-2">
-              {[
-                {
-                  id: "later",
-                  label: "I am not sure yet. Maybe after 3–4 months.",
-                },
-                {
-                  id: "ready",
-                  label: "I already have my dates ready. I am just looking for the right doctor/price from your side.",
-                },
-                {
-                  id: "travel_soon",
-                  label: "Once you help me find the right doctor/price, I can travel in the next 30–45 days.",
-                },
-                {
-                  id: "other_time",
-                  label: "Other",
-                },
-              ].map((opt) => (
-                <label
-                  key={opt.id}
-                  className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${treatmentTimeline === opt.label
-                    ? "border-[#0B5D68] bg-[#0B5D68]/5 text-[#0C2338] font-medium ring-1 ring-[#0B5D68]/20"
-                    : "border-slate-200 hover:bg-slate-50 text-slate-700"
-                    }`}
-                >
-                  <input
-                    type="radio"
-                    name="treatmentTimeline"
-                    value={opt.label}
-                    checked={treatmentTimeline === opt.label}
-                    onChange={() => {
-                      setTreatmentTimeline(opt.label);
-                      if (errors.treatmentTimeline) setErrors({ ...errors, treatmentTimeline: "" });
-                    }}
-                    className="mt-1 w-4 h-4 text-[#0B5D68] focus:ring-[#0B5D68]"
-                  />
-                  <span className="text-xs sm:text-sm leading-relaxed">{opt.label}</span>
-                </label>
-              ))}
+            {/* Question 1: Doctor recommendation preference */}
+            <div className="space-y-2.5 pt-2">
+              <label className="block text-xs sm:text-sm font-semibold text-slate-800 font-heading">
+                1. What kind of doctors shall we recommend you? <span className="text-[#F0A126]">*</span>
+              </label>
+              <div className="space-y-2">
+                {[
+                  {
+                    id: "budget",
+                    label: "I am looking for the cheapest option, I have a very strict budget.",
+                  },
+                  {
+                    id: "value",
+                    label: "I am somewhat flexible with my budget. I am looking for value for money — good doctor and decent price.",
+                  },
+                  {
+                    id: "premium",
+                    label: "I want the best doctor available. I want 5-star services for myself.",
+                  },
+                  {
+                    id: "other_doc",
+                    label: "Other",
+                  },
+                ].map((opt) => (
+                  <label
+                    key={opt.id}
+                    className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${doctorPreference === opt.label
+                      ? "border-[#0B5D68] bg-[#0B5D68]/5 text-[#0C2338] font-medium ring-1 ring-[#0B5D68]/20"
+                      : "border-slate-200 hover:bg-slate-50 text-slate-700"
+                      }`}
+                  >
+                    <input
+                      type="radio"
+                      name="doctorPreference"
+                      value={opt.label}
+                      checked={doctorPreference === opt.label}
+                      onChange={() => {
+                        setDoctorPreference(opt.label);
+                        if (errors.doctorPreference) setErrors({ ...errors, doctorPreference: "" });
+                      }}
+                      className="mt-1 w-4 h-4 text-[#0B5D68] focus:ring-[#0B5D68]"
+                    />
+                    <span className="text-xs sm:text-sm leading-relaxed">{opt.label}</span>
+                  </label>
+                ))}
+              </div>
+              {errors.doctorPreference && (
+                <p className="text-xs text-red-600 font-medium">{errors.doctorPreference}</p>
+              )}
             </div>
-            {errors.treatmentTimeline && (
-              <p className="text-xs text-red-600 font-medium">{errors.treatmentTimeline}</p>
-            )}
-          </div>
 
-          {/* Preferred hospital or city (optional) */}
-          <div className="space-y-1.5 pt-2">
-            <label className="block text-xs sm:text-sm font-semibold text-slate-800">
-              Do you have any preferred hospital or city?
-            </label>
-            <input
-              type="text"
-              placeholder="Any preference for hospital or city?"
-              value={preferredHospitalCity}
-              onChange={(e) => setPreferredHospitalCity(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0B5D68] focus:border-[#0B5D68] transition-all"
-            />
-          </div>
+            {/* Question 2: Treatment Timeline */}
+            <div className="space-y-2.5 pt-2">
+              <label className="block text-xs sm:text-sm font-semibold text-slate-800 font-heading">
+                2. How soon do you plan for this treatment? <span className="text-[#F0A126]">*</span>
+              </label>
+              <div className="space-y-2">
+                {[
+                  {
+                    id: "later",
+                    label: "I am not sure yet. Maybe after 3–4 months.",
+                  },
+                  {
+                    id: "ready",
+                    label: "I already have my dates ready. I am just looking for the right doctor/price from your side.",
+                  },
+                  {
+                    id: "travel_soon",
+                    label: "Once you help me find the right doctor/price, I can travel in the next 30–45 days.",
+                  },
+                  {
+                    id: "other_time",
+                    label: "Other",
+                  },
+                ].map((opt) => (
+                  <label
+                    key={opt.id}
+                    className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${treatmentTimeline === opt.label
+                      ? "border-[#0B5D68] bg-[#0B5D68]/5 text-[#0C2338] font-medium ring-1 ring-[#0B5D68]/20"
+                      : "border-slate-200 hover:bg-slate-50 text-slate-700"
+                      }`}
+                  >
+                    <input
+                      type="radio"
+                      name="treatmentTimeline"
+                      value={opt.label}
+                      checked={treatmentTimeline === opt.label}
+                      onChange={() => {
+                        setTreatmentTimeline(opt.label);
+                        if (errors.treatmentTimeline) setErrors({ ...errors, treatmentTimeline: "" });
+                      }}
+                      className="mt-1 w-4 h-4 text-[#0B5D68] focus:ring-[#0B5D68]"
+                    />
+                    <span className="text-xs sm:text-sm leading-relaxed">{opt.label}</span>
+                  </label>
+                ))}
+              </div>
+              {errors.treatmentTimeline && (
+                <p className="text-xs text-red-600 font-medium">{errors.treatmentTimeline}</p>
+              )}
+            </div>
+
+            {/* Preferred hospital or city (optional) */}
+            <div className="space-y-1.5 pt-2">
+              <label className="block text-xs sm:text-sm font-semibold text-slate-800">
+                Do you have any preferred hospital or city?
+              </label>
+              <input
+                type="text"
+                placeholder="Any preference for hospital or city?"
+                value={preferredHospitalCity}
+                onChange={(e) => setPreferredHospitalCity(e.target.value)}
+                className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0B5D68] focus:border-[#0B5D68] transition-all"
+              />
+            </div>
 
           </div>
           {/* Action Buttons: Back + SUBMIT Sticky Footer */}

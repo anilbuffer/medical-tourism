@@ -517,7 +517,7 @@ const LoginPageContent: React.FC = () => {
             <img
               src="/images/logo/logo.png"
               alt="yourMedicareTrip"
-              className="h-9 w-auto object-contain transition-transform group-hover:scale-105"
+              className="h-12 w-auto object-contain transition-transform group-hover:scale-105"
             />
           </Link>
 
@@ -537,7 +537,7 @@ const LoginPageContent: React.FC = () => {
               <span className="w-2 h-2 rounded-full bg-[#00897B]"></span>
               <span>Signing into: {currentRole.portalBadge}</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
               <span>Welcome</span>
               <span className="text-2xl">👋</span>
             </h2>

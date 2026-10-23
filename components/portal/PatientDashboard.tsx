@@ -1054,16 +1054,6 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ portalRole }
               <PanelLeft className="w-4 h-4 text-[#3F4EB4]" />
             </button>
 
-            {/* Desktop / LG Screen Sidebar Toggle Button */}
-            <button
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="hidden md:flex p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200/80 text-slate-700 hover:text-slate-900 border border-slate-200/80 shadow-xs transition-all cursor-pointer items-center justify-center group"
-              title={sidebarOpen ? "Minimize sidebar" : "Expand sidebar"}
-              aria-label={sidebarOpen ? "Minimize sidebar" : "Expand sidebar"}
-            >
-              <PanelLeft className={`w-4 h-4 text-[#3F4EB4] group-hover:scale-110 transition-transform duration-300 ${!sidebarOpen ? "rotate-180" : ""}`} />
-            </button>
-
             <div>
               {(portalConfig as any).navGroups ? (
                 (() => {

@@ -89,8 +89,8 @@ export const ExitIntentModal = () => {
               <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-6 border border-white/20 shadow-[0_0_30px_rgba(240,161,38,0.25)]">
                 <FileText className="w-8 h-8 text-[#F0A126]" />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">2026 Medical Travel Guide</h3>
-              <p className="text-xs text-white/80 font-body">Includes hospital comparison dossier & visa requirements.</p>
+              <h3 className="text-xl font-semibold !text-white mb-2">2026 Medical Travel Guide</h3>
+              <p className="text-xs text-white/80 font-body"> Includes hospital comparison dossier & visa requirements.</p>
             </div>
           </div>
 
