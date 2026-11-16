@@ -1,142 +1,513 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* ============================================================
-   VEDARA PREMIUM COLOR PALETTE & DESIGN TOKENS
-   • Teal Accent    : #2ECDC5
-   • Indigo Primary : #3F4EB4
-   • Deep Navy Dark : #283593
-   ============================================================ */
+@import "tailwindcss";
 
 @layer base {
   :root {
-    /* Core surface */
-    --bg-primary:        #F5F7FF;
-    --text-primary:      #0F1340;
+    --font-mulish: var(--font-mulish), "Mulish", "Mulish Fallback", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-kalam: var(--font-kalam), "Kalam", cursive, sans-serif;
 
-    /* Indigo primary */
-    --accent-blue:       #3F4EB4;
-    --accent-blue-light: #5062CC;
-    --accent-blue-dark:  #283593;
+    /* Theme Engine - Default (The Medical Travel Co Signature Palette) */
+    --color-primary: #0b383e;
+    --color-primary-rgb: 11, 56, 62;
+    --color-primary-hover: #095458;
+    --color-primary-pressed: #072b2e;
 
-    /* Teal accent */
-    --accent-cyan:       #2ECDC5;
-    --accent-cyan-light: #5ADBD5;
-    --accent-cyan-dark:  #1DA89F;
+    --color-secondary: #8bd2ea;
+    --color-secondary-rgb: 139, 210, 234;
+    --color-secondary-hover: #72c2dc;
 
-    /* Deep navy base */
-    --color-navy:        #283593;
-    --color-navy-dark:   #1a2468;
-  }
+    --color-mint: #b9dcd5;
+    --color-lime-tint: #e4f1c3;
+    --color-heading-highlight: color-mix(in srgb, var(--color-secondary) 25%, transparent);
+    --color-savings: #008329;
 
-  html {
-    scroll-behavior: smooth;
-    font-family: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
-  }
+    --color-surface-base: #ffffff;
+    --color-surface-dim: #f8fafa;
+    --color-surface-elevated: #f1f4f4;
+    --color-surface-outline: #e1e6e5;
+    --color-treatment-panel: #e8f4f2;
 
-  html[lang="ar"] {
-    font-family: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
-  }
-
-  body {
-    @apply bg-[#F5F7FF] text-[#0F1340] antialiased
-           selection:bg-[#3F4EB4]/20 selection:text-[#283593];
+    --color-high: #131a1b;
+    --color-medium: #404948;
+    --color-low: #707978;
+    --color-disabled: #9ba4a3;
+    --color-whatsapp: #103928;
   }
 }
 
-@layer utilities {
-  /* ── Glassmorphism ── */
-  .bg-glass {
-    background: rgba(245, 247, 255, 0.88);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+@theme inline {
+  --font-sans: var(--font-mulish);
+  --font-kalam: var(--font-kalam);
+  
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-pressed: var(--color-primary-pressed);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-hover: var(--color-secondary-hover);
+  --color-mint: var(--color-mint);
+  --color-lime-tint: var(--color-lime-tint);
+  --color-heading-highlight: var(--color-heading-highlight);
+  --color-savings: var(--color-savings);
+  --color-whatsapp: var(--color-whatsapp);
+
+  --color-surface-base: var(--color-surface-base);
+  --color-surface-dim: var(--color-surface-dim);
+  --color-surface-elevated: var(--color-surface-elevated);
+  --color-surface-outline: var(--color-surface-outline);
+  --color-treatment-panel: var(--color-treatment-panel);
+
+  --color-high: var(--color-high);
+  --color-medium: var(--color-medium);
+  --color-low: var(--color-low);
+  --color-disabled: var(--color-disabled);
+}
+
+@layer base {
+  *, ::before, ::after {
+    font-family: var(--font-mulish), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
 
-  .bg-glass-dark {
-    background: rgba(26, 36, 104, 0.88);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+  html, body {
+    font-family: var(--font-mulish), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--color-high);
+    background-color: var(--color-surface-base);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  .border-glass {
-    border-color: rgba(63, 78, 180, 0.15);
+  /* Base Headings matching The Medical Travel Co */
+  h1 {
+    font-family: var(--font-mulish);
+    font-size: 42px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: -1px;
+  }
+  @media (min-width: 64rem) {
+    h1 {
+      font-size: 60px;
+    }
   }
 
-  .border-glass-dark {
-    border-color: rgba(255, 255, 255, 0.12);
+  h2 {
+    font-family: var(--font-mulish);
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 600;
+    letter-spacing: -1px;
+  }
+  @media (min-width: 64rem) {
+    h2 {
+      font-size: 52px;
+      line-height: 1.1;
+      letter-spacing: -2px;
+    }
   }
 
-  /* ── Glow text ── */
-  .text-glow-blue {
-    text-shadow: 0 0 24px rgba(63, 78, 180, 0.45);
+  h3 {
+    font-family: var(--font-mulish);
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 700;
+  }
+  @media (min-width: 64rem) {
+    h3 {
+      font-size: 20px;
+    }
   }
 
-  .text-glow-teal {
-    text-shadow: 0 0 24px rgba(46, 205, 197, 0.55);
+  /* Base Paragraph, Span, and Button Styles */
+  p {
+    font-family: var(--font-mulish);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
   }
 
-  /* ── Glow border (hover) ── */
-  .glow-border {
-    position: relative;
+  span {
+    font-family: inherit;
   }
 
-  .glow-border::after {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    background: linear-gradient(135deg,
-      rgba(46, 205, 197, 0.55),
-      rgba(63, 78, 180, 0.45),
-      transparent
-    );
-    border-radius: inherit;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+  /* Explicit Button base typography matching TMTC */
+  button, input, select, textarea {
+    font-family: var(--font-mulish), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 
-  .glow-border:hover::after {
-    opacity: 1;
-  }
-
-  /* ── Scrollbar hide ── */
-  .no-scrollbar::-webkit-scrollbar { display: none; }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  button {
+    font-family: var(--font-mulish), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
   }
 }
 
-/* ── Premium Scrollbar ── */
-::-webkit-scrollbar          { width: 8px; height: 8px; }
-::-webkit-scrollbar-track    { background: #EEF0FA; }
-::-webkit-scrollbar-thumb    { background: #9BA3E2; border-radius: 9999px; }
-::-webkit-scrollbar-thumb:hover { background: #3F4EB4; }
-
-/* ── Shimmer Animation ── */
-@keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position:  200% 0; }
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface-dim);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-outline);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-low);
 }
 
-.animate-shimmer {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.45) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 2.5s infinite;
+/* Animations and glass effects */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-/* ── Teal Pulse Glow ── */
-@keyframes tealPulse {
-  0%, 100% { box-shadow: 0 0 0   0 rgba(46, 205, 197, 0.30); }
-  50%       { box-shadow: 0 0 20px 6px rgba(46, 205, 197, 0.55); }
+.dark-glass {
+  background: rgba(11, 56, 62, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-.animate-teal-pulse {
-  animation: tealPulse 2.8s ease-in-out infinite;
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ============================================================================
+   Exact Typography Classes from The Medical Travel Co
+   ============================================================================ */
+
+/* Hero Main Heading (H1) */
+.v2-hero-heading {
+  font-family: var(--font-mulish);
+  font-size: 42px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+@media (min-width: 64rem) {
+  .v2-hero-heading {
+    font-size: 60px;
+  }
+}
+
+/* Services Large Animated Heading (H2) */
+.v2-services-heading {
+  font-family: var(--font-mulish);
+  font-size: 39px;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -1.5px;
+}
+@media (min-width: 64rem) {
+  .v2-services-heading {
+    font-size: 72px;
+    line-height: 1;
+    letter-spacing: -1.75px;
+  }
+}
+
+/* Focus Section Large Heading */
+.v2-focus-heading {
+  font-family: var(--font-mulish);
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+@media (min-width: 64rem) {
+  .v2-focus-heading {
+    font-size: 72px;
+  }
+}
+
+/* Section Title (H2) */
+.text-v2-title {
+  font-family: var(--font-mulish);
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+@media (min-width: 64rem) {
+  .text-v2-title {
+    font-size: 52px;
+    line-height: 1.1;
+    font-weight: 600;
+    letter-spacing: -2px;
+  }
+}
+
+/* Feature/FAQ Section Subtitle and Headings */
+.text-fgxl-semibold {
+  font-family: var(--font-mulish);
+  font-size: 36px;
+  line-height: 1.1;
+  font-weight: 600;
+}
+@media (min-width: 64rem) {
+  .text-fgxl-semibold {
+    font-size: 48px;
+    line-height: 60px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Micro-copy & Tag typography */
+.text-xsm-regular {
+  font-family: var(--font-mulish);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+}
+@media (min-width: 64rem) {
+  .text-xsm-regular {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.text-xsm-semibold {
+  font-family: var(--font-mulish);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+@media (min-width: 64rem) {
+  .text-xsm-semibold {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.text-md-semibold {
+  font-family: var(--font-mulish);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+@media (min-width: 64rem) {
+  .text-md-semibold {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+/* Primary outline button with 100% reliable hover text visibility */
+.btn-outline-primary {
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  background-color: transparent;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--color-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--color-primary) !important;
+}
+
+.btn-outline-primary:hover * {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: 60s linear infinite marquee-scroll;
+}
+
+.animate-marquee-gallery {
+  display: flex;
+  width: max-content;
+  animation: 80s linear infinite marquee-scroll;
+}
+
+.animate-marquee:hover,
+.animate-marquee-gallery:hover {
+  animation-play-state: paused;
+}
+
+@keyframes progress-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
+
+.animate-progress-indicator {
+  animation: progress-scroll 80s linear infinite;
+}
+
+
+/* ------------------------------------------------------------------ */
+/* Hero Slideshow Styles (Doctor-Led Care Slideshow)                  */
+/* ------------------------------------------------------------------ */
+
+.hero-slideshow {
+  --navy: #0d2b52;
+  --navy-deep: #081b35;
+  --aqua: #8fd8e8;
+  --ink: #14202e;
+  --muted: #5d6b7a;
+  --gl: max(24px, env(safe-area-inset-left, 0px));
+  --gr: max(24px, env(safe-area-inset-right, 0px));
+  min-height: max(620px, calc(100svh - 110px));
+  background: var(--navy-deep);
+  color: #fff;
+  font-family: var(--font-mulish, "Mulish", sans-serif);
+}
+
+@media (max-width: 600px) {
+  .hero-slideshow {
+    --gl: max(16px, env(safe-area-inset-left, 0px));
+    --gr: max(16px, env(safe-area-inset-right, 0px));
+  }
+}
+
+.hero-slide {
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+}
+
+.hero-slide img {
+  transform: scale(1.08);
+  transition: transform 4.5s linear;
+}
+
+.hero-slide-active {
+  opacity: 1 !important;
+}
+
+.hero-slide-active img {
+  transform: scale(1);
+}
+
+.hero-shade {
+  background:
+    linear-gradient(180deg, rgba(8, 27, 53, 0.55) 0%, rgba(8, 27, 53, 0.25) 30%, rgba(8, 27, 53, 0.35) 62%, rgba(8, 27, 53, 0.88) 100%),
+    radial-gradient(ellipse 70% 60% at 50% 45%, rgba(8, 27, 53, 0.35), rgba(8, 27, 53, 0) 70%);
+}
+
+.hero-blob {
+  position: absolute;
+  z-index: -1;
+  left: -0.24em;
+  top: 0.06em;
+  bottom: -0.06em;
+  width: calc(100% + 0.44em);
+  height: 100%;
+  transform: rotate(-1.2deg);
+  clip-path: inset(0 100% 0 0 round 0.4em);
+  animation: hero-wipe 1s cubic-bezier(0.65, 0, 0.35, 1) 900ms forwards;
+}
+
+.hero-pulse {
+  animation: hero-pulse 2s infinite;
+}
+
+.hero-line1,
+.hero-line2 {
+  display: block;
+  animation: hero-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hero-line1 { animation-delay: 150ms; }
+.hero-line2 { animation-delay: 300ms; margin-top: 0.06em; }
+
+.hero-rot-line {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.hero-rot-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-rot-out {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+.hero-dots button i {
+  position: absolute;
+  inset: 0;
+  width: 0;
+  background: #fff;
+}
+
+.hero-dots .hero-dot-on i {
+  animation-name: hero-fill;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.hero-cue-track::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 7px;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  border-radius: 3px;
+  background: #fff;
+  animation: hero-wheel 1.8s ease-in-out infinite;
+}
+
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes hero-wipe {
+  to { clip-path: inset(0 0 0 0 round 0.4em); }
+}
+
+@keyframes hero-fill {
+  to { width: 100%; }
+}
+
+@keyframes hero-pulse {
+  70% { box-shadow: 0 0 0 9px rgba(143, 216, 232, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(143, 216, 232, 0); }
+}
+
+@keyframes hero-wheel {
+  0% { opacity: 0; transform: translateY(0); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(14px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slideshow *,
+  .hero-slideshow *::before,
+  .hero-slideshow *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .hero-blob { clip-path: none; }
+  .hero-dots .hero-dot-on i { width: 100%; }
 }

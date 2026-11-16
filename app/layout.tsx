@@ -1,43 +1,29 @@
-import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
+import type { Metadata } from "next";
+import { Mulish, Kalam } from "next/font/google";
 import "./globals.css";
-import { CareProvider } from "@/context/CareContext";
-import { AppShell } from "@/components/layout/AppShell";
+import { AppProviders } from "@/components/providers/AppProviders";
 
-const plusJakarta = Plus_Jakarta_Sans({
+const mulish = Mulish({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-plus-jakarta",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-mulish",
   display: "swap",
 });
 
-const playfair = Playfair_Display({
+const kalam = Kalam({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-playfair",
+  weight: ["400", "700"],
+  variable: "--font-kalam",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "VEDARA | International Care — India's International Care Concierge",
+  title: "Your Medicare Trip | World-Class Medical Care Abroad",
   description:
-    "A premium medical-care coordination platform helping international patients discover the right Indian specialists, accredited hospitals, treatment options, and end-to-end travel support.",
-  keywords: [
-    "Medical Tourism India",
-    "International Patient Care",
-    "Indian Hospitals",
-    "Cardiac Surgery India",
-    "Cancer Care India",
-    "Orthopedic Surgery India",
-    "Medical Visa India",
-    "Care Concierge",
-  ],
-};
-
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
+    "Top specialist doctors and accredited world-class hospital partners in India, up to 70% lower costs, 24/7 personal concierge, recovery suites, and comprehensive complication insurance with Your Medicare Trip.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -46,11 +32,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${plusJakarta.variable} ${playfair.variable}`}>
-      <body className="min-h-screen flex flex-col justify-between font-sans antialiased">
-        <CareProvider>
-          <AppShell>{children}</AppShell>
-        </CareProvider>
+    <html lang="en" className={`${mulish.variable} ${kalam.variable} font-sans scroll-smooth antialiased`}>
+      <body className="min-h-screen bg-surface-base text-high flex flex-col font-sans selection:bg-secondary/30 selection:text-primary">
+        <AppProviders>
+          {children}
+        </AppProviders>
       </body>
     </html>
   );
