@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 import { HOSPITALS_SECTION } from '@/data/originalData';
@@ -182,9 +183,16 @@ export const HospitalsSection: React.FC<HospitalsSectionProps> = ({ onOpenConsul
             </p>
           </div>
 
-          {/* Right Controls: Country Tabs */}
-          <div className="flex items-center gap-1.5 bg-gray-100 p-1 rounded-full border border-gray-200 flex-shrink-0 self-start md:self-end">
-            {HOSPITALS_SECTION.countries.map(c => {
+          {/* Right Controls: Country Tabs & View All */}
+          <div className="flex items-center gap-2.5 flex-wrap self-start md:self-end">
+            <Link
+              href="/hospitals"
+              className="h-[38px] px-4 rounded-full text-sm font-semibold inline-flex items-center justify-center transition-all border border-gray-300 hover:border-gray-900 text-gray-800 hover:text-gray-950 bg-white shadow-2xs"
+            >
+              View all &rarr;
+            </Link>
+            <div className="flex items-center gap-1.5 bg-gray-100 p-1 rounded-full border border-gray-200 flex-shrink-0">
+              {HOSPITALS_SECTION.countries.map(c => {
               const isSelected = selectedCountry === c.id;
               return (
                 <button
@@ -206,7 +214,8 @@ export const HospitalsSection: React.FC<HospitalsSectionProps> = ({ onOpenConsul
                   {c.label}
                 </button>
               );
-            })}
+              })}
+            </div>
           </div>
         </motion.div>
       </div>
@@ -344,9 +353,22 @@ export const HospitalsSection: React.FC<HospitalsSectionProps> = ({ onOpenConsul
                       </p>
 
                       {hospital.location && (
-                        <div className="mt-2.5 flex items-center gap-1.5 text-xs font-semibold text-emerald-800">
-                          <MapPin className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
-                          <span>{hospital.location}</span>
+                        <div className="mt-2.5 flex items-center justify-between">
+                          <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-800">
+                            <MapPin className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                            <span>{hospital.location}</span>
+                          </div>
+                          {hospital.href && (
+                            <Link
+                              href={hospital.href}
+                              className="text-xs font-bold hover:underline inline-flex items-center gap-1"
+                              style={{ color: 'var(--color-primary)' }}
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <span>View details</span>
+                              <ChevronRight className="w-3.5 h-3.5" />
+                            </Link>
+                          )}
                         </div>
                       )}
                     </>

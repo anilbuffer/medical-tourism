@@ -1366,7 +1366,7 @@ export const HOSPITALS_SECTION = {
       "location": "Mohali, Punjab",
       "description": "Multi-Speciality Care, Joint Replacement & Spine",
       "badge": "JCI & NABH Accredited",
-      "href": "#contact",
+      "href": "/hospitals/max-super-speciality-mohali",
       "image": {
         "src": "/img/max-mohali.jpg",
         "width": 1200,
@@ -1380,7 +1380,7 @@ export const HOSPITALS_SECTION = {
       "location": "Mohali, Punjab",
       "description": "Multi-Speciality Care, Orthopaedics & Fertility",
       "badge": "JCI & NABH Accredited",
-      "href": "#contact",
+      "href": "/hospitals/fortis-mohali",
       "image": {
         "src": "/img/fortis-mohali.jpg",
         "width": 1200,
@@ -1394,7 +1394,7 @@ export const HOSPITALS_SECTION = {
       "location": "Mohali, Punjab",
       "description": "Multi-Speciality Care & Surgery",
       "badge": "NABH Accredited",
-      "href": "#contact",
+      "href": "/hospitals/livasa-mohali",
       "image": {
         "src": "/img/livasa.jpg",
         "width": 1200,
@@ -1408,7 +1408,7 @@ export const HOSPITALS_SECTION = {
       "location": "Mohali, Punjab",
       "description": "Multi-Speciality Care & Surgery",
       "badge": "NABH Accredited",
-      "href": "#contact",
+      "href": "/hospitals/sohana-mohali",
       "image": {
         "src": "/img/sohana.jpg",
         "width": 1200,
@@ -1422,7 +1422,7 @@ export const HOSPITALS_SECTION = {
       "location": "Mohali, Punjab",
       "description": "Cataract, Refractive & Retina Care",
       "badge": "Advanced Eye Care",
-      "href": "#contact",
+      "href": "/hospitals/sangam-netralaya",
       "image": {
         "src": "/img/sangam-netralaya.jpg",
         "width": 1200,

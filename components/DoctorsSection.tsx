@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Stethoscope, HeartPulse, UserCheck, Sparkles } from 'lucide-react';
 import useEmblaCarousel, { UseEmblaCarouselType } from 'embla-carousel-react';
@@ -131,8 +132,15 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
             </p>
           </div>
 
-          {/* Right Controls: Category Filter Tabs & Carousel Navigation */}
+          {/* Right Controls: View All, Category Filter Tabs & Carousel Navigation */}
           <div className="flex flex-wrap items-center gap-3 flex-shrink-0 self-start md:self-end">
+            <Link
+              href="/doctors"
+              className="h-[38px] px-4 rounded-full text-sm font-semibold inline-flex items-center justify-center transition-all border border-gray-300 hover:border-gray-900 text-gray-800 hover:text-gray-950 bg-white shadow-2xs"
+            >
+              View all &rarr;
+            </Link>
+
             {/* Category Filter Tabs */}
             <div className="flex items-center gap-1.5 bg-gray-100 p-1 rounded-full border border-gray-200 overflow-x-auto max-w-full">
               {categories.map((cat) => {
@@ -210,11 +218,9 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
           ref={emblaRef}
         >
           <div className="flex -ml-6 touch-pan-y">
-            {displayMembers.map((member: DoctorMember, idx: number) => (
-              <div
-                key={`${member.id}-${idx}`}
-                className="pl-6 min-w-0 flex-[0_0_88%] sm:flex-[0_0_52%] md:flex-[0_0_38%] lg:flex-[0_0_30%] xl:flex-[0_0_26%]"
-              >
+            {displayMembers.map((member: DoctorMember, idx: number) => {
+              const isDoctor = member.category === 'Doctors';
+              const CardContent = (
                 <motion.div
                   whileHover={{ y: -6, transition: { duration: 0.25 } }}
                   className="h-full group rounded-3xl overflow-hidden border bg-white shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-start select-none"
@@ -253,8 +259,23 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
                   </div>
 
                 </motion.div>
-              </div>
-            ))}
+              );
+
+              return (
+                <div
+                  key={`${member.id}-${idx}`}
+                  className="pl-6 min-w-0 flex-[0_0_88%] sm:flex-[0_0_52%] md:flex-[0_0_38%] lg:flex-[0_0_30%] xl:flex-[0_0_26%]"
+                >
+                  {isDoctor ? (
+                    <Link href={`/doctors/${member.id}`} className="block h-full">
+                      {CardContent}
+                    </Link>
+                  ) : (
+                    CardContent
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </motion.div>

@@ -511,3 +511,89 @@
   .hero-blob { clip-path: none; }
   .hero-dots .hero-dot-on i { width: 100%; }
 }
+
+/* Guide Article Typography & Elements */
+.prose-guide p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #374151;
+  margin-bottom: 1.25rem;
+}
+.prose-guide p:first-of-type {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #111827;
+}
+.prose-guide h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.prose-guide table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 15px;
+}
+.prose-guide th {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 2px solid #d6e3df;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: #f8fafa;
+}
+.prose-guide td {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid #eef2f1;
+  color: #374151;
+}
+.prose-guide ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #374151;
+}
+.prose-guide ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #374151;
+}
+.prose-guide li {
+  margin-bottom: 0.5rem;
+}
+.prose-guide strong {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+.prose-guide a {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+.prose-guide a:hover {
+  color: var(--color-savings);
+}
+.prose-guide .callout {
+  padding: 1.25rem 1.5rem;
+  border-radius: 18px;
+  background: #eef6f5;
+  border: 1px solid #d6e9e4;
+  margin: 1.75rem 0;
+  color: var(--color-primary);
+}
+.prose-guide .callout p {
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 500;
+}

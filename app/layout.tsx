@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Mulish, Kalam } from "next/font/google";
 import "./globals.css";
 import { AppProviders } from "@/components/providers/AppProviders";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 const mulish = Mulish({
   subsets: ["latin"],
@@ -35,7 +37,9 @@ export default function RootLayout({
     <html lang="en" className={`${mulish.variable} ${kalam.variable} font-sans scroll-smooth antialiased`}>
       <body className="min-h-screen bg-surface-base text-high flex flex-col font-sans selection:bg-secondary/30 selection:text-primary">
         <AppProviders>
+          <Navbar />
           {children}
+          <Footer />
         </AppProviders>
       </body>
     </html>

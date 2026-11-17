@@ -1,222 +1,191 @@
-import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
-import { PATIENT_GUIDES, getWhatsAppUrl } from '@/data/contentData';
-import { Clock, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { PageHero } from '@/components/PageHero';
+import { CtaBand } from '@/components/CtaBand';
+import { GUIDES } from '@/data/guidesData';
+import { AlertCircle } from 'lucide-react';
 
-interface GuidePageProps {
-  params: Promise<{ slug: string }>;
+interface Props {
+  params: Promise<{
+    slug: string;
+  }>;
 }
 
 export async function generateStaticParams() {
-  return PATIENT_GUIDES.map((guide) => ({
-    slug: guide.slug,
+  return GUIDES.map((g) => ({
+    slug: g.slug,
   }));
 }
 
-export async function generateMetadata({ params }: GuidePageProps) {
+export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const guide = PATIENT_GUIDES.find((g) => g.slug === slug);
-  if (!guide) return { title: 'Guide Not Found' };
+  const guide = GUIDES.find((g) => g.slug === slug);
+
+  if (!guide) {
+    return {
+      title: 'Guide Not Found | Your Medicare Trip',
+    };
+  }
+
   return {
     title: `${guide.title} | Your Medicare Trip`,
-    description: guide.excerpt,
+    description: guide.desc,
   };
 }
 
-export default async function SingleGuidePage({ params }: GuidePageProps) {
+export default async function GuideDetailPage({ params }: Props) {
   const { slug } = await params;
-  const guide = PATIENT_GUIDES.find((g) => g.slug === slug);
+  const guide = GUIDES.find((g) => g.slug === slug);
 
   if (!guide) {
     notFound();
   }
 
-  const relatedGuides = PATIENT_GUIDES.filter((g) => g.slug !== guide.slug).slice(0, 2);
+  const otherGuides = GUIDES.filter((g) => g.slug !== guide.slug);
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: guide.title,
+    description: guide.desc,
+    image: `https://www.yourmedicaretrip.com${guide.img}`,
+    publisher: {
+      '@type': 'Organization',
+      name: 'Your Medicare Trip',
+    },
+  };
 
   return (
-    <>
-      <Navbar />
-      <main className="relative min-h-screen pt-28 sm:pt-32 pb-24 bg-[#fafcfb] overflow-hidden">
-        {/* Soft Ambient Radial Background Glows */}
-        <div
-          aria-hidden="true"
-          className="absolute -top-32 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-emerald-100/35 rounded-full blur-[120px] pointer-events-none"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute top-1/2 -left-20 w-[450px] h-[450px] bg-amber-100/30 rounded-full blur-[100px] pointer-events-none"
-        />
+    <main className="min-h-screen bg-[#fafcfb]">
+      {/* 1. Page Hero (Compact) */}
+      <PageHero
+        compact={true}
+        breadcrumbs={[
+          { label: 'Guides', href: '/guides' },
+          { label: guide.cat },
+        ]}
+        title={guide.title}
+      >
+        <div className="flex flex-wrap items-center gap-2 text-xs sm:text-[13px] text-white/75 mt-4">
+          <span className="font-semibold text-white/90">{guide.cat}</span>
+          <span>·</span>
+          <span>{guide.mins} min read</span>
+          <span>·</span>
+          <span>Reviewed by our clinical team</span>
+        </div>
+      </PageHero>
 
-        <article className="relative z-10 max-w-[840px] mx-auto px-4 sm:px-6">
-          {/* Breadcrumbs */}
-          <nav aria-label="Breadcrumb" className="text-xs font-medium text-low mb-8 flex items-center gap-2">
-            <Link href="/" className="hover:text-primary transition-colors">
-              Home
-            </Link>
-            <span className="text-low">/</span>
-            <Link href="/guides" className="hover:text-primary transition-colors">
-              Patient Guides
-            </Link>
-            <span className="text-low">/</span>
-            <span className="text-high font-semibold truncate max-w-[200px] sm:max-w-none">
-              {guide.title}
-            </span>
-          </nav>
+      {/* 2. Featured Image (Article Hero Image) */}
+      <div className="max-w-[1000px] mx-auto px-4 sm:px-6 -mt-10 sm:-mt-14 relative z-20">
+        <div className="relative aspect-[21/9] w-full rounded-[24px] sm:rounded-[28px] overflow-hidden shadow-xl border border-gray-100 bg-gray-50">
+          <Image
+            src={guide.img}
+            alt={guide.title}
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 1000px"
+            className="object-cover"
+          />
+        </div>
+      </div>
 
-          {/* Category Tag & Read Time */}
-          <div className="flex items-center gap-3 mb-4">
-            <span
-              className="px-3 py-1 rounded-full text-xs font-bold"
-              style={{
-                backgroundColor:
-                  'var(--color-heading-highlight, rgba(139, 210, 234, 0.25))',
-                color: 'var(--color-primary)',
-              }}
-            >
-              {guide.categoryLabel}
-            </span>
-            <span className="flex items-center gap-1.5 text-xs text-low font-medium">
-              <Clock className="w-3.5 h-3.5 text-low" />
-              {guide.readMins} min read
-            </span>
-          </div>
-
-          {/* Title */}
-          <h1
-            className="text-[32px] sm:text-[44px] lg:text-[54px] font-semibold tracking-[-1.2px] lg:tracking-[-1.5px] leading-[1.15] text-balance"
-            style={{ color: 'var(--color-primary)' }}
-          >
-            {guide.title}
-          </h1>
-
-          {/* Excerpt */}
-          <p className="mt-4 text-base sm:text-lg leading-relaxed text-medium font-normal">
-            {guide.excerpt}
-          </p>
-
-          {/* Featured Cover Image */}
-          <div className="mt-8 rounded-[20px] overflow-hidden border border-[#e6ecea] shadow-[0_1px_2px_rgba(16,24,40,0.04)] max-h-[440px]">
-            <img
-              src={guide.image}
-              alt={guide.title}
-              className="w-full h-full object-cover max-h-[440px]"
-            />
-          </div>
-
-          {/* Guide Content */}
-          <div className="mt-10 space-y-6 text-high leading-relaxed">
-            <p className="text-base sm:text-lg leading-relaxed text-medium">
-              When travelling abroad for medical care, peace of mind comes from clear expectations, structured timelines, and attentive post-operative care. This guide covers everything you need to know before you fly, during your hospital stay, and all the way back home.
-            </p>
-
-            <h2
-              className="text-2xl sm:text-3xl font-semibold tracking-[-0.75px] pt-4"
-              style={{ color: 'var(--color-primary)' }}
-            >
-              What to expect from start to finish
-            </h2>
-
-            <ul className="space-y-3 list-none p-0">
-              <li className="flex items-start gap-3">
-                <CheckCircle2
-                  className="w-5 h-5 flex-none mt-0.5"
-                  style={{ color: 'var(--color-primary)' }}
-                />
-                <span className="text-sm sm:text-base text-medium leading-relaxed">
-                  <strong className="text-high">Comprehensive Pre-Travel Assessment:</strong> Specialist case evaluation and digital consult prior to confirming your flight dates.
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2
-                  className="w-5 h-5 flex-none mt-0.5"
-                  style={{ color: 'var(--color-primary)' }}
-                />
-                <span className="text-sm sm:text-base text-medium leading-relaxed">
-                  <strong className="text-high">Door-to-Door Coordination:</strong> VIP airport pick-up, dedicated hospital concierge, and language assistance.
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2
-                  className="w-5 h-5 flex-none mt-0.5"
-                  style={{ color: 'var(--color-primary)' }}
-                />
-                <span className="text-sm sm:text-base text-medium leading-relaxed">
-                  <strong className="text-high">Safe Journey Home:</strong> Clearance-to-fly certificates, discharge medications, and digital follow-up consultations.
-                </span>
-              </li>
-            </ul>
-
-            {/* Assistance Callout Box */}
-            <div
-              className="p-6 sm:p-8 rounded-[20px] border border-[#e6ecea] mt-10 shadow-sm"
-              style={{
-                backgroundColor: 'rgba(232, 244, 242, 0.65)',
-              }}
-            >
-              <h3
-                className="text-lg sm:text-xl font-bold"
-                style={{ color: 'var(--color-primary)' }}
-              >
-                Need personalised advice on your case?
-              </h3>
-              <p className="mt-2 text-sm sm:text-base text-medium leading-relaxed">
-                Our clinical care coordinators can review your medical records and provide a fixed-price treatment package from top accredited hospitals.
-              </p>
-              <div className="mt-5 flex flex-wrap gap-3">
+      {/* 3. Main Article Content Flow */}
+      <article className="max-w-[760px] mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-16">
+        {/* Table of Contents */}
+        <div className="p-5 sm:p-6 rounded-[20px] bg-[#eef6f5] border border-[#d6e9e4] mb-10">
+          <strong className="text-xs font-bold uppercase tracking-wider text-[#0b383e] block mb-2">
+            In this guide
+          </strong>
+          <ol className="list-decimal list-inside space-y-1.5 text-sm sm:text-[15px] font-bold text-[#0b383e]">
+            {guide.sections.map((sec, idx) => (
+              <li key={idx}>
                 <a
-                  href={getWhatsAppUrl(`Hi, I'm reading the guide "${guide.title}" and would like to ask a question.`)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] text-white font-bold text-xs sm:text-sm hover:brightness-105 transition-all shadow-sm"
+                  href={`#s${idx + 1}`}
+                  className="hover:underline hover:text-[#008329] transition-colors"
                 >
-                  Ask us on WhatsApp
+                  {sec.title}
                 </a>
-              </div>
-            </div>
-          </div>
+              </li>
+            ))}
+          </ol>
+        </div>
 
-          {/* Related Guides */}
-          {relatedGuides.length > 0 && (
-            <div className="mt-16 pt-10 border-t border-[#e6ecea]">
-              <h2
-                className="text-2xl font-semibold tracking-tight mb-6"
-                style={{ color: 'var(--color-primary)' }}
-              >
-                More patient guides
+        {/* Sections */}
+        <div className="space-y-10 prose-guide">
+          {guide.sections.map((sec, idx) => (
+            <section key={idx} id={`s${idx + 1}`} className="scroll-mt-28">
+              <h2 className="text-[24px] sm:text-[28px] font-bold text-[#0b383e] tracking-tight mb-4">
+                {sec.title}
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {relatedGuides.map((rel) => (
-                  <Link
-                    key={rel.slug}
-                    href={`/guides/${rel.slug}`}
-                    className="group block p-5 bg-white border border-[#e6ecea] rounded-[18px] hover:shadow-[0_12px_32px_rgba(16,24,40,0.08)] hover:-translate-y-0.5 transition-all duration-300"
-                  >
-                    <span
-                      className="text-xs font-bold"
-                      style={{ color: 'var(--color-primary)' }}
-                    >
-                      {rel.categoryLabel}
+              <div
+                className="text-[16px] text-gray-700 leading-[1.75] font-normal"
+                dangerouslySetInnerHTML={{ __html: sec.content }}
+              />
+            </section>
+          ))}
+        </div>
+
+        {/* General Information Only Warning Callout */}
+        <div className="mt-12 p-6 sm:p-7 rounded-[22px] bg-[#fffbf2] border border-[#f5e4ba] text-[#7a4c00]">
+          <div className="flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 text-[#b26b00] shrink-0 mt-0.5" />
+            <p className="text-[15px] sm:text-[16px] leading-[1.7]">
+              <strong className="font-bold text-[#7a4c00] mr-2">
+                General information only:
+              </strong>
+              This guide is not medical advice. Decisions about your treatment should be made with a qualified doctor who knows your case.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      {/* 4. More Guides Section */}
+      <section className="py-14 sm:py-18 bg-[#f4f7f6] border-t border-[#e2ece9]">
+        <div className="max-w-[1000px] mx-auto px-4 sm:px-6">
+          <h2 className="text-[22px] sm:text-[26px] font-bold text-[#0b383e] tracking-tight mb-6">
+            More guides
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {otherGuides.map((other) => (
+              <Link
+                key={other.slug}
+                href={`/guides/${other.slug}`}
+                className="group flex flex-col justify-between rounded-[22px] bg-white border border-[#e6ecea] overflow-hidden shadow-xs hover:shadow-lg hover:-translate-y-1 hover:border-[#8bd2ea] transition-all"
+              >
+                <div>
+                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-gray-100">
+                    <Image
+                      src={other.img}
+                      alt={other.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 480px"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <span className="text-xs text-gray-500 font-semibold block mb-1">
+                      {other.cat} · {other.mins} min
                     </span>
-                    <h3
-                      className="font-bold text-base sm:text-lg mt-1 group-hover:text-[var(--color-primary)] transition-colors leading-snug"
-                      style={{ color: 'var(--color-high)' }}
-                    >
-                      {rel.title}
+                    <h3 className="text-[17px] sm:text-[18px] font-bold text-[#0b383e] tracking-tight group-hover:text-[#008329] transition-colors leading-snug">
+                      {other.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-medium mt-2 line-clamp-2 leading-relaxed">
-                      {rel.excerpt}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-        </article>
-      </main>
-      <Footer />
-    </>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Bottom CTA Band */}
+      <CtaBand />
+
+      {/* JSON-LD Article Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+    </main>
   );
 }

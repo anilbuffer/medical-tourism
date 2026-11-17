@@ -99,19 +99,17 @@ const LOGIN_URL =
 const DEFAULT_PRIMARY_NAV: NavItem[] = [
   {
     label: 'Treatments',
-    href: '/#treatments',
+    href: '/treatments',
     sectionId: 'treatments',
     children: [
-      { label: 'Joint Replacement', href: '/#treatments', description: 'Knee, hip and shoulder' },
-      { label: 'Spine Surgery', href: '/#treatments', description: 'Disc, fusion and decompression' },
-      { label: 'Fertility & IVF', href: '/#treatments', description: 'IVF, ICSI and egg freezing' },
-      { label: 'Dental', href: '/#treatments', description: 'Implants and full-mouth care' },
-      { label: 'Eye Care', href: '/#treatments', description: 'Cataract, LASIK and retina' },
-      { label: 'Cosmetic & Plastic', href: '/#treatments', description: 'Consultation-first surgery' },
+      { label: 'Medical Treatments', href: '/treatments/medical-treatments', description: 'Surgery at accredited hospitals' },
+      { label: 'Health Check-ups & Diagnostics', href: '/treatments/health-checkups', description: 'Full assessments, results in days' },
+      { label: 'Wellness', href: '/treatments/wellness', description: 'Recovery, rehabilitation, retreats' },
+      { label: 'All treatments & costs', href: '/treatments', description: 'Starting prices, itemised' },
     ],
   },
-  { label: 'Hospitals', href: '/#hospitals', sectionId: 'hospitals' },
-  { label: 'Doctors', href: '/#doctors', sectionId: 'doctors' },
+  { label: 'Hospitals', href: '/hospitals' },
+  { label: 'Doctors', href: '/doctors' },
   {
     label: 'Care Services',
     href: '/#care-services',
@@ -135,10 +133,10 @@ const DEFAULT_MENU_GROUPS: NavGroup[] = [
   {
     title: 'Explore',
     links: [
-      { label: 'Treatments & Costs', href: '/#treatments' },
-      { label: 'Specialties', href: '/#treatments' },
-      { label: 'Hospitals', href: '/#hospitals' },
-      { label: 'Doctors', href: '/#doctors' },
+      { label: 'Treatments & costs', href: '/treatments' },
+      { label: 'Specialties', href: '/treatments/medical-treatments' },
+      { label: 'Hospitals', href: '/hospitals' },
+      { label: 'Doctors', href: '/doctors' },
     ],
   },
   {
@@ -154,6 +152,7 @@ const DEFAULT_MENU_GROUPS: NavGroup[] = [
     title: 'Help & Support',
     links: [
       { label: 'Frequently Asked Questions', href: '/#faqs' },
+      { label: 'Patient guides', href: '/guides' },
       { label: 'Contact Us', href: '/#consultation' },
       { label: 'Why Choose Us', href: '/#chandigarh-tricity' },
       {
@@ -231,10 +230,10 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
   markets = DEFAULT_MARKETS,
   defaultMarketCode = 'SA',
   onMarketChange,
-  bookHref = '#consultation',
+  bookHref: _bookHref = '#consultation',
   bookLabel = 'Send Enquiry',
   logoHref = '/',
-  linkComponent: LinkEl = 'a',
+  linkComponent: _LinkEl = 'a',
   menuFooter,
   hideOnScroll = true,
   hideAfter,

@@ -10,22 +10,31 @@ import {
 export const Footer: React.FC = () => {
   const quickLinks = [
     { label: 'Home', href: '/' },
-    { label: 'How It Works', href: '#how-it-works' },
-    { label: 'Hospitals', href: '#hospitals' },
-    { label: 'Doctors', href: '#doctors' },
-    { label: 'Aftercare', href: '#aftercare' },
-    { label: 'Testimonials', href: '#stories' },
-    { label: 'Social', href: '#social' },
-    { label: 'About Us', href: '#about' },
-    { label: 'Contact Us', href: '#consultation' },
+    { label: 'How It Works', href: '/how-it-works' },
+    { label: 'Care Services', href: '/care-services' },
+    { label: 'Why Choose Us', href: '/why-choose-us' },
+    { label: 'Hospitals', href: '/hospitals' },
+    { label: 'Doctors', href: '/doctors' },
+    { label: 'Aftercare', href: '/aftercare' },
+    { label: 'Destination & Stay', href: '/destination' },
+    { label: 'Testimonials', href: '/#stories' },
+    { label: 'Patient Guides', href: '/guides' },
+    { label: 'Social', href: '/#social' },
+    { label: 'FAQs', href: '/faqs' },
+    { label: 'About Us', href: '/about' },
+    { label: 'Contact Us', href: '/#consultation' },
+    { label: 'Privacy Policy', href: '/privacy-policy' },
+    { label: 'Terms of Use', href: '/terms-of-use' },
   ];
 
   const treatmentLinks = [
-    { label: 'Wellness', href: '#treatments' },
-    { label: 'Orthopaedic', href: '#treatments' },
-    { label: 'Dental', href: '#treatments' },
-    { label: 'Fertility Care', href: '#treatments' },
-    { label: 'Urology', href: '#treatments' },
+    { label: 'Orthopaedics', href: '/treatments/knee-replacement' },
+    { label: 'Fertility Care', href: '/treatments/ivf' },
+    { label: 'Eye Care', href: '/treatments/cataract-surgery' },
+    { label: 'Dental', href: '/treatments/dental-implants' },
+    { label: 'Cosmetic & Plastic Surgery', href: '/treatments/cosmetic-surgery' },
+    { label: 'Health Check-ups', href: '/treatments/health-checkups' },
+    { label: 'Wellness', href: '/treatments/wellness' },
   ];
 
   return (
@@ -150,22 +159,24 @@ export const Footer: React.FC = () => {
               </div>
 
               {/* Column 2: Quick Links */}
-              <div className="min-w-0">
-                <h3 className="text-base font-semibold text-gray-950">
+              <div className="min-w-0 flex flex-col">
+                <h3 className="text-base font-semibold text-gray-950 shrink-0">
                   Quick Links
                 </h3>
-                <ul className="mt-3 lg:mt-4 space-y-1 lg:space-y-2 text-sm text-gray-600 font-medium">
-                  {quickLinks.map((link) => (
-                    <li key={link.label} className="py-0.5">
-                      <Link 
-                        href={link.href} 
-                        className="transition-colors hover:text-gray-950 block"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                <div className="mt-3 lg:mt-4 max-h-[250px] overflow-y-auto overscroll-contain pr-2 [scrollbar-width:thin] [scrollbar-color:rgba(11,56,62,0.25)_transparent] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-gray-300">
+                  <ul className="space-y-1 lg:space-y-2 text-sm text-gray-600 font-medium">
+                    {quickLinks.map((link) => (
+                      <li key={link.label} className="py-0.5">
+                        <Link 
+                          href={link.href} 
+                          className="transition-colors hover:text-gray-950 block"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
               {/* Column 3: Treatments */}
@@ -250,6 +261,14 @@ export const Footer: React.FC = () => {
                         +91 98765 43210
                       </a>
                     </div>
+                    <div className="pt-1">
+                      <Link 
+                        href="/grievance" 
+                        className="text-xs font-bold text-[#095458] hover:underline inline-flex items-center gap-1"
+                      >
+                        Grievance redressal process &rarr;
+                      </Link>
+                    </div>
                   </div>
                 </div>
 
@@ -274,6 +293,12 @@ export const Footer: React.FC = () => {
             </Link>
             <Link href="/terms-of-use" className="hover:text-gray-950 transition-colors">
               Terms of Use
+            </Link>
+            <Link href="/medical-disclaimer" className="hover:text-gray-950 transition-colors">
+              Medical Disclaimer
+            </Link>
+            <Link href="/grievance" className="hover:text-gray-950 transition-colors">
+              Grievance Redressal
             </Link>
           </div>
 

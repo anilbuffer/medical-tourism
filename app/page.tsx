@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Navbar } from '@/components/Navbar';
 import { HeroSection } from '@/components/HeroSection';
 import { FindYourTreatmentSection } from '@/components/FindYourTreatmentSection';
 import { CareServicesSection } from '@/components/CareServicesSection';
@@ -11,7 +10,6 @@ import { StoriesSection } from '@/components/StoriesSection';
 import { PatientGuidesSection } from '@/components/PatientGuidesSection';
 import { FaqSection } from '@/components/FaqSection';
 import { ContactSection } from '@/components/ContactSection';
-import { Footer } from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Your Medicare Trip | World-Class Medical Care & Surgery in India',
@@ -34,9 +32,6 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-surface-base text-high flex flex-col font-sans transition-colors duration-300">
-      {/* Navigation Header */}
-      <Navbar />
-
       {/* Hero Section */}
       <HeroSection />
 
@@ -69,9 +64,6 @@ export default function HomePage() {
 
       {/* Consultation Booking & Contact CTA (SSR) */}
       <ContactSection />
-
-      {/* Footer with Accreditations & EHR Notice (SSR) */}
-      <Footer />
     </main>
   );
 }
