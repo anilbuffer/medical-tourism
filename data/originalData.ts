@@ -1433,13 +1433,17 @@ export const HOSPITALS_SECTION = {
 };
 
 export interface DoctorMember {
-  id: string;
+  slug: string | null;
   name: string;
   role: string;
-  category: 'Doctors' | 'Care Team' | 'Recovery';
-  qualifications: string;
-  image: string;
-  badge: string;
+  specialty: string;
+  group: string;
+  groupLabel: string;
+  years: string | null;
+  img: string | null;
+  initials: string;
+  hospital: string | null;
+  type: 'doctor' | 'care';
 }
 
 export const DOCTORS_SECTION = {
@@ -1449,82 +1453,412 @@ export const DOCTORS_SECTION = {
   subtitle: "Experienced surgeons, dedicated patient care managers, and aftercare recovery specialists guiding every step of your medical journey.",
   categories: [
     { label: "All", value: "all" },
-    { label: "Doctors", value: "Doctors" },
-    { label: "Care Team", value: "Care Team" },
-    { label: "Recovery", value: "Recovery" }
+    { label: "Doctors", value: "doctor" },
+    { label: "Care Team", value: "care" }
   ],
   members: [
     {
-      id: "dr-jaswant-singh",
-      name: "Dr. Jaswant Singh",
-      role: "Founding Clinical Partner",
-      category: "Doctors",
-      qualifications: "MBBS, MS (General Surgery). Consultant General & Laparoscopic Surgeon with 25+ years in practice and 5,000+ patients operated on.",
-      image: "/img/dr-jaswant-singh.jpg",
-      badge: "25+ Years Experience"
+      "slug": "dr-jaswant-singh",
+      "name": "Dr. Jaswant Singh",
+      "role": "Founding Clinical Partner",
+      "specialty": "General & Laparoscopic Surgery",
+      "group": "surgery",
+      "groupLabel": "Surgery, ENT & Gynae",
+      "years": "25+",
+      "img": "/img/dr-jaswant-singh.jpg",
+      "initials": "JS",
+      "hospital": null,
+      "type": "doctor"
     },
     {
-      id: "dr-jatinder-singla",
-      name: "Dr. Jatinder Singla",
-      role: "Orthopaedics & Robotic Joint Replacement",
-      category: "Doctors",
-      qualifications: "MBBS, MS (Orthopaedics), M.Ch (Orth). Arthroplasty fellowships in the UK, Germany and Switzerland. Operates at Fortis Hospital Mohali.",
-      image: "/img/dr-singla.jpg",
-      badge: "20+ Years Experience"
+      "slug": "dr-jatinder-singla",
+      "name": "Dr. Jatinder Singla",
+      "role": "Orthopaedics & Robotic Joint Replacement",
+      "specialty": "Orthopaedics",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics",
+      "years": "20+",
+      "img": "/img/dr-singla.jpg",
+      "initials": "JS",
+      "hospital": null,
+      "type": "doctor"
     },
     {
-      id: "dr-ashish-ahuja",
-      name: "Dr. Ashish Ahuja",
-      role: "Ophthalmology",
-      category: "Doctors",
-      qualifications: "Eye specialist. Reviews your eye reports, explains your options and plans your procedure before you travel.",
-      image: "/img/dr-ashish-ahuja.jpg",
-      badge: "16+ Years Experience"
+      "slug": "dr-ashish-ahuja",
+      "name": "Dr. Ashish Ahuja",
+      "role": "Ophthalmology",
+      "specialty": "Eye care",
+      "group": "eye",
+      "groupLabel": "Eye Care",
+      "years": "16+",
+      "img": "/img/dr-ashish-ahuja.jpg",
+      "initials": "AA",
+      "hospital": null,
+      "type": "doctor"
     },
     {
-      id: "dr-vikas-gupta",
-      name: "Dr. Vikas Gupta",
-      role: "Plastic Surgery",
-      category: "Doctors",
-      qualifications: "Plastic surgeon. Talks through what you hope to achieve and agrees a realistic plan with you before you travel.",
-      image: "/img/dr-vikas-gupta.jpg",
-      badge: "18+ Years Experience"
+      "slug": "dr-vikas-gupta",
+      "name": "Dr. Vikas Gupta",
+      "role": "Plastic Surgery",
+      "specialty": "Cosmetic & Plastic Surgery",
+      "group": "plastic",
+      "groupLabel": "Plastic Surgery",
+      "years": "18+",
+      "img": "/img/dr-vikas-gupta.jpg",
+      "initials": "VG",
+      "hospital": null,
+      "type": "doctor"
     },
     {
-      id: "patient-care-manager",
-      name: "Patient Care Manager",
-      role: "Your one point of contact",
-      category: "Care Team",
-      qualifications: "Answers your messages, goes with you to admission and discharge, and checks in once you're home.",
-      image: "/img/care-manager.jpg",
-      badge: "10+ Years Experience"
+      "slug": "dr-harinder-k-bali",
+      "name": "Dr. Harinder K. Bali",
+      "role": "Chairman, Cardiac Sciences",
+      "specialty": "Interventional Cardiology",
+      "group": "cardiac",
+      "groupLabel": "Cardiac Sciences",
+      "years": "38+",
+      "img": null,
+      "initials": "HB",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
     },
     {
-      id: "international-patient-desk",
-      name: "International Patient Desk",
-      role: "Visa, travel & stay",
-      category: "Care Team",
-      qualifications: "Prepares your e-Medical visa letter, books your stay and arranges your airport pickup.",
-      image: "/img/transfers.jpg",
-      badge: "12+ Years Experience"
+      "slug": "dr-arvind-kaul",
+      "name": "Dr. Arvind Kaul",
+      "role": "Director, Cardiology",
+      "specialty": "Interventional Cardiology",
+      "group": "cardiac",
+      "groupLabel": "Cardiac Sciences",
+      "years": "25+",
+      "img": null,
+      "initials": "AK",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
     },
     {
-      id: "physiotherapist",
-      name: "Physiotherapist",
-      role: "At your recovery stay",
-      category: "Recovery",
-      qualifications: "Works through your exercises so you're moving comfortably before your flight home.",
-      image: "/img/physio.jpg",
-      badge: "14+ Years Experience"
+      "slug": "dr-ishant-singla",
+      "name": "Dr. Ishant Singla",
+      "role": "Cardiothoracic & Vascular Surgery",
+      "specialty": "CTVS",
+      "group": "cardiac",
+      "groupLabel": "Cardiac Sciences",
+      "years": null,
+      "img": null,
+      "initials": "IS",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
     },
     {
-      id: "recovery-nurse",
-      name: "Recovery Nurse",
-      role: "At your recovery stay",
-      category: "Recovery",
-      qualifications: "Checks your wound, medicines and vital signs, with a direct line to your surgeon.",
-      image: "/img/doctor.jpg",
-      badge: "15+ Years Experience"
+      "slug": "dr-raka-kaushal",
+      "name": "Dr. Raka Kaushal",
+      "role": "Nephrology",
+      "specialty": "Nephrology",
+      "group": "kidney",
+      "groupLabel": "Kidney & Urology",
+      "years": null,
+      "img": null,
+      "initials": "RK",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-vineet-saggar",
+      "name": "Dr. Vineet Saggar",
+      "role": "Director, Neuro & Spine Surgery",
+      "specialty": "Neurosurgery",
+      "group": "neuro",
+      "groupLabel": "Neuro & Spine",
+      "years": null,
+      "img": null,
+      "initials": "VS",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-manuj-wadhwa",
+      "name": "Dr. Manuj Wadhwa",
+      "role": "Chairman & Executive Director, Orthopaedics & Joint Replacement",
+      "specialty": "Orthopaedics & Joint Replacement",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics",
+      "years": null,
+      "img": null,
+      "initials": "MW",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-robin-bohat",
+      "name": "Dr. Robin Bohat",
+      "role": "Orthopaedics",
+      "specialty": "Orthopaedics",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics",
+      "years": null,
+      "img": null,
+      "initials": "RB",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-deepak-chadha",
+      "name": "Dr. Deepak Chadha",
+      "role": "Neurologist & Epileptologist",
+      "specialty": "Neurology & Epilepsy",
+      "group": "neuro",
+      "groupLabel": "Neuro & Spine",
+      "years": null,
+      "img": null,
+      "initials": "DC",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-sonal",
+      "name": "Dr. Sonal",
+      "role": "Consultant, Pulmonary Medicine",
+      "specialty": "Pulmonology",
+      "group": "chest",
+      "groupLabel": "Pulmonology",
+      "years": "6+",
+      "img": null,
+      "initials": "S",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-kritarth",
+      "name": "Dr. Kritarth",
+      "role": "Consultant, Pulmonary Medicine",
+      "specialty": "Pulmonary & Critical Care Medicine",
+      "group": "chest",
+      "groupLabel": "Pulmonology",
+      "years": null,
+      "img": null,
+      "initials": "K",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-avinash-srivastava",
+      "name": "Dr. Avinash Srivastava",
+      "role": "Senior Director, Urology & Kidney Transplant",
+      "specialty": "Urology & Kidney Transplant",
+      "group": "kidney",
+      "groupLabel": "Kidney & Urology",
+      "years": "20+",
+      "img": null,
+      "initials": "AS",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-sakshi-srivastava",
+      "name": "Dr. Sakshi Srivastava",
+      "role": "Robotic Gynaecology",
+      "specialty": "Gynaecology",
+      "group": "surgery",
+      "groupLabel": "Surgery, ENT & Gynae",
+      "years": null,
+      "img": null,
+      "initials": "SS",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-jagpal-pandher",
+      "name": "Dr. Jagpal Pandher",
+      "role": "Rheumatology",
+      "specialty": "Rheumatology",
+      "group": "rheum",
+      "groupLabel": "Rheumatology",
+      "years": null,
+      "img": null,
+      "initials": "JP",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-jatin-sarin",
+      "name": "Dr. Jatin Sarin",
+      "role": "Director, Medical Oncology",
+      "specialty": "Medical Oncology",
+      "group": "onco",
+      "groupLabel": "Oncology & Haematology",
+      "years": "20+",
+      "img": null,
+      "initials": "JS",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-vijay-bansal",
+      "name": "Dr. Vijay Bansal",
+      "role": "Director, Surgical Oncology",
+      "specialty": "Surgical Oncology",
+      "group": "onco",
+      "groupLabel": "Oncology & Haematology",
+      "years": null,
+      "img": null,
+      "initials": "VB",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-meenakshi-mittal",
+      "name": "Dr. Meenakshi Mittal",
+      "role": "Director, Radiation Oncology",
+      "specialty": "Radiation Oncology",
+      "group": "onco",
+      "groupLabel": "Oncology & Haematology",
+      "years": "23+",
+      "img": null,
+      "initials": "MM",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-manika-saluja-parekh",
+      "name": "Dr. Manika Saluja Parekh",
+      "role": "ENT Surgeon",
+      "specialty": "ENT",
+      "group": "surgery",
+      "groupLabel": "Surgery, ENT & Gynae",
+      "years": null,
+      "img": null,
+      "initials": "MP",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-ajay-singh",
+      "name": "Dr. Ajay Singh",
+      "role": "Consultant, Neurosurgery & Spine Surgery",
+      "specialty": "Neurosurgery & Spine",
+      "group": "neuro",
+      "groupLabel": "Neuro & Spine",
+      "years": "5",
+      "img": null,
+      "initials": "AS",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-srinath-shankar-rathod",
+      "name": "Dr. Srinath Shankar Rathod",
+      "role": "Senior Consultant, General & Laparoscopic Surgery",
+      "specialty": "General & Minimal Access Surgery",
+      "group": "surgery",
+      "groupLabel": "Surgery, ENT & Gynae",
+      "years": "10+",
+      "img": null,
+      "initials": "SR",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-yogendra-kumar",
+      "name": "Dr. Yogendra Kumar",
+      "role": "Senior Consultant, Gastroenterology & Hepatology",
+      "specialty": "Gastroenterology & Hepatology",
+      "group": "gastro",
+      "groupLabel": "Gastro & Liver",
+      "years": null,
+      "img": null,
+      "initials": "YK",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-pankaj-kapoor",
+      "name": "Dr. Pankaj Kapoor",
+      "role": "Gastroenterology & Hepatology",
+      "specialty": "Gastroenterology & Hepatology",
+      "group": "gastro",
+      "groupLabel": "Gastro & Liver",
+      "years": null,
+      "img": null,
+      "initials": "PK",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-akash-gandotra",
+      "name": "Dr. Akash Gandotra",
+      "role": "Gastroenterology & Hepatology",
+      "specialty": "Gastroenterology & Hepatology",
+      "group": "gastro",
+      "groupLabel": "Gastro & Liver",
+      "years": null,
+      "img": null,
+      "initials": "AG",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-mukesh-chawla",
+      "name": "Dr. Mukesh Chawla",
+      "role": "Consultant, Clinical Haematology & BMT",
+      "specialty": "Haematology & Bone Marrow Transplant",
+      "group": "onco",
+      "groupLabel": "Oncology & Haematology",
+      "years": "12+",
+      "img": null,
+      "initials": "MC",
+      "hospital": "livasa-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": null,
+      "name": "Patient Care Manager",
+      "role": "Your single point of contact",
+      "specialty": "Care team",
+      "group": "care",
+      "groupLabel": "Care Team",
+      "years": "10+",
+      "img": "/img/care-manager.jpg",
+      "initials": "",
+      "hospital": null,
+      "type": "care"
+    },
+    {
+      "slug": null,
+      "name": "International Patient Desk",
+      "role": "Visa, travel & stay",
+      "specialty": "Care team",
+      "group": "care",
+      "groupLabel": "Care Team",
+      "years": "12+",
+      "img": "/img/transfers.jpg",
+      "initials": "",
+      "hospital": null,
+      "type": "care"
+    },
+    {
+      "slug": null,
+      "name": "Physiotherapist",
+      "role": "Daily rehabilitation",
+      "specialty": "Care team",
+      "group": "care",
+      "groupLabel": "Care Team",
+      "years": "14+",
+      "img": "/img/physio.jpg",
+      "initials": "",
+      "hospital": null,
+      "type": "care"
+    },
+    {
+      "slug": null,
+      "name": "Recovery Nurse",
+      "role": "Recovery-stay nursing",
+      "specialty": "Care team",
+      "group": "care",
+      "groupLabel": "Care Team",
+      "years": "15+",
+      "img": "/img/doctor.jpg",
+      "initials": "",
+      "hospital": null,
+      "type": "care"
     }
   ] as DoctorMember[]
 };

@@ -13,7 +13,8 @@ import {
   ShieldCheck, 
   Clock, 
   Lock, 
-  CheckCircle2
+  CheckCircle2,
+  User
 } from 'lucide-react';
 
 interface HospitalPageProps {
@@ -178,14 +179,20 @@ export default async function HospitalDetailPage({ params }: HospitalPageProps) 
                       key={doc.slug}
                       className="bg-white border border-[#e6ecea] rounded-[20px] p-5 shadow-[0_1px_3px_rgba(11,56,62,0.03)] flex items-center gap-4 hover:border-[#8bd2ea] transition-all"
                     >
-                      <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-2xl overflow-hidden bg-gray-100 shrink-0 shadow-xs border border-gray-200">
-                        <Image
-                          src={doc.img}
-                          alt={doc.name}
-                          fill
-                          className="object-cover object-top"
-                          sizes="72px"
-                        />
+                      <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-2xl overflow-hidden bg-gray-100 shrink-0 shadow-xs border border-gray-200 flex items-center justify-center">
+                        {doc.img ? (
+                          <Image
+                            src={doc.img}
+                            alt={doc.name}
+                            fill
+                            className="object-cover object-top"
+                            sizes="72px"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-[#eaf4f6] to-[#b8e0ea] text-[#0b383e]">
+                            <User className="w-8 h-8 text-[#0b383e]/60" />
+                          </div>
+                        )}
                       </div>
                       <div>
                         <h3

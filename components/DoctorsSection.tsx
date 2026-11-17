@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Stethoscope, HeartPulse, UserCheck, Sparkles } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Stethoscope, HeartPulse, UserCheck, Sparkles, User } from 'lucide-react';
 import useEmblaCarousel, { UseEmblaCarouselType } from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { DOCTORS_SECTION, DoctorMember } from '@/data/originalData';
@@ -40,7 +40,7 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
 
   const filteredMembers = selectedCategory === 'all'
     ? allMembers
-    : allMembers.filter((m: DoctorMember) => m.category === selectedCategory);
+    : allMembers.filter((m: DoctorMember) => m.type === selectedCategory);
 
   // Ensure enough items (at least 32) so Embla Carousel can loop infinitely without gaps at the right end
   const displayMembers = useMemo(() => {
@@ -86,12 +86,12 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
 
   const getCategoryIcon = (cat: string) => {
     switch (cat) {
+      case 'doctor':
       case 'Doctors':
         return <Stethoscope className="w-3.5 h-3.5" />;
+      case 'care':
       case 'Care Team':
         return <UserCheck className="w-3.5 h-3.5" />;
-      case 'Recovery':
-        return <HeartPulse className="w-3.5 h-3.5" />;
       default:
         return <Sparkles className="w-3.5 h-3.5" />;
     }
@@ -219,7 +219,7 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
         >
           <div className="flex -ml-6 touch-pan-y">
             {displayMembers.map((member: DoctorMember, idx: number) => {
-              const isDoctor = member.category === 'Doctors';
+              const isDoctor = member.type === 'doctor';
               const CardContent = (
                 <motion.div
                   whileHover={{ y: -6, transition: { duration: 0.25 } }}
@@ -228,14 +228,27 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
                 >
                   {/* Photo Section */}
                   <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-gray-100">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      draggable={false}
-                      className="object-cover object-top transition-transform duration-700 group-hover:scale-105 pointer-events-none"
-                      sizes="(max-width: 640px) 88vw, (max-width: 1024px) 45vw, 26vw"
-                    />
+                    {member.img ? (
+                      <Image
+                        src={member.img}
+                        alt={member.name}
+                        fill
+                        draggable={false}
+                        className="object-cover object-top transition-transform duration-700 group-hover:scale-105 pointer-events-none"
+                        sizes="(max-width: 640px) 88vw, (max-width: 1024px) 45vw, 26vw"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-[#eaf4f6] via-[#d6edf2] to-[#b8e0ea] group-hover:scale-105 transition-transform duration-700 select-none">
+                        <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white/75 border-2 border-[#8bd2ea]/50 flex items-center justify-center shadow-sm">
+                          <User className="w-14 h-14 sm:w-16 sm:h-16 text-[#0b383e]/60 stroke-[1.5]" />
+                        </div>
+                        {member.initials && (
+                          <span className="mt-2 text-xs font-bold tracking-widest text-[#0b383e]/55 uppercase">
+                            {member.initials}
+                          </span>
+                        )}
+                      </div>
+                    )}
 
                     {/* Doctor Name on Photo at Bottom Left */}
                     <div className="absolute inset-x-0 bottom-0 pt-16 pb-3.5 px-4 bg-gradient-to-t from-black/80 via-black/35 to-transparent pointer-events-none">
@@ -251,11 +264,9 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
                       {member.role}
                     </p>
 
-                    {member.badge && (
-                      <span className="inline-block px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200/80 shadow-xs">
-                        {member.badge}
-                      </span>
-                    )}
+                    <span className="inline-block px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200/80 shadow-xs">
+                      {member.years ? `${member.years} Experience` : member.groupLabel}
+                    </span>
                   </div>
 
                 </motion.div>
@@ -263,11 +274,11 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
 
               return (
                 <div
-                  key={`${member.id}-${idx}`}
+                  key={`${member.slug || member.name}-${idx}`}
                   className="pl-6 min-w-0 flex-[0_0_88%] sm:flex-[0_0_52%] md:flex-[0_0_38%] lg:flex-[0_0_30%] xl:flex-[0_0_26%]"
                 >
-                  {isDoctor ? (
-                    <Link href={`/doctors/${member.id}`} className="block h-full">
+                  {isDoctor && member.slug ? (
+                    <Link href={`/doctors/${member.slug}`} className="block h-full">
                       {CardContent}
                     </Link>
                   ) : (

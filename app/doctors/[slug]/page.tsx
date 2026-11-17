@@ -11,7 +11,8 @@ import {
   Lock, 
   Clock, 
   CheckCircle2, 
-  Stethoscope 
+  Stethoscope,
+  User
 } from 'lucide-react';
 
 interface DoctorPageProps {
@@ -31,9 +32,12 @@ export async function generateMetadata({ params }: DoctorPageProps) {
   const doctor = DOCTORS.find((d) => d.slug === slug);
   if (!doctor) return {};
 
+  const expText = doctor.years ? `with ${doctor.years} years of experience` : 'specialist';
+  const hospText = doctor.hospital === 'livasa-mohali' ? 'at Livasa Hospital, Mohali, Punjab' : 'in Mohali, Punjab';
+
   return {
     title: `${doctor.name} | Your Medicare Trip`,
-    description: `${doctor.name}, ${doctor.specialty} specialist with ${doctor.years} years of experience in Mohali, Punjab. Video consultations and surgery coordination for international patients.`,
+    description: `${doctor.name}, ${doctor.specialty} ${expText} ${hospText}. Video consultations and surgery coordination for international patients.`,
   };
 }
 
@@ -51,9 +55,9 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
     .filter(Boolean);
 
   const heroFacts = [
-    `${doctor.years} experience`,
+    doctor.years ? `${doctor.years} experience` : `${doctor.specialty} Specialist`,
     'Video consultations',
-    'Mohali, Punjab',
+    doctor.hospital === 'livasa-mohali' ? 'Livasa Hospital, Mohali' : 'Mohali, Punjab',
   ];
 
   return (
@@ -137,14 +141,27 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
             {/* Right Split Photo */}
             <div className="flex justify-start lg:justify-end">
               <div className="relative w-full max-w-[400px] aspect-[4/4.2] rounded-[24px] overflow-hidden shadow-2xl border border-white/20 bg-gray-900">
-                <Image
-                  src={doctor.img}
-                  alt={doctor.name}
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 400px"
-                  className="object-cover object-top"
-                />
+                {doctor.img ? (
+                  <Image
+                    src={doctor.img}
+                    alt={doctor.name}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 400px"
+                    className="object-cover object-top"
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-[#0e484f] to-[#072b2e] text-white select-none">
+                    <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-white/10 border-2 border-white/20 flex items-center justify-center shadow-lg">
+                      <User className="w-16 h-16 sm:w-20 sm:h-20 text-white/70 stroke-[1.5]" />
+                    </div>
+                    {doctor.initials && (
+                      <span className="mt-3 text-sm font-bold tracking-widest text-white/50 uppercase">
+                        {doctor.initials}
+                      </span>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
 
@@ -163,32 +180,40 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
             <div className="prose max-w-none">
               
               {/* About */}
-              <h2 className="text-[26px] sm:text-[28px] font-bold tracking-tight text-[#0b383e] mb-3">
-                About
-              </h2>
-              <div className="space-y-4 mb-10 text-[16px] text-gray-700 leading-[1.75] font-normal">
-                {doctor.bio.map((paragraph, idx) => (
-                  <p key={idx}>{paragraph}</p>
-                ))}
-              </div>
+              {doctor.bio.length > 0 && (
+                <>
+                  <h2 className="text-[26px] sm:text-[28px] font-bold tracking-tight text-[#0b383e] mb-3">
+                    About
+                  </h2>
+                  <div className="space-y-4 mb-10 text-[16px] text-gray-700 leading-[1.75] font-normal">
+                    {doctor.bio.map((paragraph, idx) => (
+                      <p key={idx}>{paragraph}</p>
+                    ))}
+                  </div>
+                </>
+              )}
 
               {/* Highlights */}
-              <h2 className="text-[26px] sm:text-[28px] font-bold tracking-tight text-[#0b383e] mb-4">
-                Highlights
-              </h2>
-              <ul className="space-y-2.5 mb-10">
-                {doctor.highlights.map((highlight, idx) => (
-                  <li
-                    key={idx}
-                    className="grid grid-cols-[22px_1fr] gap-2.5 text-[16px] text-gray-700 leading-[1.7]"
-                  >
-                    <span className="w-5 h-5 rounded-full bg-[#dcf1f8] text-[#0b383e] flex items-center justify-center shrink-0 mt-0.5">
-                      <Check className="w-3.5 h-3.5 stroke-[2.5]" />
-                    </span>
-                    <span>{highlight}</span>
-                  </li>
-                ))}
-              </ul>
+              {doctor.highlights.length > 0 && (
+                <>
+                  <h2 className="text-[26px] sm:text-[28px] font-bold tracking-tight text-[#0b383e] mb-4">
+                    Highlights
+                  </h2>
+                  <ul className="space-y-2.5 mb-10">
+                    {doctor.highlights.map((highlight, idx) => (
+                      <li
+                        key={idx}
+                        className="grid grid-cols-[22px_1fr] gap-2.5 text-[16px] text-gray-700 leading-[1.7]"
+                      >
+                        <span className="w-5 h-5 rounded-full bg-[#dcf1f8] text-[#0b383e] flex items-center justify-center shrink-0 mt-0.5">
+                          <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                        </span>
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
 
               {/* Qualifications */}
               <h2 className="text-[26px] sm:text-[28px] font-bold tracking-tight text-[#0b383e] mb-4">
@@ -293,10 +318,20 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
                     <dt className="text-gray-500 font-normal">Specialty</dt>
                     <dd className="font-bold text-[#0b383e] text-right">{doctor.specialty}</dd>
                   </div>
-                  <div className="flex justify-between py-2.5">
-                    <dt className="text-gray-500 font-normal">Experience</dt>
-                    <dd className="font-bold text-[#0b383e] text-right">{doctor.years} years</dd>
-                  </div>
+                  {doctor.years && (
+                    <div className="flex justify-between py-2.5">
+                      <dt className="text-gray-500 font-normal">Experience</dt>
+                      <dd className="font-bold text-[#0b383e] text-right">{doctor.years} years</dd>
+                    </div>
+                  )}
+                  {doctor.hospital && (
+                    <div className="flex justify-between py-2.5">
+                      <dt className="text-gray-500 font-normal">Hospital</dt>
+                      <dd className="font-bold text-[#0b383e] text-right">
+                        {doctor.hospital === 'livasa-mohali' ? 'Livasa Hospital, Mohali' : doctor.hospital}
+                      </dd>
+                    </div>
+                  )}
                   <div className="flex justify-between py-2.5">
                     <dt className="text-gray-500 font-normal">Consultations</dt>
                     <dd className="font-bold text-[#0b383e] text-right">Video &amp; in person</dd>

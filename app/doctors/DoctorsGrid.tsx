@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { DOCTORS, CARE_TEAM_MEMBERS } from '@/data/doctorsData';
-import { ArrowRight, Stethoscope, UserCheck, HeartPulse, Sparkles } from 'lucide-react';
+import { ArrowRight, Stethoscope, UserCheck, HeartPulse, Sparkles, User } from 'lucide-react';
 
 type FilterType = 'all' | 'doctors' | 'care' | 'recovery';
 
@@ -83,13 +83,26 @@ export function DoctorsGrid() {
               <div>
                 {/* Photo */}
                 <div className="relative aspect-[4/4.5] w-full overflow-hidden bg-gray-100">
-                  <Image
-                    src={doc.img}
-                    alt={doc.name}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                  />
+                  {doc.img ? (
+                    <Image
+                      src={doc.img}
+                      alt={doc.name}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-[#eaf4f6] via-[#d6edf2] to-[#b8e0ea] group-hover:scale-105 transition-transform duration-500 select-none">
+                      <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white/75 border-2 border-[#8bd2ea]/50 flex items-center justify-center shadow-sm">
+                        <User className="w-14 h-14 sm:w-16 sm:h-16 text-[#0b383e]/60 stroke-[1.5]" />
+                      </div>
+                      {doc.initials && (
+                        <span className="mt-2 text-xs font-bold tracking-widest text-[#0b383e]/55 uppercase">
+                          {doc.initials}
+                        </span>
+                      )}
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                   <div className="absolute top-3.5 left-3.5">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-white/95 backdrop-blur-xs text-[#0b383e] shadow-xs">
@@ -111,7 +124,7 @@ export function DoctorsGrid() {
                     {doc.role}
                   </p>
                   <p className="text-[13px] font-bold text-[#008329]">
-                    {doc.years} experience
+                    {doc.years ? `${doc.years} experience` : doc.specialty}
                   </p>
                 </div>
               </div>

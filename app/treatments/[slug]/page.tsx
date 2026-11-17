@@ -9,7 +9,8 @@ import { HOSPITALS } from '@/data/hospitalsData';
 import { 
   ArrowRight, 
   Check, 
-  X 
+  X,
+  User
 } from 'lucide-react';
 
 interface Props {
@@ -386,14 +387,20 @@ export default async function TreatmentDetailPage({ params }: Props) {
                   href={`/doctors/${doc.slug}`}
                   className="group flex items-center gap-3.5 p-4 rounded-[22px] bg-white border border-[#e6ecea] shadow-xs hover:border-[#8bd2ea] hover:shadow-md transition-all"
                 >
-                  <div className="relative w-14 h-14 rounded-2xl overflow-hidden shrink-0 bg-gray-100">
-                    <Image
-                      src={doc.img}
-                      alt={doc.name}
-                      fill
-                      sizes="56px"
-                      className="object-cover object-top"
-                    />
+                  <div className="relative w-14 h-14 rounded-2xl overflow-hidden shrink-0 bg-gray-100 flex items-center justify-center">
+                    {doc.img ? (
+                      <Image
+                        src={doc.img}
+                        alt={doc.name}
+                        fill
+                        sizes="56px"
+                        className="object-cover object-top"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-[#eaf4f6] to-[#b8e0ea] text-[#0b383e]">
+                        <User className="w-7 h-7 text-[#0b383e]/60" />
+                      </div>
+                    )}
                   </div>
                   <div>
                     <strong className="block text-[15px] font-bold text-[#0b383e] group-hover:text-[#008329] transition-colors">
