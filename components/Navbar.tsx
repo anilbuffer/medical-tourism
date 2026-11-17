@@ -112,13 +112,13 @@ const DEFAULT_PRIMARY_NAV: NavItem[] = [
   { label: 'Doctors', href: '/doctors' },
   {
     label: 'Care Services',
-    href: '/#care-services',
+    href: '/care-services',
     sectionId: 'care-services',
     children: [
-      { label: 'How It Works', href: '/#care-services', description: 'Your journey, step by step' },
-      { label: 'Care Coordination', href: '/#care-services', description: 'One care manager throughout' },
-      { label: 'Travel & Accommodation', href: '/#care-services', description: 'Visa letters, pickup and stay' },
-      { label: 'Recovery & Aftercare', href: '/#aftercare', description: "In India and once you're home" },
+      { label: 'How It Works', href: '/how-it-works', description: 'Your journey, step by step' },
+      { label: 'Care Coordination', href: '/care-services', description: 'One care manager throughout' },
+      { label: 'Travel & Accommodation', href: '/destination', description: 'Visa letters, pickup and stay' },
+      { label: 'Recovery & Aftercare', href: '/aftercare', description: "In India and once you're home" },
     ],
   },
   {
@@ -142,19 +142,19 @@ const DEFAULT_MENU_GROUPS: NavGroup[] = [
   {
     title: 'Your Care Journey',
     links: [
-      { label: 'How It Works', href: '/#care-services' },
-      { label: 'Care Coordination', href: '/#care-services' },
-      { label: 'Destination & Stay', href: '/#chandigarh-tricity' },
+      { label: 'How It Works', href: '/how-it-works' },
+      { label: 'Care Coordination', href: '/care-services' },
+      { label: 'Destination & Stay', href: '/destination' },
       { label: 'Patient Journeys', href: '/#stories' },
     ],
   },
   {
     title: 'Help & Support',
     links: [
-      { label: 'Frequently Asked Questions', href: '/#faqs' },
+      { label: 'Frequently Asked Questions', href: '/faqs' },
       { label: 'Patient guides', href: '/guides' },
       { label: 'Contact Us', href: '/#consultation' },
-      { label: 'Why Choose Us', href: '/#chandigarh-tricity' },
+      { label: 'Why Choose Us', href: '/why-choose-us' },
       {
         label: 'Login',
         href: LOGIN_URL,
@@ -521,7 +521,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                       <ul>
                         {item.children.map((c, ci) => (
                           <li key={`${item.label}-${c.label}-${ci}`}>
-                            <a
+                            <Link
                               href={c.href}
                               target={c.target}
                               rel={c.target === '_blank' ? (c.rel || 'noopener noreferrer') : c.rel}
@@ -529,11 +529,11 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                             >
                               <strong>{c.label}</strong>
                               {c.description && <small>{c.description}</small>}
-                            </a>
+                            </Link>
                           </li>
                         ))}
                       </ul>
-                      <a
+                      <Link
                         className={styles.dropAll}
                         href={item.href}
                         target={item.target}
@@ -542,13 +542,13 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                       >
                         <span>View all {item.label.toLowerCase()}</span>
                         <Arrow />
-                      </a>
+                      </Link>
                     </div>
                   )}
                 </li>
               ) : (
                 <li key={item.label}>
-                  <a
+                  <Link
                     className={cls}
                     href={item.href}
                     target={item.target}
@@ -557,7 +557,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                     onClick={(e) => handleNavClick(item.href, e)}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               );
             })}
@@ -654,7 +654,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                     const delay = 160 + linkIndex++ * 35;
                     return (
                       <li key={`${group.title}-${link.label}-${li}`} style={{ transitionDelay: menuOpen ? `${delay}ms` : '0ms' }}>
-                        <a
+                        <Link
                           className={styles.menuLink}
                           href={link.href}
                           target={link.target}
@@ -663,7 +663,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                         >
                           <span>{link.label}</span>
                           <Arrow />
-                        </a>
+                        </Link>
                       </li>
                     );
                   })}

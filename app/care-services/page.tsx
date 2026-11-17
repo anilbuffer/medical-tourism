@@ -315,7 +315,7 @@ export default function CareServicesPage() {
 
                 <div className="mt-8">
                   <Link
-                    href="/#aftercare"
+                    href="/aftercare"
                     className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm text-white shadow-md hover:opacity-95 transition-opacity"
                     style={{ backgroundColor: 'var(--color-primary)' }}
                   >

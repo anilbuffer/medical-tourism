@@ -62,7 +62,7 @@ const FAQ_GROUPS: FAQGroup[] = [
         answer: (
           <span>
             Starting prices are on our{' '}
-            <Link href="/#treatments" className="text-[#095458] underline font-semibold hover:text-[#0b383e]">
+            <Link href="/treatments" className="text-[#095458] underline font-semibold hover:text-[#0b383e]">
               treatments page
             </Link>
             . Your exact cost depends on your medical reports, so after your consultation you will receive a written, itemised quote, usually within 48 hours.
@@ -147,7 +147,7 @@ const FAQ_GROUPS: FAQGroup[] = [
         answer: (
           <span>
             Message your coordinator on WhatsApp and they will involve your specialist the same day. In a medical emergency, go to your nearest emergency department immediately and take your discharge summary with you, then notify us.{' '}
-            <Link href="/#aftercare" className="text-[#095458] underline font-semibold hover:text-[#0b383e]">
+            <Link href="/aftercare" className="text-[#095458] underline font-semibold hover:text-[#0b383e]">
               Learn more about aftercare
             </Link>
             .
