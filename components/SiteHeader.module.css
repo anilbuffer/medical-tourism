@@ -6,12 +6,12 @@
    Palette: deep forest teal, sky cyan, soft mint, near-black. */
 
 .root {
-  --teal: #0e3b3d;
-  --teal-deep: #0a2c2e;
-  --sky: #8ed3ee;
-  --sky-hover: #a9def3;
-  --mint: #b9ddd3;
-  --black: #1a1d1f;
+  --teal: var(--color-primary, #0b383e);
+  --teal-deep: var(--color-primary-pressed, #072b2e);
+  --sky: var(--color-secondary, #8bd2ea);
+  --sky-hover: var(--color-secondary-hover, #72c2dc);
+  --mint: var(--color-mint, #b9dcd5);
+  --black: var(--color-high, #131a1b);
   --grey-glass: rgba(84, 88, 90, 0.74);
   --line: rgba(255, 255, 255, 0.16);
   --text: #ffffff;
@@ -207,7 +207,7 @@
 /* Section on screen */
 .isActive {
   color: var(--sky);
-  background: rgba(142, 211, 238, 0.16);
+  background: rgba(139, 210, 234, 0.16);
 }
 
 .navChevron {
@@ -546,8 +546,8 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   background:
-    radial-gradient(ellipse 60% 50% at 85% 10%, rgba(142, 211, 238, 0.16), transparent 70%),
-    radial-gradient(ellipse 50% 40% at 10% 100%, rgba(185, 221, 211, 0.12), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 85% 10%, rgba(139, 210, 234, 0.16), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 10% 100%, rgba(185, 220, 213, 0.12), transparent 70%),
     var(--teal-deep);
   clip-path: circle(0 at var(--origin));
   visibility: hidden;
@@ -596,7 +596,7 @@
 .groupTitle i {
   width: 28px;
   height: 1.5px;
-  background: rgba(142, 211, 238, 0.55);
+  background: rgba(139, 210, 234, 0.55);
 }
 
 .groups ul {

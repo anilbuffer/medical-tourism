@@ -69,26 +69,6 @@ export interface ServicePillar {
   features: string[];
 }
 
-export interface ThemePreset {
-  id: string;
-  name: string;
-  description: string;
-  primary: string;
-  primaryHover: string;
-  primaryPressed: string;
-  secondary: string;
-  secondaryHover: string;
-  mint: string;
-  limeTint: string;
-  surfaceBase: string;
-  surfaceDim: string;
-  surfaceElevated: string;
-  surfaceOutline: string;
-  high: string;
-  medium: string;
-  low: string;
-}
-
 /* ------------------------------------------------------------------ */
 /* Patient Guides Types                                               */
 /* ------------------------------------------------------------------ */

@@ -3,7 +3,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { CountryOption, COUNTRIES } from '@/components/Navbar';
 import { ConsultationModal } from '@/components/ConsultationModal';
-import { ThemeCustomizer } from '@/components/ThemeCustomizer';
 import { ChatProvider, useChat, type ChatContextType, type ChatRequest } from '@/components/providers/ChatProvider';
 import { AiChatDrawer } from '@/components/AiChatDrawer';
 import { FloatingAiWidget } from '@/components/FloatingAiWidget';
@@ -79,7 +78,6 @@ export function AppProviders({ children }: { children: ReactNode }) {
           />
           <AiChatDrawer />
           <FloatingAiWidget />
-          <ThemeCustomizer />
         </ChatProvider>
       </CountryContext.Provider>
     </ConsultationContext.Provider>
