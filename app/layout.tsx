@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Mulish, Kalam } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { AppProviders } from "@/components/providers/AppProviders";
 import { Navbar } from "@/components/Navbar";
@@ -35,6 +36,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${mulish.variable} ${kalam.variable} font-sans scroll-smooth antialiased`}>
+      <head>
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-WVWNLSF2"
+        />
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          `}
+        </Script>
+      </head>
       <body className="min-h-screen bg-surface-base text-high flex flex-col font-sans selection:bg-secondary/30 selection:text-primary">
         <AppProviders>
           <Navbar />
