@@ -120,7 +120,7 @@ export const DOCTORS: Doctor[] = [
     group: 'plastic',
     groupLabel: 'Plastic Surgery',
     years: '18+',
-    img: '/img/dr-vikas-gupta.jpg',
+    img: '/img/doctors/dr-vikas-gupta.jpg',
     initials: 'VG',
     hospital: null,
     type: 'doctor',
@@ -1057,7 +1057,7 @@ export const DOCTOR_TREATMENTS_MAP: Record<string, DoctorTreatment> = {
     name: 'Cataract Surgery',
     tag: 'Eye care',
     summary: 'Day-case cataract surgery with a choice of lens, in about a week in Mohali.',
-    img: '/img/sangam-netralaya.jpg',
+    img: '/img/hospitals/sangam-netralaya-facade.jpg',
     priceNote: 'See details',
   },
   'lasik': {
@@ -1065,7 +1065,7 @@ export const DOCTOR_TREATMENTS_MAP: Record<string, DoctorTreatment> = {
     name: 'LASIK & Refractive Surgery',
     tag: 'Eye care',
     summary: "Laser vision correction after a full suitability check. Not everyone is a candidate, and we'll tell you.",
-    img: '/img/sangam-netralaya.jpg',
+    img: '/img/hospitals/sangam-netralaya-facade.jpg',
     priceNote: 'See details',
   },
   'cosmetic-surgery': {

@@ -87,7 +87,7 @@ export const HOSPITALS: Hospital[] = [
     short: 'Sangam Netralaya',
     city: 'Mohali, Punjab',
     focus: 'Cataract, refractive & retina care',
-    img: '/img/sangam-netralaya.jpg',
+    img: '/img/hospitals/sangam-netralaya-facade.jpg',
     badge: 'Super-Speciality Eye Care',
     specialties: ['eye'],
     treatments: ['cataract-surgery', 'lasik'],
@@ -137,21 +137,21 @@ export const TREATMENTS_MAP: Record<string, HospitalTreatment> = {
     name: 'Cataract Surgery',
     tag: 'Eye care',
     summary: 'Day-case cataract surgery with a choice of lens, in about a week in Mohali.',
-    img: '/img/sangam-netralaya.jpg',
+    img: '/img/hospitals/sangam-netralaya-facade.jpg',
   },
   'lasik': {
     slug: 'lasik',
     name: 'LASIK & Refractive Surgery',
     tag: 'Eye care',
     summary: 'Laser vision correction after a full suitability check. Not everyone is a candidate, and we\'ll tell you.',
-    img: '/img/sangam-netralaya.jpg',
+    img: '/img/hospitals/sangam-netralaya-facade.jpg',
   },
   'cosmetic-surgery': {
     slug: 'cosmetic-surgery',
     name: 'Cosmetic & Plastic Surgery',
     tag: 'Cosmetic & Plastic Surgery',
     summary: 'Reconstructive and aesthetic surgery planned with consultant plastic surgeons.',
-    img: '/img/dr-vikas-gupta.jpg',
+    img: '/img/doctors/dr-vikas-gupta.jpg',
   },
 };
 
@@ -189,7 +189,7 @@ export const SPECIALISTS_LIST: (HospitalSpecialist & { treatments: string[] })[]
     role: 'Plastic Surgery',
     specialty: 'Cosmetic & Plastic Surgery',
     years: '18+',
-    img: '/img/dr-vikas-gupta.jpg',
+    img: '/img/doctors/dr-vikas-gupta.jpg',
     treatments: ['cosmetic-surgery'],
   },
 ];

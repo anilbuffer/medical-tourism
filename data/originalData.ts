@@ -1424,7 +1424,7 @@ export const HOSPITALS_SECTION = {
       "badge": "Advanced Eye Care",
       "href": "/hospitals/sangam-netralaya",
       "image": {
-        "src": "/img/sangam-netralaya.jpg",
+        "src": "/img/hospitals/sangam-netralaya-facade.jpg",
         "width": 1200,
         "height": 800
       }
@@ -1510,7 +1510,7 @@ export const DOCTORS_SECTION = {
       "group": "plastic",
       "groupLabel": "Plastic Surgery",
       "years": "18+",
-      "img": "/img/dr-vikas-gupta.jpg",
+      "img": "/img/doctors/dr-vikas-gupta.jpg",
       "initials": "VG",
       "hospital": null,
       "type": "doctor"

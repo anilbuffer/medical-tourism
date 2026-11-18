@@ -339,7 +339,7 @@ export const HOSPITALS_DATA: HospitalCard[] = [
     country: "India",
     description: "Cataract, Refractive & Retina Care. Premier super-speciality eye care and vision correction institute.",
     badge: "Super Speciality Eye Care",
-    image: "/img/sangam-netralaya.jpg",
+    image: "/img/hospitals/sangam-netralaya-facade.jpg",
     specialties: ["Cataract Microsurgery", "LASIK & SMILE", "Retina & Vitreous", "Corneal Transplants"],
     accreditations: ["NABH Certified Eye Centre"],
     stats: { beds: "50+", doctors: "30+", successRate: "99.7%" },

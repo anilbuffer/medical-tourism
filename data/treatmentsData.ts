@@ -550,7 +550,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": null,
     "saving": null,
     "addon": false,
-    "img": "/img/sangam-netralaya.jpg",
+    "img": "/img/hospitals/sangam-netralaya-facade.jpg",
     "summary": "Day-case cataract surgery with a choice of lens, in about a week in Mohali.",
     "intro": "Cataract surgery replaces the clouded natural lens of the eye with a clear artificial one. It is a short day-case procedure, and the whole trip, including measurements and follow-up checks, usually fits into about a week.",
     "options": [
@@ -639,7 +639,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": null,
     "saving": null,
     "addon": false,
-    "img": "/img/sangam-netralaya.jpg",
+    "img": "/img/hospitals/sangam-netralaya-facade.jpg",
     "summary": "Laser vision correction after a full suitability check. Not everyone is a candidate, and we'll tell you.",
     "intro": "Refractive surgery reshapes the cornea so you rely less on glasses or contact lenses. Suitability depends on corneal thickness, prescription stability and eye health, so a detailed assessment comes first. If you are not a good candidate, the surgeon will tell you and explain the alternatives.",
     "options": [
