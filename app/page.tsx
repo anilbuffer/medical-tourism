@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { HeroSection } from '@/components/HeroSection';
-import { FindYourTreatmentSection } from '@/components/FindYourTreatmentSection';
+import { SpecialtiesSection } from '@/components/SpecialtiesSection';
 import { CareServicesSection } from '@/components/CareServicesSection';
 import { TreatmentsSection } from '@/components/TreatmentsSection';
 import { WhyTmtcSection } from '@/components/WhyTmtcSection';
@@ -35,8 +35,8 @@ export default function HomePage() {
       {/* Hero Section */}
       <HeroSection />
 
-      {/* Find Your Treatment Accordion Cards (just below hero section) */}
-      <FindYourTreatmentSection />
+      {/* Clinical Specialties Accordion (Ortho, Plastic Surgery, Dental, Eye Care) */}
+      <SpecialtiesSection />
 
       {/* Concierge & Care Details (SSR) */}
       <CareServicesSection />
