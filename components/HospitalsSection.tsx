@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 import { HOSPITALS_SECTION } from '@/data/originalData';
 
@@ -12,6 +12,9 @@ interface HospitalsSectionProps {
 }
 
 export const HospitalsSection: React.FC<HospitalsSectionProps> = ({ onOpenConsultation }) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+
   const [selectedCountry, setSelectedCountry] = useState<string>('all');
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [windowWidth, setWindowWidth] = useState<number>(1200);
@@ -49,14 +52,14 @@ export const HospitalsSection: React.FC<HospitalsSectionProps> = ({ onOpenConsul
     setActiveIndex((prev) => (prev - 1 + total) % total);
   }, [total]);
 
-  // Autoplay with hover/drag pause
+  // Autoplay with hover/drag pause (starts only once user reaches the section)
   useEffect(() => {
-    if (isHovered || isMouseDown || total <= 1) return;
+    if (!isInView || isHovered || isMouseDown || total <= 1) return;
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % total);
     }, 5000);
     return () => clearInterval(timer);
-  }, [total, isHovered, isMouseDown]);
+  }, [isInView, activeIndex, total, isHovered, isMouseDown]);
 
   // Touch Swipe handlers
   const onTouchStart = (e: React.TouchEvent) => {
@@ -153,7 +156,7 @@ export const HospitalsSection: React.FC<HospitalsSectionProps> = ({ onOpenConsul
   const activeHospital = filteredCards[activeIndex] || filteredCards[0];
 
   return (
-    <section id="hospitals" className="py-20 lg:py-28 bg-surface-base overflow-hidden">
+    <section ref={sectionRef} id="hospitals" className="py-20 lg:py-28 bg-surface-base overflow-hidden">
       
       {/* Top Header Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10">
