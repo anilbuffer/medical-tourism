@@ -123,9 +123,16 @@ export function DoctorsGrid() {
                   <p className="text-[14px] text-gray-600 font-medium leading-relaxed mb-2 line-clamp-2">
                     {doc.role}
                   </p>
-                  <p className="text-[13px] font-bold text-[#008329]">
-                    {doc.years ? `${doc.years} experience` : doc.specialty}
-                  </p>
+                  <div className="flex items-center justify-between text-[13px] pt-1">
+                    <span className="font-bold text-[#008329]">
+                      {doc.department || doc.specialty}
+                    </span>
+                    {doc.fees && (
+                      <span className="font-extrabold text-[#0b383e] bg-[#eef7fa] px-2 py-0.5 rounded-md text-xs">
+                        ₹{doc.fees.toLocaleString()}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
 

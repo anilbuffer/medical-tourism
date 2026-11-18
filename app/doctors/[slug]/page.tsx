@@ -55,10 +55,12 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
     .filter(Boolean);
 
   const heroFacts = [
-    doctor.years ? `${doctor.years} experience` : `${doctor.specialty} Specialist`,
+    doctor.department ? `${doctor.department}` : (doctor.years ? `${doctor.years} experience` : `${doctor.specialty} Specialist`),
+    doctor.years ? `${doctor.years} experience` : null,
+    doctor.fees ? `Fee: ₹${doctor.fees.toLocaleString()}` : null,
     'Video consultations',
     doctor.hospital === 'livasa-mohali' ? 'Livasa Hospital, Mohali' : 'Mohali, Punjab',
-  ];
+  ].filter(Boolean) as string[];
 
   return (
     <main id="main" className="min-h-screen bg-[#fafcfb]">
@@ -314,6 +316,12 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
                   At a glance
                 </h3>
                 <dl className="divide-y divide-dashed divide-[#e6ecea] text-sm">
+                  {doctor.department && (
+                    <div className="flex justify-between py-2.5">
+                      <dt className="text-gray-500 font-normal">Department</dt>
+                      <dd className="font-bold text-[#0b383e] text-right">{doctor.department}</dd>
+                    </div>
+                  )}
                   <div className="flex justify-between py-2.5">
                     <dt className="text-gray-500 font-normal">Specialty</dt>
                     <dd className="font-bold text-[#0b383e] text-right">{doctor.specialty}</dd>
@@ -322,6 +330,12 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
                     <div className="flex justify-between py-2.5">
                       <dt className="text-gray-500 font-normal">Experience</dt>
                       <dd className="font-bold text-[#0b383e] text-right">{doctor.years} years</dd>
+                    </div>
+                  )}
+                  {doctor.fees && (
+                    <div className="flex justify-between py-2.5">
+                      <dt className="text-gray-500 font-normal">Consultation Fee</dt>
+                      <dd className="font-bold text-[#008329] text-right">₹{doctor.fees.toLocaleString()}</dd>
                     </div>
                   )}
                   {doctor.hospital && (

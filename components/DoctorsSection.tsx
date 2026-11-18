@@ -264,9 +264,16 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
                       {member.role}
                     </p>
 
-                    <span className="inline-block px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200/80 shadow-xs">
-                      {member.years ? `${member.years} Experience` : member.groupLabel}
-                    </span>
+                    <div className="w-full flex items-center justify-between gap-2 mt-auto">
+                      <span className="inline-block px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200/80 shadow-xs">
+                        {member.department || (member.years ? `${member.years} Experience` : member.groupLabel)}
+                      </span>
+                      {member.fees && (
+                        <span className="text-xs font-bold text-[#0b383e] bg-[#eef7fa] px-2 py-0.5 rounded-md">
+                          ₹{member.fees.toLocaleString()}
+                        </span>
+                      )}
+                    </div>
                   </div>
 
                 </motion.div>
