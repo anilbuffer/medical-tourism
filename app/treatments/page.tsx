@@ -15,7 +15,7 @@ export default function TreatmentsPage() {
     <main className="min-h-screen bg-[#fafcfb]">
       {/* 1. Page Hero */}
       <PageHero
-        bgImage="/images/hero/doctor.jpg"
+        bgImage="/images/hero/treatments-hero.jpg"
         breadcrumbs={[{ label: 'Treatments' }]}
         title={
           <>
@@ -37,7 +37,7 @@ export default function TreatmentsPage() {
               href="/treatments/medical-treatments"
               className="group relative h-[340px] sm:h-[380px] rounded-[28px] overflow-hidden p-8 flex flex-col justify-between text-white shadow-md hover:shadow-xl hover:-translate-y-1 transition-all"
               style={{
-                backgroundImage: "url('/images/treatments/medical.jpeg')",
+                backgroundImage: "url('/images/treatments/cat-medical.jpg')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}
@@ -73,7 +73,7 @@ export default function TreatmentsPage() {
               href="/treatments/health-checkups"
               className="group relative h-[340px] sm:h-[380px] rounded-[28px] overflow-hidden p-8 flex flex-col justify-between text-white shadow-md hover:shadow-xl hover:-translate-y-1 transition-all"
               style={{
-                backgroundImage: "url('/images/treatments/checkup.jpeg')",
+                backgroundImage: "url('/images/treatments/cat-checkups.jpg')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}
@@ -109,7 +109,7 @@ export default function TreatmentsPage() {
               href="/treatments/wellness"
               className="group relative h-[340px] sm:h-[380px] rounded-[28px] overflow-hidden p-8 flex flex-col justify-between text-white shadow-md hover:shadow-xl hover:-translate-y-1 transition-all"
               style={{
-                backgroundImage: "url('/images/treatments/wellness.jpeg')",
+                backgroundImage: "url('/images/treatments/cat-wellness.jpg')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}

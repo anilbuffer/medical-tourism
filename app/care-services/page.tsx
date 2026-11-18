@@ -30,7 +30,7 @@ const INCLUDED_SERVICES = [
   {
     title: 'Recovery Stay',
     icon: BedDouble,
-    imageSrc: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=900&q=70',
+    imageSrc: '/images/services/recovery-stay.jpg',
     imageAlt: 'Private deluxe hospital recovery suite with scenic views',
     description:
       'Private deluxe en-suite recovery suites with 24/7 nursing, close to the hospital. You leave the ward for somewhere quiet, clean and set up for recovery, not a busy hotel.',
@@ -39,7 +39,7 @@ const INCLUDED_SERVICES = [
   {
     title: 'Patient Care Manager',
     icon: UserCheck,
-    imageSrc: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=70',
+    imageSrc: '/images/services/care-manager.jpg',
     imageAlt: 'Patient care manager assisting international patient',
     description:
       'One named coordinator from your first enquiry to your last follow-up call. They book appointments, sit in on consultations if you want, and speak up for you.',
@@ -48,7 +48,7 @@ const INCLUDED_SERVICES = [
   {
     title: 'Curated Nutrition',
     icon: UtensilsCrossed,
-    imageSrc: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=900&q=70',
+    imageSrc: '/images/services/nutrition.jpg',
     imageAlt: 'Fresh chef-prepared post-operative recovery meal',
     description:
       "Meals prepared to your doctor's instructions and your own preferences, whether that's halal, vegetarian, diabetic or simply food that tastes like home.",
@@ -57,7 +57,7 @@ const INCLUDED_SERVICES = [
   {
     title: 'Chauffeur Transfers',
     icon: Car,
-    imageSrc: 'https://images.unsplash.com/photo-1506059612708-99d6c258160e?w=900&q=70',
+    imageSrc: '/images/services/transfers.jpg',
     imageAlt: 'Private VIP airport transfer vehicle',
     description:
       'Met at arrivals and driven to your accommodation. Every journey between hospital, recovery suite and airport is arranged, with someone to help with bags and wheelchairs.',
@@ -66,7 +66,7 @@ const INCLUDED_SERVICES = [
   {
     title: 'Daily Physiotherapy',
     icon: Activity,
-    imageSrc: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900&q=70',
+    imageSrc: '/images/services/physio.jpg',
     imageAlt: 'Certified physical therapist guiding patient mobility session',
     description:
       'One-to-one sessions with certified physiotherapists, in hospital and then at your recovery suite. You fly home with a written exercise plan.',
@@ -75,7 +75,7 @@ const INCLUDED_SERVICES = [
   {
     title: '24/7 Doctor on Call',
     icon: Stethoscope,
-    imageSrc: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=900&q=70',
+    imageSrc: '/images/services/doctor-on-call.jpg',
     imageAlt: 'Doctor reviewing medical health chart',
     description:
       'Round-the-clock access to a doctor during your stay, with direct escalation to your treating specialist if something needs attention.',
@@ -110,7 +110,7 @@ export default function CareServicesPage() {
   return (
     <main className="min-h-screen bg-[#fafcfb] pb-24">
       <PageHero
-        bgImage="/images/hero/airport.jpg"
+        bgImage="/images/hero/care-services-hero.jpg"
         breadcrumbs={[{ label: 'Care services' }]}
         title={
           <>
@@ -327,8 +327,8 @@ export default function CareServicesPage() {
 
               <div className="relative h-72 sm:h-80 lg:h-96 w-full rounded-2xl overflow-hidden shadow-md">
                 <Image
-                  src="/images/hero/hills.jpg"
-                  alt="Scenic hills representing peaceful recovery and follow-up care"
+                  src="/images/split/split-home.jpg"
+                  alt="Scenic recovery representing peaceful follow-up care"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"

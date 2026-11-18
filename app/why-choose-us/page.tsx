@@ -96,7 +96,7 @@ export default function WhyChooseUsPage() {
   return (
     <main className="min-h-screen bg-[#fafcfb] pb-24">
       <PageHero
-        bgImage="/images/hero/doctor.jpg"
+        bgImage="/images/hero/why-hero.jpg"
         breadcrumbs={[{ label: 'Why choose us' }]}
         title={
           <>

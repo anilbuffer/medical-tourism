@@ -21,7 +21,7 @@ export default function DoctorListingPage() {
     <main className="min-h-screen bg-[#fafcfb] pb-24">
       {/* Signature Hero */}
       <PageHero
-        bgImage="/img/doctor.jpg"
+        bgImage="/images/hero/doctors-hero.jpg"
         breadcrumbs={[{ label: 'Doctors' }]}
         title={
           <>

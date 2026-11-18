@@ -1041,7 +1041,7 @@ export const DOCTOR_TREATMENTS_MAP: Record<string, DoctorTreatment> = {
     name: 'Knee Replacement',
     tag: 'Orthopaedics',
     summary: 'Total, partial and robotic-assisted knee replacement, planned with your surgeon before you travel.',
-    img: '/images/guides/knee-replacement-india.jpeg',
+    img: '/images/treatments/knee-replacement.jpg',
     priceNote: 'From $3,999',
   },
   'hip-replacement': {
@@ -1049,7 +1049,7 @@ export const DOCTOR_TREATMENTS_MAP: Record<string, DoctorTreatment> = {
     name: 'Hip Replacement',
     tag: 'Orthopaedics',
     summary: 'Total hip replacement and revision surgery, with physiotherapy built into your stay.',
-    img: '/images/treatments/medical.jpeg',
+    img: '/images/treatments/hip-replacement.jpg',
     priceNote: 'See details',
   },
   'cataract-surgery': {
@@ -1057,7 +1057,7 @@ export const DOCTOR_TREATMENTS_MAP: Record<string, DoctorTreatment> = {
     name: 'Cataract Surgery',
     tag: 'Eye care',
     summary: 'Day-case cataract surgery with a choice of lens, in about a week in Mohali.',
-    img: '/img/hospitals/sangam-netralaya-facade.jpg',
+    img: '/images/treatments/cataract-surgery.jpg',
     priceNote: 'See details',
   },
   'lasik': {
@@ -1065,7 +1065,7 @@ export const DOCTOR_TREATMENTS_MAP: Record<string, DoctorTreatment> = {
     name: 'LASIK & Refractive Surgery',
     tag: 'Eye care',
     summary: "Laser vision correction after a full suitability check. Not everyone is a candidate, and we'll tell you.",
-    img: '/img/hospitals/sangam-netralaya-facade.jpg',
+    img: '/images/treatments/lasik.jpg',
     priceNote: 'See details',
   },
   'cosmetic-surgery': {
@@ -1073,7 +1073,7 @@ export const DOCTOR_TREATMENTS_MAP: Record<string, DoctorTreatment> = {
     name: 'Cosmetic & Plastic Surgery',
     tag: 'Cosmetic & Plastic Surgery',
     summary: 'Body and facial procedures with an unhurried consultation first, and enough recovery time before you fly.',
-    img: '/images/hero/doctor.jpg',
+    img: '/images/treatments/cosmetic-surgery.jpg',
     priceNote: 'See details',
   },
 };

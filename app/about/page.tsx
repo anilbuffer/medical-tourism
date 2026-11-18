@@ -24,7 +24,7 @@ export default function AboutUsPage() {
   return (
     <main className="min-h-screen bg-[#fafcfb] pb-24">
       <PageHero
-        bgImage="/images/hero/hills.jpg"
+        bgImage="/images/hero/about-hero.jpg"
         breadcrumbs={[{ label: 'About us' }]}
         title={
           <>

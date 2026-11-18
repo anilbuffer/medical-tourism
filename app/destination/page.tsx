@@ -70,7 +70,7 @@ export default function DestinationPage() {
     <main className="min-h-screen bg-[#fafcfb] pb-24">
       {/* Signature Hero with Hills Background */}
       <PageHero
-        bgImage="/images/hero/hills.jpg"
+        bgImage="/images/hero/destination-hero.jpg"
         breadcrumbs={[{ label: 'Destination & stay' }]}
         title={
           <>

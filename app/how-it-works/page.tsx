@@ -110,7 +110,7 @@ export default function HowItWorksPage() {
   return (
     <main className="min-h-screen bg-[#fafcfb] pb-24">
       <PageHero
-        bgImage="/images/hero/airport.jpg"
+        bgImage="/images/hero/how-it-works-hero.jpg"
         breadcrumbs={[{ label: 'How it works' }]}
         title={
           <>

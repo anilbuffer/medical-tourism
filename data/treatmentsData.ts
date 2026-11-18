@@ -102,7 +102,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": 12999,
     "saving": "~69%",
     "addon": false,
-    "img": "/images/guides/knee-replacement-india.jpeg",
+    "img": "/images/treatments/knee-replacement.jpg",
     "summary": "Total, partial and robotic-assisted knee replacement, planned with your surgeon before you travel.",
     "intro": "Knee replacement is one of the most common reasons people travel to India for surgery, and one of the easiest to plan well in advance. Your surgeon reviews your X-rays before you book anything, so you arrive knowing which operation you are having and what the recovery plan looks like.",
     "options": [
@@ -202,7 +202,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": null,
     "saving": null,
     "addon": false,
-    "img": "/images/treatments/medical.jpeg",
+    "img": "/images/treatments/hip-replacement.jpg",
     "summary": "Total hip replacement and revision surgery, with physiotherapy built into your stay.",
     "intro": "Hip replacement relieves pain and restores movement when the joint is worn by arthritis or damaged by an old injury. The planning is similar to knee replacement: your surgeon reviews your X-rays first and agrees the implant and approach with you over video.",
     "options": [
@@ -294,7 +294,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": null,
     "saving": null,
     "addon": false,
-    "img": "/images/hero/doctor.jpg",
+    "img": "/images/treatments/spine-surgery.jpg",
     "summary": "Disc, decompression and fusion surgery, only after a specialist has reviewed your MRI.",
     "intro": "Spine surgery covers a wide range of operations, and not every back problem needs one. We start with a specialist review of your recent MRI and symptoms. If surgery is not the right answer, we will say so.",
     "options": [
@@ -385,7 +385,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": 5999,
     "saving": "~50%",
     "addon": false,
-    "img": "/images/treatments/medical.jpeg",
+    "img": "/images/treatments/ivf.jpg",
     "summary": "In-vitro fertilisation planned around one trip, with monitoring scans and the lab in the same hospital.",
     "intro": "IVF needs careful timing. Most of the planning, including tests and the medication protocol, can start at home, so the time you spend in India is kept as short as the cycle allows. You'll talk to the fertility specialist on video before you commit to anything.",
     "options": [
@@ -475,7 +475,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": null,
     "saving": null,
     "addon": true,
-    "img": "/images/treatments/medical.jpeg",
+    "img": "/images/treatments/icsi.jpg",
     "summary": "A single sperm injected into each egg. Added to an IVF cycle, usually for male-factor infertility.",
     "intro": "ICSI (intracytoplasmic sperm injection) is a laboratory step added to IVF. Instead of mixing eggs and sperm, the embryologist injects a single sperm into each mature egg. The price shown is the cost of the ICSI step on top of an IVF cycle.",
     "options": [
@@ -550,7 +550,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": null,
     "saving": null,
     "addon": false,
-    "img": "/img/hospitals/sangam-netralaya-facade.jpg",
+    "img": "/images/treatments/cataract-surgery.jpg",
     "summary": "Day-case cataract surgery with a choice of lens, in about a week in Mohali.",
     "intro": "Cataract surgery replaces the clouded natural lens of the eye with a clear artificial one. It is a short day-case procedure, and the whole trip, including measurements and follow-up checks, usually fits into about a week.",
     "options": [
@@ -639,7 +639,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": null,
     "saving": null,
     "addon": false,
-    "img": "/img/hospitals/sangam-netralaya-facade.jpg",
+    "img": "/images/treatments/lasik.jpg",
     "summary": "Laser vision correction after a full suitability check. Not everyone is a candidate, and we'll tell you.",
     "intro": "Refractive surgery reshapes the cornea so you rely less on glasses or contact lenses. Suitability depends on corneal thickness, prescription stability and eye health, so a detailed assessment comes first. If you are not a good candidate, the surgeon will tell you and explain the alternatives.",
     "options": [
@@ -725,7 +725,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": null,
     "saving": null,
     "addon": false,
-    "img": "/images/hero/doctor.jpg",
+    "img": "/images/treatments/dental-implants.jpg",
     "summary": "Single and full-arch implants, usually across two visits, planned from your scans.",
     "intro": "A dental implant is a titanium post placed in the jaw that supports a crown, bridge or full set of teeth. Because the bone needs time to heal around the implant, treatment usually takes two shorter visits a few months apart. Some patients are suitable for faster protocols, which the dentist will discuss after seeing your scans.",
     "options": [
@@ -807,7 +807,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": null,
     "saving": null,
     "addon": false,
-    "img": "/images/hero/doctor.jpg",
+    "img": "/images/treatments/cosmetic-surgery.jpg",
     "summary": "Body and facial procedures with an unhurried consultation first, and enough recovery time before you fly.",
     "intro": "Cosmetic surgery is elective, which means there is time to get it right. You'll have a video consultation with the plastic surgeon before booking, talk through realistic results and scarring, and agree how long you need to stay in India before it is safe to fly.",
     "options": [

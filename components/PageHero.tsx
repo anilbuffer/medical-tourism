@@ -12,7 +12,9 @@ export interface PageHeroProps {
   lede?: string;
   breadcrumbs: BreadcrumbItem[];
   bgImage?: string;
+  bgPosition?: string;
   compact?: boolean;
+  minHeight?: string;
   actions?: React.ReactNode;
   facts?: string[];
   eyebrow?: string;
@@ -25,7 +27,9 @@ export const PageHero: React.FC<PageHeroProps> = ({
   lede,
   breadcrumbs,
   bgImage,
+  bgPosition = 'right center',
   compact = false,
+  minHeight,
   actions,
   facts,
   eyebrow,
@@ -34,16 +38,22 @@ export const PageHero: React.FC<PageHeroProps> = ({
 }) => {
   return (
     <section
-      className={`relative overflow-hidden text-white isolate ${
-        compact ? 'pt-[140px] sm:pt-[150px] pb-14 sm:pb-16' : 'pt-[140px] sm:pt-[168px] pb-16 sm:pb-24'
+      className={`relative overflow-hidden text-white isolate flex flex-col justify-center ${
+        compact
+          ? 'pt-[130px] sm:pt-[140px] pb-12 sm:pb-14'
+          : 'pt-[140px] sm:pt-[168px] pb-16 sm:pb-24 min-h-[480px] sm:min-h-[540px] lg:min-h-[580px]'
       } bg-[#0b383e]`}
+      style={minHeight ? { minHeight } : undefined}
     >
       {/* Background Image Layer (when provided) */}
       {bgImage && (
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-20 bg-cover bg-center"
-          style={{ backgroundImage: `url('${bgImage}')` }}
+          className="absolute inset-0 -z-20 bg-cover"
+          style={{
+            backgroundImage: `url('${bgImage}')`,
+            backgroundPosition: bgPosition,
+          }}
         />
       )}
 
@@ -57,7 +67,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
         }}
       />
 
-      <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
         <div className={rightImage ? 'grid grid-cols-1 lg:grid-cols-12 gap-8 items-end' : ''}>
           <div className={rightImage ? 'lg:col-span-8' : ''}>
             {/* Breadcrumb Navigation */}

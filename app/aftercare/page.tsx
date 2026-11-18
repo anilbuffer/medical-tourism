@@ -71,7 +71,7 @@ export default function AftercarePage() {
     <main className="min-h-screen bg-[#fafcfb] pb-24">
       {/* Signature Top Hero */}
       <PageHero
-        bgImage="/images/hero/hills.jpg"
+        bgImage="/images/hero/aftercare-hero.jpg"
         breadcrumbs={[{ label: 'Aftercare' }]}
         title={
           <>
@@ -204,7 +204,7 @@ export default function AftercarePage() {
             <div className="lg:col-span-5 flex justify-center order-2 lg:order-1">
               <div className="relative w-full max-w-[420px] aspect-[4/3.4] rounded-[22px] overflow-hidden shadow-lg border border-gray-100 bg-gray-100">
                 <Image
-                  src="/images/hero/doctor.jpg"
+                  src="/images/split/split-whocall.jpg"
                   alt="Doctor consultation review for patient aftercare"
                   fill
                   sizes="(max-width: 1024px) 100vw, 420px"

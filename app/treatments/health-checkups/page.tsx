@@ -48,7 +48,7 @@ export default function HealthCheckupsPage() {
     <main className="min-h-screen bg-[#fafcfb]">
       {/* 1. Page Hero */}
       <PageHero
-        bgImage="/images/treatments/checkup.jpeg"
+        bgImage="/images/treatments/cat-checkups.jpg"
         breadcrumbs={[
           { label: 'Treatments', href: '/treatments' },
           { label: 'Health check-ups' },

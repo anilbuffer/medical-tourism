@@ -31,7 +31,7 @@ export default function WellnessPage() {
     <main className="min-h-screen bg-[#fafcfb]">
       {/* 1. Page Hero */}
       <PageHero
-        bgImage="/images/treatments/wellness.jpeg"
+        bgImage="/images/treatments/cat-wellness.jpg"
         breadcrumbs={[
           { label: 'Treatments', href: '/treatments' },
           { label: 'Wellness' },
@@ -117,7 +117,7 @@ export default function WellnessPage() {
             <div className="lg:col-span-5 flex justify-center lg:justify-start order-2 lg:order-1">
               <div className="relative w-full max-w-[460px] aspect-[4/3.8] rounded-[28px] overflow-hidden shadow-xl border border-gray-100 bg-gray-50">
                 <Image
-                  src="/images/hero/hills.jpg"
+                  src="/images/split/split-calm.jpg"
                   alt="Kasauli hills recovery retreat"
                   fill
                   sizes="(max-width: 1024px) 100vw, 460px"

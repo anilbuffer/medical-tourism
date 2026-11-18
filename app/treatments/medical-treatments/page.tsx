@@ -36,7 +36,7 @@ export default function MedicalTreatmentsPage() {
     <main className="min-h-screen bg-[#fafcfb]">
       {/* 1. Page Hero */}
       <PageHero
-        bgImage="/images/treatments/medical.jpeg"
+        bgImage="/images/treatments/cat-medical.jpg"
         breadcrumbs={[
           { label: 'Treatments', href: '/treatments' },
           { label: 'Medical treatments' },
@@ -184,7 +184,7 @@ export default function MedicalTreatmentsPage() {
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
               <div className="relative w-full max-w-[460px] aspect-[4/3.8] rounded-[28px] overflow-hidden shadow-xl border border-gray-100 bg-gray-50">
                 <Image
-                  src="/images/hero/doctor.jpg"
+                  src="/images/split/split-planning.jpg"
                   alt="Doctor reviewing scan reports"
                   fill
                   sizes="(max-width: 1024px) 100vw, 460px"
