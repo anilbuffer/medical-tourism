@@ -23,7 +23,7 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
     {
       align: 'start',
       dragFree: false,
-      loop: true,
+      loop: false,
       duration: 30,
     },
     [
@@ -38,21 +38,21 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
   const categories = DOCTORS_SECTION.categories;
   const allMembers = DOCTORS_SECTION.members;
 
-  const filteredMembers = selectedCategory === 'all'
-    ? allMembers
-    : allMembers.filter((m: DoctorMember) => m.type === selectedCategory);
+  const filteredMembers = useMemo(() => {
+    return selectedCategory === 'all'
+      ? allMembers
+      : allMembers.filter((m: DoctorMember) => m.type === selectedCategory);
+  }, [allMembers, selectedCategory]);
 
-  // Ensure enough items (at least 32) so Embla Carousel can loop infinitely without gaps at the right end
-  const displayMembers = useMemo(() => {
-    if (filteredMembers.length === 0) return [];
-    const repeatCount = Math.ceil(32 / filteredMembers.length);
-    return Array.from({ length: repeatCount }, () => filteredMembers).flat();
-  }, [filteredMembers]);
+  const displayMembers = filteredMembers;
 
   const onSelect = useCallback((api: UseEmblaCarouselType[1]) => {
     if (!api) return;
-    setPrevBtnDisabled(!api.canScrollPrev());
-    setNextBtnDisabled(!api.canScrollNext());
+    const canScroll = api.scrollSnapList().length > 1;
+    // Single direction: Previous is disabled at the start (index 0) or when there is nowhere to scroll
+    setPrevBtnDisabled(!canScroll || !api.canScrollPrev());
+    // Next: enabled when scrolling is needed (cycles to start from the end); disabled when all items fit
+    setNextBtnDisabled(!canScroll);
   }, []);
 
   useEffect(() => {
@@ -63,15 +63,17 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
     });
     emblaApi.on('select', onSelect);
     emblaApi.on('reInit', onSelect);
+    emblaApi.on('resize', onSelect);
 
     return () => {
       emblaApi.off('select', onSelect);
       emblaApi.off('reInit', onSelect);
+      emblaApi.off('resize', onSelect);
     };
   }, [emblaApi, onSelect, displayMembers]);
 
   const scrollPrev = useCallback(() => {
-    if (emblaApi) {
+    if (emblaApi && emblaApi.canScrollPrev()) {
       emblaApi.scrollPrev();
       emblaApi.plugins()?.autoplay?.reset();
     }
@@ -79,7 +81,12 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
 
   const scrollNext = useCallback(() => {
     if (emblaApi) {
-      emblaApi.scrollNext();
+      if (emblaApi.canScrollNext()) {
+        emblaApi.scrollNext();
+      } else {
+        // Complete first cycle -> restart from starting point
+        emblaApi.scrollTo(0);
+      }
       emblaApi.plugins()?.autoplay?.reset();
     }
   }, [emblaApi]);
