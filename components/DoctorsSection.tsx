@@ -4,16 +4,12 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Stethoscope, HeartPulse, UserCheck, Sparkles, User } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Stethoscope, Sparkles, User } from 'lucide-react';
 import useEmblaCarousel, { UseEmblaCarouselType } from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { DOCTORS_SECTION, DoctorMember } from '@/data/originalData';
 
-interface DoctorsSectionProps {
-  onOpenConsultation?: (specialistName?: string) => void;
-}
-
-export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
+export const DoctorsSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(false);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(false);
@@ -44,8 +40,6 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
       : allMembers.filter((m: DoctorMember) => m.type === selectedCategory);
   }, [allMembers, selectedCategory]);
 
-  const displayMembers = filteredMembers;
-
   const onSelect = useCallback((api: UseEmblaCarouselType[1]) => {
     if (!api) return;
     const canScroll = api.scrollSnapList().length > 1;
@@ -70,7 +64,7 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
       emblaApi.off('reInit', onSelect);
       emblaApi.off('resize', onSelect);
     };
-  }, [emblaApi, onSelect, displayMembers]);
+  }, [emblaApi, onSelect, filteredMembers]);
 
   const scrollPrev = useCallback(() => {
     if (emblaApi && emblaApi.canScrollPrev()) {
@@ -96,9 +90,6 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
       case 'doctor':
       case 'Doctors':
         return <Stethoscope className="w-3.5 h-3.5" />;
-      case 'care':
-      case 'Care Team':
-        return <UserCheck className="w-3.5 h-3.5" />;
       default:
         return <Sparkles className="w-3.5 h-3.5" />;
     }
@@ -120,7 +111,7 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 bg-emerald-50 text-emerald-800 border border-emerald-200">
               <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Clinical Excellence & Care Team</span>
+              <span>Clinical Excellence</span>
             </div>
             <h2 className="text-v2-title font-semibold tracking-[-1px] lg:tracking-[-2px] leading-[40px] lg:leading-[1.1] text-balance text-left" style={{ color: 'var(--color-primary)' }}>
               {DOCTORS_SECTION.headingLine1}{" "}
@@ -148,31 +139,33 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
               View all &rarr;
             </Link>
 
-            {/* Category Filter Tabs */}
-            <div className="flex items-center gap-1.5 bg-gray-100 p-1 rounded-full border border-gray-200 overflow-x-auto max-w-full">
-              {categories.map((cat) => {
-                const isSelected = selectedCategory === cat.value;
-                return (
-                  <button
-                    key={cat.value}
-                    type="button"
-                    onClick={() => {
-                      setSelectedCategory(cat.value);
-                      if (emblaApi) emblaApi.scrollTo(0);
-                    }}
-                    className={`h-[38px] px-5 rounded-full text-sm sm:text-base font-medium transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
-                      isSelected
-                        ? 'shadow-xs text-white'
-                        : 'text-gray-700 hover:text-gray-950 hover:bg-gray-200/60'
-                    }`}
-                    style={isSelected ? { backgroundColor: 'var(--color-primary)' } : {}}
-                  >
-                    {getCategoryIcon(cat.value)}
-                    <span>{cat.label}</span>
-                  </button>
-                );
-              })}
-            </div>
+            {/* Category Filter Tabs (shown if multiple categories exist) */}
+            {categories.length > 1 && (
+              <div className="flex items-center gap-1.5 bg-gray-100 p-1 rounded-full border border-gray-200 overflow-x-auto max-w-full">
+                {categories.map((cat) => {
+                  const isSelected = selectedCategory === cat.value;
+                  return (
+                    <button
+                      key={cat.value}
+                      type="button"
+                      onClick={() => {
+                        setSelectedCategory(cat.value);
+                        if (emblaApi) emblaApi.scrollTo(0);
+                      }}
+                      className={`h-[38px] px-5 rounded-full text-sm sm:text-base font-medium transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
+                        isSelected
+                          ? 'shadow-xs text-white'
+                          : 'text-gray-700 hover:text-gray-950 hover:bg-gray-200/60'
+                      }`}
+                      style={isSelected ? { backgroundColor: 'var(--color-primary)' } : {}}
+                    >
+                      {getCategoryIcon(cat.value)}
+                      <span>{cat.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
 
             {/* Carousel Previous / Next Arrows */}
             <div className="flex items-center gap-1.5">
@@ -225,7 +218,7 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
           ref={emblaRef}
         >
           <div className="flex -ml-6 touch-pan-y">
-            {displayMembers.map((member: DoctorMember, idx: number) => {
+            {filteredMembers.map((member: DoctorMember, idx: number) => {
               const isDoctor = member.type === 'doctor';
               const CardContent = (
                 <motion.div
@@ -271,15 +264,10 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = () => {
                       {member.role}
                     </p>
 
-                    <div className="w-full flex items-center justify-between gap-2 mt-auto">
+                    <div className="mt-auto">
                       <span className="inline-block px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200/80 shadow-xs">
                         {member.department || (member.years ? `${member.years} Experience` : member.groupLabel)}
                       </span>
-                      {member.fees && (
-                        <span className="text-xs font-bold text-[#0b383e] bg-[#eef7fa] px-2 py-0.5 rounded-md">
-                          ₹{member.fees.toLocaleString()}
-                        </span>
-                      )}
                     </div>
                   </div>
 

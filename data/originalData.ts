@@ -1438,7 +1438,7 @@ export interface DoctorMember {
   role: string;
   specialty: string;
   department?: string;
-  fees?: number;
+  experience?: string[];
   group: string;
   groupLabel: string;
   years: string | null;
@@ -1452,11 +1452,11 @@ export const DOCTORS_SECTION = {
   headingLine1: "Meet the people",
   headingLine2: "behind your care",
   heading: "Meet the people behind your care",
-  subtitle: "Experienced surgeons, dedicated patient care managers, and aftercare recovery specialists guiding every step of your medical journey.",
+  subtitle: "Experienced surgeons and clinical specialists guiding every step of your medical journey.",
   categories: [
-    { label: "All", value: "all" },
-    { label: "Doctors", value: "doctor" },
-    { label: "Care Team", value: "care" }
+    { label: "All Specialists", value: "all" }
+
+
   ],
   members: [
     {
@@ -1465,7 +1465,6 @@ export const DOCTORS_SECTION = {
       "role": "Founding Clinical Partner",
       "specialty": "General & Laparoscopic Surgery",
       "department": "General & Laparoscopic Surgery",
-      "fees": 2000,
       "group": "surgery",
       "groupLabel": "Surgery, ENT & Gynae",
       "years": "25+",
@@ -1480,7 +1479,6 @@ export const DOCTORS_SECTION = {
       "role": "Orthopaedics & Robotic Joint Replacement",
       "specialty": "Orthopaedics",
       "department": "Orthopaedics",
-      "fees": 2000,
       "group": "ortho",
       "groupLabel": "Orthopaedics",
       "years": "20+",
@@ -1495,7 +1493,6 @@ export const DOCTORS_SECTION = {
       "role": "Ophthalmology",
       "specialty": "Eye care",
       "department": "Ophthalmology",
-      "fees": 2000,
       "group": "eye",
       "groupLabel": "Eye Care",
       "years": "16+",
@@ -1510,7 +1507,6 @@ export const DOCTORS_SECTION = {
       "role": "Plastic Surgery",
       "specialty": "Cosmetic & Plastic Surgery",
       "department": "Plastic Surgery",
-      "fees": 2000,
       "group": "plastic",
       "groupLabel": "Plastic Surgery",
       "years": "18+",
@@ -1519,402 +1515,435 @@ export const DOCTORS_SECTION = {
       "hospital": null,
       "type": "doctor"
     },
-    {
+        {
       "slug": "dr-harinder-k-bali",
       "name": "Dr. Harinder K. Bali",
       "role": "Chairman, Cardiac Sciences",
       "specialty": "Interventional Cardiology",
       "department": "Cardiology",
-      "fees": 2000,
       "group": "cardiac",
       "groupLabel": "Cardiac Sciences",
       "years": "38+",
       "img": "/img/doctors/dr-harinder-k-bali.jpeg",
       "initials": "HB",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Former Additional Professor of Cardiology, PGIMER Chandigarh",
+              "Former Director of Cardiology, Fortis Hospitals, Mohali",
+              "Former Chairman of Cardiac Sciences, Paras Healthcare",
+              "Chairman of Cardiac Sciences, Livasa Hospitals"
+      ]
     },
-    {
+        {
       "slug": "dr-arvind-kaul",
       "name": "Dr. Arvind Kaul",
       "role": "Director, Cardiology",
       "specialty": "Interventional Cardiology",
       "department": "Cardiology",
-      "fees": 2000,
       "group": "cardiac",
       "groupLabel": "Cardiac Sciences",
       "years": "25+",
       "img": "/img/doctors/dr-arvind-kaul.png",
       "initials": "AK",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Director - Cardiology, Shalby Hospital, Mohali",
+              "Director - Cardiology, Paras Hospital, Panchkula",
+              "Senior Consultant & Head of Cardiology, Alchemist Hospital, Panchkula",
+              "Senior Consultant & Interventional Cardiologist, Silver Oaks Cardiac Centre"
+      ]
     },
-    {
+        {
       "slug": "dr-ishant-singla",
       "name": "Dr. Ishant Singla",
       "role": "Cardiothoracic & Vascular Surgery",
-      "specialty": "CTVS",
+      "specialty": "CTVS & Minimal Access Surgery",
       "department": "CTVS",
-      "fees": 2000,
       "group": "cardiac",
       "groupLabel": "Cardiac Sciences",
-      "years": null,
+      "years": "12+",
       "img": "/img/doctors/dr-ishant-singla.jpeg",
       "initials": "IS",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Consultant CTVS, Ojas Hospital, Panchkula",
+              "Associate Consultant in Robotic & MICS Program, Apollo Hospitals, Bangalore",
+              "Consultant CTVS, Shalby Hospital & Grecian Hospital, Mohali",
+              "Associate Consultant, Metromas Hospital, Jaipur"
+      ]
     },
-    {
+        {
       "slug": "dr-raka-kaushal",
       "name": "Dr. Raka Kaushal",
-      "role": "Nephrology",
-      "specialty": "Nephrology",
+      "role": "Senior Director, Nephrology & Renal Transplant",
+      "specialty": "Nephrology & Renal Transplant",
       "department": "Nephrology",
-      "fees": 2000,
       "group": "kidney",
       "groupLabel": "Kidney & Urology",
-      "years": null,
+      "years": "20+",
       "img": "/img/doctors/dr-raka-kaushal.jpeg",
       "initials": "RK",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Senior Director, Nephrology & Renal Transplant, Livasa Hospital, Mohali",
+              "Pioneered establishment of advanced nephrology and dialysis centers across Punjab",
+              "Lead Transplant Nephrologist for domestic and international recipient-donor programs"
+      ]
     },
-    {
+        {
       "slug": "dr-vineet-saggar",
       "name": "Dr. Vineet Saggar",
       "role": "Director, Neuro & Spine Surgery",
-      "specialty": "Neurosurgery",
+      "specialty": "Neurosurgery & Spine",
       "department": "Neuro Surgery",
-      "fees": 2000,
       "group": "neuro",
       "groupLabel": "Neuro & Spine",
-      "years": null,
+      "years": "20+",
       "img": "/img/doctors/dr-vineet-saggar.jpeg",
       "initials": "VS",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Director - Neuro & Spine Surgery, Livasa Hospital, Mohali",
+              "Former Senior Consultant Neurosurgeon at Fortis Hospital and Max Healthcare",
+              "Senior surgical faculty and mentor in minimally invasive neurosurgical techniques"
+      ]
     },
-    {
+        {
       "slug": "dr-manuj-wadhwa",
       "name": "Dr. Manuj Wadhwa",
       "role": "Chairman & Executive Director, Orthopaedics & Joint Replacement",
       "specialty": "Orthopaedics & Joint Replacement",
       "department": "Orthopaedics",
-      "fees": 2000,
       "group": "ortho",
       "groupLabel": "Orthopaedics",
-      "years": null,
+      "years": "25+",
       "img": "/img/doctors/dr-manuj-wadhwa.jpeg",
       "initials": "MW",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Chairman & Executive Director, Livasa Bone & Joint Institute",
+              "Former Director & Head of Orthopaedics, Max Super Speciality Hospital, Mohali",
+              "Lead Arthroplasty Consultant for elite athletes and international patients"
+      ]
     },
-    {
+        {
       "slug": "dr-robin-bohat",
       "name": "Dr. Robin Bohat",
-      "role": "Orthopaedics",
-      "specialty": "Orthopaedics",
+      "role": "Consultant, Orthopaedics & Joint Replacement",
+      "specialty": "Orthopaedics & Sports Injury",
       "department": "Orthopaedics",
-      "fees": 2000,
       "group": "ortho",
       "groupLabel": "Orthopaedics",
-      "years": null,
+      "years": "10+",
       "img": "/img/doctors/dr-robin-bohat.jpeg",
       "initials": "RB",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Consultant Orthopaedic Surgeon, Livasa Hospital, Mohali",
+              "Consultant Orthopaedics in major regional trauma and joint care centers"
+      ]
     },
-    {
+        {
       "slug": "dr-deepak-chadha",
       "name": "Dr. Deepak Chadha",
-      "role": "Neurologist & Epileptologist",
+      "role": "Consultant Neurologist & Epileptologist",
       "specialty": "Neurology & Epilepsy",
       "department": "Neurologist and Epileptiologist",
-      "fees": 2000,
       "group": "neuro",
       "groupLabel": "Neuro & Spine",
-      "years": null,
+      "years": "15+",
       "img": "/img/doctors/dr-deepak-chadha.png",
       "initials": "DC",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Senior Consultant Neurologist, Livasa Hospital, Mohali",
+              "Senior Neurologist across leading tertiary care neurology hospitals in Punjab"
+      ]
     },
-    {
+        {
       "slug": "dr-sonal",
       "name": "Dr. Sonal",
       "role": "Consultant, Pulmonary Medicine",
-      "specialty": "Pulmonology",
+      "specialty": "Pulmonology & Sleep Medicine",
       "department": "Pulmonologist",
-      "fees": 2000,
       "group": "chest",
       "groupLabel": "Pulmonology",
       "years": "6+",
       "img": "/img/doctors/dr-sonal.jpeg",
       "initials": "S",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Consultant, Pulmonary Medicine, Livasa Hospital, Mohali",
+              "Senior Resident in Pulmonary Medicine at premier tertiary healthcare centers"
+      ]
     },
-    {
+        {
       "slug": "dr-kritarth",
       "name": "Dr. Kritarth",
-      "role": "Consultant, Pulmonary Medicine",
-      "specialty": "Pulmonary & Critical Care Medicine",
+      "role": "Consultant, Pulmonary & Critical Care Medicine",
+      "specialty": "Pulmonary & Critical Care",
       "department": "Pulmonologist",
-      "fees": 2000,
       "group": "chest",
       "groupLabel": "Pulmonology",
-      "years": null,
+      "years": "8+",
       "img": "/img/doctors/dr-kritarth.jpeg",
       "initials": "K",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Consultant, Pulmonary & Critical Care Medicine, Livasa Hospital, Mohali",
+              "Intensivist and Pulmonologist at apex tertiary care hospitals"
+      ]
     },
-    {
+        {
       "slug": "dr-avinash-srivastava",
       "name": "Dr. Avinash Srivastava",
       "role": "Senior Director, Urology & Kidney Transplant",
       "specialty": "Urology & Kidney Transplant",
       "department": "Urologist",
-      "fees": 2000,
       "group": "kidney",
       "groupLabel": "Kidney & Urology",
       "years": "20+",
       "img": "/img/doctors/dr-avinash-srivastava.jpeg",
       "initials": "AS",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Senior Director, Urology & Kidney Transplant, Livasa Hospital, Mohali",
+              "Former Head of Urology at major regional tertiary teaching hospitals"
+      ]
     },
-    {
+        {
       "slug": "dr-sakshi-srivastava",
       "name": "Dr. Sakshi Srivastava",
-      "role": "Robotic Gynaecology",
-      "specialty": "Gynaecology",
+      "role": "Consultant, Robotic & Laparoscopic Gynaecology",
+      "specialty": "Gynaecology & Robotic Surgery",
       "department": "Robotic Gynecologist",
-      "fees": 2000,
       "group": "surgery",
       "groupLabel": "Surgery, ENT & Gynae",
-      "years": null,
+      "years": "12+",
       "img": "/img/doctors/dr-sakshi-srivastava.png",
       "initials": "SS",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Consultant Gynaecologist & Robotic Surgeon, Livasa Hospital, Mohali",
+              "Senior Consultant in Minimally Invasive Gynaecology at leading women's healthcare centers"
+      ]
     },
-    {
+        {
       "slug": "dr-jagpal-pandher",
       "name": "Dr. Jagpal Pandher",
-      "role": "Rheumatology",
+      "role": "Consultant, Rheumatology & Clinical Immunology",
       "specialty": "Rheumatology",
       "department": "Rheumatology",
-      "fees": 2000,
       "group": "rheum",
       "groupLabel": "Rheumatology",
-      "years": null,
+      "years": "15+",
       "img": "/img/doctors/dr-jagpal-pandher.jpeg",
       "initials": "JP",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Consultant Rheumatologist, Livasa Hospital, Mohali",
+              "Senior Rheumatology Consultant across premier medical networks in Punjab and North India"
+      ]
     },
-    {
+        {
       "slug": "dr-jatin-sarin",
       "name": "Dr. Jatin Sarin",
       "role": "Director, Medical Oncology",
-      "specialty": "Medical Oncology",
+      "specialty": "Medical Oncology & Precision Medicine",
       "department": "Medical Oncologist",
-      "fees": 2000,
       "group": "onco",
       "groupLabel": "Oncology & Haematology",
-      "years": "20+",
+      "years": "25+",
       "img": "/img/doctors/dr-jatin-sarin.jpeg",
       "initials": "JS",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Director, Medical Oncology, Livasa Hospital, Mohali",
+              "Former Head of Medical Oncology at leading regional cancer institutes",
+              "Invited speaker and faculty at major international oncology conferences"
+      ]
     },
-    {
+        {
       "slug": "dr-vijay-bansal",
       "name": "Dr. Vijay Bansal",
       "role": "Director, Surgical Oncology",
       "specialty": "Surgical Oncology",
       "department": "Surgical Oncologist",
-      "fees": 2000,
       "group": "onco",
       "groupLabel": "Oncology & Haematology",
-      "years": null,
+      "years": "18+",
       "img": "/img/doctors/dr-vijay-bansal.jpeg",
       "initials": "VB",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Director, Surgical Oncology, Livasa Hospital, Mohali",
+              "Former Chief Surgical Oncologist at leading tertiary cancer centers and teaching hospitals"
+      ]
     },
-    {
+        {
       "slug": "dr-meenakshi-mittal",
       "name": "Dr. Meenakshi Mittal",
       "role": "Director, Radiation Oncology",
       "specialty": "Radiation Oncology",
       "department": "Radiation Oncologist",
-      "fees": 2000,
       "group": "onco",
       "groupLabel": "Oncology & Haematology",
       "years": "23+",
       "img": "/img/doctors/dr-meenakshi-mittal.jpeg",
       "initials": "MM",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Director, Radiation Oncology, Livasa Hospital, Mohali",
+              "Senior Radiation Oncologist and Course Coordinator at Mohan Dai Oswal Cancer Hospital",
+              "Principal Investigator in the Punjab Cancer Registry Programme"
+      ]
     },
-    {
+        {
       "slug": "dr-manika-saluja-parekh",
       "name": "Dr. Manika Saluja Parekh",
-      "role": "ENT Surgeon",
-      "specialty": "ENT",
+      "role": "Consultant, ENT & Head-Neck Surgery",
+      "specialty": "ENT & Implant Otology",
       "department": "ENT Surgeon",
-      "fees": 2000,
       "group": "surgery",
       "groupLabel": "Surgery, ENT & Gynae",
-      "years": null,
+      "years": "15+",
       "img": "/img/doctors/dr-manika-saluja-parekh.jpeg",
       "initials": "MP",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Consultant ENT Surgeon, Livasa Hospital, Mohali",
+              "Senior ENT Specialist across major regional and national ENT referral hospitals"
+      ]
     },
-    {
+        {
       "slug": "dr-ajay-singh",
       "name": "Dr. Ajay Singh",
       "role": "Consultant, Neurosurgery & Spine Surgery",
-      "specialty": "Neurosurgery & Spine",
+      "specialty": "Neurosurgery & Spine Surgery",
       "department": "Spine Surgeon",
-      "fees": 2000,
       "group": "neuro",
       "groupLabel": "Neuro & Spine",
-      "years": "5",
+      "years": "5+",
       "img": "/img/doctors/dr-ajay-singh.jpeg",
       "initials": "AS",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Consultant Neurosurgeon, Livasa Hospital, Mohali",
+              "Former Consultant Neurosurgeon at Ivy Hospital (Mohali & Amritsar)",
+              "Former Consultant Neurosurgeon at Healing Hospital and Bahra Hospital",
+              "Ex-Senior Resident, SMS Medical College, Jaipur"
+      ]
     },
-    {
+        {
       "slug": "dr-srinath-shankar-rathod",
       "name": "Dr. Srinath Shankar Rathod",
-      "role": "Senior Consultant, General & Laparoscopic Surgery",
+      "role": "Senior Consultant, General & Minimal Access Surgery",
       "specialty": "General & Minimal Access Surgery",
       "department": "Robotic General Surgeon",
-      "fees": 2000,
       "group": "surgery",
       "groupLabel": "Surgery, ENT & Gynae",
       "years": "10+",
       "img": "/img/doctors/dr-srinath-shankar-rathod.jpeg",
       "initials": "SR",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Senior Consultant & Associate Director, General & Laparoscopic Surgery, Livasa Hospital",
+              "Former Surgical Specialist at PGIMER, Chandigarh"
+      ]
     },
-    {
+        {
       "slug": "dr-yogendra-kumar",
       "name": "Dr. Yogendra Kumar",
       "role": "Senior Consultant, Gastroenterology & Hepatology",
       "specialty": "Gastroenterology & Hepatology",
       "department": "Gastroenterologist & Hepatologist",
-      "fees": 2000,
       "group": "gastro",
       "groupLabel": "Gastro & Liver",
-      "years": null,
+      "years": "8+",
       "img": "/img/doctors/dr-yogendra-kumar.jpeg",
       "initials": "YK",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Senior Consultant, Gastroenterology & Hepatology, Livasa Hospital, Mohali",
+              "Specialist Hepatologist and Gastroenterologist at PGIMER Chandigarh"
+      ]
     },
-    {
+        {
       "slug": "dr-pankaj-kapoor",
       "name": "Dr. Pankaj Kapoor",
-      "role": "Gastroenterology & Hepatology",
-      "specialty": "Gastroenterology & Hepatology",
+      "role": "Associate Director, Gastroenterology & Hepatology",
+      "specialty": "Gastroenterology & Interventional Endoscopy",
       "department": "Gastroenterologist & Hepatologist",
-      "fees": 2000,
       "group": "gastro",
       "groupLabel": "Gastro & Liver",
-      "years": null,
+      "years": "13+",
       "img": "/img/doctors/dr-pankaj-kapoor.jpeg",
       "initials": "PK",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Associate Director, Gastroenterology & Hepatology, Livasa Hospital, Mohali",
+              "Former Consultant Gastroenterologist at Paras Hospital and Ojas Superspeciality Hospital, Panchkula",
+              "Consultant Gastroenterologist at Ivy Hospital, Hoshiarpur"
+      ]
     },
-    {
+        {
       "slug": "dr-akash-gandotra",
       "name": "Dr. Akash Gandotra",
-      "role": "Gastroenterology & Hepatology",
-      "specialty": "Gastroenterology & Hepatology",
+      "role": "Senior Consultant, Gastroenterology & Liver Transplant Specialist",
+      "specialty": "Gastroenterology, Hepatology & Liver Transplant",
       "department": "Gastroenterologist & Hepatologist",
-      "fees": 2000,
       "group": "gastro",
       "groupLabel": "Gastro & Liver",
-      "years": null,
+      "years": "10+",
       "img": "/img/doctors/dr-akash-gandotra.png",
       "initials": "AG",
       "hospital": "livasa-mohali",
-      "type": "doctor"
+      "type": "doctor",
+      "experience": [
+              "Consultant Gastroenterologist & Liver Transplant Specialist, Paras Health, Panchkula",
+              "Senior Resident, DM Hepatology, PGIMER Chandigarh",
+              "Consultant at Parvati Devi Hospital, Amritsar",
+              "Senior Resident, Sharda Hospital and Adesh Medical College"
+      ]
     },
-    {
+        {
       "slug": "dr-mukesh-chawla",
       "name": "Dr. Mukesh Chawla",
-      "role": "Consultant, Clinical Haematology & BMT",
+      "role": "Senior Consultant, Clinical Haematology & Bone Marrow Transplant",
       "specialty": "Haematology & Bone Marrow Transplant",
       "department": "Hematology",
-      "fees": 2000,
       "group": "onco",
       "groupLabel": "Oncology & Haematology",
       "years": "12+",
       "img": "/img/doctors/dr-mukesh-chawla.jpeg",
       "initials": "MC",
       "hospital": "livasa-mohali",
-      "type": "doctor"
-    },
-    {
-      "slug": null,
-      "name": "Patient Care Manager",
-      "role": "Your single point of contact",
-      "specialty": "Care team",
-      "group": "care",
-      "groupLabel": "Care Team",
-      "years": "10+",
-      "img": "/img/care-manager.jpg",
-      "initials": "",
-      "hospital": null,
-      "type": "care"
-    },
-    {
-      "slug": null,
-      "name": "International Patient Desk",
-      "role": "Visa, travel & stay",
-      "specialty": "Care team",
-      "group": "care",
-      "groupLabel": "Care Team",
-      "years": "12+",
-      "img": "/img/transfers.jpg",
-      "initials": "",
-      "hospital": null,
-      "type": "care"
-    },
-    {
-      "slug": null,
-      "name": "Physiotherapist",
-      "role": "Daily rehabilitation",
-      "specialty": "Care team",
-      "group": "care",
-      "groupLabel": "Care Team",
-      "years": "14+",
-      "img": "/img/physio.jpg",
-      "initials": "",
-      "hospital": null,
-      "type": "care"
-    },
-    {
-      "slug": null,
-      "name": "Recovery Nurse",
-      "role": "Recovery-stay nursing",
-      "specialty": "Care team",
-      "group": "care",
-      "groupLabel": "Care Team",
-      "years": "15+",
-      "img": "/img/doctor.jpg",
-      "initials": "",
-      "hospital": null,
-      "type": "care"
+      "type": "doctor",
+      "experience": [
+              "Senior Consultant, Clinical Haematology & BMT Physician, Livasa Hospital, Mohali",
+              "Senior Haematologist and BMT Consultant at leading tertiary blood cancer institutions"
+      ]
     }
   ] as DoctorMember[]
 };
