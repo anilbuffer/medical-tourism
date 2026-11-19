@@ -1,13 +1,22 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
 import { TREATMENTS, SPECIALTIES } from '@/data/treatmentsData';
 
 export const MedicalTreatmentsFilter: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState<string>('all');
+  const searchParams = useSearchParams();
+  const specialtyParam = searchParams.get('specialty');
+  const [activeFilter, setActiveFilter] = useState<string>(specialtyParam || 'all');
+
+  useEffect(() => {
+    if (specialtyParam) {
+      setActiveFilter(specialtyParam);
+    }
+  }, [specialtyParam]);
 
   const filteredTreatments =
     activeFilter === 'all'
@@ -114,4 +123,3 @@ export const MedicalTreatmentsFilter: React.FC = () => {
     </div>
   );
 };
-

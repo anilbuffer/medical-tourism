@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { PageHero } from '@/components/PageHero';
@@ -72,7 +72,9 @@ export default function MedicalTreatmentsPage() {
       {/* 2. Choose a Specialty & Grid */}
       <section className="py-16 sm:py-24">
         <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
-          <MedicalTreatmentsFilter />
+          <Suspense fallback={null}>
+            <MedicalTreatmentsFilter />
+          </Suspense>
         </div>
       </section>
 

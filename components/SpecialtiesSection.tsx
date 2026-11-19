@@ -251,7 +251,7 @@ export const SpecialtiesSection: React.FC<SpecialtiesSectionProps> = ({
             return (
               <Link
                 key={specialty.key}
-                href={`/treatments/medical-treatments`}
+                href={`/treatments/medical-treatments?specialty=${specialty.slug}`}
                 ref={(el) => {
                   cardRefs.current[index] = el;
                 }}
