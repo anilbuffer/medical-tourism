@@ -6,8 +6,9 @@ import { VideoConsultationCard } from '@/components/VideoConsultationCard';
 import { WhatsAppCard } from '@/components/WhatsAppCard';
 import { 
   DOCTORS, 
-  DOCTOR_TREATMENTS_MAP
+  DOCTOR_TREATMENTS_MAP 
 } from '@/data/doctorsData';
+import { HOSPITALS } from '@/data/hospitalsData';
 import { 
   Check, 
   ArrowRight, 
@@ -19,7 +20,12 @@ import {
   GraduationCap,
   Building2,
   Award,
-  Sparkles
+  Sparkles,
+  Trophy,
+  Users,
+  ShieldCheck,
+  BookOpen,
+  FileText,
 } from 'lucide-react';
 
 interface DoctorPageProps {
@@ -39,8 +45,9 @@ export async function generateMetadata({ params }: DoctorPageProps) {
   const doctor = DOCTORS.find((d) => d.slug === slug);
   if (!doctor) return {};
 
-  const expText = doctor.years ? `with ${doctor.years} years of experience` : 'specialist';
-  const hospText = doctor.hospital === 'livasa-mohali' ? 'at Livasa Hospital, Mohali, Punjab' : 'in Mohali, Punjab';
+  const expText = doctor.years ? `with ${doctor.years} of experience` : 'specialist';
+  const hospitalObj = HOSPITALS.find((h) => h.slug === doctor.hospital);
+  const hospText = hospitalObj ? `at ${hospitalObj.name}, ${hospitalObj.city}` : 'in Mohali, Punjab';
 
   return {
     title: `${doctor.name} | Your Medicare Trip`,
@@ -56,6 +63,15 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
     notFound();
   }
 
+  const hospitalObj = HOSPITALS.find((h) => h.slug === doctor.hospital);
+  const hospitalDisplayName = hospitalObj ? hospitalObj.name : (
+    doctor.hospital === 'fortis-mohali' ? 'Fortis Hospital' :
+    doctor.hospital === 'max-super-speciality-mohali' ? 'Max Super Speciality Hospital' :
+    doctor.hospital === 'landmark-chandigarh' ? 'Landmark Hospital' :
+    doctor.hospital === 'livasa-mohali' ? 'Livasa Hospital' : 'Partner Hospital'
+  );
+  const hospitalCity = hospitalObj?.city ? hospitalObj.city.split(',')[0] : 'Mohali';
+
   // Treatments mapped
   const treatments = doctor.treatments
     .map((tSlug) => DOCTOR_TREATMENTS_MAP[tSlug])
@@ -64,7 +80,7 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
   const heroFacts = [
     doctor.department ? `${doctor.department}` : (doctor.years ? `${doctor.years} experience` : `${doctor.specialty} Specialist`),
     doctor.years ? `${doctor.years} experience` : null,
-    doctor.hospital === 'livasa-mohali' ? 'Livasa Hospital, Mohali' : 'Mohali, Punjab',
+    `${hospitalDisplayName}, ${hospitalCity}`,
   ].filter(Boolean) as string[];
 
   return (
@@ -131,6 +147,12 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
                     {fact}
                   </li>
                 ))}
+                {doctor.registration && (
+                  <li className="px-3.5 py-1.5 rounded-full bg-[#008329]/25 border border-[#008329]/40 text-xs sm:text-[13px] font-bold text-[#d4f7dc] shadow-xs flex items-center gap-1.5">
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#6ee7b7]" />
+                    <span>Reg: {doctor.registration}</span>
+                  </li>
+                )}
               </ul>
 
               {/* Action CTA */}
@@ -186,8 +208,8 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
             {/* Left Column: Clean Typography & Clinical Profile */}
             <div className="space-y-12">
               
-              {/* About Section */}
-              {doctor.bio.length > 0 && (
+              {/* 1. About Section (Conditional) */}
+              {doctor.bio && doctor.bio.length > 0 && (
                 <div className="border-b border-[#eef2f1] pb-10">
                   <h2 className="text-[24px] sm:text-[28px] font-bold tracking-tight text-[#0b383e] flex items-center gap-2.5 mb-5">
                     <User className="w-6 h-6 text-[#095458]" />
@@ -210,8 +232,54 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
                 </div>
               )}
 
-              {/* Highlights & Clinical Expertise */}
-              {doctor.highlights.length > 0 && (
+              {/* 2. Clinical Focus & Speciality Interests (Conditional) */}
+              {doctor.specialityInterests && doctor.specialityInterests.length > 0 && (
+                <div className="border-b border-[#eef2f1] pb-10">
+                  <h2 className="text-[24px] sm:text-[28px] font-bold tracking-tight text-[#0b383e] flex items-center gap-2.5 mb-5">
+                    <Sparkles className="w-6 h-6 text-[#095458]" />
+                    <span>Clinical Focus &amp; Speciality Interests</span>
+                  </h2>
+                  <div className="flex flex-wrap gap-2.5">
+                    {doctor.specialityInterests.map((interest, idx) => (
+                      <span
+                        key={idx}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-[14px] sm:text-[15px] font-medium bg-[#eef7fa] text-[#0b383e] border border-[#d6ecf2]"
+                      >
+                        <span className="w-2 h-2 rounded-full bg-[#095458]" />
+                        <span>{interest}</span>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* 3. Specialized Procedures & Surgical Treatments (Conditional) */}
+              {doctor.procedures && doctor.procedures.length > 0 && (
+                <div className="border-b border-[#eef2f1] pb-10">
+                  <h2 className="text-[24px] sm:text-[28px] font-bold tracking-tight text-[#0b383e] flex items-center gap-2.5 mb-5">
+                    <Stethoscope className="w-6 h-6 text-[#095458]" />
+                    <span>Procedures &amp; Surgical Treatments</span>
+                  </h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {doctor.procedures.map((proc, idx) => (
+                      <div
+                        key={idx}
+                        className="flex items-center gap-3 p-3.5 rounded-[16px] bg-[#f8faf9] border border-[#e8eeec]"
+                      >
+                        <span className="w-5 h-5 rounded-full bg-[#e1f5fe] text-[#0277bd] flex items-center justify-center shrink-0">
+                          <Check className="w-3 h-3 stroke-[3]" />
+                        </span>
+                        <span className="text-[14px] sm:text-[15px] text-gray-800 font-medium leading-snug">
+                          {proc}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* 4. Highlights & Clinical Expertise (Conditional) */}
+              {doctor.highlights && doctor.highlights.length > 0 && (
                 <div className="border-b border-[#eef2f1] pb-10">
                   <h2 className="text-[24px] sm:text-[28px] font-bold tracking-tight text-[#0b383e] flex items-center gap-2.5 mb-5">
                     <Award className="w-6 h-6 text-[#095458]" />
@@ -235,7 +303,7 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
                 </div>
               )}
 
-              {/* Work Experience & Hospital Appointments */}
+              {/* 5. Work Experience & Hospital Appointments (Conditional) */}
               {doctor.experience && doctor.experience.length > 0 && (
                 <div className="border-b border-[#eef2f1] pb-10">
                   <h2 className="text-[24px] sm:text-[28px] font-bold tracking-tight text-[#0b383e] flex items-center gap-2.5 mb-5">
@@ -260,13 +328,13 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
                 </div>
               )}
 
-              {/* Education & Qualifications */}
-              <div className="border-b border-[#eef2f1] pb-10">
-                <h2 className="text-[24px] sm:text-[28px] font-bold tracking-tight text-[#0b383e] flex items-center gap-2.5 mb-5">
-                  <GraduationCap className="w-6 h-6 text-[#095458]" />
-                  <span>Education &amp; Medical Training</span>
-                </h2>
-                {doctor.quals.length > 0 ? (
+              {/* 6. Education & Medical Training (Conditional) */}
+              {doctor.quals && doctor.quals.length > 0 && (
+                <div className="border-b border-[#eef2f1] pb-10">
+                  <h2 className="text-[24px] sm:text-[28px] font-bold tracking-tight text-[#0b383e] flex items-center gap-2.5 mb-5">
+                    <GraduationCap className="w-6 h-6 text-[#095458]" />
+                    <span>Education &amp; Medical Training</span>
+                  </h2>
                   <div className="space-y-3">
                     {doctor.quals.map((qual, idx) => (
                       <div
@@ -282,14 +350,85 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
                       </div>
                     ))}
                   </div>
-                ) : (
-                  <p className="text-[15px] text-gray-500 font-normal leading-[1.75]">
-                    Qualifications and medical council registration details are shared with your treatment plan.
-                  </p>
-                )}
-              </div>
+                </div>
+              )}
 
-              {/* Treatments (Rendered when doctor has associated treatments) */}
+              {/* 7. Research Papers & Publications (Conditional) */}
+              {doctor.publications && doctor.publications.length > 0 && (
+                <div className="border-b border-[#eef2f1] pb-10">
+                  <h2 className="text-[24px] sm:text-[28px] font-bold tracking-tight text-[#0b383e] flex items-center gap-2.5 mb-5">
+                    <BookOpen className="w-6 h-6 text-[#095458]" />
+                    <span>Research Papers &amp; Publications</span>
+                  </h2>
+                  <div className="space-y-3">
+                    {doctor.publications.map((paper, idx) => (
+                      <div
+                        key={idx}
+                        className="flex items-start gap-3.5 p-4 rounded-[18px] bg-[#f8faf9] border border-[#e8eeec]"
+                      >
+                        <div className="w-7 h-7 rounded-lg bg-[#e0f2fe] text-[#0369a1] flex items-center justify-center shrink-0 mt-0.5">
+                          <FileText className="w-4 h-4" />
+                        </div>
+                        <span className="text-[15px] sm:text-[16px] text-gray-800 font-medium leading-relaxed">
+                          {paper}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* 8. Awards & Accolades (Conditional) */}
+              {doctor.awards && doctor.awards.length > 0 && (
+                <div className="border-b border-[#eef2f1] pb-10">
+                  <h2 className="text-[24px] sm:text-[28px] font-bold tracking-tight text-[#0b383e] flex items-center gap-2.5 mb-5">
+                    <Trophy className="w-6 h-6 text-[#b45309]" />
+                    <span>Awards &amp; Accolades</span>
+                  </h2>
+                  <div className="space-y-3">
+                    {doctor.awards.map((award, idx) => (
+                      <div
+                        key={idx}
+                        className="flex items-start gap-3.5 p-4 rounded-[18px] bg-[#fffbeb] border border-[#fef3c7]"
+                      >
+                        <div className="w-7 h-7 rounded-lg bg-[#fef3c7] text-[#b45309] flex items-center justify-center shrink-0 mt-0.5">
+                          <Trophy className="w-4 h-4" />
+                        </div>
+                        <span className="text-[15px] sm:text-[16px] text-[#92400e] font-semibold leading-relaxed">
+                          {award}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* 9. Professional Memberships & Fellowships (Conditional) */}
+              {doctor.memberships && doctor.memberships.length > 0 && (
+                <div className="border-b border-[#eef2f1] pb-10">
+                  <h2 className="text-[24px] sm:text-[28px] font-bold tracking-tight text-[#0b383e] flex items-center gap-2.5 mb-5">
+                    <Users className="w-6 h-6 text-[#095458]" />
+                    <span>Professional Memberships &amp; Fellowships</span>
+                  </h2>
+                  <div className="space-y-2.5">
+                    {doctor.memberships.map((membership, idx) => (
+                      <div
+                        key={idx}
+                        className="flex items-start gap-3 p-3.5 rounded-[16px] bg-[#f8faf9] border border-[#e8eeec]"
+                      >
+                        <div className="w-6 h-6 rounded-full bg-[#e0f2fe] text-[#0369a1] flex items-center justify-center shrink-0 mt-0.5">
+                          <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                        </div>
+                        <span className="text-[14px] sm:text-[15px] text-gray-800 font-medium leading-relaxed">
+                          {membership}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* 10. Specialized Treatments (Conditional: Rendered when doctor has associated treatments) */}
               {treatments.length > 0 && (
                 <div className="border-b border-[#eef2f1] pb-10">
                   <h2 className="text-[24px] sm:text-[28px] font-bold tracking-tight text-[#0b383e] flex items-center gap-2.5 mb-5">
@@ -338,7 +477,7 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
                 </div>
               )}
 
-              {/* How a consultation works */}
+              {/* 11. How a consultation works */}
               <div>
                 <h2 className="text-[24px] sm:text-[28px] font-bold tracking-tight text-[#0b383e] flex items-center gap-2.5 mb-5">
                   <Clock className="w-6 h-6 text-[#095458]" />
@@ -419,7 +558,16 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
                     <div className="flex justify-between py-2.5">
                       <dt className="text-gray-500 font-normal">Hospital</dt>
                       <dd className="font-bold text-[#0b383e] text-right">
-                        {doctor.hospital === 'livasa-mohali' ? 'Livasa Hospital, Mohali' : doctor.hospital}
+                        {hospitalDisplayName}
+                      </dd>
+                    </div>
+                  )}
+                  {doctor.registration && (
+                    <div className="flex justify-between py-2.5">
+                      <dt className="text-gray-500 font-normal">Registration</dt>
+                      <dd className="font-bold text-[#008329] text-right flex items-center gap-1 justify-end">
+                        <ShieldCheck className="w-3.5 h-3.5" />
+                        <span>{doctor.registration}</span>
                       </dd>
                     </div>
                   )}
@@ -428,6 +576,21 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
                     <dd className="font-bold text-[#0b383e] text-right">English, Hindi, Punjabi</dd>
                   </div>
                 </dl>
+              </div>
+
+              {/* Consultation Assistance Card */}
+              <div className="bg-[#0b383e] text-white rounded-[24px] p-6 shadow-md">
+                <h4 className="text-base font-bold mb-2">Need advice on choosing a specialist?</h4>
+                <p className="text-xs text-white/80 leading-relaxed mb-4">
+                  Speak with our clinical coordinator to review your case and find the ideal specialist for your procedure.
+                </p>
+                <OpenConsultationButton
+                  treatmentTitle={doctor.specialty}
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-xs bg-[#8bd2ea] text-[#0b383e] hover:bg-[#a2ddf0] transition-colors shadow-sm cursor-pointer"
+                >
+                  <span>Request Specialist Review</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </OpenConsultationButton>
               </div>
 
             </aside>

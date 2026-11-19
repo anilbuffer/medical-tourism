@@ -967,17 +967,49 @@ export interface DoctorMember {
   type: 'doctor' | 'care';
 }
 
-export const DOCTORS_SECTION = {
-  headingLine1: "Meet the people",
-  headingLine2: "behind your care",
-  heading: "Meet the people behind your care",
-  subtitle: "Experienced surgeons and clinical specialists guiding every step of your medical journey.",
-  categories: [
-    { label: "All Specialists", value: "all" }
-
-
+export const DOCTORS_SECTION: {
+  headingLine1: string;
+  headingLine2: string;
+  heading: string;
+  subtitle: string;
+  categories: { label: string; value: string }[];
+  members: DoctorMember[];
+} = {
+  "headingLine1": "Meet the people",
+  "headingLine2": "behind your care",
+  "heading": "Meet the people behind your care",
+  "subtitle": "Experienced surgeons and clinical specialists guiding every step of your medical journey across Fortis, Max, Landmark, and Livasa Hospital.",
+  "categories": [
+    {
+      "label": "All Specialists",
+      "value": "all"
+    },
+    {
+      "label": "Orthopaedics",
+      "value": "ortho"
+    },
+    {
+      "label": "Dental",
+      "value": "dental"
+    },
+    {
+      "label": "Cosmetic Surgery",
+      "value": "cosmetic"
+    },
+    {
+      "label": "Fertility & IVF",
+      "value": "fertility"
+    },
+    {
+      "label": "Eye Care",
+      "value": "eye"
+    },
+    {
+      "label": "Cardiac Sciences",
+      "value": "cardiac"
+    }
   ],
-  members: [
+  "members": [
     {
       "slug": "dr-jaswant-singh",
       "name": "Dr. Jaswant Singh",
@@ -993,17 +1025,983 @@ export const DOCTORS_SECTION = {
       "type": "doctor"
     },
     {
-      "slug": "dr-jatinder-singla",
-      "name": "Dr. Jatinder Singla",
-      "role": "Orthopaedics & Robotic Joint Replacement",
+      "slug": "dr-mandeep-singh-dhillon",
+      "name": "Dr. Mandeep Singh Dhillon",
+      "role": "Senior Director Orthopaedics",
       "specialty": "Orthopaedics",
       "department": "Orthopaedics",
       "group": "ortho",
-      "groupLabel": "Orthopaedics",
-      "years": "20+",
-      "img": "/img/dr-singla.jpg",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": "37+",
+      "img": "/img/doctors/dr-mandeep-singh-dhillon.jpg",
+      "initials": "MD",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-ashish-gupta",
+      "name": "Dr. Ashish Gupta",
+      "role": "Director Neurosurgery",
+      "specialty": "Orthopaedics",
+      "department": "Orthopaedics",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": "22+",
+      "img": null,
+      "initials": "AG",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-manit-arora-and-team",
+      "name": "Dr. Manit Arora and Team",
+      "role": "Team Orthopaedics",
+      "specialty": "Orthopaedics",
+      "department": "Orthopaedics",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": "15+",
+      "img": "/img/doctors/dr-manit-arora-and-team.jpg",
+      "initials": "MT",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-deepak-joshi",
+      "name": "Dr. Deepak Joshi",
+      "role": "Director Orthopaedics",
+      "specialty": "Orthopaedics",
+      "department": "Orthopaedics",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": null,
+      "img": "/img/doctors/dr-deepak-joshi.jpg",
+      "initials": "DJ",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-chandan",
+      "name": "Dr. Chandan .",
+      "role": "Consultant Orthopaedics",
+      "specialty": "Orthopaedics",
+      "department": "Orthopaedics",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": "7+",
+      "img": "/img/doctors/dr-chandan.jpg",
+      "initials": "C.",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-vishal-gautam",
+      "name": "Dr. Vishal Gautam",
+      "role": "Consultant Orthopaedics",
+      "specialty": "Orthopaedics",
+      "department": "Orthopaedics",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": "3+",
+      "img": "/img/doctors/dr-vishal-gautam.jpg",
+      "initials": "VG",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-rajat-gupta",
+      "name": "Dr. Rajat Gupta",
+      "role": "Consultant Orthopaedics",
+      "specialty": "Orthopaedics",
+      "department": "Orthopaedics",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": "2+",
+      "img": "/img/doctors/dr-rajat-gupta.jpg",
+      "initials": "RG",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-amit-kapila",
+      "name": "Dr. Amit Kapila",
+      "role": "Senior Consultant Orthopaedics",
+      "specialty": "Orthopaedics",
+      "department": "Orthopaedics",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": null,
+      "img": null,
+      "initials": "AK",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-gourav-jandial",
+      "name": "Dr. Gourav Jandial",
+      "role": "Consultant Orthopaedics",
+      "specialty": "Orthopaedics",
+      "department": "Orthopaedics",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": null,
+      "img": "/img/doctors/dr-gourav-jandial.jpg",
+      "initials": "GJ",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-ritesh-khokhar",
+      "name": "Dr. Ritesh Khokhar",
+      "role": "Consultant Orthopaedics",
+      "specialty": "Orthopaedics",
+      "department": "Orthopaedics",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": null,
+      "img": null,
+      "initials": "RK",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-preetkanwal-singh-ahluwalia",
+      "name": "Dr. Preetkanwal Singh Ahluwalia",
+      "role": "Consultant Dental Science",
+      "specialty": "Dental Care",
+      "department": "Dental Care",
+      "group": "dental",
+      "groupLabel": "Dental Sciences",
+      "years": null,
+      "img": null,
+      "initials": "PA",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-sandeep-dev",
+      "name": "Dr. Sandeep Dev",
+      "role": "Consultant Dental Science",
+      "specialty": "Dental Care",
+      "department": "Dental Care",
+      "group": "dental",
+      "groupLabel": "Dental Sciences",
+      "years": null,
+      "img": null,
+      "initials": "SD",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-ab-prabhu",
+      "name": "Dr. A.B. Prabhu",
+      "role": "Additional Director Plastic Surgery",
+      "specialty": "Cosmetic & Plastic Surgery",
+      "department": "Cosmetic & Plastic Surgery",
+      "group": "cosmetic",
+      "groupLabel": "Cosmetic & Plastic Surgery",
+      "years": null,
+      "img": "/img/doctors/dr-ab-prabhu.jpg",
+      "initials": "AP",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-k-m-kapoor",
+      "name": "Dr. K M Kapoor",
+      "role": "Consultant Plastic Surgery",
+      "specialty": "Cosmetic & Plastic Surgery",
+      "department": "Cosmetic & Plastic Surgery",
+      "group": "cosmetic",
+      "groupLabel": "Cosmetic & Plastic Surgery",
+      "years": null,
+      "img": "/img/doctors/dr-k-m-kapoor.jpg",
+      "initials": "KK",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-sarla-malhotra",
+      "name": "Dr. Sarla Malhotra",
+      "role": "Consultant Obstetrics & Gynaecology",
+      "specialty": "Fertility & IVF",
+      "department": "Fertility & IVF",
+      "group": "fertility",
+      "groupLabel": "Fertility, IVF & Gynaecology",
+      "years": "38+",
+      "img": "/img/doctors/dr-sarla-malhotra.jpg",
+      "initials": "SM",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-suneet-tayal",
+      "name": "Dr. Suneet Tayal",
+      "role": "Senior Consultant Obstetrics & Gynaecology",
+      "specialty": "Fertility & IVF",
+      "department": "Fertility & IVF",
+      "group": "fertility",
+      "groupLabel": "Fertility, IVF & Gynaecology",
+      "years": "35+",
+      "img": "/img/doctors/dr-suneet-tayal.jpg",
+      "initials": "ST",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-manjit-kaur-mohi",
+      "name": "Dr. Manjit Kaur Mohi",
+      "role": "Consultant Obstetrics & Gynaecology",
+      "specialty": "Fertility & IVF",
+      "department": "Fertility & IVF",
+      "group": "fertility",
+      "groupLabel": "Fertility, IVF & Gynaecology",
+      "years": "35+",
+      "img": "/img/doctors/dr-manjit-kaur-mohi.jpg",
+      "initials": "MM",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-shiba-mittal",
+      "name": "Dr. Shiba Mittal",
+      "role": "Consultant Obstetrics & Gynaecology",
+      "specialty": "Fertility & IVF",
+      "department": "Fertility & IVF",
+      "group": "fertility",
+      "groupLabel": "Fertility, IVF & Gynaecology",
+      "years": "15+",
+      "img": "/img/doctors/dr-shiba-mittal.jpg",
+      "initials": "SM",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-swapna-misra",
+      "name": "Dr. Swapna Misra",
+      "role": "Senior Director Obstetrics & Gynaecology",
+      "specialty": "Fertility & IVF",
+      "department": "Fertility & IVF",
+      "group": "fertility",
+      "groupLabel": "Fertility, IVF & Gynaecology",
+      "years": null,
+      "img": "/img/doctors/dr-swapna-misra.jpg",
+      "initials": "SM",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-divya-awasthi",
+      "name": "Dr. Divya Awasthi",
+      "role": "Additional Director Obstetrics & Gynaecology",
+      "specialty": "Fertility & IVF",
+      "department": "Fertility & IVF",
+      "group": "fertility",
+      "groupLabel": "Fertility, IVF & Gynaecology",
+      "years": null,
+      "img": "/img/doctors/dr-divya-awasthi.jpg",
+      "initials": "DA",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-pooja-mehta",
+      "name": "Dr. Pooja Mehta",
+      "role": "Team Gynaecology & Infertility",
+      "specialty": "Fertility & IVF",
+      "department": "Fertility & IVF",
+      "group": "fertility",
+      "groupLabel": "Fertility, IVF & Gynaecology",
+      "years": "3+",
+      "img": "/img/doctors/dr-pooja-mehta.jpg",
+      "initials": "PM",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-shweta-tahlan",
+      "name": "Dr. Shweta Tahlan",
+      "role": "Senior Consultant Obstetrics & Gynaecology",
+      "specialty": "Fertility & IVF",
+      "department": "Fertility & IVF",
+      "group": "fertility",
+      "groupLabel": "Fertility, IVF & Gynaecology",
+      "years": null,
+      "img": "/img/doctors/dr-shweta-tahlan.jpg",
+      "initials": "ST",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-ashwani-kumar-sachdeva",
+      "name": "Dr. Ashwani Kumar Sachdeva",
+      "role": "Consultant Surgical Oncology",
+      "specialty": "Fertility & IVF",
+      "department": "Fertility & IVF",
+      "group": "fertility",
+      "groupLabel": "Fertility, IVF & Gynaecology",
+      "years": null,
+      "img": null,
+      "initials": "AS",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-daisy-yogeshkumar-shethna",
+      "name": "Dr. Daisy Yogeshkumar Shethna",
+      "role": "Consultant Obstetrics & Gynaecology",
+      "specialty": "Fertility & IVF",
+      "department": "Fertility & IVF",
+      "group": "fertility",
+      "groupLabel": "Fertility, IVF & Gynaecology",
+      "years": null,
+      "img": null,
+      "initials": "DS",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-jaivir-singh",
+      "name": "Dr. Jaivir Singh",
+      "role": "Additional Director Ophthalmology",
+      "specialty": "Eye Care",
+      "department": "Eye Care",
+      "group": "eye",
+      "groupLabel": "Ophthalmology & Eye Care",
+      "years": "25+",
+      "img": "/img/doctors/dr-jaivir-singh.jpg",
       "initials": "JS",
-      "hospital": null,
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-rajan-chugh",
+      "name": "Dr. Rajan Chugh",
+      "role": "Consultant Ophthalmology",
+      "specialty": "Eye Care",
+      "department": "Eye Care",
+      "group": "eye",
+      "groupLabel": "Ophthalmology & Eye Care",
+      "years": "25+",
+      "img": null,
+      "initials": "RC",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-jagmohan-singh-varma",
+      "name": "Dr. Jagmohan Singh Varma",
+      "role": "Senior Director Cardiology",
+      "specialty": "Cardiac Sciences",
+      "department": "Cardiac Sciences",
+      "group": "cardiac",
+      "groupLabel": "Cardiology & Cardiac Surgery",
+      "years": "39+",
+      "img": null,
+      "initials": "JV",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-rakesh-kumar-jaswal",
+      "name": "Dr. Rakesh Kumar Jaswal",
+      "role": "Senior Director & HOD Cardiology",
+      "specialty": "Cardiac Sciences",
+      "department": "Cardiac Sciences",
+      "group": "cardiac",
+      "groupLabel": "Cardiology & Cardiac Surgery",
+      "years": "25+",
+      "img": "/img/doctors/dr-rakesh-kumar-jaswal.jpg",
+      "initials": "RJ",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-karun-behal",
+      "name": "Dr. Karun Behal",
+      "role": "Additional Director Cardiology",
+      "specialty": "Cardiac Sciences",
+      "department": "Cardiac Sciences",
+      "group": "cardiac",
+      "groupLabel": "Cardiology & Cardiac Surgery",
+      "years": "14+",
+      "img": "/img/doctors/dr-karun-behal.jpg",
+      "initials": "KB",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-gs-kalra",
+      "name": "Dr. G.S Kalra",
+      "role": "Senior Director Cardiology",
+      "specialty": "Cardiac Sciences",
+      "department": "Cardiac Sciences",
+      "group": "cardiac",
+      "groupLabel": "Cardiology & Cardiac Surgery",
+      "years": null,
+      "img": "/img/doctors/dr-gs-kalra.jpg",
+      "initials": "GK",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-ravul-jindal",
+      "name": "Dr. Ravul Jindal",
+      "role": "Senior Director Vascular Surgery",
+      "specialty": "Cardiac Sciences",
+      "department": "Cardiac Sciences",
+      "group": "cardiac",
+      "groupLabel": "Cardiology & Cardiac Surgery",
+      "years": null,
+      "img": "/img/doctors/dr-ravul-jindal.jpg",
+      "initials": "RJ",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-arun-kumar",
+      "name": "Dr. Arun Kumar",
+      "role": "Director MICU",
+      "specialty": "Cardiac Sciences",
+      "department": "Cardiac Sciences",
+      "group": "cardiac",
+      "groupLabel": "Cardiology & Cardiac Surgery",
+      "years": null,
+      "img": "/img/doctors/dr-arun-kumar.jpg",
+      "initials": "AK",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-ts-mahant-team",
+      "name": "Dr. T.S. MAHANT & TEAM .",
+      "role": "Director & Hod Cardio Thoracic Vascular Surgery",
+      "specialty": "Cardiac Sciences",
+      "department": "Cardiac Sciences",
+      "group": "cardiac",
+      "groupLabel": "Cardiology & Cardiac Surgery",
+      "years": null,
+      "img": "/img/doctors/dr-ts-mahant-team.jpg",
+      "initials": "T.",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-ambuj-choudhary",
+      "name": "Dr. Ambuj Choudhary",
+      "role": "Additional Director Cardio Thoracic Vascular Surgery",
+      "specialty": "Cardiac Sciences",
+      "department": "Cardiac Sciences",
+      "group": "cardiac",
+      "groupLabel": "Cardiology & Cardiac Surgery",
+      "years": null,
+      "img": null,
+      "initials": "AC",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-arun-kochar",
+      "name": "Dr. Arun Kochar",
+      "role": "Additional Director Cardiology",
+      "specialty": "Cardiac Sciences",
+      "department": "Cardiac Sciences",
+      "group": "cardiac",
+      "groupLabel": "Cardiology & Cardiac Surgery",
+      "years": null,
+      "img": "/img/doctors/dr-arun-kochar.jpg",
+      "initials": "AK",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-sudhanshu-budakoty",
+      "name": "Dr. Sudhanshu Budakoty",
+      "role": "Senior Consultant Cardiology",
+      "specialty": "Cardiac Sciences",
+      "department": "Cardiac Sciences",
+      "group": "cardiac",
+      "groupLabel": "Cardiology & Cardiac Surgery",
+      "years": "9+",
+      "img": "/img/doctors/dr-sudhanshu-budakoty.jpg",
+      "initials": "SB",
+      "hospital": "fortis-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-ramesh-kumar-sen",
+      "name": "Dr. Ramesh Kumar Sen",
+      "role": "Vice Chairman and Head of Department - Institute of Orthopedic Surgery",
+      "specialty": "Orthopaedics",
+      "department": "Orthopaedics & Joint Replacement, Arthroscopy & Sports Injury",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": "38+",
+      "img": "/img/doctors/dr-ramesh-kumar-sen.jpg",
+      "initials": "RS",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-dr-h-s-bhatoe",
+      "name": "Brig Dr. H S Bhatoe",
+      "role": "Senior Director",
+      "specialty": "Orthopaedics",
+      "department": "Neurosurgery, Neurosciences, Spine Surgery, Paediatric (Ped) Neurosurgery",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": "34+",
+      "img": "/img/doctors/dr-dr-h-s-bhatoe.jpg",
+      "initials": "DB",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-jatinder-singla",
+      "name": "Dr. Jatinder Kumar Singla",
+      "role": "Director",
+      "specialty": "Orthopaedics",
+      "department": "Orthopaedics & Joint Replacement, Arthroscopy & Sports Injury",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": "21+",
+      "img": "/img/doctors/dr-jatinder-singla.jpg",
+      "initials": "JS",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-gaurav-saini",
+      "name": "Dr. Gaurav Saini",
+      "role": "Associate Director - Trauma & Sports Medicine, Institute of Orthopedic Surgery",
+      "specialty": "Orthopaedics",
+      "department": "Orthopaedics & Joint Replacement, Robotic Surgery",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": "16+",
+      "img": "/img/doctors/dr-gaurav-saini.jpg",
+      "initials": "GS",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-rajeev-garg",
+      "name": "Dr. Rajeev Garg",
+      "role": "Principal Consultant",
+      "specialty": "Orthopaedics",
+      "department": "Neurosurgery, Neurosciences, Spine Surgery",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": "14+",
+      "img": "/img/doctors/dr-rajeev-garg.jpg",
+      "initials": "RG",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-sandeep-gupta",
+      "name": "Dr. Sandeep Gupta",
+      "role": "Director - Orthopedics & Joint Replacement",
+      "specialty": "Orthopaedics",
+      "department": "Orthopaedics & Joint Replacement",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": null,
+      "img": "/img/doctors/dr-sandeep-gupta.jpg",
+      "initials": "SG",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-harjoban-singh",
+      "name": "Dr Harjoban Singh",
+      "role": "Principal Consultant \u2013 Orthopaedics, Joint Replacement & Arthroscopy",
+      "specialty": "Orthopaedics",
+      "department": "Orthopaedics & Joint Replacement, Arthroscopy & Sports Injury",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": null,
+      "img": "/img/doctors/dr-harjoban-singh.jpg",
+      "initials": "HS",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-aditya-banta",
+      "name": "Dr Aditya Banta",
+      "role": "Senior Consultant \u2013 Orthopeadic and Spine Surgery",
+      "specialty": "Orthopaedics",
+      "department": "Spine Surgery",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": null,
+      "img": "/img/doctors/dr-aditya-banta.jpg",
+      "initials": "AB",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-vivek-bansal",
+      "name": "Dr. Vivek Bansal",
+      "role": "Consultant - Shoulder and Knee Sports Injury (Orthopaedics)\u200b",
+      "specialty": "Orthopaedics",
+      "department": "Orthopaedics & Joint Replacement",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": null,
+      "img": "/img/doctors/dr-vivek-bansal.jpg",
+      "initials": "VB",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-karan-jindal",
+      "name": "Dr Karan Jindal",
+      "role": "Consultant \u2013 Orthopaedics",
+      "specialty": "Orthopaedics",
+      "department": "Orthopaedics & Joint Replacement",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": null,
+      "img": "/img/doctors/dr-karan-jindal.jpg",
+      "initials": "KJ",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-gaurav-malik",
+      "name": "Dr. Gaurav Malik",
+      "role": "Director And Head Department Of Dentistry",
+      "specialty": "Dental Care",
+      "department": "Dental Care, Endodontist & Cosmetic Dentist",
+      "group": "dental",
+      "groupLabel": "Dental Sciences",
+      "years": "18+",
+      "img": "/img/doctors/dr-gaurav-malik.jpg",
+      "initials": "GM",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-rishi-dhawan",
+      "name": "Dr. Rishi Dhawan",
+      "role": "Associate Director - Plastic Surgery",
+      "specialty": "Cosmetic & Plastic Surgery",
+      "department": "Aesthetic And Reconstructive Surgery",
+      "group": "cosmetic",
+      "groupLabel": "Cosmetic & Plastic Surgery",
+      "years": "12+",
+      "img": "/img/doctors/dr-rishi-dhawan.jpg",
+      "initials": "RD",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-kamna-nagpal",
+      "name": "Dr. Kamna Nagpal",
+      "role": "Director - Obstetrics & Gyanecology",
+      "specialty": "Fertility & IVF",
+      "department": "Infertility & IVF, Obstetrics And Gynaecology",
+      "group": "fertility",
+      "groupLabel": "Fertility, IVF & Gynaecology",
+      "years": "33+",
+      "img": "/img/doctors/dr-kamna-nagpal.jpg",
+      "initials": "KN",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-seema-wadhwa",
+      "name": "Dr. Seema Wadhwa",
+      "role": "Director",
+      "specialty": "Fertility & IVF",
+      "department": "Infertility & IVF, Obstetrics And Gynaecology, Robotic Surgery, Gynaecologic Laparoscopy",
+      "group": "fertility",
+      "groupLabel": "Fertility, IVF & Gynaecology",
+      "years": "28+",
+      "img": "/img/doctors/dr-seema-wadhwa.jpg",
+      "initials": "SW",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-pragya-goel",
+      "name": "Dr Pragya Goel",
+      "role": "Director \u2013 Obstetrics & Gynaecology",
+      "specialty": "Fertility & IVF",
+      "department": "Obstetrics And Gynaecology",
+      "group": "fertility",
+      "groupLabel": "Fertility, IVF & Gynaecology",
+      "years": "23+",
+      "img": "/img/doctors/dr-pragya-goel.jpg",
+      "initials": "PG",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-shaveta-gupta",
+      "name": "Dr. Shaveta Gupta",
+      "role": "Director",
+      "specialty": "Fertility & IVF",
+      "department": "Infertility & IVF, Obstetrics And Gynaecology, Robotic Surgery, Gynaecologic Laparoscopy",
+      "group": "fertility",
+      "groupLabel": "Fertility, IVF & Gynaecology",
+      "years": "23+",
+      "img": "/img/doctors/dr-shaveta-gupta.jpg",
+      "initials": "SG",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-gursimran-dhaliwal",
+      "name": "Dr Gursimran Dhaliwal",
+      "role": "Senior Consultant \u2013 IVF & Laparoscopic Gynaecology",
+      "specialty": "Fertility & IVF",
+      "department": "Infertility & IVF, Gynaecologic Laparoscopy",
+      "group": "fertility",
+      "groupLabel": "Fertility, IVF & Gynaecology",
+      "years": null,
+      "img": "/img/doctors/dr-gursimran-dhaliwal.jpg",
+      "initials": "GD",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-prof-harpreet-kapoor",
+      "name": "Dr. Prof. Harpreet Kapoor",
+      "role": "Consultant \u2013 Ophthalmology",
+      "specialty": "Eye Care",
+      "department": "Eye Care / Ophthalmology",
+      "group": "eye",
+      "groupLabel": "Ophthalmology & Eye Care",
+      "years": null,
+      "img": "/img/doctors/dr-prof-harpreet-kapoor.jpg",
+      "initials": "PK",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-ramandeep-kaur",
+      "name": "Dr Ramandeep Kaur",
+      "role": "Consultant \u2013 Ophthalmology",
+      "specialty": "Eye Care",
+      "department": "Eye Care / Ophthalmology",
+      "group": "eye",
+      "groupLabel": "Ophthalmology & Eye Care",
+      "years": null,
+      "img": "/img/doctors/dr-ramandeep-kaur.jpg",
+      "initials": "RK",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-shashi-jindal",
+      "name": "Dr. Shashi Jindal",
+      "role": "Senior Director & HOD, CTVS",
+      "specialty": "Cardiac Sciences",
+      "department": "Cardiac Sciences, Cardiac Surgery (CTVS)",
+      "group": "cardiac",
+      "groupLabel": "Cardiology & Cardiac Surgery",
+      "years": "32+",
+      "img": "/img/doctors/dr-shashi-jindal.jpg",
+      "initials": "SJ",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-kapil-k-chattree",
+      "name": "Dr. Kapil K Chattree",
+      "role": "Director - Cardiac Sciences - Cardiology",
+      "specialty": "Cardiac Sciences",
+      "department": "Cardiac Sciences, Cardiology, Cardiac Electrophysiology-Pacemaker",
+      "group": "cardiac",
+      "groupLabel": "Cardiology & Cardiac Surgery",
+      "years": "22+",
+      "img": "/img/doctors/dr-kapil-k-chattree.jpg",
+      "initials": "KC",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-gagandip-singh",
+      "name": "Dr. Gagandip Singh",
+      "role": "Associate Director - Cardiac Sciences - Cardiology",
+      "specialty": "Cardiac Sciences",
+      "department": "Cardiac Sciences, Cardiology, Cardiac Electrophysiology-Pacemaker",
+      "group": "cardiac",
+      "groupLabel": "Cardiology & Cardiac Surgery",
+      "years": "22+",
+      "img": "/img/doctors/dr-gagandip-singh.jpg",
+      "initials": "GS",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-dheeraj-dumir",
+      "name": "Dr. Dheeraj Dumir",
+      "role": "Senior Director",
+      "specialty": "Cardiac Sciences",
+      "department": "Pain Management, Cardiac Anesthesia",
+      "group": "cardiac",
+      "groupLabel": "Cardiology & Cardiac Surgery",
+      "years": "21+",
+      "img": "/img/doctors/dr-dheeraj-dumir.jpg",
+      "initials": "DD",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-rakesh-sharma",
+      "name": "Dr Rakesh Sharma",
+      "role": "Principal Consultant \u2013 Cardiology",
+      "specialty": "Cardiac Sciences",
+      "department": "Cardiology",
+      "group": "cardiac",
+      "groupLabel": "Cardiology & Cardiac Surgery",
+      "years": "11+",
+      "img": "/img/doctors/dr-rakesh-sharma.jpg",
+      "initials": "RS",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-sudheer-saxena",
+      "name": "Dr. Sudheer Saxena",
+      "role": "Senior Director & Head of Department Cardiology",
+      "specialty": "Cardiac Sciences",
+      "department": "Cardiac Sciences, Cardiology, Cardiac Electrophysiology-Pacemaker",
+      "group": "cardiac",
+      "groupLabel": "Cardiology & Cardiac Surgery",
+      "years": null,
+      "img": "/img/doctors/dr-sudheer-saxena.jpg",
+      "initials": "SS",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-anumeet-bagga",
+      "name": "Dr Anumeet Bagga",
+      "role": "Senior Consultant \u2013 Cardiac Surgery (CTVS)",
+      "specialty": "Cardiac Sciences",
+      "department": "Cardiac Surgery (CTVS)",
+      "group": "cardiac",
+      "groupLabel": "Cardiology & Cardiac Surgery",
+      "years": null,
+      "img": "/img/doctors/dr-anumeet-bagga.jpg",
+      "initials": "AB",
+      "hospital": "max-super-speciality-mohali",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-parminder-singh",
+      "name": "Dr. Parminder Singh",
+      "role": "Consultant - Orthopaedics",
+      "specialty": "Orthopaedics",
+      "department": "Orthopaedics",
+      "group": "ortho",
+      "groupLabel": "Orthopaedics & Joint Replacement",
+      "years": "20+",
+      "img": "/img/doctors/dr-parminder-singh.jpg",
+      "initials": "PS",
+      "hospital": "landmark-chandigarh",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-v-d-singh",
+      "name": "Dr. V D Singh",
+      "role": "Consultant - Cosmetic & Plastic Surgery",
+      "specialty": "Cosmetic & Plastic Surgery",
+      "department": "Cosmetic & Plastic Surgery",
+      "group": "cosmetic",
+      "groupLabel": "Cosmetic & Plastic Surgery",
+      "years": "49+",
+      "img": "/img/doctors/dr-v-d-singh.jpg",
+      "initials": "VS",
+      "hospital": "landmark-chandigarh",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-s-s-makkar",
+      "name": "Dr. S S Makkar",
+      "role": "Consultant - Cosmetic & Plastic Surgery",
+      "specialty": "Cosmetic & Plastic Surgery",
+      "department": "Cosmetic & Plastic Surgery",
+      "group": "cosmetic",
+      "groupLabel": "Cosmetic & Plastic Surgery",
+      "years": "31+",
+      "img": "/img/doctors/dr-s-s-makkar.jpg",
+      "initials": "SM",
+      "hospital": "landmark-chandigarh",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-k-d-aneja",
+      "name": "Dr. K D Aneja",
+      "role": "Consultant - Cosmetic & Plastic Surgery",
+      "specialty": "Cosmetic & Plastic Surgery",
+      "department": "Cosmetic & Plastic Surgery",
+      "group": "cosmetic",
+      "groupLabel": "Cosmetic & Plastic Surgery",
+      "years": "29+",
+      "img": "/img/doctors/dr-k-d-aneja.jpg",
+      "initials": "KA",
+      "hospital": "landmark-chandigarh",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-ankur-sood",
+      "name": "Dr. Ankur Sood",
+      "role": "Consultant - Cosmetic & Plastic Surgery",
+      "specialty": "Cosmetic & Plastic Surgery",
+      "department": "Cosmetic & Plastic Surgery",
+      "group": "cosmetic",
+      "groupLabel": "Cosmetic & Plastic Surgery",
+      "years": "24+",
+      "img": "/img/doctors/dr-ankur-sood.jpg",
+      "initials": "AS",
+      "hospital": "landmark-chandigarh",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-anupam-goel",
+      "name": "Dr. Anupam Goel",
+      "role": "Consultant - Fertility & IVF",
+      "specialty": "Fertility & IVF",
+      "department": "Fertility & IVF",
+      "group": "fertility",
+      "groupLabel": "Fertility & IVF",
+      "years": "29+",
+      "img": "/img/doctors/dr-anupam-goel.jpg",
+      "initials": "AG",
+      "hospital": "landmark-chandigarh",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-vijaya-gupta",
+      "name": "Dr. Vijaya Gupta",
+      "role": "Consultant - Fertility & IVF",
+      "specialty": "Fertility & IVF",
+      "department": "Fertility & IVF",
+      "group": "fertility",
+      "groupLabel": "Fertility & IVF",
+      "years": "22+",
+      "img": "/img/doctors/dr-vijaya-gupta.jpg",
+      "initials": "VG",
+      "hospital": "landmark-chandigarh",
+      "type": "doctor"
+    },
+    {
+      "slug": "dr-raman-mittal",
+      "name": "Dr. Raman Mittal",
+      "role": "Consultant - Eye Care",
+      "specialty": "Eye Care",
+      "department": "Eye Care",
+      "group": "eye",
+      "groupLabel": "Ophthalmology & Eye Care",
+      "years": "27+",
+      "img": "/img/doctors/dr-raman-mittal.jpg",
+      "initials": "RM",
+      "hospital": "landmark-chandigarh",
       "type": "doctor"
     },
     {
@@ -1034,7 +2032,7 @@ export const DOCTORS_SECTION = {
       "hospital": null,
       "type": "doctor"
     },
-        {
+    {
       "slug": "dr-harinder-k-bali",
       "name": "Dr. Harinder K. Bali",
       "role": "Chairman, Cardiac Sciences",
@@ -1046,15 +2044,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-harinder-k-bali.jpeg",
       "initials": "HB",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Former Additional Professor of Cardiology, PGIMER Chandigarh",
-              "Former Director of Cardiology, Fortis Hospitals, Mohali",
-              "Former Chairman of Cardiac Sciences, Paras Healthcare",
-              "Chairman of Cardiac Sciences, Livasa Hospitals"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-arvind-kaul",
       "name": "Dr. Arvind Kaul",
       "role": "Director, Cardiology",
@@ -1066,15 +2058,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-arvind-kaul.png",
       "initials": "AK",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Director - Cardiology, Shalby Hospital, Mohali",
-              "Director - Cardiology, Paras Hospital, Panchkula",
-              "Senior Consultant & Head of Cardiology, Alchemist Hospital, Panchkula",
-              "Senior Consultant & Interventional Cardiologist, Silver Oaks Cardiac Centre"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-ishant-singla",
       "name": "Dr. Ishant Singla",
       "role": "Cardiothoracic & Vascular Surgery",
@@ -1086,15 +2072,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-ishant-singla.jpeg",
       "initials": "IS",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Consultant CTVS, Ojas Hospital, Panchkula",
-              "Associate Consultant in Robotic & MICS Program, Apollo Hospitals, Bangalore",
-              "Consultant CTVS, Shalby Hospital & Grecian Hospital, Mohali",
-              "Associate Consultant, Metromas Hospital, Jaipur"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-raka-kaushal",
       "name": "Dr. Raka Kaushal",
       "role": "Senior Director, Nephrology & Renal Transplant",
@@ -1106,14 +2086,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-raka-kaushal.jpeg",
       "initials": "RK",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Senior Director, Nephrology & Renal Transplant, Livasa Hospital, Mohali",
-              "Pioneered establishment of advanced nephrology and dialysis centers across Punjab",
-              "Lead Transplant Nephrologist for domestic and international recipient-donor programs"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-vineet-saggar",
       "name": "Dr. Vineet Saggar",
       "role": "Director, Neuro & Spine Surgery",
@@ -1125,14 +2100,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-vineet-saggar.jpeg",
       "initials": "VS",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Director - Neuro & Spine Surgery, Livasa Hospital, Mohali",
-              "Former Senior Consultant Neurosurgeon at Fortis Hospital and Max Healthcare",
-              "Senior surgical faculty and mentor in minimally invasive neurosurgical techniques"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-manuj-wadhwa",
       "name": "Dr. Manuj Wadhwa",
       "role": "Chairman & Executive Director, Orthopaedics & Joint Replacement",
@@ -1144,14 +2114,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-manuj-wadhwa.jpeg",
       "initials": "MW",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Chairman & Executive Director, Livasa Bone & Joint Institute",
-              "Former Director & Head of Orthopaedics, Max Super Speciality Hospital, Mohali",
-              "Lead Arthroplasty Consultant for elite athletes and international patients"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-robin-bohat",
       "name": "Dr. Robin Bohat",
       "role": "Consultant, Orthopaedics & Joint Replacement",
@@ -1163,13 +2128,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-robin-bohat.jpeg",
       "initials": "RB",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Consultant Orthopaedic Surgeon, Livasa Hospital, Mohali",
-              "Consultant Orthopaedics in major regional trauma and joint care centers"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-deepak-chadha",
       "name": "Dr. Deepak Chadha",
       "role": "Consultant Neurologist & Epileptologist",
@@ -1181,13 +2142,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-deepak-chadha.png",
       "initials": "DC",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Senior Consultant Neurologist, Livasa Hospital, Mohali",
-              "Senior Neurologist across leading tertiary care neurology hospitals in Punjab"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-sonal",
       "name": "Dr. Sonal",
       "role": "Consultant, Pulmonary Medicine",
@@ -1199,13 +2156,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-sonal.jpeg",
       "initials": "S",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Consultant, Pulmonary Medicine, Livasa Hospital, Mohali",
-              "Senior Resident in Pulmonary Medicine at premier tertiary healthcare centers"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-kritarth",
       "name": "Dr. Kritarth",
       "role": "Consultant, Pulmonary & Critical Care Medicine",
@@ -1217,13 +2170,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-kritarth.jpeg",
       "initials": "K",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Consultant, Pulmonary & Critical Care Medicine, Livasa Hospital, Mohali",
-              "Intensivist and Pulmonologist at apex tertiary care hospitals"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-avinash-srivastava",
       "name": "Dr. Avinash Srivastava",
       "role": "Senior Director, Urology & Kidney Transplant",
@@ -1235,13 +2184,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-avinash-srivastava.jpeg",
       "initials": "AS",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Senior Director, Urology & Kidney Transplant, Livasa Hospital, Mohali",
-              "Former Head of Urology at major regional tertiary teaching hospitals"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-sakshi-srivastava",
       "name": "Dr. Sakshi Srivastava",
       "role": "Consultant, Robotic & Laparoscopic Gynaecology",
@@ -1253,13 +2198,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-sakshi-srivastava.png",
       "initials": "SS",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Consultant Gynaecologist & Robotic Surgeon, Livasa Hospital, Mohali",
-              "Senior Consultant in Minimally Invasive Gynaecology at leading women's healthcare centers"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-jagpal-pandher",
       "name": "Dr. Jagpal Pandher",
       "role": "Consultant, Rheumatology & Clinical Immunology",
@@ -1271,13 +2212,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-jagpal-pandher.jpeg",
       "initials": "JP",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Consultant Rheumatologist, Livasa Hospital, Mohali",
-              "Senior Rheumatology Consultant across premier medical networks in Punjab and North India"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-jatin-sarin",
       "name": "Dr. Jatin Sarin",
       "role": "Director, Medical Oncology",
@@ -1289,14 +2226,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-jatin-sarin.jpeg",
       "initials": "JS",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Director, Medical Oncology, Livasa Hospital, Mohali",
-              "Former Head of Medical Oncology at leading regional cancer institutes",
-              "Invited speaker and faculty at major international oncology conferences"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-vijay-bansal",
       "name": "Dr. Vijay Bansal",
       "role": "Director, Surgical Oncology",
@@ -1308,13 +2240,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-vijay-bansal.jpeg",
       "initials": "VB",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Director, Surgical Oncology, Livasa Hospital, Mohali",
-              "Former Chief Surgical Oncologist at leading tertiary cancer centers and teaching hospitals"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-meenakshi-mittal",
       "name": "Dr. Meenakshi Mittal",
       "role": "Director, Radiation Oncology",
@@ -1326,14 +2254,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-meenakshi-mittal.jpeg",
       "initials": "MM",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Director, Radiation Oncology, Livasa Hospital, Mohali",
-              "Senior Radiation Oncologist and Course Coordinator at Mohan Dai Oswal Cancer Hospital",
-              "Principal Investigator in the Punjab Cancer Registry Programme"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-manika-saluja-parekh",
       "name": "Dr. Manika Saluja Parekh",
       "role": "Consultant, ENT & Head-Neck Surgery",
@@ -1345,13 +2268,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-manika-saluja-parekh.jpeg",
       "initials": "MP",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Consultant ENT Surgeon, Livasa Hospital, Mohali",
-              "Senior ENT Specialist across major regional and national ENT referral hospitals"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-ajay-singh",
       "name": "Dr. Ajay Singh",
       "role": "Consultant, Neurosurgery & Spine Surgery",
@@ -1363,15 +2282,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-ajay-singh.jpeg",
       "initials": "AS",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Consultant Neurosurgeon, Livasa Hospital, Mohali",
-              "Former Consultant Neurosurgeon at Ivy Hospital (Mohali & Amritsar)",
-              "Former Consultant Neurosurgeon at Healing Hospital and Bahra Hospital",
-              "Ex-Senior Resident, SMS Medical College, Jaipur"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-srinath-shankar-rathod",
       "name": "Dr. Srinath Shankar Rathod",
       "role": "Senior Consultant, General & Minimal Access Surgery",
@@ -1383,13 +2296,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-srinath-shankar-rathod.jpeg",
       "initials": "SR",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Senior Consultant & Associate Director, General & Laparoscopic Surgery, Livasa Hospital",
-              "Former Surgical Specialist at PGIMER, Chandigarh"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-yogendra-kumar",
       "name": "Dr. Yogendra Kumar",
       "role": "Senior Consultant, Gastroenterology & Hepatology",
@@ -1401,13 +2310,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-yogendra-kumar.jpeg",
       "initials": "YK",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Senior Consultant, Gastroenterology & Hepatology, Livasa Hospital, Mohali",
-              "Specialist Hepatologist and Gastroenterologist at PGIMER Chandigarh"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-pankaj-kapoor",
       "name": "Dr. Pankaj Kapoor",
       "role": "Associate Director, Gastroenterology & Hepatology",
@@ -1419,14 +2324,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-pankaj-kapoor.jpeg",
       "initials": "PK",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Associate Director, Gastroenterology & Hepatology, Livasa Hospital, Mohali",
-              "Former Consultant Gastroenterologist at Paras Hospital and Ojas Superspeciality Hospital, Panchkula",
-              "Consultant Gastroenterologist at Ivy Hospital, Hoshiarpur"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-akash-gandotra",
       "name": "Dr. Akash Gandotra",
       "role": "Senior Consultant, Gastroenterology & Liver Transplant Specialist",
@@ -1438,15 +2338,9 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-akash-gandotra.png",
       "initials": "AG",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Consultant Gastroenterologist & Liver Transplant Specialist, Paras Health, Panchkula",
-              "Senior Resident, DM Hepatology, PGIMER Chandigarh",
-              "Consultant at Parvati Devi Hospital, Amritsar",
-              "Senior Resident, Sharda Hospital and Adesh Medical College"
-      ]
+      "type": "doctor"
     },
-        {
+    {
       "slug": "dr-mukesh-chawla",
       "name": "Dr. Mukesh Chawla",
       "role": "Senior Consultant, Clinical Haematology & Bone Marrow Transplant",
@@ -1458,15 +2352,10 @@ export const DOCTORS_SECTION = {
       "img": "/img/doctors/dr-mukesh-chawla.jpeg",
       "initials": "MC",
       "hospital": "livasa-mohali",
-      "type": "doctor",
-      "experience": [
-              "Senior Consultant, Clinical Haematology & BMT Physician, Livasa Hospital, Mohali",
-              "Senior Haematologist and BMT Consultant at leading tertiary blood cancer institutions"
-      ]
+      "type": "doctor"
     }
-  ] as DoctorMember[]
+  ]
 };
-
 export const STORIES_SECTION = {
   "headingLine1": "Real journeys.",
   "headingLine2": "told by our patients.",

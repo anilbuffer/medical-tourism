@@ -94,6 +94,19 @@ export const HOSPITALS: Hospital[] = [
     about:
       'A dedicated eye hospital. Eye surgery is usually quick, but the pre-operative tests and the follow-up checks matter just as much, so having diagnostics, surgery and review under one roof keeps a short trip simple.',
   },
+  {
+    slug: 'landmark-chandigarh',
+    name: 'Landmark Hospital',
+    short: 'Landmark Hospital',
+    city: 'Sector 33-C, Chandigarh',
+    focus: 'Plastic & cosmetic surgery, orthopaedics & fertility care',
+    img: '/img/livasa.jpg',
+    badge: 'NABH Accredited',
+    specialties: ['cosmetic', 'orthopaedics', 'fertility', 'eye'],
+    treatments: ['cosmetic-surgery', 'knee-replacement', 'cataract-surgery'],
+    about:
+      'A premier multi-speciality hospital in Sector 33-C, Chandigarh, renowned for cosmetic and reconstructive plastic surgery, orthopaedic care, and dedicated surgical facilities for planned procedures.',
+  },
 ];
 
 export const TREATMENTS_MAP: Record<string, HospitalTreatment> = {

@@ -4,10 +4,17 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Stethoscope, Sparkles, User } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Stethoscope, Sparkles, User, HeartPulse, Smile, Scissors, Flower2, Eye, Building2 } from 'lucide-react';
 import useEmblaCarousel, { UseEmblaCarouselType } from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { DOCTORS_SECTION, DoctorMember } from '@/data/originalData';
+
+const HOSPITAL_LABELS: Record<string, string> = {
+  'fortis-mohali': 'Fortis Hospital',
+  'max-super-speciality-mohali': 'Max Super Speciality',
+  'landmark-chandigarh': 'Landmark Hospital',
+  'livasa-mohali': 'Livasa Hospital',
+};
 
 export const DoctorsSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -37,7 +44,7 @@ export const DoctorsSection: React.FC = () => {
   const filteredMembers = useMemo(() => {
     return selectedCategory === 'all'
       ? allMembers
-      : allMembers.filter((m: DoctorMember) => m.type === selectedCategory);
+      : allMembers.filter((m: DoctorMember) => m.group === selectedCategory || m.type === selectedCategory);
   }, [allMembers, selectedCategory]);
 
   const onSelect = useCallback((api: UseEmblaCarouselType[1]) => {
@@ -87,6 +94,18 @@ export const DoctorsSection: React.FC = () => {
 
   const getCategoryIcon = (cat: string) => {
     switch (cat) {
+      case 'ortho':
+        return <Stethoscope className="w-3.5 h-3.5" />;
+      case 'cardiac':
+        return <HeartPulse className="w-3.5 h-3.5" />;
+      case 'dental':
+        return <Smile className="w-3.5 h-3.5" />;
+      case 'cosmetic':
+        return <Scissors className="w-3.5 h-3.5" />;
+      case 'fertility':
+        return <Flower2 className="w-3.5 h-3.5" />;
+      case 'eye':
+        return <Eye className="w-3.5 h-3.5" />;
       case 'doctor':
       case 'Doctors':
         return <Stethoscope className="w-3.5 h-3.5" />;
@@ -247,6 +266,16 @@ export const DoctorsSection: React.FC = () => {
                             {member.initials}
                           </span>
                         )}
+                      </div>
+                    )}
+
+                    {/* Hospital Badge at Top Left */}
+                    {member.hospital && (
+                      <div className="absolute top-3.5 left-3.5 pointer-events-none">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-white/95 backdrop-blur-xs text-[#0b383e] shadow-xs">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#008329]" />
+                          {HOSPITAL_LABELS[member.hospital] || member.hospital}
+                        </span>
                       </div>
                     )}
 
