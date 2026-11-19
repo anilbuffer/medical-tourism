@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { PageHero } from '@/components/PageHero';
 import { CtaBand } from '@/components/CtaBand';
 import { OpenConsultationButton } from '@/components/OpenConsultationButton';
@@ -28,7 +28,8 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const treatment = TREATMENTS.find((t) => t.slug === slug);
+  const effectiveSlug = SLUG_REDIRECTS[slug] ? SLUG_REDIRECTS[slug].split('/').pop()! : slug;
+  const treatment = TREATMENTS.find((t) => t.slug === effectiveSlug);
 
   if (!treatment) {
     return {
@@ -42,8 +43,16 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
+const SLUG_REDIRECTS: Record<string, string> = {
+  'spine-surgery': '/treatments/minimal-invasive-spine-surgery',
+  'cosmetic-surgery': '/treatments/rhinoplasty',
+};
+
 export default async function TreatmentDetailPage({ params }: Props) {
   const { slug } = await params;
+  if (SLUG_REDIRECTS[slug]) {
+    redirect(SLUG_REDIRECTS[slug]);
+  }
   const treatment = TREATMENTS.find((t) => t.slug === slug);
 
   if (!treatment) {

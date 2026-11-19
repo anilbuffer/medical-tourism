@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import { motion, type Variants } from 'framer-motion';
 import { TREATMENTS_SECTION } from '@/data/originalData';
 import { CountryOption } from '@/components/Navbar';
@@ -74,7 +76,7 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
   const categories = TREATMENTS_SECTION.categories;
   const allCards = TREATMENTS_SECTION.cards;
 
-  // Exact 6 items (two rows of 3 columns)
+  // Filtered Cards: maximum 6 items (two rows of 3 columns)
   const filteredCards = (selectedCategory === 'all'
     ? allCards
     : allCards.filter(c => c.category === selectedCategory)
@@ -230,7 +232,7 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
                     {card.title}
                   </h3>
 
-                  {/* Full-width Starting Price Box */}
+                  {/* Full-width Starting Price / Range Box */}
                   <div className="relative mb-5 w-full">
                     <motion.div 
                       initial={{ opacity: 0, y: 10 }}
@@ -243,17 +245,18 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
                       }}
                     >
                       <span className="text-sm sm:text-base font-semibold opacity-90">
-                        Starting from
+                        {card.priceRange ? 'Range' : 'Starting from'}
                       </span>
-                      <span className="text-2xl sm:text-3xl font-bold tracking-tight">
-                        ${indiaPrice ? indiaPrice.amount.toLocaleString() : '2,999'}
+                      <span className="text-xl sm:text-2xl font-bold tracking-tight">
+                        {card.priceRange 
+                          ? card.priceRange 
+                          : `$${indiaPrice ? indiaPrice.amount.toLocaleString() : '4,000'}`}
                       </span>
                     </motion.div>
                   </div>
 
-                  {/* Feature Rows (without tick icons, without medical specialty row) */}
+                  {/* Feature Rows */}
                   <div className="flex flex-col gap-2 my-2">
-                    
                     {/* Row 1: Comparison Country (Zebra Grey Background) */}
                     <div className="bg-[#f0f3f3] rounded-[4px] px-3.5 py-2.5 flex items-center justify-between text-sm text-gray-700">
                       <div className="flex items-center gap-2">
@@ -272,7 +275,6 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
                         Save ~{calculatedSavings}%
                       </span>
                     </div>
-
                   </div>
                 </div>
 
@@ -280,6 +282,17 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
             );
           })}
         </motion.div>
+
+        {/* Bottom CTA to Treatments Page */}
+        <div className="mt-12 text-center">
+          <Link
+            href="/treatments"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm bg-white text-[#0b383e] border border-[#d6e3df] hover:bg-[#eef6f5] transition-all shadow-xs"
+          >
+            <span>See all procedures with itemised costs</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
 
       </div>
     </section>

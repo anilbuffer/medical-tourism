@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { TREATMENTS } from '@/data/treatmentsData';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://yourmedicare-trip.com';
@@ -165,60 +166,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
-    {
-      url: `${baseUrl}/treatments/knee-replacement`,
+    ...TREATMENTS.map((t) => ({
+      url: `${baseUrl}/treatments/${t.slug}`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'weekly' as const,
       priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/treatments/hip-replacement`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/treatments/spine-surgery`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/treatments/ivf`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/treatments/icsi`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/treatments/cataract-surgery`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/treatments/lasik`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/treatments/dental-implants`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/treatments/cosmetic-surgery`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
+    })),
     {
       url: `${baseUrl}/privacy-policy`,
       lastModified: new Date(),

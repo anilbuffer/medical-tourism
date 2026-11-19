@@ -80,25 +80,42 @@ export const TreatmentsFilterGrid: React.FC = () => {
               </h3>
 
               {/* Price Row */}
-              {t.priceFrom !== null ? (
+              {t.priceMode === 'range' && t.priceFrom !== null && t.priceTo ? (
                 <div className="mb-2">
                   <div className="flex items-baseline justify-between py-2 border-b border-[#eef2f1]">
                     <span className="text-xs text-gray-600 font-normal">
-                      {t.addon ? 'Add-on from' : 'Starting from'}
+                      Range
+                    </span>
+                    <span className="text-[20px] sm:text-[22px] font-black text-[#0b383e] tracking-tight">
+                      ${t.priceFrom.toLocaleString()} – ${t.priceTo.toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs text-gray-600 pt-2 font-normal">
+                    <span>Cost in India, USD</span>
+                    <span className="px-2 py-0.5 rounded-md bg-[#eef6f5] text-[#008329] font-bold">
+                      Range
+                    </span>
+                  </div>
+                </div>
+              ) : t.priceFrom !== null ? (
+                <div className="mb-2">
+                  <div className="flex items-baseline justify-between py-2 border-b border-[#eef2f1]">
+                    <span className="text-xs text-gray-600 font-normal">
+                      Starting from
                     </span>
                     <span className="text-[24px] font-black text-[#0b383e]">
                       ${t.priceFrom.toLocaleString()}
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-xs text-gray-600 pt-2 font-normal">
-                    <span>
-                      {t.priceTo
-                        ? `Up to $${t.priceTo.toLocaleString()} USD`
-                        : 'Per cycle, USD'}
-                    </span>
-                    {t.saving && (
+                    <span>Starting quote, USD</span>
+                    {t.saving ? (
                       <span className="px-2 py-0.5 rounded-md bg-[#eef6f5] text-[#008329] font-bold">
                         Save {t.saving}
+                      </span>
+                    ) : (
+                      <span className="px-2 py-0.5 rounded-md bg-[#eef6f5] text-[#0b383e] font-semibold">
+                        Starting
                       </span>
                     )}
                   </div>

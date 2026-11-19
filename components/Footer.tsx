@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
     { label: 'Fertility Care', href: '/treatments/ivf' },
     { label: 'Eye Care', href: '/treatments/cataract-surgery' },
     { label: 'Dental', href: '/treatments/dental-implants' },
-    { label: 'Cosmetic & Plastic Surgery', href: '/treatments/cosmetic-surgery' },
+    { label: 'Cosmetic Surgery', href: '/treatments/rhinoplasty' },
     { label: 'Health Check-ups', href: '/treatments/health-checkups' },
     { label: 'Wellness', href: '/treatments/wellness' },
   ];

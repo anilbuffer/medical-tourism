@@ -110,9 +110,11 @@ export const MedicalTreatmentsFilter: React.FC = () => {
             <div className="px-6 pb-6 pt-2">
               <span className="inline-flex items-center gap-2 text-sm font-bold text-[#0b383e] group-hover:text-[#008329] transition-colors">
                 <span>
-                  {t.priceFrom !== null
-                    ? `From $${t.priceFrom.toLocaleString()}`
-                    : 'See details'}
+                  {t.priceMode === 'range' && t.priceFrom !== null && t.priceTo
+                    ? `Range $${t.priceFrom.toLocaleString()} – $${t.priceTo.toLocaleString()}`
+                    : t.priceFrom !== null
+                    ? `Starting $${t.priceFrom.toLocaleString()}`
+                    : 'Quoted after review'}
                 </span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>

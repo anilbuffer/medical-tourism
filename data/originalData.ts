@@ -149,55 +149,596 @@ export const TREATMENTS_SECTION = {
       "value": "all"
     },
     {
-      "label": "Fertility",
-      "value": "fertility"
-    },
-    {
-      "label": "Oncology Surgery",
-      "value": "oncologysurgery"
-    },
-    {
       "label": "Orthopaedics",
       "value": "orthopaedics"
     },
     {
-      "label": "Cardiac Surgery",
-      "value": "cardiacsurgery"
+      "label": "Cosmetic Surgery",
+      "value": "cosmetic"
     },
     {
-      "label": "Neurosurgery",
-      "value": "neurosurgery"
+      "label": "Ophthalmology",
+      "value": "eye"
     },
     {
-      "label": "Organ Transplant",
-      "value": "organ-transplant"
+      "label": "Dental Implants",
+      "value": "dental"
+    },
+    {
+      "label": "Fertility",
+      "value": "fertility"
     }
   ],
   "cards": [
     {
-      "id": "qc521h39bfpswtu35eblklqf",
+      "id": "card-knee-replacement",
+      "title": "Knee Replacement",
+      "category": "orthopaedics",
+      "href": "/treatments/knee-replacement",
+      "priceMode": "starting",
+      "priceRange": null,
+      "savingsPercent": 69,
+      "locationPrices": [
+        {
+          "amount": 4000,
+          "isPrimary": true,
+          "market": "India",
+          "flagCode": "in",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 13000,
+          "isPrimary": false,
+          "market": "Saudi Arabia",
+          "flagCode": "sa",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 18000,
+          "isPrimary": false,
+          "market": "Germany",
+          "flagCode": "de",
+          "currencyCode": "USD"
+        }
+      ]
+    },
+    {
+      "id": "card-hip-replacement",
+      "title": "Hip Replacement",
+      "category": "orthopaedics",
+      "href": "/treatments/hip-replacement",
+      "priceMode": "starting",
+      "priceRange": null,
+      "savingsPercent": 65,
+      "locationPrices": [
+        {
+          "amount": 5500,
+          "isPrimary": true,
+          "market": "India",
+          "flagCode": "in",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 15500,
+          "isPrimary": false,
+          "market": "Saudi Arabia",
+          "flagCode": "sa",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 20000,
+          "isPrimary": false,
+          "market": "Germany",
+          "flagCode": "de",
+          "currencyCode": "USD"
+        }
+      ]
+    },
+    {
+      "id": "card-acl-reconstruction",
+      "title": "ACL Reconstruction",
+      "category": "orthopaedics",
+      "href": "/treatments/acl-reconstruction",
+      "priceMode": "range",
+      "priceRange": "$1,500 \u2013 $7,000",
+      "savingsPercent": 73,
+      "locationPrices": [
+        {
+          "amount": 1500,
+          "isPrimary": true,
+          "market": "India",
+          "flagCode": "in",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 5500,
+          "isPrimary": false,
+          "market": "Saudi Arabia",
+          "flagCode": "sa",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 7500,
+          "isPrimary": false,
+          "market": "Germany",
+          "flagCode": "de",
+          "currencyCode": "USD"
+        }
+      ]
+    },
+    {
+      "id": "card-acdf-surgery",
+      "title": "Anterior Cervical Discectomy & Fusion (ACDF)",
+      "category": "orthopaedics",
+      "href": "/treatments/acdf-surgery",
+      "priceMode": "range",
+      "priceRange": "$7,000 \u2013 $13,500",
+      "savingsPercent": 68,
+      "locationPrices": [
+        {
+          "amount": 7000,
+          "isPrimary": true,
+          "market": "India",
+          "flagCode": "in",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 22000,
+          "isPrimary": false,
+          "market": "Saudi Arabia",
+          "flagCode": "sa",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 28000,
+          "isPrimary": false,
+          "market": "Germany",
+          "flagCode": "de",
+          "currencyCode": "USD"
+        }
+      ]
+    },
+    {
+      "id": "card-minimal-invasive-spine",
+      "title": "Minimally Invasive Spine Surgery",
+      "category": "orthopaedics",
+      "href": "/treatments/minimal-invasive-spine-surgery",
+      "priceMode": "range",
+      "priceRange": "$7,000 \u2013 $13,500",
+      "savingsPercent": 68,
+      "locationPrices": [
+        {
+          "amount": 7000,
+          "isPrimary": true,
+          "market": "India",
+          "flagCode": "in",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 22000,
+          "isPrimary": false,
+          "market": "Saudi Arabia",
+          "flagCode": "sa",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 28000,
+          "isPrimary": false,
+          "market": "Germany",
+          "flagCode": "de",
+          "currencyCode": "USD"
+        }
+      ]
+    },
+    {
+      "id": "card-rhinoplasty",
+      "title": "Rhinoplasty",
+      "category": "cosmetic",
+      "href": "/treatments/rhinoplasty",
+      "priceMode": "starting",
+      "priceRange": null,
+      "savingsPercent": 70,
+      "locationPrices": [
+        {
+          "amount": 1800,
+          "isPrimary": true,
+          "market": "India",
+          "flagCode": "in",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 6000,
+          "isPrimary": false,
+          "market": "Saudi Arabia",
+          "flagCode": "sa",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 8000,
+          "isPrimary": false,
+          "market": "Germany",
+          "flagCode": "de",
+          "currencyCode": "USD"
+        }
+      ]
+    },
+    {
+      "id": "card-breast-implants",
+      "title": "Breast Implants",
+      "category": "cosmetic",
+      "href": "/treatments/breast-implants",
+      "priceMode": "starting",
+      "priceRange": null,
+      "savingsPercent": 65,
+      "locationPrices": [
+        {
+          "amount": 2750,
+          "isPrimary": true,
+          "market": "India",
+          "flagCode": "in",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 7800,
+          "isPrimary": false,
+          "market": "Saudi Arabia",
+          "flagCode": "sa",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 9500,
+          "isPrimary": false,
+          "market": "Germany",
+          "flagCode": "de",
+          "currencyCode": "USD"
+        }
+      ]
+    },
+    {
+      "id": "card-hair-transplant",
+      "title": "Hair Transplant",
+      "category": "cosmetic",
+      "href": "/treatments/hair-transplant",
+      "priceMode": "starting",
+      "priceRange": null,
+      "savingsPercent": 75,
+      "locationPrices": [
+        {
+          "amount": 1400,
+          "isPrimary": true,
+          "market": "India",
+          "flagCode": "in",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 5600,
+          "isPrimary": false,
+          "market": "Saudi Arabia",
+          "flagCode": "sa",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 7000,
+          "isPrimary": false,
+          "market": "Germany",
+          "flagCode": "de",
+          "currencyCode": "USD"
+        }
+      ]
+    },
+    {
+      "id": "card-liposuction",
+      "title": "Liposuction",
+      "category": "cosmetic",
+      "href": "/treatments/liposuction",
+      "priceMode": "range",
+      "priceRange": "$1,500 \u2013 $7,000",
+      "savingsPercent": 73,
+      "locationPrices": [
+        {
+          "amount": 1500,
+          "isPrimary": true,
+          "market": "India",
+          "flagCode": "in",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 5500,
+          "isPrimary": false,
+          "market": "Saudi Arabia",
+          "flagCode": "sa",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 7000,
+          "isPrimary": false,
+          "market": "Germany",
+          "flagCode": "de",
+          "currencyCode": "USD"
+        }
+      ]
+    },
+    {
+      "id": "card-tummy-tuck",
+      "title": "Tummy Tuck",
+      "category": "cosmetic",
+      "href": "/treatments/tummy-tuck",
+      "priceMode": "range",
+      "priceRange": "$500 \u2013 $6,000",
+      "savingsPercent": 89,
+      "locationPrices": [
+        {
+          "amount": 500,
+          "isPrimary": true,
+          "market": "India",
+          "flagCode": "in",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 4500,
+          "isPrimary": false,
+          "market": "Saudi Arabia",
+          "flagCode": "sa",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 6000,
+          "isPrimary": false,
+          "market": "Germany",
+          "flagCode": "de",
+          "currencyCode": "USD"
+        }
+      ]
+    },
+    {
+      "id": "card-cataract",
+      "title": "Cataract Surgery",
+      "category": "eye",
+      "href": "/treatments/cataract-surgery",
+      "priceMode": "range",
+      "priceRange": "$250 \u2013 $1,100",
+      "savingsPercent": 86,
+      "locationPrices": [
+        {
+          "amount": 250,
+          "isPrimary": true,
+          "market": "India",
+          "flagCode": "in",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 1800,
+          "isPrimary": false,
+          "market": "Saudi Arabia",
+          "flagCode": "sa",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 2500,
+          "isPrimary": false,
+          "market": "Germany",
+          "flagCode": "de",
+          "currencyCode": "USD"
+        }
+      ]
+    },
+    {
+      "id": "card-lasik",
+      "title": "LASIK & Refractive Surgery",
+      "category": "eye",
+      "href": "/treatments/lasik",
+      "priceMode": "range",
+      "priceRange": "$1,500 \u2013 $7,000",
+      "savingsPercent": 64,
+      "locationPrices": [
+        {
+          "amount": 1500,
+          "isPrimary": true,
+          "market": "India",
+          "flagCode": "in",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 4200,
+          "isPrimary": false,
+          "market": "Saudi Arabia",
+          "flagCode": "sa",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 5500,
+          "isPrimary": false,
+          "market": "Germany",
+          "flagCode": "de",
+          "currencyCode": "USD"
+        }
+      ]
+    },
+    {
+      "id": "card-vitrectomy",
+      "title": "Vitrectomy",
+      "category": "eye",
+      "href": "/treatments/vitrectomy",
+      "priceMode": "range",
+      "priceRange": "$500 \u2013 $6,000",
+      "savingsPercent": 88,
+      "locationPrices": [
+        {
+          "amount": 500,
+          "isPrimary": true,
+          "market": "India",
+          "flagCode": "in",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 4000,
+          "isPrimary": false,
+          "market": "Saudi Arabia",
+          "flagCode": "sa",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 5200,
+          "isPrimary": false,
+          "market": "Germany",
+          "flagCode": "de",
+          "currencyCode": "USD"
+        }
+      ]
+    },
+    {
+      "id": "card-cornea-transplant",
+      "title": "Cornea Transplant",
+      "category": "eye",
+      "href": "/treatments/cornea-transplant",
+      "priceMode": "range",
+      "priceRange": "$500 \u2013 $6,000",
+      "savingsPercent": 92,
+      "locationPrices": [
+        {
+          "amount": 500,
+          "isPrimary": true,
+          "market": "India",
+          "flagCode": "in",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 6500,
+          "isPrimary": false,
+          "market": "Saudi Arabia",
+          "flagCode": "sa",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 8000,
+          "isPrimary": false,
+          "market": "Germany",
+          "flagCode": "de",
+          "currencyCode": "USD"
+        }
+      ]
+    },
+    {
+      "id": "card-dental-implants",
+      "title": "Dental Implants",
+      "category": "dental",
+      "href": "/treatments/dental-implants",
+      "priceMode": "range",
+      "priceRange": "$500 \u2013 $1,200",
+      "savingsPercent": 77,
+      "locationPrices": [
+        {
+          "amount": 500,
+          "isPrimary": true,
+          "market": "India",
+          "flagCode": "in",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 2200,
+          "isPrimary": false,
+          "market": "Saudi Arabia",
+          "flagCode": "sa",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 3000,
+          "isPrimary": false,
+          "market": "Germany",
+          "flagCode": "de",
+          "currencyCode": "USD"
+        }
+      ]
+    },
+    {
+      "id": "card-full-mouth-implants",
+      "title": "Full Mouth Implants",
+      "category": "dental",
+      "href": "/treatments/full-mouth-implants",
+      "priceMode": "range",
+      "priceRange": "$1,500 \u2013 $7,000",
+      "savingsPercent": 82,
+      "locationPrices": [
+        {
+          "amount": 1500,
+          "isPrimary": true,
+          "market": "India",
+          "flagCode": "in",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 8500,
+          "isPrimary": false,
+          "market": "Saudi Arabia",
+          "flagCode": "sa",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 11000,
+          "isPrimary": false,
+          "market": "Germany",
+          "flagCode": "de",
+          "currencyCode": "USD"
+        }
+      ]
+    },
+    {
+      "id": "card-smile-design",
+      "title": "Smile Design",
+      "category": "dental",
+      "href": "/treatments/smile-design",
+      "priceMode": "range",
+      "priceRange": "$500 \u2013 $6,000",
+      "savingsPercent": 86,
+      "locationPrices": [
+        {
+          "amount": 500,
+          "isPrimary": true,
+          "market": "India",
+          "flagCode": "in",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 3500,
+          "isPrimary": false,
+          "market": "Saudi Arabia",
+          "flagCode": "sa",
+          "currencyCode": "USD"
+        },
+        {
+          "amount": 4800,
+          "isPrimary": false,
+          "market": "Germany",
+          "flagCode": "de",
+          "currencyCode": "USD"
+        }
+      ]
+    },
+    {
+      "id": "card-ivf",
       "title": "IVF",
       "category": "fertility",
-      "href": "#",
-      "savingsPercent": 50,
-      "icon": null,
+      "href": "/treatments/ivf",
+      "priceMode": "range",
+      "priceRange": "$4,200 \u2013 $6,500",
+      "savingsPercent": 60,
       "locationPrices": [
         {
-          "amount": 2999,
+          "amount": 4200,
           "isPrimary": true,
           "market": "India",
           "flagCode": "in",
           "currencyCode": "USD"
         },
         {
-          "amount": 5999,
+          "amount": 10500,
           "isPrimary": false,
           "market": "Saudi Arabia",
           "flagCode": "sa",
           "currencyCode": "USD"
         },
         {
-          "amount": 7999,
+          "amount": 13000,
           "isPrimary": false,
           "market": "Germany",
           "flagCode": "de",
@@ -206,1052 +747,30 @@ export const TREATMENTS_SECTION = {
       ]
     },
     {
-      "id": "ta124jvfqv0pypd1c341zd94",
-      "title": "GI Cancer Surgery",
-      "category": "oncologysurgery",
-      "href": "#",
-      "savingsPercent": 77,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 4999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 21999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 25999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "dw8i4x7omoju8v74d1z0q1ca",
+      "id": "card-icsi",
       "title": "ICSI",
       "category": "fertility",
-      "href": "#",
-      "savingsPercent": 0,
-      "icon": null,
+      "href": "/treatments/icsi",
+      "priceMode": "range",
+      "priceRange": "$1,500 \u2013 $3,200",
+      "savingsPercent": 63,
       "locationPrices": [
         {
-          "amount": 999,
+          "amount": 1500,
           "isPrimary": true,
           "market": "India",
           "flagCode": "in",
           "currencyCode": "USD"
         },
         {
-          "amount": 999,
+          "amount": 4000,
           "isPrimary": false,
           "market": "Saudi Arabia",
           "flagCode": "sa",
           "currencyCode": "USD"
         },
         {
-          "amount": 1999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "zblunbvvuuvc1uec0zcrp5hf",
-      "title": "Breast Cancer Surgery",
-      "category": "oncologysurgery",
-      "href": "#",
-      "savingsPercent": 77,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 2999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 12999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 14999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "ligrs8wbd2de98qrwzax2ozj",
-      "title": "Knee Replacement UNI",
-      "category": "orthopaedics",
-      "href": "#",
-      "savingsPercent": 69,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 3999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 12999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 18999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "n2879l40u9uns0bi9b1rpftr",
-      "title": "Heart Valve Replacement",
-      "category": "cardiacsurgery",
-      "href": "#",
-      "savingsPercent": 69,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 3999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 12999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 16999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "lr7jrilmmu2776nrtdujo0uu",
-      "title": "Angioplasty (1â2 Stents)",
-      "category": "cardiacsurgery",
-      "href": "#",
-      "savingsPercent": 73,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 2999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 10999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 13999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "lu9txzfeje6iw42fs6r1brc6",
-      "title": "Craniotomy",
-      "category": "neurosurgery",
-      "href": "#",
-      "savingsPercent": 72,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 6999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 24999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 30999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "oasfrvcysykcyf1hlw62anra",
-      "title": "Lung Cancer Surgery",
-      "category": "oncologysurgery",
-      "href": "#",
-      "savingsPercent": 80,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 4999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 24999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 29999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "zsy1kqbpg0oxj4w7b3i8okhz",
-      "title": "Prostate Cancer Surgery",
-      "category": "oncologysurgery",
-      "href": "#",
-      "savingsPercent": 77,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 4999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 21999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 25999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "g9abuc179cqw0it82jcu92bw",
-      "title": "CABG (Heart Bypass Surgery)",
-      "category": "cardiacsurgery",
-      "href": "#",
-      "savingsPercent": 73,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 3999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 14999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 18999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "xt9ss5vhj2oqkw9hrd59528c",
-      "title": "Brain Tumor Surgery",
-      "category": "neurosurgery",
-      "href": "#",
-      "savingsPercent": 72,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 7999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 28999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 35999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "tyrxenpdaseqqsn5edygtm35",
-      "title": "Kidney Transplant",
-      "category": "organ-transplant",
-      "href": "#",
-      "savingsPercent": 91,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 11999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 140999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 169999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "tefjpjvsm66fld52nwxicuur",
-      "title": "Liver Transplant",
-      "category": "organ-transplant",
-      "href": "#",
-      "savingsPercent": 91,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 25999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 283999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 339999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "dtnkf8obsanpf6r6dvmrred3",
-      "title": "Bone Marrow Transplant",
-      "category": "organ-transplant",
-      "href": "#",
-      "savingsPercent": 91,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 23999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 260999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 319999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "fkxai1zu9igqgdt6p3nnvhmx",
-      "title": "Shoulder Replacement",
-      "category": "orthopaedics",
-      "href": "#",
-      "savingsPercent": 75,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 2999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 11999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 15999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "nfv4hrsxl8ksb3sfylv99nt6",
-      "title": "Hip Replacement UNI",
-      "category": "orthopaedics",
-      "href": "#",
-      "savingsPercent": 73,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 3999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 14999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 20999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "vdd9gswit32r1klfcqv0qomn",
-      "title": "Heart Transplant",
-      "category": "organ-transplant",
-      "href": "#",
-      "savingsPercent": 91,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 45999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 486999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 589999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "hxf7u72ca6nhhuga9pcgpnzc",
-      "title": "Pacemaker Implantation",
-      "category": "cardiacsurgery",
-      "href": "#",
-      "savingsPercent": 69,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 3999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 12999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 15999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "aimjfz453xkgl2iiaq3yw0ka",
-      "title": "Aneurysm Clipping",
-      "category": "neurosurgery",
-      "href": "#",
-      "savingsPercent": 73,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 11999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 43999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 53999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "rlkzdvfso9djkfmd9ix942vu",
-      "title": "Pituitary Tumor Surgery",
-      "category": "neurosurgery",
-      "href": "#",
-      "savingsPercent": 76,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 3999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 16999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 20999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "am45s5tcree26ktwlkf15ai5",
-      "title": "Embryo Transfer",
-      "category": "fertility",
-      "href": "#",
-      "savingsPercent": 0,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 1999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "bjv13qxx9khd57qgfhyllasn",
-      "title": "Egg Retrieval",
-      "category": "fertility",
-      "href": "#",
-      "savingsPercent": 50,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 1999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 2999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "aah4e8tv2s9iontkm0jlvwtj",
-      "title": "ASD / VSD Closure",
-      "category": "cardiacsurgery",
-      "href": "#",
-      "savingsPercent": 73,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 3999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 14999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 18999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "e0327dny6tew00imrjr9dp8o",
-      "title": "Neuro-Endoscopic Surgery",
-      "category": "neurosurgery",
-      "href": "#",
-      "savingsPercent": 73,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 5999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 21999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 26999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "efljkphndav39n146v575upb",
-      "title": "Donor Cycle",
-      "category": "fertility",
-      "href": "#",
-      "savingsPercent": 67,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 1999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 5999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 7999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "valzawx92jj4dklu863dm0d2",
-      "title": "Stem Cell Transplant",
-      "category": "organ-transplant",
-      "href": "#",
-      "savingsPercent": 92,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 1999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 24999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 29999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "nhxkcwm7p4xisf452jqzd553",
-      "title": "Hydrocephalus Shunt",
-      "category": "neurosurgery",
-      "href": "#",
-      "savingsPercent": 71,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 3999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 13999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 17999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "zj2as7hjnh01c4ksypqdi7sy",
-      "title": "Arthroscopy",
-      "category": "orthopaedics",
-      "href": "#",
-      "savingsPercent": 71,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 1999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 6999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 8999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "vmu28fkoz71akpaoakv5pkch",
-      "title": "Liver Cancer Surgery",
-      "category": "oncologysurgery",
-      "href": "#",
-      "savingsPercent": 80,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 3999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 19999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 23999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "u8xy2wljamd0yzl5agcrs2bn",
-      "title": "Revision Joint Replacement",
-      "category": "orthopaedics",
-      "href": "#",
-      "savingsPercent": 71,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 6999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 23999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 32999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "bp5ragymjndv001q60kee897",
-      "title": "Lung Transplant",
-      "category": "organ-transplant",
-      "href": "#",
-      "savingsPercent": 91,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 45999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 486999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 589999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "tzt629qjpl8k8m3ceg8icruh",
-      "title": "TAVR / TAVI",
-      "category": "cardiacsurgery",
-      "href": "#",
-      "savingsPercent": 72,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 10999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 38999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 48999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "hp4lonqvzssmt6uqc9kr1n6l",
-      "title": "Laparoscopic Infertility Surgery",
-      "category": "fertility",
-      "href": "#",
-      "savingsPercent": 67,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 2999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 3999,
-          "isPrimary": false,
-          "market": "Germany",
-          "flagCode": "de",
-          "currencyCode": "USD"
-        }
-      ]
-    },
-    {
-      "id": "dsa0wih9asxhek0f5ja64ooa",
-      "title": "Colorectal Cancer Surgery",
-      "category": "oncologysurgery",
-      "href": "#",
-      "savingsPercent": 80,
-      "icon": null,
-      "locationPrices": [
-        {
-          "amount": 1999,
-          "isPrimary": true,
-          "market": "India",
-          "flagCode": "in",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 9999,
-          "isPrimary": false,
-          "market": "Saudi Arabia",
-          "flagCode": "sa",
-          "currencyCode": "USD"
-        },
-        {
-          "amount": 11999,
+          "amount": 5000,
           "isPrimary": false,
           "market": "Germany",
           "flagCode": "de",
