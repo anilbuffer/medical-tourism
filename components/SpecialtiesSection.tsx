@@ -3,11 +3,11 @@
 import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bone, Sparkles, Smile, Eye, Plus, ArrowRight } from 'lucide-react';
+import { Bone, Sparkles, Smile, Eye, Baby, Plus, ArrowRight } from 'lucide-react';
 import { useConsultation } from '@/components/providers/AppProviders';
 
 export interface SpecialtyPillar {
-  key: 'ortho' | 'plastic' | 'dental' | 'eye';
+  key: 'ortho' | 'plastic' | 'dental' | 'eye' | 'fertility';
   slug: string;
   categoryNumber: string;
   categoryLabel: string;
@@ -18,7 +18,7 @@ export interface SpecialtyPillar {
   startingPrice: string;
   savingsBadge: string;
   image: string;
-  icon: 'bone' | 'sparkles' | 'smile' | 'eye';
+  icon: 'bone' | 'sparkles' | 'smile' | 'eye' | 'baby';
   focus: {
     collapsed: string;
     open: string;
@@ -86,10 +86,25 @@ export const SPECIALTIES_PILLARS: SpecialtyPillar[] = [
     icon: 'eye',
     focus: { collapsed: '50% 50%', open: '50% 50%' },
   },
+  {
+    key: 'fertility',
+    slug: 'fertility',
+    categoryNumber: '05',
+    categoryLabel: 'FERTILITY',
+    title: 'Fertility & IVF',
+    shortTitle: 'Fertility',
+    tagline: 'IVF and ICSI cycles at registered fertility centres, with doctors planning the treatment around your travel dates.',
+    tags: ['IVF / ICSI', 'Embryo Freezing', 'IUI'],
+    startingPrice: '$2,999 USD',
+    savingsBadge: 'Save up to 50%',
+    image: '/images/treatments/ivf.jpg',
+    icon: 'baby',
+    focus: { collapsed: '50% 50%', open: '50% 50%' },
+  },
 ];
 
 interface SpecialtyIconProps {
-  icon: 'bone' | 'sparkles' | 'smile' | 'eye';
+  icon: 'bone' | 'sparkles' | 'smile' | 'eye' | 'baby';
   size?: number;
 }
 
@@ -103,12 +118,15 @@ const SpecialtyIcon: React.FC<SpecialtyIconProps> = ({ icon, size = 24 }) => {
   if (icon === 'smile') {
     return <Smile size={size} className="stroke-[1.8]" />;
   }
+  if (icon === 'baby') {
+    return <Baby size={size} className="stroke-[1.8]" />;
+  }
   return <Eye size={size} className="stroke-[1.8]" />;
 };
 
 export interface SpecialtiesSectionProps {
   id?: string;
-  defaultOpen?: 'ortho' | 'plastic' | 'dental' | 'eye';
+  defaultOpen?: 'ortho' | 'plastic' | 'dental' | 'eye' | 'fertility';
   title?: React.ReactNode;
   subtitle?: string;
 }
@@ -285,27 +303,27 @@ export const SpecialtiesSection: React.FC<SpecialtiesSectionProps> = ({
                   aria-hidden={isActive}
                 >
                   {/* Desktop Layout (md and up): icon top-left, plus top-right, number & heading at bottom */}
-                  <div className="hidden md:flex flex-col justify-between h-full p-6 relative">
+                  <div className="hidden md:flex flex-col justify-between h-full p-3.5 sm:p-4 lg:p-6 relative">
                     {/* Top Row: Icon tile & Plus Button */}
                     <div className="flex items-start justify-between w-full">
-                      <span className="w-[52px] h-[52px] rounded-[14px] grid place-items-center bg-white/15 border border-white/20 backdrop-blur-md text-white flex-none">
-                        <SpecialtyIcon icon={specialty.icon} />
+                      <span className="w-[44px] h-[44px] lg:w-[52px] lg:h-[52px] rounded-[12px] lg:rounded-[14px] grid place-items-center bg-white/15 border border-white/20 backdrop-blur-md text-white flex-none">
+                        <SpecialtyIcon icon={specialty.icon} size={22} />
                       </span>
 
                       <span
-                        className="w-[34px] h-[34px] rounded-full border border-white/45 grid place-items-center text-white transition-all duration-200 group-hover:bg-white group-hover:text-[#093939] group-hover:border-white pointer-events-auto"
+                        className="w-[30px] h-[30px] lg:w-[34px] lg:h-[34px] rounded-full border border-white/45 grid place-items-center text-white transition-all duration-200 group-hover:bg-white group-hover:text-[#093939] group-hover:border-white pointer-events-auto"
                         aria-hidden="true"
                       >
-                        <Plus className="w-4 h-4 stroke-[2.2]" />
+                        <Plus className="w-3.5 h-3.5 lg:w-4 lg:h-4 stroke-[2.2]" />
                       </span>
                     </div>
 
                     {/* Bottom: Item Number & Heading */}
-                    <div className="text-left">
-                      <div className="text-[11px] font-bold tracking-widest text-[#9fe0d4] uppercase">
+                    <div className="text-left min-w-0">
+                      <div className="text-[10px] lg:text-[11px] font-bold tracking-widest text-[#9fe0d4] uppercase truncate">
                         {specialty.categoryNumber} / {specialty.categoryLabel}
                       </div>
-                      <h3 className="text-lg lg:text-[21px] font-bold text-white mt-1 leading-tight truncate">
+                      <h3 className="text-base lg:text-[21px] font-bold text-white mt-1 leading-tight truncate">
                         {specialty.shortTitle}
                       </h3>
                     </div>

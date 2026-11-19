@@ -35,7 +35,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <HeroSection />
 
-      {/* Clinical Specialties Accordion (Ortho, Plastic Surgery, Dental, Eye Care) */}
+      {/* Clinical Specialties Accordion (Ortho, Plastic Surgery, Dental, Eye Care, Fertility & IVF) */}
       <SpecialtiesSection />
 
       {/* Concierge & Care Details (SSR) */}
