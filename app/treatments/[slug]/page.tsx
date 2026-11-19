@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/PageHero';
 import { CtaBand } from '@/components/CtaBand';
+import { OpenConsultationButton } from '@/components/OpenConsultationButton';
 import { TREATMENTS } from '@/data/treatmentsData';
 import { DOCTORS } from '@/data/doctorsData';
 import { HOSPITALS } from '@/data/hospitalsData';
@@ -84,12 +85,12 @@ export default async function TreatmentDetailPage({ params }: Props) {
               <span>Get my itemised quote</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link
-              href={`/#consultation?treatment=${treatment.slug}`}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm bg-white/10 text-white hover:bg-white/20 transition-colors border border-white/20"
+            <OpenConsultationButton
+              treatmentTitle={treatment.name}
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm bg-white/10 text-white hover:bg-white/20 transition-colors border border-white/20 cursor-pointer"
             >
               <span>Free video consultation</span>
-            </Link>
+            </OpenConsultationButton>
           </div>
         }
       />
@@ -423,12 +424,12 @@ export default async function TreatmentDetailPage({ params }: Props) {
                     A free 30-minute video call with a coordinator and a doctor.
                   </p>
                 </div>
-                <Link
-                  href={`/#consultation?treatment=${treatment.slug}`}
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-bold text-sm bg-[#8bd2ea] text-[#0b383e] hover:bg-[#a2ddf0] transition-colors shadow-sm"
+                <OpenConsultationButton
+                  treatmentTitle={treatment.name}
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-bold text-sm bg-[#8bd2ea] text-[#0b383e] hover:bg-[#a2ddf0] transition-colors shadow-sm cursor-pointer"
                 >
                   <span>Book consultation</span>
-                </Link>
+                </OpenConsultationButton>
               </div>
 
             </aside>

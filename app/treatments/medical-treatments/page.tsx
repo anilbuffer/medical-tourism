@@ -5,6 +5,7 @@ import { PageHero } from '@/components/PageHero';
 import { CtaBand } from '@/components/CtaBand';
 import { MedicalTreatmentsFilter } from './MedicalTreatmentsFilter';
 import { SPECIALTIES } from '@/data/treatmentsData';
+import { OpenConsultationButton } from '@/components/OpenConsultationButton';
 import { 
   ArrowRight, 
   ShieldCheck, 
@@ -52,13 +53,12 @@ export default function MedicalTreatmentsPage() {
         lede="Planned surgery with experienced specialists at partner hospitals in Mohali. Your surgeon reviews your reports and talks to you on video before anything is booked."
         actions={
           <div className="flex flex-wrap items-center gap-3 mt-6 sm:mt-8">
-            <Link
-              href="/#consultation"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm bg-[#8bd2ea] text-[#0b383e] hover:bg-[#a2ddf0] transition-colors shadow-sm"
+            <OpenConsultationButton
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm bg-[#8bd2ea] text-[#0b383e] hover:bg-[#a2ddf0] transition-colors shadow-sm cursor-pointer"
             >
               <span>Book a free consultation</span>
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </OpenConsultationButton>
             <Link
               href="/treatments"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm bg-white/10 text-white hover:bg-white/20 transition-colors border border-white/20"

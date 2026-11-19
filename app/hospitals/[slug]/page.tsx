@@ -2,6 +2,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/PageHero';
+import { OpenConsultationButton } from '@/components/OpenConsultationButton';
+import { VideoConsultationCard } from '@/components/VideoConsultationCard';
+import { WhatsAppCard } from '@/components/WhatsAppCard';
 import { 
   HOSPITALS, 
   TREATMENTS_MAP, 
@@ -79,13 +82,12 @@ export default async function HospitalDetailPage({ params }: HospitalPageProps) 
           'International patient support',
         ]}
         actions={
-          <Link
-            href="/#consultation"
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm bg-[#8bd2ea] text-[#0b383e] shadow-md hover:bg-[#a2ddf0] transition-colors"
+          <OpenConsultationButton
+            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm bg-[#8bd2ea] text-[#0b383e] shadow-md hover:bg-[#a2ddf0] transition-colors cursor-pointer"
           >
-            Enquire about treatment here
+            <span>Enquire about treatment here</span>
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </OpenConsultationButton>
         }
       />
 
@@ -295,13 +297,12 @@ export default async function HospitalDetailPage({ params }: HospitalPageProps) 
               <p className="text-sm text-white/80 leading-relaxed mb-6 font-normal">
                 Send your reports and we&apos;ll tell you which hospital and specialist fit your case.
               </p>
-              <Link
-                href="/#consultation"
-                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-bold text-sm bg-[#8bd2ea] text-[#0b383e] hover:bg-[#a2ddf0] transition-colors shadow-sm"
+              <OpenConsultationButton
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-bold text-sm bg-[#8bd2ea] text-[#0b383e] hover:bg-[#a2ddf0] transition-colors shadow-sm cursor-pointer"
               >
                 <span>Book a free consultation</span>
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </OpenConsultationButton>
             </div>
 
             {/* Card 3: Other Partner Hospitals */}
@@ -360,39 +361,8 @@ export default async function HospitalDetailPage({ params }: HospitalPageProps) 
 
             {/* Action Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-              <Link
-                href="/#consultation"
-                className="group flex flex-col justify-between p-5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 transition-all text-left"
-              >
-                <div>
-                  <span className="text-xs font-semibold text-[#8bd2ea]">Free, 30 minutes</span>
-                  <strong className="block text-base sm:text-lg font-bold text-white mt-1">
-                    Video consultation
-                  </strong>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-bold text-white/90 mt-4 group-hover:text-white">
-                  <span>Book your appointment</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </Link>
-
-              <a
-                href="https://wa.me/447587399811?text=Hello%2C%20I%27d%20like%20to%20know%20more%20about%20treatment%20in%20India."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col justify-between p-5 rounded-2xl bg-white text-[#0b383e] hover:bg-white/95 transition-all text-left shadow-lg"
-              >
-                <div>
-                  <span className="text-xs font-bold text-[#008329]">Usually replies in minutes</span>
-                  <strong className="block text-base sm:text-lg font-bold text-[#0b383e] mt-1">
-                    WhatsApp our care team
-                  </strong>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-bold text-[#095458] mt-4">
-                  <span>Start WhatsApp chat</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </a>
+              <VideoConsultationCard />
+              <WhatsAppCard />
             </div>
 
             {/* Trust Strip */}

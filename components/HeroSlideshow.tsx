@@ -127,7 +127,6 @@ export default function HeroSlideshow({
   markets = DEFAULT_MARKETS,
   defaultMarketCode = "SA",
   onMarketChange,
-  rotatingLines = DEFAULT_LINES,
   primaryCta = { label: "Book a free consultation", href: "#consultation" },
   secondaryCta = { label: "How it works", href: "#how-it-works" },
   bookHref = "#consultation",
@@ -221,8 +220,6 @@ export default function HeroSlideshow({
       onOpenConsultation();
     }
   };
-
-  const current = slides[active];
 
   return (
     <section className="hero-slideshow relative isolate overflow-hidden flex flex-col min-h-[max(620px,calc(100svh-110px))] bg-[#081b35] text-white" aria-labelledby="hero-title">

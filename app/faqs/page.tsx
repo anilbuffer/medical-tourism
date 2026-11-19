@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import { PageHero } from '@/components/PageHero';
+import { OpenConsultationButton } from '@/components/OpenConsultationButton';
+import { VideoConsultationCard } from '@/components/VideoConsultationCard';
+import { WhatsAppCard } from '@/components/WhatsAppCard';
 import { 
   ChevronDown, 
   ShieldCheck, 
@@ -301,13 +304,12 @@ export default function FaqsPage() {
                 <MessageSquare className="w-4 h-4" />
                 WhatsApp Us
               </a>
-              <Link
-                href="/#consultation"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm text-[#0b383e] bg-[#f0f6f5] hover:bg-[#e4eff1] transition-colors"
+              <OpenConsultationButton
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm text-[#0b383e] bg-[#f0f6f5] hover:bg-[#e4eff1] transition-colors cursor-pointer"
               >
-                Contact Form
+                <span>Contact Form</span>
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </OpenConsultationButton>
             </div>
           </div>
 
@@ -331,39 +333,8 @@ export default function FaqsPage() {
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                <Link
-                  href="/#consultation"
-                  className="group flex flex-col justify-between p-5 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/15 transition-all text-left"
-                >
-                  <div>
-                    <span className="text-xs font-semibold text-[#8bd2ea]">Free, 30 minutes</span>
-                    <strong className="block text-base sm:text-lg font-bold text-white mt-1">
-                      Video consultation
-                    </strong>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs font-bold text-white/90 mt-4 group-hover:text-white">
-                    <span>Book your appointment</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </Link>
-
-                <a
-                  href="https://wa.me/447587399811?text=Hello%2C%20I%27d%20like%20to%20know%20more%20about%20treatment%20in%20India."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex flex-col justify-between p-5 rounded-2xl bg-white text-[#0b383e] hover:bg-white/95 transition-all text-left shadow-lg"
-                >
-                  <div>
-                    <span className="text-xs font-bold text-[#008329]">Usually replies in minutes</span>
-                    <strong className="block text-base sm:text-lg font-bold text-[#0b383e] mt-1">
-                      WhatsApp our care team
-                    </strong>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs font-bold text-[#095458] mt-4">
-                    <span>Start WhatsApp chat</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </a>
+                <VideoConsultationCard />
+                <WhatsAppCard />
               </div>
 
               {/* Trust Strip */}

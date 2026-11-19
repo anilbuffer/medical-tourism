@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { PageHero } from '@/components/PageHero';
 import { CtaBand } from '@/components/CtaBand';
+import { OpenConsultationButton } from '@/components/OpenConsultationButton';
 import { CHECKUPS } from '@/data/treatmentsData';
 import { 
   ArrowRight, 
@@ -156,13 +157,13 @@ export default function HealthCheckupsPage() {
               </div>
 
               <div className="pt-6 mt-6 border-t border-white/10">
-                <Link
-                  href="/contact"
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full text-xs sm:text-sm font-bold bg-[#8bd2ea] text-[#0b383e] hover:bg-[#a2ddf0] transition-colors shadow-sm"
+                <OpenConsultationButton
+                  treatmentTitle="Health Check-ups & Diagnostics"
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full text-xs sm:text-sm font-bold bg-[#8bd2ea] text-[#0b383e] hover:bg-[#a2ddf0] transition-colors shadow-sm cursor-pointer"
                 >
                   <span>Ask us</span>
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </OpenConsultationButton>
               </div>
             </article>
           </div>

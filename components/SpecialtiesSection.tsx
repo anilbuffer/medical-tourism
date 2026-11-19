@@ -140,7 +140,7 @@ export const SpecialtiesSection: React.FC<SpecialtiesSectionProps> = ({
   const [activeKey, setActiveKey] = useState<string>(defaultOpen);
   const pointerTypeRef = useRef<string>('mouse');
   const cardRefs = useRef<(HTMLAnchorElement | null)[]>([]);
-  const { openConsultation } = useConsultation();
+  const { setOpen } = useConsultation();
 
   const handlePointerDown = (e: React.PointerEvent) => {
     pointerTypeRef.current = e.pointerType;
@@ -427,7 +427,7 @@ export const SpecialtiesSection: React.FC<SpecialtiesSectionProps> = ({
                               type="button"
                               onClick={(e) => {
                                 e.stopPropagation();
-                                openConsultation(specialty.title);
+                                setOpen(true, specialty.title);
                               }}
                               className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-white text-[#093939] hover:bg-[#8fd8ec] font-bold text-xs sm:text-sm transition-all shadow-md group-hover:gap-2.5 flex-none cursor-pointer"
                             >

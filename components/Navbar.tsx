@@ -43,6 +43,7 @@ export type NavLink = {
   description?: string;
   target?: string;
   rel?: string;
+  isConsultation?: boolean;
 };
 
 export type NavItem = NavLink & {
@@ -153,7 +154,7 @@ const DEFAULT_MENU_GROUPS: NavGroup[] = [
     links: [
       { label: 'Frequently Asked Questions', href: '/faqs' },
       { label: 'Patient guides', href: '/guides' },
-      { label: 'Contact Us', href: '/#consultation' },
+      { label: 'Contact Us', href: '#', isConsultation: true },
       { label: 'Why Choose Us', href: '/why-choose-us' },
       {
         label: 'Login',
@@ -230,10 +231,8 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
   markets = DEFAULT_MARKETS,
   defaultMarketCode = 'SA',
   onMarketChange,
-  bookHref: _bookHref = '#consultation',
   bookLabel = 'Send Enquiry',
   logoHref = '/',
-  linkComponent: _LinkEl = 'a',
   menuFooter,
   hideOnScroll = true,
   hideAfter,
@@ -242,10 +241,10 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
   selectedCountry: propSelectedCountry,
   onSelectCountry: propOnSelectCountry,
 }) => {
-  const { openConsultation: ctxOpenConsultation } = useConsultation();
+  const { setOpen } = useConsultation();
   const { selectedCountry: ctxSelectedCountry, setSelectedCountry: ctxSetSelectedCountry } = useCountry();
 
-  const handleOpenConsultation = onOpenConsultation || ctxOpenConsultation;
+  const handleOpenConsultation = onOpenConsultation || (() => setOpen(true));
   const currentCountryCode = propSelectedCountry?.code || ctxSelectedCountry?.code || defaultMarketCode || 'SA';
 
   const menuId = useId();
@@ -460,7 +459,8 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     handleOpenConsultation();
   };
 
-  const handleNavClick = (href: string, e?: React.MouseEvent) => {
+  const handleNavClick = (href?: string, e?: React.MouseEvent) => {
+    if (!href) return;
     if (href.startsWith('#') || href.startsWith('/#')) {
       const hash = href.startsWith('/#') ? href.slice(1) : href;
       const target = document.querySelector(hash);
@@ -654,16 +654,30 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                     const delay = 160 + linkIndex++ * 35;
                     return (
                       <li key={`${group.title}-${link.label}-${li}`} style={{ transitionDelay: menuOpen ? `${delay}ms` : '0ms' }}>
-                        <Link
-                          className={styles.menuLink}
-                          href={link.href}
-                          target={link.target}
-                          rel={link.target === '_blank' ? (link.rel || 'noopener noreferrer') : link.rel}
-                          onClick={(e) => handleNavClick(link.href, e)}
-                        >
-                          <span>{link.label}</span>
-                          <Arrow />
-                        </Link>
+                        {link.isConsultation ? (
+                          <button
+                            type="button"
+                            className={styles.menuLink}
+                            onClick={() => {
+                              closeMenu();
+                              setOpen(true);
+                            }}
+                          >
+                            <span>{link.label}</span>
+                            <Arrow />
+                          </button>
+                        ) : (
+                          <Link
+                            className={styles.menuLink}
+                            href={link.href || '#'}
+                            target={link.target}
+                            rel={link.target === '_blank' ? (link.rel || 'noopener noreferrer') : link.rel}
+                            onClick={(e) => handleNavClick(link.href, e)}
+                          >
+                            <span>{link.label}</span>
+                            <Arrow />
+                          </Link>
+                        )}
                       </li>
                     );
                   })}

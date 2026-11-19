@@ -64,9 +64,9 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
   onOpenConsultation: propOpenConsultation,
   selectedCountry: propSelectedCountry,
 }) => {
-  const { openConsultation: ctxOpenConsultation } = useConsultation();
+  const { setOpen } = useConsultation();
   const { selectedCountry: ctxSelectedCountry } = useCountry();
-  const handleOpenConsultation = propOpenConsultation || ctxOpenConsultation;
+  const handleOpenConsultation = propOpenConsultation || ((treatment?: string) => setOpen(true, treatment));
   const activeCountry = propSelectedCountry || ctxSelectedCountry;
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const sectionRef = useRef<HTMLElement>(null);

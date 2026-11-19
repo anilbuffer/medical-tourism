@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useId } from 'react';
+import React, { useEffect, useState, useId, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check, Loader2, AlertCircle } from 'lucide-react';
 import { useForm, Controller } from 'react-hook-form';
@@ -139,6 +139,32 @@ const TIMELINE_OPTIONS = [
   'Other',
 ];
 
+export function normalizeTreatment(treatment?: string): string {
+  if (!treatment) return 'Header Free Medical Opinion';
+  const clean = treatment.trim().toLowerCase().replace(/-/g, ' ');
+
+  const exact = TREATMENT_OPTIONS.find((t) => t.toLowerCase() === clean);
+  if (exact) return exact;
+
+  if (clean.includes('knee') || clean.includes('joint') || clean.includes('hip')) {
+    return clean.includes('robotic') ? 'Robotic Knee Replacement' : 'Joint Replacement';
+  }
+  if (clean.includes('spine')) return 'Spine Surgery';
+  if (clean.includes('fertility') || clean.includes('ivf')) return 'Fertility & IVF';
+  if (clean.includes('dental')) return 'Dental Care';
+  if (clean.includes('eye') || clean.includes('cataract') || clean.includes('lasik')) return 'Eye Care';
+  if (clean.includes('cosmetic') || clean.includes('plastic')) return 'Cosmetic & Plastic Surgery';
+  if (clean.includes('cardio') || clean.includes('heart')) return 'Cardiology & Heart Surgery';
+  if (clean.includes('gi') || clean.includes('oncology') || clean.includes('cancer')) return 'GI & Oncology Surgery';
+  if (clean.includes('transplant')) return 'Organ Transplant';
+  if (clean.includes('checkup') || clean.includes('health') || clean.includes('diagnostic')) return 'Other Medical Specialty';
+
+  const partial = TREATMENT_OPTIONS.find((t) => t.toLowerCase().includes(clean) || clean.includes(t.toLowerCase()));
+  if (partial) return partial;
+
+  return 'Header Free Medical Opinion';
+}
+
 /* ------------------------------------------------------------------ */
 /* Modal Component                                                    */
 /* ------------------------------------------------------------------ */
@@ -154,7 +180,16 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   onClose,
   preselectedTreatment,
 }) => {
-  const { selectedCountry } = useCountry();
+  let selectedCountryName = 'Oman';
+  try {
+    const countryCtx = useCountry();
+    if (countryCtx?.selectedCountry?.name) {
+      selectedCountryName = countryCtx.selectedCountry.name;
+    }
+  } catch {
+    // Safe fallback if rendered outside CountryContext
+  }
+
   const titleId = useId();
 
   const [step, setStep] = useState<1 | 2 | 3>(1);
@@ -163,8 +198,8 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   const [referenceId, setReferenceId] = useState<string>('PT-2026-000178');
   const [submittedData, setSubmittedData] = useState<ConsultationFormValues | null>(null);
 
-  const defaultTreatment = preselectedTreatment || 'Header Free Medical Opinion';
-  const defaultCountry = selectedCountry?.name || 'Oman';
+  const defaultTreatment = normalizeTreatment(preselectedTreatment);
+  const defaultCountry = selectedCountryName;
 
   const {
     register,
@@ -195,24 +230,44 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   // Keep defaults updated when preselected treatment or country changes
   useEffect(() => {
     if (preselectedTreatment) {
-      setValue('treatmentCategory', preselectedTreatment);
+      setValue('treatmentCategory', normalizeTreatment(preselectedTreatment));
     }
   }, [preselectedTreatment, setValue]);
 
   useEffect(() => {
-    if (selectedCountry?.name) {
-      setValue('country', selectedCountry.name);
+    if (selectedCountryName) {
+      setValue('country', selectedCountryName);
     }
-  }, [selectedCountry, setValue]);
+  }, [selectedCountryName, setValue]);
 
   // Handle Close & Reset
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setStep(1);
     setApiError(null);
     setSubmittedData(null);
     reset();
     onClose();
-  };
+  }, [reset, onClose]);
+
+  // Handle ESC key press and body overflow lock when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+
+      const onKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          handleClose();
+        }
+      };
+      window.addEventListener('keydown', onKeyDown);
+
+      return () => {
+        document.body.style.overflow = prevOverflow;
+        window.removeEventListener('keydown', onKeyDown);
+      };
+    }
+  }, [isOpen, handleClose]);
 
   // Step 1 -> Step 2 validation
   const handleContinue = async () => {

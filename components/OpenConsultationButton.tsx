@@ -1,13 +1,14 @@
 'use client';
 
 import React from 'react';
-import { useConsultation } from '@/components/providers/AppProviders';
+import { useConsultation } from '@/components/providers/ConsultationProvider';
 
 interface OpenConsultationButtonProps {
   children: React.ReactNode;
   treatmentTitle?: string;
   className?: string;
   style?: React.CSSProperties;
+  onClick?: (e: React.MouseEvent) => void;
 }
 
 export const OpenConsultationButton: React.FC<OpenConsultationButtonProps> = ({
@@ -15,13 +16,19 @@ export const OpenConsultationButton: React.FC<OpenConsultationButtonProps> = ({
   treatmentTitle,
   className = '',
   style,
+  onClick,
 }) => {
-  const { openConsultation } = useConsultation();
+  const { setOpen } = useConsultation();
+
+  const handleClick = (e: React.MouseEvent) => {
+    onClick?.(e);
+    setOpen(true, treatmentTitle);
+  };
 
   return (
     <button
       type="button"
-      onClick={() => openConsultation(treatmentTitle)}
+      onClick={handleClick}
       className={className}
       style={style}
     >
@@ -29,4 +36,3 @@ export const OpenConsultationButton: React.FC<OpenConsultationButtonProps> = ({
     </button>
   );
 };
-

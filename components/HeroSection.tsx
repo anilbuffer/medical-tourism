@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import HeroSlideshow, { HeroSlide, Market, HeroSlideshowProps } from './HeroSlideshow';
+import HeroSlideshow, { HeroSlideshowProps } from './HeroSlideshow';
 import { useConsultation, useCountry } from '@/components/providers/AppProviders';
 
 export interface HeroSectionProps extends Partial<HeroSlideshowProps> {
@@ -20,9 +20,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   nextSectionId = 'find-your-treatment',
   ...restProps
 }) => {
-  const { openConsultation } = useConsultation();
+  const { setOpen } = useConsultation();
   const { selectedCountry } = useCountry();
-  const handleOpenConsultation = propOnOpenConsultation || openConsultation;
+  const handleOpenConsultation = propOnOpenConsultation || (() => setOpen(true));
 
   return (
     <HeroSlideshow

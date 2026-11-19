@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { OpenConsultationButton } from '@/components/OpenConsultationButton';
+import { VideoConsultationCard } from '@/components/VideoConsultationCard';
+import { WhatsAppCard } from '@/components/WhatsAppCard';
 import { 
   DOCTORS, 
   DOCTOR_TREATMENTS_MAP
@@ -132,13 +135,13 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
 
               {/* Action CTA */}
               <div className="mt-8">
-                <Link
-                  href="/#consultation"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm bg-[#8bd2ea] text-[#0b383e] hover:bg-[#a2ddf0] transition-colors shadow-md"
+                <OpenConsultationButton
+                  treatmentTitle={doctor.specialty}
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm bg-[#8bd2ea] text-[#0b383e] hover:bg-[#a2ddf0] transition-colors shadow-md cursor-pointer"
                 >
                   <span>Book a consultation</span>
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </OpenConsultationButton>
               </div>
             </div>
 
@@ -450,49 +453,8 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[640px] mx-auto mt-9 text-left">
-            {/* Tile 1: Dark Video Appointment */}
-            <Link
-              href="/#consultation"
-              className="group flex flex-col justify-between p-6 rounded-[22px] bg-[#0b383e] text-white shadow-md hover:-translate-y-1 transition-all min-h-[160px]"
-            >
-              <div>
-                <small className="text-xs text-white/70 block mb-1 font-normal">
-                  Free, 30 minutes
-                </small>
-                <strong className="text-base sm:text-lg font-bold text-white">
-                  Video consultation
-                </strong>
-              </div>
-              <div className="flex justify-between items-center text-sm font-bold text-white mt-4">
-                <span>Book your video appointment</span>
-                <span className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center group-hover:bg-white/25 transition-colors">
-                  <ArrowRight className="w-4 h-4" />
-                </span>
-              </div>
-            </Link>
-
-            {/* Tile 2: Light WhatsApp Chat */}
-            <a
-              href="https://wa.me/447587399811?text=Hello%2C%20I%27d%20like%20to%20know%20more%20about%20treatment%20in%20India."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col justify-between p-6 rounded-[22px] bg-white border border-[#e6ecea] text-[#0b383e] shadow-xs hover:-translate-y-1 transition-all min-h-[160px]"
-            >
-              <div>
-                <small className="text-xs text-gray-500 block mb-1 font-normal">
-                  Usually replies in minutes
-                </small>
-                <strong className="text-base sm:text-lg font-bold text-[#0b383e]">
-                  WhatsApp our care team
-                </strong>
-              </div>
-              <div className="flex justify-between items-center text-sm font-bold text-[#0b383e] mt-4">
-                <span>Start WhatsApp conversation</span>
-                <span className="w-8 h-8 rounded-full bg-[#e8f8ee] text-[#008329] flex items-center justify-center">
-                  <ArrowRight className="w-4 h-4" />
-                </span>
-              </div>
-            </a>
+            <VideoConsultationCard variant="dark" treatmentTitle={doctor.specialty} />
+            <WhatsAppCard variant="bordered" />
           </div>
 
           {/* Trust Strip */}

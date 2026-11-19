@@ -4,20 +4,14 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
-  Home, 
-  Phone, 
-  Utensils, 
-  Car, 
-  ShieldCheck, 
-  UserCheck,
-  ChevronLeft,
-  ChevronRight,
-  Award,
-  MapPin,
-  Mountain,
-  Headphones,
-  Plane,
-  Video
+  ChevronLeft, 
+  ChevronRight, 
+  Award, 
+  MapPin, 
+  Mountain, 
+  Headphones, 
+  Plane, 
+  Video 
 } from 'lucide-react';
 import useEmblaCarousel, { UseEmblaCarouselType } from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';

@@ -1,14 +1,20 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { 
   Mail, 
   Phone, 
   MapPin, 
-  Star
+  Star,
+  ArrowRight
 } from 'lucide-react';
+import { useConsultation } from '@/components/providers/AppProviders';
 
 export const Footer: React.FC = () => {
-  const quickLinks = [
+  const { setOpen } = useConsultation();
+
+  const quickLinks: Array<{ label: string; href?: string; isConsultation?: boolean }> = [
     { label: 'Home', href: '/' },
     { label: 'How It Works', href: '/how-it-works' },
     { label: 'Care Services', href: '/care-services' },
@@ -22,7 +28,7 @@ export const Footer: React.FC = () => {
     { label: 'Social', href: '/#social' },
     { label: 'FAQs', href: '/faqs' },
     { label: 'About Us', href: '/about' },
-    { label: 'Contact Us', href: '/#consultation' },
+    { label: 'Contact Us', isConsultation: true },
     { label: 'Privacy Policy', href: '/privacy-policy' },
     { label: 'Terms of Use', href: '/terms-of-use' },
   ];
@@ -167,12 +173,22 @@ export const Footer: React.FC = () => {
                   <ul className="space-y-1 lg:space-y-2 text-sm text-gray-600 font-medium">
                     {quickLinks.map((link) => (
                       <li key={link.label} className="py-0.5">
-                        <Link 
-                          href={link.href} 
-                          className="transition-colors hover:text-gray-950 block"
-                        >
-                          {link.label}
-                        </Link>
+                        {link.isConsultation ? (
+                          <button
+                            type="button"
+                            onClick={() => setOpen(true)}
+                            className="transition-colors hover:text-gray-950 block text-left cursor-pointer"
+                          >
+                            {link.label}
+                          </button>
+                        ) : (
+                          <Link 
+                            href={link.href || '#'} 
+                            className="transition-colors hover:text-gray-950 block"
+                          >
+                            {link.label}
+                          </Link>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -230,6 +246,16 @@ export const Footer: React.FC = () => {
                       <p className="leading-relaxed break-words text-xs sm:text-sm">
                         123 Healthcare Boulevard, Suite 400, London, EC1A 1BB, United Kingdom
                       </p>
+                    </div>
+                    <div className="pt-2">
+                      <button
+                        type="button"
+                        onClick={() => setOpen(true)}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-[#0b383e] text-white hover:bg-[#095458] transition-colors shadow-xs cursor-pointer"
+                      >
+                        <span>Book a Free Consultation</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
                     </div>
                   </div>
                 </div>

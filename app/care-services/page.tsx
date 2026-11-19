@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { PageHero } from '@/components/PageHero';
+import { OpenConsultationButton } from '@/components/OpenConsultationButton';
+import { VideoConsultationCard } from '@/components/VideoConsultationCard';
+import { WhatsAppCard } from '@/components/WhatsAppCard';
 import { 
   BedDouble, 
   UserCheck, 
@@ -123,13 +126,12 @@ export default function CareServicesPage() {
         lede="The small things that make you feel looked after, as well as the big ones. Treatment is only part of the trip; we organise everything around it."
         actions={
           <>
-            <Link
-              href="/#consultation"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm bg-[#8bd2ea] text-[#0b383e] shadow-md hover:bg-[#a2ddf0] transition-colors"
+            <OpenConsultationButton
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm bg-[#8bd2ea] text-[#0b383e] shadow-md hover:bg-[#a2ddf0] transition-colors cursor-pointer"
             >
-              Book a free consultation
+              <span>Book a free consultation</span>
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </OpenConsultationButton>
             <Link
               href="/how-it-works"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm bg-transparent text-white border border-white/30 hover:bg-white/10 transition-colors"
@@ -362,39 +364,8 @@ export default function CareServicesPage() {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-              <Link
-                href="/#consultation"
-                className="group flex flex-col justify-between p-5 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/15 transition-all text-left"
-              >
-                <div>
-                  <span className="text-xs font-semibold text-[#8bd2ea]">Free, 30 minutes</span>
-                  <strong className="block text-base sm:text-lg font-bold text-white mt-1">
-                    Video consultation
-                  </strong>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-bold text-white/90 mt-4 group-hover:text-white">
-                  <span>Book your appointment</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </Link>
-
-              <a
-                href="https://wa.me/447587399811?text=Hello%2C%20I%27d%20like%20to%20know%20more%20about%20treatment%20in%20India."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col justify-between p-5 rounded-2xl bg-white text-[#0b383e] hover:bg-white/95 transition-all text-left shadow-lg"
-              >
-                <div>
-                  <span className="text-xs font-bold text-[#008329]">Usually replies in minutes</span>
-                  <strong className="block text-base sm:text-lg font-bold text-[#0b383e] mt-1">
-                    WhatsApp our care team
-                  </strong>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-bold text-[#095458] mt-4">
-                  <span>Start WhatsApp chat</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </a>
+              <VideoConsultationCard />
+              <WhatsAppCard />
             </div>
 
             {/* Trust Strip */}
