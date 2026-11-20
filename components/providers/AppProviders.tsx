@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { CountryOption, COUNTRIES } from '@/components/Navbar';
+import { CountryOption, COUNTRIES } from '@/data/countriesData';
 import {
   ConsultationProvider,
   ConsultationModalGlobal,
@@ -19,6 +19,8 @@ export { useChat, type ChatContextType, type ChatRequest };
 interface CountryContextType {
   selectedCountry: CountryOption;
   setSelectedCountry: (country: CountryOption) => void;
+  otherComparisonCountry: string;
+  setOtherComparisonCountry: (country: string) => void;
 }
 
 const CountryContext = createContext<CountryContextType | null>(null);
@@ -33,6 +35,7 @@ export function useCountry() {
 
 export function AppProviders({ children }: { children: ReactNode }) {
   const [selectedCountry, setSelectedCountry] = useState<CountryOption>(COUNTRIES[0]);
+  const [otherComparisonCountry, setOtherComparisonCountry] = useState<string>('UAE');
 
   return (
     <ConsultationProvider>
@@ -40,6 +43,8 @@ export function AppProviders({ children }: { children: ReactNode }) {
         value={{
           selectedCountry,
           setSelectedCountry,
+          otherComparisonCountry,
+          setOtherComparisonCountry,
         }}
       >
         <ChatProvider>

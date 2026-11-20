@@ -7,6 +7,10 @@ import HeroSearchBox from "./HeroSearchBox";
 /* Types                                                               */
 /* ------------------------------------------------------------------ */
 
+import { COUNTRIES, type Market } from '@/data/countriesData';
+
+export type { Market };
+
 export type HeroSlide = {
   src: string;
   /** Leave empty for decorative images. */
@@ -15,16 +19,6 @@ export type HeroSlide = {
   caption: string;
   /** Optional CSS object-position, e.g. "62% 50%". */
   focus?: string;
-};
-
-export type Market = {
-  code: string;
-  /** Shown in the switcher, e.g. "Saudi Arabia". */
-  label: string;
-  /** Used in the eyebrow sentence, e.g. "Saudi Arabia" or "the UAE". */
-  name: string;
-  /** Small secondary text in the dropdown, e.g. "Riyadh". */
-  city?: string;
 };
 
 export type HeroSlideshowProps = {
@@ -75,16 +69,6 @@ const DEFAULT_SLIDES: HeroSlide[] = [
   },
 ];
 
-const DEFAULT_MARKETS: Market[] = [
-  { code: "SA", label: "Saudi Arabia", name: "Saudi Arabia", city: "Riyadh" },
-  { code: "AE", label: "UAE", name: "the UAE", city: "Dubai" },
-  { code: "TR", label: "Turkey", name: "Turkey", city: "Istanbul" },
-  { code: "TH", label: "Thailand", name: "Thailand", city: "Bangkok" },
-  { code: "DE", label: "Germany", name: "Germany", city: "Berlin" },
-  { code: "OM", label: "Oman", name: "Oman", city: "Muscat" },
-  { code: "EG", label: "Egypt", name: "Egypt", city: "Cairo" },
-];
-
 const DEFAULT_LINES = [
   "Planned with your doctor before you fly",
   "Looked after every day you're in India",
@@ -124,7 +108,7 @@ function usePageVisible() {
 
 export default function HeroSlideshow({
   slides = DEFAULT_SLIDES,
-  markets = DEFAULT_MARKETS,
+  markets = COUNTRIES,
   defaultMarketCode = "SA",
   onMarketChange,
   primaryCta = { label: "Book a free consultation", href: "#consultation" },

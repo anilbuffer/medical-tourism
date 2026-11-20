@@ -13,27 +13,13 @@ import Link from 'next/link';
 import { MessageSquare } from 'lucide-react';
 import { useConsultation, useCountry } from '@/components/providers/AppProviders';
 import styles from './SiteHeader.module.css';
+import { COUNTRIES, COMPARISON_COUNTRIES, type CountryOption, type Market } from '@/data/countriesData';
 
 /* ------------------------------------------------------------------ */
 /* Types & Backwards Compatibility Exports                            */
 /* ------------------------------------------------------------------ */
 
-export interface CountryOption {
-  code: string;
-  name: string;
-  flag: string;
-  market: string;
-}
-
-export const COUNTRIES: CountryOption[] = [
-  { code: 'SA', name: 'Saudi Arabia', flag: '🇸🇦', market: 'Saudi Arabia' },
-  { code: 'AE', name: 'UAE', flag: '🇦🇪', market: 'UAE' },
-  { code: 'TR', name: 'Turkey', flag: '🇹🇷', market: 'Turkey' },
-  { code: 'TH', name: 'Thailand', flag: '🇹🇭', market: 'Thailand' },
-  { code: 'DE', name: 'Germany', flag: '🇩🇪', market: 'Germany' },
-  { code: 'OM', name: 'Oman', flag: '🇴🇲', market: 'Oman' },
-  { code: 'EG', name: 'Egypt', flag: '🇪🇬', market: 'Egypt' },
-];
+export { COUNTRIES, COMPARISON_COUNTRIES, type CountryOption, type Market };
 
 export type NavLink = {
   label: string;
@@ -52,14 +38,6 @@ export type NavItem = NavLink & {
 };
 
 export type NavGroup = { title: string; links: NavLink[] };
-
-export type Market = {
-  code: string;
-  label: string;
-  /** Optional flag image (e.g. "/flags/sa.svg"). Falls back to the country code. */
-  flagSrc?: string;
-  flagEmoji?: string;
-};
 
 export interface SiteHeaderProps {
   primaryNav?: NavItem[];
@@ -164,16 +142,6 @@ const DEFAULT_MENU_GROUPS: NavGroup[] = [
   },
 ];
 
-const DEFAULT_MARKETS: Market[] = [
-  { code: 'SA', label: 'Saudi Arabia', flagEmoji: '🇸🇦' },
-  { code: 'AE', label: 'UAE', flagEmoji: '🇦🇪' },
-  { code: 'TR', label: 'Turkey', flagEmoji: '🇹🇷' },
-  { code: 'TH', label: 'Thailand', flagEmoji: '🇹🇭' },
-  { code: 'DE', label: 'Germany', flagEmoji: '🇩🇪' },
-  { code: 'OM', label: 'Oman', flagEmoji: '🇴🇲' },
-  { code: 'EG', label: 'Egypt', flagEmoji: '🇪🇬' },
-];
-
 /* ------------------------------------------------------------------ */
 /* Icons                                                              */
 /* ------------------------------------------------------------------ */
@@ -226,8 +194,8 @@ function Flag({ market }: { market: Market }) {
 export const SiteHeader: React.FC<SiteHeaderProps> = ({
   primaryNav = DEFAULT_PRIMARY_NAV,
   menuGroups = DEFAULT_MENU_GROUPS,
-  markets = DEFAULT_MARKETS,
-  defaultMarketCode = 'SA',
+  markets = COUNTRIES,
+  defaultMarketCode = 'AE',
   onMarketChange,
   bookLabel = 'Send Enquiry',
   logoHref = '/',
@@ -243,7 +211,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
   const { selectedCountry: ctxSelectedCountry, setSelectedCountry: ctxSetSelectedCountry } = useCountry();
 
   const handleOpenConsultation = onOpenConsultation || (() => setOpen(true));
-  const currentCountryCode = propSelectedCountry?.code || ctxSelectedCountry?.code || defaultMarketCode || 'SA';
+  const currentCountryCode = propSelectedCountry?.code || ctxSelectedCountry?.code || defaultMarketCode || 'AE';
 
   const menuId = useId();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -438,12 +406,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     onMarketChange?.(m);
 
     // Sync with AppProviders
-    const countryMatch = COUNTRIES.find((c) => c.code === m.code) || {
-      code: m.code,
-      name: m.label,
-      flag: m.flagEmoji || '🌍',
-      market: m.label,
-    };
+    const countryMatch: CountryOption = COUNTRIES.find((c) => c.code === m.code) || COUNTRIES[0];
     if (propOnSelectCountry) {
       propOnSelectCountry(countryMatch);
     } else if (ctxSetSelectedCountry) {

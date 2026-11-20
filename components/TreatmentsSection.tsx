@@ -2,10 +2,10 @@
 
 import React, { useState, useRef } from 'react';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Globe } from 'lucide-react';
 import { motion, type Variants } from 'framer-motion';
 import { TREATMENTS_SECTION } from '@/data/treatmentsData';
-import { CountryOption } from '@/components/Navbar';
+import { CountryOption, COMPARISON_COUNTRIES } from '@/data/countriesData';
 import { CountryFlag } from '@/components/CountryFlag';
 import { useConsultation, useCountry } from '@/components/providers/AppProviders';
 
@@ -67,7 +67,7 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
   selectedCountry: propSelectedCountry,
 }) => {
   const { setOpen } = useConsultation();
-  const { selectedCountry: ctxSelectedCountry } = useCountry();
+  const { selectedCountry: ctxSelectedCountry, otherComparisonCountry, setOtherComparisonCountry } = useCountry();
   const handleOpenConsultation = propOpenConsultation || ((treatment?: string) => setOpen(true, treatment));
   const activeCountry = propSelectedCountry || ctxSelectedCountry;
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -76,13 +76,23 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
   const categories = TREATMENTS_SECTION.categories;
   const allCards = TREATMENTS_SECTION.cards;
 
+  const isOtherSelected =
+    activeCountry?.code === 'OT' ||
+    activeCountry?.code === 'OTHER' ||
+    activeCountry?.market?.toLowerCase() === 'other' ||
+    activeCountry?.name?.toLowerCase() === 'other';
+
+  const activeCompMarket = isOtherSelected 
+    ? (otherComparisonCountry || 'UAE')
+    : (activeCountry?.market || activeCountry?.name || 'UAE');
+
   // Filtered Cards: maximum 6 items (two rows of 3 columns)
   const filteredCards = (selectedCategory === 'all'
     ? allCards
     : allCards.filter(c => c.category === selectedCategory)
   ).slice(0, 6);
 
-  const targetMarket = activeCountry?.market || activeCountry?.name || 'Saudi Arabia';
+  const targetMarket = activeCompMarket;
 
   return (
     <section ref={sectionRef} id="treatments" className="py-20 lg:py-28 bg-surface-base">
@@ -167,9 +177,44 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
           })}
         </motion.div>
 
+        {/* Country Tabs when "Other" is selected */}
+        {isOtherSelected && (
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="mt-6 flex flex-col sm:flex-row sm:items-center gap-3 bg-[#e8f3f4]/75 p-3.5 sm:p-4 rounded-2xl border border-[#cbe4e8]"
+          >
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#0e3b3d] shrink-0">
+              <Globe className="w-4 h-4 text-[#136d78]" />
+              <span>Compare prices with:</span>
+            </div>
+            <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 no-scrollbar">
+              {COMPARISON_COUNTRIES.map((c) => {
+                const isTabActive = activeCompMarket.toLowerCase() === c.market.toLowerCase();
+                return (
+                  <button
+                    key={c.code}
+                    type="button"
+                    onClick={() => setOtherComparisonCountry?.(c.market)}
+                    className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer whitespace-nowrap ${
+                      isTabActive
+                        ? 'bg-[#136d78] text-white shadow-sm ring-1 ring-[#136d78]'
+                        : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                    }`}
+                  >
+                    <CountryFlag code={c.code} market={c.market} className="w-4 h-3 rounded-[2px]" />
+                    <span>{c.name}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+
         {/* Cards Grid with Staggered Scroll Animation */}
         <motion.div 
-          key={selectedCategory}
+          key={`${selectedCategory}-${activeCompMarket}`}
           variants={gridContainerVariants}
           initial="hidden"
           whileInView="visible"
@@ -180,11 +225,11 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
             const theme = CARD_THEMES[index % CARD_THEMES.length];
             const indiaPrice = card.locationPrices?.find(p => p.market === 'India') || card.locationPrices?.[0];
             
-            // 1 comparison country matching user's selected dropdown
-            const isTargetUK = targetMarket.toLowerCase().includes('kingdom') || activeCountry?.code === 'GB';
+            // 1 comparison country matching activeCompMarket
+            const isTargetUK = targetMarket.toLowerCase().includes('kingdom') || (!isOtherSelected && activeCountry?.code === 'GB');
             const explicitMatch = card.locationPrices?.find((p) => 
               p.market.toLowerCase() === targetMarket.toLowerCase() ||
-              (activeCountry?.code && p.flagCode.toLowerCase() === activeCountry.code.toLowerCase()) ||
+              (!isOtherSelected && activeCountry?.code && p.flagCode.toLowerCase() === activeCountry.code.toLowerCase()) ||
               (p.market.toLowerCase() === 'uae' && (targetMarket.toLowerCase().includes('uae') || targetMarket.toLowerCase().includes('emirates')))
             );
             const comparisonPrice = explicitMatch || (isTargetUK 
@@ -203,6 +248,9 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
               : (card.locationPrices?.find((p) => !p.isPrimary && p.market !== 'India') || card.locationPrices?.[1]));
 
             const compMarketName = comparisonPrice?.market || targetMarket;
+            const compCountryObj = COMPARISON_COUNTRIES.find(c => c.market.toLowerCase() === compMarketName.toLowerCase());
+            const compFlagCode = compCountryObj?.code || comparisonPrice?.flagCode || (!isOtherSelected ? activeCountry?.code : undefined);
+
             const compMinAmount = comparisonPrice?.amount || 0;
             const indMinAmount = indiaPrice?.amount || 0;
             const calculatedSavings = compMinAmount && compMinAmount > indMinAmount 
@@ -220,19 +268,14 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
                 key={card.id}
                 variants={cardItemVariants}
                 whileHover={{ y: -7, transition: { duration: 0.2, ease: 'easeOut' } }}
-                onClick={() => handleOpenConsultation(card.title)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleOpenConsultation(card.title);
-                  }
-                }}
-                tabIndex={0}
-                role="button"
-                aria-label={`View details and book consultation for ${card.title}`}
                 /* Leaf contour with full responsive width */
-                className="group relative rounded-tl-[4px] rounded-tr-[76px] rounded-br-[4px] rounded-bl-[76px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_22px_48px_rgba(11,56,62,0.12)] transition-all duration-300 pt-7 pb-8 px-6 sm:px-8 w-full flex flex-col justify-between cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#136d78]"
+                className="group relative rounded-tl-[4px] rounded-tr-[76px] rounded-br-[4px] rounded-bl-[76px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_22px_48px_rgba(11,56,62,0.12)] transition-all duration-300 pt-7 pb-8 px-6 sm:px-8 w-full flex flex-col justify-between cursor-pointer focus-within:ring-2 focus-within:ring-[#136d78]"
               >
+                <Link
+                  href={card.href || `/treatments/${card.id.replace('card-', '')}`}
+                  className="absolute inset-0 z-10 rounded-tl-[4px] rounded-tr-[76px] rounded-br-[4px] rounded-bl-[76px] focus:outline-none"
+                  aria-label={`View details for ${card.title}`}
+                />
                 <div>
                   {/* Title: Direct at top left */}
                   <h3 
@@ -272,7 +315,7 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
                     {/* Row 1: Comparison Country (Zebra Grey Background) */}
                     <div className="bg-[#f0f3f3] rounded-[4px] px-3.5 py-2.5 flex items-center justify-between text-sm text-gray-700">
                       <div className="flex items-center gap-2">
-                        <CountryFlag code={activeCountry?.code} market={compMarketName} />
+                        <CountryFlag code={compFlagCode} market={compMarketName} />
                         <span className="font-medium text-gray-700">{compMarketName}</span>
                       </div>
                       <span className="font-semibold text-gray-600 shrink-0 text-right">

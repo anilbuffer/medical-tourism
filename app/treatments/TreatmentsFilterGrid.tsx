@@ -2,10 +2,12 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { Globe } from 'lucide-react';
 import { TREATMENTS, SPECIALTIES } from '@/data/treatmentsData';
 import { TREATMENT_COSTS } from '@/data/treatmentCosts';
 import { useCountry } from '@/components/providers/AppProviders';
 import { CountryFlag } from '@/components/CountryFlag';
+import { COMPARISON_COUNTRIES } from '@/data/countriesData';
 
 const CARD_THEMES = [
   {
@@ -26,7 +28,7 @@ const CARD_THEMES = [
 ];
 
 export const TreatmentsFilterGrid: React.FC = () => {
-  const { selectedCountry } = useCountry();
+  const { selectedCountry, otherComparisonCountry, setOtherComparisonCountry } = useCountry();
   const [activeFilter, setActiveFilter] = useState<string>('all');
 
   const filteredTreatments =
@@ -34,7 +36,21 @@ export const TreatmentsFilterGrid: React.FC = () => {
       ? TREATMENTS
       : TREATMENTS.filter((t) => t.spec === activeFilter);
 
-  const targetMarket = selectedCountry?.market || selectedCountry?.name || 'Saudi Arabia';
+  const isOtherSelected =
+    selectedCountry?.code === 'OT' ||
+    selectedCountry?.code === 'OTHER' ||
+    selectedCountry?.market?.toLowerCase() === 'other' ||
+    selectedCountry?.name?.toLowerCase() === 'other';
+
+  const activeCompMarket = isOtherSelected
+    ? otherComparisonCountry || 'UAE'
+    : selectedCountry?.market || selectedCountry?.name || 'UAE';
+
+  const activeCompCountryObj = COMPARISON_COUNTRIES.find(
+    (c) => c.market.toLowerCase() === activeCompMarket.toLowerCase()
+  );
+
+  const targetMarket = activeCompMarket;
 
   return (
     <div>
@@ -49,9 +65,23 @@ export const TreatmentsFilterGrid: React.FC = () => {
             </span>
           </h2>
           <p className="mt-3 text-[16px] text-gray-700 max-w-2xl font-normal leading-relaxed">
-            Starting prices for patients travelling from{' '}
-            <strong className="text-[#0b383e] font-semibold">{selectedCountry?.name || 'Saudi Arabia'}</strong>, in US dollars.
-            Your final quote depends on your reports and is fixed in writing before you travel.
+            {isOtherSelected ? (
+              <>
+                Starting prices compared against{' '}
+                <strong className="text-[#0b383e] font-semibold">
+                  {activeCompCountryObj?.name || activeCompMarket}
+                </strong>
+                , in US dollars. Your final quote depends on your reports and is fixed in writing before you travel.
+              </>
+            ) : (
+              <>
+                Starting prices for patients travelling from{' '}
+                <strong className="text-[#0b383e] font-semibold">
+                  {selectedCountry?.name || 'Saudi Arabia'}
+                </strong>
+                , in US dollars. Your final quote depends on your reports and is fixed in writing before you travel.
+              </>
+            )}
           </p>
         </div>
 
@@ -83,6 +113,36 @@ export const TreatmentsFilterGrid: React.FC = () => {
             </button>
           ))}
         </div>
+
+        {/* Country Tabs when "Other" is selected */}
+        {isOtherSelected && (
+          <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-3 bg-[#e8f3f4]/75 p-3.5 sm:p-4 rounded-2xl border border-[#cbe4e8]">
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#0e3b3d] shrink-0">
+              <Globe className="w-4 h-4 text-[#136d78]" />
+              <span>Compare prices with:</span>
+            </div>
+            <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 no-scrollbar">
+              {COMPARISON_COUNTRIES.map((c) => {
+                const isTabActive = activeCompMarket.toLowerCase() === c.market.toLowerCase();
+                return (
+                  <button
+                    key={c.code}
+                    type="button"
+                    onClick={() => setOtherComparisonCountry?.(c.market)}
+                    className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer whitespace-nowrap ${
+                      isTabActive
+                        ? 'bg-[#0b383e] text-white shadow-sm ring-1 ring-[#0b383e]'
+                        : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                    }`}
+                  >
+                    <CountryFlag code={c.code} market={c.market} className="w-4 h-3 rounded-[2px]" />
+                    <span>{c.name}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Grid of Price Cards */}
@@ -96,12 +156,14 @@ export const TreatmentsFilterGrid: React.FC = () => {
           
           const explicitMatch = locPrices?.find((p) => 
             p.market.toLowerCase() === targetMarket.toLowerCase() ||
-            (selectedCountry?.code && p.flagCode.toLowerCase() === selectedCountry.code.toLowerCase()) ||
+            (!isOtherSelected && selectedCountry?.code && p.flagCode.toLowerCase() === selectedCountry.code.toLowerCase()) ||
             (p.market.toLowerCase() === 'uae' && (targetMarket.toLowerCase().includes('uae') || targetMarket.toLowerCase().includes('emirates')))
           );
           
           const comparisonPrice = explicitMatch || locPrices?.find((p) => !p.isPrimary && p.market !== 'India') || locPrices?.[1];
           const compMarketName = comparisonPrice?.market || targetMarket;
+          const compCountryObj = COMPARISON_COUNTRIES.find(c => c.market.toLowerCase() === compMarketName.toLowerCase());
+          const compFlagCode = compCountryObj?.code || comparisonPrice?.flagCode || (!isOtherSelected ? selectedCountry?.code : undefined);
           const compMinAmount = comparisonPrice?.amount || 0;
           const indMinAmount = indiaPrice?.amount ?? costData?.priceFrom ?? t.priceFrom ?? 0;
           
@@ -159,7 +221,7 @@ export const TreatmentsFilterGrid: React.FC = () => {
                   {/* Row 1: Comparison Country (Zebra Grey Background) */}
                   <div className="bg-[#f0f3f3] rounded-[4px] px-3.5 py-2.5 flex items-center justify-between text-sm text-gray-700">
                     <div className="flex items-center gap-2">
-                      <CountryFlag code={selectedCountry?.code || comparisonPrice?.flagCode} market={compMarketName} />
+                      <CountryFlag code={compFlagCode} market={compMarketName} />
                       <span className="font-medium text-gray-700">{compMarketName}</span>
                     </div>
                     <span className="font-semibold text-gray-600 shrink-0 text-right">

@@ -27,3 +27,7 @@ export * from './faqData';
 
 // Contact & Consultations
 export * from './contactData';
+
+// Countries & Markets
+export * from './countriesData';
+
