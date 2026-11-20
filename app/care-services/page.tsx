@@ -27,6 +27,20 @@ export const metadata = {
   title: 'Care Services: Everything Handled | Your Medicare Trip',
   description:
     'Recovery suites, a dedicated patient care manager, nutrition, transfers, daily physiotherapy and a doctor on call: what we arrange for every patient.',
+  alternates: { canonical: 'https://www.yourmedicaretrip.com/care-services' },
+  openGraph: {
+    title: 'Care Services: Everything Handled | Your Medicare Trip',
+    description: 'Recovery suites, a dedicated patient care manager, nutrition, transfers, daily physiotherapy and a doctor on call: what we arrange for every patient.',
+    url: 'https://www.yourmedicaretrip.com/care-services',
+    type: 'website',
+    images: [{ url: '/images/hero/care-services-hero.jpg', width: 1200, height: 630, alt: 'Care Services' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Care Services: Everything Handled | Your Medicare Trip',
+    description: 'Recovery suites, a dedicated patient care manager, nutrition, transfers, daily physiotherapy and a doctor on call: what we arrange for every patient.',
+    images: ['/images/hero/care-services-hero.jpg'],
+  },
 };
 
 const INCLUDED_SERVICES = [

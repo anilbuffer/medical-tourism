@@ -15,6 +15,33 @@ export const metadata: Metadata = {
   title: 'Your Medicare Trip | World-Class Medical Care & Surgery in India',
   description:
     'Top specialist doctors and JCI-accredited hospital partners in India. Save up to 70% on orthopaedics, fertility, cardiac & cosmetic procedures with luxury aftercare recovery suites, 24/7 personal concierge, and comprehensive complication insurance.',
+  alternates: {
+    canonical: 'https://www.yourmedicaretrip.com',
+  },
+  openGraph: {
+    title: 'Your Medicare Trip | World-Class Medical Care & Surgery in India',
+    description:
+      'Top specialist doctors and JCI-accredited hospital partners in India. Save up to 70% on orthopaedics, fertility, cardiac & cosmetic procedures with luxury aftercare recovery suites, 24/7 personal concierge, and comprehensive complication insurance.',
+    url: 'https://www.yourmedicaretrip.com',
+    siteName: 'Your Medicare Trip',
+    images: [
+      {
+        url: '/images/hero/airport.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Your Medicare Trip',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Your Medicare Trip | World-Class Medical Care & Surgery in India',
+    description:
+      'Top specialist doctors and JCI-accredited hospital partners in India. Save up to 70% on orthopaedics, fertility, cardiac & cosmetic procedures.',
+    images: ['/images/hero/airport.jpg'],
+  },
   keywords: [
     'medical tourism India',
     'medical care abroad',

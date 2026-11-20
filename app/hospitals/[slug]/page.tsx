@@ -37,9 +37,37 @@ export async function generateMetadata({ params }: HospitalPageProps) {
   const hospital = HOSPITALS.find((h) => h.slug === slug);
   if (!hospital) return {};
 
+  const title = `${hospital.name}, ${hospital.city} | Your Medicare Trip`;
+  const description = `Treatment at ${hospital.name}, ${hospital.city}, arranged for international patients: ${hospital.focus.toLowerCase()}.`;
+  const canonicalUrl = `https://www.yourmedicaretrip.com/hospitals/${hospital.slug}`;
+  const imageUrl = hospital.img
+    ? `https://www.yourmedicaretrip.com${hospital.img}`
+    : 'https://www.yourmedicaretrip.com/images/hero/airport.jpg';
+
   return {
-    title: `${hospital.name}, ${hospital.city} | Your Medicare Trip`,
-    description: `Treatment at ${hospital.name}, ${hospital.city}, arranged for international patients: ${hospital.focus.toLowerCase()}.`,
+    title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      type: 'website',
+      images: [
+        {
+          url: imageUrl,
+          alt: hospital.name,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [imageUrl],
+    },
   };
 }
 
@@ -64,8 +92,50 @@ export default async function HospitalDetailPage({ params }: HospitalPageProps) 
   // Other partner hospitals
   const otherHospitals = HOSPITALS.filter((h) => h.slug !== hospital.slug);
 
+  const hospitalJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Hospital',
+    name: hospital.name,
+    description: hospital.about || hospital.focus,
+    url: `https://www.yourmedicaretrip.com/hospitals/${hospital.slug}`,
+    image: hospital.img ? `https://www.yourmedicaretrip.com${hospital.img}` : undefined,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: hospital.city,
+      addressCountry: 'IN',
+    },
+    // medicalSpecialty mapped from the hospital data's specialties array
+    ...(hospital.specialties && hospital.specialties.length > 0 && {
+      medicalSpecialty: hospital.specialties.map((s) =>
+        s === 'orthopaedics' ? 'Orthopedic' :
+        s === 'cosmetic' ? 'PlasticSurgery' :
+        s === 'fertility' ? 'Obstetrics' :
+        s === 'eye' ? 'Ophthalmology' :
+        s === 'cardiac' ? 'Cardiovascular' :
+        s === 'dental' ? 'Dentistry' :
+        s
+      ),
+    }),
+    // badge holds the accreditation string (e.g. "JCI & NABH Accredited")
+    ...(hospital.badge && {
+      hasCredential: {
+        '@type': 'EducationalOccupationalCredential',
+        name: hospital.badge,
+      },
+    }),
+    isPartOf: {
+      '@type': 'MedicalOrganization',
+      '@id': 'https://www.yourmedicaretrip.com/#organization',
+      name: 'Your Medicare Trip',
+    },
+  };
+
   return (
     <main className="min-h-screen bg-[#fafcfb] pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(hospitalJsonLd) }}
+      />
       {/* Signature Hospital Hero */}
       <PageHero
         bgImage={hospital.img}

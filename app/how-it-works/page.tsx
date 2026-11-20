@@ -18,6 +18,20 @@ export const metadata = {
   title: 'How It Works: Your Care Journey in 6 Steps | Your Medicare Trip',
   description:
     'From your first enquiry to follow-up at home: how Your Medicare Trip plans treatment in India, step by step.',
+  alternates: { canonical: 'https://www.yourmedicaretrip.com/how-it-works' },
+  openGraph: {
+    title: 'How It Works: Your Care Journey in 6 Steps | Your Medicare Trip',
+    description: 'From your first enquiry to follow-up at home: how Your Medicare Trip plans treatment in India, step by step.',
+    url: 'https://www.yourmedicaretrip.com/how-it-works',
+    type: 'website',
+    images: [{ url: '/images/hero/how-it-works-hero.jpg', width: 1200, height: 630, alt: 'How Your Medicare Trip works' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'How It Works: Your Care Journey in 6 Steps | Your Medicare Trip',
+    description: 'From your first enquiry to follow-up at home: how Your Medicare Trip plans treatment in India, step by step.',
+    images: ['/images/hero/how-it-works-hero.jpg'],
+  },
 };
 
 const STEPS = [

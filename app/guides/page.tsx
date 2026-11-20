@@ -9,6 +9,20 @@ export const metadata = {
   title: 'Patient Guides | Your Medicare Trip',
   description:
     'Clear, practical reading for anyone planning treatment, a check-up or recovery in India.',
+  alternates: { canonical: 'https://www.yourmedicaretrip.com/guides' },
+  openGraph: {
+    title: 'Patient Guides | Your Medicare Trip',
+    description: 'Clear, practical reading for anyone planning treatment, a check-up or recovery in India.',
+    url: 'https://www.yourmedicaretrip.com/guides',
+    type: 'website',
+    images: [{ url: '/images/hero/airport.jpg', width: 1200, height: 630, alt: 'Patient Guides - Your Medicare Trip' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Patient Guides | Your Medicare Trip',
+    description: 'Clear, practical reading for anyone planning treatment, a check-up or recovery in India.',
+    images: ['/images/hero/airport.jpg'],
+  },
 };
 
 export default function GuidesHubPage() {

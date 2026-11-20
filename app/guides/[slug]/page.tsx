@@ -28,9 +28,35 @@ export async function generateMetadata({ params }: Props) {
     };
   }
 
+  const title = `${guide.title} | Your Medicare Trip`;
+  const description = guide.desc;
+  const canonicalUrl = `https://www.yourmedicaretrip.com/guides/${guide.slug}`;
+  const imageUrl = `https://www.yourmedicaretrip.com${guide.img}`;
+
   return {
-    title: `${guide.title} | Your Medicare Trip`,
-    description: guide.desc,
+    title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      type: 'article',
+      images: [
+        {
+          url: imageUrl,
+          alt: guide.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [imageUrl],
+    },
   };
 }
 
@@ -50,9 +76,26 @@ export default async function GuideDetailPage({ params }: Props) {
     headline: guide.title,
     description: guide.desc,
     image: `https://www.yourmedicaretrip.com${guide.img}`,
+    // datePublished required for Google Article rich result eligibility
+    datePublished: '2024-01-01',
+    dateModified: '2026-11-01',
+    author: {
+      '@type': 'Organization',
+      name: 'Your Medicare Trip',
+      url: 'https://www.yourmedicaretrip.com',
+    },
     publisher: {
       '@type': 'Organization',
       name: 'Your Medicare Trip',
+      url: 'https://www.yourmedicaretrip.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.yourmedicaretrip.com/favicon.svg',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://www.yourmedicaretrip.com/guides/${guide.slug}`,
     },
   };
 

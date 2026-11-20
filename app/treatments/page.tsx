@@ -8,6 +8,20 @@ export const metadata = {
   title: 'Treatments & Costs in India | Your Medicare Trip',
   description:
     'Medical treatments, health check-ups and wellness programmes in the Chandigarh tricity, with clear starting prices itemised before you travel.',
+  alternates: { canonical: 'https://www.yourmedicaretrip.com/treatments' },
+  openGraph: {
+    title: 'Treatments & Costs in India | Your Medicare Trip',
+    description: 'Medical treatments, health check-ups and wellness programmes in the Chandigarh tricity, with clear starting prices itemised before you travel.',
+    url: 'https://www.yourmedicaretrip.com/treatments',
+    type: 'website',
+    images: [{ url: '/images/hero/treatments-hero.jpg', width: 1200, height: 630, alt: 'Treatments in India' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Treatments & Costs in India | Your Medicare Trip',
+    description: 'Medical treatments, health check-ups and wellness programmes in the Chandigarh tricity, with clear starting prices itemised before you travel.',
+    images: ['/images/hero/treatments-hero.jpg'],
+  },
 };
 
 export default function TreatmentsPage() {

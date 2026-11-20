@@ -3,6 +3,12 @@ import { ChevronDown } from 'lucide-react';
 import { EXPERT_QA } from '@/data/originalData';
 
 export const FaqSection: React.FC = () => {
+  // NOTE: FAQPage JSON-LD is NOT added here.
+  // The homepage FaqSection uses EXPERT_QA data (a small curated set).
+  // The dedicated /faqs page carries the full FAQPage schema with all question groups.
+  // Adding a competing FAQPage entity on the homepage would cause two conflicting
+  // FAQPage schemas on the same domain — Google ignores or penalises duplicates.
+
   return (
     <section id="faqs" className="py-20 lg:py-28 bg-surface-base">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

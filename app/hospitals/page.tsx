@@ -19,6 +19,20 @@ export const metadata = {
   title: 'Partner Hospitals in Mohali & Chandigarh | Your Medicare Trip',
   description:
     'The partner hospitals in the Chandigarh tricity where we arrange treatment for international patients: Max, Fortis, Livasa, Sohana and Sangam Netralaya.',
+  alternates: { canonical: 'https://www.yourmedicaretrip.com/hospitals' },
+  openGraph: {
+    title: 'Partner Hospitals in Mohali & Chandigarh | Your Medicare Trip',
+    description: 'The partner hospitals in the Chandigarh tricity where we arrange treatment for international patients: Max, Fortis, Livasa, Sohana and Sangam Netralaya.',
+    url: 'https://www.yourmedicaretrip.com/hospitals',
+    type: 'website',
+    images: [{ url: '/img/fortis-mohali.jpg', width: 1200, height: 630, alt: 'Partner Hospitals India' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Partner Hospitals in Mohali & Chandigarh | Your Medicare Trip',
+    description: 'JCI & NABH accredited hospital partners: Max, Fortis, Livasa, Sohana and Sangam Netralaya — Mohali, India.',
+    images: ['/img/fortis-mohali.jpg'],
+  },
 };
 
 const CRITERIA_CARDS = [

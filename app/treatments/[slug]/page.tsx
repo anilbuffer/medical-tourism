@@ -37,9 +37,37 @@ export async function generateMetadata({ params }: Props) {
     };
   }
 
+  const title = `${treatment.name} in India: Cost & Recovery | Your Medicare Trip`;
+  const description = `${treatment.summary} Starting prices, what's included, and how long to plan in India.`;
+  const canonicalUrl = `https://www.yourmedicaretrip.com/treatments/${treatment.slug}`;
+  const imageUrl = treatment.img
+    ? `https://www.yourmedicaretrip.com${treatment.img}`
+    : 'https://www.yourmedicaretrip.com/images/hero/airport.jpg';
+
   return {
-    title: `${treatment.name} in India: Cost & Recovery | Your Medicare Trip`,
-    description: `${treatment.summary} Starting prices, what's included, and how long to plan in India.`,
+    title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      type: 'website',
+      images: [
+        {
+          url: imageUrl,
+          alt: treatment.name,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [imageUrl],
+    },
   };
 }
 
@@ -65,8 +93,41 @@ export default async function TreatmentDetailPage({ params }: Props) {
   // Associated Hospitals
   const hospitals = HOSPITALS.filter((h) => treatment.hospitals.includes(h.slug));
 
+  const isSurgical = ['orthopaedics', 'cosmetic', 'cardiac', 'fertility'].includes(treatment.spec);
+
+  const treatmentJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalProcedure',
+    name: treatment.name,
+    description: treatment.summary || treatment.intro,
+    url: `https://www.yourmedicaretrip.com/treatments/${treatment.slug}`,
+    // procedureType only set for genuinely surgical specialties
+    ...(isSurgical && {
+      procedureType: { '@type': 'MedicalProcedureType', name: 'Surgical Procedure' },
+    }),
+    bodyLocation: treatment.specName,
+    ...(treatment.priceFrom && {
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'USD',
+        price: treatment.priceFrom,
+        availability: 'https://schema.org/InStock',
+        description: 'Estimated starting cost — includes procedure, hospital stay, and care coordination.',
+        seller: {
+          '@type': 'MedicalOrganization',
+          '@id': 'https://www.yourmedicaretrip.com/#organization',
+          name: 'Your Medicare Trip',
+        },
+      },
+    }),
+  };
+
   return (
     <main className="min-h-screen bg-[#fafcfb]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(treatmentJsonLd) }}
+      />
       {/* 1. Page Hero */}
       <PageHero
         bgImage={treatment.img}

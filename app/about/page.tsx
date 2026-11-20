@@ -20,6 +20,20 @@ export const metadata = {
   title: 'About Us | Your Medicare Trip',
   description:
     'Your Medicare Trip is a doctor-led medical travel service based in the Chandigarh tricity, coordinating treatment, recovery and follow-up for international patients.',
+  alternates: { canonical: 'https://www.yourmedicaretrip.com/about' },
+  openGraph: {
+    title: 'About Us | Your Medicare Trip',
+    description: 'Your Medicare Trip is a doctor-led medical travel service based in the Chandigarh tricity, coordinating treatment, recovery and follow-up for international patients.',
+    url: 'https://www.yourmedicaretrip.com/about',
+    type: 'website',
+    images: [{ url: '/images/hero/about-hero.jpg', width: 1200, height: 630, alt: 'About Your Medicare Trip' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Us | Your Medicare Trip',
+    description: 'Your Medicare Trip is a doctor-led medical travel service based in the Chandigarh tricity, coordinating treatment, recovery and follow-up for international patients.',
+    images: ['/images/hero/about-hero.jpg'],
+  },
 };
 
 export default function AboutUsPage() {

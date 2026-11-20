@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://yourmedicare-trip.com/sitemap.xml',
+    sitemap: 'https://www.yourmedicaretrip.com/sitemap.xml',
   };
 }
 

@@ -20,6 +20,20 @@ export const metadata = {
   title: 'Why Choose Your Medicare Trip | Doctor-Led Medical Travel to India',
   description:
     'Doctor-led planning, itemised pricing, one coordinator, and follow-up after you return home: what makes Your Medicare Trip different.',
+  alternates: { canonical: 'https://www.yourmedicaretrip.com/why-choose-us' },
+  openGraph: {
+    title: 'Why Choose Your Medicare Trip | Doctor-Led Medical Travel to India',
+    description: 'Doctor-led planning, itemised pricing, one coordinator, and follow-up after you return home: what makes Your Medicare Trip different.',
+    url: 'https://www.yourmedicaretrip.com/why-choose-us',
+    type: 'website',
+    images: [{ url: '/images/hero/why-hero.jpg', width: 1200, height: 630, alt: 'Why Choose Your Medicare Trip' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Why Choose Your Medicare Trip | Doctor-Led Medical Travel to India',
+    description: 'Doctor-led planning, itemised pricing, one coordinator, and follow-up after you return home: what makes Your Medicare Trip different.',
+    images: ['/images/hero/why-hero.jpg'],
+  },
 };
 
 const PILLARS = [

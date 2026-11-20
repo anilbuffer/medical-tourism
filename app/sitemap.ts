@@ -1,8 +1,11 @@
 import type { MetadataRoute } from 'next';
 import { TREATMENTS } from '@/data/treatmentsData';
+import { DOCTORS } from '@/data/doctorsData';
+import { HOSPITALS } from '@/data/hospitalsData';
+import { GUIDES } from '@/data/guidesData';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://yourmedicare-trip.com';
+  const baseUrl = 'https://www.yourmedicaretrip.com';
   return [
     {
       url: baseUrl,
@@ -16,24 +19,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
-    {
-      url: `${baseUrl}/guides/recovering-after-surgery-abroad`,
+    ...GUIDES.map((g) => ({
+      url: `${baseUrl}/guides/${g.slug}`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'weekly' as const,
       priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/knee-replacement-india`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/health-checkup-trip-india`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
+    })),
     {
       url: `${baseUrl}/about`,
       lastModified: new Date(),
@@ -82,66 +73,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
-    {
-      url: `${baseUrl}/hospitals/max-super-speciality-mohali`,
+    ...HOSPITALS.map((h) => ({
+      url: `${baseUrl}/hospitals/${h.slug}`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'weekly' as const,
       priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/hospitals/fortis-mohali`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/hospitals/livasa-mohali`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/hospitals/sohana-mohali`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/hospitals/sangam-netralaya`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
+    })),
     {
       url: `${baseUrl}/doctors`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
     },
-    {
-      url: `${baseUrl}/doctors/dr-jaswant-singh`,
+    ...DOCTORS.map((d) => ({
+      url: `${baseUrl}/doctors/${d.slug}`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'weekly' as const,
       priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/doctors/dr-jatinder-singla`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/doctors/dr-ashish-ahuja`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/doctors/dr-vikas-gupta`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
+    })),
     {
       url: `${baseUrl}/treatments`,
       lastModified: new Date(),

@@ -48,10 +48,39 @@ export async function generateMetadata({ params }: DoctorPageProps) {
   const expText = doctor.years ? `with ${doctor.years} of experience` : 'specialist';
   const hospitalObj = HOSPITALS.find((h) => h.slug === doctor.hospital);
   const hospText = hospitalObj ? `at ${hospitalObj.name}, ${hospitalObj.city}` : 'in Mohali, Punjab';
+  const title = `${doctor.name} | Your Medicare Trip`;
+  const description = `${doctor.name}, ${doctor.specialty} ${expText} ${hospText}. Video consultations and surgery coordination for international patients.`;
+  const canonicalUrl = `https://www.yourmedicaretrip.com/doctors/${doctor.slug}`;
+  const imageUrl = doctor.img
+    ? `https://www.yourmedicaretrip.com${doctor.img}`
+    : 'https://www.yourmedicaretrip.com/images/hero/doctor.jpg';
 
   return {
-    title: `${doctor.name} | Your Medicare Trip`,
-    description: `${doctor.name}, ${doctor.specialty} ${expText} ${hospText}. Video consultations and surgery coordination for international patients.`,
+    title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      type: 'profile',
+      images: [
+        {
+          url: imageUrl,
+          width: 800,
+          height: 800,
+          alt: doctor.name,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [imageUrl],
+    },
   };
 }
 
@@ -72,6 +101,46 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
   );
   const hospitalCity = hospitalObj?.city ? hospitalObj.city.split(',')[0] : 'Mohali';
 
+  const doctorJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Physician',
+    name: doctor.name,
+    jobTitle: doctor.role,
+    medicalSpecialty: doctor.specialty,
+    description: doctor.bio?.[0] || `${doctor.name}, ${doctor.role} specializing in ${doctor.specialty}`,
+    image: doctor.img
+      ? `https://www.yourmedicaretrip.com${doctor.img}`
+      : 'https://www.yourmedicaretrip.com/images/hero/doctor.jpg',
+    url: `https://www.yourmedicaretrip.com/doctors/${doctor.slug}`,
+    // hasCredential is the correct Schema.org property for qualifications/degrees
+    ...(doctor.quals && doctor.quals.length > 0 && {
+      hasCredential: doctor.quals.map((q) => ({
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'degree',
+        name: q,
+      })),
+    }),
+    ...(doctor.years && {
+      description: `${doctor.name} has ${doctor.years} of experience in ${doctor.specialty}. ${doctor.bio?.[0] || ''}`,
+    }),
+    ...(hospitalObj && {
+      hospitalAffiliation: {
+        '@type': 'Hospital',
+        name: hospitalObj.name,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: hospitalObj.city,
+          addressCountry: 'IN',
+        },
+      },
+    }),
+    worksFor: {
+      '@type': 'MedicalOrganization',
+      '@id': 'https://www.yourmedicaretrip.com/#organization',
+      name: 'Your Medicare Trip',
+    },
+  };
+
   // Treatments mapped
   const treatments = doctor.treatments
     .map((tSlug) => DOCTOR_TREATMENTS_MAP[tSlug])
@@ -85,6 +154,10 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
 
   return (
     <main id="main" className="min-h-screen bg-[#fafcfb]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(doctorJsonLd) }}
+      />
       {/* ======================================================== */}
       {/* 1. COMPACT SPLIT HERO (Matches dist/doctors/*.html)       */}
       {/* ======================================================== */}

@@ -21,6 +21,26 @@ export const metadata = {
   title: 'FAQs: Treatment in India | Your Medicare Trip',
   description:
     'Answers to common questions about safety, costs, visas, recovery and follow-up when travelling to India for treatment with Your Medicare Trip.',
+  alternates: {
+    canonical: 'https://www.yourmedicaretrip.com/faqs',
+  },
+  openGraph: {
+    title: 'FAQs: Medical Treatment in India | Your Medicare Trip',
+    description:
+      'Answers to common questions about safety, costs, visas, recovery and follow-up when travelling to India for treatment with Your Medicare Trip.',
+    url: 'https://www.yourmedicaretrip.com/faqs',
+    siteName: 'Your Medicare Trip',
+    images: [{ url: '/images/hero/airport.jpg', width: 1200, height: 630 }],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'FAQs: Medical Treatment in India | Your Medicare Trip',
+    description:
+      'Answers to common questions about safety, costs, visas, recovery and follow-up when travelling to India for treatment with Your Medicare Trip.',
+    images: ['/images/hero/airport.jpg'],
+  },
 };
 
 interface FAQItem {

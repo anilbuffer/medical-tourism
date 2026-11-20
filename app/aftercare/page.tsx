@@ -21,6 +21,31 @@ export const metadata = {
   title: 'Aftercare: Support After You Return Home | Your Medicare Trip',
   description:
     'What happens after treatment abroad: fit-to-fly checks, English discharge records, scheduled follow-ups and a named contact once you’re home.',
+  alternates: {
+    canonical: 'https://www.yourmedicaretrip.com/aftercare',
+  },
+  openGraph: {
+    title: 'Aftercare: Support After You Return Home | Your Medicare Trip',
+    description:
+      'What happens after treatment abroad: fit-to-fly checks, English discharge records, scheduled follow-ups and a named contact once you’re home.',
+    url: 'https://www.yourmedicaretrip.com/aftercare',
+    type: 'website',
+    images: [
+      {
+        url: '/images/hero/aftercare-hero.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Aftercare support after medical treatment abroad',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Aftercare: Support After You Return Home | Your Medicare Trip',
+    description:
+      'What happens after treatment abroad: fit-to-fly checks, English discharge records, scheduled follow-ups and a named contact once you’re home.',
+    images: ['/images/hero/aftercare-hero.jpg'],
+  },
 };
 
 const BEFORE_FLYING_CARDS = [

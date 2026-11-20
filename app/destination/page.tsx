@@ -20,6 +20,20 @@ export const metadata = {
   title: 'Chandigarh Tricity: Treatment & Recovery Destination | Your Medicare Trip',
   description:
     'Why the Chandigarh tricity (Chandigarh, Mohali, Panchkula) suits treatment and recovery: short airport transfers, calm streets, halal and vegetarian food, and the Kasauli hills nearby.',
+  alternates: { canonical: 'https://www.yourmedicaretrip.com/destination' },
+  openGraph: {
+    title: 'Chandigarh Tricity: Treatment & Recovery Destination | Your Medicare Trip',
+    description: 'Why the Chandigarh tricity suits treatment and recovery: short airport transfers, calm streets, halal and vegetarian food, and the Kasauli hills nearby.',
+    url: 'https://www.yourmedicaretrip.com/destination',
+    type: 'website',
+    images: [{ url: '/images/hero/destination-hero.jpg', width: 1200, height: 630, alt: 'Chandigarh Tricity - Recovery Destination' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Chandigarh Tricity: Treatment & Recovery Destination | Your Medicare Trip',
+    description: 'Why the Chandigarh tricity suits treatment and recovery: short airport transfers, calm streets, halal and vegetarian food, and the Kasauli hills nearby.',
+    images: ['/images/hero/destination-hero.jpg'],
+  },
 };
 
 const COMFORT_CARDS = [

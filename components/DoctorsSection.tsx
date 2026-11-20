@@ -47,6 +47,11 @@ export const DoctorsSection: React.FC = () => {
       : allMembers.filter((m: DoctorMember) => m.group === selectedCategory || m.type === selectedCategory);
   }, [allMembers, selectedCategory]);
 
+  // Featured doctors for homepage (limit to 8 to avoid DOM bloat while keeping carousel responsive)
+  const displayMembers = useMemo(() => {
+    return filteredMembers.slice(0, 8);
+  }, [filteredMembers]);
+
   const onSelect = useCallback((api: UseEmblaCarouselType[1]) => {
     if (!api) return;
     const canScroll = api.scrollSnapList().length > 1;
@@ -71,7 +76,7 @@ export const DoctorsSection: React.FC = () => {
       emblaApi.off('reInit', onSelect);
       emblaApi.off('resize', onSelect);
     };
-  }, [emblaApi, onSelect, filteredMembers]);
+  }, [emblaApi, onSelect, displayMembers]);
 
   const scrollPrev = useCallback(() => {
     if (emblaApi && emblaApi.canScrollPrev()) {
@@ -247,7 +252,7 @@ export const DoctorsSection: React.FC = () => {
           ref={emblaRef}
         >
           <div className="flex -ml-6 touch-pan-y">
-            {filteredMembers.map((member: DoctorMember, idx: number) => {
+            {displayMembers.map((member: DoctorMember, idx: number) => {
               const isDoctor = member.type === 'doctor';
               const CardContent = (
                 <motion.div
@@ -331,6 +336,21 @@ export const DoctorsSection: React.FC = () => {
           </div>
         </div>
       </motion.div>
+
+      {/* Explore Full Doctors Directory CTA */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 text-center">
+        <div className="inline-flex flex-col sm:flex-row items-center gap-3 p-2 sm:p-2.5 sm:pr-6 rounded-2xl sm:rounded-full bg-emerald-50/80 border border-emerald-200/60 shadow-2xs">
+          <span className="text-xs sm:text-sm font-medium text-emerald-950 px-3">
+            Looking for a specific specialist or second opinion?
+          </span>
+          <Link
+            href="/doctors"
+            className="h-[38px] px-5 rounded-full text-xs sm:text-sm font-semibold inline-flex items-center justify-center transition-all bg-[#0b383e] hover:bg-[#072529] text-white shadow-xs"
+          >
+            Explore all 90+ surgeons & specialists &rarr;
+          </Link>
+        </div>
+      </div>
 
     </section>
   );

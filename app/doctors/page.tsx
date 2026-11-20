@@ -16,6 +16,23 @@ export const metadata = {
   title: 'Our Doctors & Care Team | Your Medicare Trip',
   description:
     'Meet the surgeons, patient care managers and recovery specialists who look after international patients with Your Medicare Trip.',
+  alternates: {
+    canonical: 'https://www.yourmedicaretrip.com/doctors',
+  },
+  openGraph: {
+    title: 'Our Doctors & Care Team | Your Medicare Trip',
+    description:
+      'Meet the surgeons, patient care managers and recovery specialists who look after international patients with Your Medicare Trip.',
+    url: 'https://www.yourmedicaretrip.com/doctors',
+    images: [{ url: '/images/hero/doctors-hero.jpg', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Our Doctors & Care Team | Your Medicare Trip',
+    description:
+      'Meet the surgeons, patient care managers and recovery specialists who look after international patients with Your Medicare Trip.',
+    images: ['/images/hero/doctors-hero.jpg'],
+  },
 };
 
 export default function DoctorListingPage() {

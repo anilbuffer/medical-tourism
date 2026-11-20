@@ -5,6 +5,7 @@ import "./globals.css";
 import { AppProviders } from "@/components/providers/AppProviders";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { MedicalBusinessJsonLd } from "@/components/seo/MedicalBusinessJsonLd";
 
 const mulish = Mulish({
   subsets: ["latin"],
@@ -21,9 +22,38 @@ const kalam = Kalam({
 });
 
 export const metadata: Metadata = {
-  title: "Your Medicare Trip | World-Class Medical Care Abroad",
+  metadataBase: new URL("https://www.yourmedicaretrip.com"),
+  title: {
+    default: "Your Medicare Trip | World-Class Medical Care Abroad",
+    template: "%s | Your Medicare Trip",
+  },
   description:
     "Top specialist doctors and accredited world-class hospital partners in India, up to 70% lower costs, 24/7 personal concierge, recovery suites, and comprehensive complication insurance with Your Medicare Trip.",
+  // No layout-level canonical — each page sets its own via alternates.canonical
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://www.yourmedicaretrip.com",
+    siteName: "Your Medicare Trip",
+    title: "Your Medicare Trip | World-Class Medical Care Abroad",
+    description:
+      "Top specialist doctors and accredited world-class hospital partners in India, up to 70% lower costs, 24/7 personal concierge, recovery suites, and comprehensive complication insurance with Your Medicare Trip.",
+    images: [
+      {
+        url: "/images/hero/airport.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Your Medicare Trip - World-Class Medical Care Abroad",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Your Medicare Trip | World-Class Medical Care Abroad",
+    description:
+      "Top specialist doctors and accredited world-class hospital partners in India, up to 70% lower costs, 24/7 personal concierge, recovery suites, and comprehensive complication insurance with Your Medicare Trip.",
+    images: ["/images/hero/airport.jpg"],
+  },
   icons: {
     icon: "/favicon.svg",
   },
@@ -37,6 +67,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${mulish.variable} ${kalam.variable} font-sans scroll-smooth antialiased`}>
       <head>
+        <MedicalBusinessJsonLd />
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtm.js?id=GTM-WVWNLSF2"

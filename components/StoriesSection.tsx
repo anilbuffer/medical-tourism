@@ -43,10 +43,11 @@ export const StoriesSection: React.FC<StoriesSectionProps> = () => {
     ? cards
     : cards.filter(c => c.category === selectedCat);
 
-  // Ensure enough items (at least 32) so Embla Carousel can loop infinitely without gaps at the right end
+  // Limit to genuine cards, repeating only if necessary for smooth carousel looping (max 6-8 items)
   const displayCards = useMemo(() => {
     if (filteredCards.length === 0) return [];
-    const repeatCount = Math.ceil(32 / filteredCards.length);
+    if (filteredCards.length >= 6) return filteredCards;
+    const repeatCount = Math.ceil(6 / filteredCards.length);
     return Array.from({ length: repeatCount }, () => filteredCards).flat();
   }, [filteredCards]);
 
