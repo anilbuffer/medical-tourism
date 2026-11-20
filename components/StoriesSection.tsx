@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Star, ChevronLeft, ChevronRight, X, CheckCircle2 } from 'lucide-react';
 import useEmblaCarousel, { UseEmblaCarouselType } from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
-import { STORIES_SECTION } from '@/data/originalData';
+import { STORIES_SECTION } from '@/data/storiesData';
 import { CountryFlag } from './CountryFlag';
 
 interface StoriesSectionProps {

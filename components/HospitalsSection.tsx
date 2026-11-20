@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 import { ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
-import { HOSPITALS_SECTION } from '@/data/originalData';
+import { HOSPITALS_SECTION } from '@/data/hospitalsData';
 
 interface HospitalsSectionProps {
   onOpenConsultation?: (hospitalName?: string) => void;

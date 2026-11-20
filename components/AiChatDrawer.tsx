@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 import { useChat } from '@/components/providers/ChatProvider';
 import { useConsultation } from '@/components/providers/AppProviders';
-import { getWhatsAppUrl } from '@/data/contentData';
 
 interface ChatMessage {
   id: string;
@@ -196,7 +195,7 @@ export const AiChatDrawer: React.FC = () => {
             {/* Top Action Strip */}
             <div className="grid grid-cols-2 gap-2 p-2.5 bg-[#f3f8fc] border-b border-[#e6ecea] flex-none">
               <a
-                href={getWhatsAppUrl("Hi, I'd like to talk to your care team.")}
+                href="https://wa.me/447587399811?text=Hi%2C%20I%27d%20like%20to%20talk%20to%20your%20care%20team."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-lg bg-[#25D366] text-white text-xs font-bold hover:brightness-105 transition-all shadow-sm"

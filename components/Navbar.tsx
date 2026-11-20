@@ -27,14 +27,12 @@ export interface CountryOption {
 
 export const COUNTRIES: CountryOption[] = [
   { code: 'SA', name: 'Saudi Arabia', flag: '🇸🇦', market: 'Saudi Arabia' },
-  { code: 'AE', name: 'UAE', flag: '🇦🇪', market: 'the UAE' },
-  { code: 'OM', name: 'Oman', flag: '🇴🇲', market: 'Oman' },
-  { code: 'GB', name: 'United Kingdom', flag: '🇬🇧', market: 'United Kingdom' },
+  { code: 'AE', name: 'UAE', flag: '🇦🇪', market: 'UAE' },
+  { code: 'TR', name: 'Turkey', flag: '🇹🇷', market: 'Turkey' },
+  { code: 'TH', name: 'Thailand', flag: '🇹🇭', market: 'Thailand' },
   { code: 'DE', name: 'Germany', flag: '🇩🇪', market: 'Germany' },
-  { code: 'BD', name: 'Bangladesh', flag: '🇧🇩', market: 'Bangladesh' },
-  { code: 'NG', name: 'Nigeria', flag: '🇳🇬', market: 'Nigeria' },
-  { code: 'KE', name: 'Kenya', flag: '🇰🇪', market: 'Kenya' },
-  { code: 'UZ', name: 'Uzbekistan', flag: 'UZ', market: 'Uzbekistan' },
+  { code: 'OM', name: 'Oman', flag: '🇴🇲', market: 'Oman' },
+  { code: 'EG', name: 'Egypt', flag: '🇪🇬', market: 'Egypt' },
 ];
 
 export type NavLink = {
@@ -169,11 +167,11 @@ const DEFAULT_MENU_GROUPS: NavGroup[] = [
 const DEFAULT_MARKETS: Market[] = [
   { code: 'SA', label: 'Saudi Arabia', flagEmoji: '🇸🇦' },
   { code: 'AE', label: 'UAE', flagEmoji: '🇦🇪' },
+  { code: 'TR', label: 'Turkey', flagEmoji: '🇹🇷' },
+  { code: 'TH', label: 'Thailand', flagEmoji: '🇹🇭' },
+  { code: 'DE', label: 'Germany', flagEmoji: '🇩🇪' },
   { code: 'OM', label: 'Oman', flagEmoji: '🇴🇲' },
-  { code: 'BD', label: 'Bangladesh', flagEmoji: '🇧🇩' },
-  { code: 'NG', label: 'Nigeria', flagEmoji: '🇳🇬' },
-  { code: 'KE', label: 'Kenya', flagEmoji: '🇰🇪' },
-  { code: 'UZ', label: 'Uzbekistan', flagEmoji: '🇺🇿' },
+  { code: 'EG', label: 'Egypt', flagEmoji: '🇪🇬' },
 ];
 
 /* ------------------------------------------------------------------ */

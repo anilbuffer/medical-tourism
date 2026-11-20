@@ -100,6 +100,118 @@ export const CountryFlag: React.FC<CountryFlagProps> = ({ code = '', market = ''
     );
   }
 
+  // Helper for UAE
+  if (
+    c === 'AE' ||
+    c === 'ARE' ||
+    c === 'UAE' ||
+    m.includes('uae') ||
+    m.includes('emirates') ||
+    m === 'ae'
+  ) {
+    return (
+      <span 
+        className={`relative inline-flex items-center justify-center w-[22px] h-[15px] sm:w-[24px] sm:h-[16px] rounded-[3px] overflow-hidden border border-black/15 shadow-[0_1px_2px_rgba(0,0,0,0.12)] flex-shrink-0 align-middle ${className}`}
+        title="United Arab Emirates"
+      >
+        <svg viewBox="0 0 1200 600" className="w-full h-full block">
+          <rect width="1200" height="200" fill="#00732F" />
+          <rect y="200" width="1200" height="200" fill="#FFFFFF" />
+          <rect y="400" width="1200" height="200" fill="#000000" />
+          <rect width="300" height="600" fill="#FF0000" />
+        </svg>
+      </span>
+    );
+  }
+
+  // Helper for Turkey
+  if (
+    c === 'TR' ||
+    c === 'TUR' ||
+    m.includes('turkey') ||
+    m.includes('türkiye') ||
+    m === 'tr'
+  ) {
+    return (
+      <span 
+        className={`relative inline-flex items-center justify-center w-[22px] h-[15px] sm:w-[24px] sm:h-[16px] rounded-[3px] overflow-hidden border border-black/15 shadow-[0_1px_2px_rgba(0,0,0,0.12)] flex-shrink-0 align-middle ${className}`}
+        title="Turkey"
+      >
+        <svg viewBox="0 0 1200 800" className="w-full h-full block">
+          <rect width="1200" height="800" fill="#E30A17" />
+          <circle cx="430" cy="400" r="200" fill="#FFFFFF" />
+          <circle cx="480" cy="400" r="160" fill="#E30A17" />
+          <polygon points="630,400 710,425 680,345 730,380 645,380" fill="#FFFFFF" transform="rotate(-19 680 380)" />
+        </svg>
+      </span>
+    );
+  }
+
+  // Helper for Thailand
+  if (
+    c === 'TH' ||
+    c === 'THA' ||
+    m.includes('thailand') ||
+    m === 'th'
+  ) {
+    return (
+      <span 
+        className={`relative inline-flex items-center justify-center w-[22px] h-[15px] sm:w-[24px] sm:h-[16px] rounded-[3px] overflow-hidden border border-black/15 shadow-[0_1px_2px_rgba(0,0,0,0.12)] flex-shrink-0 align-middle ${className}`}
+        title="Thailand"
+      >
+        <svg viewBox="0 0 900 600" className="w-full h-full block">
+          <rect width="900" height="600" fill="#A51931" />
+          <rect y="100" width="900" height="400" fill="#FFFFFF" />
+          <rect y="200" width="900" height="200" fill="#2D2A4A" />
+        </svg>
+      </span>
+    );
+  }
+
+  // Helper for Oman
+  if (
+    c === 'OM' ||
+    c === 'OMN' ||
+    m.includes('oman') ||
+    m === 'om'
+  ) {
+    return (
+      <span 
+        className={`relative inline-flex items-center justify-center w-[22px] h-[15px] sm:w-[24px] sm:h-[16px] rounded-[3px] overflow-hidden border border-black/15 shadow-[0_1px_2px_rgba(0,0,0,0.12)] flex-shrink-0 align-middle ${className}`}
+        title="Oman"
+      >
+        <svg viewBox="0 0 1200 600" className="w-full h-full block">
+          <rect width="1200" height="200" fill="#FFFFFF" />
+          <rect y="200" width="1200" height="200" fill="#DB161B" />
+          <rect y="400" width="1200" height="200" fill="#008000" />
+          <rect width="300" height="600" fill="#DB161B" />
+        </svg>
+      </span>
+    );
+  }
+
+  // Helper for Egypt
+  if (
+    c === 'EG' ||
+    c === 'EGY' ||
+    m.includes('egypt') ||
+    m === 'eg'
+  ) {
+    return (
+      <span 
+        className={`relative inline-flex items-center justify-center w-[22px] h-[15px] sm:w-[24px] sm:h-[16px] rounded-[3px] overflow-hidden border border-black/15 shadow-[0_1px_2px_rgba(0,0,0,0.12)] flex-shrink-0 align-middle ${className}`}
+        title="Egypt"
+      >
+        <svg viewBox="0 0 900 600" className="w-full h-full block">
+          <rect width="900" height="200" fill="#C8102E" />
+          <rect y="200" width="900" height="200" fill="#FFFFFF" />
+          <rect y="400" width="900" height="200" fill="#000000" />
+          <path d="M430 260 h40 v40 h-40 z M420 310 h60 v15 h-60 z" fill="#C09A3E" />
+        </svg>
+      </span>
+    );
+  }
+
   // Helper for USA
   if (
     c === 'US' ||

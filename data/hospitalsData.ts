@@ -285,3 +285,122 @@ export const SPECIALISTS_LIST: (HospitalSpecialist & { treatments: string[] })[]
   },
 ];
 
+export const HOSPITALS_SECTION = {
+  "headingLine1": "Partner hospitals,",
+  "headingLine2": "in the Chandigarh tricity",
+  "subtitle": "Expert care in the calm of the Chandigarh tricity.",
+  "viewAllLabel": "View All",
+  "viewAllHref": "/hospitals",
+  "countries": [
+    {
+      "id": "all",
+      "label": "All",
+      "badge": null
+    },
+    {
+      "id": "mohali",
+      "label": "Mohali (Chandigarh)",
+      "badge": "Premier"
+    }
+  ],
+  "cards": [
+    {
+      "id": "max-hospital-mohali",
+      "name": "Max Super Speciality Hospital",
+      "country": "mohali",
+      "location": "Mohali, Punjab",
+      "description": "Multi-Speciality Care, Joint Replacement & Spine",
+      "badge": "JCI & NABH Accredited",
+      "href": "/hospitals/max-super-speciality-mohali",
+      "image": {
+        "src": "/img/max-mohali.jpg",
+        "width": 1200,
+        "height": 800
+      }
+    },
+    {
+      "id": "fortis-hospital-mohali",
+      "name": "Fortis Hospital",
+      "country": "mohali",
+      "location": "Mohali, Punjab",
+      "description": "Multi-Speciality Care, Orthopaedics & Fertility",
+      "badge": "JCI & NABH Accredited",
+      "href": "/hospitals/fortis-mohali",
+      "image": {
+        "src": "/img/fortis-mohali.jpg",
+        "width": 1200,
+        "height": 800
+      }
+    },
+    {
+      "id": "livasa-hospital-mohali",
+      "name": "Livasa Hospital",
+      "country": "mohali",
+      "location": "Mohali, Punjab",
+      "description": "Multi-Speciality Care & Surgery",
+      "badge": "NABH Accredited",
+      "href": "/hospitals/livasa-mohali",
+      "image": {
+        "src": "/img/livasa.jpg",
+        "width": 1200,
+        "height": 800
+      }
+    },
+    {
+      "id": "sohana-hospital-mohali",
+      "name": "Sohana Hospital",
+      "country": "mohali",
+      "location": "Mohali, Punjab",
+      "description": "Multi-Speciality Care & Surgery",
+      "badge": "NABH Accredited",
+      "href": "/hospitals/sohana-mohali",
+      "image": {
+        "src": "/img/sohana.jpg",
+        "width": 1200,
+        "height": 800
+      }
+    },
+    {
+      "id": "sangam-netralaya-mohali",
+      "name": "Sangam Netralaya",
+      "country": "mohali",
+      "location": "Mohali, Punjab",
+      "description": "Cataract, Refractive & Retina Care",
+      "badge": "Advanced Eye Care",
+      "href": "/hospitals/sangam-netralaya",
+      "image": {
+        "src": "/img/hospitals/sangam-netralaya-facade.jpg",
+        "width": 1200,
+        "height": 800
+      }
+    },
+    {
+      "id": "landmark-hospital-chandigarh",
+      "name": "Landmark Hospital",
+      "country": "mohali",
+      "location": "Sector 33-C, Chandigarh",
+      "description": "Plastic & Cosmetic Surgery, Orthopaedics & Fertility Care",
+      "badge": "NABH Accredited",
+      "href": "/hospitals/landmark-chandigarh",
+      "image": {
+        "src": "/img/livasa.jpg",
+        "width": 1200,
+        "height": 800
+      }
+    },
+    {
+      "id": "ace-heart-institute",
+      "name": "ACE Heart & Vascular Institute",
+      "country": "mohali",
+      "location": "Sector 69, Mohali, Punjab",
+      "description": "Cardiovascular Sciences, Complex Angioplasty, TAVR & Structural Heart Care",
+      "badge": "Super-Speciality Heart Institute",
+      "href": "/hospitals/ace-heart-institute",
+      "image": {
+        "src": "/img/hospitals/ace-heart-hospital.jpg",
+        "width": 1024,
+        "height": 836
+      }
+    }
+  ]
+};

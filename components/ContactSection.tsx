@@ -1,6 +1,6 @@
 import React from 'react';
 import { ShieldCheck, Clock, CheckCircle2 } from 'lucide-react';
-import { CONTACT_CTA } from '@/data/originalData';
+import { CONTACT_CTA } from '@/data/contactData';
 import { VideoConsultationCard } from '@/components/VideoConsultationCard';
 import { WhatsAppCard } from '@/components/WhatsAppCard';
 

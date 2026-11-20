@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
-import { EXPERT_QA } from '@/data/originalData';
+import { EXPERT_QA } from '@/data/faqData';
 
 export const FaqSection: React.FC = () => {
   // NOTE: FAQPage JSON-LD is NOT added here.

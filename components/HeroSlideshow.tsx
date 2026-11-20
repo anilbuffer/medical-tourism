@@ -78,11 +78,11 @@ const DEFAULT_SLIDES: HeroSlide[] = [
 const DEFAULT_MARKETS: Market[] = [
   { code: "SA", label: "Saudi Arabia", name: "Saudi Arabia", city: "Riyadh" },
   { code: "AE", label: "UAE", name: "the UAE", city: "Dubai" },
+  { code: "TR", label: "Turkey", name: "Turkey", city: "Istanbul" },
+  { code: "TH", label: "Thailand", name: "Thailand", city: "Bangkok" },
+  { code: "DE", label: "Germany", name: "Germany", city: "Berlin" },
   { code: "OM", label: "Oman", name: "Oman", city: "Muscat" },
-  { code: "BD", label: "Bangladesh", name: "Bangladesh", city: "Dhaka" },
-  { code: "NG", label: "Nigeria", name: "Nigeria", city: "Lagos" },
-  { code: "KE", label: "Kenya", name: "Kenya", city: "Nairobi" },
-  { code: "UZ", label: "Uzbekistan", name: "Uzbekistan", city: "Tashkent" },
+  { code: "EG", label: "Egypt", name: "Egypt", city: "Cairo" },
 ];
 
 const DEFAULT_LINES = [

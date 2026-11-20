@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Stethoscope, Sparkles, User, HeartPulse, Smile, Scissors, Flower2, Eye, Building2 } from 'lucide-react';
 import useEmblaCarousel, { UseEmblaCarouselType } from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
-import { DOCTORS_SECTION, DoctorMember } from '@/data/originalData';
+import { DOCTORS_SECTION, DoctorMember } from '@/data/doctorsData';
 
 const HOSPITAL_LABELS: Record<string, string> = {
   'ace-heart-institute': 'ACE Heart Institute',

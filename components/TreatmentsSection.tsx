@@ -4,7 +4,7 @@ import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { motion, type Variants } from 'framer-motion';
-import { TREATMENTS_SECTION } from '@/data/originalData';
+import { TREATMENTS_SECTION } from '@/data/treatmentsData';
 import { CountryOption } from '@/components/Navbar';
 import { CountryFlag } from '@/components/CountryFlag';
 import { useConsultation, useCountry } from '@/components/providers/AppProviders';
@@ -183,13 +183,17 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
             // 1 comparison country matching user's selected dropdown
             const isTargetUK = targetMarket.toLowerCase().includes('kingdom') || activeCountry?.code === 'GB';
             const explicitMatch = card.locationPrices?.find((p) => 
-              p.market.toLowerCase() === targetMarket.toLowerCase()
+              p.market.toLowerCase() === targetMarket.toLowerCase() ||
+              (activeCountry?.code && p.flagCode.toLowerCase() === activeCountry.code.toLowerCase()) ||
+              (p.market.toLowerCase() === 'uae' && (targetMarket.toLowerCase().includes('uae') || targetMarket.toLowerCase().includes('emirates')))
             );
             const comparisonPrice = explicitMatch || (isTargetUK 
               ? (() => {
                   const dePrice = card.locationPrices?.find((p) => p.market.toLowerCase() === 'germany');
                   return {
                     amount: dePrice ? dePrice.amount : (card.locationPrices?.[1]?.amount || 5999),
+                    maxAmount: dePrice ? dePrice.maxAmount : (card.locationPrices?.[1]?.maxAmount || 12000),
+                    range: dePrice ? dePrice.range : (card.locationPrices?.[1]?.range || '$5,999 – $12,000'),
                     isPrimary: false,
                     market: 'United Kingdom',
                     flagCode: 'gb',
@@ -199,11 +203,17 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
               : (card.locationPrices?.find((p) => !p.isPrimary && p.market !== 'India') || card.locationPrices?.[1]));
 
             const compMarketName = comparisonPrice?.market || targetMarket;
-            const compAmount = comparisonPrice?.amount;
-            const indAmount = indiaPrice?.amount || 0;
-            const calculatedSavings = compAmount && compAmount > indAmount 
-              ? Math.round(((compAmount - indAmount) / compAmount) * 100)
-              : card.savingsPercent;
+            const compMinAmount = comparisonPrice?.amount || 0;
+            const indMinAmount = indiaPrice?.amount || 0;
+            const calculatedSavings = compMinAmount && compMinAmount > indMinAmount 
+              ? Math.round(((compMinAmount - indMinAmount) / compMinAmount) * 100)
+              : (card.savingsPercent || 0);
+
+            const comparisonRangeText = comparisonPrice?.range 
+              ? `${comparisonPrice.range} USD`
+              : comparisonPrice?.maxAmount && comparisonPrice.maxAmount > compMinAmount
+              ? `$${compMinAmount.toLocaleString()} – $${comparisonPrice.maxAmount.toLocaleString()} USD`
+              : `$${compMinAmount.toLocaleString()} USD`;
 
             return (
               <motion.div
@@ -245,12 +255,14 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
                       }}
                     >
                       <span className="text-sm sm:text-base font-semibold opacity-90">
-                        {card.priceRange ? 'Range' : 'Starting from'}
+                        {card.priceRange || indiaPrice?.range ? 'Range' : 'Starting from'}
                       </span>
                       <span className="text-xl sm:text-2xl font-bold tracking-tight">
                         {card.priceRange 
                           ? card.priceRange 
-                          : `$${indiaPrice ? indiaPrice.amount.toLocaleString() : '4,000'}`}
+                          : indiaPrice?.range
+                          ? indiaPrice.range
+                          : `$${indiaPrice ? indiaPrice.amount.toLocaleString() : '3,000'}`}
                       </span>
                     </motion.div>
                   </div>
@@ -263,8 +275,8 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
                         <CountryFlag code={activeCountry?.code} market={compMarketName} />
                         <span className="font-medium text-gray-700">{compMarketName}</span>
                       </div>
-                      <span className="font-semibold text-gray-600 shrink-0">
-                        ${comparisonPrice?.amount.toLocaleString()} USD
+                      <span className="font-semibold text-gray-600 shrink-0 text-right">
+                        {comparisonRangeText}
                       </span>
                     </div>
 

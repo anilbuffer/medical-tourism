@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Clock, ArrowRight } from 'lucide-react';
-import { PATIENT_GUIDES } from '@/data/contentData';
+import { PATIENT_GUIDES } from '@/data/guidesData';
 
 export const PatientGuidesSection: React.FC = () => {
   return (

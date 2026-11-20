@@ -3,6 +3,16 @@ export interface GuideSection {
   content: string;
 }
 
+export interface PatientGuide {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  categoryLabel: string;
+  readMins: number;
+  image: string;
+}
+
 export interface GuideItem {
   slug: string;
   title: string;
@@ -113,3 +123,35 @@ export const GUIDES: GuideItem[] = [
     ]
   }
 ];
+
+export const PATIENT_GUIDES: PatientGuide[] = [
+  {
+    slug: 'recovering-after-surgery-abroad',
+    title: 'Recovering after surgery abroad: planning the journey home',
+    excerpt: "When it's safe to fly, what to carry home, and how follow-up works once you're back.",
+    category: 'recovery',
+    categoryLabel: 'Recovery',
+    readMins: 7,
+    image: '/images/guides/recovering-after-surgery-abroad.jpeg',
+  },
+  {
+    slug: 'knee-replacement-india',
+    title: 'Knee replacement in India: costs, recovery and what to expect',
+    excerpt: 'Starting prices, how long to plan for, and what a typical stay looks like.',
+    category: 'medical',
+    categoryLabel: 'Medical Treatments',
+    readMins: 9,
+    image: '/images/guides/knee-replacement-india.jpeg',
+  },
+  {
+    slug: 'health-checkup-trip-india',
+    title: 'Planning a full health check-up around your trip to India',
+    excerpt: 'What a comprehensive check-up covers and how to fit it around family or treatment.',
+    category: 'checkup',
+    categoryLabel: 'Check-ups & Diagnostics',
+    readMins: 6,
+    image: '/images/guides/health-checkup-trip-india.jpeg',
+  },
+];
+
+export const PATIENT_GUIDES_DATA = PATIENT_GUIDES;

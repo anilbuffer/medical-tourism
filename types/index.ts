@@ -11,6 +11,8 @@ export type TreatmentCategory =
 
 export interface LocationPrice {
   amount: number;
+  maxAmount?: number;
+  range?: string;
   isPrimary: boolean;
   market: string;
   flagCode: string;
