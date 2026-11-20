@@ -1,0 +1,66 @@
+[
+  {
+    "id": "google-review-1",
+    "name": "Akash Kumar",
+    "review": "Never thought a root canal could be easy! iCube dental's single-sitting RCT was quick, painless, and hassle-free. The staff made sure that I was comfortable throughout.",
+    "avatar": "/testimonials/avatars/avatar_1_akash_kumar.jpg",
+    "rating": 5,
+    "date": "Google Verified Review"
+  },
+  {
+    "id": "google-review-2",
+    "name": "Pawan Singhania",
+    "review": "I had an excellent experience at iCube dental! The staff was professional, caring, and made me feel comfortable throughout the treatment. The clinic is clean, modern, and equipped with the latest technology. I highly recommend iCube dental to anyone looking for top-quality dental care with a personal touch!",
+    "avatar": "/testimonials/avatars/avatar_2_pawan_singhania.jpg",
+    "rating": 5,
+    "date": "Google Verified Review"
+  },
+  {
+    "id": "google-review-3",
+    "name": "sharanjeet kaur",
+    "review": "Painless root canal treatment in one visit!\nDr Priyanka and team was so helpful from the time I entered clinic\nIn house facilities were top notch\nHighly recommended",
+    "avatar": "/testimonials/avatars/avatar_3_sharanjeet_kaur.jpg",
+    "rating": 5,
+    "date": "Google Verified Review"
+  },
+  {
+    "id": "google-review-4",
+    "name": "Rishab Negi",
+    "review": "Really amazing place, well experienced doctors and staff and had an amazing experience \u2728.",
+    "avatar": "/testimonials/avatars/avatar_4_rishab_negi.jpg",
+    "rating": 5,
+    "date": "Google Verified Review"
+  },
+  {
+    "id": "google-review-5",
+    "name": "Padam Sharma",
+    "review": "I must admit, my teeth were in bad conditions due to my fear of the dentist. That all changed when I visited Icube Dental Clinic.\nDr. Garav's calm and clear explanations during my first consultation gave me confidence I had never felt before. I underwent three dental implants and a root canal treatment, and to my surprise, it was completely painless, even for someone like me who fears injections.\nIcube not only restored my teeth but also my confidence, giving me a new lease on life. I\u2019d rate them 5 out of 5 stars for their amazing team, spotless clinic, and state-of-the-art equipment. Thank you for this world-class experience!",
+    "avatar": "/testimonials/avatars/avatar_5_padam_sharma.jpg",
+    "rating": 5,
+    "date": "Google Verified Review"
+  },
+  {
+    "id": "google-review-6",
+    "name": "RAJESH GUPTA",
+    "review": "Starting with the clinic ambience was very enjoyable....The staff was very helpful and very kind and hospitality was great\nThe treatment was totally painless starting from RCT to crown and saving my wisdom tooth with restoration!\nHighly satisfied \ud83d\ude03\nHighly recommended\nBest clinic in tricity indeed!",
+    "avatar": "/testimonials/avatars/avatar_6_rajesh_gupta.jpg",
+    "rating": 5,
+    "date": "Google Verified Review"
+  },
+  {
+    "id": "google-review-7",
+    "name": "nirmal thakur",
+    "review": "all facilities under one roof\nbe it CBCT scan or single day crowns\nI am fully satisfied with everything\nBest dental clinic in tricity indeed!!",
+    "avatar": "/testimonials/avatars/avatar_7_nirmal_thakur.jpg",
+    "rating": 5,
+    "date": "Google Verified Review"
+  },
+  {
+    "id": "google-review-8",
+    "name": "aabhas khanna",
+    "review": "I was fortunate to have been referred to iCube Dental Clinic by a relative, and what followed was an experience truly beyond words. From the very first visit, both Dr. Priyanka Sharma and Dr. Gaurav Varshney treated me not just as a patient, but with the warmth and care one would extend to a family member.\n\nDr. Priyanka Sharma has an incredibly calming presence. Her professionalism is matched only by the comfort she provides during each visit. She has a unique ability to make you feel completely at ease, even in a clinical setting\u2014a quality that is rare and deeply appreciated. The way she handles patients with empathy and reassurance is truly commendable.\n\nI am equally grateful to Dr. Gaurav Varshney, who stepped in to take over my treatment after it had been initiated by another dentist in a different city. Due to unavoidable personal commitments, I had to travel to Chandigarh where I was staying for a family member\u2019s health concerns. During this time, I reached out to Dr. Gaurav, and without hesitation, he took over my case and completed the procedure seamlessly. His expertise, attention to detail, and commitment to delivering the best possible care left a lasting impression. He is, without a doubt, one of the finest professionals I have ever come across.\n\nI extend my heartfelt thanks to both Dr. Priyanka and Dr. Gaurav for their exceptional care, dedication, and professionalism. The entire experience at iCube Dental Clinic has set a benchmark for quality and compassionate dental care. I would recommend them wholeheartedly to anyone seeking not just treatment, but genuine care.",
+    "avatar": "/testimonials/avatars/avatar_8_aabhas_khanna.jpg",
+    "rating": 5,
+    "date": "Google Verified Review"
+  }
+]

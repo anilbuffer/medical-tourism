@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Star, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { Play, Star, ChevronLeft, ChevronRight, X, CheckCircle2 } from 'lucide-react';
 import useEmblaCarousel, { UseEmblaCarouselType } from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { STORIES_SECTION } from '@/data/originalData';
@@ -15,21 +15,21 @@ interface StoriesSectionProps {
 
 export const StoriesSection: React.FC<StoriesSectionProps> = () => {
   const [selectedCat, setSelectedCat] = useState<string>('all');
-  const [prevBtnDisabled, setPrevBtnDisabled] = useState(false);
+  const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(false);
   const [activeVideo, setActiveVideo] = useState<{ url: string; title: string } | null>(null);
 
-  // Initialize Embla Carousel with responsive alignments
+  // Initialize Embla Carousel with one-directional navigation (loop: false, matching DoctorsSection)
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       align: 'start',
       dragFree: false,
-      loop: true,
+      loop: false,
       duration: 30,
     },
     [
       Autoplay({
-        delay: 4000,
+        delay: 4500,
         stopOnInteraction: false,
         stopOnMouseEnter: true,
       }),
@@ -39,22 +39,22 @@ export const StoriesSection: React.FC<StoriesSectionProps> = () => {
   const categories = STORIES_SECTION.categories;
   const cards = STORIES_SECTION.cards;
 
-  const filteredCards = selectedCat === 'all'
-    ? cards
-    : cards.filter(c => c.category === selectedCat);
+  const filteredCards = useMemo(() => {
+    return selectedCat === 'all'
+      ? cards
+      : cards.filter(c => c.category === selectedCat);
+  }, [cards, selectedCat]);
 
-  // Limit to genuine cards, repeating only if necessary for smooth carousel looping (max 6-8 items)
-  const displayCards = useMemo(() => {
-    if (filteredCards.length === 0) return [];
-    if (filteredCards.length >= 6) return filteredCards;
-    const repeatCount = Math.ceil(6 / filteredCards.length);
-    return Array.from({ length: repeatCount }, () => filteredCards).flat();
-  }, [filteredCards]);
+  const displayCards = filteredCards;
 
+  // Single direction selection callback matching DoctorsSection
   const onSelect = useCallback((api: UseEmblaCarouselType[1]) => {
     if (!api) return;
-    setPrevBtnDisabled(!api.canScrollPrev());
-    setNextBtnDisabled(!api.canScrollNext());
+    const canScroll = api.scrollSnapList().length > 1;
+    // Single direction: Previous is disabled at the start (index 0) or when there is nowhere to scroll back
+    setPrevBtnDisabled(!canScroll || !api.canScrollPrev());
+    // Next: enabled when scrolling is needed (cycles to start from the end); disabled when all items fit
+    setNextBtnDisabled(!canScroll);
   }, []);
 
   useEffect(() => {
@@ -65,10 +65,12 @@ export const StoriesSection: React.FC<StoriesSectionProps> = () => {
     });
     emblaApi.on('select', onSelect);
     emblaApi.on('reInit', onSelect);
+    emblaApi.on('resize', onSelect);
 
     return () => {
       emblaApi.off('select', onSelect);
       emblaApi.off('reInit', onSelect);
+      emblaApi.off('resize', onSelect);
     };
   }, [emblaApi, onSelect, displayCards]);
 
@@ -82,19 +84,30 @@ export const StoriesSection: React.FC<StoriesSectionProps> = () => {
     }
   }, [activeVideo, emblaApi]);
 
+  // Scroll Previous: only goes backward when possible, CANNOT go to last item from start
   const scrollPrev = useCallback(() => {
-    if (emblaApi) {
+    if (emblaApi && emblaApi.canScrollPrev()) {
       emblaApi.scrollPrev();
       emblaApi.plugins()?.autoplay?.reset();
     }
   }, [emblaApi]);
 
+  // Scroll Next: advances in one direction, cycles to start from the end
   const scrollNext = useCallback(() => {
     if (emblaApi) {
-      emblaApi.scrollNext();
+      if (emblaApi.canScrollNext()) {
+        emblaApi.scrollNext();
+      } else {
+        // Complete cycle -> restart from starting point
+        emblaApi.scrollTo(0);
+      }
       emblaApi.plugins()?.autoplay?.reset();
     }
   }, [emblaApi]);
+
+  const isDirectVideo = (url: string) => {
+    return url.endsWith('.mp4') || url.endsWith('.webm') || url.includes('/testimonials/videos/');
+  };
 
   const getYouTubeEmbedUrl = (url: string) => {
     if (!url) return '';
@@ -123,6 +136,10 @@ export const StoriesSection: React.FC<StoriesSectionProps> = () => {
           style={{ borderColor: 'var(--color-surface-outline)' }}
         >
           <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 mb-3">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Verified Patient Stories & Video Testimonials</span>
+            </div>
             <h2 className="text-v2-title font-semibold tracking-[-1px] lg:tracking-[-2px] leading-[40px] lg:leading-[1.1] text-balance text-left" style={{ color: 'var(--color-primary)' }}>
               {STORIES_SECTION.headingLine1}{" "}
               <span 
@@ -136,41 +153,35 @@ export const StoriesSection: React.FC<StoriesSectionProps> = () => {
               </span>
             </h2>
             <p className="mt-3 text-sm sm:text-base leading-6 text-medium font-normal max-w-xl">
-              Watch genuine video testimonials from international patients who travelled to India for world-class medical procedures, specialized surgery, and post-operative wellness.
+              Watch genuine video testimonials from international travellers who chose India for world-class dental care.
             </p>
           </div>
 
-          {/* Right Controls: Category Filter Tabs & Carousel Navigation */}
-          <div className="flex flex-wrap items-center gap-3 flex-shrink-0 self-start md:self-end">
-            {/* Category Filter Tabs */}
-            <div className="flex items-center gap-1.5 bg-gray-100 p-1 rounded-full border border-gray-200 overflow-x-auto max-w-full">
-              {categories.map(cat => {
-                const isSelected = selectedCat === cat.value;
-                return (
-                  <button
-                    key={cat.value}
-                    type="button"
-                    onClick={() => {
-                      setSelectedCat(cat.value);
-                      if (emblaApi) emblaApi.scrollTo(0);
-                    }}
-                    className={`h-[38px] px-5 rounded-full text-sm sm:text-base font-medium transition-all cursor-pointer whitespace-nowrap ${
-                      isSelected
-                        ? 'shadow-xs text-white'
-                        : 'text-gray-700 hover:text-gray-950'
-                    }`}
-                    style={{
-                      backgroundColor: isSelected ? 'var(--color-primary)' : 'transparent',
-                    }}
-                  >
-                    {cat.label}
-                  </button>
-                );
-              })}
+          {/* Controls: Filter Pills & Arrows */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            {/* Filter Pills */}
+            <div className="flex flex-wrap gap-2">
+              {categories.map((cat) => (
+                <button
+                  key={cat.value}
+                  type="button"
+                  onClick={() => setSelectedCat(cat.value)}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                    selectedCat === cat.value
+                      ? 'text-white shadow-sm'
+                      : 'border border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50'
+                  }`}
+                  style={{
+                    backgroundColor: selectedCat === cat.value ? 'var(--color-primary)' : undefined,
+                  }}
+                >
+                  {cat.label}
+                </button>
+              ))}
             </div>
 
-            {/* Carousel Arrow Buttons */}
-            <div className="flex items-center gap-2">
+            {/* Slider Navigation Arrows (One-directional matching DoctorsSection) */}
+            <div className="flex items-center gap-2 self-end sm:self-auto shrink-0">
               <motion.button
                 type="button"
                 onClick={scrollPrev}
@@ -220,9 +231,9 @@ export const StoriesSection: React.FC<StoriesSectionProps> = () => {
           ref={emblaRef}
         >
           <div className="flex -ml-6 touch-pan-y">
-            {displayCards.map((story, idx) => (
+            {displayCards.map((story) => (
               <div
-                key={`${story.id}-${idx}`}
+                key={story.id}
                 className="pl-6 min-w-0 flex-[0_0_88%] sm:flex-[0_0_50%] md:flex-[0_0_42%] lg:flex-[0_0_33.333%] xl:flex-[0_0_28%]"
               >
                 <motion.div
@@ -230,7 +241,7 @@ export const StoriesSection: React.FC<StoriesSectionProps> = () => {
                   className="h-full group rounded-3xl overflow-hidden border bg-white shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between select-none"
                   style={{ borderColor: 'var(--color-surface-outline)' }}
                 >
-                  {/* Poster / Video Section with Increased Height */}
+                  {/* Poster / Video Section */}
                   <div 
                     className="relative h-[380px] sm:h-[420px] md:h-[460px] lg:h-[480px] w-full bg-gray-100 overflow-hidden cursor-pointer"
                     onClick={() => setActiveVideo({ url: story.videoUrl, title: `${story.name} — ${story.treatment}` })}
@@ -256,14 +267,14 @@ export const StoriesSection: React.FC<StoriesSectionProps> = () => {
                       <span>{story.destinationCountry}</span>
                     </div>
 
-                    {/* Video Duration Pill (if available) */}
+                    {/* Video Duration Pill */}
                     {story.videoDuration && (
                       <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-white text-[11px] font-semibold border border-white/10 pointer-events-none">
                         {story.videoDuration}
                       </div>
                     )}
 
-                    {/* Play Button Overlay with Micro-Interactions */}
+                    {/* Play Button Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <motion.div 
                         whileHover={{ scale: 1.15 }}
@@ -278,7 +289,7 @@ export const StoriesSection: React.FC<StoriesSectionProps> = () => {
                       </motion.div>
                     </div>
 
-                    {/* Patient Name & Treatment Tag at bottom of Video Part */}
+                    {/* Patient Name & Treatment Tag */}
                     <div className="absolute bottom-4 left-4 right-4 text-white pointer-events-none">
                       <span 
                         className="inline-block px-2.5 py-0.5 rounded-md text-[10px] uppercase font-bold tracking-wider mb-1.5"
@@ -299,7 +310,7 @@ export const StoriesSection: React.FC<StoriesSectionProps> = () => {
                     </p>
 
                     <div className="mt-5 pt-4 border-t flex items-center justify-between text-xs" style={{ borderColor: 'var(--color-surface-outline)' }}>
-                      <div className="flex items-center gap-1" style={{ color: 'var(--color-secondary)' }}>
+                      <div className="flex items-center gap-1 text-amber-500">
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className="w-3.5 h-3.5 fill-current" />
                         ))}
@@ -325,7 +336,7 @@ export const StoriesSection: React.FC<StoriesSectionProps> = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4"
             onClick={() => setActiveVideo(null)}
           >
             <motion.div 
@@ -333,7 +344,9 @@ export const StoriesSection: React.FC<StoriesSectionProps> = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-4xl bg-black rounded-3xl overflow-hidden shadow-2xl border border-white/20"
+              className={`relative w-full ${
+                isDirectVideo(activeVideo.url) ? 'max-w-md sm:max-w-lg' : 'max-w-4xl'
+              } bg-black rounded-3xl overflow-hidden shadow-2xl border border-white/20`}
               onClick={e => e.stopPropagation()}
             >
               <div className="flex items-center justify-between px-6 py-4 bg-zinc-900 border-b border-zinc-800 text-white">
@@ -348,15 +361,27 @@ export const StoriesSection: React.FC<StoriesSectionProps> = () => {
                 </button>
               </div>
 
-              <div className="relative pt-[56.25%] w-full bg-zinc-950">
-                <iframe
-                  src={getYouTubeEmbedUrl(activeVideo.url)}
-                  title={activeVideo.title}
-                  className="absolute inset-0 w-full h-full border-0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
+              {isDirectVideo(activeVideo.url) ? (
+                <div className="relative w-full bg-black flex items-center justify-center p-0">
+                  <video
+                    src={activeVideo.url}
+                    controls
+                    autoPlay
+                    playsInline
+                    className="w-full max-h-[75vh] object-contain bg-black"
+                  />
+                </div>
+              ) : (
+                <div className="relative pt-[56.25%] w-full bg-zinc-950">
+                  <iframe
+                    src={getYouTubeEmbedUrl(activeVideo.url)}
+                    title={activeVideo.title}
+                    className="absolute inset-0 w-full h-full border-0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              )}
             </motion.div>
           </motion.div>
         )}

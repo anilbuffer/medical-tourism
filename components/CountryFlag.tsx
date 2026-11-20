@@ -100,6 +100,109 @@ export const CountryFlag: React.FC<CountryFlagProps> = ({ code = '', market = ''
     );
   }
 
+  // Helper for USA
+  if (
+    c === 'US' ||
+    c === 'USA' ||
+    m.includes('united states') ||
+    m.includes('america') ||
+    m === 'us'
+  ) {
+    return (
+      <span 
+        className={`relative inline-flex items-center justify-center w-[22px] h-[15px] sm:w-[24px] sm:h-[16px] rounded-[3px] overflow-hidden border border-black/15 shadow-[0_1px_2px_rgba(0,0,0,0.12)] flex-shrink-0 align-middle ${className}`}
+        title="United States"
+      >
+        <svg viewBox="0 0 741 390" className="w-full h-full block">
+          <rect width="741" height="390" fill="#B22234"/>
+          <path d="M0 30h741M0 90h741M0 150h741M0 210h741M0 270h741M0 330h741" stroke="#FFFFFF" strokeWidth="30"/>
+          <rect width="296.4" height="210" fill="#3C3B6E"/>
+          <g fill="#FFFFFF">
+            <circle cx="49" cy="35" r="9"/>
+            <circle cx="98" cy="35" r="9"/>
+            <circle cx="148" cy="35" r="9"/>
+            <circle cx="197" cy="35" r="9"/>
+            <circle cx="247" cy="35" r="9"/>
+            <circle cx="74" cy="70" r="9"/>
+            <circle cx="123" cy="70" r="9"/>
+            <circle cx="173" cy="70" r="9"/>
+            <circle cx="222" cy="70" r="9"/>
+            <circle cx="49" cy="105" r="9"/>
+            <circle cx="98" cy="105" r="9"/>
+            <circle cx="148" cy="105" r="9"/>
+            <circle cx="197" cy="105" r="9"/>
+            <circle cx="247" cy="105" r="9"/>
+            <circle cx="74" cy="140" r="9"/>
+            <circle cx="123" cy="140" r="9"/>
+            <circle cx="173" cy="140" r="9"/>
+            <circle cx="222" cy="140" r="9"/>
+            <circle cx="49" cy="175" r="9"/>
+            <circle cx="98" cy="175" r="9"/>
+            <circle cx="148" cy="175" r="9"/>
+            <circle cx="197" cy="175" r="9"/>
+            <circle cx="247" cy="175" r="9"/>
+          </g>
+        </svg>
+      </span>
+    );
+  }
+
+  // Helper for Canada
+  if (
+    c === 'CA' ||
+    c === 'CAN' ||
+    m.includes('canada') ||
+    m === 'ca'
+  ) {
+    return (
+      <span 
+        className={`relative inline-flex items-center justify-center w-[22px] h-[15px] sm:w-[24px] sm:h-[16px] rounded-[3px] overflow-hidden border border-black/15 shadow-[0_1px_2px_rgba(0,0,0,0.12)] flex-shrink-0 align-middle ${className}`}
+        title="Canada"
+      >
+        <svg viewBox="0 0 1000 500" className="w-full h-full block">
+          <rect width="250" height="500" fill="#D80621"/>
+          <rect x="250" width="500" height="500" fill="#FFFFFF"/>
+          <rect x="750" width="250" height="500" fill="#D80621"/>
+          <path d="M500 95 l18 45 42 -12 -12 40 45 10 -30 35 30 18 -55 10 2 20 -35 -15 -5 54 h-10 l-5 -54 -35 15 2 -20 -55 -10 30 -18 -30 -35 45 -10 -12 -40 42 12 z" fill="#D80621"/>
+        </svg>
+      </span>
+    );
+  }
+
+  // Helper for Australia
+  if (
+    c === 'AU' ||
+    c === 'AUS' ||
+    m.includes('australia') ||
+    m === 'au'
+  ) {
+    return (
+      <span 
+        className={`relative inline-flex items-center justify-center w-[22px] h-[15px] sm:w-[24px] sm:h-[16px] rounded-[3px] overflow-hidden border border-black/15 shadow-[0_1px_2px_rgba(0,0,0,0.12)] flex-shrink-0 align-middle ${className}`}
+        title="Australia"
+      >
+        <svg viewBox="0 0 1200 600" className="w-full h-full block">
+          <rect width="1200" height="600" fill="#00008B"/>
+          <g transform="scale(0.5)">
+            <rect width="600" height="300" fill="#012169"/>
+            <path d="M0 0l600 300m0-300L0 300" stroke="#FFFFFF" strokeWidth="60"/>
+            <path d="M0 0l600 300m0-300L0 300" stroke="#C8102E" strokeWidth="40"/>
+            <path d="M300 0v300M0 150h600" stroke="#FFFFFF" strokeWidth="100"/>
+            <path d="M300 0v300M0 150h600" stroke="#C8102E" strokeWidth="60"/>
+          </g>
+          <g fill="#FFFFFF">
+            <circle cx="300" cy="450" r="55"/>
+            <circle cx="900" cy="150" r="22"/>
+            <circle cx="1020" cy="240" r="22"/>
+            <circle cx="900" cy="400" r="22"/>
+            <circle cx="780" cy="280" r="22"/>
+            <circle cx="960" cy="310" r="14"/>
+          </g>
+        </svg>
+      </span>
+    );
+  }
+
   // Helper for Germany
   if (
     c === 'DE' ||
