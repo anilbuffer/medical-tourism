@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Star, ChevronLeft, ChevronRight, X, CheckCircle2 } from 'lucide-react';
+import { Play, ChevronLeft, ChevronRight, X, CheckCircle2 } from 'lucide-react';
 import useEmblaCarousel, { UseEmblaCarouselType } from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { STORIES_SECTION } from '@/data/storiesData';
@@ -238,90 +238,49 @@ export const StoriesSection: React.FC<StoriesSectionProps> = () => {
               >
                 <motion.div
                   whileHover={{ y: -6, transition: { duration: 0.25 } }}
-                  className="h-full group rounded-3xl overflow-hidden border bg-white shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between select-none"
+                  onClick={() => setActiveVideo({ url: story.videoUrl, title: `${story.treatment} — Patient Story` })}
+                  className="relative h-[420px] sm:h-[460px] md:h-[500px] lg:h-[520px] w-full group rounded-3xl overflow-hidden border bg-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 select-none cursor-pointer"
                   style={{ borderColor: 'var(--color-surface-outline)' }}
                 >
-                  {/* Poster / Video Section */}
-                  <div 
-                    className="relative h-[380px] sm:h-[420px] md:h-[460px] lg:h-[480px] w-full bg-gray-100 overflow-hidden cursor-pointer"
-                    onClick={() => setActiveVideo({ url: story.videoUrl, title: `${story.name} — ${story.treatment}` })}
-                  >
-                    <Image
-                      src={story.poster.src}
-                      alt={story.name}
-                      fill
-                      draggable={false}
-                      className="object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none"
-                      sizes="(max-width: 640px) 88vw, (max-width: 1024px) 45vw, 28vw"
-                    />
-                    
-                    {/* Dark gradient scrims */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/35 pointer-events-none" />
+                  <Image
+                    src={story.poster.src}
+                    alt={`${story.treatment} patient video testimonial`}
+                    fill
+                    draggable={false}
+                    className="object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none"
+                    sizes="(max-width: 640px) 88vw, (max-width: 1024px) 45vw, 28vw"
+                  />
+                  
+                  {/* Subtle top/bottom gradient scrims for pills and depth */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/35 pointer-events-none" />
 
-                    {/* Country Flags & Route Pill */}
-                    <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full text-white text-xs font-semibold border border-white/10 shadow-md pointer-events-none">
-                      <CountryFlag code={story.originFlagCode} />
-                      <span>{story.originCountry}</span>
-                      <span className="text-white/50 text-[10px]">➔</span>
-                      <CountryFlag code={story.destinationFlagCode} />
-                      <span>{story.destinationCountry}</span>
-                    </div>
-
-                    {/* Video Duration Pill */}
-                    {story.videoDuration && (
-                      <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-white text-[11px] font-semibold border border-white/10 pointer-events-none">
-                        {story.videoDuration}
-                      </div>
-                    )}
-
-                    {/* Play Button Overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <motion.div 
-                        whileHover={{ scale: 1.15 }}
-                        whileTap={{ scale: 0.92 }}
-                        className="w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-transform"
-                        style={{
-                          backgroundColor: 'var(--color-secondary)',
-                          color: 'var(--color-primary)',
-                        }}
-                      >
-                        <Play className="w-7 h-7 fill-current ml-1" />
-                      </motion.div>
-                    </div>
-
-                    {/* Patient Name & Treatment Tag */}
-                    <div className="absolute bottom-4 left-4 right-4 text-white pointer-events-none">
-                      <span 
-                        className="inline-block px-2.5 py-0.5 rounded-md text-[10px] uppercase font-bold tracking-wider mb-1.5"
-                        style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)', backdropFilter: 'blur(4px)' }}
-                      >
-                        {story.treatment}
-                      </span>
-                      <h3 className="line-clamp-1 text-xl sm:text-2xl font-medium tracking-tight text-white">
-                        {story.name}
-                      </h3>
-                    </div>
+                  {/* Country Flag Pill (Only show the flag of the testimonial) */}
+                  <div className="absolute top-4 left-4 flex items-center gap-1.5 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full text-white text-xs font-semibold border border-white/10 shadow-md pointer-events-none">
+                    <CountryFlag code={story.originFlagCode} />
+                    <span>{story.originCountry}</span>
                   </div>
 
-                  {/* Patient Quote & Rating Section */}
-                  <div className="p-6 flex-1 flex flex-col justify-between">
-                    <p className="text-xs sm:text-sm leading-relaxed font-normal text-gray-700 italic">
-                      {story.quote}
-                    </p>
-
-                    <div className="mt-5 pt-4 border-t flex items-center justify-between text-xs" style={{ borderColor: 'var(--color-surface-outline)' }}>
-                      <div className="flex items-center gap-1 text-amber-500">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                        ))}
-                      </div>
-                      <span className="font-semibold flex items-center gap-1.5 text-emerald-700">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 inline-block" />
-                        Verified Patient
-                      </span>
+                  {/* Video Duration Pill */}
+                  {story.videoDuration && (
+                    <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-white text-[11px] font-semibold border border-white/10 pointer-events-none">
+                      {story.videoDuration}
                     </div>
-                  </div>
+                  )}
 
+                  {/* Play Button Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <motion.div 
+                      whileHover={{ scale: 1.15 }}
+                      whileTap={{ scale: 0.92 }}
+                      className="w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-transform"
+                      style={{
+                        backgroundColor: 'var(--color-secondary)',
+                        color: 'var(--color-primary)',
+                      }}
+                    >
+                      <Play className="w-7 h-7 fill-current ml-1" />
+                    </motion.div>
+                  </div>
                 </motion.div>
               </div>
             ))}
