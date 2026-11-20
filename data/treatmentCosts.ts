@@ -17,7 +17,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 3000,
     "priceTo": 6000,
     "priceRange": "$3,000 \u2013 $6,000",
-    "savingsPercent": 68,
+    "savingsPercent": 72,
     "locationPrices": [
       {
         "amount": 3000,
@@ -29,57 +29,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 9500,
-        "maxAmount": 21000,
-        "range": "$9,500 \u2013 $21,000",
+        "amount": 10667,
+        "maxAmount": 10667,
+        "range": "40,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 12000,
-        "maxAmount": 20000,
-        "range": "$12,000 \u2013 $20,000",
+        "amount": 3580,
+        "maxAmount": 3580,
+        "range": "435,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 6000,
-        "maxAmount": 10000,
-        "range": "$6,000 \u2013 $10,000",
+        "amount": 17920,
+        "maxAmount": 17920,
+        "range": "\u00a314,000",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 8000,
-        "maxAmount": 14000,
-        "range": "$8,000 \u2013 $14,000",
+        "amount": 16250,
+        "maxAmount": 16250,
+        "range": "A$25,000",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 14000,
-        "maxAmount": 26000,
-        "range": "$14,000 \u2013 $26,000",
+        "amount": 5000,
+        "maxAmount": 5000,
+        "range": "$5,000 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 7800,
-        "maxAmount": 16500,
-        "range": "$7,800 \u2013 $16,500",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -99,7 +90,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 6000,
     "priceTo": 9000,
     "priceRange": "$6,000 \u2013 $9,000",
-    "savingsPercent": 40,
+    "savingsPercent": 46,
     "locationPrices": [
       {
         "amount": 6000,
@@ -111,57 +102,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 10000,
-        "maxAmount": 22500,
-        "range": "$10,000 \u2013 $22,500",
+        "amount": 11200,
+        "maxAmount": 11200,
+        "range": "42,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 13000,
-        "maxAmount": 23000,
-        "range": "$13,000 \u2013 $23,000",
+        "amount": 4115,
+        "maxAmount": 4115,
+        "range": "500,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 6500,
-        "maxAmount": 11000,
-        "range": "$6,500 \u2013 $11,000",
+        "amount": 17280,
+        "maxAmount": 17280,
+        "range": "\u00a313,500",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 8500,
-        "maxAmount": 15000,
-        "range": "$8,500 \u2013 $15,000",
+        "amount": 16250,
+        "maxAmount": 16250,
+        "range": "A$25,000",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 15000,
-        "maxAmount": 28000,
-        "range": "$15,000 \u2013 $28,000",
+        "amount": 5500,
+        "maxAmount": 5500,
+        "range": "$5,500 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 8000,
-        "maxAmount": 18000,
-        "range": "$8,000 \u2013 $18,000",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -181,7 +163,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 1500,
     "priceTo": 7000,
     "priceRange": "$1,500 \u2013 $7,000",
-    "savingsPercent": 69,
+    "savingsPercent": 62,
     "locationPrices": [
       {
         "amount": 1500,
@@ -193,57 +175,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 4800,
-        "maxAmount": 11500,
-        "range": "$4,800 \u2013 $11,500",
+        "amount": 4000,
+        "maxAmount": 4000,
+        "range": "15,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 5500,
-        "maxAmount": 20000,
-        "range": "$5,500 \u2013 $20,000",
+        "amount": 1852,
+        "maxAmount": 1852,
+        "range": "225,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
+      },
+      {
+        "amount": 8960,
+        "maxAmount": 8960,
+        "range": "\u00a37,000",
+        "isPrimary": false,
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
+      },
+      {
+        "amount": 6500,
+        "maxAmount": 6500,
+        "range": "A$10,000",
+        "isPrimary": false,
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
         "amount": 2500,
-        "maxAmount": 10000,
-        "range": "$2,500 \u2013 $10,000",
+        "maxAmount": 2500,
+        "range": "$2,500 USD",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 3500,
-        "maxAmount": 13000,
-        "range": "$3,500 \u2013 $13,000",
-        "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 7000,
-        "maxAmount": 25000,
-        "range": "$7,000 \u2013 $25,000",
-        "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 3800,
-        "maxAmount": 9200,
-        "range": "$3,800 \u2013 $9,200",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -263,7 +236,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 7000,
     "priceTo": 13500,
     "priceRange": "$7,000 \u2013 $13,500",
-    "savingsPercent": 26,
+    "savingsPercent": 61,
     "locationPrices": [
       {
         "amount": 7000,
@@ -275,57 +248,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 9500,
-        "maxAmount": 22500,
-        "range": "$9,500 \u2013 $22,500",
+        "amount": 17867,
+        "maxAmount": 17867,
+        "range": "67,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 15000,
-        "maxAmount": 28000,
-        "range": "$15,000 \u2013 $28,000",
+        "amount": 3580,
+        "maxAmount": 3580,
+        "range": "435,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 8500,
-        "maxAmount": 16000,
-        "range": "$8,500 \u2013 $16,000",
+        "amount": 20480,
+        "maxAmount": 20480,
+        "range": "\u00a316,000",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 11000,
-        "maxAmount": 21000,
-        "range": "$11,000 \u2013 $21,000",
+        "amount": 18200,
+        "maxAmount": 18200,
+        "range": "A$28,000",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 18000,
-        "maxAmount": 38000,
-        "range": "$18,000 \u2013 $38,000",
+        "amount": 5000,
+        "maxAmount": 5000,
+        "range": "$5,000 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 7800,
-        "maxAmount": 18000,
-        "range": "$7,800 \u2013 $18,000",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -345,7 +309,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 7000,
     "priceTo": 13500,
     "priceRange": "$7,000 \u2013 $13,500",
-    "savingsPercent": 7,
+    "savingsPercent": 46,
     "locationPrices": [
       {
         "amount": 7000,
@@ -357,57 +321,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 7500,
-        "maxAmount": 17500,
-        "range": "$7,500 \u2013 $17,500",
+        "amount": 13067,
+        "maxAmount": 13067,
+        "range": "49,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 15000,
-        "maxAmount": 28000,
-        "range": "$15,000 \u2013 $28,000",
+        "amount": 3086,
+        "maxAmount": 3086,
+        "range": "375,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 8500,
-        "maxAmount": 16000,
-        "range": "$8,500 \u2013 $16,000",
+        "amount": 12800,
+        "maxAmount": 12800,
+        "range": "\u00a310,000",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 11000,
-        "maxAmount": 21000,
-        "range": "$11,000 \u2013 $21,000",
+        "amount": 9750,
+        "maxAmount": 9750,
+        "range": "A$15,000",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 18000,
-        "maxAmount": 38000,
-        "range": "$18,000 \u2013 $38,000",
+        "amount": 4500,
+        "maxAmount": 4500,
+        "range": "$4,500 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 6000,
-        "maxAmount": 14000,
-        "range": "$6,000 \u2013 $14,000",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -427,7 +382,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 500,
     "priceTo": 6000,
     "priceRange": "$500 \u2013 $6,000",
-    "savingsPercent": 86,
+    "savingsPercent": 88,
     "locationPrices": [
       {
         "amount": 500,
@@ -439,57 +394,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 3500,
-        "maxAmount": 10500,
-        "range": "$3,500 \u2013 $10,500",
+        "amount": 4000,
+        "maxAmount": 4000,
+        "range": "15,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
+      },
+      {
+        "amount": 1852,
+        "maxAmount": 1852,
+        "range": "225,000 BDT",
+        "isPrimary": false,
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
+      },
+      {
+        "amount": 7680,
+        "maxAmount": 7680,
+        "range": "\u00a36,000",
+        "isPrimary": false,
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
+      },
+      {
+        "amount": 7800,
+        "maxAmount": 7800,
+        "range": "A$12,000",
+        "isPrimary": false,
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
         "amount": 2000,
-        "maxAmount": 18000,
-        "range": "$2,000 \u2013 $18,000",
+        "maxAmount": 2000,
+        "range": "$2,000 USD",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 900,
-        "maxAmount": 9000,
-        "range": "$900 \u2013 $9,000",
-        "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 1200,
-        "maxAmount": 12000,
-        "range": "$1,200 \u2013 $12,000",
-        "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 2500,
-        "maxAmount": 22000,
-        "range": "$2,500 \u2013 $22,000",
-        "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 2600,
-        "maxAmount": 7000,
-        "range": "$2,600 \u2013 $7,000",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -509,7 +455,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 1500,
     "priceTo": 7000,
     "priceRange": "$1,500 \u2013 $7,000",
-    "savingsPercent": 73,
+    "savingsPercent": 72,
     "locationPrices": [
       {
         "amount": 1500,
@@ -521,57 +467,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 5500,
-        "maxAmount": 13000,
-        "range": "$5,500 \u2013 $13,000",
+        "amount": 5333,
+        "maxAmount": 5333,
+        "range": "20,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 5500,
-        "maxAmount": 20000,
-        "range": "$5,500 \u2013 $20,000",
+        "amount": 2881,
+        "maxAmount": 2881,
+        "range": "350,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 2500,
-        "maxAmount": 10000,
-        "range": "$2,500 \u2013 $10,000",
+        "amount": 7040,
+        "maxAmount": 7040,
+        "range": "\u00a35,500",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 3500,
-        "maxAmount": 13000,
-        "range": "$3,500 \u2013 $13,000",
+        "amount": 7150,
+        "maxAmount": 7150,
+        "range": "A$11,000",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 7000,
-        "maxAmount": 25000,
-        "range": "$7,000 \u2013 $25,000",
+        "amount": 3000,
+        "maxAmount": 3000,
+        "range": "$3,000 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 4500,
-        "maxAmount": 10500,
-        "range": "$4,500 \u2013 $10,500",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -591,7 +528,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 1200,
     "priceTo": 3500,
     "priceRange": "$1,200 \u2013 $3,500",
-    "savingsPercent": 45,
+    "savingsPercent": 62,
     "locationPrices": [
       {
         "amount": 1200,
@@ -603,57 +540,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 2200,
-        "maxAmount": 6500,
-        "range": "$2,200 \u2013 $6,500",
+        "amount": 3200,
+        "maxAmount": 3200,
+        "range": "12,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 3500,
-        "maxAmount": 8500,
-        "range": "$3,500 \u2013 $8,500",
+        "amount": 1235,
+        "maxAmount": 1235,
+        "range": "150,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 2500,
-        "maxAmount": 7500,
-        "range": "$2,500 \u2013 $7,500",
+        "amount": 5760,
+        "maxAmount": 5760,
+        "range": "\u00a34,500",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 2500,
+        "amount": 6500,
         "maxAmount": 6500,
-        "range": "$2,500 \u2013 $6,500",
+        "range": "A$10,000",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 4500,
-        "maxAmount": 10000,
-        "range": "$4,500 \u2013 $10,000",
+        "amount": 1500,
+        "maxAmount": 1500,
+        "range": "$1,500 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 1800,
-        "maxAmount": 4800,
-        "range": "$1,800 \u2013 $4,800",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -686,56 +614,47 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
       },
       {
         "amount": 4000,
-        "maxAmount": 11000,
-        "range": "$4,000 \u2013 $11,000",
+        "maxAmount": 4000,
+        "range": "15,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 5500,
-        "maxAmount": 20000,
-        "range": "$5,500 \u2013 $20,000",
+        "amount": 1646,
+        "maxAmount": 1646,
+        "range": "200,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 2500,
-        "maxAmount": 10000,
-        "range": "$2,500 \u2013 $10,000",
+        "amount": 5760,
+        "maxAmount": 5760,
+        "range": "\u00a34,500",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 3500,
-        "maxAmount": 13000,
-        "range": "$3,500 \u2013 $13,000",
+        "amount": 4550,
+        "maxAmount": 4550,
+        "range": "A$7,000",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 7000,
-        "maxAmount": 25000,
-        "range": "$7,000 \u2013 $25,000",
+        "amount": 2000,
+        "maxAmount": 2000,
+        "range": "$2,000 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 3200,
-        "maxAmount": 8500,
-        "range": "$3,200 \u2013 $8,500",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -755,7 +674,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 500,
     "priceTo": 6000,
     "priceRange": "$500 \u2013 $6,000",
-    "savingsPercent": 91,
+    "savingsPercent": 93,
     "locationPrices": [
       {
         "amount": 500,
@@ -767,57 +686,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 5500,
-        "maxAmount": 13500,
-        "range": "$5,500 \u2013 $13,500",
+        "amount": 6667,
+        "maxAmount": 6667,
+        "range": "25,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 2000,
-        "maxAmount": 18000,
-        "range": "$2,000 \u2013 $18,000",
+        "amount": 2469,
+        "maxAmount": 2469,
+        "range": "300,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 900,
-        "maxAmount": 9000,
-        "range": "$900 \u2013 $9,000",
+        "amount": 8320,
+        "maxAmount": 8320,
+        "range": "\u00a36,500",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 1200,
-        "maxAmount": 12000,
-        "range": "$1,200 \u2013 $12,000",
+        "amount": 9750,
+        "maxAmount": 9750,
+        "range": "A$15,000",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 2500,
-        "maxAmount": 22000,
-        "range": "$2,500 \u2013 $22,000",
+        "amount": 3000,
+        "maxAmount": 3000,
+        "range": "$3,000 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 4500,
-        "maxAmount": 10800,
-        "range": "$4,500 \u2013 $10,800",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -837,7 +747,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 250,
     "priceTo": 1100,
     "priceRange": "$250 \u2013 $1,100",
-    "savingsPercent": 84,
+    "savingsPercent": 88,
     "locationPrices": [
       {
         "amount": 250,
@@ -849,57 +759,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 1600,
-        "maxAmount": 3400,
-        "range": "$1,600 \u2013 $3,400",
+        "amount": 2133,
+        "maxAmount": 2133,
+        "range": "8,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 2000,
-        "maxAmount": 6000,
-        "range": "$2,000 \u2013 $6,000",
+        "amount": 412,
+        "maxAmount": 412,
+        "range": "50,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 1200,
-        "maxAmount": 3500,
-        "range": "$1,200 \u2013 $3,500",
+        "amount": 3200,
+        "maxAmount": 3200,
+        "range": "\u00a32,500",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 1200,
-        "maxAmount": 4000,
-        "range": "$1,200 \u2013 $4,000",
+        "amount": 2275,
+        "maxAmount": 2275,
+        "range": "A$3,500",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 2500,
-        "maxAmount": 6500,
-        "range": "$2,500 \u2013 $6,500",
+        "amount": 700,
+        "maxAmount": 700,
+        "range": "$700 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 1300,
-        "maxAmount": 2900,
-        "range": "$1,300 \u2013 $2,900",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -919,7 +820,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 1500,
     "priceTo": 7000,
     "priceRange": "$1,500 \u2013 $7,000",
-    "savingsPercent": 6,
+    "savingsPercent": 65,
     "locationPrices": [
       {
         "amount": 1500,
@@ -931,57 +832,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 1600,
-        "maxAmount": 3500,
-        "range": "$1,600 \u2013 $3,500",
+        "amount": 1067,
+        "maxAmount": 1067,
+        "range": "4,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 5500,
-        "maxAmount": 20000,
-        "range": "$5,500 \u2013 $20,000",
+        "amount": 412,
+        "maxAmount": 412,
+        "range": "50,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 2500,
-        "maxAmount": 10000,
-        "range": "$2,500 \u2013 $10,000",
+        "amount": 1920,
+        "maxAmount": 1920,
+        "range": "\u00a31,500",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 3500,
-        "maxAmount": 13000,
-        "range": "$3,500 \u2013 $13,000",
+        "amount": 1950,
+        "maxAmount": 1950,
+        "range": "A$3,000",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 7000,
-        "maxAmount": 25000,
-        "range": "$7,000 \u2013 $25,000",
+        "amount": 600,
+        "maxAmount": 600,
+        "range": "$600 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 1500,
-        "maxAmount": 3200,
-        "range": "$1,500 \u2013 $3,200",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -1001,7 +893,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 500,
     "priceTo": 6000,
     "priceRange": "$500 \u2013 $6,000",
-    "savingsPercent": 87,
+    "savingsPercent": 91,
     "locationPrices": [
       {
         "amount": 500,
@@ -1013,57 +905,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 3800,
-        "maxAmount": 9200,
-        "range": "$3,800 \u2013 $9,200",
+        "amount": 5333,
+        "maxAmount": 5333,
+        "range": "20,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 2000,
-        "maxAmount": 18000,
-        "range": "$2,000 \u2013 $18,000",
+        "amount": 1029,
+        "maxAmount": 1029,
+        "range": "125,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 900,
-        "maxAmount": 9000,
-        "range": "$900 \u2013 $9,000",
+        "amount": 7616,
+        "maxAmount": 7616,
+        "range": "\u00a35,950",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 1200,
-        "maxAmount": 12000,
-        "range": "$1,200 \u2013 $12,000",
+        "amount": 5200,
+        "maxAmount": 5200,
+        "range": "A$8,000",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 2500,
-        "maxAmount": 22000,
-        "range": "$2,500 \u2013 $22,000",
+        "amount": 1800,
+        "maxAmount": 1800,
+        "range": "$1,800 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 3000,
-        "maxAmount": 7400,
-        "range": "$3,000 \u2013 $7,400",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -1083,7 +966,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 500,
     "priceTo": 6000,
     "priceRange": "$500 \u2013 $6,000",
-    "savingsPercent": 91,
+    "savingsPercent": 93,
     "locationPrices": [
       {
         "amount": 500,
@@ -1095,57 +978,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 5500,
-        "maxAmount": 13500,
-        "range": "$5,500 \u2013 $13,500",
+        "amount": 6667,
+        "maxAmount": 6667,
+        "range": "25,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 2000,
-        "maxAmount": 18000,
-        "range": "$2,000 \u2013 $18,000",
+        "amount": 1029,
+        "maxAmount": 1029,
+        "range": "125,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 900,
-        "maxAmount": 9000,
-        "range": "$900 \u2013 $9,000",
+        "amount": 8960,
+        "maxAmount": 8960,
+        "range": "\u00a37,000",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 1200,
-        "maxAmount": 12000,
-        "range": "$1,200 \u2013 $12,000",
+        "amount": 7800,
+        "maxAmount": 7800,
+        "range": "A$12,000",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 2500,
-        "maxAmount": 22000,
-        "range": "$2,500 \u2013 $22,000",
+        "amount": 3000,
+        "maxAmount": 3000,
+        "range": "$3,000 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 4500,
-        "maxAmount": 11000,
-        "range": "$4,500 \u2013 $11,000",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -1165,7 +1039,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 500,
     "priceTo": 1200,
     "priceRange": "$500 \u2013 $1,200",
-    "savingsPercent": 29,
+    "savingsPercent": 69,
     "locationPrices": [
       {
         "amount": 500,
@@ -1177,57 +1051,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 700,
-        "maxAmount": 1800,
-        "range": "$700 \u2013 $1,800",
+        "amount": 1600,
+        "maxAmount": 1600,
+        "range": "6,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 1500,
-        "maxAmount": 4000,
-        "range": "$1,500 \u2013 $4,000",
+        "amount": 576,
+        "maxAmount": 576,
+        "range": "70,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 700,
-        "maxAmount": 1500,
-        "range": "$700 \u2013 $1,500",
+        "amount": 3200,
+        "maxAmount": 3200,
+        "range": "\u00a32,500",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 1200,
-        "maxAmount": 2500,
-        "range": "$1,200 \u2013 $2,500",
+        "amount": 2925,
+        "maxAmount": 2925,
+        "range": "A$4,500",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 1800,
-        "maxAmount": 4500,
-        "range": "$1,800 \u2013 $4,500",
+        "amount": 600,
+        "maxAmount": 600,
+        "range": "$600 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 850,
-        "maxAmount": 2100,
-        "range": "$850 \u2013 $2,100",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -1247,7 +1112,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 1500,
     "priceTo": 7000,
     "priceRange": "$1,500 \u2013 $7,000",
-    "savingsPercent": 84,
+    "savingsPercent": 94,
     "locationPrices": [
       {
         "amount": 1500,
@@ -1259,57 +1124,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 9500,
-        "maxAmount": 24000,
-        "range": "$9,500 \u2013 $24,000",
+        "amount": 25067,
+        "maxAmount": 25067,
+        "range": "94,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 5500,
-        "maxAmount": 20000,
-        "range": "$5,500 \u2013 $20,000",
+        "amount": 6584,
+        "maxAmount": 6584,
+        "range": "800,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 2500,
-        "maxAmount": 10000,
-        "range": "$2,500 \u2013 $10,000",
+        "amount": 30720,
+        "maxAmount": 30720,
+        "range": "\u00a324,000",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 3500,
-        "maxAmount": 13000,
-        "range": "$3,500 \u2013 $13,000",
+        "amount": 32500,
+        "maxAmount": 32500,
+        "range": "A$50,000",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 7000,
-        "maxAmount": 25000,
-        "range": "$7,000 \u2013 $25,000",
+        "amount": 8000,
+        "maxAmount": 8000,
+        "range": "$8,000 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 8200,
-        "maxAmount": 21000,
-        "range": "$8,200 \u2013 $21,000",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -1329,7 +1185,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 500,
     "priceTo": 6000,
     "priceRange": "$500 \u2013 $6,000",
-    "savingsPercent": 91,
+    "savingsPercent": 90,
     "locationPrices": [
       {
         "amount": 500,
@@ -1341,57 +1197,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 5500,
-        "maxAmount": 15000,
-        "range": "$5,500 \u2013 $15,000",
+        "amount": 4800,
+        "maxAmount": 4800,
+        "range": "18,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 2000,
-        "maxAmount": 18000,
-        "range": "$2,000 \u2013 $18,000",
+        "amount": 1646,
+        "maxAmount": 1646,
+        "range": "200,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 900,
-        "maxAmount": 9000,
-        "range": "$900 \u2013 $9,000",
+        "amount": 8960,
+        "maxAmount": 8960,
+        "range": "\u00a37,000",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 1200,
-        "maxAmount": 12000,
-        "range": "$1,200 \u2013 $12,000",
+        "amount": 8450,
+        "maxAmount": 8450,
+        "range": "A$13,000",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
         "amount": 2500,
-        "maxAmount": 22000,
-        "range": "$2,500 \u2013 $22,000",
+        "maxAmount": 2500,
+        "range": "$2,500 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 4500,
-        "maxAmount": 12000,
-        "range": "$4,500 \u2013 $12,000",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -1411,7 +1258,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 4200,
     "priceTo": 6500,
     "priceRange": "$4,200 \u2013 $6,500",
-    "savingsPercent": 65,
+    "savingsPercent": 12,
     "locationPrices": [
       {
         "amount": 4200,
@@ -1423,57 +1270,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 4000,
-        "maxAmount": 9500,
-        "range": "$4,000 \u2013 $9,500",
+        "amount": 4800,
+        "maxAmount": 4800,
+        "range": "18,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 5500,
-        "maxAmount": 9500,
-        "range": "$5,500 \u2013 $9,500",
+        "amount": 2469,
+        "maxAmount": 2469,
+        "range": "300,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 3500,
-        "maxAmount": 6000,
-        "range": "$3,500 \u2013 $6,000",
+        "amount": 6400,
+        "maxAmount": 6400,
+        "range": "\u00a35,000",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 6000,
-        "maxAmount": 10500,
-        "range": "$6,000 \u2013 $10,500",
+        "amount": 4550,
+        "maxAmount": 4550,
+        "range": "A$7,000",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 4000,
-        "maxAmount": 8500,
-        "range": "$4,000 \u2013 $8,500",
+        "amount": 3000,
+        "maxAmount": 3000,
+        "range": "$3,000 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 3400,
-        "maxAmount": 7800,
-        "range": "$3,400 \u2013 $7,800",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -1493,7 +1331,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 1500,
     "priceTo": 3200,
     "priceRange": "$1,500 \u2013 $3,200",
-    "savingsPercent": 65,
+    "savingsPercent": 72,
     "locationPrices": [
       {
         "amount": 1500,
@@ -1505,57 +1343,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 1200,
-        "maxAmount": 2800,
-        "range": "$1,200 \u2013 $2,800",
+        "amount": 5333,
+        "maxAmount": 5333,
+        "range": "20,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 5500,
-        "maxAmount": 9500,
-        "range": "$5,500 \u2013 $9,500",
+        "amount": 2881,
+        "maxAmount": 2881,
+        "range": "350,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
+      },
+      {
+        "amount": 7680,
+        "maxAmount": 7680,
+        "range": "\u00a36,000",
+        "isPrimary": false,
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
+      },
+      {
+        "amount": 4875,
+        "maxAmount": 4875,
+        "range": "A$7,500",
+        "isPrimary": false,
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
         "amount": 3500,
-        "maxAmount": 6000,
-        "range": "$3,500 \u2013 $6,000",
+        "maxAmount": 3500,
+        "range": "$3,500 USD",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 6000,
-        "maxAmount": 10500,
-        "range": "$6,000 \u2013 $10,500",
-        "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 4000,
-        "maxAmount": 8500,
-        "range": "$4,000 \u2013 $8,500",
-        "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 1000,
-        "maxAmount": 2400,
-        "range": "$1,000 \u2013 $2,400",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -1575,7 +1404,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 4500,
     "priceTo": 5500,
     "priceRange": "$4,500 \u2013 $5,500",
-    "savingsPercent": 44,
+    "savingsPercent": 33,
     "locationPrices": [
       {
         "amount": 4500,
@@ -1587,57 +1416,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 8000,
-        "maxAmount": 16500,
-        "range": "$8,000 \u2013 $16,500",
+        "amount": 6667,
+        "maxAmount": 6667,
+        "range": "25,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 4500,
-        "maxAmount": 9000,
-        "range": "$4,500 \u2013 $9,000",
+        "amount": 1646,
+        "maxAmount": 1646,
+        "range": "200,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 4500,
-        "maxAmount": 5500,
-        "range": "$4,500 \u2013 $5,500",
+        "amount": 12800,
+        "maxAmount": 12800,
+        "range": "\u00a310,000",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 2050,
-        "maxAmount": 2800,
-        "range": "$2,050 \u2013 $2,800",
+        "amount": 10400,
+        "maxAmount": 10400,
+        "range": "A$16,000",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 5000,
-        "maxAmount": 11000,
-        "range": "$5,000 \u2013 $11,000",
+        "amount": 3000,
+        "maxAmount": 3000,
+        "range": "$3,000 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 6500,
-        "maxAmount": 14000,
-        "range": "$6,500 \u2013 $14,000",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -1657,7 +1477,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 4000,
     "priceTo": 6000,
     "priceRange": "$4,000 \u2013 $6,000",
-    "savingsPercent": 78,
+    "savingsPercent": 75,
     "locationPrices": [
       {
         "amount": 4000,
@@ -1669,57 +1489,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 18000,
-        "maxAmount": 45000,
-        "range": "$18,000 \u2013 $45,000",
+        "amount": 16000,
+        "maxAmount": 16000,
+        "range": "60,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 18000,
-        "maxAmount": 35000,
-        "range": "$18,000 \u2013 $35,000",
+        "amount": 4115,
+        "maxAmount": 4115,
+        "range": "500,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 27000,
-        "maxAmount": 29000,
-        "range": "$27,000 \u2013 $29,000",
+        "amount": 28160,
+        "maxAmount": 28160,
+        "range": "\u00a322,000",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 12000,
-        "maxAmount": 25000,
-        "range": "$12,000 \u2013 $25,000",
+        "amount": 28600,
+        "maxAmount": 28600,
+        "range": "A$44,000",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 20000,
-        "maxAmount": 40000,
-        "range": "$20,000 \u2013 $40,000",
+        "amount": 6000,
+        "maxAmount": 6000,
+        "range": "$6,000 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 16000,
-        "maxAmount": 34000,
-        "range": "$16,000 \u2013 $34,000",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -1739,7 +1550,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 8000,
     "priceTo": 11000,
     "priceRange": "$8,000 \u2013 $11,000",
-    "savingsPercent": 60,
+    "savingsPercent": 54,
     "locationPrices": [
       {
         "amount": 8000,
@@ -1751,57 +1562,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 20000,
-        "maxAmount": 48000,
-        "range": "$20,000 \u2013 $48,000",
+        "amount": 17333,
+        "maxAmount": 17333,
+        "range": "65,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 18000,
-        "maxAmount": 40000,
-        "range": "$18,000 \u2013 $40,000",
+        "amount": 4938,
+        "maxAmount": 4938,
+        "range": "600,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 23000,
-        "maxAmount": 26000,
-        "range": "$23,000 \u2013 $26,000",
+        "amount": 35840,
+        "maxAmount": 35840,
+        "range": "\u00a328,000",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 14000,
-        "maxAmount": 30000,
-        "range": "$14,000 \u2013 $30,000",
+        "amount": 33800,
+        "maxAmount": 33800,
+        "range": "A$52,000",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 22000,
-        "maxAmount": 45000,
-        "range": "$22,000 \u2013 $45,000",
+        "amount": 7000,
+        "maxAmount": 7000,
+        "range": "$7,000 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 17500,
-        "maxAmount": 36000,
-        "range": "$17,500 \u2013 $36,000",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {
@@ -1821,7 +1623,7 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
     "priceFrom": 8000,
     "priceTo": 18000,
     "priceRange": "$8,000 \u2013 $18,000",
-    "savingsPercent": 56,
+    "savingsPercent": 14,
     "locationPrices": [
       {
         "amount": 8000,
@@ -1833,57 +1635,48 @@ export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
         "currencyCode": "USD"
       },
       {
-        "amount": 18000,
-        "maxAmount": 36000,
-        "range": "$18,000 \u2013 $36,000",
+        "amount": 9333,
+        "maxAmount": 9333,
+        "range": "35,000 SAR",
         "isPrimary": false,
         "market": "Saudi Arabia",
         "flagCode": "sa",
-        "currencyCode": "USD"
+        "currencyCode": "SAR"
       },
       {
-        "amount": 16000,
-        "maxAmount": 38000,
-        "range": "$16,000 \u2013 $38,000",
+        "amount": 1811,
+        "maxAmount": 1811,
+        "range": "220,000 BDT",
         "isPrimary": false,
-        "market": "UAE",
-        "flagCode": "ae",
-        "currencyCode": "USD"
+        "market": "Bangladesh",
+        "flagCode": "bd",
+        "currencyCode": "BDT"
       },
       {
-        "amount": 10000,
-        "maxAmount": 22000,
-        "range": "$10,000 \u2013 $22,000",
+        "amount": 9600,
+        "maxAmount": 9600,
+        "range": "\u00a37,500",
         "isPrimary": false,
-        "market": "Turkey",
-        "flagCode": "tr",
-        "currencyCode": "USD"
+        "market": "UK",
+        "flagCode": "gb",
+        "currencyCode": "GBP"
       },
       {
-        "amount": 12000,
-        "maxAmount": 28000,
-        "range": "$12,000 \u2013 $28,000",
+        "amount": 10400,
+        "maxAmount": 10400,
+        "range": "A$16,000",
         "isPrimary": false,
-        "market": "Thailand",
-        "flagCode": "th",
-        "currencyCode": "USD"
+        "market": "Australia",
+        "flagCode": "au",
+        "currencyCode": "AUD"
       },
       {
-        "amount": 18000,
-        "maxAmount": 42000,
-        "range": "$18,000 \u2013 $42,000",
+        "amount": 3500,
+        "maxAmount": 3500,
+        "range": "$3,500 USD",
         "isPrimary": false,
-        "market": "Germany",
-        "flagCode": "de",
-        "currencyCode": "USD"
-      },
-      {
-        "amount": 15000,
-        "maxAmount": 30000,
-        "range": "$15,000 \u2013 $30,000",
-        "isPrimary": false,
-        "market": "Oman",
-        "flagCode": "om",
+        "market": "Iraq",
+        "flagCode": "iq",
         "currencyCode": "USD"
       },
       {

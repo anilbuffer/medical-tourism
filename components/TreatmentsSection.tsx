@@ -83,8 +83,8 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
     activeCountry?.name?.toLowerCase() === 'other';
 
   const activeCompMarket = isOtherSelected 
-    ? (otherComparisonCountry || 'UAE')
-    : (activeCountry?.market || activeCountry?.name || 'UAE');
+    ? (otherComparisonCountry || 'Saudi Arabia')
+    : (activeCountry?.market || activeCountry?.name || 'Saudi Arabia');
 
   // Filtered Cards: maximum 6 items (two rows of 3 columns)
   const filteredCards = (selectedCategory === 'all'

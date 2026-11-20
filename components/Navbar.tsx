@@ -195,7 +195,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
   primaryNav = DEFAULT_PRIMARY_NAV,
   menuGroups = DEFAULT_MENU_GROUPS,
   markets = COUNTRIES,
-  defaultMarketCode = 'AE',
+  defaultMarketCode = 'SA',
   onMarketChange,
   bookLabel = 'Send Enquiry',
   logoHref = '/',
@@ -211,7 +211,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
   const { selectedCountry: ctxSelectedCountry, setSelectedCountry: ctxSetSelectedCountry } = useCountry();
 
   const handleOpenConsultation = onOpenConsultation || (() => setOpen(true));
-  const currentCountryCode = propSelectedCountry?.code || ctxSelectedCountry?.code || defaultMarketCode || 'AE';
+  const currentCountryCode = propSelectedCountry?.code || ctxSelectedCountry?.code || defaultMarketCode || 'SA';
 
   const menuId = useId();
   const [menuOpen, setMenuOpen] = useState(false);

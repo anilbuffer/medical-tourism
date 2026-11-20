@@ -212,6 +212,48 @@ export const CountryFlag: React.FC<CountryFlagProps> = ({ code = '', market = ''
     );
   }
 
+  // Helper for Bangladesh
+  if (
+    c === 'BD' ||
+    c === 'BGD' ||
+    m.includes('bangladesh') ||
+    m === 'bd'
+  ) {
+    return (
+      <span 
+        className={`relative inline-flex items-center justify-center w-[22px] h-[15px] sm:w-[24px] sm:h-[16px] rounded-[3px] overflow-hidden border border-black/15 shadow-[0_1px_2px_rgba(0,0,0,0.12)] flex-shrink-0 align-middle ${className}`}
+        title="Bangladesh"
+      >
+        <svg viewBox="0 0 1000 600" className="w-full h-full block">
+          <rect width="1000" height="600" fill="#006a4e" />
+          <circle cx="450" cy="300" r="200" fill="#f42a41" />
+        </svg>
+      </span>
+    );
+  }
+
+  // Helper for Iraq
+  if (
+    c === 'IQ' ||
+    c === 'IRQ' ||
+    m.includes('iraq') ||
+    m === 'iq'
+  ) {
+    return (
+      <span 
+        className={`relative inline-flex items-center justify-center w-[22px] h-[15px] sm:w-[24px] sm:h-[16px] rounded-[3px] overflow-hidden border border-black/15 shadow-[0_1px_2px_rgba(0,0,0,0.12)] flex-shrink-0 align-middle ${className}`}
+        title="Iraq"
+      >
+        <svg viewBox="0 0 900 600" className="w-full h-full block">
+          <rect width="900" height="200" fill="#ce1126" />
+          <rect y="200" width="900" height="200" fill="#ffffff" />
+          <rect y="400" width="900" height="200" fill="#000000" />
+          <path d="M380 270 h140 v60 h-140 z" fill="#007a3d" opacity="0.9" />
+        </svg>
+      </span>
+    );
+  }
+
   // Helper for USA
   if (
     c === 'US' ||

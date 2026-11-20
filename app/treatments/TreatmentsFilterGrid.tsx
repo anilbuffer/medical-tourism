@@ -43,8 +43,8 @@ export const TreatmentsFilterGrid: React.FC = () => {
     selectedCountry?.name?.toLowerCase() === 'other';
 
   const activeCompMarket = isOtherSelected
-    ? otherComparisonCountry || 'UAE'
-    : selectedCountry?.market || selectedCountry?.name || 'UAE';
+    ? otherComparisonCountry || 'Saudi Arabia'
+    : selectedCountry?.market || selectedCountry?.name || 'Saudi Arabia';
 
   const activeCompCountryObj = COMPARISON_COUNTRIES.find(
     (c) => c.market.toLowerCase() === activeCompMarket.toLowerCase()

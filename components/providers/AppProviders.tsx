@@ -35,7 +35,7 @@ export function useCountry() {
 
 export function AppProviders({ children }: { children: ReactNode }) {
   const [selectedCountry, setSelectedCountry] = useState<CountryOption>(COUNTRIES[0]);
-  const [otherComparisonCountry, setOtherComparisonCountry] = useState<string>('UAE');
+  const [otherComparisonCountry, setOtherComparisonCountry] = useState<string>('Saudi Arabia');
 
   return (
     <ConsultationProvider>
