@@ -22,9 +22,10 @@ import {
 } from 'lucide-react';
 
 type FilterType = 'all' | 'ortho' | 'dental' | 'cosmetic' | 'fertility' | 'eye' | 'cardiac';
-type HospitalFilter = 'all' | 'fortis-mohali' | 'max-super-speciality-mohali' | 'landmark-chandigarh' | 'livasa-mohali';
+type HospitalFilter = 'all' | 'ace-heart-institute' | 'fortis-mohali' | 'max-super-speciality-mohali' | 'landmark-chandigarh' | 'livasa-mohali';
 
 const HOSPITAL_NAMES: Record<string, string> = {
+  'ace-heart-institute': 'ACE Heart Institute',
   'fortis-mohali': 'Fortis Hospital',
   'max-super-speciality-mohali': 'Max Super Speciality',
   'landmark-chandigarh': 'Landmark Hospital',
@@ -60,6 +61,7 @@ export function DoctorsGrid() {
 
   const hospitalTabs = [
     { id: 'all', label: 'All Hospitals' },
+    { id: 'ace-heart-institute', label: 'ACE Heart Institute' },
     { id: 'fortis-mohali', label: 'Fortis Mohali' },
     { id: 'max-super-speciality-mohali', label: 'Max Mohali' },
     { id: 'landmark-chandigarh', label: 'Landmark Hospital' },
@@ -100,7 +102,7 @@ export function DoctorsGrid() {
             </span>
           </h2>
           <p className="mt-2 text-sm sm:text-base text-gray-600">
-            Verified specialists across Fortis Mohali, Max Super Speciality Mohali, Landmark Hospital Chandigarh, and Livasa Hospital.
+            Verified specialists across ACE Heart Institute, Fortis Mohali, Max Super Speciality Mohali, Landmark Hospital Chandigarh, and Livasa Hospital.
           </p>
         </div>
 

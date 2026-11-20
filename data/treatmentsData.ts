@@ -1973,6 +1973,7 @@ export const TREATMENTS: TreatmentItem[] = [
       "Personal companion stay expenses"
     ],
     "doctors": [
+      "dr-puneet-verma",
       "dr-jagmohan-singh-varma",
       "dr-rakesh-kumar-jaswal",
       "dr-harinder-k-bali",
@@ -1983,6 +1984,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "guide": null,
     "note": "A senior cardiologist reviews your existing angiogram and clinical history on video before your travel dates are scheduled.",
     "hospitals": [
+      "ace-heart-institute",
       "fortis-mohali",
       "max-super-speciality-mohali",
       "livasa-mohali"
@@ -2183,6 +2185,7 @@ export const TREATMENTS: TreatmentItem[] = [
       "Extended anticoagulation medication kits after discharge"
     ],
     "doctors": [
+      "dr-puneet-verma",
       "dr-anumeet-bagga",
       "dr-rakesh-sharma",
       "dr-gagandip-singh",
@@ -2192,6 +2195,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "guide": null,
     "note": "Every patient receives a formal manufacturer prosthesis passport specifying the model, serial number, and international warranty.",
     "hospitals": [
+      "ace-heart-institute",
       "fortis-mohali",
       "max-super-speciality-mohali",
       "livasa-mohali"
@@ -2287,6 +2291,7 @@ export const TREATMENTS: TreatmentItem[] = [
       "Take-home oral cardiac medications"
     ],
     "doctors": [
+      "dr-puneet-verma",
       "dr-sudheer-saxena",
       "dr-jagmohan-singh-varma",
       "dr-kapil-k-chattree",
@@ -2295,6 +2300,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "guide": null,
     "note": "Patients receive an international manufacturer device ID card enabling security screening clearance at all global airports.",
     "hospitals": [
+      "ace-heart-institute",
       "fortis-mohali",
       "max-super-speciality-mohali",
       "livasa-mohali"

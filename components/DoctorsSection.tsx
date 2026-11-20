@@ -10,6 +10,7 @@ import Autoplay from 'embla-carousel-autoplay';
 import { DOCTORS_SECTION, DoctorMember } from '@/data/originalData';
 
 const HOSPITAL_LABELS: Record<string, string> = {
+  'ace-heart-institute': 'ACE Heart Institute',
   'fortis-mohali': 'Fortis Hospital',
   'max-super-speciality-mohali': 'Max Super Speciality',
   'landmark-chandigarh': 'Landmark Hospital',

@@ -107,6 +107,19 @@ export const HOSPITALS: Hospital[] = [
     about:
       'A premier multi-speciality hospital in Sector 33-C, Chandigarh, renowned for cosmetic and reconstructive plastic surgery, orthopaedic care, and dedicated surgical facilities for planned procedures.',
   },
+  {
+    slug: 'ace-heart-institute',
+    name: 'ACE Heart & Vascular Institute',
+    short: 'ACE Heart Institute',
+    city: 'Sector 69, Mohali, Punjab',
+    focus: 'Cardiovascular & chest medicine, complex angioplasty, TAVR & structural heart interventions',
+    img: '/img/hospitals/ace-heart-institute.jpg',
+    badge: 'Super-Speciality Heart Institute',
+    specialties: ['cardiac'],
+    treatments: ['coronary-angioplasty', 'heart-valve-replacement', 'pacemaker-aicd-implantation'],
+    about:
+      'Established in 2007, ACE Heart & Vascular Institute (Advanced Cardiovascular Enterprise) is a leading tertiary care cardiovascular and chest medicine center in Sector 69, Mohali, Punjab. With over 16 years of clinical excellence, the institute is equipped with cutting-edge cardiac catheterization laboratories featuring Fractional Flow Reserve (FFR) and Intravascular Ultrasound (IVUS). It is the first private hospital north of Delhi to offer coronary lasers and the exclusive provider of ECMO facilities in the Tricity. ACE runs a world-class structural heart disease center specializing in Transcatheter Aortic Valve Replacement (TAVR/TAVI), CAVI, and MitraClip TMVr under the leadership of Dr. Puneet Verma. The hospital delivers 24x7 emergency cardiac care, dedicated primary angioplasty, and compassionate patient support with an affordable, cost-effective approach.',
+  },
 ];
 
 export const TREATMENTS_MAP: Record<string, HospitalTreatment> = {
@@ -201,9 +214,39 @@ export const TREATMENTS_MAP: Record<string, HospitalTreatment> = {
     summary: 'Reconstructive and aesthetic surgery planned with consultant plastic surgeons.',
     img: '/images/treatments/cosmetic-surgery.jpg',
   },
+  'coronary-angioplasty': {
+    slug: 'coronary-angioplasty',
+    name: 'Coronary Angioplasty & Stenting',
+    tag: 'Cardiac Sciences',
+    summary: 'Complex coronary angioplasty, transradial wrist-access stenting and emergency PCI with IVUS/FFR precision.',
+    img: '/images/treatments/cat-medical.jpg',
+  },
+  'heart-valve-replacement': {
+    slug: 'heart-valve-replacement',
+    name: 'Heart Valve Replacement & Repair (TAVR/TAVI)',
+    tag: 'Structural Heart',
+    summary: 'Minimally invasive catheter-based TAVR/TAVI and MitraClip TMVr valve interventions without open-heart surgery.',
+    img: '/images/treatments/cat-medical.jpg',
+  },
+  'pacemaker-aicd-implantation': {
+    slug: 'pacemaker-aicd-implantation',
+    name: 'Cardiac Pacemaker & AICD Implantation',
+    tag: 'Electrophysiology',
+    summary: 'Permanent pacemakers, AICDs, and biventricular CRT-D implants for arrhythmias and heart failure management.',
+    img: '/images/treatments/cat-medical.jpg',
+  },
 };
 
 export const SPECIALISTS_LIST: (HospitalSpecialist & { treatments: string[] })[] = [
+  {
+    slug: 'dr-puneet-verma',
+    name: 'Dr. Puneet Verma',
+    role: 'Director & Chief Interventional Cardiologist',
+    specialty: 'Interventional Cardiology & Structural Heart',
+    years: '28+',
+    img: '/img/doctors/dr-puneet-verma.jpg',
+    treatments: ['coronary-angioplasty', 'heart-valve-replacement', 'pacemaker-aicd-implantation'],
+  },
   {
     slug: 'dr-jaswant-singh',
     name: 'Dr. Jaswant Singh',

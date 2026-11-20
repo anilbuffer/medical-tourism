@@ -947,6 +947,20 @@ export const HOSPITALS_SECTION = {
         "width": 1200,
         "height": 800
       }
+    },
+    {
+      "id": "ace-heart-institute",
+      "name": "ACE Heart & Vascular Institute",
+      "country": "mohali",
+      "location": "Sector 69, Mohali, Punjab",
+      "description": "Cardiovascular Sciences, Complex Angioplasty, TAVR & Structural Heart Care",
+      "badge": "Super-Speciality Heart Institute",
+      "href": "/hospitals/ace-heart-institute",
+      "image": {
+        "src": "/img/hospitals/ace-heart-institute.jpg",
+        "width": 1024,
+        "height": 836
+      }
     }
   ]
 };
@@ -978,7 +992,7 @@ export const DOCTORS_SECTION: {
   "headingLine1": "Meet the people",
   "headingLine2": "behind your care",
   "heading": "Meet the people behind your care",
-  "subtitle": "Experienced surgeons and clinical specialists guiding every step of your medical journey across Fortis, Max, Landmark, and Livasa Hospital.",
+  "subtitle": "Experienced surgeons and clinical specialists guiding every step of your medical journey across Fortis, Max, ACE Heart Institute, Landmark, and Livasa Hospital.",
   "categories": [
     {
       "label": "All Specialists",
@@ -1010,6 +1024,20 @@ export const DOCTORS_SECTION: {
     }
   ],
   "members": [
+    {
+      "slug": "dr-puneet-verma",
+      "name": "Dr. Puneet Verma",
+      "role": "Director & Chief Interventional Cardiologist",
+      "specialty": "Interventional Cardiology & Electrophysiology",
+      "department": "Cardiovascular Sciences & Structural Heart",
+      "group": "cardiac",
+      "groupLabel": "Cardiology & Structural Heart",
+      "years": "28+",
+      "img": "/img/doctors/dr-puneet-verma.jpg",
+      "initials": "PV",
+      "hospital": "ace-heart-institute",
+      "type": "doctor"
+    },
     {
       "slug": "dr-jaswant-singh",
       "name": "Dr. Jaswant Singh",
