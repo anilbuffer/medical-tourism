@@ -15,13 +15,14 @@ import {
   Eye,
   Smile,
   Sparkles,
-  Users
+  Users,
+  HeartPulse
 } from 'lucide-react';
 
 export const metadata = {
   title: 'Medical Treatments in India | Your Medicare Trip',
   description:
-    'Orthopaedics, fertility, eye care, dental and cosmetic surgery at accredited hospitals in Mohali and Chandigarh, planned with your specialist before travel.',
+    'Orthopaedics, cardiac sciences, fertility, eye care, dental and cosmetic surgery at accredited hospitals in Mohali and Chandigarh, planned with your specialist before travel.',
 };
 
 const SPECIALTY_ICONS: Record<string, React.ReactNode> = {
@@ -30,6 +31,7 @@ const SPECIALTY_ICONS: Record<string, React.ReactNode> = {
   eye: <Eye className="w-5 h-5 text-[#0b383e]" />,
   dental: <Smile className="w-5 h-5 text-[#0b383e]" />,
   cosmetic: <Sparkles className="w-5 h-5 text-[#0b383e]" />,
+  cardiac: <HeartPulse className="w-5 h-5 text-[#0b383e]" />,
 };
 
 export default function MedicalTreatmentsPage() {

@@ -114,6 +114,17 @@ export const SPECIALTIES: SpecialtyItem[] = [
       "IVF",
       "ICSI"
     ]
+  },
+  {
+    "id": "cardiac",
+    "name": "Cardiac Sciences",
+    "icon": "heart",
+    "treatments": [
+      "Coronary Angioplasty & Stenting",
+      "Coronary Artery Bypass (CABG)",
+      "Heart Valve Replacement & Repair",
+      "Cardiac Pacemaker & AICD Implantation"
+    ]
   }
 ];
 
@@ -1869,6 +1880,425 @@ export const TREATMENTS: TreatmentItem[] = [
       "livasa-mohali"
     ],
     "priceMode": "range"
+  },
+  {
+    "slug": "coronary-angioplasty",
+    "name": "Coronary Angioplasty & Stenting",
+    "spec": "cardiac",
+    "specName": "Cardiac Sciences",
+    "priceFrom": null,
+    "priceTo": null,
+    "priceMode": "review",
+    "saving": null,
+    "addon": false,
+    "img": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=80",
+    "summary": "Percutaneous coronary intervention (PTCA) with US FDA-approved drug-eluting stents and intravascular imaging guidance.",
+    "intro": "Coronary angioplasty restores arterial blood flow to the heart muscle without open surgery. Senior interventional cardiologists in Mohali and Chandigarh perform advanced transradial procedures using high-precision drug-eluting stents (DES), rotational atherectomy, and intravascular ultrasound (IVUS / OCT) guidance.",
+    "options": [
+      {
+        "title": "Transradial Coronary Angioplasty (TRI)",
+        "description": "Stent placement performed via the wrist artery, allowing immediate post-procedure mobility and minimal puncture site discomfort."
+      },
+      {
+        "title": "Complex Bifurcation & Multi-Vessel Stenting",
+        "description": "Specialised bifurcation techniques with dedicated dual-stent or provisional stenting for branched coronary lesions."
+      },
+      {
+        "title": "Rotational Atherectomy & Intravascular Lithotripsy (IVL)",
+        "description": "Shockwave balloon or high-speed diamond burr plaque modification to safely open heavily calcified coronary blockages."
+      },
+      {
+        "title": "Imaging-Guided Stenting (IVUS & OCT)",
+        "description": "Real-time intravascular ultrasound and optical coherence tomography for micrometer-accurate stent expansion and wall apposition."
+      }
+    ],
+    "suited": [
+      "Angina or chest tightness with confirmed coronary artery blockages",
+      "Patients diagnosed with single or multi-vessel coronary artery disease",
+      "Post-heart attack patients needing elective or planned secondary stenting",
+      "Patients seeking cutting-edge radial access and US FDA/CE marked drug-eluting stents"
+    ],
+    "facts": [
+      {
+        "label": "Time in India",
+        "value": "7–10 days"
+      },
+      {
+        "label": "Hospital stay",
+        "value": "1–2 nights"
+      },
+      {
+        "label": "Mobility",
+        "value": "Walking within 4–6 hours (radial)"
+      },
+      {
+        "label": "Fit to fly",
+        "value": "5–7 days post-procedure"
+      }
+    ],
+    "timeline": [
+      {
+        "period": "Day 1",
+        "description": "Arrival, hospital registration, baseline blood work, ECG, and echocardiogram."
+      },
+      {
+        "period": "Day 2",
+        "description": "Coronary angiography and immediate angioplasty/stenting in the cardiac catheterisation lab. Overnight monitoring in CCU/step-down."
+      },
+      {
+        "period": "Day 3",
+        "description": "Post-procedure review, puncture site dressing check, and transfer to private recovery accommodation."
+      },
+      {
+        "period": "Days 4–6",
+        "description": "Rest, gentle walking, cardiologist follow-up, and titration of dual antiplatelet therapy (DAPT)."
+      },
+      {
+        "period": "Day 7",
+        "description": "Final medical clearance, discharge CD/angiography report, fit-to-fly certificate, and travel home."
+      }
+    ],
+    "included": [
+      "Primary interventional cardiologist and cath lab team fees",
+      "Digital biplane catheterisation lab facility charges",
+      "US FDA or CE-approved drug-eluting stent (type itemised in written quote)",
+      "Pre-operative cardiac blood markers, 2D echo, and baseline ECG",
+      "Overnight cardiac telemetry / critical care observation stay",
+      "Dedicated international patient manager and airport private transfers"
+    ],
+    "excluded": [
+      "Complex calcification accessories (Rotablator burrs or IVL balloons) unless specified",
+      "Additional stents beyond the agreed surgical treatment plan",
+      "Long-term take-home antiplatelet and cholesterol medications",
+      "Personal companion stay expenses"
+    ],
+    "doctors": [
+      "dr-jagmohan-singh-varma",
+      "dr-rakesh-kumar-jaswal",
+      "dr-harinder-k-bali",
+      "dr-arvind-kaul",
+      "dr-rakesh-sharma",
+      "dr-karun-behal"
+    ],
+    "guide": null,
+    "note": "A senior cardiologist reviews your existing angiogram and clinical history on video before your travel dates are scheduled.",
+    "hospitals": [
+      "fortis-mohali",
+      "max-super-speciality-mohali",
+      "livasa-mohali"
+    ]
+  },
+  {
+    "slug": "coronary-artery-bypass-cabg",
+    "name": "Coronary Artery Bypass (CABG)",
+    "spec": "cardiac",
+    "specName": "Cardiac Sciences",
+    "priceFrom": null,
+    "priceTo": null,
+    "priceMode": "review",
+    "saving": null,
+    "addon": false,
+    "img": "https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&w=1200&q=80",
+    "summary": "Off-pump beating-heart bypass grafting (OPCAB) and minimally invasive cardiac surgery by accredited CTVS chiefs.",
+    "intro": "Coronary Artery Bypass Grafting (CABG) reroutes blood around clogged arteries using healthy blood vessels from your chest or leg. Partner hospitals in Mohali specialize in 'beating-heart' off-pump surgery, which avoids the heart-lung machine to reduce recovery time, minimize blood loss, and significantly lower neurological complications.",
+    "options": [
+      {
+        "title": "Off-Pump Beating Heart CABG (OPCAB)",
+        "description": "The surgeon bypasses blocked arteries while the heart continues to beat naturally, using advanced cardiac stabilizers."
+      },
+      {
+        "title": "Total Arterial Revascularization",
+        "description": "Utilises bilateral internal mammary arteries (LIMA/RIMA) and radial conduits for superior long-term bypass graft patency."
+      },
+      {
+        "title": "Minimally Invasive Direct Coronary Bypass (MIDCAB)",
+        "description": "Small left thoracotomy incision without sternotomy for isolated left anterior descending (LAD) artery disease."
+      },
+      {
+        "title": "Combined CABG & Valve Surgery",
+        "description": "Simultaneous coronary revascularization and aortic/mitral valve repair or replacement in a single operative session."
+      }
+    ],
+    "suited": [
+      "Multi-vessel coronary artery disease involving three or more arteries",
+      "Left Main Coronary Artery (LMCA) stenosis not optimal for stenting",
+      "Diabetic patients with diffuse coronary atherosclerosis",
+      "Patients needing durable, lifetime arterial revascularization"
+    ],
+    "facts": [
+      {
+        "label": "Time in India",
+        "value": "2–3 weeks"
+      },
+      {
+        "label": "Hospital stay",
+        "value": "5–7 nights (2 in CTVS ICU)"
+      },
+      {
+        "label": "First walking",
+        "value": "Assisted standing by Day 2"
+      },
+      {
+        "label": "Fit to fly",
+        "value": "14–18 days post-op"
+      }
+    ],
+    "timeline": [
+      {
+        "period": "Days 1–2",
+        "description": "Hospital admission, repeat coronary angiogram review, pulmonary function test, carotid ultrasound, and anaesthetic evaluation."
+      },
+      {
+        "period": "Day 3",
+        "description": "Bypass surgery in modular cardiac operating suite. Transfer to dedicated CTVS Intensive Care Unit."
+      },
+      {
+        "period": "Days 4–5",
+        "description": "Extubation, removal of chest drains, assisted mobilization, and transfer to cardiac step-down ward."
+      },
+      {
+        "period": "Days 6–8",
+        "description": "In-hospital chest physiotherapy, spirometry exercises, wound inspection, and discharge to recovery hotel."
+      },
+      {
+        "period": "Weeks 2–3",
+        "description": "Outpatient echocardiogram, sternal healing check, fit-to-fly assessment, and discharge handover documentation."
+      }
+    ],
+    "included": [
+      "Chief Cardiothoracic Surgeon, associate surgeon and cardiac anaesthetist fees",
+      "Dedicated modular cardiac operating theatre usage and perfusionist team",
+      "2 nights stay in CTVS Intensive Care Unit with 1:1 dedicated nursing",
+      "4–5 nights stay in private en-suite recovery room",
+      "In-hospital cardiac rehabilitation and respiratory physiotherapy",
+      "Airport transfers and dedicated patient care manager throughout"
+    ],
+    "excluded": [
+      "Unexpected extended ICU stay beyond agreed protocol",
+      "Blood product transfusions (if cross-matching beyond routine limits required)",
+      "Take-home post-discharge medications"
+    ],
+    "doctors": [
+      "dr-ts-mahant-team",
+      "dr-shashi-jindal",
+      "dr-anumeet-bagga",
+      "dr-ishant-singla",
+      "dr-ambuj-choudhary"
+    ],
+    "guide": null,
+    "note": "Our partner CTVS departments have NABH and JCI accreditation with recorded CABG surgical mortality rates below 1%.",
+    "hospitals": [
+      "fortis-mohali",
+      "max-super-speciality-mohali",
+      "livasa-mohali"
+    ]
+  },
+  {
+    "slug": "heart-valve-replacement",
+    "name": "Heart Valve Replacement & Repair",
+    "spec": "cardiac",
+    "specName": "Cardiac Sciences",
+    "priceFrom": null,
+    "priceTo": null,
+    "priceMode": "review",
+    "saving": null,
+    "addon": false,
+    "img": "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=1200&q=80",
+    "summary": "Transcatheter Aortic Valve Replacement (TAVR/TAVI) and surgical repair/replacement for aortic and mitral valve disease.",
+    "intro": "Diseased heart valves restrict blood flow or leak backwards, causing fatigue, shortness of breath, and heart failure. Leading centres in Mohali offer both minimally invasive catheter-based TAVR/TAVI and open valve reconstruction with imported mechanical or biological tissue prostheses.",
+    "options": [
+      {
+        "title": "Transcatheter Aortic Valve Replacement (TAVR / TAVI)",
+        "description": "A new aortic valve is guided through the femoral artery in the groin without opening the chest or using heart-lung bypass."
+      },
+      {
+        "title": "Surgical Aortic Valve Replacement (SAVR)",
+        "description": "Excision of calcified aortic valve and replacement with premium tissue (bovine/porcine) or mechanical prosthetic valve."
+      },
+      {
+        "title": "Mitral Valve Repair / Annuloplasty",
+        "description": "Preserving the native mitral valve using artificial chordae and an annuloplasty ring for optimal long-term ventricle function."
+      },
+      {
+        "title": "Minimally Invasive Valve Surgery (MICS)",
+        "description": "Keyhole right mini-thoracotomy approach sparing the breastbone for rapid return to daily mobility."
+      }
+    ],
+    "suited": [
+      "Severe calcific aortic valve stenosis causing syncope or dyspnoea",
+      "Elderly or intermediate-to-high surgical risk patients seeking catheter-based TAVR",
+      "Severe mitral regurgitation or stenosis suitable for repair or replacement",
+      "Patients needing lifetime prosthetic valve solutions with international warranty"
+    ],
+    "facts": [
+      {
+        "label": "Time in India",
+        "value": "10–14 days (TAVR) or 2–3 weeks (Surgical)"
+      },
+      {
+        "label": "Hospital stay",
+        "value": "2–3 nights (TAVR) or 5–7 nights (Surgical)"
+      },
+      {
+        "label": "Recovery",
+        "value": "Walk within 24 hours (TAVR)"
+      },
+      {
+        "label": "Fit to fly",
+        "value": "Approved by cardiologist"
+      }
+    ],
+    "timeline": [
+      {
+        "period": "Days 1–2",
+        "description": "Pre-procedural transoesophageal echocardiogram (TEE), CT aortic root protocol, and heart team review."
+      },
+      {
+        "period": "Day 3",
+        "description": "TAVR or surgical valve procedure in hybrid cardiac suite. ICU observation."
+      },
+      {
+        "period": "Days 4–5",
+        "description": "Echocardiogram validation of new valve gradient, mobilization, and transfer to private room."
+      },
+      {
+        "period": "Days 6–9",
+        "description": "Anticoagulation / INR calibration (if mechanical valve), recovery check, and discharge."
+      },
+      {
+        "period": "Days 10–14",
+        "description": "Final echocardiography report, prosthetic valve registry card, fit-to-fly clearance, and travel."
+      }
+    ],
+    "included": [
+      "Multidisciplinary Heart Team (Surgeon, Interventionalist & Cardiac Anaesthetist) fees",
+      "Advanced Hybrid Operating Suite or modular cardiac theatre facility fees",
+      "Approved biological or mechanical valve prosthesis (model specified in written quote)",
+      "Intra-operative Transoesophageal Echocardiogram (TEE) monitoring",
+      "Private room and cardiac ICU accommodation",
+      "Airport VIP assistance and local medical concierge"
+    ],
+    "excluded": [
+      "TAVR prosthetic valve cost when choosing special imported balloon-expandable / self-expanding systems (itemised in advance)",
+      "Extended anticoagulation medication kits after discharge"
+    ],
+    "doctors": [
+      "dr-anumeet-bagga",
+      "dr-rakesh-sharma",
+      "dr-gagandip-singh",
+      "dr-kapil-k-chattree",
+      "dr-ishant-singla"
+    ],
+    "guide": null,
+    "note": "Every patient receives a formal manufacturer prosthesis passport specifying the model, serial number, and international warranty.",
+    "hospitals": [
+      "fortis-mohali",
+      "max-super-speciality-mohali",
+      "livasa-mohali"
+    ]
+  },
+  {
+    "slug": "pacemaker-aicd-implantation",
+    "name": "Cardiac Pacemaker & AICD Implantation",
+    "spec": "cardiac",
+    "specName": "Cardiac Sciences",
+    "priceFrom": null,
+    "priceTo": null,
+    "priceMode": "review",
+    "saving": null,
+    "addon": false,
+    "img": "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=80",
+    "summary": "Permanent pacemakers, AICDs and CRT devices for heart block, arrhythmias and heart failure management.",
+    "intro": "Cardiac rhythm management devices regulate irregular heartbeats and prevent sudden cardiac death. In partner hospitals, senior cardiac electrophysiologists implant cutting-edge single/dual-chamber pacemakers, automated implantable cardioverter defibrillators (AICD), and cardiac resynchronization therapy (CRT-P / CRT-D) devices with digital remote monitoring.",
+    "options": [
+      {
+        "title": "Dual-Chamber Pacemaker (DDDR)",
+        "description": "Sensors synchronize the right atrium and ventricle to correct symptomatic bradycardia and complete heart block."
+      },
+      {
+        "title": "Automated Implantable Cardioverter Defibrillator (AICD)",
+        "description": "Monitors heart rhythm continuously and delivers a life-saving internal shock if ventricular tachycardia or fibrillation occurs."
+      },
+      {
+        "title": "Cardiac Resynchronization Therapy (CRT-D / CRT-P)",
+        "description": "Triple-lead biventricular device designed for patients with reduced ejection fraction heart failure to coordinate ventricular pumping."
+      },
+      {
+        "title": "Leadless Pacemaker (Micra)",
+        "description": "Miniaturized capsule implanted directly into the heart muscle via a femoral catheter, leaving no chest scar or lead wires."
+      }
+    ],
+    "suited": [
+      "Sick sinus syndrome or high-grade atrioventricular (AV) heart block",
+      "Survivors of cardiac arrest or patients at high risk of ventricular arrhythmias",
+      "Heart failure patients with left bundle branch block (LBBB) and low EF (<35%)",
+      "Patients needing device replacement or battery generator change"
+    ],
+    "facts": [
+      {
+        "label": "Time in India",
+        "value": "7–10 days"
+      },
+      {
+        "label": "Hospital stay",
+        "value": "1–2 nights"
+      },
+      {
+        "label": "Procedure duration",
+        "value": "60–90 minutes under local anaesthesia"
+      },
+      {
+        "label": "Fit to fly",
+        "value": "5–7 days post-implant"
+      }
+    ],
+    "timeline": [
+      {
+        "period": "Day 1",
+        "description": "Arrival, Holter monitor review, echocardiogram, routine blood screen, and electrophysiology consultation."
+      },
+      {
+        "period": "Day 2",
+        "description": "Device implantation under local anaesthesia with conscious sedation in the cardiac cath lab. Overnight telemetry."
+      },
+      {
+        "period": "Day 3",
+        "description": "Chest X-ray to verify lead positioning, digital device interrogation and programming. Discharge to private hotel."
+      },
+      {
+        "period": "Days 4–6",
+        "description": "Puncture wound inspection, arm mobility review, and home care education."
+      },
+      {
+        "period": "Day 7",
+        "description": "Final device programming report, international pacemaker ID card issuance, fit-to-fly clearance."
+      }
+    ],
+    "included": [
+      "Senior Cardiac Electrophysiologist and cath lab technician fees",
+      "Cardiac catheterisation lab facility and fluoroscopy guidance",
+      "Device generator and transvenous pacing/defibrillation leads (Medtronic/Abbott/Boston Scientific)",
+      "Overnight cardiac observation stay with telemetry",
+      "Post-implant programmer calibration and printed report",
+      "Airport pickup, hotel drop, and English/Arabic coordination"
+    ],
+    "excluded": [
+      "MRI-conditional or leadless upgrades unless chosen in advance",
+      "Take-home oral cardiac medications"
+    ],
+    "doctors": [
+      "dr-sudheer-saxena",
+      "dr-jagmohan-singh-varma",
+      "dr-kapil-k-chattree",
+      "dr-gagandip-singh"
+    ],
+    "guide": null,
+    "note": "Patients receive an international manufacturer device ID card enabling security screening clearance at all global airports.",
+    "hospitals": [
+      "fortis-mohali",
+      "max-super-speciality-mohali",
+      "livasa-mohali"
+    ]
   }
 ];
 

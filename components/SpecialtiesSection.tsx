@@ -3,11 +3,11 @@
 import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bone, Sparkles, Smile, Eye, Baby, Plus, ArrowRight } from 'lucide-react';
+import { Bone, Sparkles, Smile, Eye, Baby, HeartPulse, Plus, ArrowRight } from 'lucide-react';
 import { useConsultation } from '@/components/providers/AppProviders';
 
 export interface SpecialtyPillar {
-  key: 'ortho' | 'plastic' | 'dental' | 'eye' | 'fertility';
+  key: 'ortho' | 'plastic' | 'dental' | 'eye' | 'fertility' | 'cardiac';
   slug: string;
   categoryNumber: string;
   categoryLabel: string;
@@ -18,7 +18,7 @@ export interface SpecialtyPillar {
   startingPrice: string;
   savingsBadge: string;
   image: string;
-  icon: 'bone' | 'sparkles' | 'smile' | 'eye' | 'baby';
+  icon: 'bone' | 'sparkles' | 'smile' | 'eye' | 'baby' | 'heart';
   focus: {
     collapsed: string;
     open: string;
@@ -101,10 +101,25 @@ export const SPECIALTIES_PILLARS: SpecialtyPillar[] = [
     icon: 'baby',
     focus: { collapsed: '50% 50%', open: '50% 50%' },
   },
+  {
+    key: 'cardiac',
+    slug: 'cardiac',
+    categoryNumber: '06',
+    categoryLabel: 'CARDIAC',
+    title: 'Cardiology & Cardiac Surgery',
+    shortTitle: 'Cardiac Sciences',
+    tagline: 'Advanced catheter-based interventions, beating-heart CABG, and robotic cardiac surgery by pioneering hospital chiefs.',
+    tags: ['Angioplasty & Stenting', 'Beating Heart CABG', 'Valve Replacement', 'Pacemaker & AICD'],
+    startingPrice: 'N/A',
+    savingsBadge: 'Quoted on review',
+    image: 'https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?auto=format&fit=crop&w=1200&q=80',
+    icon: 'heart',
+    focus: { collapsed: '50% 50%', open: '50% 50%' },
+  },
 ];
 
 interface SpecialtyIconProps {
-  icon: 'bone' | 'sparkles' | 'smile' | 'eye' | 'baby';
+  icon: 'bone' | 'sparkles' | 'smile' | 'eye' | 'baby' | 'heart';
   size?: number;
 }
 
@@ -121,12 +136,15 @@ const SpecialtyIcon: React.FC<SpecialtyIconProps> = ({ icon, size = 24 }) => {
   if (icon === 'baby') {
     return <Baby size={size} className="stroke-[1.8]" />;
   }
+  if (icon === 'heart') {
+    return <HeartPulse size={size} className="stroke-[1.8]" />;
+  }
   return <Eye size={size} className="stroke-[1.8]" />;
 };
 
 export interface SpecialtiesSectionProps {
   id?: string;
-  defaultOpen?: 'ortho' | 'plastic' | 'dental' | 'eye' | 'fertility';
+  defaultOpen?: 'ortho' | 'plastic' | 'dental' | 'eye' | 'fertility' | 'cardiac';
   title?: React.ReactNode;
   subtitle?: string;
 }
@@ -415,7 +433,7 @@ export const SpecialtiesSection: React.FC<SpecialtiesSectionProps> = ({
                         <div className="pt-3 border-t border-white/20 flex items-center justify-between gap-3 flex-wrap sm:flex-nowrap">
                           <div>
                             <span className="text-[10px] sm:text-[11px] font-semibold text-gray-300 uppercase tracking-wider block">
-                              Starting from
+                              {specialty.startingPrice === 'N/A' ? 'Pricing' : 'Starting from'}
                             </span>
                             <span className="text-lg sm:text-xl font-extrabold text-[#8bd2ea]">
                               {specialty.startingPrice}
