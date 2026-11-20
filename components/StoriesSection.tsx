@@ -14,7 +14,6 @@ interface StoriesSectionProps {
 }
 
 export const StoriesSection: React.FC<StoriesSectionProps> = () => {
-  const [selectedCat, setSelectedCat] = useState<string>('all');
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(false);
   const [activeVideo, setActiveVideo] = useState<{ url: string; title: string } | null>(null);
@@ -36,16 +35,7 @@ export const StoriesSection: React.FC<StoriesSectionProps> = () => {
     ]
   );
 
-  const categories = STORIES_SECTION.categories;
-  const cards = STORIES_SECTION.cards;
-
-  const filteredCards = useMemo(() => {
-    return selectedCat === 'all'
-      ? cards
-      : cards.filter(c => c.category === selectedCat);
-  }, [cards, selectedCat]);
-
-  const displayCards = filteredCards;
+  const displayCards = STORIES_SECTION.cards;
 
   // Single direction selection callback matching DoctorsSection
   const onSelect = useCallback((api: UseEmblaCarouselType[1]) => {
@@ -157,63 +147,39 @@ export const StoriesSection: React.FC<StoriesSectionProps> = () => {
             </p>
           </div>
 
-          {/* Controls: Filter Pills & Arrows */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            {/* Filter Pills */}
-            <div className="flex flex-wrap gap-2">
-              {categories.map((cat) => (
-                <button
-                  key={cat.value}
-                  type="button"
-                  onClick={() => setSelectedCat(cat.value)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-                    selectedCat === cat.value
-                      ? 'text-white shadow-sm'
-                      : 'border border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50'
-                  }`}
-                  style={{
-                    backgroundColor: selectedCat === cat.value ? 'var(--color-primary)' : undefined,
-                  }}
-                >
-                  {cat.label}
-                </button>
-              ))}
-            </div>
+          {/* Slider Navigation Arrows (One-directional matching DoctorsSection) */}
+          <div className="flex items-center gap-2 shrink-0 self-start sm:self-end">
+            <motion.button
+              type="button"
+              onClick={scrollPrev}
+              disabled={prevBtnDisabled}
+              whileHover={!prevBtnDisabled ? { scale: 1.08 } : {}}
+              whileTap={!prevBtnDisabled ? { scale: 0.95 } : {}}
+              className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all cursor-pointer ${
+                !prevBtnDisabled
+                  ? 'border-gray-300 bg-white text-gray-900 shadow-xs hover:border-gray-900 hover:bg-gray-50'
+                  : 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed opacity-40'
+              }`}
+              aria-label="Previous story"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </motion.button>
 
-            {/* Slider Navigation Arrows (One-directional matching DoctorsSection) */}
-            <div className="flex items-center gap-2 self-end sm:self-auto shrink-0">
-              <motion.button
-                type="button"
-                onClick={scrollPrev}
-                disabled={prevBtnDisabled}
-                whileHover={!prevBtnDisabled ? { scale: 1.08 } : {}}
-                whileTap={!prevBtnDisabled ? { scale: 0.95 } : {}}
-                className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all cursor-pointer ${
-                  !prevBtnDisabled
-                    ? 'border-gray-300 bg-white text-gray-900 shadow-xs hover:border-gray-900 hover:bg-gray-50'
-                    : 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed opacity-40'
-                }`}
-                aria-label="Previous story"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </motion.button>
-
-              <motion.button
-                type="button"
-                onClick={scrollNext}
-                disabled={nextBtnDisabled}
-                whileHover={!nextBtnDisabled ? { scale: 1.08 } : {}}
-                whileTap={!nextBtnDisabled ? { scale: 0.95 } : {}}
-                className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all cursor-pointer ${
-                  !nextBtnDisabled
-                    ? 'border-gray-300 bg-white text-gray-900 shadow-xs hover:border-gray-900 hover:bg-gray-50'
-                    : 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed opacity-40'
-                }`}
-                aria-label="Next story"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </motion.button>
-            </div>
+            <motion.button
+              type="button"
+              onClick={scrollNext}
+              disabled={nextBtnDisabled}
+              whileHover={!nextBtnDisabled ? { scale: 1.08 } : {}}
+              whileTap={!nextBtnDisabled ? { scale: 0.95 } : {}}
+              className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all cursor-pointer ${
+                !nextBtnDisabled
+                  ? 'border-gray-300 bg-white text-gray-900 shadow-xs hover:border-gray-900 hover:bg-gray-50'
+                  : 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed opacity-40'
+              }`}
+              aria-label="Next story"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </motion.button>
           </div>
         </motion.div>
       </div>
