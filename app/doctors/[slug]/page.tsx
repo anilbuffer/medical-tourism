@@ -100,7 +100,7 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
         />
 
         <div className="max-w-[1160px] mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-14 items-end">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-14 items-center">
             
             {/* Left Content */}
             <div>
@@ -168,19 +168,20 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
             </div>
 
             {/* Right Split Photo */}
-            <div className="flex justify-start lg:justify-end">
-              <div className="relative w-full max-w-[400px] aspect-[4/4.2] rounded-[24px] overflow-hidden shadow-2xl border border-white/20 bg-gray-100">
+            <div className="flex justify-start lg:justify-end items-center">
+              <div className="relative rounded-[24px] overflow-hidden shadow-2xl border border-white/20 bg-gray-100 max-w-[400px] max-h-[420px]">
                 {doctor.img ? (
                   <Image
                     src={doctor.img}
                     alt={doctor.name}
-                    fill
+                    width={400}
+                    height={420}
                     priority
-                    sizes="(max-width: 1024px) 100vw, 400px"
-                    className="object-cover object-top"
+                    unoptimized
+                    className="w-auto h-auto max-w-[400px] max-h-[420px] object-cover object-top"
                   />
                 ) : (
-                  <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-[#0e484f] to-[#072b2e] text-white select-none">
+                  <div className="w-[360px] max-w-full aspect-[4/4.2] flex flex-col items-center justify-center bg-gradient-to-b from-[#0e484f] to-[#072b2e] text-white select-none">
                     <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-white/10 border-2 border-white/20 flex items-center justify-center shadow-lg">
                       <User className="w-16 h-16 sm:w-20 sm:h-20 text-white/70 stroke-[1.5]" />
                     </div>
