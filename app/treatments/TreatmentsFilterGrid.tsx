@@ -15,7 +15,7 @@ export const TreatmentsFilterGrid: React.FC = () => {
   return (
     <div>
       {/* Section Header with Filter Chips */}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 pb-6 border-b border-[#e6ecea]">
+      <div className="flex flex-col justify-between gap-6 mb-10 pb-6 border-b border-[#e6ecea]">
         <div>
           <h2 className="text-[28px] sm:text-[38px] font-bold tracking-tight text-[#0b383e] leading-tight">
             Clear starting prices,
