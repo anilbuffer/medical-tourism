@@ -949,6 +949,20 @@ export const HOSPITALS_SECTION = {
       }
     },
     {
+      "id": "landmark-hospital-chandigarh",
+      "name": "Landmark Hospital",
+      "country": "mohali",
+      "location": "Sector 33-C, Chandigarh",
+      "description": "Plastic & Cosmetic Surgery, Orthopaedics & Fertility Care",
+      "badge": "NABH Accredited",
+      "href": "/hospitals/landmark-chandigarh",
+      "image": {
+        "src": "/img/livasa.jpg",
+        "width": 1200,
+        "height": 800
+      }
+    },
+    {
       "id": "ace-heart-institute",
       "name": "ACE Heart & Vascular Institute",
       "country": "mohali",
@@ -957,7 +971,7 @@ export const HOSPITALS_SECTION = {
       "badge": "Super-Speciality Heart Institute",
       "href": "/hospitals/ace-heart-institute",
       "image": {
-        "src": "/img/hospitals/ace-heart-institute.jpg",
+        "src": "/img/hospitals/ace-heart-hospital.jpg",
         "width": 1024,
         "height": 836
       }

@@ -113,7 +113,7 @@ export const HOSPITALS: Hospital[] = [
     short: 'ACE Heart Institute',
     city: 'Sector 69, Mohali, Punjab',
     focus: 'Cardiovascular & chest medicine, complex angioplasty, TAVR & structural heart interventions',
-    img: '/img/hospitals/ace-heart-institute.jpg',
+    img: '/img/hospitals/ace-heart-hospital.jpg',
     badge: 'Super-Speciality Heart Institute',
     specialties: ['cardiac'],
     treatments: ['coronary-angioplasty', 'heart-valve-replacement', 'pacemaker-aicd-implantation'],
