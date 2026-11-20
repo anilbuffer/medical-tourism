@@ -17,6 +17,14 @@ const HOSPITAL_LABELS: Record<string, string> = {
   'livasa-mohali': 'Livasa Hospital',
 };
 
+const formatExperience = (years: string | null | undefined): string => {
+  if (!years) return 'Senior Specialist';
+  const cleanYears = years.trim();
+  if (/experience/i.test(cleanYears)) return cleanYears;
+  if (/years?/i.test(cleanYears)) return `${cleanYears} Experience`;
+  return `${cleanYears} Years Experience`;
+};
+
 export const DoctorsSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(false);
@@ -252,17 +260,18 @@ export const DoctorsSection: React.FC = () => {
           className="overflow-hidden w-full cursor-grab active:cursor-grabbing px-4 sm:px-6 lg:px-8 xl:px-[calc((100vw-80rem)/2+2rem)] py-3" 
           ref={emblaRef}
         >
-          <div className="flex -ml-6 touch-pan-y">
+          <div className="flex -ml-6 touch-pan-y items-stretch">
             {displayMembers.map((member: DoctorMember, idx: number) => {
               const isDoctor = member.type === 'doctor';
+              const experienceText = formatExperience(member.years);
               const CardContent = (
                 <motion.div
                   whileHover={{ y: -6, transition: { duration: 0.25 } }}
-                  className="h-full group rounded-3xl overflow-hidden border bg-white shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-start select-none"
+                  className="h-full w-full group rounded-3xl overflow-hidden border bg-white shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between select-none"
                   style={{ borderColor: 'var(--color-surface-outline)' }}
                 >
                   {/* Photo Section */}
-                  <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-gray-100">
+                  <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-gray-100 shrink-0">
                     {member.img ? (
                       <Image
                         src={member.img}
@@ -304,14 +313,15 @@ export const DoctorsSection: React.FC = () => {
                   </div>
 
                   {/* Doctor Info Below Image: Description & Experience */}
-                  <div className="p-4 sm:p-5 flex flex-col items-start gap-2 bg-white">
-                    <p className="text-xs sm:text-sm text-gray-500 font-medium leading-relaxed line-clamp-2">
+                  <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between items-start gap-3 bg-white w-full border-t border-gray-100">
+                    <p className="text-xs sm:text-sm text-gray-500 font-medium leading-relaxed line-clamp-2 min-h-[2.5rem] sm:min-h-[2.75rem]">
                       {member.role}
                     </p>
 
-                    <div className="mt-auto">
-                      <span className="inline-block px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200/80 shadow-xs">
-                        {member.department || (member.years ? `${member.years} Experience` : member.groupLabel)}
+                    <div className="mt-auto w-full pt-1 flex items-center justify-start">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200/80 shadow-2xs">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0" />
+                        <span>{experienceText}</span>
                       </span>
                     </div>
                   </div>
@@ -322,10 +332,10 @@ export const DoctorsSection: React.FC = () => {
               return (
                 <div
                   key={`${member.slug || member.name}-${idx}`}
-                  className="pl-6 min-w-0 flex-[0_0_88%] sm:flex-[0_0_52%] md:flex-[0_0_38%] lg:flex-[0_0_30%] xl:flex-[0_0_26%]"
+                  className="pl-6 min-w-0 flex-[0_0_88%] sm:flex-[0_0_52%] md:flex-[0_0_38%] lg:flex-[0_0_30%] xl:flex-[0_0_26%] flex flex-col"
                 >
                   {isDoctor && member.slug ? (
-                    <Link href={`/doctors/${member.slug}`} className="block h-full">
+                    <Link href={`/doctors/${member.slug}`} className="flex flex-col h-full focus:outline-hidden">
                       {CardContent}
                     </Link>
                   ) : (
