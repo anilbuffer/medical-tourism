@@ -1,32 +1,5 @@
-export interface HospitalSpecialist {
-  slug: string;
-  name: string;
-  role: string;
-  specialty: string;
-  years: string;
-  img: string;
-}
-
-export interface HospitalTreatment {
-  slug: string;
-  name: string;
-  tag: string;
-  summary: string;
-  img: string;
-}
-
-export interface Hospital {
-  slug: string;
-  name: string;
-  short: string;
-  city: string;
-  focus: string;
-  img: string;
-  badge?: string;
-  specialties: string[];
-  treatments: string[];
-  about: string;
-}
+import type { HospitalSpecialist, HospitalTreatment, Hospital } from '@/types';
+export type { HospitalSpecialist, HospitalTreatment, Hospital };
 
 export const HOSPITALS: Hospital[] = [
   {

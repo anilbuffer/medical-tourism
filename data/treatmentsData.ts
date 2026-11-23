@@ -1,67 +1,25 @@
 import { TREATMENT_COSTS, type TreatmentCostData } from './treatmentCosts';
 export { TREATMENT_COSTS, type TreatmentCostData };
 
-export interface TreatmentOption {
-  title: string;
-  description: string;
-}
+import type {
+  TreatmentOption,
+  TreatmentFact,
+  TreatmentTimelineStep,
+  TreatmentItem,
+  CheckupPackage,
+  WellnessProgram,
+  SpecialtyItem,
+} from '@/types';
 
-export interface TreatmentFact {
-  label: string;
-  value: string;
-}
-
-export interface TreatmentTimelineStep {
-  period: string;
-  description: string;
-}
-
-export interface TreatmentItem {
-  slug: string;
-  name: string;
-  spec: string;
-  specName: string;
-  priceFrom: number | null;
-  priceTo?: number | null;
-  priceMode?: 'starting' | 'range' | 'review';
-  saving?: string | null;
-  addon?: boolean;
-  img: string;
-  summary: string;
-  intro: string;
-  options: TreatmentOption[];
-  suited: string[];
-  facts: TreatmentFact[];
-  timeline: TreatmentTimelineStep[];
-  included: string[];
-  excluded: string[];
-  doctors: string[];
-  guide?: string | null;
-  note?: string | null;
-  hospitals: string[];
-}
-
-export interface CheckupPackage {
-  name: string;
-  description: string;
-  tests: string[];
-  duration: string;
-  price: string;
-}
-
-export interface WellnessProgram {
-  name: string;
-  icon: string;
-  description: string;
-  features: string[];
-}
-
-export interface SpecialtyItem {
-  id: string;
-  name: string;
-  icon: string;
-  treatments: string[];
-}
+export type {
+  TreatmentOption,
+  TreatmentFact,
+  TreatmentTimelineStep,
+  TreatmentItem,
+  CheckupPackage,
+  WellnessProgram,
+  SpecialtyItem,
+};
 
 export const SPECIALTIES: SpecialtyItem[] = [
   {

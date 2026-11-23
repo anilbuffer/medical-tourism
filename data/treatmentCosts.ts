@@ -1,14 +1,5 @@
-import { LocationPrice } from '@/types';
-
-export interface TreatmentCostData {
-  slug: string;
-  title: string;
-  priceFrom: number;
-  priceTo: number;
-  priceRange: string;
-  savingsPercent: number;
-  locationPrices: LocationPrice[];
-}
+import type { TreatmentCostData } from '@/types';
+export type { TreatmentCostData };
 
 export const TREATMENT_COSTS: Record<string, TreatmentCostData> = {
   "knee-replacement": {

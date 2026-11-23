@@ -1,27 +1,5 @@
-export interface GuideSection {
-  title: string;
-  content: string;
-}
-
-export interface PatientGuide {
-  slug: string;
-  title: string;
-  excerpt: string;
-  category: string;
-  categoryLabel: string;
-  readMins: number;
-  image: string;
-}
-
-export interface GuideItem {
-  slug: string;
-  title: string;
-  cat: string;
-  mins: number;
-  img: string;
-  desc: string;
-  sections: GuideSection[];
-}
+import type { GuideSection, PatientGuide, GuideItem } from '@/types';
+export type { GuideSection, PatientGuide, GuideItem };
 
 export const GUIDES: GuideItem[] = [
   {

@@ -6,57 +6,39 @@ import React, {
   useId,
   useRef,
   useState,
-  type ElementType,
   type ReactNode,
 } from 'react';
 import Link from 'next/link';
-import { MessageSquare } from 'lucide-react';
+import { MessageSquare, ChevronDown, ArrowRight, Calendar } from 'lucide-react';
 import { useConsultation, useCountry } from '@/components/providers/AppProviders';
+import { COUNTRIES, type CountryOption, type Market } from '@/data/countriesData';
+import { CountryFlag } from '@/components/CountryFlag';
+import {
+  DEFAULT_PRIMARY_NAV,
+  DEFAULT_MENU_GROUPS,
+  type NavLink,
+  type NavItem,
+  type NavGroup,
+} from '@/data/navigationData';
+import { CountrySelectModal } from './CountrySelectModal';
 import styles from './SiteHeader.module.css';
-import { COUNTRIES, COMPARISON_COUNTRIES, type CountryOption, type Market } from '@/data/countriesData';
 
 /* ------------------------------------------------------------------ */
-/* Types & Backwards Compatibility Exports                            */
+/* Types                                                              */
 /* ------------------------------------------------------------------ */
 
-export { COUNTRIES, COMPARISON_COUNTRIES, type CountryOption, type Market };
-
-export type NavLink = {
-  label: string;
-  href: string;
-  description?: string;
-  target?: string;
-  rel?: string;
-  isConsultation?: boolean;
-};
-
-export type NavItem = NavLink & {
-  /** Items shown in a dropdown under this link (desktop only). */
-  children?: NavLink[];
-  /** id of a section on the current page. While it is on screen, this link is highlighted. */
-  sectionId?: string;
-};
-
-export type NavGroup = { title: string; links: NavLink[] };
+export type { NavLink, NavItem, NavGroup };
 
 export interface SiteHeaderProps {
   primaryNav?: NavItem[];
   menuGroups?: NavGroup[];
   markets?: Market[];
-  defaultMarketCode?: string;
   onMarketChange?: (market: Market) => void;
-  bookHref?: string;
   bookLabel?: string;
   logoHref?: string;
-  /** Pass Next.js Link (or custom router link) for client-side navigation. Defaults to <a>. */
-  linkComponent?: ElementType;
-  /** Extra content under the help card in the full-screen menu (e.g. WhatsApp). */
   menuFooter?: ReactNode;
-  /** Hide while scrolling down, show again on scroll up. Default: true. */
   hideOnScroll?: boolean;
-  /** px from the top before hiding starts. Default: about one screen height. */
   hideAfter?: number;
-  /** Thin reading-progress line inside the pill. Default: true. */
   showProgress?: boolean;
   onOpenConsultation?: () => void;
   selectedCountry?: CountryOption;
@@ -66,86 +48,7 @@ export interface SiteHeaderProps {
 export type NavbarProps = SiteHeaderProps;
 
 /* ------------------------------------------------------------------ */
-/* Default content                                                    */
-/* ------------------------------------------------------------------ */
-
-const LOGIN_URL =
-  process.env.NEXT_PUBLIC_LOGIN_URL ||
-  'https://medical-tourism-7tbv.onrender.com/login';
-
-const DEFAULT_PRIMARY_NAV: NavItem[] = [
-  {
-    label: 'Treatments',
-    href: '/treatments',
-    sectionId: 'treatments',
-    children: [
-      { label: 'Orthopaedics & Joint Care', href: '/treatments/medical-treatments?specialty=orthopaedics' },
-      { label: 'Cosmetic Surgery', href: '/treatments/medical-treatments?specialty=cosmetic' },
-      { label: 'Dental Implants & Smile Design', href: '/treatments/medical-treatments?specialty=dental' },
-      { label: 'Eye Care & Refractive Surgery', href: '/treatments/medical-treatments?specialty=eye' },
-      { label: 'Fertility & IVF', href: '/treatments/medical-treatments?specialty=fertility' },
-      { label: 'Cardiology & Cardiac Surgery', href: '/treatments/medical-treatments?specialty=cardiac' },
-    ],
-  },
-  { label: 'Hospitals', href: '/hospitals' },
-  { label: 'Doctors', href: '/doctors' },
-  {
-    label: 'Care Services',
-    href: '/care-services',
-    sectionId: 'care-services',
-    children: [
-      { label: 'How It Works', href: '/how-it-works', description: 'Your journey, step by step' },
-      { label: 'Care Coordination', href: '/care-services', description: 'One care manager throughout' },
-      { label: 'Travel & Accommodation', href: '/destination', description: 'Visa letters, pickup and stay' },
-      { label: 'Recovery & Aftercare', href: '/aftercare', description: "In India and once you're home" },
-    ],
-  },
-  {
-    label: 'Login',
-    href: LOGIN_URL,
-    target: '_blank',
-    rel: 'noopener noreferrer',
-  },
-];
-
-const DEFAULT_MENU_GROUPS: NavGroup[] = [
-  {
-    title: 'Explore',
-    links: [
-      { label: 'Treatments & costs', href: '/treatments' },
-      { label: 'Specialties', href: '/treatments/medical-treatments' },
-      { label: 'Hospitals', href: '/hospitals' },
-      { label: 'Doctors', href: '/doctors' },
-    ],
-  },
-  {
-    title: 'Your Care Journey',
-    links: [
-      { label: 'How It Works', href: '/how-it-works' },
-      { label: 'Care Coordination', href: '/care-services' },
-      { label: 'Destination & Stay', href: '/destination' },
-      { label: 'Patient Journeys', href: '/#stories' },
-    ],
-  },
-  {
-    title: 'Help & Support',
-    links: [
-      { label: 'Frequently Asked Questions', href: '/faqs' },
-      { label: 'Patient guides', href: '/guides' },
-      { label: 'Contact Us', href: '#', isConsultation: true },
-      { label: 'Why Choose Us', href: '/why-choose-us' },
-      {
-        label: 'Login',
-        href: LOGIN_URL,
-        target: '_blank',
-        rel: 'noopener noreferrer',
-      },
-    ],
-  },
-];
-
-/* ------------------------------------------------------------------ */
-/* Icons                                                              */
+/* Helper Components                                                  */
 /* ------------------------------------------------------------------ */
 
 function LogoMark() {
@@ -157,36 +60,17 @@ function LogoMark() {
   );
 }
 
-function Chevron({ className }: { className?: string }) {
+function Flag({ country }: { country: CountryOption }) {
   return (
-    <svg className={className} width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+    <span className="inline-flex items-center gap-1.5">
+      {country.code !== 'OT' ? (
+        <CountryFlag code={country.code} />
+      ) : (
+        <span className="text-sm">🌐</span>
+      )}
+      <span className={styles.flagCode}>{country.code}</span>
+    </span>
   );
-}
-
-function Arrow() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function CalendarIcon() {
-  return (
-    <svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true">
-      <rect x="3.5" y="5" width="17" height="15.5" rx="2.5" fill="none" stroke="currentColor" strokeWidth="2" />
-      <path d="M8 3v4M16 3v4M3.5 10h17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function Flag({ market }: { market: Market }) {
-  if (market.flagSrc) {
-    return <img className={styles.flag} src={market.flagSrc} alt="" width={24} height={16} />;
-  }
-  return <span className={styles.flagCode}>{market.code}</span>;
 }
 
 /* ------------------------------------------------------------------ */
@@ -197,7 +81,6 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
   primaryNav = DEFAULT_PRIMARY_NAV,
   menuGroups = DEFAULT_MENU_GROUPS,
   markets = COUNTRIES,
-  defaultMarketCode = 'SA',
   onMarketChange,
   bookLabel = 'Send Enquiry',
   logoHref = '/',
@@ -207,13 +90,14 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
   showProgress = true,
   onOpenConsultation,
   selectedCountry: propSelectedCountry,
-  onSelectCountry: propOnSelectCountry,
 }) => {
   const { setOpen } = useConsultation();
-  const { selectedCountry: ctxSelectedCountry, setSelectedCountry: ctxSetSelectedCountry } = useCountry();
+  const { selectedCountry: ctxSelectedCountry } = useCountry();
 
   const handleOpenConsultation = onOpenConsultation || (() => setOpen(true));
-  const currentCountryCode = propSelectedCountry?.code || ctxSelectedCountry?.code || defaultMarketCode || 'SA';
+
+  // Directly consume country from props or context without redundant local state
+  const currentCountry = propSelectedCountry || ctxSelectedCountry || markets[0];
 
   const menuId = useId();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -221,39 +105,33 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
   const [hidden, setHidden] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [marketOpen, setMarketOpen] = useState(false);
-  const [market, setMarket] = useState<Market>(() => {
-    return markets.find((m) => m.code === currentCountryCode) ?? markets[0];
-  });
+  const [countryModalOpen, setCountryModalOpen] = useState(false);
   const [origin, setOrigin] = useState('calc(100% - 60px) 60px');
 
   const rootRef = useRef<HTMLDivElement>(null);
   const burgerRef = useRef<HTMLButtonElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
-  const marketRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<number | undefined>(undefined);
 
-  const keepVisible = menuOpen || openDropdown !== null || marketOpen;
+  const keepVisible = menuOpen || openDropdown !== null || countryModalOpen;
   const keepVisibleRef = useRef(keepVisible);
   keepVisibleRef.current = keepVisible;
+
+  // Compute visibility directly instead of cascading setState in useEffect
+  const isHidden = hidden && !keepVisible;
 
   const sectionIds = primaryNav.map((i) => i.sectionId).filter(Boolean) as string[];
   const sectionKey = sectionIds.join('|');
 
+  // Notify parent on market change if callback provided
   useEffect(() => {
-    if (keepVisible) setHidden(false);
-  }, [keepVisible]);
-
-  // Sync when selectedCountry changes in AppProviders
-  useEffect(() => {
-    if (ctxSelectedCountry) {
-      const match = markets.find((m) => m.code === ctxSelectedCountry.code);
-      if (match) setMarket(match);
+    if (onMarketChange && currentCountry) {
+      onMarketChange(currentCountry);
     }
-  }, [ctxSelectedCountry, markets]);
+  }, [currentCountry, onMarketChange]);
 
-  /* ---------- Scroll: bar → pill, hide/reveal, progress, active section ---------- */
+  /* ---------- Scroll: bar -> pill, hide/reveal, progress, active section ---------- */
   useEffect(() => {
     let lastY = window.scrollY;
     let ticking = false;
@@ -279,11 +157,11 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
         lastY = y;
       }
 
-      // Reading progress (written straight to a CSS variable, no re-render)
+      // Reading progress written directly to CSS custom property
       const max = document.documentElement.scrollHeight - vh;
       rootRef.current?.style.setProperty('--progress', max > 0 ? Math.min(1, y / max).toFixed(4) : '0');
 
-      // Section currently on screen
+      // Detect active on-screen section
       let current: string | null = null;
       for (const id of ids) {
         const el = document.getElementById(id);
@@ -314,12 +192,12 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     };
   }, [hideOnScroll, hideAfter, sectionKey]);
 
-  /* ---------- Full-screen menu ---------- */
+  /* ---------- Full-screen menu handlers & focus trap ---------- */
   const openMenu = () => {
     const r = burgerRef.current?.getBoundingClientRect();
     if (r) setOrigin(`${Math.round(r.left + r.width / 2)}px ${Math.round(r.top + r.height / 2)}px`);
     setOpenDropdown(null);
-    setMarketOpen(false);
+    setCountryModalOpen(false);
     setMenuOpen(true);
   };
 
@@ -327,10 +205,6 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     setMenuOpen(false);
     burgerRef.current?.focus();
   }, []);
-
-  useEffect(() => {
-    if (overlayRef.current) overlayRef.current.inert = !menuOpen;
-  }, [menuOpen]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -371,18 +245,16 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     };
   }, [menuOpen, closeMenu]);
 
-  /* ---------- Dropdowns + market menu: close on outside click / Escape ---------- */
+  /* ---------- Dropdown outside click & Escape handling ---------- */
   useEffect(() => {
-    if (!openDropdown && !marketOpen) return;
+    if (!openDropdown) return;
     const onClick = (e: MouseEvent) => {
       const t = e.target as Node;
       if (openDropdown && !navRef.current?.contains(t)) setOpenDropdown(null);
-      if (marketOpen && !marketRef.current?.contains(t)) setMarketOpen(false);
     };
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setOpenDropdown(null);
-        setMarketOpen(false);
       }
     };
     document.addEventListener('click', onClick);
@@ -391,29 +263,16 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
       document.removeEventListener('click', onClick);
       document.removeEventListener('keydown', onKey);
     };
-  }, [openDropdown, marketOpen]);
+  }, [openDropdown]);
 
   const hoverOpen = (label: string) => {
     window.clearTimeout(closeTimer.current);
     setOpenDropdown(label);
   };
+
   const hoverClose = () => {
     window.clearTimeout(closeTimer.current);
     closeTimer.current = window.setTimeout(() => setOpenDropdown(null), 160);
-  };
-
-  const chooseMarket = (m: Market) => {
-    setMarket(m);
-    setMarketOpen(false);
-    onMarketChange?.(m);
-
-    // Sync with AppProviders
-    const countryMatch: CountryOption = COUNTRIES.find((c) => c.code === m.code) || COUNTRIES[0];
-    if (propOnSelectCountry) {
-      propOnSelectCountry(countryMatch);
-    } else if (ctxSetSelectedCountry) {
-      ctxSetSelectedCountry(countryMatch);
-    }
   };
 
   const handleBookClick = (e: React.MouseEvent) => {
@@ -439,15 +298,13 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     setOpenDropdown(null);
   };
 
-  let linkIndex = 0;
-
   return (
     <div
       ref={rootRef}
       className={[
         styles.root,
         scrolled ? styles.isScrolled : '',
-        hidden ? styles.isHidden : '',
+        isHidden ? styles.isHidden : '',
         menuOpen ? styles.isOpen : '',
       ].filter(Boolean).join(' ')}
     >
@@ -463,6 +320,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
             {primaryNav.map((item) => {
               const active = !!item.sectionId && item.sectionId === activeSection;
               const cls = `${styles.navLink} ${active ? styles.isActive : ''}`;
+
               return item.children?.length ? (
                 <li
                   key={item.label}
@@ -477,8 +335,9 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                     onClick={() => setOpenDropdown((d) => (d === item.label ? null : item.label))}
                   >
                     <span>{item.label}</span>
-                    <Chevron className={styles.navChevron} />
+                    <ChevronDown className={styles.navChevron} size={14} />
                   </button>
+
                   {openDropdown === item.label && (
                     <div className={styles.dropdown}>
                       <ul>
@@ -504,7 +363,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                         onClick={(e) => handleNavClick(item.href, e)}
                       >
                         <span>View all {item.label.toLowerCase()}</span>
-                        <Arrow />
+                        <ArrowRight size={18} />
                       </Link>
                     </div>
                   )}
@@ -528,35 +387,17 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
         </nav>
 
         <div className={styles.actions}>
-          <div className={styles.market} ref={marketRef}>
+          <div className={styles.market}>
             <button
               type="button"
               className={styles.marketBtn}
-              aria-haspopup="menu"
-              aria-expanded={marketOpen}
-              onClick={() => setMarketOpen((o) => !o)}
+              aria-haspopup="dialog"
+              aria-expanded={countryModalOpen}
+              onClick={() => setCountryModalOpen(true)}
             >
-              <Flag market={market} />
-              <Chevron />
-              <span className={styles.srOnly}>Travelling from {market.label}. Change country</span>
+              <Flag country={currentCountry} />
+              <span className={styles.srOnly}>Travelling from {currentCountry.label}. Change country</span>
             </button>
-            {marketOpen && (
-              <ul className={styles.marketMenu} role="menu">
-                {markets.map((m) => (
-                  <li key={m.code} role="none">
-                    <button
-                      type="button"
-                      role="menuitemradio"
-                      aria-checked={m.code === market.code}
-                      onClick={() => chooseMarket(m)}
-                    >
-                      <Flag market={m} />
-                      <span>{m.label}</span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
           </div>
 
           <button
@@ -564,7 +405,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
             className={styles.book}
             onClick={handleBookClick}
           >
-            <CalendarIcon />
+            <Calendar size={18} />
             <span className={styles.bookLabel}>{bookLabel}</span>
           </button>
 
@@ -614,7 +455,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                 </h2>
                 <ul>
                   {group.links.map((link, li) => {
-                    const delay = 160 + linkIndex++ * 35;
+                    const delay = 160 + (gi * 4 + li) * 35;
                     return (
                       <li key={`${group.title}-${link.label}-${li}`} style={{ transitionDelay: menuOpen ? `${delay}ms` : '0ms' }}>
                         {link.isConsultation ? (
@@ -627,7 +468,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                             }}
                           >
                             <span>{link.label}</span>
-                            <Arrow />
+                            <ArrowRight size={22} />
                           </button>
                         ) : (
                           <Link
@@ -638,7 +479,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                             onClick={(e) => handleNavClick(link.href, e)}
                           >
                             <span>{link.label}</span>
-                            <Arrow />
+                            <ArrowRight size={22} />
                           </Link>
                         )}
                       </li>
@@ -656,7 +497,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
               className={styles.helpBtn}
               onClick={handleBookClick}
             >
-              <CalendarIcon />
+              <Calendar size={18} />
               <span>{bookLabel}</span>
             </button>
             <p className={styles.helpNote}>Talk to our dedicated care coordination team.</p>
@@ -673,25 +514,29 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
 
             {menuFooter}
 
-            <label className={styles.overlayMarket}>
+            <div className={styles.overlayMarket}>
               <span>Travelling from</span>
-              <select
-                value={market.code}
-                onChange={(e) => {
-                  const m = markets.find((x) => x.code === e.target.value);
-                  if (m) chooseMarket(m);
+              <button
+                type="button"
+                className={styles.overlayMarketBtn}
+                onClick={() => {
+                  closeMenu();
+                  setCountryModalOpen(true);
                 }}
               >
-                {markets.map((m) => (
-                  <option key={m.code} value={m.code}>
-                    {m.label}
-                  </option>
-                ))}
-              </select>
-            </label>
+                <Flag country={currentCountry} />
+                <span>{currentCountry.label || currentCountry.name}</span>
+              </button>
+            </div>
           </aside>
         </div>
       </div>
+
+      {/* ---------- Country Select Modal ---------- */}
+      <CountrySelectModal
+        isOpen={countryModalOpen}
+        onClose={() => setCountryModalOpen(false)}
+      />
     </div>
   );
 };

@@ -3,18 +3,8 @@
  * Single source of truth for all country dropdowns, hero markets, and comparison tabs.
  */
 
-export interface CountryOption {
-  code: string;
-  name: string;
-  label: string;
-  market: string;
-  flag: string;
-  flagEmoji: string;
-  city: string;
-  flagSrc?: string;
-}
-
-export type Market = CountryOption;
+import type { CountryOption, Market } from '@/types';
+export type { CountryOption, Market };
 
 export const COUNTRIES: CountryOption[] = [
   { code: 'SA', name: 'Saudi Arabia', label: 'Saudi Arabia', market: 'Saudi Arabia', flag: '🇸🇦', flagEmoji: '🇸🇦', city: 'Riyadh' },

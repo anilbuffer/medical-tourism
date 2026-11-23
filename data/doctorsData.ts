@@ -1,39 +1,5 @@
-export interface DoctorTreatment {
-  slug: string;
-  name: string;
-  tag: string;
-  summary: string;
-  img: string;
-  priceNote?: string;
-}
-
-export interface Doctor {
-  slug: string;
-  name: string;
-  role: string;
-  specialty: string;
-  department?: string;
-  experience?: string[];
-  years: string | null;
-  img: string | null;
-  quals: string[];
-  highlights: string[];
-  treatments: string[];
-  bio: string[];
-  shortName: string;
-  initials?: string;
-  group?: string;
-  groupLabel?: string;
-  hospital?: string | null;
-  type?: 'doctor';
-  awards?: string[];
-  memberships?: string[];
-  specialityInterests?: string[];
-  publications?: string[];
-  procedures?: string[];
-  registration?: string | null;
-  gender?: string | null;
-}
+import type { DoctorTreatment, Doctor, DoctorMember } from '@/types';
+export type { DoctorTreatment, Doctor, DoctorMember };
 
 export const DOCTORS: Doctor[] = [
   {
@@ -3103,22 +3069,6 @@ export const DOCTOR_TREATMENTS_MAP: Record<string, DoctorTreatment> = {
     priceNote: 'Device-specific quote',
   },
 };
-
-export interface DoctorMember {
-  slug: string | null;
-  name: string;
-  role: string;
-  specialty: string;
-  department?: string;
-  experience?: string[];
-  group: string;
-  groupLabel: string;
-  years: string | null;
-  img: string | null;
-  initials: string;
-  hospital: string | null;
-  type: 'doctor' | 'care';
-}
 
 export const DOCTORS_SECTION: {
   headingLine1: string;
