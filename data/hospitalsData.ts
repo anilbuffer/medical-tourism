@@ -8,7 +8,7 @@ export const HOSPITALS: Hospital[] = [
     short: 'Max Hospital',
     city: 'Mohali, Punjab',
     focus: 'Multi-speciality care, joint replacement & spine',
-    img: '/img/hospitals/max-mohali.jpg',
+    img: '/images/hospitals/max-mohali.jpg',
     badge: 'JCI & NABH Accredited',
     specialties: ['orthopaedics', 'cosmetic'],
     treatments: ['knee-replacement', 'hip-replacement', 'spine-surgery'],
@@ -21,7 +21,7 @@ export const HOSPITALS: Hospital[] = [
     short: 'Fortis Hospital',
     city: 'Mohali, Punjab',
     focus: 'Multi-speciality care, orthopaedics & fertility',
-    img: '/img/hospitals/fortis-mohali.jpg',
+    img: '/images/hospitals/fortis-mohali.jpg',
     badge: 'JCI & NABH Accredited',
     specialties: ['orthopaedics', 'fertility'],
     treatments: ['knee-replacement', 'hip-replacement', 'ivf', 'icsi'],
@@ -34,7 +34,7 @@ export const HOSPITALS: Hospital[] = [
     short: 'Livasa Hospital',
     city: 'Mohali, Punjab',
     focus: 'Multi-speciality care',
-    img: '/img/hospitals/livasa.jpg',
+    img: '/images/hospitals/livasa.jpg',
     badge: 'NABH Accredited',
     specialties: ['orthopaedics', 'cosmetic'],
     treatments: ['knee-replacement', 'hip-replacement', 'cosmetic-surgery'],
@@ -47,7 +47,7 @@ export const HOSPITALS: Hospital[] = [
     short: 'Sohana Hospital',
     city: 'Mohali, Punjab',
     focus: 'Multi-speciality care',
-    img: '/img/hospitals/sohana.jpg',
+    img: '/images/hospitals/sohana.jpg',
     badge: 'NABH Accredited',
     specialties: ['orthopaedics', 'eye'],
     treatments: ['knee-replacement', 'hip-replacement', 'cataract-surgery'],
@@ -60,7 +60,7 @@ export const HOSPITALS: Hospital[] = [
     short: 'Sangam Netralaya',
     city: 'Mohali, Punjab',
     focus: 'Cataract, refractive & retina care',
-    img: '/img/hospitals/sangam-netralaya-facade.jpg',
+    img: '/images/hospitals/sangam-netralaya-facade.jpg',
     badge: 'Super-Speciality Eye Care',
     specialties: ['eye'],
     treatments: ['cataract-surgery', 'lasik'],
@@ -73,7 +73,7 @@ export const HOSPITALS: Hospital[] = [
     short: 'Landmark Hospital',
     city: 'Sector 33-C, Chandigarh',
     focus: 'Plastic & cosmetic surgery, orthopaedics & fertility care',
-    img: '/img/hospitals/landmark-hospital-chandigarh.jpg',
+    img: '/images/hospitals/landmark-hospital-chandigarh.jpg',
     badge: 'NABH Accredited',
     specialties: ['cosmetic', 'orthopaedics', 'fertility', 'eye'],
     treatments: ['cosmetic-surgery', 'knee-replacement', 'cataract-surgery'],
@@ -86,7 +86,7 @@ export const HOSPITALS: Hospital[] = [
     short: 'ACE Heart Institute',
     city: 'Sector 69, Mohali, Punjab',
     focus: 'Cardiovascular & chest medicine, complex angioplasty, TAVR & structural heart interventions',
-    img: '/img/hospitals/ace-heart-hospital.jpg',
+    img: '/images/hospitals/ace-heart-hospital.jpg',
     badge: 'Super-Speciality Heart Institute',
     specialties: ['cardiac'],
     treatments: ['coronary-angioplasty', 'heart-valve-replacement', 'pacemaker-aicd-implantation'],
@@ -122,35 +122,35 @@ export const TREATMENTS_MAP: Record<string, HospitalTreatment> = {
     name: 'Minimally Invasive Spine Surgery',
     tag: 'Orthopaedics',
     summary: 'Keyhole lumbar decompression and microdiscectomy planned with experienced spine team.',
-    img: '/images/treatments/spine-surgery.jpg',
+    img: '/images/treatments/minimal-invasive-spine-surgery.jpg',
   },
   'acdf-surgery': {
     slug: 'acdf-surgery',
     name: 'Anterior Cervical Discectomy & Fusion (ACDF)',
     tag: 'Orthopaedics',
     summary: 'Cervical spine decompression and fusion for neck disc herniations and nerve impingement.',
-    img: '/images/treatments/spine-surgery.jpg',
+    img: '/images/treatments/acdf-surgery.jpg',
   },
   'rhinoplasty': {
     slug: 'rhinoplasty',
     name: 'Rhinoplasty',
     tag: 'Cosmetic Surgery',
     summary: 'Cosmetic and functional nasal reshaping by experienced plastic surgeons.',
-    img: '/images/treatments/cosmetic-surgery.jpg',
+    img: '/images/treatments/rhinoplasty.jpg',
   },
   'breast-implants': {
     slug: 'breast-implants',
     name: 'Breast Implants',
     tag: 'Cosmetic Surgery',
     summary: 'Breast augmentation using US FDA-approved cohesive silicone gel implants.',
-    img: '/images/treatments/cosmetic-surgery.jpg',
+    img: '/images/treatments/breast-implants.jpg',
   },
   'hair-transplant': {
     slug: 'hair-transplant',
     name: 'Hair Transplant',
     tag: 'Cosmetic Surgery',
     summary: 'Scarless FUE and DHI graft transplantation for natural hair restoration.',
-    img: '/images/treatments/cosmetic-surgery.jpg',
+    img: '/images/treatments/hair-transplant.jpg',
   },
   'ivf': {
     slug: 'ivf',
@@ -192,21 +192,21 @@ export const TREATMENTS_MAP: Record<string, HospitalTreatment> = {
     name: 'Coronary Angioplasty & Stenting',
     tag: 'Cardiac Sciences',
     summary: 'Complex coronary angioplasty, transradial wrist-access stenting and emergency PCI with IVUS/FFR precision.',
-    img: '/images/treatments/cat-medical.jpg',
+    img: '/images/treatments/coronary-angioplasty.jpg',
   },
   'heart-valve-replacement': {
     slug: 'heart-valve-replacement',
     name: 'Heart Valve Replacement & Repair (TAVR/TAVI)',
     tag: 'Structural Heart',
     summary: 'Minimally invasive catheter-based TAVR/TAVI and MitraClip TMVr valve interventions without open-heart surgery.',
-    img: '/images/treatments/cat-medical.jpg',
+    img: '/images/treatments/heart-valve-replacement.jpg',
   },
   'pacemaker-aicd-implantation': {
     slug: 'pacemaker-aicd-implantation',
     name: 'Cardiac Pacemaker & AICD Implantation',
     tag: 'Electrophysiology',
     summary: 'Permanent pacemakers, AICDs, and biventricular CRT-D implants for arrhythmias and heart failure management.',
-    img: '/images/treatments/cat-medical.jpg',
+    img: '/images/treatments/pacemaker-aicd-implantation.jpg',
   },
 };
 
@@ -217,7 +217,7 @@ export const SPECIALISTS_LIST: (HospitalSpecialist & { treatments: string[] })[]
     role: 'Director & Chief Interventional Cardiologist',
     specialty: 'Interventional Cardiology & Structural Heart',
     years: '28+',
-    img: '/img/doctors/dr-puneet-verma.jpg',
+    img: '/images/doctors/dr-puneet-verma.jpg',
     treatments: ['coronary-angioplasty', 'heart-valve-replacement', 'pacemaker-aicd-implantation'],
   },
   {
@@ -226,7 +226,7 @@ export const SPECIALISTS_LIST: (HospitalSpecialist & { treatments: string[] })[]
     role: 'Founding Clinical Partner',
     specialty: 'General & Laparoscopic Surgery',
     years: '25+',
-    img: '/img/dr-jaswant-singh.jpg',
+    img: '/images/doctors/dr-jaswant-singh.jpg',
     treatments: ['knee-replacement', 'hip-replacement', 'spine-surgery'],
   },
   {
@@ -235,7 +235,7 @@ export const SPECIALISTS_LIST: (HospitalSpecialist & { treatments: string[] })[]
     role: 'Orthopaedics & Robotic Joint Replacement',
     specialty: 'Orthopaedics',
     years: '20+',
-    img: '/img/dr-singla.jpg',
+    img: '/images/doctors/dr-singla.jpg',
     treatments: ['knee-replacement', 'hip-replacement'],
   },
   {
@@ -244,7 +244,7 @@ export const SPECIALISTS_LIST: (HospitalSpecialist & { treatments: string[] })[]
     role: 'Ophthalmology',
     specialty: 'Eye care',
     years: '16+',
-    img: '/img/dr-ashish-ahuja.jpg',
+    img: '/images/doctors/dr-ashish-ahuja.jpg',
     treatments: ['cataract-surgery', 'lasik'],
   },
   {
@@ -253,7 +253,7 @@ export const SPECIALISTS_LIST: (HospitalSpecialist & { treatments: string[] })[]
     role: 'Plastic Surgery',
     specialty: 'Cosmetic & Plastic Surgery',
     years: '18+',
-    img: '/img/doctors/dr-vikas-gupta.jpg',
+    img: '/images/doctors/dr-vikas-gupta.jpg',
     treatments: ['cosmetic-surgery'],
   },
 ];
@@ -286,7 +286,7 @@ export const HOSPITALS_SECTION = {
       "badge": "JCI & NABH Accredited",
       "href": "/hospitals/max-super-speciality-mohali",
       "image": {
-        "src": "/img/hospitals/max-mohali.jpg",
+        "src": "/images/hospitals/max-mohali.jpg",
         "width": 1200,
         "height": 800
       }
@@ -300,7 +300,7 @@ export const HOSPITALS_SECTION = {
       "badge": "JCI & NABH Accredited",
       "href": "/hospitals/fortis-mohali",
       "image": {
-        "src": "/img/hospitals/fortis-mohali.jpg",
+        "src": "/images/hospitals/fortis-mohali.jpg",
         "width": 1200,
         "height": 800
       }
@@ -314,7 +314,7 @@ export const HOSPITALS_SECTION = {
       "badge": "NABH Accredited",
       "href": "/hospitals/livasa-mohali",
       "image": {
-        "src": "/img/hospitals/livasa.jpg",
+        "src": "/images/hospitals/livasa.jpg",
         "width": 1200,
         "height": 800
       }
@@ -328,7 +328,7 @@ export const HOSPITALS_SECTION = {
       "badge": "NABH Accredited",
       "href": "/hospitals/sohana-mohali",
       "image": {
-        "src": "/img/hospitals/sohana.jpg",
+        "src": "/images/hospitals/sohana.jpg",
         "width": 1200,
         "height": 800
       }
@@ -342,7 +342,7 @@ export const HOSPITALS_SECTION = {
       "badge": "Advanced Eye Care",
       "href": "/hospitals/sangam-netralaya",
       "image": {
-        "src": "/img/hospitals/sangam-netralaya-facade.jpg",
+        "src": "/images/hospitals/sangam-netralaya-facade.jpg",
         "width": 1200,
         "height": 800
       }
@@ -356,7 +356,7 @@ export const HOSPITALS_SECTION = {
       "badge": "NABH Accredited",
       "href": "/hospitals/landmark-chandigarh",
       "image": {
-        "src": "/img/hospitals/landmark-hospital-chandigarh.jpg",
+        "src": "/images/hospitals/landmark-hospital-chandigarh.jpg",
         "width": 932,
         "height": 694
       }
@@ -370,7 +370,7 @@ export const HOSPITALS_SECTION = {
       "badge": "Super-Speciality Heart Institute",
       "href": "/hospitals/ace-heart-institute",
       "image": {
-        "src": "/img/hospitals/ace-heart-hospital.jpg",
+        "src": "/images/hospitals/ace-heart-hospital.jpg",
         "width": 1024,
         "height": 836
       }

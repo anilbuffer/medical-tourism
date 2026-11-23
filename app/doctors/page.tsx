@@ -102,7 +102,7 @@ export default function DoctorListingPage() {
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
               <div className="relative w-full max-w-[380px] aspect-[4/4.4] rounded-[24px] overflow-hidden shadow-xl border border-gray-100 bg-gray-50">
                 <Image
-                  src="/img/dr-jaswant-singh.jpg"
+                  src="/images/doctors/dr-jaswant-singh.jpg"
                   alt="Dr. Jaswant Singh"
                   fill
                   sizes="(max-width: 1024px) 100vw, 380px"

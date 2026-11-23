@@ -293,7 +293,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": 7000,
     "saving": "~69%",
     "addon": false,
-    "img": "/images/treatments/knee-replacement.jpg",
+    "img": "/images/treatments/acl-reconstruction.jpg",
     "summary": "Arthroscopic minimally invasive ligament repair and reconstruction with dedicated sports rehab.",
     "intro": "Anterior Cruciate Ligament (ACL) reconstruction restores knee stability following sports injury or trauma. Using keyhole arthroscopy and autograft or allograft techniques, orthopaedic sports medicine specialists rebuild the torn ligament.",
     "options": [
@@ -389,7 +389,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": 13500,
     "saving": "~26%",
     "addon": false,
-    "img": "/images/treatments/spine-surgery.jpg",
+    "img": "/images/treatments/acdf-surgery.jpg",
     "summary": "Cervical spine decompression and stabilization for herniated discs and severe neck nerve pain.",
     "intro": "ACDF is an established, highly effective surgical procedure to relieve spinal cord or nerve root compression in the neck. Through a small, cosmetic anterior incision, the damaged disc is removed and replaced with a fusion cage to restore spinal alignment.",
     "options": [
@@ -483,7 +483,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": 13500,
     "saving": "~7%",
     "addon": false,
-    "img": "/images/treatments/spine-surgery.jpg",
+    "img": "/images/treatments/minimal-invasive-spine-surgery.jpg",
     "summary": "Endoscopic and tubular lumbar decompression, microdiscectomy and keyhole spinal stabilization.",
     "intro": "Minimally invasive spine surgery (MISS) treats disc herniations, sciatica, and lumbar canal stenosis through incisions under an inch wide. Muscle-splitting tubular retractors spare back muscles, reducing post-operative pain and enabling rapid return to walking.",
     "options": [
@@ -576,7 +576,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceFrom": 500,
     "saving": "~86%",
     "addon": false,
-    "img": "/images/treatments/cosmetic-surgery.jpg",
+    "img": "/images/treatments/rhinoplasty.jpg",
     "summary": "Cosmetic and functional nose reshaping by board-certified plastic surgeons for natural facial harmony.",
     "intro": "Rhinoplasty refines the shape, proportion, and breathing function of the nose. Your surgeon evaluates high-resolution facial photos, discusses aesthetic preferences over video, and uses open or closed techniques to sculpt bone and cartilage with precision.",
     "options": [
@@ -669,7 +669,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceFrom": 1500,
     "saving": "~73%",
     "addon": false,
-    "img": "/images/treatments/cosmetic-surgery.jpg",
+    "img": "/images/treatments/breast-implants.jpg",
     "summary": "Breast augmentation using premium US FDA-approved silicone gel implants tailored to your anatomy.",
     "intro": "Breast augmentation enhances volume, symmetry, and contour using cohesive silicone gel implants (Mentor/Motiva). In your initial tele-consultation, the surgeon details profile options, incision placements (inframammary, periareolar, or transaxillary), and pocket placement.",
     "options": [
@@ -762,7 +762,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceFrom": 1200,
     "saving": "~45%",
     "addon": false,
-    "img": "/images/treatments/cosmetic-surgery.jpg",
+    "img": "/images/treatments/hair-transplant.jpg",
     "summary": "Advanced scarless FUE and Direct Hair Implantation (DHI) with high density natural hairlines.",
     "intro": "Follicular Unit Extraction (FUE) and Sapphire DHI transplant individual healthy hair follicles from the donor area to areas of thinning or recession. Performed under local anaesthesia with minimal discomfort, the procedure delivers natural, lifelong hair growth.",
     "options": [
@@ -852,7 +852,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": 7000,
     "saving": "~62%",
     "addon": false,
-    "img": "/images/treatments/cosmetic-surgery.jpg",
+    "img": "/images/treatments/liposuction.jpg",
     "summary": "VASER ultrasound and Power-Assisted Liposuction (PAL) for high-definition body contouring.",
     "intro": "VASER and ultrasound-assisted liposuction safely liquefies and removes stubborn localized fat deposits resistant to diet and exercise. The procedure sculpts areas like the abdomen, flanks, back, thighs, and chin with skin retraction benefits.",
     "options": [
@@ -946,7 +946,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": 6000,
     "saving": "~91%",
     "addon": false,
-    "img": "/images/treatments/cosmetic-surgery.jpg",
+    "img": "/images/treatments/tummy-tuck.jpg",
     "summary": "Abdominoplasty to remove loose excess skin and repair separated abdominal wall muscles.",
     "intro": "A tummy tuck (abdominoplasty) flattens and tightens the abdomen by excising sagging stretched skin, eliminating excess fat, and suturing separated rectus abdominis muscles (diastasis recti), frequently after pregnancy or massive weight loss.",
     "options": [
@@ -1220,7 +1220,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": 6000,
     "saving": "~87%",
     "addon": false,
-    "img": "/images/treatments/cataract-surgery.jpg",
+    "img": "/images/treatments/vitrectomy.jpg",
     "summary": "Microsurgical vitreoretinal surgery for retinal detachment, vitreous hemorrhage and macular tears.",
     "intro": "Vitrectomy is a delicate microsurgical procedure in which the vitreous gel is cleared from the posterior chamber of the eye to repair retinal detachments, clear diabetic bleeding, or seal macular holes using gas or silicone oil tamponades.",
     "options": [
@@ -1309,7 +1309,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": 6000,
     "saving": "~91%",
     "addon": false,
-    "img": "/images/treatments/cataract-surgery.jpg",
+    "img": "/images/treatments/cornea-transplant.jpg",
     "summary": "Full-thickness (PK) and selective lamellar (DMEK/DSAEK) corneal grafting with certified donor tissue.",
     "intro": "Corneal transplantation (keratoplasty) replaces cloudy, scarred, or thinned corneal tissue with healthy donor tissue from accredited eye banks. Advanced partial-thickness lamellar techniques (DSAEK/DMEK) target only the damaged layers for faster visual recovery.",
     "options": [
@@ -1489,7 +1489,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": 7000,
     "saving": "~84%",
     "addon": false,
-    "img": "/images/treatments/dental-implants.jpg",
+    "img": "/images/treatments/full-mouth-implants.jpg",
     "summary": "All-on-4 and All-on-6 full arch rehabilitation restoring complete smile and bite function.",
     "intro": "Full-mouth dental rehabilitation replaces all teeth across the upper, lower, or both jaws using strategically angled implants. By anchoring a full zirconia bridge onto 4 or 6 implants, patients receive a fixed, beautiful set of non-removable teeth in a single trip.",
     "options": [
@@ -1583,7 +1583,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceTo": 6000,
     "saving": "~91%",
     "addon": false,
-    "img": "/images/treatments/dental-implants.jpg",
+    "img": "/images/treatments/smile-design.jpg",
     "summary": "Digital Smile Design (DSD), porcelain veneers, and CAD/CAM ceramic crowns for radiant smiles.",
     "intro": "Digital Smile Design (DSD) uses facial photography, 3D scanning, and CAD/CAM precision ceramics to customize the shape, length, alignment, and color of your teeth. You review and test-drive your virtual new smile before any porcelain veneers are bonded.",
     "options": [
@@ -1852,7 +1852,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceMode": "review",
     "saving": "~44%",
     "addon": false,
-    "img": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=80",
+    "img": "/images/treatments/coronary-angioplasty.jpg",
     "summary": "Percutaneous coronary intervention (PTCA) with US FDA-approved drug-eluting stents and intravascular imaging guidance.",
     "intro": "Coronary angioplasty restores arterial blood flow to the heart muscle without open surgery. Senior interventional cardiologists in Mohali and Chandigarh perform advanced transradial procedures using high-precision drug-eluting stents (DES), rotational atherectomy, and intravascular ultrasound (IVUS / OCT) guidance.",
     "options": [
@@ -1961,7 +1961,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceMode": "review",
     "saving": "~78%",
     "addon": false,
-    "img": "https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&w=1200&q=80",
+    "img": "/images/treatments/coronary-artery-bypass-cabg.jpg",
     "summary": "Off-pump beating-heart bypass grafting (OPCAB) and minimally invasive cardiac surgery by accredited CTVS chiefs.",
     "intro": "Coronary Artery Bypass Grafting (CABG) reroutes blood around clogged arteries using healthy blood vessels from your chest or leg. Partner hospitals in Mohali specialize in 'beating-heart' off-pump surgery, which avoids the heart-lung machine to reduce recovery time, minimize blood loss, and significantly lower neurological complications.",
     "options": [
@@ -2066,7 +2066,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceMode": "review",
     "saving": "~60%",
     "addon": false,
-    "img": "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=1200&q=80",
+    "img": "/images/treatments/heart-valve-replacement.jpg",
     "summary": "Transcatheter Aortic Valve Replacement (TAVR/TAVI) and surgical repair/replacement for aortic and mitral valve disease.",
     "intro": "Diseased heart valves restrict blood flow or leak backwards, causing fatigue, shortness of breath, and heart failure. Leading centres in Mohali offer both minimally invasive catheter-based TAVR/TAVI and open valve reconstruction with imported mechanical or biological tissue prostheses.",
     "options": [
@@ -2172,7 +2172,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "priceMode": "review",
     "saving": "~56%",
     "addon": false,
-    "img": "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=80",
+    "img": "/images/treatments/pacemaker-aicd-implantation.jpg",
     "summary": "Permanent pacemakers, AICDs and CRT devices for heart block, arrhythmias and heart failure management.",
     "intro": "Cardiac rhythm management devices regulate irregular heartbeats and prevent sudden cardiac death. In partner hospitals, senior cardiac electrophysiologists implant cutting-edge single/dual-chamber pacemakers, automated implantable cardioverter defibrillators (AICD), and cardiac resynchronization therapy (CRT-P / CRT-D) devices with digital remote monitoring.",
     "options": [

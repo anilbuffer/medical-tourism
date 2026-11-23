@@ -303,7 +303,7 @@ export default function WhyChooseUsPage() {
               <div className="lg:col-span-5 flex justify-center">
                 <div className="relative w-full max-w-[380px] rounded-2xl overflow-hidden shadow-lg border border-gray-100 aspect-[4/5] bg-gray-100">
                   <img
-                    src="/img/dr-jaswant-singh.jpg"
+                    src="/images/doctors/dr-jaswant-singh.jpg"
                     alt="Dr. Jaswant Singh - Founding Clinical Partner"
                     className="w-full h-full object-cover object-top"
                   />

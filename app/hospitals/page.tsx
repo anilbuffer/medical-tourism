@@ -25,13 +25,13 @@ export const metadata = {
     description: 'The partner hospitals in the Chandigarh tricity where we arrange treatment for international patients: Max, Fortis, ACE Heart Institute, Livasa, Landmark, Sohana and Sangam Netralaya.',
     url: 'https://www.yourmedicaretrip.com/hospitals',
     type: 'website',
-    images: [{ url: '/img/hospitals/fortis-mohali.jpg', width: 1200, height: 630, alt: 'Partner Hospitals India' }],
+    images: [{ url: '/images/hospitals/fortis-mohali.jpg', width: 1200, height: 630, alt: 'Partner Hospitals India' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Partner Hospitals in Mohali & Chandigarh | Your Medicare Trip',
     description: 'JCI & NABH accredited hospital partners: Max, Fortis, ACE Heart Institute, Livasa, Landmark, Sohana and Sangam Netralaya — Mohali, India.',
-    images: ['/img/hospitals/fortis-mohali.jpg'],
+    images: ['/images/hospitals/fortis-mohali.jpg'],
   },
 };
 
@@ -71,7 +71,7 @@ export default function HospitalListingPage() {
     <main className="min-h-screen bg-[#fafcfb] pb-24">
       {/* Signature Dark Teal Hero */}
       <PageHero
-        bgImage="/img/hospitals/max-mohali.jpg"
+        bgImage="/images/hero/hospitals-hero.jpg"
         breadcrumbs={[{ label: 'Hospitals' }]}
         title={
           <>
