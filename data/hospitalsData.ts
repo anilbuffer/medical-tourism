@@ -35,7 +35,7 @@ export const HOSPITALS: Hospital[] = [
     short: 'Max Hospital',
     city: 'Mohali, Punjab',
     focus: 'Multi-speciality care, joint replacement & spine',
-    img: '/img/max-mohali.jpg',
+    img: '/img/hospitals/max-mohali.jpg',
     badge: 'JCI & NABH Accredited',
     specialties: ['orthopaedics', 'cosmetic'],
     treatments: ['knee-replacement', 'hip-replacement', 'spine-surgery'],
@@ -48,7 +48,7 @@ export const HOSPITALS: Hospital[] = [
     short: 'Fortis Hospital',
     city: 'Mohali, Punjab',
     focus: 'Multi-speciality care, orthopaedics & fertility',
-    img: '/img/fortis-mohali.jpg',
+    img: '/img/hospitals/fortis-mohali.jpg',
     badge: 'JCI & NABH Accredited',
     specialties: ['orthopaedics', 'fertility'],
     treatments: ['knee-replacement', 'hip-replacement', 'ivf', 'icsi'],
@@ -61,7 +61,7 @@ export const HOSPITALS: Hospital[] = [
     short: 'Livasa Hospital',
     city: 'Mohali, Punjab',
     focus: 'Multi-speciality care',
-    img: '/img/livasa.jpg',
+    img: '/img/hospitals/livasa.jpg',
     badge: 'NABH Accredited',
     specialties: ['orthopaedics', 'cosmetic'],
     treatments: ['knee-replacement', 'hip-replacement', 'cosmetic-surgery'],
@@ -74,7 +74,7 @@ export const HOSPITALS: Hospital[] = [
     short: 'Sohana Hospital',
     city: 'Mohali, Punjab',
     focus: 'Multi-speciality care',
-    img: '/img/sohana.jpg',
+    img: '/img/hospitals/sohana.jpg',
     badge: 'NABH Accredited',
     specialties: ['orthopaedics', 'eye'],
     treatments: ['knee-replacement', 'hip-replacement', 'cataract-surgery'],
@@ -100,7 +100,7 @@ export const HOSPITALS: Hospital[] = [
     short: 'Landmark Hospital',
     city: 'Sector 33-C, Chandigarh',
     focus: 'Plastic & cosmetic surgery, orthopaedics & fertility care',
-    img: '/img/livasa.jpg',
+    img: '/img/hospitals/landmark-hospital-chandigarh.jpg',
     badge: 'NABH Accredited',
     specialties: ['cosmetic', 'orthopaedics', 'fertility', 'eye'],
     treatments: ['cosmetic-surgery', 'knee-replacement', 'cataract-surgery'],
@@ -313,7 +313,7 @@ export const HOSPITALS_SECTION = {
       "badge": "JCI & NABH Accredited",
       "href": "/hospitals/max-super-speciality-mohali",
       "image": {
-        "src": "/img/max-mohali.jpg",
+        "src": "/img/hospitals/max-mohali.jpg",
         "width": 1200,
         "height": 800
       }
@@ -327,7 +327,7 @@ export const HOSPITALS_SECTION = {
       "badge": "JCI & NABH Accredited",
       "href": "/hospitals/fortis-mohali",
       "image": {
-        "src": "/img/fortis-mohali.jpg",
+        "src": "/img/hospitals/fortis-mohali.jpg",
         "width": 1200,
         "height": 800
       }
@@ -341,7 +341,7 @@ export const HOSPITALS_SECTION = {
       "badge": "NABH Accredited",
       "href": "/hospitals/livasa-mohali",
       "image": {
-        "src": "/img/livasa.jpg",
+        "src": "/img/hospitals/livasa.jpg",
         "width": 1200,
         "height": 800
       }
@@ -355,7 +355,7 @@ export const HOSPITALS_SECTION = {
       "badge": "NABH Accredited",
       "href": "/hospitals/sohana-mohali",
       "image": {
-        "src": "/img/sohana.jpg",
+        "src": "/img/hospitals/sohana.jpg",
         "width": 1200,
         "height": 800
       }
@@ -383,9 +383,9 @@ export const HOSPITALS_SECTION = {
       "badge": "NABH Accredited",
       "href": "/hospitals/landmark-chandigarh",
       "image": {
-        "src": "/img/livasa.jpg",
-        "width": 1200,
-        "height": 800
+        "src": "/img/hospitals/landmark-hospital-chandigarh.jpg",
+        "width": 932,
+        "height": 694
       }
     },
     {
