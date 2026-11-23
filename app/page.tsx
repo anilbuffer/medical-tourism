@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { HeroSection } from '@/components/HeroSection';
 import { SpecialtiesSection } from '@/components/SpecialtiesSection';
 import { CareServicesSection } from '@/components/CareServicesSection';
-import { TreatmentsSection } from '@/components/TreatmentsSection';
+import { TreatmentCostsSection } from '@/components/TreatmentCostsSection';
 import { WhyTmtcSection } from '@/components/WhyTmtcSection';
 import { HospitalsSection } from '@/components/HospitalsSection';
 import { DoctorsSection } from '@/components/DoctorsSection';
@@ -69,7 +69,7 @@ export default function HomePage() {
       <CareServicesSection />
 
       {/* Treatments & Price Comparisons */}
-      <TreatmentsSection />
+      <TreatmentCostsSection />
 
       {/* Leading Hospital Partners */}
       <HospitalsSection />

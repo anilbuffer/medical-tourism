@@ -1,27 +1,53 @@
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { PageHero } from '@/components/PageHero';
 import { CtaBand } from '@/components/CtaBand';
-import { TreatmentsFilterGrid } from './TreatmentsFilterGrid';
-import { ArrowRight } from 'lucide-react';
+import { MedicalTreatmentsFilter } from './MedicalTreatmentsFilter';
+import { SPECIALTIES } from '@/data/treatmentsData';
+import { OpenConsultationButton } from '@/components/OpenConsultationButton';
+import { 
+  ArrowRight, 
+  ShieldCheck, 
+  Check, 
+  MessageSquare,
+  Bone,
+  Eye,
+  Smile,
+  Sparkles,
+  Users,
+  HeartPulse
+} from 'lucide-react';
+import Image from 'next/image';
 
 export const metadata = {
-  title: 'Treatments & Costs in India | Your Medicare Trip',
+  title: 'Medical Treatments in India | Your Medicare Trip',
   description:
-    'Medical treatments, health check-ups and wellness programmes in the Chandigarh tricity, with clear starting prices itemised before you travel.',
+    'Orthopaedics, cardiac sciences, fertility, eye care, dental and cosmetic surgery at accredited hospitals in Mohali and Chandigarh, planned with your specialist before travel.',
   alternates: { canonical: 'https://www.yourmedicaretrip.com/treatments' },
   openGraph: {
-    title: 'Treatments & Costs in India | Your Medicare Trip',
-    description: 'Medical treatments, health check-ups and wellness programmes in the Chandigarh tricity, with clear starting prices itemised before you travel.',
+    title: 'Medical Treatments in India | Your Medicare Trip',
+    description:
+      'Orthopaedics, cardiac sciences, fertility, eye care, dental and cosmetic surgery at accredited hospitals in Mohali and Chandigarh, planned with your specialist before travel.',
     url: 'https://www.yourmedicaretrip.com/treatments',
     type: 'website',
-    images: [{ url: '/images/hero/treatments-hero.jpg', width: 1200, height: 630, alt: 'Treatments in India' }],
+    images: [{ url: '/images/treatments/cat-medical.jpg', width: 1200, height: 630, alt: 'Medical Treatments in India' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Treatments & Costs in India | Your Medicare Trip',
-    description: 'Medical treatments, health check-ups and wellness programmes in the Chandigarh tricity, with clear starting prices itemised before you travel.',
-    images: ['/images/hero/treatments-hero.jpg'],
+    title: 'Medical Treatments in India | Your Medicare Trip',
+    description:
+      'Orthopaedics, cardiac sciences, fertility, eye care, dental and cosmetic surgery at accredited hospitals in Mohali and Chandigarh, planned with your specialist before travel.',
+    images: ['/images/treatments/cat-medical.jpg'],
   },
+};
+
+const SPECIALTY_ICONS: Record<string, React.ReactNode> = {
+  orthopaedics: <Bone className="w-5 h-5 text-[#0b383e]" />,
+  fertility: <Users className="w-5 h-5 text-[#0b383e]" />,
+  eye: <Eye className="w-5 h-5 text-[#0b383e]" />,
+  dental: <Smile className="w-5 h-5 text-[#0b383e]" />,
+  cosmetic: <Sparkles className="w-5 h-5 text-[#0b383e]" />,
+  cardiac: <HeartPulse className="w-5 h-5 text-[#0b383e]" />,
 };
 
 export default function TreatmentsPage() {
@@ -29,144 +55,165 @@ export default function TreatmentsPage() {
     <main className="min-h-screen bg-[#fafcfb]">
       {/* 1. Page Hero */}
       <PageHero
-        bgImage="/images/hero/treatments-hero.jpg"
-        breadcrumbs={[{ label: 'Treatments' }]}
+        bgImage="/images/treatments/cat-medical.jpg"
+        breadcrumbs={[
+          { label: 'Treatments' },
+        ]}
         title={
           <>
-            Treatments &amp;{' '}
+            Medical{' '}
             <span className="px-2.5 py-0.5 rounded-lg inline-block bg-[rgba(139,210,234,0.28)]">
-              clear costs
+              treatments
             </span>
           </>
         }
-        lede="Three ways we can help: planned surgery, a full health check-up, or a recovery and wellness stay. Every plan comes with a written, itemised quote before you book a flight."
+        lede="Planned surgery with experienced specialists at partner hospitals in Mohali. Your surgeon reviews your reports and talks to you on video before anything is booked."
+        actions={
+          <div className="flex flex-wrap items-center gap-3 mt-6 sm:mt-8">
+            <OpenConsultationButton
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm bg-[#8bd2ea] text-[#0b383e] hover:bg-[#a2ddf0] transition-colors shadow-sm cursor-pointer"
+            >
+              <span>Book a free consultation</span>
+              <ArrowRight className="w-4 h-4" />
+            </OpenConsultationButton>
+            <Link
+              href="/treatment-costs"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm bg-white/10 text-white hover:bg-white/20 transition-colors border border-white/20"
+            >
+              <span>See starting prices</span>
+            </Link>
+          </div>
+        }
       />
 
-      {/* 2. Three Category Hub Tiles */}
-      <section className="py-14 sm:py-20">
+      {/* 2. Choose a Specialty & Grid */}
+      <section className="py-16 sm:py-24">
         <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Tile 1: Medical Treatments */}
-            <Link
-              href="/treatments/medical-treatments"
-              className="group relative h-[340px] sm:h-[380px] rounded-[28px] overflow-hidden p-8 flex flex-col justify-between text-white shadow-md hover:shadow-xl hover:-translate-y-1 transition-all"
-              style={{
-                backgroundImage: "url('/images/treatments/cat-medical.jpg')",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-            >
-              {/* Dark Gradient Overlay */}
+          <Suspense fallback={null}>
+            <MedicalTreatmentsFilter />
+          </Suspense>
+        </div>
+      </section>
+
+      {/* 3. Section Dim: What We Cover */}
+      <section className="py-16 sm:py-24 bg-[#f4f7f6] border-t border-[#e2ece9]">
+        <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 pb-4 border-b border-[#e6ecea]">
+            <h2 className="text-[28px] sm:text-[38px] font-bold tracking-tight text-[#0b383e]">
+              What we{' '}
+              <span className="px-2.5 py-0.5 rounded-xl inline-block bg-[rgba(139,210,234,0.3)] font-semibold">
+                cover
+              </span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {SPECIALTIES.map((spec) => (
               <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-t from-[#0b383e]/95 via-[#0b383e]/70 to-[#0b383e]/30 group-hover:from-[#0b383e] group-hover:via-[#0b383e]/75 transition-all"
-              />
-
-              <div className="relative z-10">
-                <span className="text-xs font-bold tracking-widest uppercase text-white/75 block mb-2">
-                  01 / 03
-                </span>
-                <h3 className="text-[24px] sm:text-[26px] font-bold text-white tracking-tight">
-                  Medical Treatments
+                key={spec.id}
+                className="p-7 rounded-[24px] bg-white border border-[#e6ecea] shadow-[0_1px_3px_rgba(11,56,62,0.04)]"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-[#eef6f5] flex items-center justify-center mb-5">
+                  {SPECIALTY_ICONS[spec.id] || <Sparkles className="w-5 h-5 text-[#0b383e]" />}
+                </div>
+                <h3 className="text-[20px] font-bold text-[#0b383e] tracking-tight mb-2">
+                  {spec.name}
                 </h3>
-              </div>
-
-              <div className="relative z-10">
-                <p className="text-[15px] sm:text-[16px] text-white/85 font-normal leading-relaxed mb-6">
-                  Specialist surgery at accredited hospitals, planned before you fly.
+                <p className="text-[15px] sm:text-[16px] text-gray-700 font-normal leading-[1.6]">
+                  {spec.treatments.join(', ')}
                 </p>
-                <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-white text-[#0b383e] shadow-sm group-hover:bg-[#8bd2ea] transition-colors">
-                  <span>Explore</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </span>
               </div>
-            </Link>
+            ))}
 
-            {/* Tile 2: Health Check-ups & Diagnostics */}
-            <Link
-              href="/treatments/health-checkups"
-              className="group relative h-[340px] sm:h-[380px] rounded-[28px] overflow-hidden p-8 flex flex-col justify-between text-white shadow-md hover:shadow-xl hover:-translate-y-1 transition-all"
-              style={{
-                backgroundImage: "url('/images/treatments/cat-checkups.jpg')",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-            >
-              {/* Dark Gradient Overlay */}
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-t from-[#0b383e]/95 via-[#0b383e]/70 to-[#0b383e]/30 group-hover:from-[#0b383e] group-hover:via-[#0b383e]/75 transition-all"
-              />
-
-              <div className="relative z-10">
-                <span className="text-xs font-bold tracking-widest uppercase text-white/75 block mb-2">
-                  02 / 03
-                </span>
-                <h3 className="text-[24px] sm:text-[26px] font-bold text-white tracking-tight">
-                  Health Check-ups &amp; Diagnostics
+            {/* Not Listed Card */}
+            <div className="p-7 rounded-[24px] bg-[#eef6f5] border border-[#d3e9e4] shadow-[0_1px_3px_rgba(11,56,62,0.04)] flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center mb-5 text-[#0b383e] shadow-xs">
+                  <MessageSquare className="w-5 h-5" />
+                </div>
+                <h3 className="text-[20px] font-bold text-[#0b383e] tracking-tight mb-2">
+                  Not listed?
                 </h3>
-              </div>
-
-              <div className="relative z-10">
-                <p className="text-[15px] sm:text-[16px] text-white/85 font-normal leading-relaxed mb-6">
-                  Full assessments in a day, with a doctor to explain the results.
+                <p className="text-[15px] sm:text-[16px] text-gray-700 font-normal leading-[1.6]">
+                  Tell us what you need. If it&apos;s something our partners do well, we&apos;ll put a plan together; if not, we&apos;ll say so.
                 </p>
-                <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-white text-[#0b383e] shadow-sm group-hover:bg-[#8bd2ea] transition-colors">
-                  <span>Explore</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </span>
               </div>
-            </Link>
-
-            {/* Tile 3: Wellness */}
-            <Link
-              href="/treatments/wellness"
-              className="group relative h-[340px] sm:h-[380px] rounded-[28px] overflow-hidden p-8 flex flex-col justify-between text-white shadow-md hover:shadow-xl hover:-translate-y-1 transition-all"
-              style={{
-                backgroundImage: "url('/images/treatments/cat-wellness.jpg')",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-            >
-              {/* Dark Gradient Overlay */}
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-t from-[#0b383e]/95 via-[#0b383e]/70 to-[#0b383e]/30 group-hover:from-[#0b383e] group-hover:via-[#0b383e]/75 transition-all"
-              />
-
-              <div className="relative z-10">
-                <span className="text-xs font-bold tracking-widest uppercase text-white/75 block mb-2">
-                  03 / 03
-                </span>
-                <h3 className="text-[24px] sm:text-[26px] font-bold text-white tracking-tight">
-                  Wellness
-                </h3>
+              <div className="pt-6 mt-4">
+                <OpenConsultationButton className="inline-flex items-center gap-2 text-sm font-bold text-[#0b383e] hover:text-[#008329] transition-colors cursor-pointer">
+                  <span>Send an enquiry</span>
+                  <ArrowRight className="w-4 h-4" />
+                </OpenConsultationButton>
               </div>
-
-              <div className="relative z-10">
-                <p className="text-[15px] sm:text-[16px] text-white/85 font-normal leading-relaxed mb-6">
-                  Recovery stays, rehabilitation and time in the hills.
-                </p>
-                <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-white text-[#0b383e] shadow-sm group-hover:bg-[#8bd2ea] transition-colors">
-                  <span>Explore</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </span>
-              </div>
-            </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 3. Section Dim: Filterable Starting Prices */}
-      <section className="py-16 sm:py-24 bg-[#f4f7f6] border-t border-[#e2ece9]">
+      {/* 4. Planned Properly, Not Rushed Split Section */}
+      <section className="py-16 sm:py-24 bg-white border-t border-[#e2ece9]">
         <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
-          <TreatmentsFilterGrid />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            {/* Left Column: Text & List */}
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 bg-[#eef6f5] text-[#0b383e] border border-[#d6e9e4]">
+                <ShieldCheck className="w-4 h-4 text-[#008329]" />
+                <span>Before you travel</span>
+              </div>
+
+              <h2 className="text-[28px] sm:text-[38px] font-bold tracking-tight text-[#0b383e] leading-tight mb-6">
+                Planned properly,{' '}
+                <span className="px-2.5 py-0.5 rounded-xl inline-block bg-[rgba(139,210,234,0.3)] font-semibold">
+                  not rushed
+                </span>
+              </h2>
+
+              <ul className="space-y-3 mb-8">
+                {[
+                  'Your specialist reviews scans and reports before quoting',
+                  'A video consultation so you can ask questions face to face',
+                  'A written, itemised quote with what is and isn’t included',
+                  'Agreed length of stay and when you’re likely to be fit to fly',
+                  'A follow-up plan for when you’re home',
+                ].map((item, idx) => (
+                  <li
+                    key={idx}
+                    className="grid grid-cols-[22px_1fr] gap-3 text-[16px] text-gray-700 leading-[1.7]"
+                  >
+                    <span className="w-5 h-5 rounded-full bg-[#dcf1f8] text-[#0b383e] flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <Link
+                href="/how-it-works"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full font-bold text-sm bg-[#0b383e] text-white hover:bg-[#0e484f] transition-all shadow-md group"
+              >
+                <span>How it works</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
+            {/* Right Column: Split Image */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-[460px] aspect-[4/3.8] rounded-[28px] overflow-hidden shadow-xl border border-gray-100 bg-gray-50">
+                <Image
+                  src="/images/split/split-planning.jpg"
+                  alt="Doctor reviewing scan reports"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 460px"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* 4. Bottom CTA Band */}
+      {/* 5. Bottom CTA Band */}
       <CtaBand />
     </main>
   );
 }
-

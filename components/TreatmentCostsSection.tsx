@@ -9,7 +9,7 @@ import { CountryOption, COMPARISON_COUNTRIES } from '@/data/countriesData';
 import { CountryFlag } from '@/components/CountryFlag';
 import { useConsultation, useCountry } from '@/components/providers/AppProviders';
 
-interface TreatmentsSectionProps {
+interface TreatmentCostsSectionProps {
   onOpenConsultation?: (treatmentTitle?: string) => void;
   selectedCountry?: CountryOption;
 }
@@ -62,7 +62,7 @@ const cardItemVariants: Variants = {
   },
 };
 
-export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({ 
+export const TreatmentCostsSection: React.FC<TreatmentCostsSectionProps> = ({ 
   onOpenConsultation: propOpenConsultation,
   selectedCountry: propSelectedCountry,
 }) => {
@@ -338,10 +338,10 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
           })}
         </motion.div>
 
-        {/* Bottom CTA to Treatments Page */}
+        {/* Bottom CTA to Treatment Costs Page */}
         <div className="mt-12 text-center">
           <Link
-            href="/treatments"
+            href="/treatment-costs"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm bg-white text-[#0b383e] border border-[#d6e3df] hover:bg-[#eef6f5] transition-all shadow-xs"
           >
             <span>See all procedures with itemised costs</span>

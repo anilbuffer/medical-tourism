@@ -98,22 +98,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/treatments/medical-treatments`,
+      url: `${baseUrl}/treatment-costs`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/treatments/health-checkups`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/treatments/wellness`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
+      priority: 0.9,
     },
     ...TREATMENTS.map((t) => ({
       url: `${baseUrl}/treatments/${t.slug}`,

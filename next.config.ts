@@ -9,6 +9,30 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/treatments/medical-treatments',
+        destination: '/treatments',
+        permanent: true,
+      },
+      {
+        source: '/cost',
+        destination: '/treatment-costs',
+        permanent: true,
+      },
+      {
+        source: '/treatments/health-checkups',
+        destination: '/treatments',
+        permanent: true,
+      },
+      {
+        source: '/treatments/wellness',
+        destination: '/treatments',
+        permanent: true,
+      },
+    ];
+  },
   turbopack: {
     rules: {
       "*.css": {
