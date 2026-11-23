@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useCallback, useEffect, useId, useRef, useState } from "react";
+import Link from "next/link";
 import HeroSearchBox from "./HeroSearchBox";
 
 /* ------------------------------------------------------------------ */
@@ -28,8 +29,8 @@ export type HeroSlideshowProps = {
   onMarketChange?: (market: Market) => void;
   /** Lines that rotate under the headline. */
   rotatingLines?: string[];
-  primaryCta?: { label: string; href?: string; onClick?: () => void };
-  secondaryCta?: { label: string; href?: string; onClick?: () => void };
+  primaryCta?: { label: string; href?: string; onClick?: () => void; target?: string; rel?: string };
+  secondaryCta?: { label: string; href?: string; onClick?: () => void; target?: string; rel?: string };
   bookHref?: string;
   logoHref?: string;
   onMenuClick?: () => void;
@@ -111,8 +112,11 @@ export default function HeroSlideshow({
   markets = COUNTRIES,
   defaultMarketCode = "SA",
   onMarketChange,
-  primaryCta = { label: "Book a free consultation", href: "#consultation" },
-  secondaryCta = { label: "How it works", href: "#how-it-works" },
+  primaryCta = {
+    label: "Talk To Us",
+    href: "#",
+  },
+  secondaryCta = { label: "How it works", href: "/how-it-works" },
   bookHref = "#consultation",
   logoHref = "/",
   onMenuClick,
@@ -185,7 +189,7 @@ export default function HeroSlideshow({
     if (primaryCta.onClick) {
       e.preventDefault();
       primaryCta.onClick();
-    } else if (onOpenConsultation) {
+    } else if (onOpenConsultation && !primaryCta.href) {
       e.preventDefault();
       onOpenConsultation();
     }
@@ -336,21 +340,23 @@ export default function HeroSlideshow({
           <div className="hero-rise flex flex-wrap justify-center gap-3.5 sm:gap-4 -mt-2 sm:-mt-3" style={{ animationDelay: "500ms" }}>
             <a 
               className="inline-flex items-center justify-center gap-2.5 h-14 px-8 rounded-full font-bold text-base bg-[#8fd8e8] text-[#0d2b52] hover:bg-[#a8e3ef] hover:-translate-y-0.5 transition-all shadow-lg cursor-pointer no-underline" 
-              href={primaryCta.href || "#consultation"}
+              href={primaryCta.href || "#"}
               onClick={handlePrimaryClick}
+              target={primaryCta.target || (primaryCta.href?.startsWith('http') ? '_blank' : undefined)}
+              rel={primaryCta.rel || (primaryCta.href?.startsWith('http') ? 'noopener noreferrer' : undefined)}
             >
               <span>{primaryCta.label}</span>
               <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
-            <a 
+            <Link 
               className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-full font-bold text-base text-white border-[1.5px] border-white/55 bg-white/5 hover:bg-white/15 hover:-translate-y-0.5 transition-all cursor-pointer no-underline" 
-              href={secondaryCta.href || "#how-it-works"}
+              href={secondaryCta.href || "/how-it-works"}
               onClick={handleSecondaryClick}
             >
               {secondaryCta.label}
-            </a>
+            </Link>
           </div>
         </div>
       </div>

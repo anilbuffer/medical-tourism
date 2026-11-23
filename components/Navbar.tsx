@@ -511,9 +511,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
             <p className={styles.helpNote}>Talk to our dedicated care coordination team.</p>
 
             <a
-              href="https://wa.me/447587399811?text=Hi%20Your%20Medicare%20Trip,%20I%20would%20like%20to%20consult%20regarding%20treatment"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#"
               className="w-full mt-2 py-3 px-4 rounded-full font-bold text-xs border border-white/20 text-white hover:bg-white/10 flex items-center justify-center gap-2 transition-colors cursor-pointer"
             >
               <MessageSquare className="w-4 h-4 text-[#8ed3ee]" />

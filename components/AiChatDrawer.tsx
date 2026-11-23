@@ -195,9 +195,7 @@ export const AiChatDrawer: React.FC = () => {
             {/* Top Action Strip */}
             <div className="grid grid-cols-2 gap-2 p-2.5 bg-[#f3f8fc] border-b border-[#e6ecea] flex-none">
               <a
-                href="https://wa.me/447587399811?text=Hi%2C%20I%27d%20like%20to%20talk%20to%20your%20care%20team."
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#"
                 className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-lg bg-[#25D366] text-white text-xs font-bold hover:brightness-105 transition-all shadow-sm"
               >
                 <MessageCircle className="w-4 h-4" />

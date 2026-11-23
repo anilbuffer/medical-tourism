@@ -45,9 +45,7 @@ export const FloatingAiWidget: React.FC = () => {
 
       {/* WhatsApp Floating Action Button */}
       <a
-        href="https://wa.me/447587399811?text=Hi%2C%20I%27d%20like%20to%20talk%20to%20your%20care%20team."
-        target="_blank"
-        rel="noopener noreferrer"
+        href="#"
         aria-label="Chat with our care team on WhatsApp"
         tabIndex={isOpen ? -1 : 0}
         onMouseEnter={() => setWaHovered(true)}

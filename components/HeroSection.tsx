@@ -2,14 +2,14 @@
 
 import React from 'react';
 import HeroSlideshow, { HeroSlideshowProps } from './HeroSlideshow';
-import { useConsultation, useCountry } from '@/components/providers/AppProviders';
+import { useCountry } from '@/components/providers/AppProviders';
 
 export interface HeroSectionProps extends Partial<HeroSlideshowProps> {
   onOpenConsultation?: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
-  onOpenConsultation: propOnOpenConsultation,
+  onOpenConsultation,
   showHeader = false,
   slides,
   markets,
@@ -20,9 +20,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   nextSectionId = 'find-your-treatment',
   ...restProps
 }) => {
-  const { setOpen } = useConsultation();
   const { selectedCountry } = useCountry();
-  const handleOpenConsultation = propOnOpenConsultation || (() => setOpen(true));
 
   return (
     <HeroSlideshow
@@ -31,17 +29,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       markets={markets}
       slideDuration={slideDuration}
       rotatingLines={rotatingLines}
-      onOpenConsultation={handleOpenConsultation}
+      onOpenConsultation={onOpenConsultation}
       defaultMarketCode={selectedCountry?.code || 'SA'}
       primaryCta={{
-        label: primaryCta?.label || 'Book a free consultation',
-        onClick: primaryCta?.onClick || handleOpenConsultation,
-        href: primaryCta?.href || '#consultation',
+        label: primaryCta?.label || 'Talk To Us',
+        href: primaryCta?.href || '#',
+        target: primaryCta?.target,
+        rel: primaryCta?.rel,
+        onClick: primaryCta?.onClick,
       }}
       secondaryCta={{
         label: secondaryCta?.label || 'How it works',
+        href: secondaryCta?.href || '/how-it-works',
         onClick: secondaryCta?.onClick,
-        href: secondaryCta?.href || '#how-it-works',
       }}
       nextSectionId={nextSectionId}
       {...restProps}

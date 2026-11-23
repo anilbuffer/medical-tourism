@@ -315,9 +315,7 @@ export default function FaqsPage() {
             </div>
             <div className="flex flex-wrap items-center gap-3">
               <a
-                href="https://wa.me/447587399811?text=Hello%2C%20I%20have%20a%20question%20about%20treatment%20in%20India."
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm text-white shadow-sm hover:opacity-95 transition-opacity"
                 style={{ backgroundColor: '#008329' }}
               >
