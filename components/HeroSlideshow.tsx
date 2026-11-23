@@ -206,7 +206,7 @@ export default function HeroSlideshow({
   };
 
   return (
-    <section className="hero-slideshow relative isolate overflow-hidden flex flex-col min-h-[max(620px,calc(100svh-110px))] bg-[#081b35] text-white" aria-labelledby="hero-title">
+    <section className="hero-slideshow relative isolate overflow-hidden flex flex-col min-h-[max(600px,calc(100svh-110px))] md:h-screen md:min-h-[640px] bg-[#081b35] text-white" aria-labelledby="hero-title">
       {/* ---------- Background slideshow ---------- */}
       <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
         {slides.map((s, i) => (
@@ -333,7 +333,7 @@ export default function HeroSlideshow({
             </div>
           )}
 
-          <div className="hero-rise flex flex-wrap justify-center gap-3.5 sm:gap-4 mt-2 sm:mt-4" style={{ animationDelay: "500ms" }}>
+          <div className="hero-rise flex flex-wrap justify-center gap-3.5 sm:gap-4 -mt-2 sm:-mt-3" style={{ animationDelay: "500ms" }}>
             <a 
               className="inline-flex items-center justify-center gap-2.5 h-14 px-8 rounded-full font-bold text-base bg-[#8fd8e8] text-[#0d2b52] hover:bg-[#a8e3ef] hover:-translate-y-0.5 transition-all shadow-lg cursor-pointer no-underline" 
               href={primaryCta.href || "#consultation"}
@@ -355,26 +355,6 @@ export default function HeroSlideshow({
         </div>
       </div>
 
-      {/* ---------- Progress dots ---------- */}
-      {slides.length > 1 && (
-        <div className="hero-dots absolute right-4 sm:right-8 bottom-[110px] sm:bottom-[158px] z-10 flex gap-2">
-          {slides.map((s, i) => (
-            <button
-              key={s.src}
-              type="button"
-              aria-label={`Show slide ${i + 1}`}
-              aria-current={i === active}
-              className={`relative w-[30px] h-1 rounded-full overflow-hidden bg-white/35 cursor-pointer transition-colors ${i === active ? "hero-dot-on" : ""}`}
-              onClick={() => goTo(i)}
-            >
-              <i
-                key={i === active ? `on-${cycle}` : "off"}
-                style={{ animationDuration: `${slideDuration}ms` }}
-              />
-            </button>
-          ))}
-        </div>
-      )}
 
       {/* ---------- Scroll cue ---------- */}
       <a className="relative z-10 flex flex-col items-center gap-2 pb-14 text-white/80 hover:text-white transition-colors cursor-pointer text-xs font-extrabold tracking-[0.14em] uppercase no-underline" href={`#${nextSectionId}`}>

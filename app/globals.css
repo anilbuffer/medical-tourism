@@ -374,10 +374,17 @@
   --muted: #5d6b7a;
   --gl: max(24px, env(safe-area-inset-left, 0px));
   --gr: max(24px, env(safe-area-inset-right, 0px));
-  min-height: max(620px, calc(100svh - 110px));
+  min-height: max(600px, calc(100svh - 110px));
   background: var(--navy-deep);
   color: #fff;
   font-family: var(--font-mulish, "Mulish", sans-serif);
+}
+
+@media (min-width: 768px) {
+  .hero-slideshow {
+    height: 100vh;
+    min-height: 640px;
+  }
 }
 
 @media (max-width: 600px) {
