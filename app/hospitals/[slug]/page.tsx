@@ -7,9 +7,9 @@ import { VideoConsultationCard } from '@/components/VideoConsultationCard';
 import { WhatsAppCard } from '@/components/WhatsAppCard';
 import { 
   HOSPITALS, 
-  TREATMENTS_MAP, 
-  SPECIALISTS_LIST
+  TREATMENTS_MAP 
 } from '@/data/hospitalsData';
+import { DOCTORS, Doctor } from '@/data/doctorsData';
 import { 
   ArrowRight, 
   Check, 
@@ -19,6 +19,98 @@ import {
   CheckCircle2,
   User
 } from 'lucide-react';
+
+interface SpecialistCategory {
+  key: string;
+  name: string;
+  groups: string[];
+}
+
+const ALLOWED_SPECIALIST_CATEGORIES: SpecialistCategory[] = [
+  {
+    key: 'ortho',
+    name: 'Orthopaedics & Joint Care',
+    groups: ['ortho'],
+  },
+  {
+    key: 'cosmetic',
+    name: 'Cosmetic Surgery',
+    groups: ['cosmetic', 'plastic'],
+  },
+  {
+    key: 'dental',
+    name: 'Dental Implants & Smile Design',
+    groups: ['dental'],
+  },
+  {
+    key: 'eye',
+    name: 'Eye Care & Refractive Surgery',
+    groups: ['eye'],
+  },
+  {
+    key: 'fertility',
+    name: 'Fertility & IVF',
+    groups: ['fertility'],
+  },
+  {
+    key: 'cardiac',
+    name: 'Cardiology & Cardiac Surgery',
+    groups: ['cardiac'],
+  },
+];
+
+const ALLOWED_GROUPS = new Set(ALLOWED_SPECIALIST_CATEGORIES.flatMap((c) => c.groups));
+
+function parseYears(years: string | null | undefined): number {
+  if (!years) return 0;
+  const match = years.match(/\d+/);
+  return match ? parseInt(match[0], 10) : 0;
+}
+
+function getHospitalSpecialists(hospitalSlug: string): (Doctor & { categoryName: string })[] {
+  // 1. Strictly filter verified doctors belonging to THIS hospital only
+  const hospitalDoctors = DOCTORS.filter((doc) => {
+    if (doc.hospital === hospitalSlug) return true;
+    if (hospitalSlug === 'sangam-netralaya' && doc.slug === 'dr-ashish-ahuja') return true;
+    if (hospitalSlug === 'landmark-chandigarh' && doc.slug === 'dr-vikas-gupta') return true;
+    return false;
+  });
+
+  // 2. Filter doctors belonging to the 6 allowed categories
+  const eligible = hospitalDoctors.filter((doc) => doc.group && ALLOWED_GROUPS.has(doc.group));
+
+  // Group by category key and sort by highest years of experience descending
+  const byCategory: Record<string, Doctor[]> = {};
+  for (const cat of ALLOWED_SPECIALIST_CATEGORIES) {
+    byCategory[cat.key] = eligible
+      .filter((doc) => cat.groups.includes(doc.group || ''))
+      .sort((a, b) => parseYears(b.years) - parseYears(a.years));
+  }
+
+  const selected: (Doctor & { categoryName: string })[] = [];
+  const selectedSlugs = new Set<string>();
+
+  // Round-robin selection: pick 1 specialist from each available category first for variety
+  let addedInPass = true;
+  while (selected.length < 6 && addedInPass) {
+    addedInPass = false;
+    for (const cat of ALLOWED_SPECIALIST_CATEGORIES) {
+      if (selected.length >= 6) break;
+      const nextDoc = byCategory[cat.key]?.find((d) => !selectedSlugs.has(d.slug));
+      if (nextDoc) {
+        selected.push({
+          ...nextDoc,
+          categoryName: cat.name,
+        });
+        selectedSlugs.add(nextDoc.slug);
+        addedInPass = true;
+      }
+    }
+  }
+
+  // Ensure maximum 6 specialists of this hospital only
+  return selected.slice(0, 6);
+}
 
 interface HospitalPageProps {
   params: Promise<{
@@ -84,10 +176,8 @@ export default async function HospitalDetailPage({ params }: HospitalPageProps) 
     .map((tSlug) => TREATMENTS_MAP[tSlug])
     .filter(Boolean);
 
-  // Get specialists linked to these treatments
-  const specialists = SPECIALISTS_LIST.filter((doc) =>
-    doc.treatments.some((t) => hospital.treatments.includes(t))
-  );
+  // Get up to 6 specialists exclusively from this hospital, from the 6 approved categories
+  const specialists = getHospitalSpecialists(hospital.slug);
 
   // Other partner hospitals
   const otherHospitals = HOSPITALS.filter((h) => h.slug !== hospital.slug);
@@ -243,13 +333,17 @@ export default async function HospitalDetailPage({ params }: HospitalPageProps) 
                   >
                     Specialists
                   </h2>
+                  <p className="text-sm text-medium mt-1">
+                    Leading clinical specialists practicing at {hospital.name} across our core specialities.
+                  </p>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   {specialists.map((doc) => (
-                    <div
+                    <Link
                       key={doc.slug}
-                      className="bg-white border border-[#e6ecea] rounded-[20px] p-5 shadow-[0_1px_3px_rgba(11,56,62,0.03)] flex items-center gap-4 hover:border-[#8bd2ea] transition-all"
+                      href={`/doctors/${doc.slug}`}
+                      className="group bg-white border border-[#e6ecea] rounded-[20px] p-5 shadow-[0_1px_3px_rgba(11,56,62,0.03)] flex items-center gap-4 hover:border-[#8bd2ea] hover:shadow-md transition-all"
                     >
                       <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-2xl overflow-hidden bg-gray-100 shrink-0 shadow-xs border border-gray-200 flex items-center justify-center">
                         {doc.img ? (
@@ -257,7 +351,7 @@ export default async function HospitalDetailPage({ params }: HospitalPageProps) 
                             src={doc.img}
                             alt={doc.name}
                             fill
-                            className="object-cover object-top"
+                            className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                             sizes="72px"
                           />
                         ) : (
@@ -266,21 +360,26 @@ export default async function HospitalDetailPage({ params }: HospitalPageProps) 
                           </div>
                         )}
                       </div>
-                      <div>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#eef6f5] text-[#0b383e] border border-[#d6e9e4] truncate max-w-[220px]">
+                            {doc.categoryName}
+                          </span>
+                        </div>
                         <h3
-                          className="text-[17px] sm:text-[18px] font-bold tracking-tight leading-snug"
+                          className="text-[17px] sm:text-[18px] font-bold tracking-tight leading-snug group-hover:text-[#095458] transition-colors truncate"
                           style={{ color: 'var(--color-primary)' }}
                         >
                           {doc.name}
                         </h3>
-                        <p className="text-xs text-medium font-semibold mt-0.5">
+                        <p className="text-xs text-medium font-semibold mt-0.5 truncate">
                           {doc.role}
                         </p>
                         <p className="text-xs text-[#008329] font-bold mt-1">
-                          {doc.years} experience
+                          {doc.years ? (doc.years.includes('experience') || doc.years.includes('Experience') ? doc.years : `${doc.years} experience`) : 'Senior Specialist'}
                         </p>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </section>
