@@ -10,6 +10,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { useConsultation } from '@/components/providers/AppProviders';
+import { BrandLogo } from './BrandLogo';
 
 export const Footer: React.FC = () => {
   const { setOpen } = useConsultation();
@@ -59,21 +60,11 @@ export const Footer: React.FC = () => {
               {/* Column 1: Brand Logo, TrustScore & Socials */}
               <div className="flex flex-col items-start gap-5">
                 {/* Brand Logo */}
-                <Link href="/" className="inline-flex items-center gap-3 group">
-                  <div 
-                    className="w-10 h-10 rounded-xl flex items-center justify-center font-black text-white text-base shadow-sm group-hover:scale-105 transition-transform"
-                    style={{ backgroundColor: 'var(--color-primary)' }}
-                  >
-                    YMT
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-base font-extrabold tracking-tight leading-none text-gray-950 uppercase">
-                      YOUR MEDICARE TRIP
-                    </span>
-                    <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase mt-1">
-                      GLOBAL CARE SERVICES
-                    </span>
-                  </div>
+                <Link href="/" className="inline-flex items-center group">
+                  <BrandLogo
+                    variant="footer"
+                    className="w-[140px] sm:w-[180px] md:w-[260px] h-auto transition-transform group-hover:scale-105"
+                  />
                 </Link>
 
                 {/* Horizontal Line Divider */}

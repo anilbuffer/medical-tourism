@@ -21,6 +21,7 @@ import {
   type NavGroup,
 } from '@/data/navigationData';
 import { CountrySelectModal } from './CountrySelectModal';
+import { BrandLogo } from './BrandLogo';
 import styles from './SiteHeader.module.css';
 
 /* ------------------------------------------------------------------ */
@@ -311,8 +312,15 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
       {/* ---------- Bar / pill ---------- */}
       <header className={styles.pill}>
         <Link className={styles.logo} href={logoHref} aria-label="Your Medicare Trip home">
-          <LogoMark />
-          <span className={styles.wordmark}>YOUR MEDICARE TRIP</span>
+          <BrandLogo
+            variant="navbar"
+            className={`h-auto transition-all duration-300 ${
+              scrolled
+                ? 'w-[105px] sm:w-[130px]'
+                : 'w-[150px] sm:w-[200px]'
+            }`}
+            priority
+          />
         </Link>
 
         <nav className={styles.nav} aria-label="Main" ref={navRef}>
