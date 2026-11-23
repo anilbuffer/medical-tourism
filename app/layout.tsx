@@ -55,7 +55,12 @@ export const metadata: Metadata = {
     images: ["/images/hero/airport.jpg"],
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: [
+      {
+        url: "/favicon.svg",
+        type: "image/svg+xml",
+      },
+    ],
   },
 };
 
