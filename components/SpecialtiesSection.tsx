@@ -4,7 +4,6 @@ import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bone, Sparkles, Smile, Eye, Baby, HeartPulse, Plus, ArrowRight } from 'lucide-react';
-import { useConsultation } from '@/components/providers/AppProviders';
 
 export interface SpecialtyPillar {
   key: 'ortho' | 'plastic' | 'dental' | 'eye' | 'fertility' | 'cardiac';
@@ -158,7 +157,6 @@ export const SpecialtiesSection: React.FC<SpecialtiesSectionProps> = ({
   const [activeKey, setActiveKey] = useState<string>(defaultOpen);
   const pointerTypeRef = useRef<string>('mouse');
   const cardRefs = useRef<(HTMLAnchorElement | null)[]>([]);
-  const { setOpen } = useConsultation();
 
   const handlePointerDown = (e: React.PointerEvent) => {
     pointerTypeRef.current = e.pointerType;
@@ -441,17 +439,12 @@ export const SpecialtiesSection: React.FC<SpecialtiesSectionProps> = ({
                           </div>
 
                           <div className="flex items-center gap-2">
-                            <button
-                              type="button"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setOpen(true, specialty.title);
-                              }}
-                              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-white text-[#093939] hover:bg-[#8fd8ec] font-bold text-xs sm:text-sm transition-all shadow-md group-hover:gap-2.5 flex-none cursor-pointer"
+                            <span
+                              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-white text-[#093939] group-hover:bg-[#8fd8ec] font-bold text-xs sm:text-sm transition-all shadow-md group-hover:gap-2.5 flex-none cursor-pointer"
                             >
                               <span>Explore {specialty.shortTitle}</span>
                               <ArrowRight className="w-4 h-4 stroke-[2.2]" />
-                            </button>
+                            </span>
                           </div>
                         </div>
                       </div>

@@ -86,7 +86,7 @@ export const HOSPITALS: Hospital[] = [
     short: 'ACE Heart Institute',
     city: 'Sector 69, Mohali, Punjab',
     focus: 'Cardiovascular & chest medicine, complex angioplasty, TAVR & structural heart interventions',
-    img: '/images/hospitals/ace-heart-hospital.jpg',
+    img: '/images/hospitals/ace-heart-hospital.png',
     badge: 'Super-Speciality Heart Institute',
     specialties: ['cardiac'],
     treatments: ['coronary-angioplasty', 'heart-valve-replacement', 'pacemaker-aicd-implantation'],
@@ -370,7 +370,7 @@ export const HOSPITALS_SECTION = {
       "badge": "Super-Speciality Heart Institute",
       "href": "/hospitals/ace-heart-institute",
       "image": {
-        "src": "/images/hospitals/ace-heart-hospital.jpg",
+        "src": "/images/hospitals/ace-heart-hospital.png",
         "width": 1024,
         "height": 836
       }
