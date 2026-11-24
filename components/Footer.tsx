@@ -26,7 +26,6 @@ export const Footer: React.FC = () => {
     { label: 'Destination & Stay', href: '/destination' },
     { label: 'Testimonials', href: '/#stories' },
     { label: 'Patient Guides', href: '/guides' },
-    { label: 'Social', href: '/#social' },
     { label: 'FAQs', href: '/faqs' },
     { label: 'About Us', href: '/about' },
     { label: 'Contact Us', isConsultation: true },
@@ -40,8 +39,6 @@ export const Footer: React.FC = () => {
     { label: 'Eye Care', href: '/treatments/cataract-surgery' },
     { label: 'Dental', href: '/treatments/dental-implants' },
     { label: 'Cosmetic Surgery', href: '/treatments/rhinoplasty' },
-    { label: 'Health Check-ups', href: '/treatments/health-checkups' },
-    { label: 'Wellness', href: '/treatments/wellness' },
   ];
 
   return (
