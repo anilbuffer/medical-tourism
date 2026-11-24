@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { CountryOption, COUNTRIES } from '@/data/countriesData';
 import {
   ConsultationProvider,
@@ -34,26 +35,41 @@ export function useCountry() {
 }
 
 export function AppProviders({ children }: { children: ReactNode }) {
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            staleTime: 60 * 1000,
+            retry: 1,
+            refetchOnWindowFocus: false,
+          },
+        },
+      })
+  );
+
   const [selectedCountry, setSelectedCountry] = useState<CountryOption>(COUNTRIES[0]);
   const [otherComparisonCountry, setOtherComparisonCountry] = useState<string>('Saudi Arabia');
 
   return (
-    <ConsultationProvider>
-      <CountryContext.Provider
-        value={{
-          selectedCountry,
-          setSelectedCountry,
-          otherComparisonCountry,
-          setOtherComparisonCountry,
-        }}
-      >
-        <ChatProvider>
-          {children}
-          <ConsultationModalGlobal />
-          <AiChatDrawer />
-          <FloatingAiWidget />
-        </ChatProvider>
-      </CountryContext.Provider>
-    </ConsultationProvider>
+    <QueryClientProvider client={queryClient}>
+      <ConsultationProvider>
+        <CountryContext.Provider
+          value={{
+            selectedCountry,
+            setSelectedCountry,
+            otherComparisonCountry,
+            setOtherComparisonCountry,
+          }}
+        >
+          <ChatProvider>
+            {children}
+            <ConsultationModalGlobal />
+            <AiChatDrawer />
+            <FloatingAiWidget />
+          </ChatProvider>
+        </CountryContext.Provider>
+      </ConsultationProvider>
+    </QueryClientProvider>
   );
 }

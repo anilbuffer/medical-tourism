@@ -7,10 +7,15 @@ import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import axios from 'axios';
-import { useCountry } from '@/components/providers/AppProviders';
+import { useQuery, useMutation } from '@tanstack/react-query';
+import { queryKeys } from '@/constants';
+import { COUNTRIES } from '@/data/countriesData';
 import {
   createLead,
+  getReferralSources,
   type CreateLeadPayload,
+  type ReferralSourceOption,
+  type ReferralSourceType,
   type ApiErrorResponse,
 } from '@/services/leads';
 
@@ -40,52 +45,74 @@ export function cleanPhone(value: string): string {
 /* Form Schema & Types (Zod)                                          */
 /* ------------------------------------------------------------------ */
 
-export const consultationSchema = z.object({
-  // Part 1 fields
-  fullName: z
-    .string()
-    .trim()
-    .min(2, 'Please enter your full name'),
-  country: z
-    .string()
-    .trim()
-    .min(1, 'Please select your country')
-    .refine((val) => val !== 'Select', 'Please select your country'),
-  phone: z
-    .string()
-    .trim()
-    .min(1, 'Please enter your phone number')
-    .refine(
-      (val) => isValidInternationalPhone(val),
-      'Please enter a valid phone number (7 to 16 digits with optional +, spaces, or hyphens)'
-    ),
-  email: z
-    .string()
-    .trim()
-    .email('Please enter a valid email address'),
-  treatmentCategory: z
-    .string()
-    .trim()
-    .min(1, 'Please select a treatment')
-    .refine((val) => val !== 'Select', 'Please select a treatment'),
-  tellUsMore: z.string(),
-  privacyConsentGiven: z.boolean().refine((val) => val === true, {
-    message: 'You must agree to the privacy policy to continue',
-  }),
+export const consultationSchema = z
+  .object({
+    // Part 1 fields
+    fullName: z
+      .string()
+      .trim()
+      .min(2, 'Please enter your full name'),
+    country: z
+      .string()
+      .trim()
+      .min(1, 'Please select your country')
+      .refine((val) => val !== 'Select', 'Please select your country'),
+    phone: z
+      .string()
+      .trim()
+      .min(1, 'Please enter your phone number')
+      .refine(
+        (val) => isValidInternationalPhone(val),
+        'Please enter a valid phone number (7 to 16 digits with optional +, spaces, or hyphens)'
+      ),
+    email: z
+      .string()
+      .trim()
+      .email('Please enter a valid email address'),
+    treatmentCategory: z
+      .string()
+      .trim()
+      .min(1, 'Please select a treatment')
+      .refine((val) => val !== 'Select', 'Please select a treatment'),
+    referralSourceKey: z
+      .string()
+      .trim()
+      .min(1, 'Please tell us where you heard about Your Medicare Trip')
+      .refine(
+        (val) => val !== 'Select',
+        'Please tell us where you heard about Your Medicare Trip'
+      ),
+    referralSourceOther: z.string().optional(),
+    tellUsMore: z.string().optional(),
+    privacyConsentGiven: z.boolean().refine((val) => val === true, {
+      message: 'You must agree to the privacy policy to continue',
+    }),
 
-  // Part 2 fields
-  patientAgeOrDob: z
-    .string()
-    .trim()
-    .min(1, "Please provide the patient's age or date of birth"),
-  doctorBudgetPreference: z
-    .string()
-    .min(1, 'Please select a doctor recommendation preference'),
-  treatmentTimeline: z
-    .string()
-    .min(1, 'Please select your planned timeline'),
-  preferredHospitalOrCity: z.string(),
-});
+    // Part 2 fields
+    patientAgeOrDob: z
+      .string()
+      .trim()
+      .min(1, "Please provide the patient's age or date of birth"),
+    doctorBudgetPreference: z
+      .string()
+      .min(1, 'Please select a doctor recommendation preference'),
+    treatmentTimeline: z
+      .string()
+      .min(1, 'Please select your planned timeline'),
+    preferredHospitalOrCity: z.string().optional(),
+  })
+  .superRefine((data, ctx) => {
+    if (
+      data.referralSourceKey === 'other' &&
+      (!data.referralSourceOther || !data.referralSourceOther.trim())
+    ) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'Please specify where you heard about us',
+        path: ['referralSourceOther'],
+      });
+    }
+  });
 
 export type ConsultationFormValues = z.infer<typeof consultationSchema>;
 
@@ -93,36 +120,15 @@ export type ConsultationFormValues = z.infer<typeof consultationSchema>;
 /* Constants & Options                                                */
 /* ------------------------------------------------------------------ */
 
-const COUNTRY_OPTIONS = [
-  'Oman',
-  'United States',
-  'United Kingdom',
-  'UAE',
-  'Saudi Arabia',
-  'Canada',
-  'Germany',
-  'Bangladesh',
-  'Nigeria',
-  'Kenya',
-  'Uzbekistan',
-  'India',
-  'Australia',
-  'Other',
-];
+const COUNTRY_OPTIONS = COUNTRIES.map((c) => c.name);
 
 const TREATMENT_OPTIONS = [
-  'Header Free Medical Opinion',
-  'Joint Replacement',
-  'Robotic Knee Replacement',
-  'Spine Surgery',
+  'Orthopaedics & Joint Care',
+  'Cosmetic Surgery',
+  'Dental Implants & Smile Design',
+  'Eye Care & Refractive Surgery',
   'Fertility & IVF',
-  'Dental Care',
-  'Eye Care',
-  'Cosmetic & Plastic Surgery',
-  'Cardiology & Heart Surgery',
-  'GI & Oncology Surgery',
-  'Organ Transplant',
-  'Other Medical Specialty',
+  'Cardiology & Cardiac Surgery',
 ];
 
 const DOCTOR_BUDGET_OPTIONS = [
@@ -140,29 +146,35 @@ const TIMELINE_OPTIONS = [
 ];
 
 export function normalizeTreatment(treatment?: string): string {
-  if (!treatment) return 'Header Free Medical Opinion';
+  if (!treatment) return 'Select';
   const clean = treatment.trim().toLowerCase().replace(/-/g, ' ');
 
   const exact = TREATMENT_OPTIONS.find((t) => t.toLowerCase() === clean);
   if (exact) return exact;
 
-  if (clean.includes('knee') || clean.includes('joint') || clean.includes('hip')) {
-    return clean.includes('robotic') ? 'Robotic Knee Replacement' : 'Joint Replacement';
+  if (clean.includes('ortho') || clean.includes('knee') || clean.includes('joint') || clean.includes('hip') || clean.includes('bone') || clean.includes('spine')) {
+    return 'Orthopaedics & Joint Care';
   }
-  if (clean.includes('spine')) return 'Spine Surgery';
-  if (clean.includes('fertility') || clean.includes('ivf')) return 'Fertility & IVF';
-  if (clean.includes('dental')) return 'Dental Care';
-  if (clean.includes('eye') || clean.includes('cataract') || clean.includes('lasik')) return 'Eye Care';
-  if (clean.includes('cosmetic') || clean.includes('plastic')) return 'Cosmetic & Plastic Surgery';
-  if (clean.includes('cardio') || clean.includes('heart')) return 'Cardiology & Heart Surgery';
-  if (clean.includes('gi') || clean.includes('oncology') || clean.includes('cancer')) return 'GI & Oncology Surgery';
-  if (clean.includes('transplant')) return 'Organ Transplant';
-  if (clean.includes('checkup') || clean.includes('health') || clean.includes('diagnostic')) return 'Other Medical Specialty';
+  if (clean.includes('cosmetic') || clean.includes('plastic')) {
+    return 'Cosmetic Surgery';
+  }
+  if (clean.includes('dental') || clean.includes('smile') || clean.includes('implant') || clean.includes('teeth')) {
+    return 'Dental Implants & Smile Design';
+  }
+  if (clean.includes('eye') || clean.includes('cataract') || clean.includes('lasik') || clean.includes('refractive') || clean.includes('vision')) {
+    return 'Eye Care & Refractive Surgery';
+  }
+  if (clean.includes('fertility') || clean.includes('ivf')) {
+    return 'Fertility & IVF';
+  }
+  if (clean.includes('cardio') || clean.includes('heart') || clean.includes('cardiac')) {
+    return 'Cardiology & Cardiac Surgery';
+  }
 
   const partial = TREATMENT_OPTIONS.find((t) => t.toLowerCase().includes(clean) || clean.includes(t.toLowerCase()));
   if (partial) return partial;
 
-  return 'Header Free Medical Opinion';
+  return 'Select';
 }
 
 /* ------------------------------------------------------------------ */
@@ -180,26 +192,37 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   onClose,
   preselectedTreatment,
 }) => {
-  let selectedCountryName = 'Oman';
-  try {
-    const countryCtx = useCountry();
-    if (countryCtx?.selectedCountry?.name) {
-      selectedCountryName = countryCtx.selectedCountry.name;
-    }
-  } catch {
-    // Safe fallback if rendered outside CountryContext
-  }
-
   const titleId = useId();
 
   const [step, setStep] = useState<1 | 2 | 3>(1);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [apiError, setApiError] = useState<string | null>(null);
   const [referenceId, setReferenceId] = useState<string>('PT-2026-000178');
   const [submittedData, setSubmittedData] = useState<ConsultationFormValues | null>(null);
 
+  // TanStack Query: Fetch referral sources dynamically from API (NO HARDCODING)
+  const {
+    data: referralSourcesResponse,
+    isLoading: isLoadingReferralSources,
+    isError: isReferralSourcesError,
+    error: referralSourcesQueryError,
+    refetch: refetchReferralSources,
+  } = useQuery({
+    queryKey: queryKeys.referralSources,
+    queryFn: getReferralSources,
+    enabled: isOpen,
+    staleTime: 5 * 60 * 1000,
+  });
+
+  const referralSources = referralSourcesResponse?.data ?? [];
+
+  // TanStack Query: Mutation for submitting the public lead
+  const leadMutation = useMutation({
+    mutationFn: (payload: CreateLeadPayload) => createLead(payload),
+  });
+
+  const isSubmitting = leadMutation.isPending;
+
   const defaultTreatment = normalizeTreatment(preselectedTreatment);
-  const defaultCountry = selectedCountryName;
 
   const {
     register,
@@ -208,16 +231,19 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
     trigger,
     setValue,
     reset,
+    watch,
     formState: { errors },
   } = useForm<ConsultationFormValues>({
     resolver: zodResolver(consultationSchema),
     mode: 'onTouched',
     defaultValues: {
       fullName: '',
-      country: defaultCountry,
+      country: 'Select',
       phone: '',
       email: '',
       treatmentCategory: defaultTreatment,
+      referralSourceKey: 'Select',
+      referralSourceOther: '',
       tellUsMore: '',
       privacyConsentGiven: false,
       patientAgeOrDob: '',
@@ -227,18 +253,14 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
     },
   });
 
-  // Keep defaults updated when preselected treatment or country changes
+  const selectedReferralKey = watch('referralSourceKey');
+
+  // Keep defaults updated when preselected treatment changes
   useEffect(() => {
     if (preselectedTreatment) {
       setValue('treatmentCategory', normalizeTreatment(preselectedTreatment));
     }
   }, [preselectedTreatment, setValue]);
-
-  useEffect(() => {
-    if (selectedCountryName) {
-      setValue('country', selectedCountryName);
-    }
-  }, [selectedCountryName, setValue]);
 
   // Handle Close & Reset
   const handleClose = useCallback(() => {
@@ -278,6 +300,8 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
       'phone',
       'email',
       'treatmentCategory',
+      'referralSourceKey',
+      'referralSourceOther',
       'privacyConsentGiven',
     ]);
 
@@ -289,7 +313,6 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   // Step 2 Submission to API
   const onSubmit = async (data: ConsultationFormValues) => {
     setApiError(null);
-    setIsSubmitting(true);
 
     try {
       const formattedPhone = cleanPhone(data.phone) || data.phone.trim();
@@ -314,6 +337,21 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
 
       const notes = noteParts.join('\n');
 
+      // Resolve referral attribution accurately
+      let referralSource: ReferralSourceType;
+      let referralPartnerId: string | undefined = undefined;
+      let referralSourceOther: string | undefined = undefined;
+
+      if (data.referralSourceKey.startsWith('partner:')) {
+        referralSource = 'partner';
+        referralPartnerId = data.referralSourceKey.replace('partner:', '');
+      } else if (data.referralSourceKey === 'other') {
+        referralSource = 'other';
+        referralSourceOther = data.referralSourceOther?.trim() || 'Other';
+      } else {
+        referralSource = data.referralSourceKey as ReferralSourceType;
+      }
+
       const payload: CreateLeadPayload = {
         fullName: data.fullName.trim(),
         email: data.email.trim(),
@@ -322,9 +360,12 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
         treatmentCategory: data.treatmentCategory,
         notes,
         privacyConsentGiven: true,
+        referralSource,
+        ...(referralPartnerId ? { referralPartnerId } : {}),
+        ...(referralSourceOther ? { referralSourceOther } : {}),
       };
 
-      const result = await createLead(payload);
+      const result = await leadMutation.mutateAsync(payload);
 
       if (result.success && result.data?.id) {
         setReferenceId(result.data.id);
@@ -338,10 +379,11 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
       }
     } catch (err: unknown) {
       if (axios.isAxiosError<ApiErrorResponse>(err)) {
+        const errorData = err.response?.data;
         const errorMsg =
-          err.response?.data?.message ||
-          (Array.isArray(err.response?.data?.errors)
-            ? err.response?.data?.errors
+          errorData?.message ||
+          (Array.isArray(errorData?.errors)
+            ? errorData.errors
                 .map((e) => e.messages?.join(', '))
                 .filter(Boolean)
                 .join('; ')
@@ -352,8 +394,6 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
       } else {
         setApiError('An unexpected error occurred. Please try again.');
       }
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -424,6 +464,13 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                     Tell us about your treatment needs — our care team will reach out within 24 hours.
                   </p>
 
+                  {apiError && (
+                    <div className="mb-4 p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-800 text-xs flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4 flex-none text-red-600" />
+                      <span>{apiError}</span>
+                    </div>
+                  )}
+
                   <form
                     onSubmit={(e) => {
                       e.preventDefault();
@@ -468,10 +515,10 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                               : 'border-gray-200 focus:border-[#0b383e] focus:ring-2 focus:ring-[#0b383e]/10'
                           }`}
                         >
-                          <option value="Select">Select</option>
-                          {COUNTRY_OPTIONS.map((c) => (
-                            <option key={c} value={c}>
-                              {c}
+                          <option value="Select">Select country</option>
+                          {COUNTRIES.map((c) => (
+                            <option key={c.code} value={c.name}>
+                              {c.name}
                             </option>
                           ))}
                         </select>
@@ -566,6 +613,96 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                         </p>
                       )}
                     </div>
+
+                    {/* Where did you hear about Your Medicare Trip? (Loaded dynamically from API) */}
+                    <div>
+                      <div className="flex items-center justify-between mb-1.5">
+                        <label className="block text-xs font-bold text-gray-800">
+                          Where did you hear about Your Medicare Trip?{' '}
+                          <span className="text-red-500">*</span>
+                        </label>
+                        {isLoadingReferralSources && (
+                          <span className="inline-flex items-center gap-1 text-[11px] text-gray-500">
+                            <Loader2 className="w-3 h-3 animate-spin text-[#0b383e]" />
+                            Loading...
+                          </span>
+                        )}
+                      </div>
+                      <select
+                        {...register('referralSourceKey')}
+                        disabled={isLoadingReferralSources}
+                        className={`w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none bg-white ${
+                          errors.referralSourceKey
+                            ? 'border-red-500 focus:ring-2 focus:ring-red-200'
+                            : 'border-gray-200 focus:border-[#0b383e] focus:ring-2 focus:ring-[#0b383e]/10'
+                        }`}
+                      >
+                        <option value="Select">
+                          {isLoadingReferralSources
+                            ? 'Loading options...'
+                            : 'Select an option'}
+                        </option>
+                        {referralSources.map((source, index) => {
+                          const optionValue = source.partnerId
+                            ? `partner:${source.partnerId}`
+                            : source.value;
+                          return (
+                            <option
+                              key={`${optionValue}-${index}`}
+                              value={optionValue}
+                            >
+                              {source.label}
+                            </option>
+                          );
+                        })}
+                      </select>
+                      {errors.referralSourceKey && (
+                        <p className="mt-1 text-xs text-red-600 font-medium">
+                          {errors.referralSourceKey.message}
+                        </p>
+                      )}
+                      {isReferralSourcesError && (
+                        <div className="mt-1.5 flex items-center justify-between text-[11px] text-red-700 bg-red-50 p-2 rounded-lg border border-red-200">
+                          <span>
+                            {axios.isAxiosError(referralSourcesQueryError)
+                              ? referralSourcesQueryError.response?.data?.message ||
+                                referralSourcesQueryError.message
+                              : 'Unable to load referral sources. Please retry.'}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => refetchReferralSources()}
+                            className="font-bold underline ml-2 hover:text-red-900 cursor-pointer"
+                          >
+                            Retry
+                          </button>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Conditional Other input */}
+                    {selectedReferralKey === 'other' && (
+                      <div>
+                        <label className="block text-xs font-bold text-gray-800 mb-1.5">
+                          Please specify <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="Please tell us where you heard about us"
+                          {...register('referralSourceOther')}
+                          className={`w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none bg-white placeholder:text-gray-400 ${
+                            errors.referralSourceOther
+                              ? 'border-red-500 focus:ring-2 focus:ring-red-200'
+                              : 'border-gray-200 focus:border-[#0b383e] focus:ring-2 focus:ring-[#0b383e]/10'
+                          }`}
+                        />
+                        {errors.referralSourceOther && (
+                          <p className="mt-1 text-xs text-red-600 font-medium">
+                            {errors.referralSourceOther.message}
+                          </p>
+                        )}
+                      </div>
+                    )}
 
                     {/* Tell us more (optional) */}
                     <div>
