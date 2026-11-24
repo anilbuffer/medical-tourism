@@ -57,6 +57,7 @@ export const consultationSchema = z
       .trim()
       .min(1, 'Please select your country')
       .refine((val) => val !== 'Select', 'Please select your country'),
+    countryOther: z.string().optional(),
     phone: z
       .string()
       .trim()
@@ -102,6 +103,17 @@ export const consultationSchema = z
     preferredHospitalOrCity: z.string().optional(),
   })
   .superRefine((data, ctx) => {
+    if (
+      data.country === 'Other' &&
+      (!data.countryOther || !data.countryOther.trim())
+    ) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'Please enter your country name',
+        path: ['countryOther'],
+      });
+    }
+
     if (
       data.referralSourceKey === 'other' &&
       (!data.referralSourceOther || !data.referralSourceOther.trim())
@@ -239,6 +251,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
     defaultValues: {
       fullName: '',
       country: 'Select',
+      countryOther: '',
       phone: '',
       email: '',
       treatmentCategory: defaultTreatment,
@@ -254,6 +267,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   });
 
   const selectedReferralKey = watch('referralSourceKey');
+  const selectedCountryValue = watch('country');
 
   // Keep defaults updated when preselected treatment changes
   useEffect(() => {
@@ -297,6 +311,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
     const valid = await trigger([
       'fullName',
       'country',
+      'countryOther',
       'phone',
       'email',
       'treatmentCategory',
@@ -352,11 +367,16 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
         referralSource = data.referralSourceKey as ReferralSourceType;
       }
 
+      const resolvedCountry =
+        data.country === 'Other' && data.countryOther?.trim()
+          ? data.countryOther.trim()
+          : data.country;
+
       const payload: CreateLeadPayload = {
         fullName: data.fullName.trim(),
         email: data.email.trim(),
         phone: formattedPhone,
-        country: data.country,
+        country: resolvedCountry,
         treatmentCategory: data.treatmentCategory,
         notes,
         privacyConsentGiven: true,
@@ -371,6 +391,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
         setReferenceId(result.data.id);
         setSubmittedData({
           ...data,
+          country: resolvedCountry,
           phone: data.phone.trim(),
         });
         setStep(3);
@@ -564,6 +585,30 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                         )}
                       </div>
                     </div>
+
+                    {/* Conditional Other Country input */}
+                    {selectedCountryValue === 'Other' && (
+                      <div>
+                        <label className="block text-xs font-bold text-gray-800 mb-1.5">
+                          Enter your country name <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="Enter your country name"
+                          {...register('countryOther')}
+                          className={`w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none bg-white placeholder:text-gray-400 ${
+                            errors.countryOther
+                              ? 'border-red-500 focus:ring-2 focus:ring-red-200'
+                              : 'border-gray-200 focus:border-[#0b383e] focus:ring-2 focus:ring-[#0b383e]/10'
+                          }`}
+                        />
+                        {errors.countryOther && (
+                          <p className="mt-1 text-xs text-red-600 font-medium">
+                            {errors.countryOther.message}
+                          </p>
+                        )}
+                      </div>
+                    )}
 
                     {/* Email */}
                     <div>
