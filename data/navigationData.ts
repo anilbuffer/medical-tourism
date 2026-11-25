@@ -39,8 +39,7 @@ export const DEFAULT_PRIMARY_NAV: NavItem[] = [
   {
     label: 'Login',
     href: LOGIN_URL,
-    target: '_blank',
-    rel: 'noopener noreferrer',
+    target: '_self',
   },
 ];
 
@@ -73,8 +72,7 @@ export const DEFAULT_MENU_GROUPS: NavGroup[] = [
       {
         label: 'Login',
         href: LOGIN_URL,
-        target: '_blank',
-        rel: 'noopener noreferrer',
+        target: '_self',
       },
     ],
   },

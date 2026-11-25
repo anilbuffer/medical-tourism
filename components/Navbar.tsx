@@ -381,7 +381,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                   <Link
                     className={cls}
                     href={item.href}
-                    target={item.target}
+                    target={item.target || (item.href?.startsWith('http') ? '_self' : undefined)}
                     rel={item.target === '_blank' ? (item.rel || 'noopener noreferrer') : item.rel}
                     aria-current={active ? 'location' : undefined}
                     onClick={(e) => handleNavClick(item.href, e)}
@@ -482,7 +482,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                           <Link
                             className={styles.menuLink}
                             href={link.href || '#'}
-                            target={link.target}
+                            target={link.target || (link.href?.startsWith('http') ? '_self' : undefined)}
                             rel={link.target === '_blank' ? (link.rel || 'noopener noreferrer') : link.rel}
                             onClick={(e) => handleNavClick(link.href, e)}
                           >
