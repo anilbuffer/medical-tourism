@@ -1,15 +1,26 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { Sparkles, MessageCircle } from 'lucide-react';
 import { useChat } from '@/components/providers/ChatProvider';
 
 export const FloatingAiWidget: React.FC = () => {
+  const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
   const { isOpen, openChat, heroBarVisible } = useChat();
   const [waHovered, setWaHovered] = useState(false);
 
-  // Floating Ask AI button is visible ONLY when chat is closed AND hero search bar is NOT visible
-  const showAiPill = !isOpen && !heroBarVisible;
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isHomePage = pathname === '/';
+
+  // Floating Ask AI button is visible ONLY when mounted, chat is closed AND:
+  // - on other pages (where there is no hero search bar), OR
+  // - on the home page when the hero search bar is scrolled out of view
+  const showAiPill = mounted && !isOpen && (!isHomePage || !heroBarVisible);
 
   return (
     <div
@@ -25,6 +36,7 @@ export const FloatingAiWidget: React.FC = () => {
         aria-label="Ask our AI assistant"
         tabIndex={showAiPill ? 0 : -1}
         aria-hidden={!showAiPill}
+        suppressHydrationWarning
         data-tip="AI assistant · instant answers, 24/7"
         className={`group fixed left-4 sm:left-auto sm:right-[96px] bottom-5 sm:bottom-[30px] z-[900] flex items-center gap-2.5 py-1.5 pr-4.5 pl-1.5 rounded-full bg-[#0e2433] hover:bg-[#13324a] text-white text-[14.5px] font-bold shadow-[0_10px_28px_rgba(9,22,34,0.3)] transition-all duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] cursor-pointer ${
           showAiPill
