@@ -313,6 +313,13 @@ export interface SpecialtyItem {
 /* AI Assistant Types                                                 */
 /* ------------------------------------------------------------------ */
 
+export type {
+  ChatMessage,
+  ChatResponseType,
+  SendChatMessagePayload,
+  ChatApiResponse,
+} from '@/services/chat';
+
 export interface ChatRequest {
   kind: 'ask' | 'book';
   question?: string;
@@ -327,4 +334,11 @@ export interface ChatContextType {
   heroBarVisible: boolean;
   setHeroBarVisible: (visible: boolean) => void;
   request: ChatRequest | null;
+  // Chatting data stored inside context
+  messages: import('@/services/chat').ChatMessage[];
+  isLoading: boolean;
+  error: string | null;
+  sessionId: string;
+  sendMessage: (text: string) => Promise<void>;
+  resetChat: () => void;
 }

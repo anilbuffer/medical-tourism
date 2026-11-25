@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Sparkles,
@@ -9,65 +9,29 @@ import {
   RotateCcw,
   X,
   Send,
+  Maximize2,
+  Minimize2,
 } from 'lucide-react';
 import { useChat } from '@/components/providers/ChatProvider';
 import { useConsultation } from '@/components/providers/AppProviders';
 
-interface ChatMessage {
-  id: string;
-  from: 'user' | 'bot';
-  text: string;
-}
-
-const INITIAL_BOT_MESSAGE: ChatMessage = {
-  id: 'initial',
-  from: 'bot',
-  text: 'Hi, I’m the Your Medicare Trip AI assistant. How can I help you today?',
-};
-
-const AI_FALLBACK_REPLY = 'Ai will be integrated soon';
-
 export const AiChatDrawer: React.FC = () => {
-  const { isOpen, closeChat, request } = useChat();
+  const {
+    isOpen,
+    closeChat,
+    request,
+    messages,
+    isLoading,
+    sendMessage,
+    resetChat,
+  } = useChat();
   const { openConsultation } = useConsultation();
-  const [messages, setMessages] = useState<ChatMessage[]>([INITIAL_BOT_MESSAGE]);
-  const [isTyping, setIsTyping] = useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const messagesContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const lastNonceRef = useRef<number | null>(null);
-  const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
-
-  const appendMessage = useCallback((msg: ChatMessage) => {
-    setMessages((prev) => [...prev, msg]);
-  }, []);
-
-  const handleSendMessage = useCallback(
-    (rawText: string) => {
-      const text = rawText.trim();
-      if (!text) return;
-
-      appendMessage({
-        id: String(Date.now() + Math.random()),
-        from: 'user',
-        text,
-      });
-
-      setIsTyping(true);
-      const timer = setTimeout(() => {
-        setIsTyping(false);
-        appendMessage({
-          id: String(Date.now() + Math.random()),
-          from: 'bot',
-          text: AI_FALLBACK_REPLY,
-        });
-      }, 500);
-
-      timeoutsRef.current.push(timer);
-    },
-    [appendMessage]
-  );
 
   // Handle incoming search query from Hero or booking trigger
   useEffect(() => {
@@ -76,10 +40,10 @@ export const AiChatDrawer: React.FC = () => {
     if (request && lastNonceRef.current !== request.nonce) {
       lastNonceRef.current = request.nonce;
       if (request.kind === 'book') {
-        openConsultation('Ask AI Assistant');
         closeChat();
+        openConsultation('Ask AI Assistant');
       } else if (request.question) {
-        handleSendMessage(request.question);
+        sendMessage(request.question);
       }
     }
 
@@ -88,14 +52,7 @@ export const AiChatDrawer: React.FC = () => {
     }, 120);
 
     return () => clearTimeout(timer);
-  }, [isOpen, request, handleSendMessage, openConsultation, closeChat]);
-
-  // Cleanup timeouts on unmount
-  useEffect(() => {
-    return () => {
-      timeoutsRef.current.forEach(clearTimeout);
-    };
-  }, []);
+  }, [isOpen, request, sendMessage, openConsultation, closeChat]);
 
   // Auto-scroll to bottom of messages container
   useEffect(() => {
@@ -103,7 +60,7 @@ export const AiChatDrawer: React.FC = () => {
     if (el) {
       el.scrollTop = el.scrollHeight;
     }
-  }, [messages, isTyping]);
+  }, [messages, isLoading]);
 
   // Escape key closes chat
   useEffect(() => {
@@ -116,16 +73,16 @@ export const AiChatDrawer: React.FC = () => {
   }, [isOpen, closeChat]);
 
   const handleReset = () => {
-    timeoutsRef.current.forEach(clearTimeout);
-    setIsTyping(false);
-    setMessages([INITIAL_BOT_MESSAGE]);
+    resetChat();
+    inputRef.current?.focus();
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const query = inputValue;
+    const query = inputValue.trim();
+    if (!query || isLoading) return;
     setInputValue('');
-    handleSendMessage(query);
+    sendMessage(query);
   };
 
   return (
@@ -151,7 +108,11 @@ export const AiChatDrawer: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.94, y: 12 }}
             transition={{ duration: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
-            className="fixed right-0 sm:right-6 bottom-0 sm:bottom-6 z-[1000] w-full sm:w-[410px] h-[100dvh] sm:h-[min(640px,calc(100dvh-48px))] flex flex-col bg-white sm:rounded-2xl shadow-[0_24px_60px_rgba(11,40,40,0.25),0_0_0_1px_rgba(11,40,40,0.08)] overflow-hidden font-sans border-0 sm:border border-slate-100"
+            className={`fixed right-0 sm:right-6 bottom-0 sm:bottom-6 z-[1000] w-full flex flex-col bg-white sm:rounded-2xl shadow-[0_24px_60px_rgba(11,40,40,0.25),0_0_0_1px_rgba(11,40,40,0.08)] overflow-hidden font-sans border-0 sm:border border-slate-100 transition-all duration-300 ease-in-out ${
+              isExpanded
+                ? 'sm:w-[760px] sm:max-w-[calc(100vw-48px)] h-[100dvh] sm:h-[min(820px,calc(100dvh-48px))]'
+                : 'sm:w-[410px] h-[100dvh] sm:h-[min(640px,calc(100dvh-48px))]'
+            }`}
           >
             {/* Header */}
             <header className="flex items-center gap-3 p-3.5 sm:p-4 bg-[#0e2433] text-white flex-none">
@@ -179,6 +140,20 @@ export const AiChatDrawer: React.FC = () => {
                 className="w-8 h-8 rounded-lg text-[#c9dbe5] hover:text-white hover:bg-white/10 grid place-items-center transition-colors cursor-pointer"
               >
                 <RotateCcw className="w-4 h-4" />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setIsExpanded((prev) => !prev)}
+                aria-label={isExpanded ? 'Minimize chat' : 'Maximize chat'}
+                title={isExpanded ? 'Minimize' : 'Maximize'}
+                className="w-8 h-8 rounded-lg text-[#c9dbe5] hover:text-white hover:bg-white/10 grid place-items-center transition-colors cursor-pointer flex-none"
+              >
+                {isExpanded ? (
+                  <Minimize2 className="w-4 h-4" />
+                ) : (
+                  <Maximize2 className="w-4 h-4" />
+                )}
               </button>
 
               <button
@@ -235,32 +210,51 @@ export const AiChatDrawer: React.FC = () => {
                   );
                 }
 
+                const isEnquiry = message.responseType === 'enquiry';
+
                 return (
                   <div key={message.id} className="self-start flex gap-2 max-w-[94%]">
                     <span className="w-7 h-7 rounded-lg flex-none grid place-items-center mt-0.5 shadow-xs bg-[#e6f4fa] text-[#2c9c8c]">
                       <Sparkles className="w-3.5 h-3.5" />
                     </span>
 
-                    <div className="border border-[#e6ecea] bg-[#f8faf9] rounded-[4px_14px_14px_14px] p-3.5 text-sm leading-relaxed text-[#2b2b2b] shadow-xs">
-                      {message.text}
+                    <div className="flex flex-col gap-2 min-w-0">
+                      <div className="border border-[#e6ecea] bg-[#f8faf9] rounded-[4px_14px_14px_14px] p-3.5 text-sm leading-relaxed text-[#2b2b2b] shadow-xs">
+                        {message.text}
+                      </div>
+
+                      {/* Enquiry button below response when response_type is enquiry */}
+                      {isEnquiry && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            closeChat();
+                            openConsultation(message.detectedTreatment || undefined);
+                          }}
+                          className="self-start inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0e2433] hover:bg-[#13324a] text-white text-xs font-semibold shadow-xs hover:shadow-sm transition-all cursor-pointer mt-0.5"
+                        >
+                          <Calendar className="w-3.5 h-3.5 text-[#5cc8e6]" />
+                          <span>Open Consultation Form</span>
+                        </button>
+                      )}
                     </div>
                   </div>
                 );
               })}
 
-              {/* Bot typing indicator */}
-              {isTyping && (
+              {/* Bot typing / processing loader */}
+              {isLoading && (
                 <div className="self-start flex gap-2">
                   <span className="w-7 h-7 rounded-lg flex-none grid place-items-center mt-0.5 bg-[#e6f4fa] text-[#2c9c8c]">
-                    <Sparkles className="w-3.5 h-3.5" />
+                    <Sparkles className="w-3.5 h-3.5 animate-pulse" />
                   </span>
                   <div
                     className="bg-[#f8faf9] border border-[#e6ecea] rounded-[4px_14px_14px_14px] py-3 px-4 flex items-center gap-1.5 shadow-xs"
-                    aria-label="AI is typing"
+                    aria-label="AI is thinking"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#99bbbb] animate-pulse" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#99bbbb] animate-pulse [animation-delay:200ms]" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#99bbbb] animate-pulse [animation-delay:400ms]" />
+                    <span className="w-2 h-2 rounded-full bg-[#2c9c8c] animate-bounce [animation-delay:-0.3s]" />
+                    <span className="w-2 h-2 rounded-full bg-[#2c9c8c] animate-bounce [animation-delay:-0.15s]" />
+                    <span className="w-2 h-2 rounded-full bg-[#2c9c8c] animate-bounce" />
                   </div>
                 </div>
               )}
@@ -281,14 +275,15 @@ export const AiChatDrawer: React.FC = () => {
                   ref={inputRef}
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  placeholder="Ask our AI anything…"
+                  disabled={isLoading}
+                  placeholder={isLoading ? 'AI is replying…' : 'Ask our AI anything…'}
                   enterKeyHint="send"
-                  className="flex-1 bg-transparent border-0 outline-none text-sm text-[#1f2937] placeholder:text-gray-400 py-1"
+                  className="flex-1 bg-transparent border-0 outline-none text-sm text-[#1f2937] placeholder:text-gray-400 py-1 disabled:opacity-60"
                 />
                 <button
                   type="submit"
                   aria-label="Send"
-                  disabled={!inputValue.trim()}
+                  disabled={!inputValue.trim() || isLoading}
                   className="w-8 h-8 rounded-lg bg-[#0e2433] hover:bg-[#13324a] disabled:opacity-30 disabled:cursor-not-allowed text-white grid place-items-center transition-all cursor-pointer flex-none shadow-xs"
                 >
                   <Send className="w-3.5 h-3.5" />
