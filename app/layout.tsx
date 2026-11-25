@@ -23,10 +23,7 @@ const kalam = Kalam({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.yourmedicaretrip.com"),
-  title: {
-    default: "Your Medicare Trip | World-Class Medical Care Abroad",
-    template: "%s | Your Medicare Trip",
-  },
+  title: "Your Medicare Trip | World-Class Medical Care Abroad",
   description:
     "Top specialist doctors and accredited world-class hospital partners in India, up to 70% lower costs, 24/7 personal concierge, recovery suites, and comprehensive complication insurance with Your Medicare Trip.",
   // No layout-level canonical — each page sets its own via alternates.canonical
