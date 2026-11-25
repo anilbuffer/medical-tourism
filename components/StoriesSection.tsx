@@ -143,7 +143,7 @@ export const StoriesSection: React.FC<StoriesSectionProps> = () => {
               </span>
             </h2>
             <p className="mt-3 text-sm sm:text-base leading-6 text-medium font-normal max-w-xl">
-              Watch genuine video testimonials from international travellers who chose India for world-class dental care.
+              Watch genuine video testimonials from international travellers who chose India for world-class medical care.
             </p>
           </div>
 

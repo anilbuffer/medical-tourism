@@ -67,7 +67,7 @@ const STEPS = [
     step: '05',
     title: 'Treatment & recovery in India',
     description:
-      'Your coordinator is with you at admission, surgery and discharge. Afterwards you recover in your suite with physiotherapy, meals and a doctor on call.',
+      'Your coordinator is with you at admission, surgery and discharge. Afterwards you recover in your peaceful recovery suite with curated meals, personal coordination and follow-up reviews with your doctor.',
     meta: 'Length agreed in your plan',
   },
   {

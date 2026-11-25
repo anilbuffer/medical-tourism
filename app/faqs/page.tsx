@@ -142,7 +142,7 @@ const FAQ_GROUPS: FAQGroup[] = [
       {
         question: 'How is recovery managed after surgery?',
         answer:
-          'After discharge you move to a private recovery suite with nursing on hand, daily physiotherapy, meals planned with your doctor, and a physician on call 24/7.',
+          'After discharge you move to a private recovery stay in a peaceful environment, with personal care coordination, curated meals, and scheduled follow-up reviews with your treating specialist.',
       },
       {
         question: 'Will there be language barriers?',

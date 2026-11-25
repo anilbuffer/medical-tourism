@@ -26,11 +26,11 @@ import {
 export const metadata = {
   title: 'Care Services: Everything Handled | Your Medicare Trip',
   description:
-    'Recovery suites, a dedicated patient care manager, nutrition, transfers, daily physiotherapy and a doctor on call: what we arrange for every patient.',
+    'Hill recovery stays, dedicated patient care coordination, curated nutrition, transfers, and experienced specialist doctors: what we arrange for every patient.',
   alternates: { canonical: 'https://www.yourmedicaretrip.com/care-services' },
   openGraph: {
     title: 'Care Services: Everything Handled | Your Medicare Trip',
-    description: 'Recovery suites, a dedicated patient care manager, nutrition, transfers, daily physiotherapy and a doctor on call: what we arrange for every patient.',
+    description: 'Hill recovery stays, dedicated patient care coordination, transfers, curated nutrition, and experienced specialist doctors: what we arrange for every patient.',
     url: 'https://www.yourmedicaretrip.com/care-services',
     type: 'website',
     images: [{ url: '/images/hero/care-services-hero.jpg', width: 1200, height: 630, alt: 'Care Services' }],
@@ -38,38 +38,38 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Care Services: Everything Handled | Your Medicare Trip',
-    description: 'Recovery suites, a dedicated patient care manager, nutrition, transfers, daily physiotherapy and a doctor on call: what we arrange for every patient.',
+    description: 'Hill recovery stays, dedicated patient care coordination, transfers, curated nutrition, and experienced specialist doctors: what we arrange for every patient.',
     images: ['/images/hero/care-services-hero.jpg'],
   },
 };
 
 const INCLUDED_SERVICES = [
   {
-    title: 'Recovery Stay',
+    title: 'Hill Recovery Stay',
     icon: BedDouble,
     imageSrc: '/images/services/recovery-stay.jpg',
-    imageAlt: 'Private deluxe hospital recovery suite with scenic views',
+    imageAlt: 'Private deluxe recovery suite with scenic views',
     description:
-      'Private deluxe en-suite recovery suites with 24/7 nursing, close to the hospital. You leave the ward for somewhere quiet, clean and set up for recovery, not a busy hotel.',
-    pills: ['En-suite room', 'Nursing on call day and night', 'Housekeeping and laundry'],
+      'Private deluxe en-suite recovery accommodation in quiet, clean surroundings. You leave the hospital ward for somewhere peaceful, scenic, and set up for rest, not a busy hotel.',
+    pills: ['Private en-suite room', 'Tranquil recovery setting', 'Housekeeping and laundry'],
   },
   {
-    title: 'Patient Care Manager',
+    title: 'Patient Care Coordinator',
     icon: UserCheck,
     imageSrc: '/images/services/care-manager.jpg',
-    imageAlt: 'Patient care manager assisting international patient',
+    imageAlt: 'Patient care coordinator assisting international patient',
     description:
-      'One named coordinator from your first enquiry to your last follow-up call. They book appointments, sit in on consultations if you want, and speak up for you.',
-    pills: ['Single point of contact', 'English-speaking', 'Interpreters on request'],
+      'One dedicated coordinator from your first enquiry to your last follow-up call. They book appointments, sit in on consultations if you want, and handle all logistics for you.',
+    pills: ['Single point of contact', 'English-speaking coordinator', 'Interpreters on request'],
   },
   {
-    title: 'Curated Nutrition',
-    icon: UtensilsCrossed,
-    imageSrc: '/images/services/nutrition.jpg',
-    imageAlt: 'Fresh chef-prepared post-operative recovery meal',
+    title: 'Experienced Specialists',
+    icon: Stethoscope,
+    imageSrc: '/images/services/doctor-on-call.jpg',
+    imageAlt: 'Senior specialist doctor consultation',
     description:
-      "Meals prepared to your doctor's instructions and your own preferences, whether that's halal, vegetarian, diabetic or simply food that tastes like home.",
-    pills: ['Doctor-approved menus', 'Halal and vegetarian', 'Family meals on request'],
+      'Consultations and surgical care led by accredited senior surgeons and department heads at premier partner hospitals, with comprehensive evaluation of your medical case.',
+    pills: ['Senior specialist oversight', 'Comprehensive medical review', 'Accredited hospital partners'],
   },
   {
     title: 'Chauffeur Transfers',
@@ -77,26 +77,26 @@ const INCLUDED_SERVICES = [
     imageSrc: '/images/services/transfers.jpg',
     imageAlt: 'Private VIP airport transfer vehicle',
     description:
-      'Met at arrivals and driven to your accommodation. Every journey between hospital, recovery suite and airport is arranged, with someone to help with bags and wheelchairs.',
-    pills: ['Airport meet and greet', 'Hospital transfers', 'Wheelchair assistance'],
+      'Met at arrivals and driven comfortably. Every scheduled journey between hospital, recovery accommodation, and airport is handled with assistance for luggage and mobility.',
+    pills: ['Airport meet and greet', 'Hospital transfers', 'Luggage assistance'],
   },
   {
-    title: 'Daily Physiotherapy',
-    icon: Activity,
-    imageSrc: '/images/services/physio.jpg',
-    imageAlt: 'Certified physical therapist guiding patient mobility session',
+    title: 'Curated Nutrition',
+    icon: UtensilsCrossed,
+    imageSrc: '/images/services/nutrition.jpg',
+    imageAlt: 'Fresh chef-prepared post-operative recovery meal',
     description:
-      'One-to-one sessions with certified physiotherapists, in hospital and then at your recovery suite. You fly home with a written exercise plan.',
-    pills: ['Daily sessions', 'Home exercise plan', 'Notes for your physio at home'],
+      "Meals prepared to your dietary preferences and recovery requirements, whether that's halal, vegetarian, diabetic or comfort food that suits your palate.",
+    pills: ['Custom dietary options', 'Halal and vegetarian', 'Family meals on request'],
   },
   {
-    title: '24/7 Doctor on Call',
-    icon: Stethoscope,
-    imageSrc: '/images/services/doctor-on-call.jpg',
-    imageAlt: 'Doctor reviewing medical health chart',
+    title: 'Post-Discharge Follow-Up',
+    icon: Clock,
+    imageSrc: '/images/split/split-home.jpg',
+    imageAlt: 'Ongoing post-treatment follow-up and doctor reviews',
     description:
-      'Round-the-clock access to a doctor during your stay, with direct escalation to your treating specialist if something needs attention.',
-    pills: ['Available day and night', 'Direct line to your specialist', 'Hospital re-admission if needed'],
+      'Structured follow-up reviews with your treating specialist and complete clinical documentation to share with your family doctor when you return home.',
+    pills: ['Specialist follow-up reviews', 'Digital medical records', 'Coordination with home GP'],
   },
 ];
 

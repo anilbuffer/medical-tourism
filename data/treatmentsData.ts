@@ -157,7 +157,7 @@ export const TREATMENTS: TreatmentItem[] = [
       },
       {
         "period": "Weeks 2–3",
-        "description": "Daily physiotherapy, wound check and stitch removal."
+        "description": "Guided mobility recovery, wound check and stitch removal."
       },
       {
         "period": "Week 3–4",
@@ -198,7 +198,7 @@ export const TREATMENTS: TreatmentItem[] = [
     "saving": "~40%",
     "addon": false,
     "img": "/images/treatments/hip-replacement.jpg",
-    "summary": "Total hip replacement and ceramic joint restoration with physiotherapy built into your stay.",
+    "summary": "Total hip replacement and ceramic joint restoration with structured recovery coordination built into your stay.",
     "intro": "Hip replacement relieves persistent joint pain and restores mobility when the hip is damaged by arthritis, trauma or avascular necrosis. Your surgeon assesses MRI and X-ray imaging in a direct video consultation before you fly.",
     "options": [
       {
@@ -2344,20 +2344,20 @@ export const WELLNESS_PROGRAMS: WellnessProgram[] = [
   {
     "name": "Post-surgery recovery stay",
     "icon": "bed",
-    "description": "A private en-suite recovery suite with nursing on hand, so you leave hospital to somewhere calm and set up for recovery rather than a standard hotel room.",
+    "description": "A private en-suite recovery suite in peaceful surroundings, so you leave hospital to somewhere calm and set up for recovery rather than a standard hotel room.",
     "features": [
-      "24/7 nursing cover",
+      "Peaceful recovery accommodation",
       "Doctor-approved meals",
       "Daily coordinator visits"
     ]
   },
   {
-    "name": "Physiotherapy & rehabilitation",
+    "name": "Post-operative mobility & recovery",
     "icon": "activity",
-    "description": "Daily one-to-one sessions with certified physiotherapists after joint, spine or other surgery, with a written home programme for when you leave.",
+    "description": "Post-operative recovery coordination with your hospital specialists, including prescribed rehabilitation routines and home exercise guidance.",
     "features": [
-      "Daily sessions",
-      "Progress notes for your home physio",
+      "Hospital specialist guidance",
+      "Rehabilitation exercise plan",
       "Mobility aids arranged"
     ]
   },

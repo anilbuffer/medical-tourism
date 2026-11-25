@@ -34,7 +34,7 @@ export const EXPERT_QA = {
       "id": "expert-2",
       "label": null,
       "question": "How will I manage post-surgery recovery?",
-      "answer": "Once discharged from the hospital, you will be transferred to a comfortable accommodation. Your private room is designed for recovery, with anti-slip mats, grab bars, and thoughtful touches to ensure safety and ease as you recover post-surgery. Your Medicare Trip offers a personalised recovery plan, a dedicated medical team, including physiotherapists, nutritionists, and trained nursing staff, to ensure optimal healing.",
+      "answer": "Once discharged from the hospital, you will be transferred to a comfortable accommodation. Your private room is designed for recovery, with anti-slip mats, grab bars, and thoughtful touches to ensure safety and ease as you recover post-surgery. Your Medicare Trip offers a personalised recovery plan, a peaceful recovery setting, dedicated coordination support, and scheduled consultations with experienced specialists to support your healing.",
       "youtubeUrl": null,
       "image": null,
       "icon": {

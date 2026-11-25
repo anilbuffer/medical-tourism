@@ -1,6 +1,6 @@
 export const STORIES_SECTION = {
   "headingLine1": "Client stories that inspire.",
-  "headingLine2": "told by our patients.",
+  "headingLine2": "Told by our patients.",
   "categories": [
     {
       "label": "All Stories",

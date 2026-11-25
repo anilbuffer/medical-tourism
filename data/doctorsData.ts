@@ -2976,7 +2976,7 @@ export const DOCTOR_TREATMENTS_MAP: Record<string, DoctorTreatment> = {
     slug: 'hip-replacement',
     name: 'Hip Replacement',
     tag: 'Orthopaedics',
-    summary: 'Total hip replacement and revision surgery, with physiotherapy built into your stay.',
+    summary: 'Total hip replacement and revision surgery, with post-operative recovery coordination built into your stay.',
     img: '/images/treatments/hip-replacement.jpg',
     priceNote: 'From $5,500',
   },
