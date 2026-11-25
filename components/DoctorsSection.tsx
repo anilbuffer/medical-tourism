@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Stethoscope, Sparkles, User, HeartPulse, Smile, Scissors, Flower2, Eye, Building2 } from 'lucide-react';
 import useEmblaCarousel, { UseEmblaCarouselType } from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
-import { DOCTORS_SECTION, DoctorMember } from '@/data/doctorsData';
+import { DOCTORS_SECTION, DOCTORS, Doctor } from '@/data/doctorsData';
 
 const HOSPITAL_LABELS: Record<string, string> = {
   'ace-heart-institute': 'ACE Heart Institute',
@@ -48,12 +48,12 @@ export const DoctorsSection: React.FC = () => {
   );
 
   const categories = DOCTORS_SECTION.categories;
-  const allMembers = DOCTORS_SECTION.members;
+  const allMembers = DOCTORS;
 
   const filteredMembers = useMemo(() => {
     return selectedCategory === 'all'
       ? allMembers
-      : allMembers.filter((m: DoctorMember) => m.group === selectedCategory || m.type === selectedCategory);
+      : allMembers.filter((m: Doctor) => m.group === selectedCategory || m.type === selectedCategory);
   }, [allMembers, selectedCategory]);
 
   // Featured doctors for homepage (limit to 8 to avoid DOM bloat while keeping carousel responsive)
@@ -261,8 +261,8 @@ export const DoctorsSection: React.FC = () => {
           ref={emblaRef}
         >
           <div className="flex -ml-6 touch-pan-y items-stretch">
-            {displayMembers.map((member: DoctorMember, idx: number) => {
-              const isDoctor = member.type === 'doctor';
+            {displayMembers.map((member: Doctor, idx: number) => {
+              const isDoctor = !member.type || member.type === 'doctor';
               const experienceText = formatExperience(member.years);
               const CardContent = (
                 <motion.div
