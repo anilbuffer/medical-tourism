@@ -645,10 +645,6 @@ export default async function DoctorDetailPage({ params }: DoctorPageProps) {
                       </dd>
                     </div>
                   )}
-                  <div className="flex justify-between py-2.5">
-                    <dt className="text-gray-500 font-normal">Languages</dt>
-                    <dd className="font-bold text-[#0b383e] text-right">English, Hindi, Punjabi</dd>
-                  </div>
                 </dl>
               </div>
 
