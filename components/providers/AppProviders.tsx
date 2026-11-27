@@ -17,21 +17,43 @@ import { FloatingAiWidget } from '@/components/FloatingAiWidget';
 export { useConsultation, useConsultationModal, type ConsultationContextType };
 export { useChat, type ChatContextType, type ChatRequest };
 
-interface CountryContextType {
+interface AppContextType {
   selectedCountry: CountryOption;
   setSelectedCountry: (country: CountryOption) => void;
   otherComparisonCountry: string;
   setOtherComparisonCountry: (country: string) => void;
+  selectedSpecialty: string;
+  setSelectedSpecialty: (specialty: string) => void;
 }
 
-const CountryContext = createContext<CountryContextType | null>(null);
+const AppContext = createContext<AppContextType | null>(null);
 
-export function useCountry() {
-  const context = useContext(CountryContext);
+export function useApp() {
+  const context = useContext(AppContext);
   if (!context) {
-    throw new Error('useCountry must be used within AppProviders');
+    throw new Error('useApp must be used within AppProviders');
   }
   return context;
+}
+
+export function useSpecialty() {
+  const { selectedSpecialty, setSelectedSpecialty } = useApp();
+  return { selectedSpecialty, setSelectedSpecialty };
+}
+
+export function useCountry() {
+  const {
+    selectedCountry,
+    setSelectedCountry,
+    otherComparisonCountry,
+    setOtherComparisonCountry,
+  } = useApp();
+  return {
+    selectedCountry,
+    setSelectedCountry,
+    otherComparisonCountry,
+    setOtherComparisonCountry,
+  };
 }
 
 export function AppProviders({ children }: { children: ReactNode }) {
@@ -50,16 +72,19 @@ export function AppProviders({ children }: { children: ReactNode }) {
 
   const [selectedCountry, setSelectedCountry] = useState<CountryOption>(COUNTRIES[0]);
   const [otherComparisonCountry, setOtherComparisonCountry] = useState<string>('Saudi Arabia');
+  const [selectedSpecialty, setSelectedSpecialty] = useState<string>('');
 
   return (
     <QueryClientProvider client={queryClient}>
       <ConsultationProvider>
-        <CountryContext.Provider
+        <AppContext.Provider
           value={{
             selectedCountry,
             setSelectedCountry,
             otherComparisonCountry,
             setOtherComparisonCountry,
+            selectedSpecialty,
+            setSelectedSpecialty,
           }}
         >
           <ChatProvider>
@@ -68,7 +93,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
             <AiChatDrawer />
             <FloatingAiWidget />
           </ChatProvider>
-        </CountryContext.Provider>
+        </AppContext.Provider>
       </ConsultationProvider>
     </QueryClientProvider>
   );

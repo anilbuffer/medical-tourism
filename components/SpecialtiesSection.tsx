@@ -4,6 +4,7 @@ import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bone, Sparkles, Smile, Eye, Baby, HeartPulse, Plus, ArrowRight } from 'lucide-react';
+import { useSpecialty } from '@/components/providers/AppProviders';
 
 export interface SpecialtyPillar {
   key: 'ortho' | 'plastic' | 'dental' | 'eye' | 'fertility' | 'cardiac';
@@ -154,6 +155,7 @@ export const SpecialtiesSection: React.FC<SpecialtiesSectionProps> = ({
   title,
   subtitle = 'World-class surgical care across high-demand procedures — reviewed by senior surgeons before you fly.',
 }) => {
+  const { selectedSpecialty, setSelectedSpecialty } = useSpecialty();
   const [activeKey, setActiveKey] = useState<string>(defaultOpen);
   const pointerTypeRef = useRef<string>('mouse');
   const cardRefs = useRef<(HTMLAnchorElement | null)[]>([]);
@@ -168,7 +170,8 @@ export const SpecialtiesSection: React.FC<SpecialtiesSectionProps> = ({
     }
   };
 
-  const handleClick = (e: React.MouseEvent, key: string) => {
+  const handleClick = (e: React.MouseEvent, key: string, title: string) => {
+    setSelectedSpecialty(title);
     if (pointerTypeRef.current === 'touch' && activeKey !== key) {
       e.preventDefault();
       setActiveKey(key);
@@ -263,6 +266,7 @@ export const SpecialtiesSection: React.FC<SpecialtiesSectionProps> = ({
         <div className="mt-12 sm:mt-16 flex flex-col md:flex-row gap-2.5 md:gap-3.5 md:h-[490px]">
           {SPECIALTIES_PILLARS.map((specialty, index) => {
             const isActive = activeKey === specialty.key;
+            const isSelected = selectedSpecialty === specialty.title;
 
             return (
               <Link
@@ -276,7 +280,7 @@ export const SpecialtiesSection: React.FC<SpecialtiesSectionProps> = ({
                 aria-current={isActive ? 'true' : undefined}
                 onPointerDown={handlePointerDown}
                 onMouseEnter={() => handleMouseEnter(specialty.key)}
-                onClick={(e) => handleClick(e, specialty.key)}
+                onClick={(e) => handleClick(e, specialty.key, specialty.title)}
                 onFocus={(e) => {
                   if (e.currentTarget.matches(':focus-visible')) {
                     setActiveKey(specialty.key);
@@ -287,6 +291,10 @@ export const SpecialtiesSection: React.FC<SpecialtiesSectionProps> = ({
                   isActive
                     ? 'md:flex-[2.8] h-[430px] sm:h-[450px] md:h-full shadow-[0_20px_50px_rgba(9,57,57,0.28)]'
                     : 'md:flex-1 h-[104px] md:h-full shadow-sm hover:shadow-md'
+                } ${
+                  isSelected
+                    ? 'border-2 border-[#8bd2ea]'
+                    : 'border-2 border-transparent'
                 }`}
               >
                 {/* Background Photography */}

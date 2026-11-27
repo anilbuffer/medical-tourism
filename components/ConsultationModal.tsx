@@ -10,6 +10,7 @@ import axios from 'axios';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { queryKeys } from '@/constants';
 import { COUNTRIES } from '@/data/countriesData';
+import { useSpecialty } from '@/components/providers/AppProviders';
 import {
   createLead,
   getReferralSources,
@@ -234,7 +235,9 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
 
   const isSubmitting = leadMutation.isPending;
 
-  const defaultTreatment = normalizeTreatment(preselectedTreatment);
+  const { selectedSpecialty, setSelectedSpecialty } = useSpecialty();
+
+  const defaultTreatment = normalizeTreatment(preselectedTreatment || selectedSpecialty);
 
   const {
     register,
@@ -269,12 +272,15 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   const selectedReferralKey = watch('referralSourceKey');
   const selectedCountryValue = watch('country');
 
-  // Keep defaults updated when preselected treatment changes
+  // Keep defaults updated when preselected treatment or selected specialty changes
   useEffect(() => {
-    if (preselectedTreatment) {
-      setValue('treatmentCategory', normalizeTreatment(preselectedTreatment));
+    if (isOpen) {
+      const treatmentToUse = preselectedTreatment || selectedSpecialty;
+      if (treatmentToUse) {
+        setValue('treatmentCategory', normalizeTreatment(treatmentToUse));
+      }
     }
-  }, [preselectedTreatment, setValue]);
+  }, [isOpen, preselectedTreatment, selectedSpecialty, setValue]);
 
   // Handle Close & Reset
   const handleClose = useCallback(() => {
@@ -638,7 +644,12 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                         Treatment interested in
                       </label>
                       <select
-                        {...register('treatmentCategory')}
+                        {...register('treatmentCategory', {
+                          onChange: (e) => {
+                            const val = e.target.value;
+                            setSelectedSpecialty(val === 'Select' ? '' : val);
+                          },
+                        })}
                         className={`w-full px-4 py-3 rounded-xl border text-sm transition-all outline-none bg-white ${
                           errors.treatmentCategory
                             ? 'border-red-500 focus:ring-2 focus:ring-red-200'
