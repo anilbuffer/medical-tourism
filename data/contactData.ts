@@ -1,3 +1,5 @@
+import { WHATSAPP_URL } from '@/constants/whatsapp';
+
 export const CONTACT_CTA = {
   "headingBefore": "Ready to plan",
   "headingAccent": "your treatment?",
@@ -19,7 +21,7 @@ export const CONTACT_CTA = {
       "title": "Chat on WhatsApp",
       "description": "Typical reply in 5 min",
       "badge": null,
-      "href": "#",
+      "href": WHATSAPP_URL,
       "image": {
         "src": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&q=80",
         "width": 82,

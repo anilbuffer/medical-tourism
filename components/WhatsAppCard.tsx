@@ -1,22 +1,31 @@
 import React from 'react';
 import { ArrowRight, ArrowUpRight, MessageSquare } from 'lucide-react';
+import { WHATSAPP_URL, getWhatsAppUrl } from '@/constants/whatsapp';
 
 export type WhatsAppCardVariant = 'banner' | 'dark' | 'bordered' | 'elevated';
 
 export interface WhatsAppCardProps {
   variant?: WhatsAppCardVariant;
   className?: string;
+  message?: string;
+  href?: string;
 }
 
 export const WhatsAppCard: React.FC<WhatsAppCardProps> = ({
   variant = 'banner',
   className = '',
+  message,
+  href,
 }) => {
+  const targetUrl = href || (message ? getWhatsAppUrl(message) : WHATSAPP_URL);
+
   // 1. Elevated variant (ContactSection on home page)
   if (variant === 'elevated') {
     return (
       <a
-        href="#"
+        href={targetUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         className={`group relative flex flex-col justify-between p-7 sm:p-9 rounded-[28px] overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer bg-white border shadow-sm hover:shadow-2xl text-left w-full ${className}`}
         style={{
           borderColor: 'var(--color-surface-outline)',
@@ -53,7 +62,9 @@ export const WhatsAppCard: React.FC<WhatsAppCardProps> = ({
   if (variant === 'dark' || variant === 'bordered') {
     return (
       <a
-        href="#"
+        href={targetUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         className={`group flex flex-col justify-between p-6 rounded-[22px] bg-white text-[#0b383e] border border-[#d6e3df] shadow-sm hover:-translate-y-1 hover:border-[#8bd2ea] transition-all min-h-[160px] w-full text-left ${className}`}
       >
         <div>
@@ -77,7 +88,9 @@ export const WhatsAppCard: React.FC<WhatsAppCardProps> = ({
   // 3. Banner / Default variant (Standard in all page dark bands)
   return (
     <a
-      href="#"
+      href={targetUrl}
+      target="_blank"
+      rel="noopener noreferrer"
       className={`group flex flex-col justify-between p-5 rounded-2xl bg-white text-[#0b383e] hover:bg-white/95 transition-all text-left shadow-lg w-full ${className}`}
     >
       <div>

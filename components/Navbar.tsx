@@ -22,6 +22,7 @@ import {
 } from '@/data/navigationData';
 import { CountrySelectModal } from './CountrySelectModal';
 import { BrandLogo } from './BrandLogo';
+import { WHATSAPP_URL } from '@/constants/whatsapp';
 import styles from './SiteHeader.module.css';
 
 /* ------------------------------------------------------------------ */
@@ -511,7 +512,9 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
             <p className={styles.helpNote}>Talk to our dedicated care coordination team.</p>
 
             <a
-              href="#"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full mt-2 py-3 px-4 rounded-full font-bold text-xs border border-white/20 text-white hover:bg-white/10 flex items-center justify-center gap-2 transition-colors cursor-pointer"
             >
               <MessageSquare className="w-4 h-4 text-[#8ed3ee]" />

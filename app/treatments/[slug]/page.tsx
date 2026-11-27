@@ -4,6 +4,7 @@ import { notFound, redirect } from 'next/navigation';
 import { PageHero } from '@/components/PageHero';
 import { CtaBand } from '@/components/CtaBand';
 import { OpenConsultationButton } from '@/components/OpenConsultationButton';
+import { getWhatsAppUrl } from '@/constants/whatsapp';
 import { TREATMENTS } from '@/data/treatmentsData';
 import { DOCTORS } from '@/data/doctorsData';
 import { HOSPITALS } from '@/data/hospitalsData';
@@ -122,6 +123,10 @@ export default async function TreatmentDetailPage({ params }: Props) {
     }),
   };
 
+  const whatsappUrl = getWhatsAppUrl(
+    `Hello! I would like to chat about ${treatment.name} treatment.`
+  );
+
   return (
     <main className="min-h-screen bg-[#fafcfb]">
       <script
@@ -148,13 +153,15 @@ export default async function TreatmentDetailPage({ params }: Props) {
         lede={treatment.summary}
         actions={
           <div className="flex flex-wrap items-center gap-3 mt-6 sm:mt-8">
-            <Link
-              href={`/enquiry?treatment=${treatment.slug}`}
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm bg-[#8bd2ea] text-[#0b383e] hover:bg-[#a2ddf0] transition-colors shadow-sm"
             >
-              <span>Get my itemised quote</span>
+              <span>Chat with us</span>
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </a>
             <OpenConsultationButton
               treatmentTitle={treatment.name}
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm bg-white/10 text-white hover:bg-white/20 transition-colors border border-white/20 cursor-pointer"
@@ -442,13 +449,15 @@ export default async function TreatmentDetailPage({ params }: Props) {
                   Your final quote is fixed in writing after review.
                 </p>
 
-                <Link
-                  href={`/enquiry?treatment=${treatment.slug}`}
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full mt-5 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full text-xs sm:text-sm font-bold bg-[#0b383e] text-white hover:bg-[#0e484f] transition-colors shadow-xs"
                 >
-                  <span>Get my itemised quote</span>
+                  <span>Chat with us</span>
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </a>
               </div>
 
               {/* Associated Doctor Cards */}

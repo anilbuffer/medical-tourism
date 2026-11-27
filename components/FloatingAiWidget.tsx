@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { Sparkles, MessageCircle } from 'lucide-react';
 import { useChat } from '@/components/providers/ChatProvider';
+import { WHATSAPP_URL } from '@/constants/whatsapp';
 
 export const FloatingAiWidget: React.FC = () => {
   const pathname = usePathname();
@@ -57,7 +58,9 @@ export const FloatingAiWidget: React.FC = () => {
 
       {/* WhatsApp Floating Action Button */}
       <a
-        href="#"
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
         aria-label="Chat with our care team on WhatsApp"
         tabIndex={isOpen ? -1 : 0}
         onMouseEnter={() => setWaHovered(true)}

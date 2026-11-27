@@ -3,6 +3,7 @@ import { PageHero } from '@/components/PageHero';
 import { OpenConsultationButton } from '@/components/OpenConsultationButton';
 import { VideoConsultationCard } from '@/components/VideoConsultationCard';
 import { WhatsAppCard } from '@/components/WhatsAppCard';
+import { WHATSAPP_URL } from '@/constants/whatsapp';
 import { 
   ChevronDown, 
   ShieldCheck, 
@@ -315,7 +316,9 @@ export default function FaqsPage() {
             </div>
             <div className="flex flex-wrap items-center gap-3">
               <a
-                href="#"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm text-white shadow-sm hover:opacity-95 transition-opacity"
                 style={{ backgroundColor: '#008329' }}
               >
